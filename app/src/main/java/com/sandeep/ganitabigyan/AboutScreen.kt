@@ -81,7 +81,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 icon = Icons.Default.SystemUpdate,
                 text = "ଅପଡେଟ୍ ଯାଞ୍ଚ କରନ୍ତୁ",
                 onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/imsbg/ganita-bingya/releases/"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/imsbg/Ganita-Bingya-App/releases/"))
                     context.startActivity(intent)
                 }
             )
