@@ -178,8 +178,8 @@ class GameViewModel(private val context: Context) : ViewModel() {
         val newWrongAttempts = if (!isCorrect) currentState.wrongAttempts + 1 else currentState.wrongAttempts
 
         val feedbackMessage = if (isCorrect) {
-            if (newStreak >= 3) "ସଠିକ ଉତ୍ତର! ${newStreak.toOdia()} ସିରିଜ୍" else "ବାଃ! ସଠିକ ଉତ୍ତର"
-        } else "ଭୁଲ୍ ଉତ୍ତର | ସଠିକ ଉତ୍ତର: ${currentQuestion.correctAnswer}"
+            if (newStreak >= 3) "ଲଗାତାର ${newStreak.toOdia()}ଟି ସଠିକ ଉତ୍ତର!" else "ବାଃ! ସଠିକ ଉତ୍ତର"
+        } else "ଭୁଲ୍ ଉତ୍ତର | ସଠିକ ଉତ୍ତର ହେଉଛି: ${currentQuestion.correctAnswer}"
 
         if (isCorrect) {
             lifetimeScore = lifetimeScore.copy(first = lifetimeScore.first + 1)
