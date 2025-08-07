@@ -115,16 +115,18 @@ class GameViewModel(private val context: Context) : ViewModel() {
             val savedType = settingsDataStore.gameType.first()
             val savedLevel = settingsDataStore.difficultyLevel.first()
             val savedAutoScroll = settingsDataStore.autoScroll.first()
+            val newQuestions = List(50) { generateQuestion(savedType, savedLevel) }
+
             _gameState.update {
                 it.copy(
                     selectedType = savedType,
                     selectedLevel = savedLevel,
                     isAutoScrollEnabled = savedAutoScroll,
                     isExtraHardAvailable = savedType in listOf("ମିଶ୍ରଣ", "ସମୀକରଣ ଖୋଜ"),
+                    questions = newQuestions,
                     isLoading = false
                 )
             }
-            generateNewQuestionSet()
         }
     }
 
@@ -132,30 +134,31 @@ class GameViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch {
             val isExtraHardAvailable = newType in listOf("ମିଶ୍ରଣ", "ସମୀକରଣ ଖୋଜ")
             val finalLevel = if (!isExtraHardAvailable && newLevel == "ଅତି କଠିନ") "କଠିନ" else newLevel
+
+            // Generate the new questions using the new settings
+            val newQuestions = List(50) { generateQuestion(newType, finalLevel) }
+
+            // Atomically update the state with all changes at once
             _gameState.update {
-                it.copy(selectedType = newType, selectedLevel = finalLevel, isExtraHardAvailable = isExtraHardAvailable)
+                it.copy(
+                    selectedType = newType,
+                    selectedLevel = finalLevel,
+                    isExtraHardAvailable = isExtraHardAvailable,
+                    questions = newQuestions, // Use the new list
+                    currentQuestionIndex = 0, // Reset progress
+                    feedbackMessage = null,
+                    score = 0,
+                    wrongAttempts = 0,
+                    correctStreak = 0
+                )
             }
             settingsDataStore.saveSettings(newType, finalLevel)
-            generateNewQuestionSet()
         }
-    }
-
-    fun generateNewQuestionSet(count: Int = 50) {
-        _gameState.update {
-            it.copy(
-                questions = List(count) { generateQuestion() },
-                currentQuestionIndex = 0,
-                feedbackMessage = null,
-                score = 0,
-                wrongAttempts = 0,
-                correctStreak = 0
-            )
-        }
-        updateCurrentQuestionIndex(0)
     }
 
     private fun appendQuestions(count: Int = 20) {
-        val newQuestions = List(count) { generateQuestion() }
+        val currentState = _gameState.value
+        val newQuestions = List(count) { generateQuestion(currentState.selectedType, currentState.selectedLevel) }
         _gameState.update { it.copy(questions = it.questions + newQuestions) }
     }
 
@@ -215,12 +218,6 @@ class GameViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-    fun moveToNextQuestion() {
-        _gameState.update {
-            it.copy(currentQuestionIndex = it.currentQuestionIndex + 1)
-        }
-    }
-
     fun updateCurrentQuestionIndex(newIndex: Int) {
         if (newIndex >= _gameState.value.questions.size - 5) {
             appendQuestions()
@@ -238,8 +235,8 @@ class GameViewModel(private val context: Context) : ViewModel() {
     fun startTimedChallenge(minutes: Int, type: String, level: String) {
         timerJob?.cancel()
         val durationMillis = minutes * 60 * 1000L
-        _gameState.update { it.copy(isTimedChallenge = true, timerValue = durationMillis, score = 0, wrongAttempts = 0, challengeJustFinished = false) }
-        updateSettings(type, level)
+        updateSettings(type, level) // This now correctly resets the question set
+        _gameState.update { it.copy(isTimedChallenge = true, timerValue = durationMillis, challengeJustFinished = false) }
 
         timerJob = viewModelScope.launch {
             var timeLeft = durationMillis
@@ -256,13 +253,17 @@ class GameViewModel(private val context: Context) : ViewModel() {
 
     fun stopTimedChallenge() {
         timerJob?.cancel()
-        _gameState.update { it.copy(isTimedChallenge = false, timerValue = 0, challengeJustFinished = false) }
-        generateNewQuestionSet()
+        _gameState.update {
+            it.copy(isTimedChallenge = false, timerValue = 0, challengeJustFinished = false)
+        }
+        // Reset to default game state
+        updateSettings(_gameState.value.selectedType, _gameState.value.selectedLevel)
     }
 
     fun dismissChallengeSummary() {
         _gameState.update { it.copy(challengeJustFinished = false) }
-        generateNewQuestionSet()
+        // Reset to default game state
+        updateSettings(_gameState.value.selectedType, _gameState.value.selectedLevel)
     }
 
     fun requestTimedChallengeDialog() {
@@ -308,21 +309,26 @@ class GameViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-    private fun generateQuestion(): Question {
-        val type = if (_gameState.value.selectedType == "ମିଶ୍ରଣ") {
+    // --- REFACTORED GENERATOR FUNCTIONS ---
+
+    private fun generateQuestion(type: String, level: String): Question {
+        val actualType = if (type == "ମିଶ୍ରଣ") {
             listOf("ମିଶାଣ", "ଫେଡାଣ", "ଗୁଣନ", "ହରଣ").random()
         } else {
-            _gameState.value.selectedType
+            type
         }
-        return when (type) {
-            "ମିଶାଣ" -> generateAddition(); "ଫେଡାଣ" -> generateSubtraction()
-            "ଗୁଣନ" -> generateMultiplication(); "ହରଣ" -> generateDivision()
-            "ସମୀକରଣ ଖୋଜ" -> generateFindExpression(); else -> generateAddition()
+        return when (actualType) {
+            "ମିଶାଣ" -> generateAddition(level)
+            "ଫେଡାଣ" -> generateSubtraction(level)
+            "ଗୁଣନ" -> generateMultiplication(level)
+            "ହରଣ" -> generateDivision(level)
+            "ସମୀକରଣ ଖୋଜ" -> generateFindExpression(level)
+            else -> generateAddition(level)
         }
     }
 
-    private fun generateAddition(): Question {
-        val (n1, n2) = when (_gameState.value.selectedLevel) {
+    private fun generateAddition(level: String): Question {
+        val (n1, n2) = when (level) {
             "ସହଜ" -> Random.nextInt(1, 10) to Random.nextInt(1, 10)
             "ମଧ୍ୟମ" -> Random.nextInt(10, 100) to Random.nextInt(10, 100)
             "କଠିନ" -> Random.nextInt(100, 1000) to Random.nextInt(100, 1000)
@@ -332,8 +338,8 @@ class GameViewModel(private val context: Context) : ViewModel() {
         val questionText = "${n1.toOdia()} + ${n2.toOdia()} = ?"; val solutionText = "${n1.toOdia()} + ${n2.toOdia()} = ${answer.toOdia()}"
         return Question(questionText, options.map { it.toOdia() }, answer.toOdia(), solution = solutionText)
     }
-    private fun generateSubtraction(): Question {
-        val (n1, n2) = when (_gameState.value.selectedLevel) {
+    private fun generateSubtraction(level: String): Question {
+        val (n1, n2) = when (level) {
             "ସହଜ" -> Random.nextInt(5, 20) to Random.nextInt(1, 5)
             "ମଧ୍ୟମ" -> Random.nextInt(20, 100) to Random.nextInt(10, 20)
             "କଠିନ" -> Random.nextInt(100, 1000) to Random.nextInt(10, 100)
@@ -343,8 +349,8 @@ class GameViewModel(private val context: Context) : ViewModel() {
         val questionText = "${n1.toOdia()} - ${n2.toOdia()} = ?"; val solutionText = "${n1.toOdia()} - ${n2.toOdia()} = ${answer.toOdia()}"
         return Question(questionText, options.map { it.toOdia() }, answer.toOdia(), solution = solutionText)
     }
-    private fun generateMultiplication(): Question {
-        val (n1, n2) = when (_gameState.value.selectedLevel) {
+    private fun generateMultiplication(level: String): Question {
+        val (n1, n2) = when (level) {
             "ସହଜ" -> Random.nextInt(2, 10) to Random.nextInt(2, 10)
             "ମଧ୍ୟମ" -> Random.nextInt(10, 26) to Random.nextInt(2, 10)
             "କଠିନ" -> Random.nextInt(11, 31) to Random.nextInt(11, 21)
@@ -354,8 +360,8 @@ class GameViewModel(private val context: Context) : ViewModel() {
         val questionText = "${n1.toOdia()} × ${n2.toOdia()} = ?"; val solutionText = "${n1.toOdia()} × ${n2.toOdia()} = ${answer.toOdia()}"
         return Question(questionText, options.map { it.toOdia() }, answer.toOdia(), solution = solutionText)
     }
-    private fun generateDivision(): Question {
-        val (ans, div) = when (_gameState.value.selectedLevel) {
+    private fun generateDivision(level: String): Question {
+        val (ans, div) = when (level) {
             "ସହଜ" -> Random.nextInt(2, 11) to Random.nextInt(2, 6)
             "ମଧ୍ୟମ" -> Random.nextInt(5, 21) to Random.nextInt(2, 11)
             "କଠିନ" -> Random.nextInt(10, 51) to Random.nextInt(5, 21)
@@ -365,21 +371,20 @@ class GameViewModel(private val context: Context) : ViewModel() {
         val questionText = "${num.toOdia()} ÷ ${div.toOdia()} = ?"; val solutionText = "${num.toOdia()} ÷ ${div.toOdia()} = ${answer.toOdia()}"
         return Question(questionText, options.map { it.toOdia() }, answer.toOdia(), solution = solutionText)
     }
-    private fun generateFindExpression(): Question {
-        val answer = when (_gameState.value.selectedLevel) {
+    private fun generateFindExpression(level: String): Question {
+        val answer = when (level) {
             "ସହଜ" -> Random.nextInt(5, 21); "ମଧ୍ୟମ" -> Random.nextInt(20, 101)
             "କଠିନ" -> Random.nextInt(50, 201); else -> Random.nextInt(100, 501)
         }
-        val correctExpr = generateExpression(answer).first
-        val wrongExpr1 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 1)).first
-        val wrongExpr2 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 2)).first
-        val wrongExpr3 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 3)).first
+        val correctExpr = generateExpression(answer, level).first
+        val wrongExpr1 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 1), level).first
+        val wrongExpr2 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 2), level).first
+        val wrongExpr3 = generateExpression(answer + (Random.nextInt(-20, 20).takeIf { it != 0 } ?: 3), level).first
         val options = listOf(correctExpr, wrongExpr1, wrongExpr2, wrongExpr3).map { it.toOdiaNumerals() }.shuffled()
         return Question("${answer.toOdia()} ପାଇଁ ସଠିକ ସମୀକରଣ ଖୋଜ", options, correctExpr.toOdiaNumerals())
     }
-    private fun generateExpression(target: Int): Pair<String, Int> {
+    private fun generateExpression(target: Int, level: String): Pair<String, Int> {
         val safeTarget = if (target <= 1) Random.nextInt(2, 20) else target
-        val level = _gameState.value.selectedLevel
         while (true) {
             try {
                 when (level) {
@@ -391,11 +396,11 @@ class GameViewModel(private val context: Context) : ViewModel() {
                     "ମଧ୍ୟମ" -> return if (Random.nextBoolean()) {
                         val factors = findFactors(safeTarget).filter { it > 1 && it != safeTarget }
                         val n1 = if (factors.isNotEmpty()) factors.random() else 2
-                        if (safeTarget % n1 == 0) "$n1 × ${safeTarget / n1}" to safeTarget else generateExpression(safeTarget)
+                        if (safeTarget % n1 == 0) "$n1 × ${safeTarget / n1}" to safeTarget else generateExpression(safeTarget, level)
                     } else {
                         val n2 = Random.nextInt(2, 11); "${safeTarget * n2} ÷ $n2" to safeTarget
                     }
-                    else -> {
+                    else -> { // କଠିନ and ଅତି କଠିନ
                         if (Random.nextBoolean()) {
                             val factors = findFactors(safeTarget).filter { it > 1 }
                             if (factors.isNotEmpty()) {

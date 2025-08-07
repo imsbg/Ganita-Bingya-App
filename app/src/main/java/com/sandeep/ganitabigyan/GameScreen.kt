@@ -35,6 +35,8 @@ import com.sandeep.ganitabigyan.utils.toOdia
 import com.sandeep.ganitabigyan.utils.toOdiaNumerals
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -69,15 +71,27 @@ fun GameScreen(
         }
     }
 
-    LaunchedEffect(pagerState.currentPage) {
-        snapshotFlow { pagerState.currentPage }.collect { page ->
-            viewModel.updateCurrentQuestionIndex(page)
-        }
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }
+            .distinctUntilChanged()
+            .collect { page ->
+                viewModel.updateCurrentQuestionIndex(page)
+            }
     }
 
     LaunchedEffect(Unit) {
         viewModel.hapticEvent.collect { event ->
             viewModel.triggerHapticFeedback(event)
+        }
+    }
+
+    // BUG FIX: This ensures the pager scrolls to the top when settings change
+    // and the question list is reset.
+    LaunchedEffect(gameState.questions) {
+        if (gameState.currentQuestionIndex == 0 && pagerState.currentPage != 0 && gameState.questions.isNotEmpty()) {
+            coroutineScope.launch {
+                pagerState.scrollToPage(0)
+            }
         }
     }
 
@@ -157,7 +171,7 @@ fun GameScreen(
                         ) { pageIndex ->
                             val question = gameState.questions.getOrNull(pageIndex)
                             if (question != null) {
-                                key(question.isAnswered, question.userAnswer) {
+                                key(question.questionText, question.isAnswered, question.userAnswer) {
                                     QuestionCard(
                                         question = question,
                                         onAnswer = { answer -> viewModel.onAnswerSelected(answer) }
