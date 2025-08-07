@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://i.ibb.co/Fqm0BDvV/ganitabigyanlogo.png" alt="Ganita Bigyan App Logo" width="150"/>
-  <h1>ଗଣିତ ବିଜ୍ଞ (Ganita Bigyan)</h1>
+  <h1>ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)</h1>
 </div>
 
 <p align="center">
@@ -66,7 +66,7 @@ _**ଟିପ୍ପଣୀ:** `PATH/TO/YOUR/SCREENSHOT.png` କୁ ଆପଣଙ୍
 <details>
 <summary><strong>Click to view in English</strong></summary>
 
-<h1 id="english">Ganita Bigyan</h1>
+<h1 id="english">Ganita Bingya</h1>
 
 <p align="center">
   <strong><a href="#">ଓଡ଼ିଆ</a> | English</strong>
