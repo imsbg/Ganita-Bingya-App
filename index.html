@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Ganita Bingya - Play Online or Download the App</title>
+    <meta name="description" content="Ganita Bingya is a fun, interactive game to practice basic math in Odia. Play online on your desktop or download the free Android app. Turn your mindless scrolling into a productive brain workout!">
+    <meta name="keywords" content="Odia math app, play math online, learn math in Odia, Ganita Bingya, math game, Android app, web game, educational game, Sandeep Biswal G, Jetpack Compose, productive scrolling">
+    <meta name="author" content="Sandeep Biswal G">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:title" content="Ganita Bingya - Play Online or Download the App">
+    <meta property="og:description" content="Instead of scrolling on social media, scroll on Ganita Bingya! A fun, free game to practice math in Odia.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="twitter:title" content="Ganita Bingya - Play Online or Download the App">
+    <meta property="twitter:description" content="Instead of scrolling on social media, scroll on Ganita Bingya! A fun, free game to practice math in Odia.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png">
+
+    <!-- Favicon & Fonts -->
+    <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/main/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #F8F7F2;
+            --text-color: #222222;
+            --brand-color: #8C9A7A;
+            --brand-dark: #5A664E;
+            --headline-font: 'Anek Odia', sans-serif;
+            --section-heading-font: 'Noto Serif Oriya', serif;
+            --body-font: 'Baloo Bhaina 2', sans-serif;
+            --odia-font: 'Noto Sans Oriya', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        .curtain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: var(--bg-color); z-index: 200;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .curtain img { width: 150px; }
+        .curtain h2 { font-family: var(--odia-font); font-size: 2.5rem; color: var(--brand-dark); margin-top: 1rem; }
+        .curtain.hidden { opacity: 0; pointer-events: none; }
+
+        header {
+            position: sticky; top: 0; z-index: 100; padding: 1.5rem 0;
+            opacity: 0; transform: translateY(-100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            background: rgba(248, 247, 242, 0.7);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        header.visible { opacity: 1; transform: translateY(0); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; font-family: var(--odia-font); color: var(--brand-dark); }
+        .nav-button {
+            background-color: var(--brand-dark); color: #fff; padding: 0.6rem 1.4rem;
+            border-radius: 50px; text-decoration: none; font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover { background-color: #333; }
+
+        main { position: relative; } /* Removed z-index from main */
+        .hero { min-height: 90vh; padding-top: 15vh; text-align: center; display: flex; align-items: center; justify-content: center; }
+        .hero-title {
+            font-family: var(--headline-font);
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700; line-height: 1.2;
+        }
+        
+        .mockup-sticky-parent {
+            position: sticky; top: 0; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .mockup-wrapper {
+            position: relative; display: flex; align-items: center; justify-content: center;
+            width: 100%; height: 100%;
+        }
+        .mockup-content {
+            position: absolute; display: flex; align-items: center; justify-content: center;
+            opacity: 0;
+            will-change: transform, opacity;
+            transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+        }
+        .mockup-background-shape {
+            position: absolute; background-color: var(--brand-color);
+            border-radius: 40px;
+        }
+        .phone-frame {
+            position: relative; background: #1e1e1e;
+            padding: 10px; border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 2px solid #444;
+        }
+        .phone-frame::before {
+            content: ''; position: absolute; top: 20px;
+            left: 50%; transform: translateX(-50%);
+            width: 10px; height: 10px; background: #111;
+            border-radius: 50%; z-index: 2; box-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        .phone-frame img { display: block; width: 100%; height: 100%; border-radius: 30px; object-fit: cover; }
+
+        /* MODIFIED: The definitive fix for the desktop stacking issue */
+        .mockup-container {
+            position: relative;
+            z-index: 2; /* Layer on top */
+            /* This transform forces the browser to create a new rendering layer, fixing the bug */
+            transform: translateZ(0); 
+        }
+
+        .mockup-container.mobile-only { height: 200vh; }
+        .mobile-only .mockup-content { width: 85vw; max-width: 380px; }
+        .mobile-only .mockup-image { width: 100%; }
+        
+        .mockup-container.desktop-only { height: 350vh; }
+        .desktop-only .mockup-content { width: 90vw; max-width: 1400px; }
+        .desktop-only .mockup-background-shape { width: 100%; height: 90%; }
+        .desktop-only .desktop-mockup-image { width: 95%; position: relative; }
+        .desktop-only .desktop-mockup-image img { width: 100%; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+
+        .features-wrapper { 
+            position: relative; 
+            z-index: 1; /* Layer below */
+            background-color: var(--bg-color);
+            margin-top: -100vh;
+        }
+
+        section { padding: 6rem 0; background-color: transparent; }
+        .section-title { font-family: var(--section-heading-font); text-align: center; font-size: 3rem; margin-bottom: 3rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 2rem; border-radius: 15px; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6); transition: transform 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--brand-dark); }
+        .feature-card h3 { font-family: var(--odia-font); font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+        #features .section-title,
+        #features .feature-card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        #features .section-title.is-visible,
+        #features .feature-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #features .feature-card.is-visible:nth-of-type(1) { transition-delay: 0.1s; }
+        #features .feature-card.is-visible:nth-of-type(2) { transition-delay: 0.2s; }
+        #features .feature-card.is-visible:nth-of-type(3) { transition-delay: 0.3s; }
+        #features .feature-card.is-visible:nth-of-type(4) { transition-delay: 0.4s; }
+
+
+        .download-section { background-color: #EFECE6; text-align: center; }
+        .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
+        .download-button {
+            background-color: var(--brand-dark); color: #fff; padding: 1rem 2.5rem;
+            border-radius: 50px; text-decoration: none; font-size: 1.1rem;
+            display: inline-block; transition: background-color 0.3s ease;
+        }
+        .download-button:hover { background-color: #333; }
+        footer { text-align: center; padding: 4rem 0; background-color: #EFECE6; }
+        footer a { color: var(--brand-dark); text-decoration: none; }
+
+        .desktop-only { display: none !important; }
+        
+        @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); white-space: nowrap; } }
+        @media (min-width: 1024px) { 
+            .desktop-only { display: flex !important; } 
+            .mobile-only { display: none !important; } 
+            .features-wrapper {
+                margin-top: -250vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="curtain" id="curtain">
+        <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/main/images/logo.png" alt="ଗଣିତ ବିଜ୍ଞ ଲୋଗୋ">
+        <h2>ଗଣିତ ବିଜ୍ଞ</h2>
+    </div>
+
+    <header id="header">
+        <nav class="container">
+            <div class="nav-logo">ଗଣିତ ବିଜ୍ଞ</div>
+            <a href="#download" class="nav-button mobile-only">ଡାଉନଲୋଡ୍</a>
+            <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button desktop-only">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="hero">
+            <div class="container">
+                <h1 class="hero-title" id="hero-title">ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ</h1>
+            </div>
+        </div>
+        
+        <div class="mockup-container mobile-only" id="mockup-container-mobile">
+            <div class="mockup-sticky-parent">
+                <div class="mockup-wrapper">
+                    <div class="mockup-content" id="mobile-mockup-content">
+                        <div class="mockup-image">
+                            <div class="phone-frame">
+                                <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/1.jpg" alt="Ganita Bingya App Screenshot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mockup-container desktop-only" id="mockup-container-desktop">
+            <div class="mockup-sticky-parent">
+                 <div class="mockup-wrapper">
+                    <div class="mockup-content" id="desktop-mockup-content">
+                        <div class="mockup-background-shape"></div>
+                        <div class="desktop-mockup-image">
+                            <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png" alt="Ganita Bingya Web Version Screenshot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-wrapper" id="features-wrapper">
+            <section id="features">
+                <div class="container">
+                    <h2 class="section-title">ଶିଖିବାର ନୂଆ ଉପାୟ</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="icon">🎮</div><h3>ମଜାଦାର ଖେଳ</h3><p>ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜକ କରିଥାଏ।</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon">💡</div><h3>ଫଳପ୍ରଦ ସମୟ</h3><p>ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ।</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon">💻📱</div><h3>ସବୁ ଡିଭାଇସ୍‌ରେ</h3><p>ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ।</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon">➕➖✖️➗</div><h3>ଚାରୋଟି ପ୍ରକ୍ରିୟା</h3><p>ଦୁଇ-ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ।</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="download" class="download-section">
+                <div class="container">
+                    <h2 class="section-title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2>
+                    <div class="mobile-only">
+                        <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
+                        <a href="https://github.com/imsbg/ganita-bingya-app/releases" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+                    </div>
+                    <div class="desktop-only">
+                        <p>କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ।</p>
+                        <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" class="download-button" rel="noopener noreferrer">ପ୍ଲେ ଅନଲାଇନ୍</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; ୨୦୨୪ ଗଣିତ ବିଜ୍ଞ. <a href="https://github.com/imsbg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ।</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const curtain = document.getElementById('curtain');
+        const header = document.getElementById('header');
+        const heroTitle = document.getElementById('hero-title');
+        
+        let animationStartScrollPosition = 0;
+        
+        function calculateAnimationStart() {
+            const headerHeight = header.offsetHeight;
+            const heroTitleRect = heroTitle.getBoundingClientRect();
+            animationStartScrollPosition = window.scrollY + heroTitleRect.bottom - headerHeight;
+        }
+        
+        function handleCurtainAndHeader() {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                curtain.classList.add('hidden');
+            } else {
+                curtain.classList.remove('hidden');
+            }
+            if (scrollY > 100) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+        }
+
+        function handleMockupAnimation() {
+            const isDesktop = window.innerWidth >= 1024;
+            const scrollY = window.scrollY;
+            
+            const activeMockupContainer = isDesktop ? document.getElementById('mockup-container-desktop') : document.getElementById('mockup-container-mobile');
+            const activeMockupContent = isDesktop ? document.getElementById('desktop-mockup-content') : document.getElementById('mobile-mockup-content');
+            
+            if (!activeMockupContainer || !activeMockupContent) return;
+
+            if (scrollY < animationStartScrollPosition) {
+                activeMockupContent.style.opacity = '0';
+                activeMockupContent.style.transform = `scale(${isDesktop ? 0.5 : 0.7})`;
+                return;
+            }
+
+            const animationDuration = activeMockupContainer.offsetHeight - window.innerHeight;
+            const progress = Math.max(0, Math.min(1, (scrollY - animationStartScrollPosition) / animationDuration));
+            
+            let scale, opacity = 1, translateY = 0;
+
+            if (isDesktop) {
+                if (progress < 0.25) { 
+                    const p = progress / 0.25;
+                    scale = 0.5 + p * 0.5;
+                    opacity = p;
+                } else if (progress < 0.7) {
+                    scale = 1.0;
+                    opacity = 1;
+                } else {
+                    const p = (progress - 0.7) / 0.3;
+                    scale = 1.0 + p * 1.5;
+                    opacity = 1 - p;
+                }
+            } else {
+                if (progress < 0.4) {
+                    const p = progress / 0.4;
+                    scale = 0.7 + p * 0.3;
+                    opacity = 1;
+                } else if (progress < 0.8) {
+                    scale = 1.0;
+                    opacity = 1;
+                } else {
+                    const p = (progress - 0.8) / 0.2;
+                    scale = 1.0 - p * 0.2;
+                    translateY = -p * 100;
+                    opacity = 1 - p;
+                }
+            }
+            
+            activeMockupContent.style.transform = `scale(${scale}) translateY(${translateY}vh)`;
+            activeMockupContent.style.opacity = opacity;
+        }
+        
+        let ticking = false;
+        function onScroll() {
+            handleCurtainAndHeader();
+            handleMockupAnimation();
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(onScroll);
+            }
+        }, { passive: true });
+        
+        window.addEventListener('resize', () => {
+             calculateAnimationStart();
+             handleMockupAnimation();
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionTitle = entry.target.querySelector('.section-title');
+                    const featureCards = entry.target.querySelectorAll('.feature-card');
+                    
+                    if (sectionTitle) sectionTitle.classList.add('is-visible');
+                    featureCards.forEach(card => card.classList.add('is-visible'));
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const featuresSection = document.getElementById('features');
+        if (featuresSection) {
+            observer.observe(featuresSection);
+        }
+        
+        setTimeout(() => {
+            calculateAnimationStart();
+            handleCurtainAndHeader();
+            handleMockupAnimation();
+        }, 100);
+    });
+    </script>
+</body>
+</html>
