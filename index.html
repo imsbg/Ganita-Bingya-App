@@ -75,7 +75,7 @@
         }
         .nav-button:hover { background-color: #333; }
 
-        main { position: relative; } /* Removed z-index from main */
+        main { position: relative; } 
         .hero { min-height: 90vh; padding-top: 15vh; text-align: center; display: flex; align-items: center; justify-content: center; }
         .hero-title {
             font-family: var(--headline-font);
@@ -115,27 +115,25 @@
         }
         .phone-frame img { display: block; width: 100%; height: 100%; border-radius: 30px; object-fit: cover; }
 
-        /* MODIFIED: The definitive fix for the desktop stacking issue */
         .mockup-container {
             position: relative;
-            z-index: 2; /* Layer on top */
-            /* This transform forces the browser to create a new rendering layer, fixing the bug */
+            z-index: 2; 
             transform: translateZ(0); 
         }
 
-        .mockup-container.mobile-only { height: 200vh; }
-        .mobile-only .mockup-content { width: 85vw; max-width: 380px; }
-        .mobile-only .mockup-image { width: 100%; }
+        .mockup-container.mobile-view { height: 200vh; }
+        .mobile-view .mockup-content { width: 85vw; max-width: 380px; }
+        .mobile-view .mockup-image { width: 100%; }
         
-        .mockup-container.desktop-only { height: 350vh; }
-        .desktop-only .mockup-content { width: 90vw; max-width: 1400px; }
-        .desktop-only .mockup-background-shape { width: 100%; height: 90%; }
-        .desktop-only .desktop-mockup-image { width: 95%; position: relative; }
-        .desktop-only .desktop-mockup-image img { width: 100%; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+        .mockup-container.desktop-view { height: 350vh; }
+        .desktop-view .mockup-content { width: 90vw; max-width: 1400px; }
+        .desktop-view .mockup-background-shape { width: 100%; height: 90%; }
+        .desktop-view .desktop-mockup-image { width: 95%; position: relative; }
+        .desktop-view .desktop-mockup-image img { width: 100%; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
 
         .features-wrapper { 
             position: relative; 
-            z-index: 1; /* Layer below */
+            z-index: 1;
             background-color: var(--bg-color);
             margin-top: -100vh;
         }
@@ -170,7 +168,6 @@
         #features .feature-card.is-visible:nth-of-type(3) { transition-delay: 0.3s; }
         #features .feature-card.is-visible:nth-of-type(4) { transition-delay: 0.4s; }
 
-
         .download-section { background-color: #EFECE6; text-align: center; }
         .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
         .download-button {
@@ -182,15 +179,18 @@
         footer { text-align: center; padding: 4rem 0; background-color: #EFECE6; }
         footer a { color: var(--brand-dark); text-decoration: none; }
 
-        .desktop-only { display: none !important; }
+        /* --- CSS FOR MOCKUP VIEW (SCREEN SIZE) --- */
+        .desktop-view { display: none; }
+        
+        /* --- CSS FOR OS-DEPENDENT CONTENT --- */
+        .os-android, .os-other { display: none; }
         
         @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); white-space: nowrap; } }
+        
         @media (min-width: 1024px) { 
-            .desktop-only { display: flex !important; } 
-            .mobile-only { display: none !important; } 
-            .features-wrapper {
-                margin-top: -250vh;
-            }
+            .desktop-view { display: flex; } 
+            .mobile-view { display: none; } 
+            .features-wrapper { margin-top: -250vh; }
         }
     </style>
 </head>
@@ -204,8 +204,9 @@
     <header id="header">
         <nav class="container">
             <div class="nav-logo">ଗଣିତ ବିଜ୍ଞ</div>
-            <a href="#download" class="nav-button mobile-only">ଡାଉନଲୋଡ୍</a>
-            <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button desktop-only">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
+            <!-- ACTION BUTTONS: Now use os-android and os-other classes -->
+            <a href="#download" class="nav-button os-android">ଡାଉନଲୋଡ୍</a>
+            <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button os-other">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
         </nav>
     </header>
 
@@ -216,7 +217,8 @@
             </div>
         </div>
         
-        <div class="mockup-container mobile-only" id="mockup-container-mobile">
+        <!-- MOCKUPS: Use mobile-view and desktop-view classes -->
+        <div class="mockup-container mobile-view" id="mockup-container-mobile">
             <div class="mockup-sticky-parent">
                 <div class="mockup-wrapper">
                     <div class="mockup-content" id="mobile-mockup-content">
@@ -230,7 +232,7 @@
             </div>
         </div>
 
-        <div class="mockup-container desktop-only" id="mockup-container-desktop">
+        <div class="mockup-container desktop-view" id="mockup-container-desktop">
             <div class="mockup-sticky-parent">
                  <div class="mockup-wrapper">
                     <div class="mockup-content" id="desktop-mockup-content">
@@ -249,7 +251,7 @@
                     <h2 class="section-title">ଶିଖିବାର ନୂଆ ଉପାୟ</h2>
                     <div class="features-grid">
                         <div class="feature-card">
-                            <div class="icon">🎮</div><h3>ମଜାଦାର ଖେଳ</h3><p>ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜକ କରିଥାଏ।</p>
+                            <div class="icon">🎮</div><h3>ମଜାଦାର ଖେଳ</h3><p>ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜକ କରିଥାଏ</p>
                         </div>
                         <div class="feature-card">
                             <div class="icon">💡</div><h3>ଫଳପ୍ରଦ ସମୟ</h3><p>ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ</p>
@@ -267,11 +269,12 @@
             <section id="download" class="download-section">
                 <div class="container">
                     <h2 class="section-title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2>
-                    <div class="mobile-only">
+                    <!-- ACTION TEXT: Now use os-android and os-other classes -->
+                    <div class="os-android">
                         <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
                         <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.7/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
                     </div>
-                    <div class="desktop-only">
+                    <div class="os-other">
                         <p>କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ</p>
                         <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" class="download-button" rel="noopener noreferrer">ପ୍ଲେ ଅନଲାଇନ୍</a>
                     </div>
@@ -288,6 +291,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // This is your original animation script. It's mostly unchanged.
         const curtain = document.getElementById('curtain');
         const header = document.getElementById('header');
         const heroTitle = document.getElementById('hero-title');
@@ -315,17 +319,18 @@
         }
 
         function handleMockupAnimation() {
-            const isDesktop = window.innerWidth >= 1024;
+            // This part now correctly uses screen width to decide the view.
+            const isDesktopView = window.innerWidth >= 1024;
             const scrollY = window.scrollY;
             
-            const activeMockupContainer = isDesktop ? document.getElementById('mockup-container-desktop') : document.getElementById('mockup-container-mobile');
-            const activeMockupContent = isDesktop ? document.getElementById('desktop-mockup-content') : document.getElementById('mobile-mockup-content');
+            const activeMockupContainer = isDesktopView ? document.getElementById('mockup-container-desktop') : document.getElementById('mockup-container-mobile');
+            const activeMockupContent = isDesktopView ? document.getElementById('desktop-mockup-content') : document.getElementById('mobile-mockup-content');
             
             if (!activeMockupContainer || !activeMockupContent) return;
 
             if (scrollY < animationStartScrollPosition) {
                 activeMockupContent.style.opacity = '0';
-                activeMockupContent.style.transform = `scale(${isDesktop ? 0.5 : 0.7})`;
+                activeMockupContent.style.transform = `scale(${isDesktopView ? 0.5 : 0.7})`;
                 return;
             }
 
@@ -334,7 +339,7 @@
             
             let scale, opacity = 1, translateY = 0;
 
-            if (isDesktop) {
+            if (isDesktopView) {
                 if (progress < 0.25) { 
                     const p = progress / 0.25;
                     scale = 0.5 + p * 0.5;
@@ -347,7 +352,7 @@
                     scale = 1.0 + p * 1.5;
                     opacity = 1 - p;
                 }
-            } else {
+            } else { // Mobile/small-screen animation logic
                 if (progress < 0.4) {
                     const p = progress / 0.4;
                     scale = 0.7 + p * 0.3;
@@ -386,32 +391,21 @@
              handleMockupAnimation();
         });
 
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3
-        };
-
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.3 };
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const sectionTitle = entry.target.querySelector('.section-title');
                     const featureCards = entry.target.querySelectorAll('.feature-card');
-                    
                     if (sectionTitle) sectionTitle.classList.add('is-visible');
                     featureCards.forEach(card => card.classList.add('is-visible'));
-
                     observer.unobserve(entry.target);
                 }
             });
         };
-
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-
         const featuresSection = document.getElementById('features');
-        if (featuresSection) {
-            observer.observe(featuresSection);
-        }
+        if (featuresSection) { observer.observe(featuresSection); }
         
         setTimeout(() => {
             calculateAnimationStart();
@@ -420,5 +414,28 @@
         }, 100);
     });
     </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userAgent = navigator.userAgent;
+        const isAndroid = /Android/i.test(userAgent);
+
+        const androidElements = document.querySelectorAll('.os-android');
+        const otherOsElements = document.querySelectorAll('.os-other');
+        
+        if (isAndroid) {
+            androidElements.forEach(el => {
+                // 'A' tags are inline, 'DIV's are block
+                el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
+            });
+        } else {
+            otherOsElements.forEach(el => {
+                el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
+            });
+        }
+    });
+    </script>
+    <!-- ================================================================= -->
+
 </body>
 </html>
