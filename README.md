@@ -16,7 +16,7 @@
     <a href="https://github.com/imsbg/ganita-bingya-app/issues">
       <img src="https://img.shields.io/github/issues/imsbg/ganita-bingya-app" alt="Issues">
     </a>
-    <img src="https://img.shields.io/github/license/imsbg/ganita-bingya-app" alt="License">
+    <img src="https://img.shields.io/github/license/imsbg/ganita-bingya-app?style=social" alt="License">
   </p>
 </div>
 
