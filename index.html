@@ -24,7 +24,7 @@
     <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -192,6 +192,51 @@
             .mobile-view { display: none; } 
             .features-wrapper { margin-top: -250vh; }
         }
+
+        /* ==== SCROLL DOWN BUTTON STYLES ==== */
+        #scroll-down-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 210;
+            background-color: var(--brand-dark);
+            color: #fff;
+            padding: 0.8rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--headline-font); /* CHANGED */
+            font-weight: 500; /* ADDED */
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 1;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            animation: bounce 2s infinite;
+        }
+
+        #scroll-down-btn:hover {
+            background-color: #333;
+            animation-play-state: paused;
+        }
+
+        #scroll-down-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 20px);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translate(-50%, 0);
+            }
+            40% {
+                transform: translate(-50%, -10px);
+            }
+            60% {
+                transform: translate(-50%, -5px);
+            }
+        }
+        /* ==== END OF STYLES ==== */
     </style>
 </head>
 <body>
@@ -204,7 +249,6 @@
     <header id="header">
         <nav class="container">
             <div class="nav-logo">ଗଣିତ ବିଜ୍ଞ</div>
-            <!-- ACTION BUTTONS: Now use os-android and os-other classes -->
             <a href="#download" class="nav-button os-android">ଡାଉନଲୋଡ୍</a>
             <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button os-other">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
         </nav>
@@ -217,7 +261,6 @@
             </div>
         </div>
         
-        <!-- MOCKUPS: Use mobile-view and desktop-view classes -->
         <div class="mockup-container mobile-view" id="mockup-container-mobile">
             <div class="mockup-sticky-parent">
                 <div class="mockup-wrapper">
@@ -269,7 +312,6 @@
             <section id="download" class="download-section">
                 <div class="container">
                     <h2 class="section-title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2>
-                    <!-- ACTION TEXT: Now use os-android and os-other classes -->
                     <div class="os-android">
                         <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
                         <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.7/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
@@ -289,12 +331,17 @@
         </div>
     </footer>
 
+    <!-- ==== SCROLL DOWN BUTTON HTML ==== -->
+    <a href="#main-content" id="scroll-down-btn" aria-label="Scroll down to content">
+        ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
+    </a>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // This is your original animation script. It's mostly unchanged.
         const curtain = document.getElementById('curtain');
         const header = document.getElementById('header');
         const heroTitle = document.getElementById('hero-title');
+        const scrollDownBtn = document.getElementById('scroll-down-btn');
         
         let animationStartScrollPosition = 0;
         
@@ -308,9 +355,12 @@
             const scrollY = window.scrollY;
             if (scrollY > 50) {
                 curtain.classList.add('hidden');
+                if (scrollDownBtn) scrollDownBtn.classList.add('hidden');
             } else {
                 curtain.classList.remove('hidden');
+                if (scrollDownBtn) scrollDownBtn.classList.remove('hidden');
             }
+
             if (scrollY > 100) {
                 header.classList.add('visible');
             } else {
@@ -319,7 +369,6 @@
         }
 
         function handleMockupAnimation() {
-            // This part now correctly uses screen width to decide the view.
             const isDesktopView = window.innerWidth >= 1024;
             const scrollY = window.scrollY;
             
@@ -352,7 +401,7 @@
                     scale = 1.0 + p * 1.5;
                     opacity = 1 - p;
                 }
-            } else { // Mobile/small-screen animation logic
+            } else { 
                 if (progress < 0.4) {
                     const p = progress / 0.4;
                     scale = 0.7 + p * 0.3;
@@ -425,7 +474,6 @@
         
         if (isAndroid) {
             androidElements.forEach(el => {
-                // 'A' tags are inline, 'DIV's are block
                 el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
             });
         } else {
@@ -435,7 +483,6 @@
         }
     });
     </script>
-    <!-- ================================================================= -->
 
 </body>
 </html>
