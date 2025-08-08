@@ -17,9 +17,9 @@
 
 <table align="center">
   <tr>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT1.png" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="ସମାଧାନ" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/></td>
+    <td align="center"><img src="images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/></td>
+    <td align="center"><img src="images/2.jpg" alt="ସମାଧାନ" width="200"/></td>
+    <td align="center"><img src="images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/></td>
   </tr>
 </table>
 
@@ -82,9 +82,9 @@ This app is specially designed for Odia-speaking students and learners.
 
 <table align="center">
   <tr>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT1.png" alt="Game Screen" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="Solution" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="Questions History" width="200"/></td>
+    <td align="center"><img src="images/1.jpg" alt="Game Screen" width="200"/></td>
+    <td align="center"><img src="images/2.jpg" alt="Solution" width="200"/></td>
+    <td align="center"><img src="images/3.jpg" alt="Questions History" width="200"/></td>
   </tr>
 </table>
 
