@@ -18,8 +18,8 @@
 <table align="center">
   <tr>
     <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT1.png" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="ସେଟିଂସ" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="ସମୟ ଚ୍ୟାଲେଞ୍ଜ" width="200"/></td>
+    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="ସମାଧାନ" width="200"/></td>
+    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/></td>
   </tr>
 </table>
 
@@ -83,8 +83,8 @@ This app is specially designed for Odia-speaking students and learners.
 <table align="center">
   <tr>
     <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT1.png" alt="Game Screen" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="Settings" width="200"/></td>
-    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="Timed Challenge" width="200"/></td>
+    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT2.png" alt="Solution" width="200"/></td>
+    <td align="center"><img src="PATH/TO/YOUR/SCREENSHOT3.png" alt="Questions History" width="200"/></td>
   </tr>
 </table>
 
