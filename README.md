@@ -1,125 +1,195 @@
+# ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)
+
 <div align="center">
-  <img src="https://i.ibb.co/Fqm0BDvV/ganitabigyanlogo.png" alt="Ganita Bigyan App Logo" width="150"/>
-  <h1>ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)</h1>
+  <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
+  <h3>ଗଣିତ ଶିଖିବା ଏବେ ମଜାଦାର</h3>
+
+  <p>
+    <a href="https://github.com/imsbg/ganita-bingya-app/releases">
+      <img src="https://img.shields.io/github/v/release/imsbg/ganita-bingya-app?style=for-the-badge&color=brightgreen" alt="Download">
+    </a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/github/stars/imsbg/ganita-bingya-app?style=social" alt="Stars">
+    <img src="https://img.shields.io/github/forks/imsbg/ganita-bingya-app?style=social" alt="Forks">
+    <a href="https://github.com/imsbg/ganita-bingya-app/issues">
+      <img src="https://img.shields.io/github/issues/imsbg/ganita-bingya-app" alt="Issues">
+    </a>
+    <img src="https://img.shields.io/github/license/imsbg/ganita-bingya-app" alt="License">
+  </p>
 </div>
 
-<p align="center">
-  <strong>ଓଡ଼ିଆ | <a href="#english">English</a></strong>
-</p>
-
-"ଗଣିତ ବିଜ୍ଞ" ହେଉଛି ଏକ ଶೈକ୍ଷିକ ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍, ଯାହାକୁ ସମ୍ପୂର୍ଣ୍ଣ ଭାବେ Jetpack Compose ସାହାଯ୍ୟରେ ତିଆରି କରାଯାଇଛି। ଏହି ଆପ୍‌ଟି ବ୍ୟବହାରକାରୀଙ୍କୁ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ, ଏବଂ ହରଣ ଭଳି ମୌଳିକ ଗାଣିତିକ କାର୍ଯ୍ୟଗୁଡ଼ିକୁ ମଜାଳିଆ ଏବଂ ସହଜ ଉପାୟରେ ଅଭ୍ୟାସ କରିବାରେ ସାହାଯ୍ୟ କରିଥାଏ।
-
-ଏହି ଆପ୍‌ଟି ବିଶେଷ କରି ଓଡ଼ିଆ ଭାଷାଭାଷୀ ଛାତ୍ରଛାତ୍ରୀ ଏବଂ ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ ପ୍ରସ୍ତୁତ କରାଯାଇଛି।
+**[English Version](#english-version)**
 
 ---
 
-### 📱 ସ୍କ୍ରିନସଟ୍ 
+"ଗଣିତ ବିଜ୍ଞ" ହେଉଛି ଏକ ଶିକ୍ଷଣୀୟ ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍, ଯାହାକୁ ସମ୍ପୂର୍ଣ୍ଣ ଭାବରେ ଜେଟପ୍ୟାକ୍ କମ୍ପୋଜ୍ (Jetpack Compose) ଦ୍ୱାରା ତିଆରି କରାଯାଇଛି। ଏହି ଆପ୍‌ଟି ବ୍ୟବହାରକାରୀମାନଙ୍କୁ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଭଳି ମୌଳିକ ଗାଣିତିକ ପ୍ରକ୍ରିୟାକୁ ଏକ ମଜାଦାର ଏବଂ ଆକର୍ଷଣୀୟ ଉପାୟରେ ଅଭ୍ୟାସ କରିବାରେ ସାହାଯ୍ୟ କରେ।
 
+## 📥 ଡାଉନଲୋଡ୍
+
+ଆପଣ ଏହି ଆପ୍‌ର ସର୍ବଶେଷ ସଂସ୍କରଣକୁ **[Releases/ମୁକ୍ତିଲାଭ](https://github.com/imsbg/ganita-bingya-app/releases)** ପୃଷ୍ଟା ରୁ ଡାଉନଲୋଡ୍ କରିପାରିବେ।
+
+## 📱 ସ୍କ୍ରିନସଟ୍ ଗୁଡିକ
 <table align="center">
   <tr>
-    <td align="center"><img src="images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/></td>
-    <td align="center"><img src="images/2.jpg" alt="ସମାଧାନ" width="200"/></td>
-    <td align="center"><img src="images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/></td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/>
+      <br />
+      <sub><b>ଗେମ୍ ସ୍କ୍ରିନ୍</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/2.jpg" alt="ସମାଧାନ" width="200"/>
+      <br />
+      <sub><b>ସମାଧାନ</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/>
+      <br />
+      <sub><b>ପ୍ରଶ୍ନ ଇତିହାସ</b></sub>
+    </td>
   </tr>
 </table>
 
-_**ଟିପ୍ପଣୀ:** `PATH/TO/YOUR/SCREENSHOT.png` କୁ ଆପଣଙ୍କ ପ୍ରକୃତ ସ୍କ୍ରିନସଟ୍ ଫାଇଲର ପଥ ସହିତ ବଦଳାନ୍ତୁ।_
+## ✨ ମୁଖ୍ୟ ବୈଶିଷ୍ଟ୍ୟ 
+
+- **ଚାରୋଟି ମୌଳିକ ପ୍ରକ୍ରିୟା:** ମିଶାଣ (+), ଫେଡ଼ାଣ (-), ଗୁଣନ (×), ଏବଂ ହରଣ (÷) ଏବଂ ସମୀକରଣ ଖୋଜ ଅଭ୍ୟାସ କରନ୍ତୁ।
+- **ଆକର୍ଷଣୀୟ ଇଣ୍ଟରଫେସ୍:** ସରଳ ଏବଂ ସୁନ୍ଦର UI ଯାହା ବ୍ୟବହାର କରିବାକୁ ସହଜ।
+- **ଇଣ୍ଟରାକ୍ଟିଭ୍ ଶିକ୍ଷା:** ପ୍ରଶ୍ନର ତୁରନ୍ତ ଉତ୍ତର ଏବଂ ଫଳାଫଳ ପାଆନ୍ତୁ।
+- **ଆଧୁନିକ ଟେକ୍ନୋଲୋଜି:** 100% କୋଟଲିନ୍ ଏବଂ ଜେଟପ୍ୟାକ୍ କମ୍ପୋଜ୍ ସହିତ ନିର୍ମିତ।
+- **ଅଫଲାଇନ୍:** ଇଣ୍ଟରନେଟ୍ ବିନା ଯେକୌଣସି ସ୍ଥାନରେ, ଯେକୌଣସି ସମୟରେ ଅଭ୍ୟାସ କରନ୍ତୁ।
+
+## 🛠️ ବ୍ୟବହୃତ ଟେକ୍ନୋଲୋଜି (Tech Stack)
+
+- **[Kotlin](https://kotlinlang.org/):** ଆପ୍ ଡେଭଲପମେଣ୍ଟ ପାଇଁ ମୁଖ୍ୟ ଭାଷା।
+- **[Jetpack Compose](https://developer.android.com/jetpack/compose):** UI ତିଆରି ପାଇଁ ଆଧୁନିକ ଟୁଲକିଟ୍।
+- **[Material Design 3](https://m3.material.io/):** ସୁନ୍ଦର ଡିଜାଇନ୍ ପାଇଁ ଗାଇଡଲାଇନ୍।
+- **[Android Studio](https://developer.android.com/studio):** ଆପ୍ ତିଆରି ପାଇଁ ଅଫିସିଆଲ୍ IDE।
+
+## 🚀 କିପରି ବିଲ୍ଡ କରିବେ (Getting Started)
+
+1.  **ରିପୋଜିଟୋରୀ କ୍ଲୋନ୍ କରନ୍ତୁ:**
+    ```bash
+    git clone https://github.com/imsbg/ganita-bingya-app.git
+    ```
+2.  **ପ୍ରୋଜେକ୍ଟ ଖୋଲନ୍ତୁ:** Android Studio ରେ ଏହି ପ୍ରୋଜେକ୍ଟକୁ ଖୋଲନ୍ତୁ।
+3.  **Gradle Sync କରନ୍ତୁ:** Android Studio ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଆବଶ୍ୟକୀୟ ଡିପେଣ୍ଡେନ୍ସିଗୁଡ଼ିକୁ ଡାଉନଲୋଡ୍ କରିବ।
+4.  **ଆପ୍ ଚଲାନ୍ତୁ:** ଏକ ଏମୁଲେଟର କିମ୍ବା ଏକ ପ୍ରକୃତ ଡିଭାଇସରେ ଆପ୍ ଚଲାନ୍ତୁ।
+
+## 🤝 ଯୋଗଦାନ 
+ଏହି ପ୍ରୋଜେକ୍ଟରେ ଯୋଗଦାନକୁ ସ୍ୱାଗତ କରାଯାଏ! ଯଦି ଆପଣ କୌଣସି ତ୍ରୁଟି ପାଆନ୍ତି କିମ୍ବା କିଛି ନୂଆ ବୈଶିଷ୍ଟ୍ୟ ଯୋଡ଼ିବାକୁ ଚାହାନ୍ତି, ତେବେ ଏକ Issue ତିଆରି କରନ୍ତୁ କିମ୍ବା ଏକ Pull Request ପଠାନ୍ତୁ।
+
+1.  ପ୍ରୋଜେକ୍ଟକୁ **Fork** କରନ୍ତୁ।
+2.  ଏକ ନୂଆ ବ୍ରାଞ୍ଚ ତିଆରି କରନ୍ତୁ (`git checkout -b feature/AmazingFeature`)।
+3.  ଆପଣଙ୍କ ପରିବର୍ତ୍ତନଗୁଡ଼ିକୁ **Commit** କରନ୍ତୁ (`git commit -m 'Add some AmazingFeature'`)।
+4.  ବ୍ରାଞ୍ଚକୁ **Push** କରନ୍ତୁ (`git push origin feature/AmazingFeature`)।
+5.  ଏକ **Pull Request** ଖୋଲନ୍ତୁ।
+
+## 🐞 ସମସ୍ୟା ରିପୋର୍ଟ କରନ୍ତୁ 
+କୌଣସି ତ୍ରୁଟି ବା ସମସ୍ୟା ଦେଖିଲେ, ଦୟାକରି **[Issues](https://github.com/imsbg/ganita-bingya-app/issues)** ବିଭାଗରେ ଏକ ନୂଆ ଇସୁ ତିଆରି କରନ୍ତୁ।
+
+## 👨‍💻 ବିକାଶକ
+
+ଏହି ଆପ୍‌ଟି **ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି** ଙ୍କ ଦ୍ୱାରା ବିକଶିତ କରାଯାଇଛି।
+
+<a href="https://www.instagram.com/sandeepbiswalg" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-sandeepbiswalg-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
+</a>
+<a href="https://github.com/imsbg" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub-imsbg-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+
+## 📄 ଲାଇସେନ୍ସ
+ଏହି ପ୍ରୋଜେକ୍ଟଟି [MIT License](LICENSE) ଅଧୀନରେ ଅଛି।
 
 ---
-
-### ✨ ବୈଶିଷ୍ଟ୍ୟଗୁଡିକ 
-
-*   **ଗଣିତ ଅଭ୍ୟାସ:** ମିଶାଣ (+), ଫେଡ଼ାଣ (-), ଗୁଣନ (×), ଏବଂ ହରଣ (÷) ଅଭ୍ୟାସ କରନ୍ତୁ।
-*   **ବିଭିନ୍ନ ସ୍ତର:** ସହଜ, ମଧ୍ୟମ ଏବଂ କଠିନ ଭଳି ବିଭିନ୍ନ କଠିନତା ସ୍ତର ବାଛନ୍ତୁ।
-*   **ସମୟ ଚ୍ୟାଲେଞ୍ଜ:** ନିର୍ଦ୍ଦିଷ୍ଟ ସମୟ ମଧ୍ୟରେ ନିଜର ଗତି ଏବଂ ସଠିକତା ପରୀକ୍ଷା କରନ୍ତୁ।
-*   **ଅଟୋ ସ୍କ୍ରୋଲ୍:** ପ୍ରଶ୍ନର ଉତ୍ତର ଦେବା ପରେ ଆପେ ଆପେ ପରବର୍ତ୍ତୀ ପ୍ରଶ୍ନକୁ ଯାଆନ୍ତୁ।
-*   **ପ୍ରଶ୍ନ ଇତିହାସ:** ଆପଣଙ୍କର ପୂର୍ବ ପ୍ରଶ୍ନ ଏବଂ ଉତ୍ତରଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ।
-*   **ଆଧୁନିକ UI:** Jetpack Compose ଦ୍ୱାରା ନିର୍ମିତ ଏକ ସୁନ୍ଦର ଏବଂ ସ୍ୱଚ୍ଛ ଇଣ୍ଟରଫେସ୍।
-*   **ଦ୍ଵିଭାଷୀ ସମର୍ଥନ:** ଉପକରଣର ଭାଷା ଅନୁଯାୟୀ ଓଡ଼ିଆ ଏବଂ ଇଂରାଜୀରେ ଉପଲବ୍ଧ।
-
 ---
 
-### 🚀 କିପରି ଇନଷ୍ଟଲ୍ କରିବେ 
+<div id="english-version"></div>
 
-ଆପଣ ଏହି ରିପୋଜିଟୋରୀର **[Releases](https://github.com/imsbg/Ganita-Bingya-App/releases)** ପୃଷ୍ଠାରୁ ସର୍ବଶେଷ ସଂସ୍କରଣର APK ଫାଇଲ୍ ଡାଉନଲୋଡ୍ କରିପାରିବେ।
+# Ganita Bingya (ଗଣିତ ବିଜ୍ଞ)
 
-1.  ମୁକ୍ତିଲାଭ/Releases ପୃଷ୍ଠାକୁ ଯାଆନ୍ତୁ।
-2.  ସର୍ବଶେଷ ସଂସ୍କରଣର `app-release.apk` ଫାଇଲ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ।
-3.  ଆପଣଙ୍କ ଆଣ୍ଡ୍ରଏଡ୍ ଡିଭାଇସରେ ଏହି ଫାଇଲ୍ ଇନଷ୍ଟଲ୍ କରନ୍ତୁ ("Install from unknown sources" ସେଟିଂକୁ ସକ୍ଷମ କରିବାକୁ ପଡିପାରେ)।
+**[Back to Odia Version](#ଗଣତ-ବଜଞ-ganita-bingya)**
 
----
+"Ganita Bingya" is an educational Android app built entirely with Jetpack Compose. It helps users practice basic mathematical operations like addition, subtraction, multiplication, and division in a fun and interactive way.
 
-### 🤝 ଯୋଗଦାନ ଏବଂ ଶ୍ରେୟ (Contributing & Credits)
+## 📥 Download
 
-ଏହି ପ୍ରୋଜେକ୍ଟଟି **[ସନ୍ଦୀପ୍ ବିଶ୍ବାଳ ଜି](https://www.instagram.com/sandeepbiswalg)** ଙ୍କ ଦ୍ୱାରା ବିକଶିତ ଏବଂ ପରିଚାଳିତ।
+You can download the latest version of the app from the **[Releases](https://github.com/imsbg/ganita-bingya-app/releases)** page.
 
-ଯୋଗଦାନ ସର୍ବଦା ସ୍ୱାଗତଯୋଗ୍ୟ! ଯଦି ଆପଣ କୌଣସି ତ୍ରୁଟି (ବଗ୍) ପାଆନ୍ତି କିମ୍ବା କୌଣସି ନୂଆ ବୈଶିଷ୍ଟ୍ୟ ପାଇଁ ଅନୁରୋଧ କରିବାକୁ ଚାହାଁନ୍ତି, ତେବେ ଦୟାକରି ଏକ **[Issue](https://github.com/imsbg/Ganita-Bingya-App/issues)** ଖୋଲନ୍ତୁ।
-
-ଯଦି ଆପଣଙ୍କୁ ଏହି ପ୍ରୋଜେକ୍ଟଟି ଭଲ ଲାଗିଲା, ଦୟାକରି ଏହାକୁ ଏକ ଷ୍ଟାର୍ ⭐ ଦିଅନ୍ତୁ!
-
-<br>
-<br>
-
----
----
-
-<details>
-<summary><strong>Click to view in English</strong></summary>
-
-<h1 id="english">Ganita Bingya</h1>
-
-<p align="center">
-  <strong><a href="#">ଓଡ଼ିଆ</a> | English</strong>
-</p>
-
-"Ganita Bigyan" is an educational Android app built entirely with Jetpack Compose. This app helps users practice basic mathematical operations like addition, subtraction, multiplication, and division in a fun and interactive way.
-
-This app is specially designed for Odia-speaking students and learners.
-
----
-
-### 📱 Screenshots
+## 📱 Screenshots
 
 <table align="center">
   <tr>
-    <td align="center"><img src="images/1.jpg" alt="Game Screen" width="200"/></td>
-    <td align="center"><img src="images/2.jpg" alt="Solution" width="200"/></td>
-    <td align="center"><img src="images/3.jpg" alt="Questions History" width="200"/></td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/1.jpg" alt="Game Screen" width="200"/>
+      <br />
+      <sub><b>Game Screen</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/2.jpg" alt="Solution" width="200"/>
+      <br />
+      <sub><b>Solution</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/3.jpg" alt="Question History" width="200"/>
+      <br />
+      <sub><b>Question History</b></sub>
+    </td>
   </tr>
 </table>
 
-_**Note:** Replace `PATH/TO/YOUR/SCREENSHOT.png` with the actual path to your screenshot files._
+## ✨ Features
 
----
+- **Four Basic Operations:** Practice addition (+), subtraction (-), multiplication (×), and division (÷).
+- **Engaging Interface:** A clean and beautiful UI that is easy to navigate.
+- **Interactive Learning:** Get instant feedback on your answers and track your progress.
+- **Modern Tech:** Built with 100% Kotlin and Jetpack Compose for a smooth experience.
+- **Offline First:** Practice anywhere, anytime without needing an internet connection.
 
-### ✨ Features
+## 🛠️ Tech Stack
 
-*   **Math Practice:** Practice Addition (+), Subtraction (-), Multiplication (×), and Division (÷).
-*   **Multiple Levels:** Choose from different difficulty levels like Easy, Medium, and Hard.
-*   **Timed Challenge:** Test your speed and accuracy within a specific time limit.
-*   **Auto Scroll:** Automatically move to the next question after answering.
-*   **Question History:** Review your past questions and answers.
-*   **Modern UI:** A beautiful and clean interface built with Jetpack Compose.
-*   **Bilingual Support:** Available in Odia and English based on the device's language settings.
+- **[Kotlin](https://kotlinlang.org/):** Primary language for app development.
+- **[Jetpack Compose](https://developer.android.com/jetpack/compose):** Modern toolkit for building native Android UI.
+- **[Material Design 3](https://m3.material.io/):** Guidelines for a beautiful and consistent design.
+- **[Android Studio](https://developer.android.com/studio):** The official IDE for building the app.
 
----
+## 🚀 Getting Started
 
-### 🚀 Installation
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/imsbg/ganita-bingya-app.git
+    ```
+2.  **Open the project:** Open the project in Android Studio.
+3.  **Sync Gradle:** Android Studio will automatically download all the necessary dependencies.
+4.  **Run the app:** Run the app on an emulator or a physical device.
 
-You can download the latest APK file from the **[Releases](https://github.com/imsbg/Ganita-Bingya-App/releases)** page of this repository.
+## 🤝 Contributing
 
-1.  Go to the Releases page.
-2.  Download the `app-release.apk` file from the latest version.
-3.  Install the file on your Android device (you may need to enable "Install from unknown sources").
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
----
+1.  **Fork** the Project.
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3.  **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`).
+4.  **Push** to the Branch (`git push origin feature/AmazingFeature`).
+5.  Open a **Pull Request**.
 
-### 🤝 Contributing & Credits
+## 🐞 Report an Issue
 
-This project is developed and maintained by **[Sandeep Biswal G](https://www.instagram.com/sandeepbiswalg)**.
+Found a bug or have a suggestion? Please open a new issue in the **[Issues](https://github.com/imsbg/ganita-bingya-app/issues)** section.
 
-Contributions are always welcome! If you find a bug or have a feature request, please open an **[Issue](https://github.com/imsbg/Ganita-Bingya-App/issues)**.
+## 👨‍💻 Developed By
 
-If you like this project, please give it a star! ⭐
+This app is developed by **Sandeep Biswal G**.
 
-</details>
+<a href="https://www.instagram.com/sandeepbiswalg" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-sandeepbiswalg-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
+</a>
+<a href="https://github.com/imsbg" target="_blank">
+  <img src="https://img.shields.io/badge/GitHub-imsbg-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+</div>
