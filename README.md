@@ -1,7 +1,7 @@
 # ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
+  <img src="images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
   <h3>ଗଣିତ ଶିଖିବା ଏବେ ମଜାଦାର</h3>
 
   <p>
@@ -34,17 +34,17 @@
 <table align="center">
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="/images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>ଗେମ୍ ସ୍କ୍ରିନ୍</b></sub>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/2.jpg" alt="ସମାଧାନ" width="200"/>
+      <img src="/images/2.jpg" alt="ସମାଧାନ" width="200"/>
       <br />
       <sub><b>ସମାଧାନ</b></sub>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/>
+      <img src="/images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/>
       <br />
       <sub><b>ପ୍ରଶ୍ନ ଇତିହାସ</b></sub>
     </td>
@@ -122,17 +122,17 @@ You can download the latest version of the app from the **[Releases](https://git
 <table align="center">
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/1.jpg" alt="Game Screen" width="200"/>
+      <img src="/images/1.jpg" alt="Game Screen" width="200"/>
       <br />
       <sub><b>Game Screen</b></sub>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/2.jpg" alt="Solution" width="200"/>
+      <img src="/images/2.jpg" alt="Solution" width="200"/>
       <br />
       <sub><b>Solution</b></sub>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/imsbg/ganita-bingya-app/main/images/3.jpg" alt="Question History" width="200"/>
+      <img src="/images/3.jpg" alt="Question History" width="200"/>
       <br />
       <sub><b>Question History</b></sub>
     </td>
