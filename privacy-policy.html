@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="PwQ6-C2NiW61Ed7LdkchITSrVzVEzHCc2At8VvyuO5Y" />
+    <title>Ganita Bingya - Privacy Policy</title>
+    <meta name="description" content="Privacy policy for Ganita Bingya — a free, offline, ad-free math learning app in Odia">
+    <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F7F2;
+            --text-color: #222222;
+            --brand-color: #8C9A7A;
+            --brand-dark: #5A664E;
+            --headline-font: 'Anek Odia', sans-serif;
+            --section-heading-font: 'Noto Serif Oriya', serif;
+            --body-font: 'Baloo Bhaina 2', sans-serif;
+            --odia-font: 'Noto Sans Oriya', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* curtain + header (from provided UI) */
+        .curtain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: var(--bg-color); z-index: 200;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .curtain img { width: 150px; }
+        .curtain h2 { font-family: var(--odia-font); font-size: 2.5rem; color: var(--brand-dark); margin-top: 1rem; }
+        .curtain.hidden { opacity: 0; pointer-events: none; }
+
+        header {
+            position: sticky; top: 0; z-index: 100; padding: 1.5rem 0;
+            opacity: 0; transform: translateY(-100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            background: rgba(248, 247, 242, 0.8);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        header.visible { opacity: 1; transform: translateY(0); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; font-family: var(--odia-font); color: var(--brand-dark); }
+        .nav-button {
+            background-color: var(--brand-dark); color: #fff; padding: 0.6rem 1.4rem;
+            border-radius: 50px; text-decoration: none; font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover { background-color: #333; }
+
+        main { position: relative; padding-top: 3rem; } 
+        .hero { min-height: 30vh; padding-top: 3vh; text-align: center; display: flex; align-items: center; justify-content: center; }
+        .hero-title {
+            font-family: var(--headline-font);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700; line-height: 1.2;
+            color: var(--brand-dark);
+        }
+
+        section { padding: 3rem 0; background-color: transparent; }
+        .section-title { font-family: var(--section-heading-font); text-align: center; font-size: 1.9rem; margin-bottom: 1.6rem; color: var(--brand-dark); }
+        .policy-card {
+            background: rgba(255,255,255,0.6); padding: 1.6rem; border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.04); max-width: 900px; margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+        .policy-card h3 { font-family: var(--odia-font); margin-bottom: 0.6rem; color: var(--brand-dark); }
+        .policy-card p { margin-bottom: 0.9rem; color: var(--text-color); }
+        .policy-list { margin: 0.6rem 0 1.2rem 1.2rem; }
+        .policy-list li { margin-bottom: 0.5rem; }
+
+        .meta-row { display:flex; gap:1rem; justify-content:center; margin-top:1rem; color:#666; font-size:0.9rem; }
+
+        .download-section { background-color: #EFECE6; text-align: center; padding: 2rem 0; margin-top: 1.6rem; border-radius: 12px; }
+        .download-button {
+            background-color: var(--brand-dark); color: #fff; padding: 0.9rem 1.8rem;
+            border-radius: 50px; text-decoration: none; font-size: 1rem;
+            display: inline-block; transition: background-color 0.3s ease;
+        }
+        .download-button:hover { background-color: #333; }
+
+        footer { text-align: center; padding: 2.4rem 0; background-color: #EFECE6; margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.03); }
+        footer a { color: var(--brand-dark); text-decoration: none; }
+
+        /* small helpers */
+        .small { font-size: 0.95rem; color:#444; }
+        @media (max-width: 720px) {
+            .policy-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="curtain" id="curtain">
+        <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="ଗଣିତ ବିଜ୍ଞ ଲୋଗୋ">
+        <h2>ଗଣିତ ବିଜ୍ଞ</h2>
+    </div>
+
+    <header id="header">
+        <nav class="container">
+            <div class="nav-logo">ଗଣିତ ବିଜ୍ଞ</div>
+            <div>
+                
+                <a href="" class="nav-button" style="margin-left:10px; background:transparent; color:var(--brand-dark); border:1px solid var(--brand-dark)">Privacy Policy</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="hero">
+            <div class="container">
+                <h1 class="hero-title" id="hero-title">Privacy Policy <br> Ganita Bingya</h1>
+            </div>
+        </div>
+
+        <section id="privacy">
+            <div class="container">
+                <h2 class="section-title">Privacy Policy</h2>
+
+                <div class="policy-card" role="region" aria-labelledby="policy-intro">
+                    <h3 id="policy-intro">Introduction</h3>
+                    <p class="small"><strong>Effective date:</strong> August 9, 2025</p>
+                    <p>
+                        "Ganita Bingya" is not just an app; it's a philosophy. In a world where most of our free time is spent on digital scrolling, we wanted to offer an alternative — a productive one. This is our effort to make learning math simple, beautiful, and accessible to everyone.
+                    </p>
+
+                    <h3>Productive Scrolling</h3>
+                    <p>
+                        Instead of mindlessly scrolling through social media, give your brain a workout with 'Ganita Bingya'. Turn your free time into a fun and productive habit.
+                    </p>
+
+                    <h3>Our Mission</h3>
+                    <p>
+                        Our primary mission is to remove the fear of mathematics from children's minds and help them build a positive and enjoyable relationship with numbers.
+                    </p>
+
+                    <h3>Who Is It For?</h3>
+                    <ul class="policy-list">
+                        <li>Students who want to strengthen their basic math skills</li>
+                        <li>Parents who want to teach their children math in an engaging way</li>
+                        <li>Anyone who enjoys a simple math puzzle to keep their mind sharp</li>
+                    </ul>
+
+                    <h3>Our Philosophy</h3>
+                    <ul class="policy-list">
+                        <li><strong>Simplicity:</strong> A clean and straightforward design that lets users focus on learning without distractions</li>
+                        <li><strong>Fun Learning:</strong> The learning process should be as engaging as a game, not a compulsion</li>
+                        <li><strong>Accessibility for All:</strong> The app is completely free, works offline, and will always remain ad-free</li>
+                    </ul>
+
+                    <h3>What data do we collect?</h3>
+                    <p>
+                        <strong>Short answer:</strong> Almost nothing.
+                    </p>
+                    <p class="small">
+                        We designed Ganita Bingya to work offline and to be privacy-friendly. We do not require users to register, sign in, or provide personal information to use the core app. By default, the app does not collect identifiable personal data, telemetry, or analytics.
+                    </p>
+
+                    <h3>Local device data & app storage</h3>
+                    <p>
+                        The app stores lightweight local data on the user's device only when necessary for the app experience (for example, local progress, high scores, settings). This data is stored locally on the device and is not transmitted to our servers.
+                    </p>
+
+                    <h3>Downloads & permissions</h3>
+                    <p>
+                        If you download the Android APK, your device may prompt for the minimal permissions required by Android to install and run the app. We request no unnecessary permissions. If a future feature needs an additional permission (for example to store caches or save exported data), we will make that explicit in the app and in release notes.
+                    </p>
+
+                    <h3>Third-party services and links</h3>
+                    <p>
+                        The web version may link to external pages (for example, a project GitHub or an online play page). External websites are governed by their own privacy policies. We are not responsible for the privacy practices of third-party sites.
+                    </p>
+
+                    <h3>Advertising & tracking</h3>
+                    <p>
+                        Ganita Bingya is and will remain ad-free. We do not embed advertising SDKs or trackers in the core app.
+                    </p>
+
+                    <h3>Children</h3>
+                    <p>
+                        The app is designed for children to learn basic math. We do not knowingly collect personal data from children. If you believe that your child has provided personal information and you want it removed, contact us (see Contact section below).
+                    </p>
+
+                    <h3>Changes to this policy</h3>
+                    <p>
+                        If we make material changes to this privacy policy we will update the effective date at the top of this page and will highlight important changes inside the app's release notes or update log.
+                    </p>
+
+                    <h3>Contact</h3>
+                    <p>
+                        If you have questions, concerns, or requests related to privacy, please contact:
+                    </p>
+                    <p class="small">
+                        <strong>Developer:</strong> Sandeep Biswal G<br>
+                        <strong>GitHub:</strong> https://github.com/imsbg/ganita-bingya-app <br>
+                        
+                    </p>
+
+                    <div class="meta-row">
+                        <div>Free & Offline</div> • <div>Ad-free</div> • <div>Designed for children</div>
+                    </div>
+
+                    <p style="margin-top:1rem; color:#444;">
+                        We hope "Ganita Bingya" brings you a useful and joyful experience.
+                    </p>
+                </div>
+
+                <!-- download / quick access -->
+                <div style="margin-top:1.4rem; text-align:center;">
+                    <div class="download-section">
+                        <p>Ready to try? Play online or download the free APK for Android</p>
+                        <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.7/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍</a>
+                        <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="download-button" style="margin-left:12px; background:transparent; color:var(--brand-dark); border:1px solid var(--brand-dark)">Play Online</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href="http://insinstagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ</p>
+        </div>
+    </footer>
+
+    <!-- small UI scripts reused/adapted -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const curtain = document.getElementById('curtain');
+        const header = document.getElementById('header');
+        const heroTitle = document.getElementById('hero-title');
+
+        function handleCurtainAndHeader() {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                curtain.classList.add('hidden');
+            } else {
+                curtain.classList.remove('hidden');
+            }
+
+            if (scrollY > 100) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+        }
+
+        // simple mobile/desktop hint: hide curtain after 1.2s on first load so user sees header quickly
+        setTimeout(() => {
+            curtain.classList.add('hidden');
+            header.classList.add('visible');
+        }, 1200);
+
+        window.addEventListener('scroll', handleCurtainAndHeader, { passive: true });
+        window.addEventListener('resize', handleCurtainAndHeader);
+
+        // Detect Android vs other — used in other pages; kept here for familiarity
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isAndroid = /Android/i.test(userAgent);
+        // (no UI toggles needed for privacy page)
+    });
+    </script>
+</body>
+</html>
