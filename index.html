@@ -176,13 +176,27 @@
             display: inline-block; transition: background-color 0.3s ease;
         }
         .download-button:hover { background-color: #333; }
+        
+        #download-count-container {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            font-family: var(--odia-font);
+            color: var(--brand-dark);
+            opacity: 0; /* Start hidden, fade in with JS */
+            transition: opacity 0.5s ease;
+        }
+        #download-count {
+            font-weight: 700;
+            font-size: 1.3rem;
+            font-family: var(--odia-font); /* Changed to Odia font for consistency */
+            margin-right: 0.25rem;
+        }
+
         footer { text-align: center; padding: 4rem 0; background-color: #EFECE6; }
         footer a { color: var(--brand-dark); text-decoration: none; }
 
-        /* --- CSS FOR MOCKUP VIEW (SCREEN SIZE) --- */
         .desktop-view { display: none; }
         
-        /* --- CSS FOR OS-DEPENDENT CONTENT --- */
         .os-android, .os-other { display: none; }
         
         @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); white-space: nowrap; } }
@@ -193,7 +207,6 @@
             .features-wrapper { margin-top: -250vh; }
         }
 
-        /* ==== SCROLL DOWN BUTTON STYLES ==== */
         #scroll-down-btn {
             position: fixed;
             bottom: 30px;
@@ -205,8 +218,8 @@
             padding: 0.8rem 1.6rem;
             border-radius: 50px;
             text-decoration: none;
-            font-family: var(--headline-font); /* CHANGED */
-            font-weight: 500; /* ADDED */
+            font-family: var(--headline-font);
+            font-weight: 500;
             font-size: 1rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             opacity: 1;
@@ -236,7 +249,6 @@
                 transform: translate(-50%, -5px);
             }
         }
-        /* ==== END OF STYLES ==== */
     </style>
 </head>
 <body>
@@ -315,6 +327,9 @@
                     <div class="os-android">
                         <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
                         <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.7/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+                        <div id="download-count-container">
+                            <span id="download-count">...</span> ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି
+                        </div>
                     </div>
                     <div class="os-other">
                         <p>କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ</p>
@@ -331,26 +346,23 @@
         </div>
     </footer>
 
-    <!-- ==== SCROLL DOWN BUTTON HTML ==== -->
     <a href="#main-content" id="scroll-down-btn" aria-label="Scroll down to content">
         ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
     </a>
 
     <script>
+    // YOUR EXISTING SCRIPT FOR ANIMATIONS
     document.addEventListener('DOMContentLoaded', function() {
         const curtain = document.getElementById('curtain');
         const header = document.getElementById('header');
         const heroTitle = document.getElementById('hero-title');
         const scrollDownBtn = document.getElementById('scroll-down-btn');
-        
         let animationStartScrollPosition = 0;
-        
         function calculateAnimationStart() {
             const headerHeight = header.offsetHeight;
             const heroTitleRect = heroTitle.getBoundingClientRect();
             animationStartScrollPosition = window.scrollY + heroTitleRect.bottom - headerHeight;
         }
-        
         function handleCurtainAndHeader() {
             const scrollY = window.scrollY;
             if (scrollY > 50) {
@@ -360,34 +372,26 @@
                 curtain.classList.remove('hidden');
                 if (scrollDownBtn) scrollDownBtn.classList.remove('hidden');
             }
-
             if (scrollY > 100) {
                 header.classList.add('visible');
             } else {
                 header.classList.remove('visible');
             }
         }
-
         function handleMockupAnimation() {
             const isDesktopView = window.innerWidth >= 1024;
             const scrollY = window.scrollY;
-            
             const activeMockupContainer = isDesktopView ? document.getElementById('mockup-container-desktop') : document.getElementById('mockup-container-mobile');
             const activeMockupContent = isDesktopView ? document.getElementById('desktop-mockup-content') : document.getElementById('mobile-mockup-content');
-            
             if (!activeMockupContainer || !activeMockupContent) return;
-
             if (scrollY < animationStartScrollPosition) {
                 activeMockupContent.style.opacity = '0';
                 activeMockupContent.style.transform = `scale(${isDesktopView ? 0.5 : 0.7})`;
                 return;
             }
-
             const animationDuration = activeMockupContainer.offsetHeight - window.innerHeight;
             const progress = Math.max(0, Math.min(1, (scrollY - animationStartScrollPosition) / animationDuration));
-            
             let scale, opacity = 1, translateY = 0;
-
             if (isDesktopView) {
                 if (progress < 0.25) { 
                     const p = progress / 0.25;
@@ -416,30 +420,25 @@
                     opacity = 1 - p;
                 }
             }
-            
             activeMockupContent.style.transform = `scale(${scale}) translateY(${translateY}vh)`;
             activeMockupContent.style.opacity = opacity;
         }
-        
         let ticking = false;
         function onScroll() {
             handleCurtainAndHeader();
             handleMockupAnimation();
             ticking = false;
         }
-
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 ticking = true;
                 window.requestAnimationFrame(onScroll);
             }
         }, { passive: true });
-        
         window.addEventListener('resize', () => {
              calculateAnimationStart();
              handleMockupAnimation();
         });
-
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.3 };
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
@@ -455,7 +454,6 @@
         const observer = new IntersectionObserver(observerCallback, observerOptions);
         const featuresSection = document.getElementById('features');
         if (featuresSection) { observer.observe(featuresSection); }
-        
         setTimeout(() => {
             calculateAnimationStart();
             handleCurtainAndHeader();
@@ -465,13 +463,12 @@
     </script>
 
     <script>
+    // YOUR EXISTING SCRIPT FOR OS DETECTION
     document.addEventListener('DOMContentLoaded', function() {
         const userAgent = navigator.userAgent;
         const isAndroid = /Android/i.test(userAgent);
-
         const androidElements = document.querySelectorAll('.os-android');
         const otherOsElements = document.querySelectorAll('.os-other');
-        
         if (isAndroid) {
             androidElements.forEach(el => {
                 el.style.display = (el.tagName === 'A') ? 'inline-block' : 'block';
@@ -483,6 +480,54 @@
         }
     });
     </script>
+
+    <!-- START: SCRIPT FOR GITHUB DOWNLOAD COUNTER (FIXED) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const countElement = document.getElementById('download-count');
+        const countContainer = document.getElementById('download-count-container');
+        
+        const apiUrl = 'https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases';
+
+        async function fetchDownloadCount() {
+            try {
+                const response = await fetch(apiUrl);
+
+                if (!response.ok) {
+                    countContainer.style.display = 'none';
+                    console.error('GitHub API request failed:', response.status);
+                    return;
+                }
+
+                const releases = await response.json();
+                let totalDownloads = 0;
+
+                releases.forEach(release => {
+                    release.assets.forEach(asset => {
+                        totalDownloads += asset.download_count;
+                    });
+                });
+                
+                if (totalDownloads > 0) {
+                    // **FIX:** Use Intl.NumberFormat with the 'or' locale to display numbers in Odia script.
+                    countElement.innerText = new Intl.NumberFormat('or').format(totalDownloads);
+                    countContainer.style.opacity = '1';
+                } else {
+                    countContainer.style.display = 'none';
+                }
+
+            } catch (error) {
+                countContainer.style.display = 'none';
+                console.error('Error fetching download count:', error);
+            }
+        }
+
+        if (countElement) {
+            fetchDownloadCount();
+        }
+    });
+    </script>
+    <!-- END: SCRIPT FOR GITHUB DOWNLOAD COUNTER (FIXED) -->
 
 </body>
 </html>
