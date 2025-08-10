@@ -2,7 +2,9 @@
 <html lang="or">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="google-site-verification" content="PwQ6-C2NiW61Ed7LdkchITSrVzVEzHCc2At8VvyuO5Y" />
     <!-- SEO Meta Tags -->
     <title>Ganita Bingya - Play Online or Download the App</title>
@@ -249,6 +251,40 @@
                 transform: translate(-50%, -5px);
             }
         }
+
+        /* --- NEW CSS FOR FIXED SOCIAL ICONS --- */
+        .social-icons-fixed {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: var(--brand-dark);
+            color: #fff; /* This will be inherited by the SVG's fill="currentColor" */
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #333;
+            transform: translateY(-4px) scale(1.05);
+        }
+        
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
@@ -342,13 +378,27 @@
 
     <footer>
         <div class="container">
-            <p>&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href="http://insinstagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ</p>
+            <p>&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ</p>
         </div>
     </footer>
 
     <a href="#main-content" id="scroll-down-btn" aria-label="Scroll down to content">
         ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
     </a>
+
+    <!-- --- NEW HTML FOR FIXED SOCIAL ICONS --- -->
+    <div class="social-icons-fixed">
+        <a href="https://github.com/imsbg/Ganita-Bingya-App" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View project on GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+            </svg>
+        </a>
+    </div>
 
     <script>
     // YOUR EXISTING SCRIPT FOR ANIMATIONS
@@ -527,7 +577,5 @@
         }
     });
     </script>
-    <!-- END: SCRIPT FOR GITHUB DOWNLOAD COUNTER (FIXED) -->
-
 </body>
 </html>
