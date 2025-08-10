@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sandeep.ganitabigyan",
+      "sha256_cert_fingerprints": [
+        "B7:2B:E1:8B:A8:F4:C5:9A:79:DD:FD:CC:DB:4E:2C:9F:63:0E:D7:8A:DA:9B:7F:94:46:70:09:63:F6:68:79:D1"
+      ]
+    }
+  }
+]
