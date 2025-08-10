@@ -2,7 +2,7 @@
 <html lang="or">
 <head>
     <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="google-site-verification" content="PwQ6-C2NiW61Ed7LdkchITSrVzVEzHCc2At8VvyuO5Y" />
@@ -172,12 +172,55 @@
 
         .download-section { background-color: #EFECE6; text-align: center; }
         .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
-        .download-button {
-            background-color: var(--brand-dark); color: #fff; padding: 1rem 2.5rem;
-            border-radius: 50px; text-decoration: none; font-size: 1.1rem;
-            display: inline-block; transition: background-color 0.3s ease;
+        
+        /* <!-- START: NEW CSS --> */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem; /* Space between buttons */
+            flex-wrap: wrap; /* Allows buttons to stack on small screens */
+            margin-bottom: 1.5rem;
         }
-        .download-button:hover { background-color: #333; }
+        .download-button, .open-app-button {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: inline-flex; /* Use flex to align text and badge */
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .download-button {
+            background-color: var(--brand-dark);
+            color: #fff;
+        }
+        .download-button:hover {
+            background-color: #333;
+        }
+        .open-app-button {
+            background-color: transparent;
+            color: var(--brand-dark);
+            border: 2px solid var(--brand-dark);
+        }
+        .open-app-button:hover {
+            background-color: var(--brand-dark);
+            color: #fff;
+        }
+        .version-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.2em 0.6em;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 0.75rem;
+            font-family: sans-serif; /* Use a standard font for version numbers */
+        }
+        /* <!-- END: NEW CSS --> */
         
         #download-count-container {
             margin-top: 1.5rem;
@@ -190,7 +233,7 @@
         #download-count {
             font-weight: 700;
             font-size: 1.3rem;
-            font-family: var(--odia-font); /* Changed to Odia font for consistency */
+            font-family: var(--odia-font); 
             margin-right: 0.25rem;
         }
 
@@ -252,7 +295,6 @@
             }
         }
 
-        /* --- NEW CSS FOR FIXED SOCIAL ICONS --- */
         .social-icons-fixed {
             position: fixed;
             bottom: 25px;
@@ -270,7 +312,7 @@
             width: 48px;
             height: 48px;
             background-color: var(--brand-dark);
-            color: #fff; /* This will be inherited by the SVG's fill="currentColor" */
+            color: #fff;
             border-radius: 50%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, background-color 0.3s ease;
@@ -362,7 +404,17 @@
                     <h2 class="section-title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2>
                     <div class="os-android">
                         <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
-                        <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.7/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">ମାଗଣାରେ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+                        
+                        <!-- START: MODIFIED BUTTON AREA -->
+                        <div class="button-group">
+                            <a href="https://ganitabingya.netlify.app/open" class="open-app-button">ଆପ୍ ଖୋଲନ୍ତୁ</a>
+                            <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.8/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">
+                                ଡାଉନଲୋଡ୍ କରନ୍ତୁ
+                                <span class="version-badge">v1.8</span>
+                            </a>
+                        </div>
+                        <!-- END: MODIFIED BUTTON AREA -->
+
                         <div id="download-count-container">
                             <span id="download-count">...</span> ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି
                         </div>
@@ -386,17 +438,12 @@
         ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
     </a>
 
-    <!-- --- NEW HTML FOR FIXED SOCIAL ICONS --- -->
     <div class="social-icons-fixed">
         <a href="https://github.com/imsbg/Ganita-Bingya-App" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View project on GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor">
-                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
         </a>
         <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
         </a>
     </div>
 
@@ -513,7 +560,7 @@
     </script>
 
     <script>
-    // YOUR EXISTING SCRIPT FOR OS DETECTION
+    // YOUR EXISTING SCRIPT FOR OS DETECTION (NO CHANGES NEEDED)
     document.addEventListener('DOMContentLoaded', function() {
         const userAgent = navigator.userAgent;
         const isAndroid = /Android/i.test(userAgent);
@@ -531,8 +578,8 @@
     });
     </script>
 
-    <!-- START: SCRIPT FOR GITHUB DOWNLOAD COUNTER (FIXED) -->
     <script>
+    // YOUR EXISTING SCRIPT FOR GITHUB DOWNLOAD COUNTER (NO CHANGES NEEDED)
     document.addEventListener('DOMContentLoaded', function() {
         const countElement = document.getElementById('download-count');
         const countContainer = document.getElementById('download-count-container');
@@ -559,7 +606,6 @@
                 });
                 
                 if (totalDownloads > 0) {
-                    // **FIX:** Use Intl.NumberFormat with the 'or' locale to display numbers in Odia script.
                     countElement.innerText = new Intl.NumberFormat('or').format(totalDownloads);
                     countContainer.style.opacity = '1';
                 } else {
