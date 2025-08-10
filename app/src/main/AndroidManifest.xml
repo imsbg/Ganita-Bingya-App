@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Your existing permissions -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- This is required for App Links to work on Android 12+ -->
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".GanitaBigyanApp"
@@ -28,12 +32,38 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.GanitaBigyan">
+
+            <!-- This is your original launcher intent. It makes the app appear on the home screen. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Intent filter to open .gba files -->
+            <!--
+            ====================================================================
+            == NEW INTENT FILTER TO HANDLE YOUR WEBSITE URL (ANDROID APP LINK) ==
+            ====================================================================
+            This block tells Android that your app can open your website's URL.
+            The autoVerify="true" tag triggers the automatic verification process.
+            -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Scheme must be "https" for automatic verification -->
+                <data android:scheme="https" />
+                <!-- The domain of your website -->
+                <data android:host="ganitabingya.netlify.app" />
+
+                <!-- This specifies the ONLY path that will open the app -->
+                <data android:path="/open" />
+            </intent-filter>
+            <!-- ==================================================================== -->
+            <!-- ======================= END OF NEW BLOCK =========================== -->
+            <!-- ==================================================================== -->
+
+            <!-- This is your existing filter to open .gba files. Leave it as is. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

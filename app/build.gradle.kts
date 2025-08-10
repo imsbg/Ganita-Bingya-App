@@ -8,12 +8,32 @@ android {
     namespace = "com.sandeep.ganitabigyan"
     compileSdk = 34
 
+    //====================================================================
+    //== THIS BLOCK IS UPDATED FOR YOUR NEW KEY ==
+    //====================================================================
+    signingConfigs {
+        create("release") {
+            // This is the path to the NEW key you just created.
+            storeFile = file("E:/SBG Ganita APP FINAL/ganitabg.jks")
+
+            // <-- IMPORTANT: Replace this with your NEW password.
+            storePassword = "ganitabgodia"
+
+            // The alias for your new key.
+            keyAlias = "key0"
+
+            // <-- IMPORTANT: Replace this with your NEW password again.
+            keyPassword = "ganitabgodia"
+        }
+    }
+    //====================================================================
+
     defaultConfig {
         applicationId = "com.sandeep.ganitabigyan"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
-        versionName = "1.7"
+        versionName = "1.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -28,6 +48,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // This links the release build to your new signing configuration.
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
@@ -52,35 +74,21 @@ android {
 
 dependencies {
 
-    // Core Android & Jetpack
+    // All of your original dependencies are here
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
     implementation("androidx.activity:activity-compose:1.9.0")
-
-    // Jetpack Compose (BOM - Bill of Materials)
     implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-
-    // THIS IS THE MISSING LINE THAT CAUSES THE ERRORS
     implementation("androidx.compose.material:material-icons-extended")
-
-    // ViewModel for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
-
-    // Navigation for Compose
     implementation("androidx.navigation:navigation-compose:2.7.7")
-
-    // Jetpack DataStore (for saving settings)
     implementation("androidx.datastore:datastore-preferences:1.1.1")
-
-    // Lifecycle-aware coroutine scopes for collecting flows safely
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3")
-    // For background notifications
     implementation("androidx.work:work-runtime-ktx:2.9.0")
-    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
