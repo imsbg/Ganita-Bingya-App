@@ -191,4 +191,11 @@ This app is developed by **Sandeep Biswal G**.
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## 💖 Support This Project
+If you like **Ganita Bingya** and want to support its development, you can donate via UPI:
+
+[Donate via UPI](upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&cu=INR)
+
 </div>
+
