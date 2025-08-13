@@ -108,7 +108,7 @@
 
 # Ganita Bingya (ଗଣିତ ବିଜ୍ଞ)
 
-**[Back to Odia Version](#ଗଣତ-ବଜଞ-ganita-bingya)**
+**[Back to Odia Version](#ଗଣିତ-ବିଜ୍ଞ-ganita-bingya)**
 
 "Ganita Bingya" is an educational Android app built entirely with Jetpack Compose. It helps users practice basic mathematical operations like addition, subtraction, multiplication, and division in a fun and interactive way.
 
