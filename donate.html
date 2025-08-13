@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate via UPI - Ganita Bingya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --body-bg: #f0f2f5;
+      --text-color: #212121;
+      --text-light: #555;
+      --border-color: #e0e0e0;
+      --menu-bg: #ffffff;
+    }
+
+    /* --- Base & Layout --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: var(--body-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s; /* Smooth transition for overlay effect */
+    }
+    
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: center;
+      transition: filter 0.3s;
+    }
+
+    /* Dim content when menu is open */
+    body.menu-open .content-wrapper {
+      filter: blur(4px) brightness(0.7);
+    }
+    
+    h1 {
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    /* --- Animated QR Code (Unchanged) --- */
+    .qr-container {
+      margin: 20px auto;
+      position: relative;
+      width: 250px;
+      height: 250px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #qr-code-svg {
+      width: 100%;
+      height: 100%;
+      shape-rendering: crispEdges;
+      animation: fadeIn 0.8s ease-in-out;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .qr-corners {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .qr-corners path {
+      fill: none;
+      stroke: var(--primary-color);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 80;
+      stroke-dashoffset: 80;
+      animation: drawCorners 1s 0.5s forwards;
+    }
+    
+    @keyframes drawCorners {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .qr-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%; right: 10%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+      border-radius: 2px;
+      animation: scan 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes scan {
+      from { transform: translateY(10px); }
+      to { transform: translateY(240px); }
+    }
+
+
+    /* --- Form Elements & Buttons --- */
+    .amount-input {
+      margin-bottom: 10px;
+    }
+
+    .amount-input label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    input[type="number"] {
+      padding: 12px;
+      font-size: 18px;
+      font-family: inherit;
+      width: 150px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .upi-id {
+      margin-top: 25px;
+      font-size: 16px;
+      color: var(--text-light);
+    }
+    .upi-id strong { color: var(--text-color); }
+    
+    /* --- Hamburger Menu --- */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--menu-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+
+    .menu-toggle .bar {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--text-color);
+      margin: 3px 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    /* Animate hamburger to 'X' */
+    body.menu-open .menu-toggle .bar1 {
+      transform: translateY(8px) rotate(45deg);
+    }
+    body.menu-open .menu-toggle .bar2 {
+      opacity: 0;
+    }
+    body.menu-open .menu-toggle .bar3 {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background-color: var(--menu-bg);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 80px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    body.menu-open .menu-panel {
+      transform: translateX(0);
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    }
+    
+    .menu-panel a {
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      padding: 12px 15px;
+      border-radius: 8px;
+      text-align: left;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .menu-panel a:hover {
+      background-color: var(--body-bg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Menu Toggle Button -->
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+    <span class="bar bar1"></span>
+    <span class="bar bar2"></span>
+    <span class="bar bar3"></span>
+  </button>
+  
+  <!-- Slide-in Menu Panel -->
+  <nav class="menu-panel">
+    <a href="https://ganitabingya.netlify.app/open">Open App</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">Download Page</a>
+    <a href="https://github.com/imsbg/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">GitHub Project</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+     <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+  </nav>
+
+  <div class="content-wrapper">
+    <h1>Support Ganita Bingya</h1>
+    <p>Thank you for supporting open-source!</p>
+
+    <div class="qr-container">
+      <svg id="qr-code-svg" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="white"/>
+        <path fill="black" d="M4 4h7v1h-7v-1z M4 5h1v1h-1v-1z M10 5h1v1h-1v-1z M4 6h1v1h-1v-1z M6 6h3v1h-3v-1z M10 6h1v1h-1v-1z M4 7h1v1h-1v-1z M6 7h3v1h-3v-1z M10 7h1v1h-1v-1z M4 8h1v1h-1v-1z M6 8h3v1h-3v-1z M10 8h1v1h-1v-1z M4 9h1v1h-1v-1z M10 9h1v1h-1v-1z M4 10h7v1h-7v-1z M18 4h1v1h-1v-1z M23 4h3v1h-3v-1z M27 4h1v1h-1v-1z M30 4h7v1h-7v-1z M14 5h3v1h-3v-1z M19 5h1v1h-1v-1z M21 5h2v1h-2v-1z M25 5h1v1h-1v-1z M30 5h1v1h-1v-1z M36 5h1v1h-1v-1z M12 6h1v1h-1v-1z M15 6h2v1h-2v-1z M18 6h1v1h-1v-1z M20 6h1v1h-1v-1z M22 6h1v1h-1v-1z M25 6h2v1h-2v-1z M30 6h1v1h-1v-1z M32 6h3v1h-3v-1z M36 6h1v1h-1v-1z M12 7h1v1h-1v-1z M14 7h1v1h-1v-1z M16 7h1v1h-1v-1z M22 7h1v1h-1v-1z M24 7h1v1h-1v-1z M26 7h3v1h-3v-1z M30 7h1v1h-1v-1z M32 7h3v1h-3v-1z M36 7h1v1h-1v-1z M12 8h2v1h-2v-1z M15 8h1v1h-1v-1z M17 8h4v1h-4v-1z M22 8h1v1h-1v-1z M24 8h2v1h-2v-1z M27 8h1v1h-1v-1z M30 8h1v1h-1v-1z M32 8h3v1h-3v-1z M36 8h1v1h-1v-1z M12 9h1v1h-1v-1z M15 9h1v1h-1v-1z M18 9h1v1h-1v-1z M22 9h1v1h-1v-1z M30 9h1v1h-1v-1z M36 9h1v1h-1v-1z M12 10h1v1h-1v-1z M14 10h1v1h-1v-1z M16 10h1v1h-1v-1z M18 10h1v1h-1v-1z M20 10h1v1h-1v-1z M22 10h1v1h-1v-1z M24 10h1v1h-1v-1z M26 10h1v1h-1v-1z M28 10h1v1h-1v-1z M30 10h7v1h-7v-1z M12 11h1v1h-1v-1z M14 11h2v1h-2v-1z M18 11h1v1h-1v-1z M20 11h1v1h-1v-1z M22 11h4v1h-4v-1z M27 11h1v1h-1v-1z M4 12h1v1h-1v-1z M6 12h4v1h-4v-1z M14 12h3v1h-3v-1z M18 12h1v1h-1v-1z M21 12h1v1h-1v-1z M23 12h1v1h-1v-1z M26 12h1v1h-1v-1z M30 12h5v1h-5v-1z M4 13h2v1h-2v-1z M7 13h2v1h-2v-1z M11 13h1v1h-1v-1z M14 13h1v1h-1v-1z M16 13h3v1h-3v-1z M20 13h2v1h-2v-1z M24 13h1v1h-1v-1z M27 13h2v1h-2v-1z M30 13h1v1h-1v-1z M34 13h1v1h-1v-1z M36 13h1v1h-1v-1z M9 14h2v1h-2v-1z M12 14h4v1h-4v-1z M17 14h3v1h-3v-1z M21 14h1v1h-1v-1z M24 14h3v1h-3v-1z M31 14h1v1h-1v-1z M34 14h2v1h-2v-1z M4 15h4v1h-4v-1z M9 15h1v1h-1v-1z M11 15h1v1h-1v-1z M14 15h1v1h-1v-1z M16 15h2v1h-2v-1z M19 15h1v1h-1v-1z M21 15h2v1h-2v-1z M25 15h1v1h-1v-1z M28 15h1v1h-1v-1z M30 15h2v1h-2v-1z M33 15h2v1h-2v-1z M36 15h1v1h-1v-1z M4 16h1v1h-1v-1z M9 16h4v1h-4v-1z M15 16h2v1h-2v-1z M18 16h3v1h-3v-1z M23 16h1v1h-1v-1z M32 16h1v1h-1v-1z M35 16h2v1h-2v-1z M5 17h3v1h-3v-1z M12 17h1v1h-1v-1z M19 17h1v1h-1v-1z M22 17h1v1h-1v-1z M24 17h1v1h-1v-1z M27 17h1v1h-1v-1z M29 17h3v1h-3v-1z M33 17h4v1h-4v-1z M4 18h2v1h-2v-1z M8 18h4v1h-4v-1z M13 18h3v1h-3v-1z M18 18h3v1h-3v-1z M24 18h2v1h-2v-1z M34 18h2v1h-2v-1z M4 19h1v1h-1v-1z M6 19h2v1h-2v-1z M12 19h1v1h-1v-1z M15 19h1v1h-1v-1z M18 19h2v1h-2v-1z M22 19h1v1h-1v-1z M25 19h5v1h-5v-1z M33 19h3v1h-3v-1z M5 20h2v1h-2v-1z M8 20h4v1h-4v-1z M14 20h3v1h-3v-1z M19 20h3v1h-3v-1z M23 20h2v1h-2v-1z M26 20h1v1h-1v-1z M28 20h2v1h-2v-1z M32 20h1v1h-1v-1z M35 20h1v1h-1v-1z M4 21h1v1h-1v-1z M11 21h1v1h-1v-1z M14 21h3v1h-3v-1z M20 21h1v1h-1v-1z M23 21h1v1h-1v-1z M25 21h3v1h-3v-1z M29 21h2v1h-2v-1z M36 21h1v1h-1v-1z M5 22h2v1h-2v-1z M10 22h2v1h-2v-1z M17 22h3v1h-3v-1z M22 22h1v1h-1v-1z M26 22h1v1h-1v-1z M28 22h1v1h-1v-1z M32 22h4v1h-4v-1z M4 23h1v1h-1v-1z M6 23h3v1h-3v-1z M12 23h1v1h-1v-1z M15 23h2v1h-2v-1z M20 23h1v1h-1v-1z M24 23h2v1h-2v-1z M28 23h1v1h-1v-1z M32 23h1v1h-1v-1z M34 23h2v1h-2v-1z M8 24h1v1h-1v-1z M10 24h1v1h-1v-1z M13 24h1v1h-1v-1z M16 24h1v1h-1v-1z M18 24h2v1h-2v-1z M22 24h2v1h-2v-1z M26 24h1v1h-1v-1z M29 24h1v1h-1v-1z M31 24h3v1h-3v-1z M4 25h6v1h-6v-1z M14 25h2v1h-2v-1z M17 25h5v1h-5v-1z M24 25h2v1h-2v-1z M27 25h1v1h-1v-1z M31 25h1v1h-1v-1z M33 25h4v1h-4v-1z M4 26h1v1h-1v-1z M8 26h1v1h-1v-1z M10 26h2v1h-2v-1z M13 26h1v1h-1v-1z M15 26h2v1h-2v-1z M18 26h1v1h-1v-1z M22 26h1v1h-1v-1z M24 26h1v1h-1v-1z M30 26h2v1h-2v-1z M33 26h3v1h-3v-1z M4 27h1v1h-1v-1z M6 27h2v1h-2v-1z M11 27h1v1h-1v-1z M14 27h1v1h-1v-1z M17 27h2v1h-2v-1z M20 27h1v1h-1v-1z M24 27h3v1h-3v-1z M28 27h2v1h-2v-1z M31 27h1v1h-1v-1z M33 27h3v1h-3v-1z M4 28h1v1h-1v-1z M8 28h4v1h-4v-1z M14 28h4v1h-4v-1z M21 28h1v1h-1v-1z M23 28h1v1h-1v-1z M26 28h7v1h-7v-1z M35 28h1v1h-1v-1z M12 29h2v1h-2v-1z M17 29h1v1h-1v-1z M21 29h7v1h-7v-1z M32 29h1v1h-1v-1z M36 29h1v1h-1v-1z M4 30h7v1h-7v-1z M13 30h3v1h-3v-1z M17 30h1v1h-1v-1z M19 30h3v1h-3v-1z M24 30h1v1h-1v-1z M27 30h2v1h-2v-1z M30 30h1v1h-1v-1z M32 30h1v1h-1v-1z M35 30h1v1h-1v-1z M4 31h1v1h-1v-1z M10 31h1v1h-1v-1z M12 31h1v1h-1v-1z M14 31h1v1h-1v-1z M17 31h1v1h-1v-1z M21 31h2v1h-2v-1z M25 31h4v1h-4v-1z M32 31h1v1h-1v-1z M34 31h3v1h-3v-1z M4 32h1v1h-1v-1z M6 32h3v1h-3v-1z M10 32h1v1h-1v-1z M12 32h1v1h-1v-1z M17 32h1v1h-1v-1z M19 32h2v1h-2v-1z M24 32h1v1h-1v-1z M26 32h1v1h-1v-1z M28 32h5v1h-5v-1z M4 33h1v1h-1v-1z M6 33h3v1h-3v-1z M10 33h1v1h-1v-1z M12 33h1v1h-1v-1z M17 33h3v1h-3v-1z M22 33h2v1h-2v-1z M25 33h3v1h-3v-1z M31 33h6v1h-6v-1z M4 34h1v1h-1v-1z M6 34h3v1h-3v-1z M10 34h1v1h-1v-1z M12 34h3v1h-3v-1z M19 34h2v1h-2v-1z M24 34h1v1h-1v-1z M26 34h2v1h-2v-1z M29 34h3v1h-3v-1z M33 34h2v1h-2v-1z M4 35h1v1h-1v-1z M10 35h1v1h-1v-1z M16 35h1v1h-1v-1z M18 35h2v1h-2v-1z M24 35h3v1h-3v-1z M32 35h3v1h-3v-1z M4 36h7v1h-7v-1z M12 36h3v1h-3v-1z M16 36h1v1h-1v-1z M18 36h4v1h-4v-1z M26 36h3v1h-3v-1z M30 36h1v1h-1v-1z M32 36h2v1h-2v-1z M35 36h1v1h-1v-1z"/>
+      </svg>
+      <svg class="qr-corners" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 40 10 L 10 10 L 10 40"/>
+          <path d="M 210 10 L 240 10 L 240 40"/>
+          <path d="M 40 240 L 10 240 L 10 210"/>
+          <path d="M 210 240 L 240 240 L 240 210"/>
+      </svg>
+    </div>
+
+    <div class="amount-input">
+      <label for="amount">Enter Amount (₹)</label>
+      <input type="number" id="amount" min="1" value="10">
+    </div>
+
+    <a id="payLink" class="btn" href="#">
+      Pay via UPI
+    </a>
+
+    <div class="note">
+      Support us with any amount you choose (min ₹1). Your payment is secure and only completes after you confirm with your UPI PIN.
+    </div>
+
+    <div class="upi-id">
+      UPI ID: <strong>biswal9@ptyes</strong>
+    </div>
+  </div>
+
+  <script>
+    // --- UPI Link Logic ---
+    const payLink = document.getElementById('payLink');
+    const amountInput = document.getElementById('amount');
+
+    function updateLink() {
+      let amount = parseFloat(amountInput.value);
+      if (isNaN(amount) || amount < 1) {
+        amount = 1;
+      }
+      const upiUrl = `upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&am=${amount}&cu=INR&tn=Proud%20supporter,%20GB%20donation`;
+      payLink.href = upiUrl;
+    }
+
+    amountInput.addEventListener('input', updateLink);
+    updateLink(); // Initialize on load
+
+    // --- Menu Toggle Logic ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuPanel = document.querySelector('.menu-panel');
+    const contentWrapper = document.querySelector('.content-wrapper');
+
+    const toggleMenu = () => {
+      const isMenuOpen = document.body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', isMenuOpen);
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on a link
+    menuPanel.addEventListener('click', (event) => {
+      if (event.target.tagName === 'A') {
+        toggleMenu();
+      }
+    });
+
+    // Close menu when clicking on the content overlay
+    contentWrapper.addEventListener('click', () => {
+        if (document.body.classList.contains('menu-open')) {
+            toggleMenu();
+        }
+    });
+  </script>
+
+</body>
+</html>
