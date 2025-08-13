@@ -58,6 +58,7 @@
 - **ଇଣ୍ଟରାକ୍ଟିଭ୍ ଶିକ୍ଷା:** ପ୍ରଶ୍ନର ତୁରନ୍ତ ଉତ୍ତର ଏବଂ ଫଳାଫଳ ପାଆନ୍ତୁ।
 - **ଆଧୁନିକ ଟେକ୍ନୋଲୋଜି:** 100% କୋଟଲିନ୍ ଏବଂ ଜେଟପ୍ୟାକ୍ କମ୍ପୋଜ୍ ସହିତ ନିର୍ମିତ।
 - **ଅଫଲାଇନ୍:** ଇଣ୍ଟରନେଟ୍ ବିନା ଯେକୌଣସି ସ୍ଥାନରେ, ଯେକୌଣସି ସମୟରେ ଅଭ୍ୟାସ କରନ୍ତୁ।
+- **ସମ୍ପୂର୍ଣ୍ଣ ବିଜ୍ଞାପନ-ମୁକ୍ତ:** ଏହି ଆପ୍ ସର୍ବଦା ବିଜ୍ଞାପନ-ମୁକ୍ତ ରହିବ। ଆମେ ପ୍ରତିଶ୍ରୁତି ଦେଉଛୁ ଯେ ଆମେ କୌଣସି ବିଜ୍ଞାପନ ଦେଖାଇବୁ ନାହିଁ କିମ୍ବା ଅନାବଶ୍ୟକ ନୋଟିଫିକେସନ୍ ପଠାଇବୁ ନାହିଁ। କେବଳ ଅଭ୍ୟାସ ପାଇଁ ପ୍ରତିଦିନ ସକାଳେ ଓ ସନ୍ଧ୍ୟାରେ ଦୁଇଟି ରିମାଇଣ୍ଡର୍ ପଠାଯିବ।
 
 ## 🛠️ ବ୍ୟବହୃତ ଟେକ୍ନୋଲୋଜି
 
@@ -101,6 +102,14 @@
 ## 📄 ଲାଇସେନ୍ସ
 ଏହି ପ୍ରୋଜେକ୍ଟଟି [MIT License](LICENSE) ଅଧୀନରେ ଅଛି।
 
+## 💖 ଏହି ପ୍ରକଳ୍ପକୁ ସମର୍ଥନ କରନ୍ତୁ
+
+ଯଦି ଆପଣଙ୍କୁ **ଗଣିତ ବିଜ୍ଞ** ଭଲ ଲାଗେ ଏବଂ ଆପଣ ଏହାର ବିକାଶକୁ ସମର୍ଥନ କରିବାକୁ ଚାହାଁନ୍ତି, ତେବେ ଆପଣ UPI ମାଧ୍ୟମରେ ଦାନ କରିପାରିବେ:
+[![UPI ଦ୍ବାରା ଦାନ କରନ୍ତୁ](https://img.shields.io/badge/Donate-UPI-green?style=for-the-badge&logo=googlepay)](https://imsbg.github.io/Ganita-Bingya-App/donate)
+
+**UPI ID:** `biswal9@ptyes`  
+*(Copy this ID and paste it in your UPI app.)*
+
 ---
 ---
 
@@ -108,7 +117,7 @@
 
 # Ganita Bingya (ଗଣିତ ବିଜ୍ଞ)
 
-**[Back to Odia Version](#ଗଣିତ-ବିଜ୍ଞ-ganita-bingya)**
+**[Back to ଓଡ଼ିଆ Version](#ଗଣିତ-ବିଜ୍ଞ-ganita-bingya)**
 
 "Ganita Bingya" is an educational Android app built entirely with Jetpack Compose. It helps users practice basic mathematical operations like addition, subtraction, multiplication, and division in a fun and interactive way.
 
@@ -145,6 +154,7 @@ You can download the latest version of the app from the **[Releases](https://git
 - **Interactive Learning:** Get instant feedback on your answers and track your progress.
 - **Modern Tech:** Built with 100% Kotlin and Jetpack Compose for a smooth experience.
 - **Offline First:** Practice anywhere, anytime without needing an internet connection.
+- **Completely Ad-Free:** This app will always remain ad-free. We promise that we will not show any ads or send unnecessary notifications. Only two reminders for practice will be sent daily, one in the morning and one in the evening.
 
 ## 🛠️ Tech Stack
 
