@@ -196,7 +196,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you like **Ganita Bingya** and want to support its development, you can donate via UPI:
 
-[![Donate via UPI](https://img.shields.io/badge/Donate-UPI-green?style=for-the-badge&logo=googlepay)](upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&cu=INR)
+[![Donate via UPI](https://img.shields.io/badge/Donate-UPI-green?style=for-the-badge&logo=googlepay)]([upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&cu=INR](https://imsbg.github.io/Ganita-Bingya-App/donate))
 
 **UPI ID:** `biswal9@ptyes`  
 *(Copy this ID and paste it in your UPI app.)*
