@@ -28,7 +28,7 @@
     <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -175,13 +175,12 @@
         .download-section { background-color: #EFECE6; text-align: center; }
         .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
         
-        /* <!-- START: NEW CSS --> */
         .button-group {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1.5rem; /* Space between buttons */
-            flex-wrap: wrap; /* Allows buttons to stack on small screens */
+            gap: 1.5rem;
+            flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
         .download-button, .open-app-button {
@@ -189,7 +188,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-size: 1.1rem;
-            display: inline-flex; /* Use flex to align text and badge */
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
@@ -220,16 +219,15 @@
             font-size: 0.8rem;
             font-weight: 500;
             margin-left: 0.75rem;
-            font-family: sans-serif; /* Use a standard font for version numbers */
+            font-family: sans-serif;
         }
-        /* <!-- END: NEW CSS --> */
         
         #download-count-container {
             margin-top: 1.5rem;
             font-size: 1rem;
             font-family: var(--odia-font);
             color: var(--brand-dark);
-            opacity: 0; /* Start hidden, fade in with JS */
+            opacity: 0;
             transition: opacity 0.5s ease;
         }
         #download-count {
@@ -246,7 +244,7 @@
         
         .os-android, .os-other { display: none; }
         
-        @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); white-space: nowrap; } }
+        @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); } }
         
         @media (min-width: 1024px) { 
             .desktop-view { display: flex; } 
@@ -329,6 +327,104 @@
             width: 24px;
             height: 24px;
         }
+
+        /* --- POP-UP CSS --- */
+        #overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+        }
+
+        #bottomSheet {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: #efece6;
+          border-top-left-radius: 28px;
+          border-top-right-radius: 28px;
+          padding: 20px 16px;
+          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+          animation: slideUp 0.25s ease;
+          box-sizing: border-box;
+          font-family: 'Roboto', sans-serif;
+        }
+
+        .sheet-title {
+          font-size: 18px;
+          font-weight: 500;
+          margin-bottom: 16px;
+          color: #000;
+        }
+
+        .app-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 0;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .app-info {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex: 1;
+          min-width: 140px;
+        }
+
+        .app-info img {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+        }
+
+        .app-name {
+          font-size: 16px;
+          color: #000;
+          font-weight: 400;
+          font-family: var(--odia-font);
+        }
+
+        .md3-btn {
+          flex-shrink: 0;
+          border: none;
+          padding: 10px 18px;
+          font-size: 14px;
+          font-weight: 500;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: background 0.2s ease;
+        }
+
+        .filled-btn {
+          background: #0a1557;
+          color: white;
+        }
+
+        .filled-btn:hover {
+          background: #0e29c4;
+        }
+
+        .outlined-btn {
+          background: transparent;
+          color: #0d1545;
+          border: 1px solid #857910;
+        }
+
+        .outlined-btn:hover {
+          background: rgba(103, 80, 164, 0.08);
+        }
+
+        @keyframes slideUp {
+          from { transform: translateY(100%); }
+          to { transform: translateY(0); }
+        }
+        /* --- END: POP-UP CSS --- */
+
     </style>
 </head>
 <body>
@@ -407,7 +503,6 @@
                     <div class="os-android">
                         <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
                         
-                        <!-- START: MODIFIED BUTTON AREA -->
                         <div class="button-group">
                             <a href="https://ganitabingya.netlify.app/open" class="open-app-button">ଆପ୍ ଖୋଲନ୍ତୁ</a>
                             <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v1.8/app-release.apk" target="_blank" class="download-button" rel="noopener noreferrer">
@@ -415,7 +510,6 @@
                                 <span class="version-badge">v1.8</span>
                             </a>
                         </div>
-                        <!-- END: MODIFIED BUTTON AREA -->
 
                         <div id="download-count-container">
                             <span id="download-count">...</span> ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି
@@ -440,6 +534,7 @@
         ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
     </a>
 
+    <!-- START: MODIFIED FLOATING ICONS -->
     <div class="social-icons-fixed">
         <a href="https://github.com/imsbg/Ganita-Bingya-App" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View project on GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
@@ -447,6 +542,37 @@
         <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
         </a>
+        <a href="https://imsbg.github.io/Ganita-Bingya-App/donate" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Donate or support the project">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </a>
+        <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View Privacy Policy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor">
+                <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" />
+            </svg>
+        </a>
+    </div>
+    <!-- END: MODIFIED FLOATING ICONS -->
+
+    <div id="overlay">
+      <div id="bottomSheet">
+        <div class="sheet-title">Open in app</div>
+        <div class="app-row">
+          <div class="app-info">
+            <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bingya App Logo">
+            <div class="app-name">ଗଣିତ ବିଜ୍ଞ</div>
+          </div>
+          <button class="md3-btn filled-btn" onclick="openInApp()">Open</button>
+        </div>
+        <div class="app-row">
+          <div class="app-info">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Browser Icon">
+            <div class="app-name">Browser</div>
+          </div>
+          <button class="md3-btn outlined-btn" onclick="closeSheet()">Continue</button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -491,7 +617,7 @@
             const animationDuration = activeMockupContainer.offsetHeight - window.innerHeight;
             const progress = Math.max(0, Math.min(1, (scrollY - animationStartScrollPosition) / animationDuration));
             let scale, opacity = 1, translateY = 0;
-            if (isDesktopView) {
+            if (isDesktopView) { 
                 if (progress < 0.25) { 
                     const p = progress / 0.25;
                     scale = 0.5 + p * 0.5;
@@ -562,7 +688,7 @@
     </script>
 
     <script>
-    // YOUR EXISTING SCRIPT FOR OS DETECTION (NO CHANGES NEEDED)
+    // YOUR EXISTING SCRIPT FOR OS DETECTION
     document.addEventListener('DOMContentLoaded', function() {
         const userAgent = navigator.userAgent;
         const isAndroid = /Android/i.test(userAgent);
@@ -581,7 +707,7 @@
     </script>
 
     <script>
-    // YOUR EXISTING SCRIPT FOR GITHUB DOWNLOAD COUNTER (NO CHANGES NEEDED)
+    // YOUR EXISTING SCRIPT FOR GITHUB DOWNLOAD COUNTER
     document.addEventListener('DOMContentLoaded', function() {
         const countElement = document.getElementById('download-count');
         const countContainer = document.getElementById('download-count-container');
@@ -591,16 +717,13 @@
         async function fetchDownloadCount() {
             try {
                 const response = await fetch(apiUrl);
-
                 if (!response.ok) {
                     countContainer.style.display = 'none';
                     console.error('GitHub API request failed:', response.status);
                     return;
                 }
-
                 const releases = await response.json();
                 let totalDownloads = 0;
-
                 releases.forEach(release => {
                     release.assets.forEach(asset => {
                         totalDownloads += asset.download_count;
@@ -613,7 +736,6 @@
                 } else {
                     countContainer.style.display = 'none';
                 }
-
             } catch (error) {
                 countContainer.style.display = 'none';
                 console.error('Error fetching download count:', error);
@@ -625,5 +747,35 @@
         }
     });
     </script>
+
+    <script>
+        // POP-UP SCRIPT
+        const overlay = document.getElementById('overlay');
+        const STORAGE_KEY = "ganitaBingyaPopupDismissTime";
+        const HIDE_DURATION = 1 * 60 * 60 * 1000; // Hide for 1 hour in milliseconds
+
+        function showSheet() {
+            if (/Android/i.test(navigator.userAgent)) {
+                const lastDismiss = localStorage.getItem(STORAGE_KEY);
+                const now = Date.now();
+                if (!lastDismiss || (now - lastDismiss > HIDE_DURATION)) {
+                    if(overlay) overlay.style.display = 'block';
+                }
+            }
+        }
+
+        function closeSheet() {
+            if(overlay) overlay.style.display = 'none';
+            localStorage.setItem(STORAGE_KEY, Date.now());
+        }
+
+        function openInApp() {
+            localStorage.setItem(STORAGE_KEY, Date.now());
+            window.location.href = "https://ganitabingya.netlify.app/open";
+        }
+        
+        setTimeout(showSheet, 2500);
+    </script>
+
 </body>
 </html>
