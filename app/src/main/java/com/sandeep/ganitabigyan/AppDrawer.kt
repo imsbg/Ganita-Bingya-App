@@ -26,7 +26,8 @@ fun AppDrawerContent(
     onTimedChallengeClick: () -> Unit,
     onNavigateToHistory: () -> Unit,
     onNavigateToScore: () -> Unit,
-    onNavigateToAbout: () -> Unit
+    onNavigateToAbout: () -> Unit,
+    onNavigateToCalculator: () -> Unit // <-- Added this line
 ) {
     val context = LocalContext.current
     val packageInfo = try { context.packageManager.getPackageInfo(context.packageName, 0) } catch (e: Exception) { null }
@@ -100,6 +101,19 @@ fun AppDrawerContent(
                 },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
+
+            // v-- THIS IS THE NEW CALCULATOR ITEM --v
+            NavigationDrawerItem(
+                label = { Text("କ୍ୟାଲକୁଲେଟର") },
+                selected = false,
+                icon = { Icon(Icons.Default.Calculate, contentDescription = "Calculator") },
+                onClick = {
+                    onNavigateToCalculator()
+                    scope.launch { drawerState.close() }
+                },
+                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+            )
+            // ^-- THIS IS THE NEW CALCULATOR ITEM --^
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
 

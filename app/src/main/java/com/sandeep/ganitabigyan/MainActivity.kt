@@ -72,7 +72,8 @@ class MainActivity : ComponentActivity() {
                                 onTimedChallengeClick = { gameViewModel.requestTimedChallengeDialog() },
                                 onNavigateToHistory = { navController.navigate(AppDestinations.HISTORY_ROUTE) },
                                 onNavigateToScore = { navController.navigate(AppDestinations.SCORE_ROUTE) },
-                                onNavigateToAbout = { navController.navigate(AppDestinations.ABOUT_ROUTE) }
+                                onNavigateToAbout = { navController.navigate(AppDestinations.ABOUT_ROUTE) },
+                                onNavigateToCalculator = { navController.navigate(AppDestinations.CALCULATOR_ROUTE) } // <-- Added this line
                             )
                         }
                     ) {

@@ -33,6 +33,7 @@ object AppDestinations {
     const val ABOUT_ROUTE = "about"
     const val HISTORY_ROUTE = "history"
     const val SCORE_ROUTE = "score"
+    const val CALCULATOR_ROUTE = "calculator" // <-- Added this line
 }
 
 @Composable
@@ -102,6 +103,16 @@ fun AppNavHost(
         ) {
             AboutScreen(onNavigateBack = { navController.popBackStack() })
         }
+
+        // v-- THIS IS THE NEW NAVIGATION BLOCK --v
+        composable(
+            route = AppDestinations.CALCULATOR_ROUTE,
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
+        ) {
+            CalculatorScreen(onNavigateBack = { navController.popBackStack() })
+        }
+        // ^-- THIS IS THE NEW NAVIGATION BLOCK --^
     }
 }
 
