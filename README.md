@@ -48,6 +48,51 @@
       <br />
       <sub><b>ପ୍ରଶ୍ନ ଇତିହାସ</b></sub>
     </td>
+        <td align="center">
+      <img src="/images/4.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/5.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/6.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/7.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/8.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/9.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/10.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/11.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
+        <td align="center">
+      <img src="/images/0.jpg" alt="" width="200"/>
+      <br />
+      <sub><b></b></sub>
+    </td>
   </tr>
 </table>
 
