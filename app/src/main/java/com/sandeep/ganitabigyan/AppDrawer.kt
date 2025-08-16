@@ -1,7 +1,5 @@
 package com.sandeep.ganitabigyan
 
-import android.content.Intent
-import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -27,7 +25,9 @@ fun AppDrawerContent(
     onNavigateToHistory: () -> Unit,
     onNavigateToScore: () -> Unit,
     onNavigateToAbout: () -> Unit,
-    onNavigateToCalculator: () -> Unit // <-- Added this line
+    onNavigateToCalculator: () -> Unit,
+    onNavigateToPanikia: () -> Unit,
+    onNavigateToNumbers: () -> Unit // <-- ADD THIS LINE
 ) {
     val context = LocalContext.current
     val packageInfo = try { context.packageManager.getPackageInfo(context.packageName, 0) } catch (e: Exception) { null }
@@ -51,18 +51,18 @@ fun AppDrawerContent(
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
-                    "ଗଣିତ ବିଜ୍ଞ",
+                    "ଗଣିତ ବିଜ୍ଞାନ",
                     style = MaterialTheme.typography.titleLarge
                 )
             }
             HorizontalDivider()
 
+            // ... (All other NavigationDrawerItems remain the same)
             NavigationDrawerItem(
                 label = { Text("ସମୟ ଚ୍ୟାଲେଞ୍ଜ") },
                 selected = false,
                 icon = { Icon(Icons.Default.Timer, contentDescription = "Timed Challenge") },
                 onClick = {
-                    // FIX: Show "Coming Soon" message instead of opening the dialog
                     Toast.makeText(context, "ଏହି ସୁବିଧା ଏବେ ଉପଲବ୍ଧ ନାହିଁ", Toast.LENGTH_SHORT).show()
                     scope.launch { drawerState.close() }
                 },
@@ -102,7 +102,30 @@ fun AppDrawerContent(
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
 
-            // v-- THIS IS THE NEW CALCULATOR ITEM --v
+            NavigationDrawerItem(
+                label = { Text("ପଣିକିଆ") },
+                selected = false,
+                icon = { Icon(Icons.Default.MenuBook, contentDescription = "Panikia") },
+                onClick = {
+                    onNavigateToPanikia()
+                    scope.launch { drawerState.close() }
+                },
+                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+            )
+
+            // v-- THIS IS THE NEW NUMBERS ITEM --v
+            NavigationDrawerItem(
+                label = { Text("ସଙ୍ଖ୍ୟା") },
+                selected = false,
+                icon = { Icon(Icons.Default.Dialpad, contentDescription = "Numbers") },
+                onClick = {
+                    onNavigateToNumbers()
+                    scope.launch { drawerState.close() }
+                },
+                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+            )
+            // ^-- THIS IS THE NEW NUMBERS ITEM --^
+
             NavigationDrawerItem(
                 label = { Text("କ୍ୟାଲକୁଲେଟର") },
                 selected = false,
@@ -113,7 +136,6 @@ fun AppDrawerContent(
                 },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
-            // ^-- THIS IS THE NEW CALCULATOR ITEM --^
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
 
@@ -127,6 +149,7 @@ fun AppDrawerContent(
                 },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
+
 
             Spacer(modifier = Modifier.weight(1f))
             Text(

@@ -23,8 +23,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import kotlinx.coroutines.delay
 
 object AppDestinations {
@@ -33,7 +35,10 @@ object AppDestinations {
     const val ABOUT_ROUTE = "about"
     const val HISTORY_ROUTE = "history"
     const val SCORE_ROUTE = "score"
-    const val CALCULATOR_ROUTE = "calculator" // <-- Added this line
+    const val CALCULATOR_ROUTE = "calculator"
+    const val PANIKIA_LIST_ROUTE = "panikia_list"
+    const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}"
+    const val NUMBERS_ROUTE = "numbers" // <-- ADD THIS LINE
 }
 
 @Composable
@@ -48,6 +53,8 @@ fun AppNavHost(
         startDestination = AppDestinations.SPLASH_ROUTE,
         modifier = modifier
     ) {
+        // ... (all your existing composable routes for splash, game, history, etc. remain unchanged)
+
         composable(AppDestinations.SPLASH_ROUTE) {
             val context = LocalContext.current
             SplashScreen(onTimeout = {
@@ -75,7 +82,6 @@ fun AppNavHost(
             enterTransition = { fadeIn(animationSpec = tween(700)) },
             exitTransition = { fadeOut(animationSpec = tween(700)) }
         ) {
-            // FIX: This call is now correct and simple.
             GameScreen(
                 viewModel = gameViewModel,
                 onMenuClick = onMenuClick,
@@ -104,7 +110,6 @@ fun AppNavHost(
             AboutScreen(onNavigateBack = { navController.popBackStack() })
         }
 
-        // v-- THIS IS THE NEW NAVIGATION BLOCK --v
         composable(
             route = AppDestinations.CALCULATOR_ROUTE,
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
@@ -112,10 +117,45 @@ fun AppNavHost(
         ) {
             CalculatorScreen(onNavigateBack = { navController.popBackStack() })
         }
+
+        composable(
+            route = AppDestinations.PANIKIA_LIST_ROUTE,
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
+        ) {
+            PanikiaListScreen(
+                onTableClick = { tableNumber ->
+                    navController.navigate("panikia_detail/$tableNumber")
+                },
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        composable(
+            route = AppDestinations.PANIKIA_DETAIL_ROUTE,
+            arguments = listOf(navArgument("tableNumber") { type = NavType.IntType }),
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
+        ) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 2
+            PanikiaDetailScreen(
+                tableNumber = tableNumber,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        // v-- THIS IS THE NEW NAVIGATION BLOCK --v
+        composable(
+            route = AppDestinations.NUMBERS_ROUTE,
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
+        ) {
+            NumberScreen(onNavigateBack = { navController.popBackStack() })
+        }
         // ^-- THIS IS THE NEW NAVIGATION BLOCK --^
     }
 }
 
+// ... (SplashScreen composable remains unchanged)
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
     var currentText by remember { mutableStateOf("") }
@@ -124,7 +164,7 @@ fun SplashScreen(onTimeout: () -> Unit) {
         delay(200)
         currentText = "ଜୟ ଜଗନ୍ନାଥ"
         delay(2500)
-        currentText = "ଗଣିତ ବିଜ୍ଞ କୁ ସ୍ବାଗତ"
+        currentText = "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
         delay(2500)
         currentText = ""
         delay(500)

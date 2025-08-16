@@ -73,7 +73,11 @@ class MainActivity : ComponentActivity() {
                                 onNavigateToHistory = { navController.navigate(AppDestinations.HISTORY_ROUTE) },
                                 onNavigateToScore = { navController.navigate(AppDestinations.SCORE_ROUTE) },
                                 onNavigateToAbout = { navController.navigate(AppDestinations.ABOUT_ROUTE) },
-                                onNavigateToCalculator = { navController.navigate(AppDestinations.CALCULATOR_ROUTE) } // <-- Added this line
+                                onNavigateToCalculator = { navController.navigate(AppDestinations.CALCULATOR_ROUTE) },
+                                onNavigateToPanikia = { navController.navigate(AppDestinations.PANIKIA_LIST_ROUTE) },
+                                // v-- THIS IS THE NEW LINE --v
+                                onNavigateToNumbers = { navController.navigate(AppDestinations.NUMBERS_ROUTE) }
+                                // ^-- THIS IS THE NEW LINE --^
                             )
                         }
                     ) {
