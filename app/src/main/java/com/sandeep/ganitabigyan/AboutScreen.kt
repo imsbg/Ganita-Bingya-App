@@ -180,7 +180,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "ସନ୍ଦୀପ୍ ବିଶ୍ବାଳଙ୍କ ଦ୍ୱାରା ନିର୍ମିତ",
+                text = "ସନ୍ଦୀପ୍ ବିଶ୍ବାଳ ଜି'ଙ୍କ ଦ୍ୱାରା ନିର୍ମିତ",
                 style = MaterialTheme.typography.bodyLarge,
                 fontSize = 16.sp
             )
