@@ -5,8 +5,17 @@
     <!-- Your existing permissions -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ==================================================================== -->
+    <!-- ============= NEW PERMISSION FOR IN-APP UPDATES ==================== -->
+    <!-- ==================================================================== -->
+    <!-- This permission is required to ask the user to install the downloaded APK -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- ==================================================================== -->
+    <!-- ======================= END OF NEW BLOCK =========================== -->
+    <!-- ==================================================================== -->
+
 
     <application
         android:name=".GanitaBigyanApp"
@@ -32,37 +41,20 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.GanitaBigyan">
 
-            <!-- This is your original launcher intent. It makes the app appear on the home screen. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!--
-            ====================================================================
-            == NEW INTENT FILTER TO HANDLE YOUR WEBSITE URL (ANDROID APP LINK) ==
-            ====================================================================
-            This block tells Android that your app can open your website's URL.
-            The autoVerify="true" tag triggers the automatic verification process.
-            -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <!-- Scheme must be "https" for automatic verification -->
                 <data android:scheme="https" />
-                <!-- The domain of your website -->
                 <data android:host="ganitabingya.netlify.app" />
-
-                <!-- This specifies the ONLY path that will open the app -->
                 <data android:path="/open" />
             </intent-filter>
-            <!-- ==================================================================== -->
-            <!-- ======================= END OF NEW BLOCK =========================== -->
-            <!-- ==================================================================== -->
 
-            <!-- This is your existing filter to open .gba files. Leave it as is. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -74,5 +66,36 @@
                 <data android:host="*" />
             </intent-filter>
         </activity>
+
+        <!-- ==================================================================== -->
+        <!-- =========== NEW COMPONENTS FOR IN-APP UPDATES ====================== -->
+        <!-- ==================================================================== -->
+
+        <!-- 1. FILE PROVIDER -->
+        <!-- This securely shares the downloaded APK with the system installer. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 2. DOWNLOAD COMPLETED RECEIVER -->
+        <!-- This listens for when the download is finished and starts the installation. -->
+        <receiver
+            android:name=".DownloadCompletedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.app.DownloadManager.ACTION_DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ==================================================================== -->
+        <!-- ======================= END OF NEW BLOCK =========================== -->
+        <!-- ==================================================================== -->
+
     </application>
 </manifest>

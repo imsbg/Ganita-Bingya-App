@@ -1,7 +1,13 @@
 package com.sandeep.ganitabigyan
 
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.provider.Settings
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -33,14 +39,57 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 
-// A sealed class to represent the result of our update check
+// ଅପଡେଟ୍ ଯାଞ୍ଚର ଫଳାଫଳ ପାଇଁ sealed class, ଏଥିରେ ଏବେ ଡାଉନଲୋଡ୍ URL ମଧ୍ୟ ରହିବ
 sealed class UpdateCheckResult {
-    data class UpdateAvailable(val latestVersion: String) : UpdateCheckResult()
+    data class UpdateAvailable(val latestVersion: String, val downloadUrl: String) : UpdateCheckResult()
     object UpToDate : UpdateCheckResult()
     object Error : UpdateCheckResult()
 }
 
-// THE TYPO WAS HERE: Changed ExperimentalMaterial3ai to ExperimentalMaterial3Api
+/**
+ * ଏହି ଫଙ୍କସନ୍ ଯାଞ୍ଚ କରେ ଯେ ଆପ୍ ଅଜଣା ସୋର୍ସରୁ ଇନଷ୍ଟଲ୍ କରିବାକୁ ଅନୁମତି ପାଇଛି କି ନାହିଁ।
+ */
+private fun canInstallUnknownApps(context: Context): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        context.packageManager.canRequestPackageInstalls()
+    } else {
+        true // ପୁରୁଣା ଆଣ୍ଡ୍ରଏଡ୍ ଭର୍ସନରେ ଏହି ଅନୁମତି ଆବଶ୍ୟକ ନୁହେଁ
+    }
+}
+
+/**
+ * ଏହି ଫଙ୍କସନ୍ ବ୍ୟବହାରକାରୀଙ୍କୁ "Install unknown apps" ଅନୁମତି ଦେବା ପାଇଁ ସେଟିଙ୍ଗସକୁ ନେଇଯାଏ।
+ */
+private fun requestInstallPermission(context: Context) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+            data = Uri.parse("package:${context.packageName}")
+        }
+        context.startActivity(intent)
+    }
+}
+
+/**
+ * ଏହି ଫଙ୍କସନ୍ DownloadManager ବ୍ୟବହାର କରି APK ଫାଇଲ୍ ଡାଉନଲୋଡ୍ ଆରମ୍ଭ କରେ।
+ */
+private fun startUpdateDownload(context: Context, url: String, versionName: String) {
+    try {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val request = DownloadManager.Request(Uri.parse(url))
+            .setTitle("ଗଣିତ ବିଜ୍ଞ v$versionName ଡାଉନଲୋଡ୍ ହେଉଛି")
+            .setDescription("ନୂଆ ଅପଡେଟ୍ ଡାଉନଲୋଡ୍ କରାଯାଉଛି...")
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Ganita-Bigyan-v$versionName.apk")
+            .setMimeType("application/vnd.android.package-archive")
+
+        downloadManager.enqueue(request)
+        Toast.makeText(context, "ଡାଉନଲୋଡ୍ ଆରମ୍ଭ ହେଉଛି...", Toast.LENGTH_SHORT).show()
+    } catch (e: Exception) {
+        Toast.makeText(context, "ଡାଉନଲୋଡ୍ ବିଫଳ ହେଲା: ${e.message}", Toast.LENGTH_LONG).show()
+    }
+}
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(onNavigateBack: () -> Unit) {
@@ -53,13 +102,11 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
     val currentVersionName = packageInfo?.versionName ?: "1.0"
     val scope = rememberCoroutineScope()
 
-    // State variables to manage the update check UI
     var isCheckingForUpdate by remember { mutableStateOf(false) }
     var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
     var showDialog by remember { mutableStateOf(false) }
 
 
-    // The main function to check for updates
     fun checkForUpdates() {
         isCheckingForUpdate = true
         scope.launch(Dispatchers.IO) {
@@ -70,8 +117,16 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 val json = JSONObject(response)
                 val latestVersion = json.getString("tag_name").removePrefix("v")
 
-                if (latestVersion > currentVersionName) {
-                    UpdateCheckResult.UpdateAvailable(latestVersion)
+                // ନୂଆ: GitHub ରିଲିଜରୁ ସିଧାସଳଖ .apk ଡାଉନଲୋଡ୍ URL ବାହାର କରନ୍ତୁ
+                var apkUrl = ""
+                val assets = json.getJSONArray("assets")
+                if (assets.length() > 0) {
+                    val firstAsset = assets.getJSONObject(0)
+                    apkUrl = firstAsset.getString("browser_download_url")
+                }
+
+                if (latestVersion > currentVersionName && apkUrl.isNotEmpty()) {
+                    UpdateCheckResult.UpdateAvailable(latestVersion, apkUrl)
                 } else {
                     UpdateCheckResult.UpToDate
                 }
@@ -162,7 +217,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
         }
     }
 
-    // This block handles showing the correct dialog based on the result
+    // ଏହି ବ୍ଲକ୍ ଡାଉନଲୋଡ୍ ଏବଂ ଅନୁମତି ପାଇଁ ଡାୟଲଗ୍ ଦେଖାଏ
     if (showDialog) {
         when (val result = updateResult) {
             is UpdateCheckResult.UpdateAvailable -> {
@@ -172,8 +227,14 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                     text = { Text("ଏକ ନୂଆ ସଂସ୍କରଣ (v${result.latestVersion}) ଉପଲବ୍ଧ ଅଛି। ଆପଣ ବର୍ତ୍ତମାନ (v$currentVersionName) ବ୍ୟବହାର କରୁଛନ୍ତି।") },
                     confirmButton = {
                         TextButton(onClick = {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/imsbg/Ganita-Bingya-App/releases/latest"))
-                            context.startActivity(intent)
+                            if (canInstallUnknownApps(context)) {
+                                // ଅନୁମତି ମିଳିସାରିଛି, ଡାଉନଲୋଡ୍ ଆରମ୍ଭ କରନ୍ତୁ
+                                startUpdateDownload(context, result.downloadUrl, result.latestVersion)
+                            } else {
+                                // ଅନୁମତି ମିଳିନାହିଁ, ବ୍ୟବହାରକାରୀଙ୍କୁ ଅନୁମତି ମାଗନ୍ତୁ
+                                Toast.makeText(context, "ଏହି ସ୍ରୋତରୁ ଆପ୍ ଇନଷ୍ଟଲ୍ କରିବାକୁ ଦୟାକରି ଅନୁମତି ଦିଅନ୍ତୁ।", Toast.LENGTH_LONG).show()
+                                requestInstallPermission(context)
+                            }
                             showDialog = false
                         }) {
                             Text("ଡାଉନଲୋଡ୍ କରନ୍ତୁ")
@@ -181,7 +242,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                     },
                     dismissButton = {
                         TextButton(onClick = { showDialog = false }) {
-                            Text("ପରେ")
+                            Text("ପରେ କେବେ")
                         }
                     }
                 )
@@ -202,7 +263,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                 AlertDialog(
                     onDismissRequest = { showDialog = false },
                     title = { Text("ତ୍ରୁଟି") },
-                    text = { Text("ଅପଡେଟ୍ ଯାଞ୍ଚ କରିବାରେ ଅସମର୍ଥ। ଦୟାକରି ଆପଣଙ୍କର ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ।") },
+                    text = { Text("ଅପଡେଟ୍ ଯାଞ୍ଚ କରିବାରେ ଅସମର୍ଥ, ଦୟାକରି ଆପଣଙ୍କର ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ") },
                     confirmButton = {
                         TextButton(onClick = { showDialog = false }) {
                             Text("ଠିକ୍ ଅଛି")
@@ -210,7 +271,7 @@ fun AboutScreen(onNavigateBack: () -> Unit) {
                     }
                 )
             }
-            null -> { /* Do nothing while waiting for a result */ }
+            null -> { /* କିଛି କରନ୍ତୁ ନାହିଁ */ }
         }
     }
 }

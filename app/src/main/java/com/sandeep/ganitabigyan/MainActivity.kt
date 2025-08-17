@@ -69,15 +69,16 @@ class MainActivity : ComponentActivity() {
                                 scope = scope,
                                 isAutoScrollEnabled = gameState.isAutoScrollEnabled,
                                 onAutoScrollToggled = { isEnabled -> gameViewModel.toggleAutoScroll(isEnabled) },
+                                // v-- ଏହା ହେଉଛି ନୂଆ ଲାଇନ୍ --v
+                                onNavigateToGame = { navController.navigate(AppDestinations.GAME_ROUTE) },
+                                // ^-- ନୂଆ ଲାଇନ୍ ଏଠାରେ ଶେଷ ହେଲା --^
                                 onTimedChallengeClick = { gameViewModel.requestTimedChallengeDialog() },
                                 onNavigateToHistory = { navController.navigate(AppDestinations.HISTORY_ROUTE) },
                                 onNavigateToScore = { navController.navigate(AppDestinations.SCORE_ROUTE) },
                                 onNavigateToAbout = { navController.navigate(AppDestinations.ABOUT_ROUTE) },
                                 onNavigateToCalculator = { navController.navigate(AppDestinations.CALCULATOR_ROUTE) },
                                 onNavigateToPanikia = { navController.navigate(AppDestinations.PANIKIA_LIST_ROUTE) },
-                                // v-- THIS IS THE NEW LINE --v
                                 onNavigateToNumbers = { navController.navigate(AppDestinations.NUMBERS_ROUTE) }
-                                // ^-- THIS IS THE NEW LINE --^
                             )
                         }
                     ) {
