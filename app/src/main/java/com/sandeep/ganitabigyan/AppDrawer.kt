@@ -21,13 +21,14 @@ fun AppDrawerContent(
     scope: CoroutineScope,
     isAutoScrollEnabled: Boolean,
     onAutoScrollToggled: (Boolean) -> Unit,
+    onNavigateToGame: () -> Unit, // <--- 1. ନୂଆ ପାରାମିଟର ଯୋଡ଼ାଗଲା
     onTimedChallengeClick: () -> Unit,
     onNavigateToHistory: () -> Unit,
     onNavigateToScore: () -> Unit,
     onNavigateToAbout: () -> Unit,
     onNavigateToCalculator: () -> Unit,
     onNavigateToPanikia: () -> Unit,
-    onNavigateToNumbers: () -> Unit // <-- ADD THIS LINE
+    onNavigateToNumbers: () -> Unit
 ) {
     val context = LocalContext.current
     val packageInfo = try { context.packageManager.getPackageInfo(context.packageName, 0) } catch (e: Exception) { null }
@@ -51,13 +52,25 @@ fun AppDrawerContent(
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
-                    "ଗଣିତ ବିଜ୍ଞାନ",
+                    "ଗଣିତ ବିଜ୍ଞ",
                     style = MaterialTheme.typography.titleLarge
                 )
             }
             HorizontalDivider()
 
-            // ... (All other NavigationDrawerItems remain the same)
+            // v-- 2. ଏହା ହେଉଛି ନୂଆ ମେନୁ ଆଇଟମ୍ --v
+            NavigationDrawerItem(
+                label = { Text("ଖେଳ ପୃଷ୍ଟା") },
+                selected = false,
+                icon = { Icon(Icons.Default.SportsEsports, contentDescription = "Game Screen") },
+                onClick = {
+                    onNavigateToGame() // ନୂଆ ଫଙ୍କସନକୁ କଲ୍ କରାଗଲା
+                    scope.launch { drawerState.close() }
+                },
+                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+            )
+            // ^-- ନୂଆ ମେନୁ ଆଇଟମ୍ ଏଠାରେ ଶେଷ ହେଲା --^
+
             NavigationDrawerItem(
                 label = { Text("ସମୟ ଚ୍ୟାଲେଞ୍ଜ") },
                 selected = false,
@@ -113,7 +126,6 @@ fun AppDrawerContent(
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
 
-            // v-- THIS IS THE NEW NUMBERS ITEM --v
             NavigationDrawerItem(
                 label = { Text("ସଙ୍ଖ୍ୟା") },
                 selected = false,
@@ -124,7 +136,6 @@ fun AppDrawerContent(
                 },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
-            // ^-- THIS IS THE NEW NUMBERS ITEM --^
 
             NavigationDrawerItem(
                 label = { Text("କ୍ୟାଲକୁଲେଟର") },
