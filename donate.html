@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="or">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate via UPI - Ganita Bingya</title>
+  <title>UPI ମାଧ୍ୟମରେ ଦାନ କରନ୍ତୁ - ଗଣିତ ବିଜ୍ଞ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #4CAF50;
@@ -23,7 +23,7 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Noto Sans Oriya', 'Inter', sans-serif;
       margin: 0;
       background-color: var(--body-bg);
       color: var(--text-color);
@@ -154,7 +154,7 @@
       font-size: 13px;
       color: var(--text-light);
       margin-top: 15px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .btn {
@@ -264,7 +264,7 @@
 <body>
 
   <!-- Menu Toggle Button -->
-  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+  <button class="menu-toggle" aria-label="ମେନୁ ଖୋଲନ୍ତୁ" aria-expanded="false">
     <span class="bar bar1"></span>
     <span class="bar bar2"></span>
     <span class="bar bar3"></span>
@@ -272,16 +272,16 @@
   
   <!-- Slide-in Menu Panel -->
   <nav class="menu-panel">
-    <a href="https://ganitabingya.netlify.app/open">Open App</a>
-    <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">Download Page</a>
-    <a href="https://github.com/imsbg/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">GitHub Project</a>
-    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-     <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+    <a href="https://ganitabingya.netlify.app/open">ଆପ୍ ଖୋଲନ୍ତୁ</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+    <a href="https://github.com/imsbg/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">ଗିଟ୍‌ହବ୍ ପ୍ରୋଜେକ୍ଟ</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer">ଗୋପନୀୟତା ନୀତି</a>
+    <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ଇନଷ୍ଟାଗ୍ରାମରେ ଫଲୋ କରନ୍ତୁ</a>
   </nav>
 
   <div class="content-wrapper">
-    <h1>Support Ganita Bingya</h1>
-    <p>Thank you for supporting open-source!</p>
+    <h1>ଗଣିତ ବିଜ୍ଞକୁ ସମର୍ଥନ କରନ୍ତୁ</h1>
+    <p>ଜୟ ଜଗନ୍ନାଥ</p>
 
     <div class="qr-container">
       <svg id="qr-code-svg" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg">
@@ -297,20 +297,20 @@
     </div>
 
     <div class="amount-input">
-      <label for="amount">Enter Amount (₹)</label>
+      <label for="amount">ରାଶି ପ୍ରବେଶ କରନ୍ତୁ (₹)</label>
       <input type="number" id="amount" min="1" value="10">
     </div>
 
     <a id="payLink" class="btn" href="#">
-      Pay via UPI
+      UPI ମାଧ୍ୟମରେ ପେମେଣ୍ଟ କରନ୍ତୁ
     </a>
 
     <div class="note">
-      Support us with any amount you choose (min ₹1). Your payment is secure and only completes after you confirm with your UPI PIN.
+      ଆପଣଙ୍କ ପସନ୍ଦର ଯେକୌଣସି ରାଶି (ସର୍ବନିମ୍ନ ₹1) ଦେଇ ଆମକୁ ସମର୍ଥନ କରନ୍ତୁ। ଆପଣଙ୍କ ପେମେଣ୍ଟ ସୁରକ୍ଷିତ ଅଟେ ଏବଂ ଆପଣଙ୍କ UPI ପିନ୍ ଦ୍ୱାରା ନିଶ୍ଚିତ କରିବା ପରେ ହିଁ ଏହା ସମ୍ପୂର୍ଣ୍ଣ ହେବ ।
     </div>
 
     <div class="upi-id">
-      UPI ID: <strong>biswal9@ptyes</strong>
+      UPI ଆଇଡି: <strong>biswal9@ptyes</strong>
     </div>
   </div>
 
@@ -324,7 +324,8 @@
       if (isNaN(amount) || amount < 1) {
         amount = 1;
       }
-      const upiUrl = `upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&am=${amount}&cu=INR&tn=Proud%20supporter,%20GB%20donation`;
+      // Note: Payee Name (pn) should remain as registered. Transaction Note (tn) is translated.
+      const upiUrl = `upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&am=${amount}&cu=INR&tn=%E0%AC%97%E0%AC%A3%E0%AC%BF%E0%AC%A4%20%E0%AC%AC%E0%AC%BF%E0%AC%99%E0%AD%8D%E0%AC%97%E0%AD%8D%E0%AD%9F%20%E0%AC%A6%E0%AC%BE%E0%AC%A8`;
       payLink.href = upiUrl;
     }
 
