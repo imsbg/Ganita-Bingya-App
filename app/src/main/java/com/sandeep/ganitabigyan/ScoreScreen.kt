@@ -1,10 +1,10 @@
+// ScoreScreen.kt
+
 package com.sandeep.ganitabigyan
 
 import android.os.Environment
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.dp
 import com.sandeep.ganitabigyan.utils.toOdia
 import java.io.File
 
-@OptIn(ExperimentalMaterial3Api::class)
+// CHANGE: The original ScoreScreen is now just "ScoreContent".
+// It no longer has a Scaffold or takes a navigation callback.
 @Composable
-fun ScoreScreen(onNavigateBack: () -> Unit) {
+fun ScoreContent() {
     val context = LocalContext.current
     var lifetimeScore by remember { mutableStateOf(Pair(0, 0)) } // Correct, Wrong
 
@@ -32,31 +33,18 @@ fun ScoreScreen(onNavigateBack: () -> Unit) {
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("ଲାଇଫ୍‌ଟାଇମ୍ ସ୍କୋର") },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text("ସମୁଦାୟ ଫଳାଫଳ", style = MaterialTheme.typography.displaySmall)
-            Spacer(Modifier.height(32.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                ScoreCard("ଠିକ୍", lifetimeScore.first)
-                ScoreCard("ଭୁଲ୍", lifetimeScore.second)
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp), // Add some padding for better layout
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("ସମୁଦାୟ ଫଳାଫଳ", style = MaterialTheme.typography.displaySmall)
+        Spacer(Modifier.height(32.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+            ScoreCard("ଠିକ୍", lifetimeScore.first)
+            ScoreCard("ଭୁଲ୍", lifetimeScore.second)
         }
     }
 }

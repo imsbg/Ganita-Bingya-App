@@ -1,8 +1,9 @@
+// NavGraph.kt
+
 package com.sandeep.ganitabigyan
 
 import android.app.Activity
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -31,29 +32,30 @@ import kotlinx.coroutines.delay
 
 object AppDestinations {
     const val SPLASH_ROUTE = "splash"
+    const val HOME_ROUTE = "home"
     const val GAME_ROUTE = "game"
     const val ABOUT_ROUTE = "about"
-    const val HISTORY_ROUTE = "history"
-    const val SCORE_ROUTE = "score"
+    const val SCORE_HISTORY_ROUTE = "score_history"
+    const val SETTINGS_ROUTE = "settings" // NEW: Settings route
     const val CALCULATOR_ROUTE = "calculator"
     const val PANIKIA_LIST_ROUTE = "panikia_list"
     const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}"
-    const val NUMBERS_ROUTE = "numbers" // <-- ADD THIS LINE
+    const val NUMBERS_ROUTE = "numbers"
+    const val DRAWING_ROUTE = "drawing"
+    const val DRAWING_HISTORY_ROUTE = "drawing_history"
 }
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
     gameViewModel: GameViewModel,
-    modifier: Modifier = Modifier,
-    onMenuClick: () -> Unit
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = AppDestinations.SPLASH_ROUTE,
         modifier = modifier
     ) {
-        // ... (all your existing composable routes for splash, game, history, etc. remain unchanged)
 
         composable(AppDestinations.SPLASH_ROUTE) {
             val context = LocalContext.current
@@ -61,68 +63,49 @@ fun AppNavHost(
                 val intent = (context as? Activity)?.intent
                 val data = intent?.data
 
-                if (data?.path?.endsWith("qna.gba") == true) {
-                    navController.navigate(AppDestinations.HISTORY_ROUTE) {
-                        popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
-                    }
-                } else if (data?.path?.endsWith("lifetime_score.gba") == true) {
-                    navController.navigate(AppDestinations.SCORE_ROUTE) {
+                if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) {
+                    navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) {
                         popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
                     }
                 } else {
-                    navController.navigate(AppDestinations.GAME_ROUTE) {
+                    navController.navigate(AppDestinations.HOME_ROUTE) {
                         popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
                     }
                 }
                 intent?.data = null
             })
         }
-        composable(
-            route = AppDestinations.GAME_ROUTE,
-            enterTransition = { fadeIn(animationSpec = tween(700)) },
-            exitTransition = { fadeOut(animationSpec = tween(700)) }
-        ) {
+
+        composable(route = AppDestinations.HOME_ROUTE) {
+            HomeScreen(navController = navController)
+        }
+
+        composable(route = AppDestinations.GAME_ROUTE) {
             GameScreen(
                 viewModel = gameViewModel,
-                onMenuClick = onMenuClick,
-                onNavigateToScore = { navController.navigate(AppDestinations.SCORE_ROUTE) }
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToScore = { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) }
             )
         }
-        composable(
-            route = AppDestinations.HISTORY_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
-            HistoryScreen(onNavigateBack = { navController.popBackStack() })
+
+        composable(route = AppDestinations.SCORE_HISTORY_ROUTE) {
+            ScoreHistoryScreen(onNavigateBack = { navController.popBackStack() })
         }
-        composable(
-            route = AppDestinations.SCORE_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
-            ScoreScreen(onNavigateBack = { navController.popBackStack() })
+
+        // NEW: Add the composable for the SettingsScreen
+        composable(route = AppDestinations.SETTINGS_ROUTE) {
+            SettingsScreen(navController = navController)
         }
-        composable(
-            route = AppDestinations.ABOUT_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
+
+        composable(route = AppDestinations.ABOUT_ROUTE) {
             AboutScreen(onNavigateBack = { navController.popBackStack() })
         }
 
-        composable(
-            route = AppDestinations.CALCULATOR_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
+        composable(route = AppDestinations.CALCULATOR_ROUTE) {
             CalculatorScreen(onNavigateBack = { navController.popBackStack() })
         }
 
-        composable(
-            route = AppDestinations.PANIKIA_LIST_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
+        composable(route = AppDestinations.PANIKIA_LIST_ROUTE) {
             PanikiaListScreen(
                 onTableClick = { tableNumber ->
                     navController.navigate("panikia_detail/$tableNumber")
@@ -130,11 +113,10 @@ fun AppNavHost(
                 onNavigateBack = { navController.popBackStack() }
             )
         }
+
         composable(
             route = AppDestinations.PANIKIA_DETAIL_ROUTE,
             arguments = listOf(navArgument("tableNumber") { type = NavType.IntType }),
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
         ) { backStackEntry ->
             val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 2
             PanikiaDetailScreen(
@@ -143,19 +125,24 @@ fun AppNavHost(
             )
         }
 
-        // v-- THIS IS THE NEW NAVIGATION BLOCK --v
-        composable(
-            route = AppDestinations.NUMBERS_ROUTE,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(500)) }
-        ) {
+        composable(route = AppDestinations.NUMBERS_ROUTE) {
             NumberScreen(onNavigateBack = { navController.popBackStack() })
         }
-        // ^-- THIS IS THE NEW NAVIGATION BLOCK --^
+
+        composable(route = AppDestinations.DRAWING_ROUTE) {
+            DrawingScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToHistory = { navController.navigate(AppDestinations.DRAWING_HISTORY_ROUTE) }
+            )
+        }
+
+        composable(route = AppDestinations.DRAWING_HISTORY_ROUTE) {
+            DrawingHistoryScreen(onNavigateBack = { navController.popBackStack() })
+        }
     }
 }
 
-// ... (SplashScreen composable remains unchanged)
+// ... (SplashScreen composable is unchanged) ...
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
     var currentText by remember { mutableStateOf("") }

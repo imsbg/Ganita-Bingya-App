@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- ==================================================================== -->
     <!-- ============= NEW PERMISSION FOR IN-APP UPDATES ==================== -->
     <!-- ==================================================================== -->

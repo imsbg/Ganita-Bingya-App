@@ -1,3 +1,5 @@
+// GameScreen.kt
+
 package com.sandeep.ganitabigyan
 
 import androidx.compose.animation.*
@@ -16,8 +18,8 @@ import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDownward
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.SwapVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -44,7 +46,7 @@ import kotlin.random.Random
 @Composable
 fun GameScreen(
     viewModel: GameViewModel,
-    onMenuClick: () -> Unit,
+    onNavigateBack: () -> Unit,
     onNavigateToScore: () -> Unit
 ) {
     val gameState by viewModel.gameState.collectAsStateWithLifecycle()
@@ -55,6 +57,17 @@ fun GameScreen(
     var showSolutionDialog by remember { mutableStateOf(false) }
 
     val currentQuestion = gameState.questions.getOrNull(pagerState.currentPage)
+
+    // CHANGE 1: A smart state variable that is true only when the user has scrolled back.
+    val isViewingPreviousQuestion by remember {
+        derivedStateOf {
+            gameState.questions.isNotEmpty() && pagerState.currentPage < gameState.currentQuestionIndex
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.resetGame()
+    }
 
     LaunchedEffect(Unit) {
         viewModel.uiEvent.collectLatest { event ->
@@ -85,8 +98,6 @@ fun GameScreen(
         }
     }
 
-    // BUG FIX: This ensures the pager scrolls to the top when settings change
-    // and the question list is reset.
     LaunchedEffect(gameState.questions) {
         if (gameState.currentQuestionIndex == 0 && pagerState.currentPage != 0 && gameState.questions.isNotEmpty()) {
             coroutineScope.launch {
@@ -120,32 +131,13 @@ fun GameScreen(
                 topBar = {
                     GameTopBar(
                         gameState = gameState,
-                        onMenuClick = onMenuClick,
+                        onNavigateBack = onNavigateBack,
                         onStopChallengeClick = { viewModel.stopTimedChallenge() },
                         onScoreClick = onNavigateToScore
                     )
                 },
-                floatingActionButton = {
-                    val showScrollButton by remember {
-                        derivedStateOf {
-                            val activeQuestion = gameState.questions.getOrNull(pagerState.currentPage)
-                            pagerState.currentPage < gameState.currentQuestionIndex && activeQuestion?.isAnswered == true
-                        }
-                    }
-                    AnimatedVisibility(
-                        visible = showScrollButton,
-                        enter = scaleIn() + fadeIn(),
-                        exit = scaleOut() + fadeOut()
-                    ) {
-                        FloatingActionButton(onClick = {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(gameState.currentQuestionIndex)
-                            }
-                        }) {
-                            Icon(Icons.Default.ArrowDownward, contentDescription = "Scroll to current question")
-                        }
-                    }
-                }
+                // CHANGE 2: The FloatingActionButton has been removed to avoid confusion.
+                // The new button is much better.
             ) { padding ->
                 Box(modifier = Modifier.fillMaxSize().background(gradient)) {
                     Column(
@@ -166,7 +158,7 @@ fun GameScreen(
                         VerticalPager(
                             state = pagerState,
                             modifier = Modifier.weight(1f),
-                            userScrollEnabled = !gameState.isTimedChallenge && !gameState.isAutoScrollEnabled,
+                            userScrollEnabled = !gameState.isTimedChallenge,
                             beyondBoundsPageCount = 3
                         ) { pageIndex ->
                             val question = gameState.questions.getOrNull(pageIndex)
@@ -180,15 +172,50 @@ fun GameScreen(
                             }
                         }
 
-                        if (gameState.selectedType != "ସମୀକରଣ ଖୋଜ") {
+                        // CHANGE 3: This is the new context-aware UI logic.
+                        // It shows different buttons based on where the user has scrolled.
+                        if (isViewingPreviousQuestion) {
+                            // If user is viewing past questions, show this button
                             Button(
-                                onClick = { showSolutionDialog = true },
-                                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
-                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                                onClick = {
+                                    coroutineScope.launch {
+                                        pagerState.animateScrollToPage(gameState.currentQuestionIndex)
+                                    }
+                                },
+                                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                             ) {
-                                Text("ସମାଧାନ", color = Color.White)
+                                Text("ଚଳିତ ପ୍ରଶ୍ନକୁ ଯାଆନ୍ତୁ") // "Go to Current Question"
+                            }
+                        } else {
+                            // If user is on the latest question, show the normal controls
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 8.dp),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(Icons.Default.SwapVert, contentDescription = "Auto Scroll Icon")
+                                Spacer(Modifier.width(8.dp))
+                                Text("ଅଟୋ ସ୍କ୍ରୋଲ୍")
+                                Spacer(Modifier.width(16.dp))
+                                Switch(
+                                    checked = gameState.isAutoScrollEnabled,
+                                    onCheckedChange = { viewModel.toggleAutoScroll(it) }
+                                )
+                            }
+
+                            if (gameState.selectedType != "ସମୀକରଣ ଖୋଜ") {
+                                Button(
+                                    onClick = { showSolutionDialog = true },
+                                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                                ) {
+                                    Text("ସମାଧାନ", color = Color.White)
+                                }
                             }
                         }
+
                         MotivationalFooter(quotes = viewModel.motivationalQuotes)
                     }
                     FeedbackBanner(message = gameState.feedbackMessage, modifier = Modifier.align(Alignment.TopCenter).padding(padding))
@@ -257,33 +284,31 @@ fun QuestionCard(
             items(question.options) { option ->
                 val isSelected = question.userAnswer == option
                 val isCorrectAnswer = question.correctAnswer == option
-
-                val targetColor = when {
-                    question.isAnswered && isCorrectAnswer -> Color(0xFF4CAF50)
-                    question.isAnswered && isSelected -> Color(0xFFF44336)
+                val targetBackgroundColor = when {
+                    question.isAnswered && isCorrectAnswer -> Color(0xFFC8E6C9)
+                    question.isAnswered && isSelected -> Color(0xFFFFCDD2)
                     else -> MaterialTheme.colorScheme.surface
                 }
-
-                val buttonBackgroundColor by animateColorAsState(
-                    targetValue = targetColor,
-                    animationSpec = tween(300),
-                    label = "button_bg_color"
-                )
-
-                val buttonTextColor by animateColorAsState(
-                    targetValue = if (targetColor != MaterialTheme.colorScheme.surface) Color.White else MaterialTheme.colorScheme.onSurface,
-                    animationSpec = tween(300),
-                    label = "button_text_color"
+                val targetBorderColor = when {
+                    question.isAnswered && isCorrectAnswer -> Color(0xFF388E3C)
+                    question.isAnswered && isSelected -> Color(0xFFD32F2F)
+                    else -> MaterialTheme.colorScheme.outline
+                }
+                val animatedBackgroundColor by animateColorAsState(targetValue = targetBackgroundColor, animationSpec = tween(300))
+                val animatedBorderColor by animateColorAsState(targetValue = targetBorderColor, animationSpec = tween(300))
+                val animatedTextColor by animateColorAsState(
+                    targetValue = if (question.isAnswered) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface,
+                    animationSpec = tween(300)
                 )
 
                 OutlinedButton(
                     onClick = { if (!question.isAnswered) onAnswer(option) },
                     modifier = Modifier.height(100.dp),
                     shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+                    border = BorderStroke(2.dp, animatedBorderColor),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = buttonBackgroundColor,
-                        contentColor = buttonTextColor
+                        containerColor = animatedBackgroundColor,
+                        contentColor = animatedTextColor
                     ),
                     enabled = !question.isAnswered
                 ) {
@@ -294,19 +319,21 @@ fun QuestionCard(
     }
 }
 
+// ... (Rest of the file is unchanged)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameTopBar(
     gameState: GameState,
-    onMenuClick: () -> Unit,
+    onNavigateBack: () -> Unit,
     onStopChallengeClick: () -> Unit,
     onScoreClick: () -> Unit
 ) {
     TopAppBar(
         title = { Text("ଗଣିତ ବିଜ୍ଞ") },
         navigationIcon = {
-            IconButton(onClick = onMenuClick) {
-                Icon(Icons.Default.Menu, contentDescription = "Menu")
+            IconButton(onClick = onNavigateBack) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
             }
         },
         actions = {

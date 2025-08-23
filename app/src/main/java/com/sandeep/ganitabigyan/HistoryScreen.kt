@@ -1,3 +1,5 @@
+// HistoryScreen.kt
+
 package com.sandeep.ganitabigyan
 
 import android.os.Environment
@@ -6,8 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -27,23 +27,23 @@ data class HistoryItem(
     val date: String
 )
 
-// FIX: This function now converts all numbers in the date string to Odia.
 fun formatOdiaDate(dateStr: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
     val outputFormat = SimpleDateFormat("d MMMM yyyy", Locale("or", "IN"))
     return try {
         val date = inputFormat.parse(dateStr)
         val formattedDateWithEnglishNumerals = outputFormat.format(date!!)
-        // Convert the resulting string's numbers to Odia
         formattedDateWithEnglishNumerals.toOdiaNumerals()
     } catch (e: Exception) {
         dateStr
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+// CHANGE: The original HistoryScreen is now just "HistoryContent".
+// It no longer has a Scaffold or takes a navigation callback.
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HistoryScreen(onNavigateBack: () -> Unit) {
+fun HistoryContent() {
     val context = LocalContext.current
     var historyList by remember { mutableStateOf<List<HistoryItem>>(emptyList()) }
 
@@ -77,27 +77,23 @@ fun HistoryScreen(onNavigateBack: () -> Unit) {
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("ପ୍ରଶ୍ନ ଇତିହାସ") },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        val groupedHistory = historyList.groupBy { it.date }
+    val groupedHistory = historyList.groupBy { it.date }
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        if (groupedHistory.isEmpty()) {
+            item {
+                Box(
+                    modifier = Modifier.fillParentMaxSize(),
+                    contentAlignment = androidx.compose.ui.Alignment.Center
+                ) {
+                    Text("କୌଣସି ଇତିହାସ ମିଳିଲା ନାହିଁ")
+                }
+            }
+        } else {
             groupedHistory.forEach { (date, items) ->
                 stickyHeader {
                     Text(

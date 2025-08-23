@@ -1,27 +1,25 @@
+// MainActivity.kt
+
 package com.sandeep.ganitabigyan
 
 import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.Display
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.Surface
-import androidx.compose.material3.rememberDrawerState
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.sandeep.ganitabigyan.ui.theme.GanitaBigyanTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -38,58 +36,75 @@ class MainActivity : ComponentActivity() {
     }
 
     private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
+        ActivityResultContracts.RequestMultiplePermissions()
     ) { }
 
-    private fun askNotificationPermission() {
+    private fun askPermissions() {
+        val permissionsToRequest = mutableListOf<String>()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequest.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                permissionsToRequest.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+        }
+
+        if (permissionsToRequest.isNotEmpty()) {
+            requestPermissionLauncher.launch(permissionsToRequest.toTypedArray())
         }
     }
 
+    // CHANGE: New function to enable high refresh rate
+    private fun enableHighRefreshRate() {
+        // This feature is only available on Android 11 (R) and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val display: Display? = display
+            if (display != null) {
+                // Get all supported refresh rates
+                val supportedModes = display.supportedModes
+                var highestRefreshRate = 60f // Default
+
+                // Find the highest supported refresh rate
+                for (mode in supportedModes) {
+                    if (mode.refreshRate > highestRefreshRate) {
+                        highestRefreshRate = mode.refreshRate
+                    }
+                }
+
+                // If a higher rate is found, apply it
+                if (highestRefreshRate > 60f) {
+                    val params = window.attributes
+                    params.preferredRefreshRate = highestRefreshRate
+                    window.attributes = params
+                }
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        askNotificationPermission()
+
+        // CHANGE: Call the new function on startup
+        enableHighRefreshRate()
+
+        askPermissions()
+        scheduleReminders(applicationContext)
+
         setContent {
             GanitaBigyanTheme {
                 val navController = rememberNavController()
-                val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-                val scope = rememberCoroutineScope()
-                val gameState by gameViewModel.gameState.collectAsState()
 
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    ModalNavigationDrawer(
-                        drawerState = drawerState,
-                        drawerContent = {
-                            AppDrawerContent(
-                                drawerState = drawerState,
-                                scope = scope,
-                                isAutoScrollEnabled = gameState.isAutoScrollEnabled,
-                                onAutoScrollToggled = { isEnabled -> gameViewModel.toggleAutoScroll(isEnabled) },
-                                // v-- ଏହା ହେଉଛି ନୂଆ ଲାଇନ୍ --v
-                                onNavigateToGame = { navController.navigate(AppDestinations.GAME_ROUTE) },
-                                // ^-- ନୂଆ ଲାଇନ୍ ଏଠାରେ ଶେଷ ହେଲା --^
-                                onTimedChallengeClick = { gameViewModel.requestTimedChallengeDialog() },
-                                onNavigateToHistory = { navController.navigate(AppDestinations.HISTORY_ROUTE) },
-                                onNavigateToScore = { navController.navigate(AppDestinations.SCORE_ROUTE) },
-                                onNavigateToAbout = { navController.navigate(AppDestinations.ABOUT_ROUTE) },
-                                onNavigateToCalculator = { navController.navigate(AppDestinations.CALCULATOR_ROUTE) },
-                                onNavigateToPanikia = { navController.navigate(AppDestinations.PANIKIA_LIST_ROUTE) },
-                                onNavigateToNumbers = { navController.navigate(AppDestinations.NUMBERS_ROUTE) }
-                            )
-                        }
-                    ) {
-                        AppNavHost(
-                            navController = navController,
-                            gameViewModel = gameViewModel,
-                            onMenuClick = {
-                                scope.launch { drawerState.open() }
-                            }
-                        )
-                    }
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    AppNavHost(
+                        navController = navController,
+                        gameViewModel = gameViewModel
+                    )
                 }
             }
         }

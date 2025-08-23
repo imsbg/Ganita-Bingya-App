@@ -1,3 +1,5 @@
+// GameViewModel.kt
+
 package com.sandeep.ganitabigyan
 
 import android.content.Context
@@ -21,6 +23,7 @@ import java.util.Locale
 import kotlin.math.abs
 import kotlin.random.Random
 
+// Data classes and enums are unchanged
 data class GameState(
     val questions: List<Question> = emptyList(),
     val currentQuestionIndex: Int = 0,
@@ -83,6 +86,10 @@ class GameViewModel(private val context: Context) : ViewModel() {
         loadLifetimeScore()
     }
 
+    fun resetGame() {
+        loadSettingsAndStart()
+    }
+
     private fun loadLifetimeScore() {
         viewModelScope.launch {
             try {
@@ -124,6 +131,10 @@ class GameViewModel(private val context: Context) : ViewModel() {
                     isAutoScrollEnabled = savedAutoScroll,
                     isExtraHardAvailable = savedType in listOf("ମିଶ୍ରଣ", "ସମୀକରଣ ଖୋଜ"),
                     questions = newQuestions,
+                    currentQuestionIndex = 0,
+                    score = 0,
+                    wrongAttempts = 0,
+                    correctStreak = 0,
                     isLoading = false
                 )
             }
@@ -134,18 +145,15 @@ class GameViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch {
             val isExtraHardAvailable = newType in listOf("ମିଶ୍ରଣ", "ସମୀକରଣ ଖୋଜ")
             val finalLevel = if (!isExtraHardAvailable && newLevel == "ଅତି କଠିନ") "କଠିନ" else newLevel
-
-            // Generate the new questions using the new settings
             val newQuestions = List(50) { generateQuestion(newType, finalLevel) }
 
-            // Atomically update the state with all changes at once
             _gameState.update {
                 it.copy(
                     selectedType = newType,
                     selectedLevel = finalLevel,
                     isExtraHardAvailable = isExtraHardAvailable,
-                    questions = newQuestions, // Use the new list
-                    currentQuestionIndex = 0, // Reset progress
+                    questions = newQuestions,
+                    currentQuestionIndex = 0,
                     feedbackMessage = null,
                     score = 0,
                     wrongAttempts = 0,
@@ -169,7 +177,6 @@ class GameViewModel(private val context: Context) : ViewModel() {
 
         val currentQuestion = currentState.questions[questionIndex]
         val isCorrect = answer == currentQuestion.correctAnswer
-
         val updatedQuestions = currentState.questions.toMutableList()
         updatedQuestions[questionIndex] = currentQuestion.copy(userAnswer = answer, isAnswered = true)
 
@@ -218,11 +225,52 @@ class GameViewModel(private val context: Context) : ViewModel() {
         }
     }
 
+    // CHANGE: This function is now much smarter. It handles skipped questions.
     fun updateCurrentQuestionIndex(newIndex: Int) {
-        if (newIndex >= _gameState.value.questions.size - 5) {
+        val currentState = _gameState.value
+        val oldIndex = currentState.currentQuestionIndex
+
+        // If the user hasn't scrolled forward, do nothing.
+        if (newIndex <= oldIndex) {
+            // But if the user somehow lands on a future index, we still need to load more questions if needed.
+            if (newIndex >= currentState.questions.size - 5) {
+                appendQuestions()
+            }
+            _gameState.update { it.copy(currentQuestionIndex = newIndex) }
+            return
+        }
+
+        // The user has scrolled forward, skipping questions.
+        val updatedQuestions = currentState.questions.toMutableList()
+        var skippedCount = 0
+
+        // Check all questions between the old and new index.
+        for (i in oldIndex until newIndex) {
+            if (!updatedQuestions[i].isAnswered) {
+                // This question was skipped. Mark it as answered (and wrong).
+                updatedQuestions[i] = updatedQuestions[i].copy(isAnswered = true, userAnswer = "Skipped")
+                skippedCount++
+            }
+        }
+
+        // If questions were skipped, update the score and lifetime data.
+        if (skippedCount > 0) {
+            lifetimeScore = lifetimeScore.copy(second = lifetimeScore.second + skippedCount)
+            saveLifetimeScore()
+            showFeedbackMessage("${skippedCount.toOdia()}ଟି ପ୍ରଶ୍ନ ଛାଡିଦେଲେ")
+        }
+
+        _gameState.update {
+            it.copy(
+                questions = updatedQuestions,
+                wrongAttempts = it.wrongAttempts + skippedCount,
+                currentQuestionIndex = newIndex
+            )
+        }
+
+        if (newIndex >= currentState.questions.size - 5) {
             appendQuestions()
         }
-        _gameState.update { it.copy(currentQuestionIndex = newIndex) }
     }
 
     fun toggleAutoScroll(isEnabled: Boolean) {
@@ -232,10 +280,12 @@ class GameViewModel(private val context: Context) : ViewModel() {
         }
     }
 
+    // ... (Rest of the ViewModel is unchanged) ...
+
     fun startTimedChallenge(minutes: Int, type: String, level: String) {
         timerJob?.cancel()
         val durationMillis = minutes * 60 * 1000L
-        updateSettings(type, level) // This now correctly resets the question set
+        updateSettings(type, level)
         _gameState.update { it.copy(isTimedChallenge = true, timerValue = durationMillis, challengeJustFinished = false) }
 
         timerJob = viewModelScope.launch {
@@ -256,13 +306,11 @@ class GameViewModel(private val context: Context) : ViewModel() {
         _gameState.update {
             it.copy(isTimedChallenge = false, timerValue = 0, challengeJustFinished = false)
         }
-        // Reset to default game state
         updateSettings(_gameState.value.selectedType, _gameState.value.selectedLevel)
     }
 
     fun dismissChallengeSummary() {
         _gameState.update { it.copy(challengeJustFinished = false) }
-        // Reset to default game state
         updateSettings(_gameState.value.selectedType, _gameState.value.selectedLevel)
     }
 
@@ -273,22 +321,28 @@ class GameViewModel(private val context: Context) : ViewModel() {
     }
 
     fun triggerHapticFeedback(type: HapticFeedbackType) {
-        val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val vibratorManager = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-            vibratorManager.defaultVibrator
-        } else {
-            @Suppress("DEPRECATION")
-            context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        }
-        if (vibrator.hasVibrator()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (type == HapticFeedbackType.INCORRECT) {
-                    vibrator.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 75, 50, 75), -1))
-                }
+        viewModelScope.launch {
+            val isVibrationEnabled = settingsDataStore.isVibrationEnabled.first()
+            if (!isVibrationEnabled) return@launch
+
+            val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val vibratorManager = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                vibratorManager.defaultVibrator
             } else {
-                if (type == HapticFeedbackType.INCORRECT) {
-                    @Suppress("DEPRECATION")
-                    vibrator.vibrate(longArrayOf(0, 75, 50, 75), -1)
+                @Suppress("DEPRECATION")
+                context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            }
+
+            if (vibrator.hasVibrator()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (type == HapticFeedbackType.INCORRECT) {
+                        vibrator.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 75, 50, 75), -1))
+                    }
+                } else {
+                    if (type == HapticFeedbackType.INCORRECT) {
+                        @Suppress("DEPRECATION")
+                        vibrator.vibrate(longArrayOf(0, 75, 50, 75), -1)
+                    }
                 }
             }
         }
@@ -308,8 +362,6 @@ class GameViewModel(private val context: Context) : ViewModel() {
             } catch (e: Exception) { e.printStackTrace() }
         }
     }
-
-    // --- REFACTORED GENERATOR FUNCTIONS ---
 
     private fun generateQuestion(type: String, level: String): Question {
         val actualType = if (type == "ମିଶ୍ରଣ") {

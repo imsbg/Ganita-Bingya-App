@@ -32,8 +32,8 @@ android {
         applicationId = "com.sandeep.ganitabigyan"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "2.0.2"
+        versionCode = 4
+        versionName = "3.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -89,7 +89,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
     // <-- THIS IS THE ONLY LINE YOU NEED TO ADD FOR THE CALCULATOR
     implementation("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
 

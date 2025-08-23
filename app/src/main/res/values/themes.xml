@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.GanitaBigyan" parent="android:Theme.Material.Light.NoActionBar" />
+
 </resources>
