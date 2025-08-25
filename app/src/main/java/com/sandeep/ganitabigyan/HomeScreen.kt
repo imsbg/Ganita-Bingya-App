@@ -7,24 +7,41 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.lerp
 import androidx.navigation.NavController
 
+// --- DEFINE APP BAR HEIGHTS FOR ACCURATE CALCULATIONS ---
+private val CollapsedAppBarHeight = 64.dp
+private val ExpandedAppBarHeight = 152.dp // Standard height for Material3 LargeTopAppBar
+
+
+// Data class to represent each item in the home screen menu
 private data class HomeMenuItem(
     val title: String,
+    val subtitle: String? = null,
     val route: String,
     val gradient: List<Color>,
     val icon: ImageVector? = null,
@@ -35,56 +52,127 @@ private data class HomeMenuItem(
 @Composable
 fun HomeScreen(navController: NavController) {
 
-    val gradientOrange = listOf(Color(0xFFFFA726), Color(0xFFFF7043))
-    val gradientBlue = listOf(Color(0xFF42A5F5), Color(0xFF1976D2))
-    val gradientPurple = listOf(Color(0xFFAB47BC), Color(0xFF7B1FA2))
-    val gradientRed = listOf(Color(0xFFEF5350), Color(0xFFC62828))
-    val gradientTeal = listOf(Color(0xFF26A69A), Color(0xFF00796B))
-    val gradientCyan = listOf(Color(0xFF26C6DA), Color(0xFF0097A7))
-
+    val gradientOrange = listOf(Color(0xFFFFB74D), Color(0xFFFF9800))
+    val gradientBlue = listOf(Color(0xFF64B5F6), Color(0xFF2196F3))
+    val gradientPurple = listOf(Color(0xFFBA68C8), Color(0xFF9C27B0))
+    val gradientRed = listOf(Color(0xFFE57373), Color(0xFFF44336))
+    val gradientTeal = listOf(Color(0xFF4DB6AC), Color(0xFF009688))
+    val gradientCyan = listOf(Color(0xFF4DD0E1), Color(0xFF00BCD4))
 
     val menuItems = listOf(
-        // The text is "୫+୪" (5+4) as requested
-        HomeMenuItem("ଖେଳ ଆରମ୍ଭ କରନ୍ତୁ", AppDestinations.GAME_ROUTE, gradientOrange, textIcon = "୫+୪"),
-        HomeMenuItem("ଆପଣଙ୍କ ପ୍ରଗତି", AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, icon = Icons.Default.Insights),
-        HomeMenuItem("ପଣିକିଆ", AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, icon = Icons.Default.MenuBook),
-        // The text is "୪୫" (45) as requested
-        HomeMenuItem("ସଙ୍ଖ୍ୟା", AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
-        HomeMenuItem("ଅଙ୍କନ ପ୍ୟାଡ୍", AppDestinations.DRAWING_ROUTE, gradientTeal, icon = Icons.Default.Draw),
-        HomeMenuItem("କ୍ୟାଲକୁଲେଟର", AppDestinations.CALCULATOR_ROUTE, gradientCyan, icon = Icons.Default.Calculate)
+        HomeMenuItem("ଖେଳ ଆରମ୍ଭ କରନ୍ତୁ", "୫+୪, ୪-୨", AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
+        HomeMenuItem("ଆପଣଙ୍କ ପ୍ରଗତି", "କେତେ ଠିକ? କେତେ ଭୁଲ?", AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
+        HomeMenuItem("ପଣିକିଆ", "ଦୁଇ କେ ଦୁଇ", AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, Icons.Default.MenuBook),
+        HomeMenuItem("ସଙ୍ଖ୍ୟା", "୦ ୧ ୨ ୩ ୪ ୫ ୬ ୭ ୮ ୯", AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
+        HomeMenuItem("ଅଙ୍କନ ପ୍ୟାଡ୍", null, AppDestinations.DRAWING_ROUTE, gradientTeal, Icons.Default.Draw),
+        HomeMenuItem("କ୍ୟାଲକୁଲେଟର", null, AppDestinations.CALCULATOR_ROUTE, gradientCyan, Icons.Default.Calculate)
     )
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("ଗଣିତ ବିଜ୍ଞ", style = MaterialTheme.typography.headlineMedium) },
-                actions = {
-                    IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings")
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                )
-            )
-        }
-    ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(menuItems) { item ->
-                MenuItemCard(
-                    item = item,
-                    onClick = { navController.navigate(item.route) }
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                LargeTopAppBar(
+                    title = { /* Empty */ },
+                    actions = {
+                        IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) {
+                            Icon(Icons.Default.Settings, contentDescription = "Settings")
+                        }
+                    },
+                    colors = TopAppBarDefaults.largeTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
+                        scrolledContainerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(6.dp).copy(alpha = 0.9f)
+                    ),
+                    scrollBehavior = scrollBehavior
                 )
             }
+        ) { paddingValues ->
+            LazyColumn(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .background(Color(0xFFF0F4F8)),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(menuItems) { item ->
+                    MenuItemCard(
+                        item = item,
+                        onClick = { navController.navigate(item.route) }
+                    )
+                }
+            }
         }
+
+        CollapsingToolbar(scrollBehavior = scrollBehavior)
     }
 }
+
+
+// --- REWRITTEN FOR "TOP LEFT CORNER" ANIMATION (TEXT ONLY) ---
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
+    var titleSize by remember { mutableStateOf(IntSize.Zero) }
+    val density = LocalDensity.current
+
+    val topPadding = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+
+    // Define the final padding for the collapsed state
+    val startPadding = 16.dp
+
+    val collapsedHeightPx = with(density) { CollapsedAppBarHeight.toPx() }
+    val expandedHeightPx = with(density) { ExpandedAppBarHeight.toPx() }
+    val startPaddingPx = with(density) { startPadding.toPx() }
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(ExpandedAppBarHeight + topPadding)
+            .padding(top = topPadding),
+        contentAlignment = Alignment.TopStart
+    ) {
+        Text(
+            " ଗଣିତ ବିଜ୍ଞ",
+            style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold), // Slightly larger for better presence
+            maxLines = 1,
+            modifier = Modifier
+                .onSizeChanged {
+                    if (titleSize != it) titleSize = it
+                }
+                .graphicsLayer {
+                    val collapsedFraction = scrollBehavior.state.collapsedFraction
+
+                    // --- SCALE ---
+                    // Scale down to a more standard title size
+                    val startScale = 1.0f
+                    val endScale = 0.7f
+                    val currentScale = lerp(startScale, endScale, collapsedFraction)
+
+                    // --- X-AXIS TRANSLATION (HORIZONTAL) ---
+                    // Animate from center to the left padding. THIS IS THE KEY CHANGE.
+                    val startTranslationX = (size.width / 2) - (titleSize.width / 2)
+                    val endTranslationX = startPaddingPx
+                    val currentTranslationX = lerp(startTranslationX, endTranslationX, collapsedFraction)
+
+                    // --- Y-AXIS TRANSLATION (VERTICAL) ---
+                    // Animate from the bottom of the expanded area to the center of the collapsed area.
+                    val startTranslationY = expandedHeightPx - titleSize.height
+                    val endTranslationY = (collapsedHeightPx / 2) - (titleSize.height / 2)
+                    val currentTranslationY = lerp(startTranslationY, endTranslationY, collapsedFraction)
+
+                    // Apply all transformations
+                    scaleX = currentScale
+                    scaleY = currentScale
+                    translationX = currentTranslationX
+                    translationY = currentTranslationY
+                }
+        )
+    }
+}
+
 
 @Composable
 private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
@@ -92,7 +180,13 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(140.dp)
-            .clip(RoundedCornerShape(24.dp))
+            .shadow(
+                elevation = 8.dp,
+                shape = RoundedCornerShape(28.dp),
+                ambientColor = Color.Black.copy(alpha = 0.2f),
+                spotColor = Color.Black.copy(alpha = 0.1f)
+            )
+            .clip(RoundedCornerShape(28.dp))
             .background(brush = Brush.horizontalGradient(colors = item.gradient))
             .clickable(onClick = onClick)
     ) {
@@ -103,36 +197,48 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = item.title,
-                style = MaterialTheme.typography.headlineSmall,
-                color = Color.White,
+            Column(
                 modifier = Modifier.weight(1f)
-            )
+            ) {
+                Text(
+                    text = item.title,
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                    color = Color.White,
+                    fontSize = 26.sp
+                )
+                item.subtitle?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = Color.White.copy(alpha = 0.8f),
+                        fontSize = 20.sp
+                    )
+                }
+            }
 
             Box(
-                modifier = Modifier.size(80.dp),
+                modifier = Modifier
+                    .size(90.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.2f)),
                 contentAlignment = Alignment.Center
             ) {
                 if (item.icon != null) {
                     Icon(
                         imageVector = item.icon,
                         contentDescription = item.title,
-                        modifier = Modifier.fillMaxSize(),
-                        tint = Color.White.copy(alpha = 0.8f)
+                        modifier = Modifier.size(60.dp),
+                        tint = Color.White
                     )
                 } else if (item.textIcon != null) {
-                    // FINAL FIX: More precise font size adjustment
-                    val fontSize = when {
-                        item.textIcon.length > 2 -> 36.sp // Reduced size for "୫+୪" to guarantee it fits
-                        else -> 48.sp // Perfect size for "୪୫"
-                    }
                     Text(
                         text = item.textIcon,
-                        color = Color.White.copy(alpha = 0.8f),
-                        fontSize = fontSize,
+                        color = Color.White,
+                        fontSize = 45.sp,
                         fontWeight = FontWeight.Bold,
-                        maxLines = 1 // Ensure it stays on one line
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.em,
+                        maxLines = 2
                     )
                 }
             }
