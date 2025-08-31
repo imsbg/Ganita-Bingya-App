@@ -1,4 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/WelcomeScreen.kt
+
 package com.sandeep.ganitabigyan
 
 import androidx.compose.animation.AnimatedContent
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -31,32 +33,30 @@ import kotlinx.coroutines.launch
 fun WelcomeScreen(onStartClick: () -> Unit) {
 
     val scope = rememberCoroutineScope()
-    // This state will track whether the button has been clicked and is in "loading" mode.
+    val context = LocalContext.current
+    val dataStore = remember { SettingsDataStore(context) }
     var isLoading by remember { mutableStateOf(false) }
 
+    // This is your original, correct function that saves the state
     fun proceed() {
-        // Prevent clicking again while loading
         if (isLoading) return
 
         scope.launch {
-            isLoading = true // Trigger the loading animation
-            delay(1500L) // Wait for 1.5 seconds to show the animation
-            onStartClick() // Navigate to the next screen
+            isLoading = true
+            dataStore.setWelcomeCompleted() // Save state so it doesn't show again
+            delay(1500L)                 // Wait for animation to finish
+            onStartClick()               // Navigate to the next screen
         }
     }
 
-    // The main welcome text, now on a single line
     val welcomeText = "ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ"
 
-    // Animate the button's width. It will be wide initially and shrink to a square when loading.
     val buttonWidth by animateDpAsState(
         targetValue = if (isLoading) 60.dp else 220.dp,
         label = "button width"
     )
-
-    // Animate the button's corner radius. It will go from rounded corners to a full circle.
     val cornerRadius by animateDpAsState(
-        targetValue = if (isLoading) 30.dp else 16.dp, // 30dp is half of the 60dp height, making it a circle
+        targetValue = if (isLoading) 30.dp else 16.dp,
         label = "button corner radius"
     )
 
@@ -86,7 +86,7 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
                 text = welcomeText,
                 fontFamily = OdiaFontFamily,
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
+                fontSize = 28.sp,
                 textAlign = TextAlign.Center,
                 lineHeight = 40.sp,
                 color = Color.Black.copy(alpha = 0.85f)
@@ -94,19 +94,17 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
 
             Spacer(modifier = Modifier.height(50.dp))
 
-            // The animated button
             Button(
                 onClick = { proceed() },
                 modifier = Modifier
                     .height(60.dp)
-                    .width(buttonWidth), // Use the animated width
-                shape = RoundedCornerShape(cornerRadius), // Use the animated corner radius
+                    .width(buttonWidth),
+                shape = RoundedCornerShape(cornerRadius),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF8A54D4)
                 ),
                 contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
-                // AnimatedContent smoothly transitions between the text and the loading indicator
                 AnimatedContent(
                     targetState = isLoading,
                     transitionSpec = {
@@ -115,14 +113,12 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
                     label = "button content animation"
                 ) { loadingState ->
                     if (loadingState) {
-                        // --- Loading State ---
                         CircularProgressIndicator(
                             modifier = Modifier.size(28.dp),
                             color = Color.White,
                             strokeWidth = 3.dp
                         )
                     } else {
-                        // --- Initial State ---
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
@@ -137,7 +133,7 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
                             Spacer(modifier = Modifier.width(8.dp))
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                                contentDescription = null, // Content description is on the button itself
+                                contentDescription = null,
                                 tint = Color.White
                             )
                         }
