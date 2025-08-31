@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ganita Bigyan</title>
+    <title>ଗଣିତ ବିଜ୍ଞ</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,23 +18,28 @@
     <div class="container">
         <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bigyan Logo" width="100">
         <h1>ଗଣିତ ବିଜ୍ଞ</h1>
-        <p>Attempting to open the app...</p>
+        <p id="status-message">ଆପ୍ ଖୋଲିବାକୁ ଚେଷ୍ଟା କରାଯାଉଛି...</p>
         <div class="loader"></div>
-        <p>If the app does not open, you will be redirected to the latest download.</p>
+        <p>ଯଦି ଆପ୍ ଖୋଲୁନାହିଁ, ଆପଣଙ୍କ ଡାଉନଲୋଡ୍ ଖୁବ୍ ଶୀଘ୍ର ଆରମ୍ଭ ହୋଇଯିବ</p>
         <p>
-            If the redirect doesn't work, 
-            <a id="download-link" href="#">please click here to download the app</a>.
+            ଯଦି ରିଡାଇରେକ୍ଟ କାମ କରୁନାହିଁ, 
+            <a id="download-link" href="#">ଆପ୍ ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଦୟାକରି ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ</a>.
         </p>
     </div>
 
     <script>
         // --- CONFIGURATION ---
         const GITHUB_API_URL = "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases/latest";
-        const APP_DEEP_LINK = "https://ganitabingya.netlify.app/open"; // <-- YOUR NETLIFY URL HERE
         const APK_FILE_NAME = "app-release.apk";
-        const REDIRECT_DELAY = 2500; // 2.5 seconds
+        const REDIRECT_DELAY = 1500; // 1.5 seconds
 
-        async function redirectToLatestRelease() {
+        async function fetchAndDownload() {
+            const statusMessage = document.getElementById('status-message');
+            const downloadLink = document.getElementById('download-link');
+            const loader = document.querySelector('.loader');
+
+            statusMessage.textContent = 'App not found. Finding the latest version for you...';
+            
             try {
                 const response = await fetch(GITHUB_API_URL);
                 if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
@@ -44,39 +49,34 @@
 
                 if (apkAsset) {
                     const downloadUrl = apkAsset.browser_download_url;
-                    document.getElementById('download-link').href = downloadUrl;
+                    downloadLink.href = downloadUrl;
+                    statusMessage.textContent = "Redirecting to download...";
                     window.location.replace(downloadUrl);
                 } else {
-                    console.error(`Error: Could not find '${APK_FILE_NAME}' in the latest release.`);
-                    document.querySelector('.container p').textContent = `Could not find the file '${APK_FILE_NAME}' in the latest release. Please check GitHub.`;
-                    document.querySelector('.loader').style.display = 'none';
+                    throw new Error(`'${APK_FILE_NAME}' not found in the latest release.`);
                 }
             } catch (error) {
-                console.error("Failed to fetch from GitHub API:", error);
-                document.querySelector('.container p').textContent = 'An error occurred while finding the download link.';
-                document.querySelector('.loader').style.display = 'none';
+                console.error("Download failed:", error);
+                statusMessage.textContent = 'Could not find the download link. Please check the GitHub repository.';
+                loader.style.display = 'none';
             }
         }
 
-        function attemptToOpenApp() {
-            let redirectTimer;
+        // --- MAIN LOGIC ---
+        // This timer is the key. When a user visits this page, we wait a moment.
+        // If the app is installed, the Android system will have already switched
+        // to the app, and the user will never see the page content.
+        // If the app is NOT installed, the browser stays on this page, the timer
+        // completes, and we trigger the download.
+        const fallbackTimer = setTimeout(fetchAndDownload, REDIRECT_DELAY);
 
-            function handleVisibilityChange() {
-                if (document.hidden) {
-                    clearTimeout(redirectTimer);
-                }
+        // To make this more robust, if the user switches tabs away from the page,
+        // we assume the app opened successfully and we cancel the download timer.
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                clearTimeout(fallbackTimer);
             }
-            document.addEventListener("visibilitychange", handleVisibilityChange);
-
-            window.location.href = APP_DEEP_LINK;
-
-            redirectTimer = setTimeout(() => {
-                document.removeEventListener("visibilitychange", handleVisibilityChange);
-                redirectToLatestRelease();
-            }, REDIRECT_DELAY);
-        }
-
-        window.onload = attemptToOpenApp;
+        });
     </script>
 </body>
 </html>
