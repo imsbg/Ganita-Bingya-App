@@ -62,7 +62,9 @@ fun CalculatorScreen(onNavigateBack: () -> Unit, viewModel: CalculatorViewModel 
             },
             containerColor = Color.Transparent
         ) { padding ->
-            Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)) {
                 val displayWeight by animateFloatAsState(
                     targetValue = if (viewModel.isScientificPadVisible.value) 0.6f else 1f,
                     label = "displayWeight"
@@ -74,12 +76,14 @@ fun CalculatorScreen(onNavigateBack: () -> Unit, viewModel: CalculatorViewModel 
     }
 }
 
-// FIXED: This version uses a readOnly text field and a manual tap gesture detector.
+// This composable is correct
 @Composable
 fun ColumnScope.CalculatorDisplay(viewModel: CalculatorViewModel, modifier: Modifier) {
     Box(modifier = modifier.fillMaxWidth()) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 24.dp),
             reverseLayout = true,
             horizontalAlignment = Alignment.End
         ) {
@@ -110,7 +114,8 @@ fun ColumnScope.CalculatorDisplay(viewModel: CalculatorViewModel, modifier: Modi
                                     detectTapGestures { offset ->
                                         textLayoutResult?.let { layoutResult ->
                                             // Calculate which character index corresponds to the tap coordinate
-                                            val newCursorOffset = layoutResult.getOffsetForPosition(offset)
+                                            val newCursorOffset =
+                                                layoutResult.getOffsetForPosition(offset)
                                             // Tell the ViewModel to move the cursor
                                             viewModel.moveCursor(newCursorOffset)
                                         }
@@ -139,7 +144,10 @@ fun ColumnScope.CalculatorDisplay(viewModel: CalculatorViewModel, modifier: Modi
             items(viewModel.history) { calc ->
                 Column(
                     horizontalAlignment = Alignment.End,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp).clickable { viewModel.loadFromHistory(calc) }
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 12.dp)
+                        .clickable { viewModel.loadFromHistory(calc) }
                 ) {
                     Text(
                         text = OdiaNumberUtil.toOdia(calc.expression),
@@ -161,8 +169,7 @@ fun ColumnScope.CalculatorDisplay(viewModel: CalculatorViewModel, modifier: Modi
     }
 }
 
-
-// The rest of the file is unchanged and correct.
+// This composable is correct
 @Composable
 fun CalculatorPad(viewModel: CalculatorViewModel) {
     Surface(
@@ -181,6 +188,7 @@ fun CalculatorPad(viewModel: CalculatorViewModel) {
     }
 }
 
+// FIXED: Reorganized the scientific pad for better layout and added new buttons
 @Composable
 fun ScientificPad(viewModel: CalculatorViewModel) {
     AnimatedVisibility(
@@ -190,14 +198,15 @@ fun ScientificPad(viewModel: CalculatorViewModel) {
     ) {
         val buttonHeight = 52.dp
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            // Row 1
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                val degText = OdiaNumberUtil.toOdia(if (viewModel.isDegMode.value) "DEG" else "RAD")
-                val invText = OdiaNumberUtil.toOdia("INV")
+                val degText = if (viewModel.isDegMode.value) "DEG" else "RAD"
                 CalculatorButton(degText, Modifier.weight(1f).height(buttonHeight), isToggle = true) { viewModel.onAction(CalculatorAction.ToggleDeg) }
-                CalculatorButton(invText, Modifier.weight(1f).height(buttonHeight), isToggle = viewModel.isInverse.value) { viewModel.onAction(CalculatorAction.ToggleInv) }
+                CalculatorButton("INV", Modifier.weight(1f).height(buttonHeight), isToggle = viewModel.isInverse.value) { viewModel.onAction(CalculatorAction.ToggleInv) }
+                CalculatorButton("π", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Pi) }
                 CalculatorButton("e", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.E) }
-                CalculatorButton("%", Modifier.weight(1f).height(buttonHeight), isOperator = true) { viewModel.onAction(CalculatorAction.Operator("%")) }
             }
+            // Row 2
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 val sin = if (viewModel.isInverse.value) "sin⁻¹" else "sin"
                 val cos = if (viewModel.isInverse.value) "cos⁻¹" else "cos"
@@ -205,18 +214,22 @@ fun ScientificPad(viewModel: CalculatorViewModel) {
                 CalculatorButton(sin, Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Scientific("sin")) }
                 CalculatorButton(cos, Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Scientific("cos")) }
                 CalculatorButton(tan, Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Scientific("tan")) }
+                CalculatorButton("%", Modifier.weight(1f).height(buttonHeight), isOperator = true) { viewModel.onAction(CalculatorAction.Operator("%")) }
             }
+            // Row 3
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 val ln = if (viewModel.isInverse.value) "2ˣ" else "ln"
                 val log = if (viewModel.isInverse.value) "10ˣ" else "log"
                 CalculatorButton(ln, Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Scientific("ln")) }
                 CalculatorButton(log, Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Scientific("log")) }
                 CalculatorButton("!", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Factorial) }
+                CalculatorButton("xʸ", Modifier.weight(1f).height(buttonHeight), isOperator = true) { viewModel.onAction(CalculatorAction.Power) }
             }
         }
     }
 }
 
+// This composable is correct
 @Composable
 fun NumberPad(viewModel: CalculatorViewModel) {
     val toggleIcon = if (viewModel.isScientificPadVisible.value) Icons.Default.ExpandMore else Icons.Default.KeyboardArrowUp
@@ -229,9 +242,9 @@ fun NumberPad(viewModel: CalculatorViewModel) {
 
     Column(verticalArrangement = Arrangement.spacedBy(buttonSpacing)) {
         Row(horizontalArrangement = Arrangement.spacedBy(buttonSpacing)) {
-            CalculatorButton("AC", Modifier.weight(1f).height(buttonHeight), isClear = true) { viewModel.onAction(CalculatorAction.Clear) }
+            CalculatorButton("ସଫା", Modifier.weight(1f).height(buttonHeight), isClear = true) { viewModel.onAction(CalculatorAction.Clear) }
             CalculatorButton("()", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Parentheses) }
-            CalculatorButton("del", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Delete) }
+            CalculatorButton("⌫", Modifier.weight(1f).height(buttonHeight)) { viewModel.onAction(CalculatorAction.Delete) }
             IconButton(
                 onClick = { viewModel.toggleScientificPad() },
                 modifier = Modifier.weight(1f).height(buttonHeight)
@@ -258,7 +271,7 @@ fun NumberPad(viewModel: CalculatorViewModel) {
     }
 }
 
-
+// This composable is correct
 @Composable
 fun RowScope.CalculatorButton(
     symbol: String,

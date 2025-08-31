@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import org.mariuszgromada.math.mxparser.Expression
 import org.mariuszgromada.math.mxparser.mXparser
 
-// Data and Sealed classes remain the same...
 data class CalculationHistory(val expression: String, val result: String)
+
 sealed class CalculatorAction {
     data class Number(val number: String) : CalculatorAction()
     data class Operator(val symbol: String) : CalculatorAction()
@@ -45,7 +45,6 @@ class CalculatorViewModel : ViewModel() {
     var isDegMode = mutableStateOf(true)
         private set
 
-    // NEW: This function lets the UI manually set the cursor position.
     fun moveCursor(offset: Int) {
         expression.value = expression.value.copy(
             selection = TextRange(offset.coerceIn(0, expression.value.text.length))
@@ -55,7 +54,14 @@ class CalculatorViewModel : ViewModel() {
     fun onAction(action: CalculatorAction) {
         when (action) {
             is CalculatorAction.Number -> insertText(action.number)
-            is CalculatorAction.Operator -> enterOperator(action.symbol)
+            is CalculatorAction.Operator -> {
+                // FIXED: Route '%' to the correct new function
+                if (action.symbol == "%") {
+                    performPercentageCalculation()
+                } else {
+                    enterOperator(action.symbol)
+                }
+            }
             is CalculatorAction.Scientific -> enterScientific(action.function)
             is CalculatorAction.Decimal -> enterDecimal()
             is CalculatorAction.Clear -> {
@@ -71,6 +77,54 @@ class CalculatorViewModel : ViewModel() {
             is CalculatorAction.Factorial -> enterOperator("!")
             is CalculatorAction.ToggleInv -> isInverse.value = !isInverse.value
             is CalculatorAction.ToggleDeg -> isDegMode.value = !isDegMode.value
+        }
+    }
+
+    // NEW: A completely new, robust function to handle percentage calculations correctly.
+    private fun performPercentageCalculation() {
+        val currentText = expression.value.text.trim()
+        if (currentText.isEmpty() || !currentText.last().isDigit() && currentText.last() != '.') return
+
+        // Find the last operator (+, -, ×, ÷) to understand the context
+        val lastOperatorIndex = currentText.indexOfLast { it in listOf('+', '-', '×', '÷') }
+
+        // Case 1: No operator found. It's just a number like "50". Calculate 50/100.
+        if (lastOperatorIndex == -1) {
+            val number = currentText.toDoubleOrNull() ?: return
+            val result = number / 100.0
+            val resultStr = formatResult(result)
+            expression.value = TextFieldValue(resultStr, TextRange(resultStr.length))
+            liveResult.value = ""
+            return
+        }
+
+        // Case 2: An operator was found. Expression is like "100-10".
+        val baseExpressionStr = currentText.substring(0, lastOperatorIndex)
+        val lastNumberStr = currentText.substring(lastOperatorIndex + 1)
+        val operator = currentText[lastOperatorIndex]
+
+        val lastNum = lastNumberStr.toDoubleOrNull() ?: return
+        val baseExpr = Expression(formatExpressionForMxParser(baseExpressionStr))
+
+        if (baseExpr.checkSyntax()) {
+            val baseValue = baseExpr.calculate()
+            if (!baseValue.isNaN()) {
+                val finalResult = when (operator) {
+                    // For + and -, calculate B% of A and add/subtract
+                    '+' -> baseValue + (baseValue * lastNum / 100.0)
+                    '-' -> baseValue - (baseValue * lastNum / 100.0)
+                    // For × and ÷, just use B/100
+                    '×' -> baseValue * (lastNum / 100.0)
+                    '÷' -> baseValue / (lastNum / 100.0)
+                    else -> return // Should not happen
+                }
+                val resultStr = formatResult(finalResult)
+                // When % is pressed, it's a final action, so we replace the whole expression
+                // with the result, just like pressing the '=' button.
+                _history.add(0, CalculationHistory("$currentText%", resultStr))
+                expression.value = TextFieldValue(resultStr, TextRange(resultStr.length))
+                liveResult.value = "" // Clear the live preview
+            }
         }
     }
 
@@ -96,26 +150,39 @@ class CalculatorViewModel : ViewModel() {
         updateLiveResult()
     }
 
-    // ... (All other private helper functions remain the same)
     private fun enterScientific(function: String) {
         val funcName = if (isInverse.value) {
             when (function) {
                 "sin" -> "asin"
                 "cos" -> "acos"
                 "tan" -> "atan"
-                "ln" -> "log2"
+                "ln" -> "2^"
+                "log" -> "10^"
+                else -> function
+            }
+        } else {
+            when (function) {
                 "log" -> "log10"
                 else -> function
             }
-        } else { function }
-        insertText("$funcName(")
+        }
+
+        if (funcName.endsWith("sin") || funcName.endsWith("cos") || funcName.endsWith("tan") || funcName == "log10" || funcName == "ln") {
+            insertText("$funcName(")
+        } else {
+            insertText(funcName)
+        }
     }
+
     private fun enterOperator(symbol: String) {
+        val currentText = expression.value.text
         val selectionStart = expression.value.selection.start
+        if (currentText.isEmpty() && symbol != "-") return
+
         if (selectionStart > 0) {
-            val charBefore = expression.value.text[selectionStart - 1]
+            val charBefore = currentText[selectionStart - 1]
             if (charBefore in listOf('+', '-', '×', '÷', '^')) {
-                val newText = expression.value.text.substring(0, selectionStart - 1) + symbol + expression.value.text.substring(selectionStart)
+                val newText = currentText.substring(0, selectionStart - 1) + symbol + currentText.substring(selectionStart)
                 expression.value = TextFieldValue(newText, TextRange(selectionStart))
                 updateLiveResult()
                 return
@@ -123,6 +190,7 @@ class CalculatorViewModel : ViewModel() {
         }
         insertText(symbol)
     }
+
     private fun handleParentheses() {
         val currentText = expression.value.text
         val selection = expression.value.selection
@@ -133,13 +201,17 @@ class CalculatorViewModel : ViewModel() {
             insertText(")")
         } else { insertText("(") }
     }
+
     private fun enterDecimal() {
         val currentTextBeforeCursor = expression.value.text.substring(0, expression.value.selection.start)
         val lastNumberSegment = currentTextBeforeCursor.split('+', '-', '×', '÷', '(', ')', '^', '!').last()
-        if (!lastNumberSegment.contains('.')) {
+        if (lastNumberSegment.isEmpty()) {
+            insertText("0.")
+        } else if (!lastNumberSegment.contains('.')) {
             insertText(".")
         }
     }
+
     private fun deleteLastCharacter() {
         val selection = expression.value.selection
         val currentText = expression.value.text
@@ -154,10 +226,12 @@ class CalculatorViewModel : ViewModel() {
         }
         updateLiveResult()
     }
+
     private fun formatExpressionForMxParser(expr: String): String { return expr.replace("×", "*").replace("÷", "/") }
+
     private fun updateLiveResult() {
         var exprToCalculate = expression.value.text
-        if (exprToCalculate.isNotEmpty() && exprToCalculate.last() in listOf('+', '-', '×', '÷', '^')) {
+        if (exprToCalculate.isNotEmpty() && exprToCalculate.last() in listOf('+', '-', '×', '÷', '^', '.')) {
             exprToCalculate = exprToCalculate.dropLast(1)
         }
         val exprString = formatExpressionForMxParser(exprToCalculate)
@@ -171,14 +245,21 @@ class CalculatorViewModel : ViewModel() {
             liveResult.value = ""
         }
     }
+
     private fun performCalculation() {
+        updateLiveResult()
         if (liveResult.value.isEmpty() || liveResult.value == expression.value.text) return
         _history.add(0, CalculationHistory(expression.value.text, liveResult.value))
         val newText = liveResult.value
         expression.value = TextFieldValue(newText, TextRange(newText.length))
         liveResult.value = ""
     }
+
     private fun formatResult(result: Double): String {
-        return if (result % 1.0 == 0.0) { result.toLong().toString() } else { String.format("%.7f", result).trimEnd('0').trimEnd('.') }
+        return if (result % 1.0 == 0.0) {
+            result.toLong().toString()
+        } else {
+            result.toString().removeSuffix(".0")
+        }
     }
 }

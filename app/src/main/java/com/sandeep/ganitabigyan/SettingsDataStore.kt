@@ -22,10 +22,12 @@ class SettingsDataStore(context: Context) {
         val KEY_GAME_TYPE = stringPreferencesKey("game_type")
         val KEY_DIFFICULTY_LEVEL = stringPreferencesKey("difficulty_level")
         val KEY_AUTO_SCROLL = booleanPreferencesKey("auto_scroll_enabled")
-        // NEW SETTINGS
         val KEY_VIBRATION_ENABLED = booleanPreferencesKey("vibration_enabled")
         val KEY_MORNING_REMINDER = stringPreferencesKey("morning_reminder_time")
         val KEY_EVENING_REMINDER = stringPreferencesKey("evening_reminder_time")
+
+        // ADD THIS KEY FOR THE WELCOME SCREEN
+        val KEY_WELCOME_COMPLETED = booleanPreferencesKey("welcome_completed")
     }
 
     val gameType: Flow<String> = appContext.dataStore.data.map { preferences ->
@@ -40,18 +42,23 @@ class SettingsDataStore(context: Context) {
         preferences[KEY_AUTO_SCROLL] ?: false
     }
 
-    // NEW FLOWS
     val isVibrationEnabled: Flow<Boolean> = appContext.dataStore.data.map { preferences ->
-        preferences[KEY_VIBRATION_ENABLED] ?: true // Default to ON
+        preferences[KEY_VIBRATION_ENABLED] ?: true
     }
 
     val morningReminderTime: Flow<String> = appContext.dataStore.data.map { preferences ->
-        preferences[KEY_MORNING_REMINDER] ?: "08:00" // Default to 8 AM
+        preferences[KEY_MORNING_REMINDER] ?: "08:00"
     }
 
     val eveningReminderTime: Flow<String> = appContext.dataStore.data.map { preferences ->
-        preferences[KEY_EVENING_REMINDER] ?: "20:00" // Default to 8 PM
+        preferences[KEY_EVENING_REMINDER] ?: "20:00"
     }
+
+    // ADD THIS FLOW TO READ THE WELCOME SCREEN STATUS
+    val hasCompletedWelcome: Flow<Boolean> = appContext.dataStore.data.map { preferences ->
+        preferences[KEY_WELCOME_COMPLETED] ?: false // Default to false (not completed)
+    }
+
 
     suspend fun saveSettings(gameType: String, difficultyLevel: String) {
         appContext.dataStore.edit { preferences ->
@@ -66,7 +73,6 @@ class SettingsDataStore(context: Context) {
         }
     }
 
-    // NEW SAVE FUNCTIONS
     suspend fun setVibrationEnabled(isEnabled: Boolean) {
         appContext.dataStore.edit { preferences ->
             preferences[KEY_VIBRATION_ENABLED] = isEnabled
@@ -82,6 +88,13 @@ class SettingsDataStore(context: Context) {
     suspend fun setEveningReminderTime(time: String) {
         appContext.dataStore.edit { preferences ->
             preferences[KEY_EVENING_REMINDER] = time
+        }
+    }
+
+    // ADD THIS FUNCTION TO SAVE THE WELCOME SCREEN STATUS
+    suspend fun setWelcomeCompleted() {
+        appContext.dataStore.edit { preferences ->
+            preferences[KEY_WELCOME_COMPLETED] = true
         }
     }
 }

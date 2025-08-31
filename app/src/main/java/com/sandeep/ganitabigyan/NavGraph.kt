@@ -29,14 +29,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 
 object AppDestinations {
     const val SPLASH_ROUTE = "splash"
+    const val WELCOME_ROUTE = "welcome" // <<< NEW: Add welcome route
     const val HOME_ROUTE = "home"
     const val GAME_ROUTE = "game"
     const val ABOUT_ROUTE = "about"
     const val SCORE_HISTORY_ROUTE = "score_history"
-    const val SETTINGS_ROUTE = "settings" // NEW: Settings route
+    const val SETTINGS_ROUTE = "settings"
     const val CALCULATOR_ROUTE = "calculator"
     const val PANIKIA_LIST_ROUTE = "panikia_list"
     const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}"
@@ -58,22 +60,19 @@ fun AppNavHost(
     ) {
 
         composable(AppDestinations.SPLASH_ROUTE) {
-            val context = LocalContext.current
-            SplashScreen(onTimeout = {
-                val intent = (context as? Activity)?.intent
-                val data = intent?.data
+            SplashScreen(navController = navController) // <<< CHANGE: Pass NavController
+        }
 
-                if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) {
-                    navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) {
-                        popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
-                    }
-                } else {
+        // <<< NEW: Add composable for the WelcomeScreen
+        composable(AppDestinations.WELCOME_ROUTE) {
+            WelcomeScreen(
+                onStartClick = {
+                    // Navigate to home and clear the backstack
                     navController.navigate(AppDestinations.HOME_ROUTE) {
-                        popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
+                        popUpTo(AppDestinations.WELCOME_ROUTE) { inclusive = true }
                     }
                 }
-                intent?.data = null
-            })
+            )
         }
 
         composable(route = AppDestinations.HOME_ROUTE) {
@@ -92,7 +91,6 @@ fun AppNavHost(
             ScoreHistoryScreen(onNavigateBack = { navController.popBackStack() })
         }
 
-        // NEW: Add the composable for the SettingsScreen
         composable(route = AppDestinations.SETTINGS_ROUTE) {
             SettingsScreen(navController = navController)
         }
@@ -142,12 +140,16 @@ fun AppNavHost(
     }
 }
 
-// ... (SplashScreen composable is unchanged) ...
+
+// <<< CHANGE: Updated SplashScreen to handle navigation logic
 @Composable
-fun SplashScreen(onTimeout: () -> Unit) {
+fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    val dataStore = remember { SettingsDataStore(context) }
 
     LaunchedEffect(Unit) {
+        // Show splash texts
         delay(200)
         currentText = "ଜୟ ଜଗନ୍ନାଥ"
         delay(2500)
@@ -155,7 +157,31 @@ fun SplashScreen(onTimeout: () -> Unit) {
         delay(2500)
         currentText = ""
         delay(500)
-        onTimeout()
+
+        // Check if welcome is completed
+        val hasCompletedWelcome = dataStore.hasCompletedWelcome.first()
+
+        // Check for file intents first (your existing logic)
+        val intent = (context as? Activity)?.intent
+        val data = intent?.data
+        if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) {
+            navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) {
+                popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
+            }
+            intent?.data = null
+            return@LaunchedEffect // Stop further navigation
+        }
+
+        // Decide where to go next
+        val destination = if (hasCompletedWelcome) {
+            AppDestinations.HOME_ROUTE
+        } else {
+            AppDestinations.WELCOME_ROUTE
+        }
+
+        navController.navigate(destination) {
+            popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
+        }
     }
 
     Box(
