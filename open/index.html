@@ -2,26 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Opening Ganita Bingya</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/logo.png">
-<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/logo.png">
-
-    <!-- This script attempts the redirect immediately -->
-    <script>
-        // Use window.location.replace so the user can't press "back" to get to this blank page.
-        // It immediately replaces this page in the browser history with the download link.
-        window.location.replace("https://github.com/imsbg/Ganita-Bingya-App/releases/download/v2.0.1/app-release.apk");
-    </script>
+    <title>Ganita Bigyan</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; background-color: #F8F7F2; color: #5A664E; text-align: center; padding-top: 50px; }
-        a { color: #8C9A7A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; color: #374151; text-align: center; padding: 50px 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .loader { border: 4px solid #e5e7eb; border-top: 4px solid #4f46e5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        a { color: #4f46e5; text-decoration: none; font-weight: bold; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <p>If the app did not open, you will be redirected to the download page shortly.</p>
-    <p>
-        If the download doesn't start automatically, 
-        <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v2.0.1/app-release.apk">please click here to download the app</a>.
-    </p>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bigyan Logo" width="100">
+        <h1>ଗଣିତ ବିଜ୍ଞାନ</h1>
+        <p>Attempting to open the app...</p>
+        <div class="loader"></div>
+        <p>If the app does not open, you will be redirected to the latest download.</p>
+        <p>
+            If the redirect doesn't work, 
+            <a id="download-link" href="#">please click here to download the app</a>.
+        </p>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const GITHUB_API_URL = "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases/latest";
+        const APP_DEEP_LINK = "https://ganitabingya.netlify.app/open"; // <-- YOUR NETLIFY URL HERE
+        const APK_FILE_NAME = "app-release.apk";
+        const REDIRECT_DELAY = 2500; // 2.5 seconds
+
+        async function redirectToLatestRelease() {
+            try {
+                const response = await fetch(GITHUB_API_URL);
+                if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
+                
+                const data = await response.json();
+                const apkAsset = data.assets.find(asset => asset.name === APK_FILE_NAME);
+
+                if (apkAsset) {
+                    const downloadUrl = apkAsset.browser_download_url;
+                    document.getElementById('download-link').href = downloadUrl;
+                    window.location.replace(downloadUrl);
+                } else {
+                    console.error(`Error: Could not find '${APK_FILE_NAME}' in the latest release.`);
+                    document.querySelector('.container p').textContent = `Could not find the file '${APK_FILE_NAME}' in the latest release. Please check GitHub.`;
+                    document.querySelector('.loader').style.display = 'none';
+                }
+            } catch (error) {
+                console.error("Failed to fetch from GitHub API:", error);
+                document.querySelector('.container p').textContent = 'An error occurred while finding the download link.';
+                document.querySelector('.loader').style.display = 'none';
+            }
+        }
+
+        function attemptToOpenApp() {
+            let redirectTimer;
+
+            function handleVisibilityChange() {
+                if (document.hidden) {
+                    clearTimeout(redirectTimer);
+                }
+            }
+            document.addEventListener("visibilitychange", handleVisibilityChange);
+
+            window.location.href = APP_DEEP_LINK;
+
+            redirectTimer = setTimeout(() => {
+                document.removeEventListener("visibilitychange", handleVisibilityChange);
+                redirectToLatestRelease();
+            }, REDIRECT_DELAY);
+        }
+
+        window.onload = attemptToOpenApp;
+    </script>
 </body>
 </html>
