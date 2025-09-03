@@ -1,3 +1,6 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/DrawingHistoryScreen.kt
+// VERSION: FINAL - Fully multilingual
+
 package com.sandeep.ganitabigyan
 
 import android.graphics.BitmapFactory
@@ -16,9 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.sandeep.ganitabigyan.utils.toOdia
+// <<< CHANGE 1: Import the new, correct function >>>
+import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 import java.io.File
 
 data class SavedDrawing(val file: File, val number: Int)
@@ -28,6 +34,9 @@ data class SavedDrawing(val file: File, val number: Int)
 fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
     var savedDrawings by remember { mutableStateOf<List<SavedDrawing>>(emptyList()) }
     var showDeleteDialog by remember { mutableStateOf(false) }
+
+    // <<< CHANGE 2: Get the context >>>
+    val context = LocalContext.current
 
     fun loadDrawings() {
         val picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
@@ -52,8 +61,8 @@ fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
     if (showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
-            title = { Text("ସବୁ ଡିଲିଟ୍ କରନ୍ତୁ?") },
-            text = { Text("ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ସମସ୍ତ ସେଭ୍ ହୋଇଥିବା ଡ୍ରଇଂ ଡିଲିଟ୍ କରିବାକୁ ଚାହୁଁଛନ୍ତି?") },
+            title = { Text(stringResource(R.string.drawing_history_delete_dialog_title)) },
+            text = { Text(stringResource(R.string.drawing_history_delete_dialog_message)) },
             confirmButton = {
                 Button(
                     onClick = {
@@ -66,10 +75,10 @@ fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
                         showDeleteDialog = false
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-                ) { Text("ହଁ, ଡିଲିଟ୍ କରନ୍ତୁ") }
+                ) { Text(stringResource(R.string.drawing_history_delete_confirm)) }
             },
             dismissButton = {
-                Button(onClick = { showDeleteDialog = false }) { Text("ନା") }
+                Button(onClick = { showDeleteDialog = false }) { Text(stringResource(R.string.drawing_history_delete_cancel)) }
             }
         )
     }
@@ -77,11 +86,17 @@ fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("ଡ୍ରଇଂ ଇତିହାସ") },
-                navigationIcon = { IconButton(onClick = onNavigateBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back") } },
+                title = { Text(stringResource(R.string.drawing_history_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onNavigateBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
+                    }
+                },
                 actions = {
                     if (savedDrawings.isNotEmpty()) {
-                        IconButton(onClick = { showDeleteDialog = true }) { Icon(Icons.Default.DeleteForever, contentDescription = "Delete All") }
+                        IconButton(onClick = { showDeleteDialog = true }) {
+                            Icon(Icons.Default.DeleteForever, contentDescription = stringResource(R.string.drawing_history_delete_all))
+                        }
                     }
                 }
             )
@@ -89,7 +104,7 @@ fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
     ) { paddingValues ->
         if (savedDrawings.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                Text("କୌଣସି ଡ୍ରଇଂ ସେଭ୍ ହୋଇନାହିଁ")
+                Text(stringResource(R.string.drawing_history_empty))
             }
         } else {
             LazyVerticalGrid(
@@ -104,12 +119,13 @@ fun DrawingHistoryScreen(onNavigateBack: () -> Unit) {
                             val bitmap = BitmapFactory.decodeFile(drawing.file.absolutePath)
                             Image(
                                 bitmap = bitmap.asImageBitmap(),
-                                contentDescription = "Saved Drawing",
+                                contentDescription = stringResource(R.string.drawing_history_saved_drawing_desc),
                                 modifier = Modifier.fillMaxWidth().aspectRatio(1f),
                                 contentScale = ContentScale.Crop
                             )
                             Text(
-                                text = "ପ୍ରଶ୍ନ: ${drawing.number.toOdia()}",
+                                // <<< CHANGE 3: Use the new multilingual function >>>
+                                text = stringResource(R.string.drawing_history_question_label, drawing.number.toLocaleNumerals(context)),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(8.dp)

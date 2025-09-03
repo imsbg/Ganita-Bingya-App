@@ -1,19 +1,14 @@
-// SettingsViewModel.kt
-
 package com.sandeep.ganitabigyan
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application) {
     private val dataStore = SettingsDataStore(application)
 
-    // Expose the settings as StateFlows so the UI can observe them
     val isVibrationEnabled: StateFlow<Boolean> = dataStore.isVibrationEnabled
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
@@ -22,6 +17,9 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     val eveningReminderTime: StateFlow<String> = dataStore.eveningReminderTime
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "20:00")
+
+    val language: StateFlow<String> = dataStore.language
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "system")
 
     fun setVibrationEnabled(isEnabled: Boolean) {
         viewModelScope.launch {
@@ -32,14 +30,24 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     fun setMorningReminderTime(time: String) {
         viewModelScope.launch {
             dataStore.setMorningReminderTime(time)
-            scheduleReminders(getApplication()) // Reschedule when time changes
         }
     }
 
     fun setEveningReminderTime(time: String) {
         viewModelScope.launch {
             dataStore.setEveningReminderTime(time)
-            scheduleReminders(getApplication()) // Reschedule when time changes
+        }
+    }
+
+    fun setWelcomeCompleted() {
+        viewModelScope.launch {
+            dataStore.setWelcomeCompleted()
+        }
+    }
+
+    fun saveLanguage(languageCode: String) {
+        viewModelScope.launch {
+            dataStore.saveLanguage(languageCode)
         }
     }
 }

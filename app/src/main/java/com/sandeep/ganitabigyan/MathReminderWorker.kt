@@ -1,3 +1,5 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/MathReminderWorker.kt
+
 package com.sandeep.ganitabigyan
 
 import android.app.NotificationChannel
@@ -24,12 +26,13 @@ class MathReminderWorker(
         val channelId = "math_reminder_channel"
 
         // Create notification channel for Android O+
+        // These names are shown to the user in the phone's settings
         val channel = NotificationChannel(
             channelId,
-            "Math Reminders",
+            context.getString(R.string.reminder_channel_name),
             NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
-            description = "Channel for daily math practice reminders"
+            description = context.getString(R.string.reminder_channel_description)
         }
         notificationManager.createNotificationChannel(channel)
 
@@ -43,8 +46,8 @@ class MathReminderWorker(
 
         val notification = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground) // Use your app's icon
-            .setContentTitle("ଗଣିତ ବିଜ୍ଞ")
-            .setContentText("ଆଜି ଗଣିତ ପଢିବ ନା ନାହିଁ? ମୁଁ ଅପେକ୍ଷା କରିଛି")
+            .setContentTitle(context.getString(R.string.reminder_notification_title))
+            .setContentText(context.getString(R.string.reminder_notification_text))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

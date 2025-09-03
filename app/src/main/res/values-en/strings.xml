@@ -1,0 +1,384 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Ganita Bingya</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_text_1">Jay Jagannath</string>
+    <string name="splash_text_2">Welcome to Ganita Bingya</string>
+
+    <!-- Universal -->
+    <string name="back_button_description">Back</string>
+    <string name="ok_button">OK</string>
+    <string name="app_logo_description">App Logo</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">Ganita Bingya</string>
+    <string name="settings_button_description">Settings</string>
+    <string name="menu_start_game">Start Game</string>
+    <string name="menu_start_game_desc">5+4, 4-2</string>
+    <string name="menu_progress">Your Progress</string>
+    <string name="menu_progress_desc">How many correct? How many wrong?</string>
+    <string name="menu_panikia">Multiplication Tables</string>
+    <string name="menu_panikia_desc">Two ones are two</string>
+    <string name="menu_numbers">Numbers</string>
+    <string name="menu_numbers_desc">0 1 2 3 4 5 6 7 8 9</string>
+    <string name="menu_drawing_pad">Drawing Pad</string>
+    <string name="menu_calculator">Calculator</string>
+
+    <!-- Game Screen & ViewModel -->
+    <string name="game_title">Ganita Bingya</string>
+    <string name="game_settings_button_text">Type: %1$s | Level: %2$s</string>
+    <string name="game_go_to_current_question">Go to current question</string>
+    <string name="game_auto_scroll">Auto Scroll</string>
+    <string name="game_auto_scroll_icon_desc">Auto Scroll Icon</string>
+    <string name="game_show_solution">Show Solution</string>
+    <string name="game_top_bar_stop">Stop</string>
+    <string name="game_top_bar_score_info">Correct: %1$s | Incorrect: %2$s</string>
+    <string name="game_settings_dialog_title">Change Settings</string>
+    <string name="game_settings_dialog_type">Type</string>
+    <string name="game_settings_dialog_level">Level</string>
+    <string name="game_settings_dialog_cancel">Cancel</string>
+    <string name="game_summary_dialog_title">Time\'s Up!</string>
+    <string name="game_summary_dialog_your_score">Your Score:</string>
+    <string name="game_summary_dialog_play_again">Play Again</string>
+    <string name="game_summary_dialog_stop_challenge">Stop Challenge</string>
+    <string name="game_solution_dialog_title">Solution</string>
+    <string name="game_solution_dialog_close">Close</string>
+    <string name="feedback_correct">Wow! Correct answer</string>
+    <string name="feedback_streak">%1$s correct answers in a row!</string>
+    <string name="feedback_incorrect">Wrong answer. The correct answer is: %1$s</string>
+    <string name="feedback_skipped">Skipped %1$s questions</string>
+    <string name="qna_log_question">Question</string>
+    <string name="qna_log_your_answer">Your Answer</string>
+    <string name="qna_log_correct_answer">Correct Answer</string>
+    <string name="qna_log_result">Result</string>
+    <string name="qna_log_correct">Correct</string>
+    <string name="qna_log_incorrect">Incorrect</string>
+    <string name="qna_log_skipped">Skipped</string>
+    <string name="question_find_correct_equation">Find the correct equation for %1$s</string>
+
+    <string-array name="motivational_quotes">
+        <item>You\'re doing great, keep it up!</item>
+        <item>Answer every question</item>
+        <item>Math is a fun game</item>
+        <item>You are becoming a mathematician!</item>
+        <item>Practice is the key to success.</item>
+        <item>Jay Jagannath</item>
+    </string-array>
+    <string name="game_type_addition">Addition</string>
+    <string name="game_type_subtraction">Subtraction</string>
+    <string name="game_type_multiplication">Multiplication</string>
+    <string name="game_type_division">Division</string>
+    <string name="game_type_mixed">Mixed</string>
+    <string name="game_type_find_equation">Find Equation</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="difficulty_very_hard">Very Hard</string>
+
+    <!-- Panikia Screen -->
+    <string name="panikia_title">Multiplication Tables</string>
+    <string name="panikia_title_for_table">Table of %1$s</string>
+    <string-array name="panikia_terms">
+        <item>ones are</item>
+        <item>twos are</item>
+        <item>threes are</item>
+        <item>fours are</item>
+        <item>fives are</item>
+        <item>sixes are</item>
+        <item>sevens are</item>
+        <item>eights are</item>
+        <item>nines are</item>
+        <item>tens are</item>
+    </string-array>
+    <string name="swipe_up_hint">Scroll up</string>
+    <!-- Score & History Screens -->
+    <string name="score_history_title">Your Progress</string>
+    <string name="score_history_tab_lifetime">Lifetime Score</string>
+    <string name="score_history_tab_qna">Question History</string>
+    <string name="score_total_results">Total Results</string>
+    <string name="score_correct">Correct</string>
+    <string name="score_incorrect">Incorrect</string>
+
+    <!-- Stable keys (copy-paste, do not translate) -->
+    <string name="qna_log_question_key" translatable="false">Question</string>
+    <string name="qna_log_your_answer_key" translatable="false">Your Answer</string>
+    <string name="qna_log_correct_answer_key" translatable="false">Correct Answer</string>
+    <string name="qna_log_result_key" translatable="false">Result</string>
+    <string name="qna_log_result_correct_id" translatable="false">correct_id</string>
+    <string name="qna_log_result_incorrect_id" translatable="false">incorrect_id</string>
+
+    <!-- Display text -->
+    <string name="history_question_label">Question: %1$s</string>
+    <string name="history_your_answer">Your Answer: %1$s</string>
+    <string name="history_correct_answer">Correct Answer: %1$s</string>
+    <string name="history_result">Result: %1$s</string>
+    <string name="history_no_history_found">No History Found</string>
+
+    <!-- Number Screen -->
+    <string name="numbers_screen_title">Numbers</string>
+
+    <!-- Drawing Screens -->
+    <string name="drawing_pad_title">Drawing Pad</string>
+    <string name="drawing_history_button">History</string>
+    <string name="drawing_mode_label">Select Mode</string>
+    <string name="drawing_mode_serial">Serial</string>
+    <string name="drawing_mode_random_double">Two-digit number</string>
+    <string name="drawing_mode_random_triple">Three-digit number</string>
+    <string name="drawing_undo_button">Undo</string>
+    <string name="drawing_redo_button">Redo</string>
+    <string name="drawing_clear_button">Clear All</string>
+    <string name="drawing_next_button">Next</string>
+    <string name="drawing_history_title">Drawing History</string>
+    <string name="drawing_history_delete_all">Delete All</string>
+    <string name="drawing_history_delete_dialog_title">Delete All?</string>
+    <string name="drawing_history_delete_dialog_message">Are you sure you want to delete all saved drawings?</string>
+    <string name="drawing_history_delete_confirm">Yes, delete</string>
+    <string name="drawing_history_delete_cancel">No</string>
+    <string name="drawing_history_empty">No drawings saved</string>
+    <string name="drawing_history_saved_drawing_desc">Saved Drawings</string>
+    <string name="drawing_history_question_label">Question: %1$s</string>
+
+    <!-- Calculator Screen -->
+    <string name="calculator_title">Calculator</string>
+    <string name="calculator_clear_button">Clear</string>
+    <string name="calculator_backspace_icon">⌫</string>
+    <string name="calculator_toggle_scientific_pad">Toggle scientific pad</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_vibration_title">Vibration</string>
+    <string name="settings_vibration_desc">Vibrate on wrong answer</string>
+    <string name="settings_reminders_title">Reminders</string>
+    <string name="settings_morning_reminder">Morning Reminder</string>
+    <string name="settings_evening_reminder">Evening Reminder</string>
+    <string name="settings_select_time">Select Time</string>
+    <string name="settings_reminder_set_for">Reminder set for %1$s</string>
+
+    <!-- About Screen -->
+    <string name="about_screen_title">About</string>
+    <string name="members_and_contributors">Members and Contributors</string>
+    <string name="sandeep_biswal_name">Sandeep Biswal G</string>
+    <string name="sandeep_biswal_role">Admin,Concept, Design &amp; Language (Odia, Hindi &amp; Eng)</string>
+    <string name="akash_t_name">Akash T.</string>
+    <string name="akash_t_role">Tamil Language Translator</string>
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
+    <string name="support_development">Support and Development</string>
+    <string name="support_github">GitHub</string>
+    <string name="support_github_desc">Fork this project on GitHub</string>
+    <string name="support_translate">Translate</string>
+    <string name="support_translate_desc">Help translate the app into your language</string>
+    <string name="support_donate">Donate</string>
+    <string name="support_donate_desc">If you think I deserve to be paid for my work</string>
+    <string name="support_report_bug">Report a Bug</string>
+    <string name="support_report_bug_desc">Found any issues? Let us know</string>
+    <string name="support_share">Share</string>
+    <string name="support_share_desc">Share this app with your friends and family</string>
+    <string name="share_message">Download and play Ganita Bingya: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="social">Social</string>
+    <string name="social_website">Website</string>
+    <string name="social_website_desc">Visit our website</string>
+    <string name="social_instagram">Follow me on Instagram</string>
+    <string name="social_instagram_desc">Stay updated with the latest news</string>
+    <string name="social_twitter">Follow me on X (Twitter)</string>
+    <string name="social_twitter_desc">Follow for thoughts and updates</string>
+    <string name="social_telegram">Join on Telegram</string>
+    <string name="social_telegram_desc">Join the group to discuss bugs and features</string>
+    <string name="other">Other</string>
+    <string name="other_changelog">Changelog</string>
+    <string name="other_changelog_desc">See what\'s new</string>
+    <string name="other_check_for_updates">Check for updates</string>
+    <string name="other_version">Version</string>
+    <string name="changelog_dialog_title">What\'s New</string>
+    <string name="changelog_loading">Loading changelog...</string>
+    <string name="changelog_error">Failed to load changelog. Please check your connection.</string>
+    <string name="other_language">Language</string>
+    <string name="other_language_desc">Change app language</string>
+    <string name="language_dialog_title">Select Language</string>
+    <string name="made_with_love">Made in India with ❤️</string>
+    <string name="download_notification_title">Downloading Ganita Bingya v%1$s</string>
+    <string name="download_notification_description">Downloading new update...</string>
+    <string name="download_started">Download starting...</string>
+    <string name="download_failed">Download failed: %1$s</string>
+    <string name="update_available_title">New Update Available</string>
+    <string name="update_available_message">A new version (v%1$s) is available. You are currently using (v%2$s).</string>
+    <string name="download_button">Download</string>
+    <string name="later_button">Later</string>
+    <string name="permission_request_toast">Please allow app installation from this source.</string>
+    <string name="up_to_date_title">App is Up-to-Date</string>
+    <string name="up_to_date_message">You are using the latest version of Ganita Bingya.</string>
+    <string name="error_title">Error</string>
+    <string name="error_check_connection">Unable to check for updates, please check your internet connection</string>
+
+    <!-- Crash Handler -->
+    <string name="crash_screen_app_name">Ganita Bingya</string>
+    <string name="crash_screen_oops_title">Oops, something went wrong</string>
+    <string name="crash_screen_oops_message">The app has crashed. You can send this error report to the developer.</string>
+    <string name="crash_screen_copy_report">Copy Report</string>
+    <string name="crash_screen_close_app">Close App</string>
+    <string name="crash_report_copied">Crash report copied to clipboard.</string>
+    <string name="crash_no_details">No error details available.</string>
+
+    <!-- Download Receiver -->
+    <string name="failed_to_start_installer">Failed to start installer.</string>
+    <string name="download_failed_generic">Download failed.</string>
+
+    <!-- Math Reminder -->
+    <string name="reminder_channel_name">GB Math Reminders</string>
+    <string name="reminder_channel_description">Daily notification service</string>
+    <string name="reminder_notification_title">Ganita Bingya</string>
+    <string name="reminder_notification_text">Are you going to study math today? I\'m waiting</string>
+
+    <!-- SettingsScreen.kt -->
+    <string name="settings_back_button_desc">Back</string>
+
+    <string name="settings_category_general">General</string>
+    <string name="settings_vibration_description">Feedback for wrong answer</string>
+
+    <string name="settings_category_reminders">Reminders</string>
+    <string name="settings_morning_reminder_title">Morning Reminder</string>
+    <string name="settings_evening_reminder_title">Evening Reminder</string>
+
+    <string name="settings_category_other">Other</string>
+    <string name="settings_about_app_title">About App</string>
+    <string name="settings_about_app_description">Version and information</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <!-- Toasts -->
+    <string name="toast_morning_reminder_set">Morning reminder set</string>
+    <string name="toast_evening_reminder_set">Evening reminder set</string>
+
+    <!-- New strings for WelcomeScreen -->
+    <string name="welcome_title">Welcome</string>
+    <string name="choose_language_prompt">Choose your language</string>
+    <string name="button_continue">Continue</string>
+
+    <!-- Language Names -->
+    <string name="language_system_default">System Default</string>
+    <string name="language_odia">ଓଡ଼ିଆ</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_desc">Change app language</string>
+
+    <string-array name="odia_number_words">
+        <item>Zero</item>
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+        <item>Eleven</item>
+        <item>Twelve</item>
+        <item>Thirteen</item>
+        <item>Fourteen</item>
+        <item>Fifteen</item>
+        <item>Sixteen</item>
+        <item>Seventeen</item>
+        <item>Eighteen</item>
+        <item>Nineteen</item>
+        <item>Twenty</item>
+        <item>Twenty-one</item>
+        <item>Twenty-two</item>
+        <item>Twenty-three</item>
+        <item>Twenty-four</item>
+        <item>Twenty-five</item>
+        <item>Twenty-six</item>
+        <item>Twenty-seven</item>
+        <item>Twenty-eight</item>
+        <item>Twenty-nine</item>
+        <item>Thirty</item>
+        <item>Thirty-one</item>
+        <item>Thirty-two</item>
+        <item>Thirty-three</item>
+        <item>Thirty-four</item>
+        <item>Thirty-five</item>
+        <item>Thirty-six</item>
+        <item>Thirty-seven</item>
+        <item>Thirty-eight</item>
+        <item>Thirty-nine</item>
+        <item>Forty</item>
+        <item>Forty-one</item>
+        <item>Forty-two</item>
+        <item>Forty-three</item>
+        <item>Forty-four</item>
+        <item>Forty-five</item>
+        <item>Forty-six</item>
+        <item>Forty-seven</item>
+        <item>Forty-eight</item>
+        <item>Forty-nine</item>
+        <item>Fifty</item>
+        <item>Fifty-one</item>
+        <item>Fifty-two</item>
+        <item>Fifty-three</item>
+        <item>Fifty-four</item>
+        <item>Fifty-five</item>
+        <item>Fifty-six</item>
+        <item>Fifty-seven</item>
+        <item>Fifty-eight</item>
+        <item>Fifty-nine</item>
+        <item>Sixty</item>
+        <item>Sixty-one</item>
+        <item>Sixty-two</item>
+        <item>Sixty-three</item>
+        <item>Sixty-four</item>
+        <item>Sixty-five</item>
+        <item>Sixty-six</item>
+        <item>Sixty-seven</item>
+        <item>Sixty-eight</item>
+        <item>Sixty-nine</item>
+        <item>Seventy</item>
+        <item>Seventy-one</item>
+        <item>Seventy-two</item>
+        <item>Seventy-three</item>
+        <item>Seventy-four</item>
+        <item>Seventy-five</item>
+        <item>Seventy-six</item>
+        <item>Seventy-seven</item>
+        <item>Seventy-eight</item>
+        <item>Seventy-nine</item>
+        <item>Eighty</item>
+        <item>Eighty-one</item>
+        <item>Eighty-two</item>
+        <item>Eighty-three</item>
+        <item>Eighty-four</item>
+        <item>Eighty-five</item>
+        <item>Eighty-six</item>
+        <item>Eighty-seven</item>
+        <item>Eighty-eight</item>
+        <item>Eighty-nine</item>
+        <item>Ninety</item>
+        <item>Ninety-one</item>
+        <item>Ninety-two</item>
+        <item>Ninety-three</item>
+        <item>Ninety-four</item>
+        <item>Ninety-five</item>
+        <item>Ninety-six</item>
+        <item>Ninety-seven</item>
+        <item>Ninety-eight</item>
+        <item>Ninety-nine</item>
+        <item>One hundred</item>
+    </string-array>
+
+    <string name="language_dialog_description">Restart the app after changing the language.</string>
+    <string name="language_restart_dialog_title">Restart Required</string>
+    <string name="language_restart_dialog_message">The app needs to restart to apply the language change.</string>
+    <string name="dialog_restart">Restart</string>
+
+    <string name="social_github">GitHub</string>
+    <string name="social_github_desc">Check out our source code</string>
+    <string name="dialog_close">Close</string>
+    <string name="changelog_header_title">Looking for maintainers/contributors</string>
+    <string name="changelog_header_description">We are currently seeking maintainers/contributors to help us continue developing and improving our project. If you want to contribute your skills and expertise, you can visit our GitHub here, pull requests are welcome. The app heavily relies on Kotlin.</string>
+    <string name="changelog_fixed_title">Fixed</string>
+</resources>

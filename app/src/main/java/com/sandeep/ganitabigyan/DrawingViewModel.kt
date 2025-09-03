@@ -1,7 +1,10 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/DrawingViewModel.kt
+
 package com.sandeep.ganitabigyan
 
 import android.graphics.Bitmap
 import android.os.Environment
+import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.Path
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,10 +15,12 @@ import java.io.File
 import java.io.FileOutputStream
 import kotlin.random.Random
 
-enum class DrawingMode(val displayName: String) {
-    SERIAL("କ୍ରମିକ"),
-    RANDOM_DOUBLE("ଦୁଇ-ଅଙ୍କ ସଂଖ୍ୟା"),
-    RANDOM_TRIPLE("ତିନି-ଅଙ୍କ ସଂଖ୍ୟା")
+// --- THE FIX IS HERE ---
+// The enum now holds a reference to a String Resource ID instead of a hardcoded string.
+enum class DrawingMode(@StringRes val displayNameResId: Int) {
+    SERIAL(R.string.drawing_mode_serial),
+    RANDOM_DOUBLE(R.string.drawing_mode_random_double),
+    RANDOM_TRIPLE(R.string.drawing_mode_random_triple)
 }
 
 data class DrawingUiState(

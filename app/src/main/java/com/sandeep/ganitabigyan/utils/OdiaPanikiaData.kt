@@ -1,17 +1,25 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/utils/OdiaPanikiaData.kt
+
 package com.sandeep.ganitabigyan.utils
 
-// A new data class to hold both numerical and script versions
+import android.content.Context
+import com.sandeep.ganitabigyan.R
+
+// A data class to hold both numerical and script versions
 data class PanikiaFullRow(
     val numericalExpression: String,
     val numericalResult: String,
     val scriptLine: String
 )
 
-fun getOdiaPanikiaTable(tableNumber: Int): List<PanikiaFullRow> {
+// The function now requires a 'Context' to access resources
+fun getOdiaPanikiaTable(tableNumber: Int, context: Context): List<PanikiaFullRow> {
     val table = mutableListOf<PanikiaFullRow>()
     val odiaTableNumber = tableNumber.toOdia()
-    // CORRECT: Now calls the public function from NumberConverter.kt
     val tableNumberWord = tableNumber.toOdiaWord()
+
+    // Load the translatable panikia terms from strings.xml
+    val panikiaTerms = context.resources.getStringArray(R.array.panikia_terms)
 
     for (i in 1..10) {
         val resultInt = tableNumber * i
@@ -21,22 +29,16 @@ fun getOdiaPanikiaTable(tableNumber: Int): List<PanikiaFullRow> {
         val numericalResult = resultInt.toOdia()
 
         // 2. Generate the full Odia Script Line
-        // CORRECT: Now calls the public function from NumberConverter.kt
         val resultWord = resultInt.toOdiaWord()
-        // This 'when' block contains YOUR specific panikia terms
-        val scriptExpressionPart = when (i) {
-            1 -> "କେ"
-            2 -> "ଦୁଗୁଣେ"
-            3 -> "ତିରି"
-            4 -> "ଚଉ"
-            5 -> "ପଞ୍ଚା"
-            6 -> "ସୋ" // Your custom term is preserved
-            7 -> "ସତା"
-            8 -> "ଅଷ୍ଟା"
-            9 -> "ନୂଆଁ"
-            10 -> "ଦଶା"
-            else -> ""
+
+        // Get the correct term from the array we loaded
+        // We use (i-1) because arrays are 0-indexed (item 1 is at position 0)
+        val scriptExpressionPart = if (i > 0 && i <= panikiaTerms.size) {
+            panikiaTerms[i - 1]
+        } else {
+            "" // Fallback for safety
         }
+
         val scriptLine = "$tableNumberWord $scriptExpressionPart $resultWord"
 
         table.add(
@@ -47,5 +49,3 @@ fun getOdiaPanikiaTable(tableNumber: Int): List<PanikiaFullRow> {
     }
     return table
 }
-
-// The private getOdiaWordForPanikia function has been removed from this file.

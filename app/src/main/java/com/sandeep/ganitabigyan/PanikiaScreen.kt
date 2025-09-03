@@ -1,3 +1,6 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/PanikiaScreen.kt
+// VERSION: FINAL - Fully multilingual.
+
 package com.sandeep.ganitabigyan
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -18,15 +21,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sandeep.ganitabigyan.utils.PanikiaFullRow
-import com.sandeep.ganitabigyan.utils.getOdiaPanikiaTable
-import com.sandeep.ganitabigyan.utils.toOdia
+// <<< CHANGE 1: Import the new data class and generator function >>>
+import com.sandeep.ganitabigyan.utils.PanikiaRow
+import com.sandeep.ganitabigyan.utils.getPanikiaTable
+// <<< CHANGE 2: Import the smart numeral converter >>>
+import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 
-// PanikiaListScreen remains the same, no changes.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PanikiaListScreen(
@@ -36,16 +42,19 @@ fun PanikiaListScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("ପଣିକିଆ") },
+                title = { Text(stringResource(R.string.panikia_title)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
                     }
                 }
             )
         }
     ) { padding ->
+        // <<< CHANGE 3: Get the context to translate numbers >>>
+        val context = LocalContext.current
         val tableNumbers = (2..25).toList()
+
         LazyVerticalGrid(
             columns = GridCells.Adaptive(minSize = 90.dp),
             modifier = Modifier.padding(padding),
@@ -62,7 +71,8 @@ fun PanikiaListScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                         Text(
-                            text = number.toOdia(),
+                            // <<< CHANGE 4: Use the new multilingual function >>>
+                            text = number.toLocaleNumerals(context),
                             fontSize = 32.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -74,20 +84,17 @@ fun PanikiaListScreen(
 }
 
 
-// PanikiaDetailScreen is completely redesigned for the new flow.
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun PanikiaDetailScreen(
-    tableNumber: Int, // This is the STARTING table number
+    tableNumber: Int,
     onNavigateBack: () -> Unit
 ) {
-    // Calculate the total number of pages needed.
-    // Each table (from the selected one up to 25) has 2 pages.
     val totalTablesToDisplay = 25 - tableNumber + 1
     val pageCount = totalTablesToDisplay * 2
     val pagerState = rememberPagerState(pageCount = { pageCount })
+    val context = LocalContext.current // Get the context here
 
-    // This clever bit updates the title bar automatically as you swipe!
     val currentTableForTitle by remember {
         derivedStateOf { tableNumber + (pagerState.currentPage / 2) }
     }
@@ -95,10 +102,13 @@ fun PanikiaDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("${currentTableForTitle.toOdia()} ପଣିକିଆ") },
+                title = {
+                    // <<< CHANGE 5: Use the new multilingual function for the title >>>
+                    Text(stringResource(R.string.panikia_title_for_table, currentTableForTitle.toLocaleNumerals(context)))
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
                     }
                 }
             )
@@ -113,19 +123,19 @@ fun PanikiaDetailScreen(
                 state = pagerState,
                 modifier = Modifier.fillMaxSize()
             ) { page ->
-                // Determine which table and which format to show for the current page
                 val currentTableNumber = tableNumber + (page / 2)
                 val isNumericalView = page % 2 == 0
-                val panikiaTableData = getOdiaPanikiaTable(currentTableNumber)
+
+                // <<< CHANGE 6: Use the new multilingual generator function >>>
+                val panikiaTableData = getPanikiaTable(currentTableNumber, context)
 
                 if (isNumericalView) {
-                    NumericalOdiaTableView(panikiaTable = panikiaTableData)
+                    NumericalTableView(panikiaTable = panikiaTableData)
                 } else {
-                    ScriptOdiaTableView(panikiaTable = panikiaTableData)
+                    ScriptTableView(panikiaTable = panikiaTableData)
                 }
             }
 
-            // Show a "Swipe Up" hint on all pages except the very last one.
             if (pagerState.currentPage < pageCount - 1) {
                 Row(
                     modifier = Modifier
@@ -134,14 +144,15 @@ fun PanikiaDetailScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
+                    val swipeUpText = stringResource(R.string.swipe_up_hint)
                     Text(
-                        "ଉପରକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ",
+                        text = swipeUpText,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Icon(
                         Icons.Default.KeyboardArrowUp,
-                        contentDescription = "ଉପରକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ",
+                        contentDescription = swipeUpText,
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
@@ -150,9 +161,9 @@ fun PanikiaDetailScreen(
     }
 }
 
-// A dedicated composable for the Odia Numerical table view.
+
 @Composable
-fun NumericalOdiaTableView(panikiaTable: List<PanikiaFullRow>) {
+fun NumericalTableView(panikiaTable: List<PanikiaRow>) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -190,9 +201,9 @@ fun NumericalOdiaTableView(panikiaTable: List<PanikiaFullRow>) {
     }
 }
 
-// A dedicated composable for the Odia Script table view.
+
 @Composable
-fun ScriptOdiaTableView(panikiaTable: List<PanikiaFullRow>) {
+fun ScriptTableView(panikiaTable: List<PanikiaRow>) {
     Column(
         modifier = Modifier
             .fillMaxSize()

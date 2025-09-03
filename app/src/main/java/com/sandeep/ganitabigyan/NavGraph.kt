@@ -1,4 +1,5 @@
-// NavGraph.kt
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
+// VERSION: FINAL - Adds the new ChangelogScreen to the navigation graph.
 
 package com.sandeep.ganitabigyan
 
@@ -22,18 +23,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 
 object AppDestinations {
     const val SPLASH_ROUTE = "splash"
-    const val WELCOME_ROUTE = "welcome" // <<< NEW: Add welcome route
+    const val WELCOME_ROUTE = "welcome"
     const val HOME_ROUTE = "home"
     const val GAME_ROUTE = "game"
     const val ABOUT_ROUTE = "about"
@@ -45,13 +48,15 @@ object AppDestinations {
     const val NUMBERS_ROUTE = "numbers"
     const val DRAWING_ROUTE = "drawing"
     const val DRAWING_HISTORY_ROUTE = "drawing_history"
+    // <<< NEW ROUTE ADDED >>>
+    const val CHANGELOG_ROUTE = "changelog"
 }
 
 @Composable
-fun AppNavHost(
-    navController: NavHostController,
+fun NavGraph(
     gameViewModel: GameViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         navController = navController,
@@ -60,14 +65,12 @@ fun AppNavHost(
     ) {
 
         composable(AppDestinations.SPLASH_ROUTE) {
-            SplashScreen(navController = navController) // <<< CHANGE: Pass NavController
+            SplashScreen(navController = navController)
         }
 
-        // <<< NEW: Add composable for the WelcomeScreen
         composable(AppDestinations.WELCOME_ROUTE) {
             WelcomeScreen(
                 onStartClick = {
-                    // Navigate to home and clear the backstack
                     navController.navigate(AppDestinations.HOME_ROUTE) {
                         popUpTo(AppDestinations.WELCOME_ROUTE) { inclusive = true }
                     }
@@ -96,7 +99,15 @@ fun AppNavHost(
         }
 
         composable(route = AppDestinations.ABOUT_ROUTE) {
-            AboutScreen(onNavigateBack = { navController.popBackStack() })
+            AboutScreen(
+                navController = navController,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        // <<< NEW COMPOSABLE BLOCK FOR THE CHANGELOG SCREEN >>>
+        composable(route = AppDestinations.CHANGELOG_ROUTE) {
+            ChangelogScreen(onNavigateBack = { navController.popBackStack() })
         }
 
         composable(route = AppDestinations.CALCULATOR_ROUTE) {
@@ -141,44 +152,35 @@ fun AppNavHost(
 }
 
 
-// <<< CHANGE: Updated SplashScreen to handle navigation logic
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
     val context = LocalContext.current
     val dataStore = remember { SettingsDataStore(context) }
 
+    val splashText1 = stringResource(R.string.splash_text_1)
+    val splashText2 = stringResource(R.string.splash_text_2)
+    val appLogoDesc = stringResource(R.string.app_logo_description)
+
     LaunchedEffect(Unit) {
-        // Show splash texts
-        delay(200)
-        currentText = "ଜୟ ଜଗନ୍ନାଥ"
-        delay(2500)
-        currentText = "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
-        delay(2500)
-        currentText = ""
+        delay(200); currentText = splashText1
+        delay(2500); currentText = splashText2
+        delay(2500); currentText = ""
         delay(500)
 
-        // Check if welcome is completed
         val hasCompletedWelcome = dataStore.hasCompletedWelcome.first()
-
-        // Check for file intents first (your existing logic)
         val intent = (context as? Activity)?.intent
         val data = intent?.data
+
         if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) {
             navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) {
                 popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
             }
             intent?.data = null
-            return@LaunchedEffect // Stop further navigation
+            return@LaunchedEffect
         }
 
-        // Decide where to go next
-        val destination = if (hasCompletedWelcome) {
-            AppDestinations.HOME_ROUTE
-        } else {
-            AppDestinations.WELCOME_ROUTE
-        }
-
+        val destination = if (hasCompletedWelcome) AppDestinations.HOME_ROUTE else AppDestinations.WELCOME_ROUTE
         navController.navigate(destination) {
             popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
         }
@@ -191,16 +193,13 @@ fun SplashScreen(navController: NavHostController) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painter = painterResource(id = R.drawable.logo),
-                contentDescription = "App Logo",
+                contentDescription = appLogoDesc,
                 modifier = Modifier.size(150.dp)
             )
             Spacer(modifier = Modifier.height(32.dp))
             AnimatedContent(
                 targetState = currentText,
-                transitionSpec = {
-                    fadeIn(animationSpec = tween(1000)) togetherWith
-                            fadeOut(animationSpec = tween(1000))
-                },
+                transitionSpec = { fadeIn(tween(1000)) togetherWith fadeOut(tween(1000)) },
                 label = "Splash Text Animation"
             ) { text ->
                 Text(

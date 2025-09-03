@@ -8,25 +8,14 @@ android {
     namespace = "com.sandeep.ganitabigyan"
     compileSdk = 34
 
-    //====================================================================
-    //== THIS BLOCK IS UPDATED FOR YOUR NEW KEY ==
-    //====================================================================
     signingConfigs {
         create("release") {
-            // This is the path to the NEW key you just created.
             storeFile = file("E:/SBG Ganita APP FINAL/ganitabg.jks")
-
-            // <-- IMPORTANT: Replace this with your NEW password.
             storePassword = "ganitabgodia"
-
-            // The alias for your new key.
             keyAlias = "key0"
-
-            // <-- IMPORTANT: Replace this with your NEW password again.
             keyPassword = "ganitabgodia"
         }
     }
-    //====================================================================
 
     defaultConfig {
         applicationId = "com.sandeep.ganitabigyan"
@@ -48,7 +37,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // This links the release build to your new signing configuration.
             signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -84,15 +72,19 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
-    // <-- THIS IS THE ONLY LINE YOU NEED TO ADD FOR THE CALCULATOR
     implementation("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
 
+    // --- NEW DEPENDENCIES FOR LANGUAGE SWITCHING AND SPLASH SCREEN ---
+    implementation("androidx.appcompat:appcompat:1.6.1") // For AppCompatDelegate (language switching)
+    implementation("androidx.core:core-splashscreen:1.0.1") // For the splash screen API
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3") // Ensure you have the latest ViewModel Compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3") // Ensure you have the latest runtime Compose
+
+
+    // Test dependencies (unchanged)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -100,5 +92,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
 }

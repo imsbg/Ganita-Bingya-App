@@ -1,7 +1,8 @@
-// HomeScreen.kt
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/HomeScreen.kt
 
 package com.sandeep.ganitabigyan
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,6 +25,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntSize
@@ -35,13 +37,12 @@ import androidx.navigation.NavController
 
 // --- DEFINE APP BAR HEIGHTS FOR ACCURATE CALCULATIONS ---
 private val CollapsedAppBarHeight = 64.dp
-private val ExpandedAppBarHeight = 152.dp // Standard height for Material3 LargeTopAppBar
+private val ExpandedAppBarHeight = 152.dp
 
-
-// Data class to represent each item in the home screen menu
+// --- UPDATED Data class to use String Resources ---
 private data class HomeMenuItem(
-    val title: String,
-    val subtitle: String? = null,
+    @StringRes val titleResId: Int,
+    @StringRes val subtitleResId: Int?,
     val route: String,
     val gradient: List<Color>,
     val icon: ImageVector? = null,
@@ -59,13 +60,14 @@ fun HomeScreen(navController: NavController) {
     val gradientTeal = listOf(Color(0xFF4DB6AC), Color(0xFF009688))
     val gradientCyan = listOf(Color(0xFF4DD0E1), Color(0xFF00BCD4))
 
+    // List now uses R.string resource IDs
     val menuItems = listOf(
-        HomeMenuItem("ଖେଳ ଆରମ୍ଭ କରନ୍ତୁ", "୫+୪, ୪-୨", AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
-        HomeMenuItem("ଆପଣଙ୍କ ପ୍ରଗତି", "କେତେ ଠିକ? କେତେ ଭୁଲ?", AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
-        HomeMenuItem("ପଣିକିଆ", "ଦୁଇ କେ ଦୁଇ", AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, Icons.Default.MenuBook),
-        HomeMenuItem("ସଙ୍ଖ୍ୟା", "୦ ୧ ୨ ୩ ୪ ୫ ୬ ୭ ୮ ୯", AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
-        HomeMenuItem("ଅଙ୍କନ ପ୍ୟାଡ୍", null, AppDestinations.DRAWING_ROUTE, gradientTeal, Icons.Default.Draw),
-        HomeMenuItem("କ୍ୟାଲକୁଲେଟର", null, AppDestinations.CALCULATOR_ROUTE, gradientCyan, Icons.Default.Calculate)
+        HomeMenuItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
+        HomeMenuItem(R.string.menu_progress, R.string.menu_progress_desc, AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
+        HomeMenuItem(R.string.menu_panikia, R.string.menu_panikia_desc, AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, Icons.Default.MenuBook),
+        HomeMenuItem(R.string.menu_numbers, R.string.menu_numbers_desc, AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
+        HomeMenuItem(R.string.menu_drawing_pad, null, AppDestinations.DRAWING_ROUTE, gradientTeal, Icons.Default.Draw),
+        HomeMenuItem(R.string.menu_calculator, null, AppDestinations.CALCULATOR_ROUTE, gradientCyan, Icons.Default.Calculate)
     )
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
@@ -78,7 +80,7 @@ fun HomeScreen(navController: NavController) {
                     title = { /* Empty */ },
                     actions = {
                         IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) {
-                            Icon(Icons.Default.Settings, contentDescription = "Settings")
+                            Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_button_description))
                         }
                     },
                     colors = TopAppBarDefaults.largeTopAppBarColors(
@@ -111,7 +113,6 @@ fun HomeScreen(navController: NavController) {
 }
 
 
-// --- REWRITTEN FOR "TOP LEFT CORNER" ANIMATION (TEXT ONLY) ---
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
@@ -119,51 +120,48 @@ private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
     val density = LocalDensity.current
 
     val topPadding = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-
-    // Define the final padding for the collapsed state
-    val startPadding = 16.dp
+    // Define the final (collapsed) and initial (expanded) padding here for clarity
+    val collapsedStartPadding = 16.dp
+    val expandedHorizontalPadding = 24.dp // <<< NEW: Added padding for the expanded title
 
     val collapsedHeightPx = with(density) { CollapsedAppBarHeight.toPx() }
     val expandedHeightPx = with(density) { ExpandedAppBarHeight.toPx() }
-    val startPaddingPx = with(density) { startPadding.toPx() }
+    val collapsedStartPaddingPx = with(density) { collapsedStartPadding.toPx() }
+    val expandedHorizontalPaddingPx = with(density) { expandedHorizontalPadding.toPx() } // <<< NEW: Convert to Px
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(ExpandedAppBarHeight + topPadding)
-            .padding(top = topPadding),
+            .padding(top = topPadding)
+            // <<< CHANGE 1: Apply horizontal padding to the container Box
+            .padding(horizontal = expandedHorizontalPadding),
         contentAlignment = Alignment.TopStart
     ) {
         Text(
-            " ଗଣିତ ବିଜ୍ଞ",
-            style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold), // Slightly larger for better presence
+            stringResource(R.string.home_title), // Using string resource here
+            style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold),
             maxLines = 1,
             modifier = Modifier
-                .onSizeChanged {
-                    if (titleSize != it) titleSize = it
-                }
+                .onSizeChanged { if (titleSize != it) titleSize = it }
                 .graphicsLayer {
                     val collapsedFraction = scrollBehavior.state.collapsedFraction
-
-                    // --- SCALE ---
-                    // Scale down to a more standard title size
                     val startScale = 1.0f
                     val endScale = 0.7f
                     val currentScale = lerp(startScale, endScale, collapsedFraction)
 
-                    // --- X-AXIS TRANSLATION (HORIZONTAL) ---
-                    // Animate from center to the left padding. THIS IS THE KEY CHANGE.
+                    // This calculation now correctly centers the title within the new padded parent Box.
                     val startTranslationX = (size.width / 2) - (titleSize.width / 2)
-                    val endTranslationX = startPaddingPx
-                    val currentTranslationX = lerp(startTranslationX, endTranslationX, collapsedFraction)
 
-                    // --- Y-AXIS TRANSLATION (VERTICAL) ---
-                    // Animate from the bottom of the expanded area to the center of the collapsed area.
+                    // <<< CHANGE 2: Adjust the final X position to account for the new padding
+                    // The Text is now laid out inside a padded area. To move it to its final
+                    // position, we calculate the difference between the target and the start.
+                    val endTranslationX = collapsedStartPaddingPx - expandedHorizontalPaddingPx
+
+                    val currentTranslationX = lerp(startTranslationX, endTranslationX, collapsedFraction)
                     val startTranslationY = expandedHeightPx - titleSize.height
                     val endTranslationY = (collapsedHeightPx / 2) - (titleSize.height / 2)
                     val currentTranslationY = lerp(startTranslationY, endTranslationY, collapsedFraction)
-
-                    // Apply all transformations
                     scaleX = currentScale
                     scaleY = currentScale
                     translationX = currentTranslationX
@@ -176,6 +174,9 @@ private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
 
 @Composable
 private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
+    val title = stringResource(id = item.titleResId)
+    val subtitle = item.subtitleResId?.let { stringResource(id = it) }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -201,12 +202,12 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = item.title,
+                    text = title,
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     color = Color.White,
                     fontSize = 26.sp
                 )
-                item.subtitle?.let {
+                subtitle?.let {
                     Text(
                         text = it,
                         style = MaterialTheme.typography.titleMedium,
@@ -226,7 +227,7 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
                 if (item.icon != null) {
                     Icon(
                         imageVector = item.icon,
-                        contentDescription = item.title,
+                        contentDescription = title,
                         modifier = Modifier.size(60.dp),
                         tint = Color.White
                     )

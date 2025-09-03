@@ -1,15 +1,22 @@
-// SettingsScreen.kt
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsScreen.kt
+// VERSION: FINAL - Adds a restart confirmation dialog for language changes.
 
 package com.sandeep.ganitabigyan
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Vibration
 import androidx.compose.material3.*
@@ -18,11 +25,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.sandeep.ganitabigyan.utils.toOdiaNumerals
+import com.sandeep.ganitabigyan.utils.toLocaleNumerals
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,198 +43,145 @@ fun SettingsScreen(
     settingsViewModel: SettingsViewModel = viewModel()
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val activity = (LocalContext.current as? Activity)
+
     val isVibrationEnabled by settingsViewModel.isVibrationEnabled.collectAsStateWithLifecycle()
     val morningTime by settingsViewModel.morningReminderTime.collectAsStateWithLifecycle()
     val eveningTime by settingsViewModel.eveningReminderTime.collectAsStateWithLifecycle()
+    val currentLanguageCode by settingsViewModel.language.collectAsStateWithLifecycle()
 
-    val timePickerStateMorning = rememberTimePickerState(
-        initialHour = morningTime.split(":")[0].toInt(),
-        initialMinute = morningTime.split(":")[1].toInt(),
-        is24Hour = false
-    )
-    val timePickerStateEvening = rememberTimePickerState(
-        initialHour = eveningTime.split(":")[0].toInt(),
-        initialMinute = eveningTime.split(":")[1].toInt(),
-        is24Hour = false
-    )
+    var showLanguageDialog by remember { mutableStateOf(false) }
+
+    // <<< NEW STATE for the confirmation dialog >>>
+    var showRestartDialog by remember { mutableStateOf(false) }
+    var languageToRestart by remember { mutableStateOf<String?>(null) }
+
+
+    val timePickerStateMorning = rememberTimePickerState(initialHour = morningTime.split(":")[0].toInt(), initialMinute = morningTime.split(":")[1].toInt(), is24Hour = false)
+    val timePickerStateEvening = rememberTimePickerState(initialHour = eveningTime.split(":")[0].toInt(), initialMinute = eveningTime.split(":")[1].toInt(), is24Hour = false)
     var showMorningTimePicker by remember { mutableStateOf(false) }
     var showEveningTimePicker by remember { mutableStateOf(false) }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("ସେଟିଂସ") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings_title)) }, navigationIcon = { IconButton(onClick = { navController.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_back_button_desc)) } }) }) { padding ->
+        Column(modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())) {
+            SettingsCategory(title = stringResource(R.string.settings_category_general))
+            SettingsClickableItem(title = stringResource(id = R.string.settings_language_title), description = getCurrentLanguageName(code = currentLanguageCode), icon = Icons.Default.Language, onClick = { showLanguageDialog = true })
+            SettingsSwitchItem(title = stringResource(R.string.settings_vibration_title), description = stringResource(R.string.settings_vibration_description), icon = Icons.Default.Vibration, checked = isVibrationEnabled, onCheckedChange = { settingsViewModel.setVibrationEnabled(it) })
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+            SettingsCategory(title = stringResource(R.string.settings_category_reminders))
+            SettingsClickableItem(title = stringResource(R.string.settings_morning_reminder_title), description = formatTime(morningTime, context), icon = Icons.Default.Notifications, onClick = { showMorningTimePicker = true })
+            SettingsClickableItem(title = stringResource(R.string.settings_evening_reminder_title), description = formatTime(eveningTime, context), icon = Icons.Default.Notifications, onClick = { showEveningTimePicker = true })
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+            SettingsCategory(title = stringResource(R.string.settings_category_other))
+            SettingsClickableItem(title = stringResource(R.string.settings_about_app_title), description = stringResource(R.string.settings_about_app_description), icon = Icons.Default.Info, onClick = { navController.navigate(AppDestinations.ABOUT_ROUTE) })
+        }
+    }
+
+    if (showLanguageDialog) {
+        LanguageSelectionDialog(
+            currentLanguageCode = currentLanguageCode,
+            onDismiss = { showLanguageDialog = false },
+            onLanguageSelected = { code ->
+                showLanguageDialog = false
+                languageToRestart = code
+                showRestartDialog = true
+            }
+        )
+    }
+
+    // <<< NEW DIALOG CALL >>>
+    if (showRestartDialog) {
+        RestartConfirmationDialog(
+            onDismiss = { showRestartDialog = false },
+            onConfirm = {
+                showRestartDialog = false
+                languageToRestart?.let { langCode ->
+                    scope.launch {
+                        settingsViewModel.saveLanguage(langCode)
+                        val intent = Intent(context, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
+                        activity?.finish()
                     }
                 }
-            )
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-        ) {
-            SettingsCategory(title = "ସାଧାରଣ")
-            SettingsSwitchItem(
-                title = "ଭାଇବ୍ରେସନ୍",
-                description = "ଭୁଲ୍ ଉତ୍ତର ପାଇଁ ଫିଡବ୍ୟାକ୍",
-                icon = Icons.Default.Vibration,
-                checked = isVibrationEnabled,
-                onCheckedChange = { settingsViewModel.setVibrationEnabled(it) }
-            )
-
-            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-
-            SettingsCategory(title = "ରିମାଇଣ୍ଡର")
-            SettingsClickableItem(
-                title = "ସକାଳ ରିମାଇଣ୍ଡର",
-                description = formatTimeInOdia(morningTime),
-                icon = Icons.Default.Notifications,
-                onClick = { showMorningTimePicker = true }
-            )
-            SettingsClickableItem(
-                title = "ସନ୍ଧ୍ୟା ରିମାଇଣ୍ଡର",
-                description = formatTimeInOdia(eveningTime),
-                icon = Icons.Default.Notifications,
-                onClick = { showEveningTimePicker = true }
-            )
-
-            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-
-            SettingsCategory(title = "ଅନ୍ୟାନ୍ୟ")
-            SettingsClickableItem(
-                title = "ଆପ୍ ବିଷୟରେ",
-                description = "ସଂସ୍କରଣ ଏବଂ ସୂଚନା",
-                icon = Icons.Default.Info,
-                onClick = { navController.navigate(AppDestinations.ABOUT_ROUTE) }
-            )
-        }
-    }
-
-    if (showMorningTimePicker) {
-        TimePickerDialog(
-            onDismiss = { showMorningTimePicker = false },
-            onConfirm = {
-                val newTime = String.format("%02d:%02d", timePickerStateMorning.hour, timePickerStateMorning.minute)
-                settingsViewModel.setMorningReminderTime(newTime)
-                showMorningTimePicker = false
-                Toast.makeText(context, "ସକାଳ ରିମାଇଣ୍ଡର ସେଟ୍ ହେଲା", Toast.LENGTH_SHORT).show()
-            },
-            state = timePickerStateMorning
+            }
         )
     }
 
-    if (showEveningTimePicker) {
-        TimePickerDialog(
-            onDismiss = { showEveningTimePicker = false },
-            onConfirm = {
-                val newTime = String.format("%02d:%02d", timePickerStateEvening.hour, timePickerStateEvening.minute)
-                settingsViewModel.setEveningReminderTime(newTime)
-                showEveningTimePicker = false
-                Toast.makeText(context, "ସନ୍ଧ୍ୟା ରିମାଇଣ୍ଡର ସେଟ୍ ହେଲା", Toast.LENGTH_SHORT).show()
-            },
-            state = timePickerStateEvening
-        )
-    }
+    if (showMorningTimePicker) { TimePickerDialog(onDismiss = { showMorningTimePicker = false }, onConfirm = { val newTime = String.format("%02d:%02d", timePickerStateMorning.hour, timePickerStateMorning.minute); settingsViewModel.setMorningReminderTime(newTime); showMorningTimePicker = false; Toast.makeText(context, context.getString(R.string.toast_morning_reminder_set), Toast.LENGTH_SHORT).show() }, state = timePickerStateMorning) }
+    if (showEveningTimePicker) { TimePickerDialog(onDismiss = { showEveningTimePicker = false }, onConfirm = { val newTime = String.format("%02d:%02d", timePickerStateEvening.hour, timePickerStateEvening.minute); settingsViewModel.setEveningReminderTime(newTime); showEveningTimePicker = false; Toast.makeText(context, context.getString(R.string.toast_evening_reminder_set), Toast.LENGTH_SHORT).show() }, state = timePickerStateEvening) }
 }
 
 @Composable
-private fun SettingsCategory(title: String) {
-    Text(
-        text = title,
-        style = MaterialTheme.typography.titleSmall,
-        color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-    )
-}
-
-@Composable
-private fun SettingsSwitchItem(
-    title: String,
-    description: String,
-    icon: ImageVector,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onCheckedChange(!checked) }
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp))
-        Spacer(modifier = Modifier.width(16.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(text = title, style = MaterialTheme.typography.bodyLarge)
-            Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-        Switch(checked = checked, onCheckedChange = onCheckedChange)
-    }
-}
-
-@Composable
-private fun SettingsClickableItem(
-    title: String,
-    description: String,
-    icon: ImageVector,
-    onClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp))
-        Spacer(modifier = Modifier.width(16.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(text = title, style = MaterialTheme.typography.bodyLarge)
-            Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-    }
-}
-
-// This is the standard Material 3 Time Picker Dialog
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun TimePickerDialog(
+private fun LanguageSelectionDialog(
+    currentLanguageCode: String,
     onDismiss: () -> Unit,
-    onConfirm: () -> Unit,
-    state: TimePickerState
+    onLanguageSelected: (String) -> Unit // Callback now just returns the selected code
 ) {
+    val languages = remember { listOf("system" to R.string.language_system_default, "or" to R.string.language_odia, "en" to R.string.language_english, "hi" to R.string.language_hindi, "ta" to R.string.language_tamil) }
+
+    AlertDialog(onDismissRequest = onDismiss,
+        title = { Text(stringResource(id = R.string.language_dialog_title)) },
+        text = {
+            Column {
+                Text(text = stringResource(R.string.language_dialog_description), style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 16.dp))
+                LazyColumn {
+                    items(languages) { (code, stringId) ->
+                        val isSelected = currentLanguageCode == code
+                        val color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+                        Text(text = stringResource(id = stringId),
+                            color = color,
+                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    if (code != currentLanguageCode) {
+                                        onLanguageSelected(code)
+                                    } else {
+                                        onDismiss()
+                                    }
+                                }
+                                .padding(vertical = 12.dp))
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } })
+}
+
+// <<< NEW COMPOSABLE for the confirmation dialog >>>
+@Composable
+private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onConfirm) {
-                Text("ଠିକ୍ ଅଛି")
-            }
-        },
+        title = { Text(stringResource(R.string.language_restart_dialog_title)) },
+        text = { Text(stringResource(R.string.language_restart_dialog_message)) },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("ବାତିଲ କରନ୍ତୁ")
+                Text(stringResource(R.string.dialog_cancel))
             }
         },
-        text = {
-            TimePicker(state = state)
+        confirmButton = {
+            Button(onClick = onConfirm) {
+                Text(stringResource(R.string.dialog_restart))
+            }
         }
     )
 }
 
-private fun formatTimeInOdia(time24h: String): String {
+private fun formatTime(time24h: String, context: Context): String {
     return try {
         val sdf24h = SimpleDateFormat("HH:mm", Locale.US)
-        val sdf12h = SimpleDateFormat("hh:mm a", Locale("en", "IN"))
+        val sdf12h = SimpleDateFormat("hh:mm a", Locale.US)
         val date = sdf24h.parse(time24h)
         val formattedTime = sdf12h.format(date!!)
-        // Just convert the numbers, leave AM/PM as is.
-        formattedTime.toOdiaNumerals()
-    } catch (e: Exception) {
-        time24h
-    }
+        formattedTime.toLocaleNumerals(context)
+    } catch (e: Exception) { time24h }
 }
+
+@Composable private fun getCurrentLanguageName(code: String): String { return when (code) { "system" -> stringResource(R.string.language_system_default); "en" -> stringResource(R.string.language_english); "hi" -> stringResource(R.string.language_hindi); "ta" -> stringResource(R.string.language_tamil); else -> stringResource(R.string.language_odia) } }
+@Composable private fun SettingsCategory(title: String) { Text(text = title, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) }
+@Composable private fun SettingsSwitchItem(title: String, description: String, icon: ImageVector, checked: Boolean, onCheckedChange: (Boolean) -> Unit) { Row(modifier = Modifier.fillMaxWidth().clickable { onCheckedChange(!checked) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) { Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp)); Spacer(modifier = Modifier.width(16.dp)); Column(modifier = Modifier.weight(1f)) { Text(text = title, style = MaterialTheme.typography.bodyLarge); Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }; Switch(checked = checked, onCheckedChange = onCheckedChange) } }
+@Composable private fun SettingsClickableItem(title: String, description: String, icon: ImageVector, onClick: () -> Unit) { Row(modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).padding(16.dp), verticalAlignment = Alignment.CenterVertically) { Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp)); Spacer(modifier = Modifier.width(16.dp)); Column(modifier = Modifier.weight(1f)) { Text(text = title, style = MaterialTheme.typography.bodyLarge); Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) } } }
+@OptIn(ExperimentalMaterial3Api::class) @Composable private fun TimePickerDialog(onDismiss: () -> Unit, onConfirm: () -> Unit, state: TimePickerState) { AlertDialog(onDismissRequest = onDismiss, confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(R.string.dialog_ok)) } }, dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }, text = { TimePicker(state = state) }) }

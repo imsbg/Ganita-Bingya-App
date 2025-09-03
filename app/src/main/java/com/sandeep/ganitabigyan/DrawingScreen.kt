@@ -1,3 +1,6 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/DrawingScreen.kt
+// VERSION: FINAL - Fully multilingual
+
 package com.sandeep.ganitabigyan
 
 import android.graphics.Bitmap
@@ -23,12 +26,15 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.sandeep.ganitabigyan.utils.toOdia
+// <<< CHANGE 1: Import the new, correct function >>>
+import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,12 +50,23 @@ fun DrawingScreen(
     var isDropdownExpanded by remember { mutableStateOf(false) }
     var canvasSize by remember { mutableStateOf(IntSize.Zero) }
 
+    // <<< CHANGE 2: Get the context >>>
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("ଅଙ୍କନ ପ୍ୟାଡ୍") },
-                navigationIcon = { IconButton(onClick = onNavigateBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back") } },
-                actions = { IconButton(onClick = onNavigateToHistory) { Icon(Icons.Default.History, contentDescription = "ଇତିହାସ") } }
+                title = { Text(stringResource(R.string.drawing_pad_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onNavigateBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onNavigateToHistory) {
+                        Icon(Icons.Default.History, contentDescription = stringResource(R.string.drawing_history_button))
+                    }
+                }
             )
         }
     ) { paddingValues ->
@@ -59,17 +76,17 @@ fun DrawingScreen(
         ) {
             ExposedDropdownMenuBox(expanded = isDropdownExpanded, onExpandedChange = { isDropdownExpanded = !isDropdownExpanded }) {
                 OutlinedTextField(
-                    value = uiState.currentMode.displayName,
+                    value = stringResource(uiState.currentMode.displayNameResId),
                     onValueChange = {},
                     readOnly = true,
-                    label = { Text("ମୋଡ୍ ବାଛନ୍ତୁ") },
+                    label = { Text(stringResource(R.string.drawing_mode_label)) },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isDropdownExpanded) },
                     modifier = Modifier.menuAnchor().fillMaxWidth()
                 )
                 ExposedDropdownMenu(expanded = isDropdownExpanded, onDismissRequest = { isDropdownExpanded = false }) {
                     DrawingMode.values().forEach { mode ->
                         DropdownMenuItem(
-                            text = { Text(mode.displayName) },
+                            text = { Text(stringResource(mode.displayNameResId)) },
                             onClick = {
                                 drawingViewModel.changeMode(mode)
                                 currentPath = Path()
@@ -82,7 +99,8 @@ fun DrawingScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = uiState.currentNumber.toOdia(),
+                // <<< CHANGE 3: Use the new multilingual function >>>
+                text = uiState.currentNumber.toLocaleNumerals(context),
                 fontSize = 100.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
@@ -124,10 +142,10 @@ fun DrawingScreen(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         OutlinedButton(onClick = { drawingViewModel.undo() }, enabled = uiState.paths.isNotEmpty()) {
-                            Icon(Icons.Default.Undo, contentDescription = "Undo")
+                            Icon(Icons.Default.Undo, contentDescription = stringResource(R.string.drawing_undo_button))
                         }
                         OutlinedButton(onClick = { drawingViewModel.redo() }, enabled = uiState.undonePaths.isNotEmpty()) {
-                            Icon(Icons.Default.Redo, contentDescription = "Redo")
+                            Icon(Icons.Default.Redo, contentDescription = stringResource(R.string.drawing_redo_button))
                         }
                     }
                 }
@@ -143,7 +161,7 @@ fun DrawingScreen(
                 Button(onClick = {
                     drawingViewModel.clearCanvas()
                     currentPath = Path()
-                }) { Text("ସଫା କରନ୍ତୁ") }
+                }) { Text(stringResource(R.string.drawing_clear_button)) }
                 Button(onClick = {
                     scope.launch {
                         if (canvasSize != IntSize.Zero) {
@@ -163,7 +181,7 @@ fun DrawingScreen(
                         drawingViewModel.nextNumber()
                         currentPath = Path()
                     }
-                }) { Text("ପରବର୍ତ୍ତୀ") }
+                }) { Text(stringResource(R.string.drawing_next_button)) }
             }
         }
     }

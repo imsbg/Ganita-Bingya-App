@@ -1,4 +1,4 @@
-// ScoreHistoryScreen.kt
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/ScoreHistoryScreen.kt
 
 package com.sandeep.ganitabigyan
 
@@ -14,22 +14,30 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun ScoreHistoryScreen(onNavigateBack: () -> Unit) {
-    val tabTitles = listOf("ଲାଇଫ୍‌ଟାଇମ୍ ସ୍କୋର", "ପ୍ରଶ୍ନ ଇତିହାସ")
+    // Tab titles are now loaded from string resources
+    val tabTitles = listOf(
+        stringResource(R.string.score_history_tab_lifetime),
+        stringResource(R.string.score_history_tab_qna)
+    )
     val pagerState = rememberPagerState(pageCount = { tabTitles.size })
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("ଆପଣଙ୍କ ପ୍ରଗତି") },
+                title = { Text(stringResource(R.string.score_history_title)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back_button_description)
+                        )
                     }
                 }
             )

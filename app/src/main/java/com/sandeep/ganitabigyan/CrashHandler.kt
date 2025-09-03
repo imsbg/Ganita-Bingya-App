@@ -1,3 +1,5 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/CrashHandler.kt
+
 package com.sandeep.ganitabigyan
 
 import android.app.Activity
@@ -8,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -20,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -64,7 +68,7 @@ class GanitaBigyanApp : Application() {
 class CrashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val errorDetails = intent.getStringExtra("error_details") ?: "No error details available."
+        val errorDetails = intent.getStringExtra("error_details") ?: getString(R.string.crash_no_details)
         setContent {
             GanitaBigyanTheme {
                 CrashScreen(errorDetails = errorDetails)
@@ -88,19 +92,19 @@ fun CrashScreen(errorDetails: String) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "ଗଣିତ ବିଜ୍ଞ",
+                text = stringResource(R.string.crash_screen_app_name),
                 style = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "ଏକ ଅସୁବିଧା ଦେଖାଦେଇଛି",
+                text = stringResource(R.string.crash_screen_oops_title),
                 style = MaterialTheme.typography.headlineSmall,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "ଆପ୍ କ୍ରାଶ୍ ହୋଇଯାଇଛି। ଆପଣ ଏହି ତ୍ରୁଟି ରିପୋର୍ଟକୁ ଡେଭଲପର୍‌ଙ୍କୁ ପଠାଇପାରିବେ।",
+                text = stringResource(R.string.crash_screen_oops_message),
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center
             )
@@ -124,10 +128,13 @@ fun CrashScreen(errorDetails: String) {
                     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                     val clip = ClipData.newPlainText("Crash Report", errorDetails)
                     clipboard.setPrimaryClip(clip)
+                    // *** THE FIX IS HERE ***
+                    // Corrected the typo from LENG TH_SHORT to LENGTH_SHORT
+                    Toast.makeText(context, R.string.crash_report_copied, Toast.LENGTH_SHORT).show()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("ରିପୋର୍ଟ କପି କରନ୍ତୁ")
+                Text(stringResource(R.string.crash_screen_copy_report))
             }
             TextButton(
                 onClick = {
@@ -136,7 +143,7 @@ fun CrashScreen(errorDetails: String) {
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("ଆପ୍ ବନ୍ଦ କରନ୍ତୁ")
+                Text(stringResource(R.string.crash_screen_close_app))
             }
         }
     }
