@@ -1,11 +1,11 @@
 {
-  "logo_version": 15,
+  "logo_version": 16,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
     "colors": [
       "#FFFFFF",
-      "#662D8C"
+      "#FFFFFF"
     ],
     "angle": 180.0
   },
