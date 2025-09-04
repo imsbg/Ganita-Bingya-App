@@ -1,9 +1,9 @@
 {
-  "logo_version": 6,
+  "logo_version": 7,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
-    "colors": ["#662D8C", "#FFFFFF"],
+    "colors": ["#FFFFFF", "#662D8C"],
     "angle": 180.0
   },
   "text_color": "#000000",
@@ -35,7 +35,7 @@
       "en": "Happy Teachers' Day",
       "hi": "शिक्षक दिवस की शुभकामनाएँ",
       "te": "ఉపాధ్యాయ దినోత్సవ శుభాకాంక్షలు",
-      "sa": "शिक्षकदिवसस्य शुభాशयाः"
+      "sa": "शिक्षकदिवसः शुभः भवतु"
     }
   }
 }
