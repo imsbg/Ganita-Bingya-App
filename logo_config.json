@@ -1,0 +1,44 @@
+{
+  "logo_version": 20,
+  "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
+  "splash_background": {
+    "type": "gradient",
+    "colors": [
+      "#A1E0F0",
+      "#FFFFFF"
+    ],
+    "angle": 180.0
+  },
+  "text_color": "#000000",
+  "texts": {
+    "splash_text_1": {
+      "default": "ଜୟ ଜଗନ୍ନାଥ",
+      "en": "Jay Jagannath",
+      "hi": "जय जगन्नाथ",
+      "ta": "ஜெய் ஜகநாத்",
+      "te": "జై జగన్నాథ్",
+      "bn": "জয় জগন্নাথ",
+      "gu": "જય જગન્નાથ",
+      "pa": "ਜੈ ਜਗਨਨਾਥ",
+      "sa": "जय जगन्नाथ",
+      "sat": "ଜୟ ଜଗନ୍ନାଥ"
+    },
+    "splash_text_2": {
+      "default": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ",
+      "en": "Welcome to Ganita Bingya",
+      "hi": "गणित बिज्ञ में आपका स्वागत है",
+      "te": "గణిత బిగ్యకు స్వాగతం",
+      "bn": "গণিত বিজ্ঞে আপনাকে স্বাগত",
+      "gu": "ગણિત બિજ્ઞ માં આપનું સ્વાગત છે",
+      "sa": "गणित बिज्ञ मध्ये स्वागतम्",
+      "sat": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
+  },
+    "splash_text_3": {
+      "default": "🙏",
+      "en": "",
+      "hi": "",
+      "te": "",
+      "sa": ""
+    }
+  }
+}
