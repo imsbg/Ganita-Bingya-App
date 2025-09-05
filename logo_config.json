@@ -1,11 +1,11 @@
 {
-  "logo_version": 18,
+  "logo_version": 19,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
     "colors": [
-      "#FFFFFF",
-      "#2E3192"
+      "#2E3192",
+      "#FFFFFF"
     ],
     "angle": 180.0
   },
@@ -34,7 +34,7 @@
       "sat": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
   },
     "splash_text_3": {
-      "default": "Loading Screen",
+      "default": "🙏",
       "en": "",
       "hi": "",
       "te": "",
