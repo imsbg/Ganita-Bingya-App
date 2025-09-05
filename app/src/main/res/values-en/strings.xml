@@ -159,9 +159,7 @@
     <string name="about_screen_title">About</string>
     <string name="members_and_contributors">Members and Contributors</string>
     <string name="sandeep_biswal_name">Sandeep Biswal G</string>
-    <string name="sandeep_biswal_role">Admin,Concept, Design &amp; Language (Odia, Hindi &amp; Eng)</string>
-    <string name="akash_t_name">Akash T.</string>
-    <string name="akash_t_role">Tamil Language Translator</string>
+    <string name="sandeep_biswal_role">Admin,Concept, Design &amp; Language (Odia, Hindi, English &amp; More)</string>
     <string name="show_more">Show more</string>
     <string name="show_less">Show less</string>
     <string name="support_development">Support and Development</string>
@@ -196,7 +194,7 @@
     <string name="other_language">Language</string>
     <string name="other_language_desc">Change app language</string>
     <string name="language_dialog_title">Select Language</string>
-    <string name="made_with_love">Made in India with ❤️</string>
+    <string name="made_with_love">Made with ❤️ in India</string>
     <string name="download_notification_title">Downloading Ganita Bingya v%1$s</string>
     <string name="download_notification_description">Downloading new update...</string>
     <string name="download_started">Download starting...</string>
@@ -261,6 +259,11 @@
     <string name="language_system_default">System Default</string>
     <string name="language_odia">ଓଡ଼ିଆ</string>
     <string name="language_english">English</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
     <string name="language_hindi">हिन्दी</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">Language</string>
@@ -381,4 +384,7 @@
     <string name="changelog_header_title">Looking for maintainers/contributors</string>
     <string name="changelog_header_description">We are currently seeking maintainers/contributors to help us continue developing and improving our project. If you want to contribute your skills and expertise, you can visit our GitHub here, pull requests are welcome. The app heavily relies on Kotlin.</string>
     <string name="changelog_fixed_title">Fixed</string>
+
+    <string name="settings_sound_title">Sound Effects</string>
+    <string name="settings_sound_description">Sound for correct answer</string>
 </resources>

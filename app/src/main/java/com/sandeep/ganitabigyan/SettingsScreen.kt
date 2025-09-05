@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsScreen.kt
-// VERSION: FINAL - Adds a restart confirmation dialog for language changes.
+// VERSION: FINAL - Adds the sound effect toggle switch to the UI.
 
 package com.sandeep.ganitabigyan
 
@@ -15,10 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Language
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Vibration
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -45,36 +42,96 @@ fun SettingsScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val activity = (LocalContext.current as? Activity)
-
     val isVibrationEnabled by settingsViewModel.isVibrationEnabled.collectAsStateWithLifecycle()
+    // <<< GET the new sound setting >>>
+    val isSoundEnabled by settingsViewModel.isSoundEnabled.collectAsStateWithLifecycle()
     val morningTime by settingsViewModel.morningReminderTime.collectAsStateWithLifecycle()
     val eveningTime by settingsViewModel.eveningReminderTime.collectAsStateWithLifecycle()
     val currentLanguageCode by settingsViewModel.language.collectAsStateWithLifecycle()
-
     var showLanguageDialog by remember { mutableStateOf(false) }
-
-    // <<< NEW STATE for the confirmation dialog >>>
     var showRestartDialog by remember { mutableStateOf(false) }
     var languageToRestart by remember { mutableStateOf<String?>(null) }
 
-
-    val timePickerStateMorning = rememberTimePickerState(initialHour = morningTime.split(":")[0].toInt(), initialMinute = morningTime.split(":")[1].toInt(), is24Hour = false)
-    val timePickerStateEvening = rememberTimePickerState(initialHour = eveningTime.split(":")[0].toInt(), initialMinute = eveningTime.split(":")[1].toInt(), is24Hour = false)
+    val timePickerStateMorning = rememberTimePickerState(
+        initialHour = morningTime.split(":")[0].toInt(),
+        initialMinute = morningTime.split(":")[1].toInt(),
+        is24Hour = false
+    )
+    val timePickerStateEvening = rememberTimePickerState(
+        initialHour = eveningTime.split(":")[0].toInt(),
+        initialMinute = eveningTime.split(":")[1].toInt(),
+        is24Hour = false
+    )
     var showMorningTimePicker by remember { mutableStateOf(false) }
     var showEveningTimePicker by remember { mutableStateOf(false) }
 
-    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings_title)) }, navigationIcon = { IconButton(onClick = { navController.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_back_button_desc)) } }) }) { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_title)) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.settings_back_button_desc)
+                        )
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+        ) {
             SettingsCategory(title = stringResource(R.string.settings_category_general))
-            SettingsClickableItem(title = stringResource(id = R.string.settings_language_title), description = getCurrentLanguageName(code = currentLanguageCode), icon = Icons.Default.Language, onClick = { showLanguageDialog = true })
-            SettingsSwitchItem(title = stringResource(R.string.settings_vibration_title), description = stringResource(R.string.settings_vibration_description), icon = Icons.Default.Vibration, checked = isVibrationEnabled, onCheckedChange = { settingsViewModel.setVibrationEnabled(it) })
+            SettingsClickableItem(
+                title = stringResource(id = R.string.settings_language_title),
+                description = getCurrentLanguageName(code = currentLanguageCode),
+                icon = Icons.Default.Language,
+                onClick = { showLanguageDialog = true }
+            )
+
+            // <<< ADD the new sound toggle here >>>
+            SettingsSwitchItem(
+                title = stringResource(R.string.settings_sound_title),
+                description = stringResource(R.string.settings_sound_description),
+                icon = Icons.Default.VolumeUp,
+                checked = isSoundEnabled,
+                onCheckedChange = { settingsViewModel.setSoundEnabled(it) }
+            )
+
+            SettingsSwitchItem(
+                title = stringResource(R.string.settings_vibration_title),
+                description = stringResource(R.string.settings_vibration_description),
+                icon = Icons.Default.Vibration,
+                checked = isVibrationEnabled,
+                onCheckedChange = { settingsViewModel.setVibrationEnabled(it) }
+            )
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             SettingsCategory(title = stringResource(R.string.settings_category_reminders))
-            SettingsClickableItem(title = stringResource(R.string.settings_morning_reminder_title), description = formatTime(morningTime, context), icon = Icons.Default.Notifications, onClick = { showMorningTimePicker = true })
-            SettingsClickableItem(title = stringResource(R.string.settings_evening_reminder_title), description = formatTime(eveningTime, context), icon = Icons.Default.Notifications, onClick = { showEveningTimePicker = true })
+            SettingsClickableItem(
+                title = stringResource(R.string.settings_morning_reminder_title),
+                description = formatTime(morningTime, context),
+                icon = Icons.Default.Notifications,
+                onClick = { showMorningTimePicker = true }
+            )
+            SettingsClickableItem(
+                title = stringResource(R.string.settings_evening_reminder_title),
+                description = formatTime(eveningTime, context),
+                icon = Icons.Default.Notifications,
+                onClick = { showEveningTimePicker = true }
+            )
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             SettingsCategory(title = stringResource(R.string.settings_category_other))
-            SettingsClickableItem(title = stringResource(R.string.settings_about_app_title), description = stringResource(R.string.settings_about_app_description), icon = Icons.Default.Info, onClick = { navController.navigate(AppDestinations.ABOUT_ROUTE) })
+            SettingsClickableItem(
+                title = stringResource(R.string.settings_about_app_title),
+                description = stringResource(R.string.settings_about_app_description),
+                icon = Icons.Default.Info,
+                onClick = { navController.navigate(AppDestinations.ABOUT_ROUTE) }
+            )
         }
     }
 
@@ -90,7 +147,6 @@ fun SettingsScreen(
         )
     }
 
-    // <<< NEW DIALOG CALL >>>
     if (showRestartDialog) {
         RestartConfirmationDialog(
             onDismiss = { showRestartDialog = false },
@@ -109,28 +165,70 @@ fun SettingsScreen(
         )
     }
 
-    if (showMorningTimePicker) { TimePickerDialog(onDismiss = { showMorningTimePicker = false }, onConfirm = { val newTime = String.format("%02d:%02d", timePickerStateMorning.hour, timePickerStateMorning.minute); settingsViewModel.setMorningReminderTime(newTime); showMorningTimePicker = false; Toast.makeText(context, context.getString(R.string.toast_morning_reminder_set), Toast.LENGTH_SHORT).show() }, state = timePickerStateMorning) }
-    if (showEveningTimePicker) { TimePickerDialog(onDismiss = { showEveningTimePicker = false }, onConfirm = { val newTime = String.format("%02d:%02d", timePickerStateEvening.hour, timePickerStateEvening.minute); settingsViewModel.setEveningReminderTime(newTime); showEveningTimePicker = false; Toast.makeText(context, context.getString(R.string.toast_evening_reminder_set), Toast.LENGTH_SHORT).show() }, state = timePickerStateEvening) }
+    if (showMorningTimePicker) {
+        TimePickerDialog(
+            onDismiss = { showMorningTimePicker = false },
+            onConfirm = {
+                val newTime = String.format("%02d:%02d", timePickerStateMorning.hour, timePickerStateMorning.minute)
+                settingsViewModel.setMorningReminderTime(newTime)
+                showMorningTimePicker = false
+                Toast.makeText(context, context.getString(R.string.toast_morning_reminder_set), Toast.LENGTH_SHORT).show()
+            },
+            state = timePickerStateMorning
+        )
+    }
+
+    if (showEveningTimePicker) {
+        TimePickerDialog(
+            onDismiss = { showEveningTimePicker = false },
+            onConfirm = {
+                val newTime = String.format("%02d:%02d", timePickerStateEvening.hour, timePickerStateEvening.minute)
+                settingsViewModel.setEveningReminderTime(newTime)
+                showEveningTimePicker = false
+                Toast.makeText(context, context.getString(R.string.toast_evening_reminder_set), Toast.LENGTH_SHORT).show()
+            },
+            state = timePickerStateEvening
+        )
+    }
 }
+
+// ... Rest of the file is unchanged ...
 
 @Composable
 private fun LanguageSelectionDialog(
     currentLanguageCode: String,
     onDismiss: () -> Unit,
-    onLanguageSelected: (String) -> Unit // Callback now just returns the selected code
+    onLanguageSelected: (String) -> Unit
 ) {
-    val languages = remember { listOf("system" to R.string.language_system_default, "or" to R.string.language_odia, "en" to R.string.language_english, "hi" to R.string.language_hindi, "ta" to R.string.language_tamil) }
-
-    AlertDialog(onDismissRequest = onDismiss,
+    val languages = remember {
+        listOf(
+            "system" to R.string.language_system_default,
+            "or" to R.string.language_odia,
+            "en" to R.string.language_english,
+            "sa" to R.string.language_sanskrit,
+            "hi" to R.string.language_hindi,
+            "te" to R.string.language_telugu,
+            "bn" to R.string.language_bengali,
+            "gu" to R.string.language_gujarati,
+            "sat" to R.string.language_santali
+        )
+    }
+    AlertDialog(
+        onDismissRequest = onDismiss,
         title = { Text(stringResource(id = R.string.language_dialog_title)) },
         text = {
             Column {
-                Text(text = stringResource(R.string.language_dialog_description), style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 16.dp))
+                Text(
+                    text = stringResource(R.string.language_dialog_description),
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
                 LazyColumn {
                     items(languages) { (code, stringId) ->
                         val isSelected = currentLanguageCode == code
                         val color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
-                        Text(text = stringResource(id = stringId),
+                        Text(
+                            text = stringResource(id = stringId),
                             color = color,
                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                             modifier = Modifier
@@ -142,15 +240,20 @@ private fun LanguageSelectionDialog(
                                         onDismiss()
                                     }
                                 }
-                                .padding(vertical = 12.dp))
+                                .padding(vertical = 12.dp)
+                        )
                     }
                 }
             }
         },
-        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } })
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.dialog_cancel))
+            }
+        }
+    )
 }
 
-// <<< NEW COMPOSABLE for the confirmation dialog >>>
 @Composable
 private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     AlertDialog(
@@ -177,11 +280,127 @@ private fun formatTime(time24h: String, context: Context): String {
         val date = sdf24h.parse(time24h)
         val formattedTime = sdf12h.format(date!!)
         formattedTime.toLocaleNumerals(context)
-    } catch (e: Exception) { time24h }
+    } catch (e: Exception) {
+        time24h
+    }
 }
 
-@Composable private fun getCurrentLanguageName(code: String): String { return when (code) { "system" -> stringResource(R.string.language_system_default); "en" -> stringResource(R.string.language_english); "hi" -> stringResource(R.string.language_hindi); "ta" -> stringResource(R.string.language_tamil); else -> stringResource(R.string.language_odia) } }
-@Composable private fun SettingsCategory(title: String) { Text(text = title, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) }
-@Composable private fun SettingsSwitchItem(title: String, description: String, icon: ImageVector, checked: Boolean, onCheckedChange: (Boolean) -> Unit) { Row(modifier = Modifier.fillMaxWidth().clickable { onCheckedChange(!checked) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) { Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp)); Spacer(modifier = Modifier.width(16.dp)); Column(modifier = Modifier.weight(1f)) { Text(text = title, style = MaterialTheme.typography.bodyLarge); Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }; Switch(checked = checked, onCheckedChange = onCheckedChange) } }
-@Composable private fun SettingsClickableItem(title: String, description: String, icon: ImageVector, onClick: () -> Unit) { Row(modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).padding(16.dp), verticalAlignment = Alignment.CenterVertically) { Icon(imageVector = icon, contentDescription = title, modifier = Modifier.size(24.dp)); Spacer(modifier = Modifier.width(16.dp)); Column(modifier = Modifier.weight(1f)) { Text(text = title, style = MaterialTheme.typography.bodyLarge); Text(text = description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) } } }
-@OptIn(ExperimentalMaterial3Api::class) @Composable private fun TimePickerDialog(onDismiss: () -> Unit, onConfirm: () -> Unit, state: TimePickerState) { AlertDialog(onDismissRequest = onDismiss, confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(R.string.dialog_ok)) } }, dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }, text = { TimePicker(state = state) }) }
+@Composable
+private fun getCurrentLanguageName(code: String): String {
+    return when (code) {
+        "system" -> stringResource(R.string.language_system_default)
+        "en" -> stringResource(R.string.language_english)
+        "sa" -> stringResource(R.string.language_sanskrit)
+        "hi" -> stringResource(R.string.language_hindi)
+        "te" -> stringResource(R.string.language_telugu)
+        "bn" -> stringResource(R.string.language_bengali)
+        "gu" -> stringResource(R.string.language_gujarati)
+        "sat" -> stringResource(R.string.language_santali)
+        else -> stringResource(R.string.language_odia)
+    }
+}
+
+@Composable
+private fun SettingsCategory(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleSmall,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+    )
+}
+
+@Composable
+private fun SettingsSwitchItem(
+    title: String,
+    description: String,
+    icon: ImageVector,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onCheckedChange(!checked) }
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = title,
+            modifier = Modifier.size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Switch(checked = checked, onCheckedChange = onCheckedChange)
+    }
+}
+
+@Composable
+private fun SettingsClickableItem(
+    title: String,
+    description: String,
+    icon: ImageVector,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = title,
+            modifier = Modifier.size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun TimePickerDialog(
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit,
+    state: TimePickerState
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(onClick = onConfirm) {
+                Text(stringResource(R.string.dialog_ok))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.dialog_cancel))
+            }
+        },
+        text = {
+            TimePicker(state = state)
+        }
+    )
+}

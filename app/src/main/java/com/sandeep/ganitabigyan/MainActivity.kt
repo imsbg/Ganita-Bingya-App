@@ -1,3 +1,6 @@
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/MainActivity.kt
+// VERSION: FINAL - Schedules the new background worker for dynamic assets.
+
 package com.sandeep.ganitabigyan
 
 import android.Manifest
@@ -21,52 +24,39 @@ import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+// <<< NEW IMPORTS for WorkManager >>>
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.sandeep.ganitabigyan.ui.theme.GanitaBigyanTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
-// Helper function to create the correct context. This keeps MainActivity cleaner.
 private fun getLocalizedContext(baseContext: Context): Context {
     val dataStore = SettingsDataStore(baseContext)
     val languageCode = runBlocking { dataStore.language.first() }
-
-    if (languageCode.isEmpty() || languageCode == "system") {
-        // If no language is saved or it's set to system default, return the base context as is.
-        return baseContext
-    }
-
-    val locale = Locale(languageCode)
-    Locale.setDefault(locale)
-
-    val config = Configuration(baseContext.resources.configuration)
-    config.setLocale(locale)
-
+    if (languageCode.isEmpty() || languageCode == "system") { return baseContext }
+    val locale = Locale(languageCode); Locale.setDefault(locale)
+    val config = Configuration(baseContext.resources.configuration); config.setLocale(locale)
     return baseContext.createConfigurationContext(config)
 }
 
 
 class MainActivity : ComponentActivity() {
 
-    // --- THIS IS THE CRITICAL FIX ---
-    // The `attachBaseContext` method is called by the system BEFORE `onCreate`.
-    // This is the earliest and most reliable place to override the app's language.
     override fun attachBaseContext(newBase: Context) {
         val localizedContext = getLocalizedContext(newBase)
         super.attachBaseContext(localizedContext)
     }
 
     private val gameViewModel: GameViewModel by viewModels { GameViewModelFactory(this.applicationContext) }
-
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { /* Handle permission result if needed */ }
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // We also call this modern API to ensure full compatibility with Android 13+ per-app locales.
-        // This reinforces the change made in attachBaseContext.
         val dataStore = SettingsDataStore(this)
         val langCode = runBlocking { dataStore.language.first() }
         if (langCode.isNotEmpty() && langCode != "system") {
@@ -77,18 +67,14 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         askNotificationPermission()
 
+        // <<< THIS IS THE NEW CODE BLOCK >>>
+        // Schedule the background tasks when the app starts.
+        scheduleBackgroundTasks()
+
         setContent {
             val settingsViewModel: SettingsViewModel by viewModels()
             val languageCode by settingsViewModel.language.collectAsState()
-
-            // The `key` is still important. It forces Compose to redraw the UI
-            // after a restart, ensuring it uses the new language configuration.
-            val currentLocaleCode = if (languageCode == "system") {
-                Locale.getDefault().language
-            } else {
-                languageCode
-            }
-
+            val currentLocaleCode = if (languageCode == "system") Locale.getDefault().language else languageCode
             key(currentLocaleCode) {
                 GanitaBigyanTheme {
                     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
@@ -105,5 +91,24 @@ class MainActivity : ComponentActivity() {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         }
+    }
+
+    // <<< THIS IS THE NEW FUNCTION >>>
+    private fun scheduleBackgroundTasks() {
+        // 1. Re-schedule the daily reminders to ensure they are always set correctly.
+        scheduleReminders(this)
+
+        // 2. Schedule the new worker to check for dynamic assets.
+        val assetUpdateRequest = PeriodicWorkRequestBuilder<DynamicAssetWorker>(
+            // We can check for a new logo/background every 12 hours.
+            // Android will optimize this to save battery.
+            12, TimeUnit.HOURS
+        ).build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "dynamic_asset_update_worker",
+            ExistingPeriodicWorkPolicy.KEEP, // KEEP means if a worker is already scheduled, don't replace it.
+            assetUpdateRequest
+        )
     }
 }

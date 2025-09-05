@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/WelcomeScreen.kt
-// VERSION: FINAL - Adds a restart confirmation dialog for language changes.
+// VERSION: FINAL - Fixes the app name display bug.
 
 package com.sandeep.ganitabigyan
 
@@ -37,8 +37,6 @@ fun WelcomeScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var isLoading by remember { mutableStateOf(false) }
-
-    // <<< NEW STATE for the confirmation dialog >>>
     var showRestartDialog by remember { mutableStateOf(false) }
     var languageToRestart by remember { mutableStateOf<LanguageOption?>(null) }
 
@@ -46,10 +44,16 @@ fun WelcomeScreen(
         listOf(
             "or" to R.string.language_odia,
             "en" to R.string.language_english,
+            "sa" to R.string.language_sanskrit,
             "hi" to R.string.language_hindi,
-            "ta" to R.string.language_tamil
+            "te" to R.string.language_telugu,
+            "bn" to R.string.language_bengali,
+            "gu" to R.string.language_gujarati,
+            "sat" to R.string.language_santali
         ).map { (code, nameResId) ->
-            val config = Configuration(context.resources.configuration)
+            // <<< THIS IS THE ONLY CHANGE NEEDED TO FIX THE BUG >>>
+            // Create a completely new Configuration object for each language.
+            val config = Configuration()
             config.setLocale(Locale(code))
             val localizedContext = context.createConfigurationContext(config)
             LanguageOption(code, localizedContext.getString(nameResId))
@@ -128,7 +132,6 @@ fun WelcomeScreen(
                         DropdownMenuItem(
                             text = { Text(languageOption.name) },
                             onClick = {
-                                // <<< LOGIC CHANGE: Show dialog instead of restarting immediately >>>
                                 setSelectedLanguage(languageOption)
                                 isDropdownExpanded = false
                                 languageToRestart = languageOption
@@ -143,7 +146,6 @@ fun WelcomeScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Button(
-                // <<< LOGIC CHANGE: Show dialog to confirm the selected language >>>
                 onClick = {
                     languageToRestart = selectedLanguage
                     showRestartDialog = true
@@ -163,13 +165,11 @@ fun WelcomeScreen(
         }
     }
 
-    // <<< NEW DIALOG CALL >>>
     if (showRestartDialog) {
         RestartConfirmationDialog(
             onDismiss = { showRestartDialog = false },
             onConfirm = {
                 showRestartDialog = false
-                // Call the restart function with the language we stored
                 languageToRestart?.let { lang ->
                     changeLanguageAndRestart(lang)
                 }
@@ -178,7 +178,6 @@ fun WelcomeScreen(
     }
 }
 
-// <<< NEW COMPOSABLE for the confirmation dialog >>>
 @Composable
 private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     AlertDialog(

@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/utils/LocaleAwareNumberUtil.kt
-// VERSION: FINAL - Includes special, correct logic for Tamil numerals.
+// VERSION: FINAL - Tamil and Punjabi have been removed.
 
 package com.sandeep.ganitabigyan.utils
 
@@ -12,42 +12,32 @@ import java.util.Locale
 
 /**
  * Converts any string containing digits to the correct numeral string based on the app's current language.
- * It now uses a more powerful method for Tamil to handle its unique numeral system.
  */
 fun String.toLocaleNumerals(context: Context): String {
     val currentLang = context.resources.configuration.locales[0].language
     return when (currentLang) {
-        "or" -> this.map { it.toOdiaDigit() }.joinToString("")
-        "hi" -> this.map { it.toHindiDigit() }.joinToString("")
-        // <<< FIX: Use a more advanced regex replacement for Tamil >>>
-        // This finds each number in a string (e.g., "123" in "123 + 45") and converts it.
-        "ta" -> Regex("\\d+").replace(this) { it.value.toInt().toTamilNumerals() }
-        else -> this
+        "or", "sat" -> this.map { it.toOdiaDigit() }.joinToString("") // Odia & Santali
+        "hi", "sa" -> this.map { it.toHindiDigit() }.joinToString("")  // Hindi & Sanskrit
+        "bn" -> this.map { it.toBengaliDigit() }.joinToString("") // Bengali
+        "gu" -> this.map { it.toGujaratiDigit() }.joinToString("")// Gujarati
+        "te" -> this.map { it.toTeluguDigit() }.joinToString("")  // Telugu
+        else -> this // Default for English and others
     }
 }
 
 /**
  * Converts an integer to the correct numeral string based on the app's current language.
- * This is now the main driver for the conversion logic.
  */
 fun Int.toLocaleNumerals(context: Context): String {
-    val currentLang = context.resources.configuration.locales[0].language
-    return when (currentLang) {
-        // <<< FIX: For Tamil, call our new, dedicated function >>>
-        "ta" -> this.toTamilNumerals()
-        // Other languages can use the simpler string-based conversion.
-        else -> this.toString().toLocaleNumerals(context)
-    }
+    // All remaining languages use the simple String converter
+    return this.toString().toLocaleNumerals(context)
 }
 
-// --- WORD CONVERTER ---
+// --- WORD CONVERTER (Unchanged) ---
 fun Int.toWords(context: Context): String {
     val num = this
     val numberWords = context.resources.getStringArray(R.array.odia_number_words)
-
-    if (num >= 0 && num < numberWords.size) {
-        return numberWords[num]
-    }
+    if (num >= 0 && num < numberWords.size) { return numberWords[num] }
     if (num >= 100 && num < 1000) {
         val hundredPart = num / 100
         val remainder = num % 100
@@ -59,7 +49,7 @@ fun Int.toWords(context: Context): String {
     return this.toLocaleNumerals(context)
 }
 
-// --- DATE CONVERTER ---
+// --- DATE CONVERTER (Unchanged) ---
 fun String.toLocaleDate(context: Context): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
     val currentLocale = context.resources.configuration.locales[0]
@@ -68,60 +58,11 @@ fun String.toLocaleDate(context: Context): String {
         val date = inputFormat.parse(this)
         val formattedDate = outputFormat.format(date!!)
         formattedDate.toLocaleNumerals(context)
-    } catch (e: Exception) {
-        this
-    }
+    } catch (e: Exception) { this }
 }
 
 
 // --- Private Helper Functions ---
-
-// vvv NEW DEDICATED TAMIL CONVERTER vvv
-/**
- * A special converter for integers to the traditional Tamil numeral system,
- * which uses unique characters for 10, 100, and 1000.
- */
-private fun Int.toTamilNumerals(): String {
-    if (this == 0) return "௦" // Zero
-    if (this < 0) return "-${(-this).toTamilNumerals()}" // Handle negative numbers
-
-    val num = this
-    val tamilDigits = listOf('௦', '௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯')
-    val ten = '௰'
-    val hundred = '௱'
-    val thousand = '௲'
-
-    val builder = StringBuilder()
-    var remaining = num
-
-    // Thousands
-    if (remaining >= 1000) {
-        val count = remaining / 1000
-        if (count > 1) builder.append(tamilDigits[count])
-        builder.append(thousand)
-        remaining %= 1000
-    }
-    // Hundreds
-    if (remaining >= 100) {
-        val count = remaining / 100
-        if (count > 1) builder.append(tamilDigits[count])
-        builder.append(hundred)
-        remaining %= 100
-    }
-    // Tens
-    if (remaining >= 10) {
-        val count = remaining / 10
-        if (count > 1) builder.append(tamilDigits[count])
-        builder.append(ten)
-        remaining %= 10
-    }
-    // Units
-    if (remaining > 0) {
-        builder.append(tamilDigits[remaining])
-    }
-
-    return builder.toString()
-}
 
 private fun Char.toOdiaDigit(): Char {
     return when (this) { '0' -> '୦'; '1' -> '୧'; '2' -> '୨'; '3' -> '୩'; '4' -> '୪'; '5' -> '୫'; '6' -> '୬'; '7' -> '୭'; '8' -> '୮'; '9' -> '୯'; else -> this }
@@ -131,7 +72,14 @@ private fun Char.toHindiDigit(): Char {
     return when (this) { '0' -> '०'; '1' -> '१'; '2' -> '२'; '3' -> '३'; '4' -> '४'; '5' -> '५'; '6' -> '६'; '7' -> '७'; '8' -> '८'; '9' -> '९'; else -> this }
 }
 
-// This simple mapping is no longer used for the main conversion but can be kept for other potential uses.
-private fun Char.toTamilDigit(): Char {
-    return when (this) { '0' -> '௦'; '1' -> '௧'; '2' -> '௨'; '3' -> '௩'; '4' -> '௪'; '5' -> '௫'; '6' -> '௬'; '7' -> '௭'; '8' -> '௮'; '9' -> '௯'; else -> this }
+private fun Char.toBengaliDigit(): Char {
+    return when (this) { '0' -> '০'; '1' -> '১'; '2' -> '২'; '3' -> '৩'; '4' -> '৪'; '5' -> '৫'; '6' -> '৬'; '7' -> '৭'; '8' -> '৮'; '9' -> '৯'; else -> this }
+}
+
+private fun Char.toGujaratiDigit(): Char {
+    return when (this) { '0' -> '૦'; '1' -> '૧'; '2' -> '૨'; '3' -> '૩'; '4' -> '૪'; '5' -> '૫'; '6' -> '૬'; '7' -> '૭'; '8' -> '૮'; '9' -> '૯'; else -> this }
+}
+
+private fun Char.toTeluguDigit(): Char {
+    return when (this) { '0' -> '౦'; '1' -> '౧'; '2' -> '౨'; '3' -> '౩'; '4' -> '౪'; '5' -> '౫'; '6' -> '౬'; '7' -> '౭'; '8' -> '౮'; '9' -> '౯'; else -> this }
 }

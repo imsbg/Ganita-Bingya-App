@@ -1,0 +1,390 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">गणित बिज्ञ</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_text_1">जयतु जगन्नाथः</string>
+    <string name="splash_text_2">गणित बिज्ञ मध्ये स्वागतम्</string>
+
+    <!-- Universal -->
+    <string name="back_button_description">निवर्तताम्</string>
+    <string name="ok_button">अस्तु</string>
+    <string name="app_logo_description">अनुप्रयोगस्य चिह्नम्</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">गणित बिज्ञ</string>
+    <string name="settings_button_description">विन्यासाः</string>
+    <string name="menu_start_game">क्रीडाम् आरभस्व</string>
+    <string name="menu_start_game_desc">५+४, ४-२</string>
+    <string name="menu_progress">भवतः प्रगतिः</string>
+    <string name="menu_progress_desc">कति सम्यक्? कति अशुद्धम्?</string>
+    <string name="menu_panikia">गुणनसारणी</string>
+    <string name="menu_panikia_desc">द्वे एकम् द्वे</string>
+    <string name="menu_numbers">सङ्ख्याः</string>
+    <string name="menu_numbers_desc">० १ २ ३ ४ ५ ६ ७ ८ ९</string>
+    <string name="menu_drawing_pad">चित्रफलकम्</string>
+    <string name="menu_calculator">गणकयन्त्रम्</string>
+
+    <!-- Game Screen & ViewModel -->
+    <string name="game_title">गणित बिज्ञ</string>
+    <string name="game_settings_button_text">प्रकारः: %1$s | स्तरः: %2$s</string>
+    <string name="game_go_to_current_question">वर्तमानप्रश्नं गच्छतु</string>
+    <string name="game_auto_scroll">स्वयं-सर्पणम्</string>
+    <string name="game_auto_scroll_icon_desc">स्वयं-सर्पणस्य चिह्नम्</string>
+    <string name="game_show_solution">समाधानं दर्शयतु</string>
+    <string name="game_top_bar_stop">विरामः</string>
+    <string name="game_top_bar_score_info">सम्यक्: %1$s | अशुद्धम्: %2$s</string>
+    <string name="game_settings_dialog_title">विन्यासान् परिवर्तयतु</string>
+    <string name="game_settings_dialog_type">प्रकारः</string>
+    <string name="game_settings_dialog_level">स्तरः</string>
+    <string name="game_settings_dialog_cancel">रद्दं करोतु</string>
+    <string name="game_summary_dialog_title">समयः समाप्तः!</string>
+    <string name="game_summary_dialog_your_score">भवतः अङ्काः:</string>
+    <string name="game_summary_dialog_play_again">पुनः क्रीडतु</string>
+    <string name="game_summary_dialog_stop_challenge">आह्वानं त्यजतु</string>
+    <string name="game_solution_dialog_title">समाधानम्</string>
+    <string name="game_solution_dialog_close">पिदधातु</string>
+    <string name="feedback_correct">साधु! सम्यक् उत्तरम्</string>
+    <string name="feedback_streak">अनुक्रमेण %1$s सम्यक् उत्तराणि!</string>
+    <string name="feedback_incorrect">अशुद्धम् उत्तरम्। सम्यक् उत्तरम् अस्ति: %1$s</string>
+    <string name="feedback_skipped">%1$s प्रश्नाः त्यक्ताः</string>
+    <string name="qna_log_question">प्रश्नः</string>
+    <string name="qna_log_your_answer">भवतः उत्तरम्</string>
+    <string name="qna_log_correct_answer">सम्यक् उत्तरम्</string>
+    <string name="qna_log_result">परिणामः</string>
+    <string name="qna_log_correct">सम्यक्</string>
+    <string name="qna_log_incorrect">अशुद्धम्</string>
+    <string name="qna_log_skipped">त्यक्तम्</string>
+    <string name="question_find_correct_equation">%1$s कृते सम्यक् समीकरणं अन्विष्यतु</string>
+
+    <string-array name="motivational_quotes">
+        <item>उत्तमं कुर्वन् अस्ति, तथैव करोतु!</item>
+        <item>सर्वस्य प्रश्नस्य उत्तरं ददातु</item>
+        <item>गणितम् एका मनोरञ्जिका क्रीडा अस्ति</item>
+        <item>भवान् गणितज्ञः भवति!</item>
+        <item>अभ्यासः एव सफलतायाः कुञ्चिका अस्ति।</item>
+        <item>जयतु जगन्नाथः</item>
+    </string-array>
+    <string name="game_type_addition">सङ्कलनम्</string>
+    <string name="game_type_subtraction">व्यवकलनम्</string>
+    <string name="game_type_multiplication">गुणनम्</string>
+    <string name="game_type_division">भाजनम्</string>
+    <string name="game_type_mixed">मिश्रितम्</string>
+    <string name="game_type_find_equation">समीकरणान्वेषणम्</string>
+    <string name="difficulty_easy">सरलः</string>
+    <string name="difficulty_medium">मध्यमः</string>
+    <string name="difficulty_hard">कठिनः</string>
+    <string name="difficulty_very_hard">अतिकठिनः</string>
+
+    <!-- Panikia Screen -->
+    <string name="panikia_title">गुणनसारणी</string>
+    <string name="panikia_title_for_table">%1$s इत्यस्य गुणनसारणी</string>
+    <string-array name="panikia_terms">
+        <item>एकम्</item>
+        <item>द्विकम्</item>
+        <item>त्रिकम्</item>
+        <item>चतुष्कम्</item>
+        <item>पञ्चकम्</item>
+        <item>षट्कम्</item>
+        <item>सप्तकम्</item>
+        <item>अष्टकम्</item>
+        <item>नवकम्</item>
+        <item>दशकम्</item>
+    </string-array>
+    <string name="swipe_up_hint">उपरि सर्पयतु</string>
+    <!-- Score & History Screens -->
+    <string name="score_history_title">भवतः प्रगतिः</string>
+    <string name="score_history_tab_lifetime">आजीवनाङ्काः</string>
+    <string name="score_history_tab_qna">प्रश्नेतिहासः</string>
+    <string name="score_total_results">समग्रपरिणामाः</string>
+    <string name="score_correct">सम्यक्</string>
+    <string name="score_incorrect">अशुद्धम्</string>
+
+    <!-- Stable keys (copy-paste, do not translate) -->
+    <string name="qna_log_question_key" translatable="false">Question</string>
+    <string name="qna_log_your_answer_key" translatable="false">Your Answer</string>
+    <string name="qna_log_correct_answer_key" translatable="false">Correct Answer</string>
+    <string name="qna_log_result_key" translatable="false">Result</string>
+    <string name="qna_log_result_correct_id" translatable="false">correct_id</string>
+    <string name="qna_log_result_incorrect_id" translatable="false">incorrect_id</string>
+
+    <!-- Display text -->
+    <string name="history_question_label">प्रश्नः: %1$s</string>
+    <string name="history_your_answer">भवतः उत्तरम्: %1$s</string>
+    <string name="history_correct_answer">सम्यक् उत्तरम्: %1$s</string>
+    <string name="history_result">परिणामः: %1$s</string>
+    <string name="history_no_history_found">कोऽपि इतिहासः न प्राप्तः</string>
+
+    <!-- Number Screen -->
+    <string name="numbers_screen_title">संख्या</string>
+
+    <!-- Drawing Screens -->
+    <string name="drawing_pad_title">चित्रफलकम्</string>
+    <string name="drawing_history_button">इतिहासः</string>
+    <string name="drawing_mode_label">विधिं चिनोतु</string>
+    <string name="drawing_mode_serial">क्रमेण</string>
+    <string name="drawing_mode_random_double">द्वि-अङ्कीया सङ्ख्या</string>
+    <string name="drawing_mode_random_triple">त्रि-अङ्कीया सङ्ख्या</string>
+    <string name="drawing_undo_button">पूर्वं करोतु</string>
+    <string name="drawing_redo_button">पुनः करोतु</string>
+    <string name="drawing_clear_button">सर्वं मार्जयतु</string>
+    <string name="drawing_next_button">अग्रिमम्</string>
+    <string name="drawing_history_title">चित्रणस्य इतिहासः</string>
+    <string name="drawing_history_delete_all">सर्वं लोपयतु</string>
+    <string name="drawing_history_delete_dialog_title">सर्वं लोपयतु वा?</string>
+    <string name="drawing_history_delete_dialog_message">किं भवान् सर्वाणि सञ्चितानि चित्राणि लोपयितुम् इच्छति?</string>
+    <string name="drawing_history_delete_confirm">आम्, लोपयतु</string>
+    <string name="drawing_history_delete_cancel">नहि</string>
+    <string name="drawing_history_empty">न कानिचित् चित्राणि सञ्चितानि</string>
+    <string name="drawing_history_saved_drawing_desc">सञ्चितानि चित्राणि</string>
+    <string name="drawing_history_question_label">प्रश्नः: %1$s</string>
+
+    <!-- Calculator Screen -->
+    <string name="calculator_title">गणकयन्त्रम्</string>
+    <string name="calculator_clear_button">मार्जयतु</string>
+    <string name="calculator_backspace_icon">⌫</string>
+    <string name="calculator_toggle_scientific_pad">वैज्ञानिकफलकं परिवर्तयतु</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">विन्यासाः</string>
+    <string name="settings_vibration_title">कम्पनम्</string>
+    <string name="settings_vibration_desc">अशुद्धे उत्तरे कम्पताम्</string>
+    <string name="settings_reminders_title">स्मारकाणि</string>
+    <string name="settings_morning_reminder">प्रातःस्मारकम्</string>
+    <string name="settings_evening_reminder">सायंस्मारकम्</string>
+    <string name="settings_select_time">समयं चिनोतु</string>
+    <string name="settings_reminder_set_for">स्मारकं %1$s वादने विन्यस्तम्</string>
+
+    <!-- About Screen -->
+    <string name="about_screen_title">विवरणम्</string>
+    <string name="members_and_contributors">सदस्याः योगदानिनश्च</string>
+    <string name="sandeep_biswal_name">सन्दीपः बिस्वालः जी</string>
+    <string name="sandeep_biswal_role">प्रशासकः, सङ्कल्पना, रूपरेखा च भाषा (ओडिया, हिन्दी, आङ्ग्लभाषा च अधिकाः)</string>
+    <string name="show_more">अधिकं दर्शयतु</string>
+    <string name="show_less">न्यूनं दर्शयतु</string>
+    <string name="support_development">साहाय्यं विकासश्च</string>
+    <string name="support_github">GitHub</string>
+    <string name="support_github_desc">GitHub उपरि अस्य प्रकल्पस्य शाखां कुरुत</string>
+    <string name="support_translate">अनुवादं करोतु</string>
+    <string name="support_translate_desc">अनुप्रयोगं भवतः भाषायाम् अनुवदितुं साहाय्यं करोतु</string>
+    <string name="support_donate">दानं करोतु</string>
+    <string name="support_donate_desc">यदि भवान् चिन्तयति यत् मम कार्याय धनं दातव्यम्</string>
+    <string name="support_report_bug">दोषं सूचयतु</string>
+    <string name="support_report_bug_desc">काचित् समस्या दृष्टा? अस्मान् सूचयतु</string>
+    <string name="support_share">वितरतु</string>
+    <string name="support_share_desc">इदम् अनुप्रयोगं मित्रैः कुटुम्बजनैश्च सह वितरतु</string>
+    <string name="share_message">गणित बिज्ञ डाउनलोडं कृत्वा क्रीडतु: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="social">सामजिकम्</string>
+    <string name="social_website">जालस्थानम्</string>
+    <string name="social_website_desc">अस्माकं जालस्थानं पश्यतु</string>
+    <string name="social_instagram">माम् Instagram उपरि अनुसरतु</string>
+    <string name="social_instagram_desc">नूतनवार्ताभिः सह अवगतः भवतु</string>
+    <string name="social_twitter">माम् X (Twitter) उपरि अनुसरतु</string>
+    <string name="social_twitter_desc">विचाराणाम् अद्यतनानां च कृते अनुसरतु</string>
+    <string name="social_telegram">Telegram उपरि योजयतु</string>
+    <string name="social_telegram_desc">दोषाणां वैशिष्ट्यानां च चर्चां कर्तुं समूहे योजयतु</string>
+    <string name="other">अन्यत्</string>
+    <string name="other_changelog">परिवर्तनसूची</string>
+    <string name="other_changelog_desc">किं नूतनम् अस्ति, पश्यतु</string>
+    <string name="other_check_for_updates">नूतनीकरणानां परीक्षणं कुरुत</string>
+    <string name="other_version">संस्करणम्</string>
+    <string name="changelog_dialog_title">किं नूतनम्</string>
+    <string name="changelog_loading">परिवर्तनसूची आगच्छति...</string>
+    <string name="changelog_error">परिवर्तनसूचीम् आनेतुं न शक्तम्। कृपया भवतः सम्पर्कं परीक्षतु।</string>
+    <string name="other_language">भाषा</string>
+    <string name="other_language_desc">अनुप्रयोगस्य भाषां परिवर्तयतु</string>
+    <string name="language_dialog_title">भाषां चिनोतु</string>
+    <string name="made_with_love">भारते ❤️ सह निर्मितम्</string>
+    <string name="download_notification_title">गणित बिज्ञ v%1$s डाउनलोड् भवति</string>
+    <string name="download_notification_description">नूतनं नूतनीकरणं डाउनलोड् भवति...</string>
+    <string name="download_started">डाउनलोड् आरभ्यते...</string>
+    <string name="download_failed">डाउनलोड् निष्फलम्: %1$s</string>
+    <string name="update_available_title">नूतनं नूतनीकरणम् उपलब्धम्</string>
+    <string name="update_available_message">एकं नूतनं संस्करणं (v%1$s) उपलब्धम् अस्ति। भवान् वर्तमानकाले (v%2$s) उपयुञ्क्ते।</string>
+    <string name="download_button">डाउनलोड् करोतु</string>
+    <string name="later_button">पश्चात्</string>
+    <string name="permission_request_toast">कृपया अस्मात् स्रोताद् अनुप्रयोगस्थापनस्य अनुमतिं ददातु।</string>
+    <string name="up_to_date_title">अनुप्रयोगः अद्यतनः अस्ति</string>
+    <string name="up_to_date_message">भवान् गणित बिज्ञ इत्यस्य नूतनतमं संस्करणम् उपयुञ्क्ते।</string>
+    <string name="error_title">त्रुटिः</string>
+    <string name="error_check_connection">नूतनीकरणानां परीक्षणं कर्तुं न शक्तम्, कृपया भवतः अन्तर्जालसम्पर्कं परीक्षतु</string>
+
+    <!-- Crash Handler -->
+    <string name="crash_screen_app_name">गणित बिज्ञ</string>
+    <string name="crash_screen_oops_title">अहो, किमपि अशुद्धम् अभवत्</string>
+    <string name="crash_screen_oops_message">अनुप्रयोगः नष्टः अभवत्। भवान् इदं त्रुटिविवरणं विकासकाय प्रेषयितुं शक्नोति।</string>
+    <string name="crash_screen_copy_report">विवरणं प्रतिलिखतु</string>
+    <string name="crash_screen_close_app">अनुप्रयोगं पिदधातु</string>
+    <string name="crash_report_copied">नाशविवरणं फलके प्रतिलिखितम्।</string>
+    <string name="crash_no_details">न किमपि त्रुटिविवरणम् उपलब्धम्।</string>
+
+    <!-- Download Receiver -->
+    <string name="failed_to_start_installer">स्थापकम् आरब्धुं न शक्तम्।</string>
+    <string name="download_failed_generic">डाउनलोड् निष्फलम्।</string>
+
+    <!-- Math Reminder -->
+    <string name="reminder_channel_name">जीबी गणित स्मारकाणि</string>
+    <string name="reminder_channel_description">दैनिकसूचनासेवा</string>
+    <string name="reminder_notification_title">गणित बिज्ञ</string>
+    <string name="reminder_notification_text">किं भवान् अद्य गणितं पठिष्यति? अहं प्रतीक्षां करोमि</string>
+
+    <!-- SettingsScreen.kt -->
+    <string name="settings_back_button_desc">निवर्तताम्</string>
+
+    <string name="settings_category_general">सामान्यम्</string>
+    <string name="settings_vibration_description">अशुद्धोत्तरस्य कृते प्रतिपुष्टिः</string>
+
+    <string name="settings_category_reminders">स्मारकाणि</string>
+    <string name="settings_morning_reminder_title">प्रातःस्मारकम्</string>
+    <string name="settings_evening_reminder_title">सायंस्मारकम्</string>
+
+    <string name="settings_category_other">अन्यत्</string>
+    <string name="settings_about_app_title">अनुप्रयोगस्य विषये</string>
+    <string name="settings_about_app_description">संस्करणं सूचना च</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="dialog_ok">अस्तु</string>
+    <string name="dialog_cancel">रद्दं करोतु</string>
+
+    <!-- Toasts -->
+    <string name="toast_morning_reminder_set">प्रातःस्मारकं विन्यस्तम्</string>
+    <string name="toast_evening_reminder_set">सायंस्मारकं विन्यस्तम्</string>
+
+    <!-- New strings for WelcomeScreen -->
+    <string name="welcome_title">स्वागतम्</string>
+    <string name="choose_language_prompt">भवतः भाषां चिनोतु</string>
+    <string name="button_continue">अनुवर्तताम्</string>
+
+    <!-- Language Names -->
+    <string name="language_system_default">तन्त्र-पूर्वनिर्धारितम्</string>
+    <string name="language_odia">ଓଡ଼ିଆ</string>
+    <string name="language_english">English</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="settings_language_title">भाषा</string>
+    <string name="settings_language_desc">अनुप्रयोगस्य भाषां परिवर्तयतु</string>
+
+    <string-array name="odia_number_words">
+        <item>शून्यम्</item>
+        <item>एकम्</item>
+        <item>द्वे</item>
+        <item>त्रीणि</item>
+        <item>चत्वारि</item>
+        <item>पञ्च</item>
+        <item>षट्</item>
+        <item>सप्त</item>
+        <item>अष्ट</item>
+        <item>नव</item>
+        <item>दश</item>
+        <item>एकादश</item>
+        <item>द्वादश</item>
+        <item>त्रयोदश</item>
+        <item>चतुर्दश</item>
+        <item>पञ्चदश</item>
+        <item>षोडश</item>
+        <item>सप्तदश</item>
+        <item>अष्टादश</item>
+        <item>नवदश</item>
+        <item>विंशतिः</item>
+        <item>एकविंशतिः</item>
+        <item>द्वाविंशतिः</item>
+        <item>त्रयोविंशतिः</item>
+        <item>चतुर्विंशतिः</item>
+        <item>पञ्चविंशतिः</item>
+        <item>षड्विंशतिः</item>
+        <item>सप्तविंशतिः</item>
+        <item>अष्टाविंशतिः</item>
+        <item>नवविंशतिः</item>
+        <item>त्रिंशत्</item>
+        <item>एकत्रिंशत्</item>
+        <item>द्वात्रिंशत्</item>
+        <item>त्रयस्त्रिंशत्</item>
+        <item>चतुस्त्रिंशत्</item>
+        <item>पञ्चत्रिंशत्</item>
+        <item>षट्त्रिंशत्</item>
+        <item>सप्तत्रिंशत्</item>
+        <item>अष्टात्रिंशत्</item>
+        <item>नवत्रिंशत्</item>
+        <item>चत्वारिंशत्</item>
+        <item>एकचत्वारिंशत्</item>
+        <item>द्विचत्वारिंशत्</item>
+        <item>त्रिचत्वारिंशत्</item>
+        <item>चतुश्चत्वारिंशत्</item>
+        <item>पञ्चचत्वारिंशत्</item>
+        <item>षट्चत्वारिंशत्</item>
+        <item>सप्तचत्वारिंशत्</item>
+        <item>अष्टचत्वारिंशत्</item>
+        <item>नवचत्वारिंशत्</item>
+        <item>पञ्चाशत्</item>
+        <item>एकपञ्चाशत्</item>
+        <item>द्विपञ्चाशत्</item>
+        <item>त्रिपञ्चाशत्</item>
+        <item>चतुःपञ्चाशत्</item>
+        <item>पञ्चपञ्चाशत्</item>
+        <item>षट्पञ्चाशत्</item>
+        <item>सप्तपञ्चाशत्</item>
+        <item>अष्टपञ्चाशत्</item>
+        <item>नवपञ्चाशत्</item>
+        <item>षष्टिः</item>
+        <item>एकषष्टिः</item>
+        <item>द्विषष्टिः</item>
+        <item>त्रिषष्टिः</item>
+        <item>चतुःषष्टिः</item>
+        <item>पञ्चषष्टिः</item>
+        <item>षट्षष्टिः</item>
+        <item>सप्तषष्टिः</item>
+        <item>अष्टषष्टिः</item>
+        <item>नवषष्टिः</item>
+        <item>सप्ततिः</item>
+        <item>एकसप्ततिः</item>
+        <item>द्विसप्ततिः</item>
+        <item>त्रिसप्ततिः</item>
+        <item>चतुःसप्ततिः</item>
+        <item>पञ्चसप्ततिः</item>
+        <item>षट्सप्ततिः</item>
+        <item>सप्तसप्ततिः</item>
+        <item>अष्टसप्ततिः</item>
+        <item>नवसप्ततिः</item>
+        <item>अशीतिः</item>
+        <item>एकाशीतिः</item>
+        <item>द्व्यशीतिः</item>
+        <item>त्र्यशीतिः</item>
+        <item>चतुरशीतिः</item>
+        <item>पञ्चाशीतिः</item>
+        <item>षडशीतिः</item>
+        <item>सप्ताशीतिः</item>
+        <item>अष्टाशीतिः</item>
+        <item>नवाशीतिः</item>
+        <item>नवतिः</item>
+        <item>एकनवतिः</item>
+        <item>द्विनवतिः</item>
+        <item>त्रिनवतिः</item>
+        <item>चतुर्नवतिः</item>
+        <item>पञ्चनवतिः</item>
+        <item>षण्णवतिः</item>
+        <item>सप्तनवतिः</item>
+        <item>अष्टनवतिः</item>
+        <item>नवनवतिः</item>
+        <item>शतम्</item>
+    </string-array>
+
+    <string name="language_dialog_description">भाषापरिवर्तनस्य अनन्तरम् अनुप्रयोगं पुनः आरभस्व।</string>
+    <string name="language_restart_dialog_title">पुनारम्भः आवश्यकः</string>
+    <string name="language_restart_dialog_message">भाषापरिवर्तनं प्रभावयितुम् अनुप्रयोगस्य पुनारम्भः आवश्यकः।</string>
+    <string name="dialog_restart">पुनारभस्व</string>
+
+    <string name="social_github">GitHub</string>
+    <string name="social_github_desc">अस्माकं स्रोतसङ्केतं पश्यतु</string>
+    <string name="dialog_close">पिदधातु</string>
+    <string name="changelog_header_title">संरक्षकाणाम्/योगदानिनाम् अन्वेषणम्</string>
+    <string name="changelog_header_description">वयं वर्तमानकाले अस्माकं प्रकल्पस्य विकासं सुधारं च कर्तुं साहाय्यार्थं संरक्षकान्/योगदानिनः अन्विष्यन्तः स्मः। यदि भवान् स्वकौशलं विशेषज्ञतां च योगदानं कर्तुम् इच्छति, तर्हि भवान् अस्माकं GitHub अत्र द्रष्टुं शक्नोति, पुल-प्रार्थनाः स्वागतार्हाः सन्ति। अनुप्रयोगः कोटलिन-भाषायाम् अत्यधिकं निर्भरः अस्ति।</string>
+    <string name="changelog_fixed_title">शोधितम्</string>
+
+    <string name="settings_sound_title">ध्वनिप्रभावाः</string>
+    <string name="settings_sound_description">सम्यक् उत्तरस्य कृते ध्वनिः</string>
+</resources>

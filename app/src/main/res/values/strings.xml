@@ -1,6 +1,6 @@
 <resources>
     <!-- App Name -->
-    <string name="app_name">ଗଣିତ ବିଜ୍ଞ</string>
+    <string name="app_name" translatable="false">ଗଣିତ ବିଜ୍ଞ</string>
 
     <!-- Splash Screen -->
     <string name="splash_text_1">ଜୟ ଜଗନ୍ନାଥ</string>
@@ -85,7 +85,7 @@
         <item>ତିରି</item>
         <item>ଚଉ</item>
         <item>ପଞ୍ଚା</item>
-        <item>ସୋ</item>
+        <item>ଷୋ</item>
         <item>ସତା</item>
         <item>ଅଷ୍ଟା</item>
         <item>ନୂଆଁ</item>
@@ -159,11 +159,11 @@
     <!-- About Screen -->
     <string name="about_screen_title">ବିବରଣୀ</string>
     <string name="members_and_contributors">ସଦସ୍ୟ ଏବଂ ଯୋଗଦାନକାରୀ</string>
-    <string name="sandeep_biswal_name">ସନ୍ଦୀପ ବିଶ୍ଵାଳ ଜି</string>
-    <string name="sandeep_biswal_role">ପରିକଳ୍ପନା, ଡିଜାଇନ୍ ଓ ଭାଷା (ଓଡ଼ିଆ, ହିନ୍ଦୀ)</string>
-    <string name="akash_t_name">ଆକାଶ ଟି.</string>
-    <string name="akash_t_role">ତାମିଲ ଭାଷା ଅନୁବାଦକ</string>
-    <string name="show_more">ଅଧିକ ଦେଖାନ୍ତୁ</string>
+    <string name="sandeep_biswal_name">ସନ୍ଦୀପ୍ ବିଶ୍ଵାଳ ଜି</string>
+    <string name="sandeep_biswal_role">ପ୍ରଶାସକ, ପରିକଳ୍ପନା, ଡିଜାଇନ୍ ଓ ଭାଷା (ଓଡ଼ିଆ, ହିନ୍ଦୀ, ଇଂରାଜୀ ଓ ଅନ୍ୟାନ୍ୟ)</string>
+        <string name="soubhagya_padhan_name">ସୌଭାଗ୍ୟ ପ୍ରଧାନ</string>
+        <string name="soubhagya_padhan_role">ଭାଷା ଅନୁବାଦକ</string>
+    <string name="show_more">ଅଧିକ ଦେଖନ୍ତୁ</string>
     <string name="show_less">କମ୍ ଦେଖାନ୍ତୁ</string>
     <string name="support_development">ସମର୍ଥନ ଏବଂ ବିକାଶ</string>
     <string name="support_github">ଗିଟ୍‌ହବ୍</string>
@@ -263,6 +263,12 @@
     <string name="language_odia">ଓଡ଼ିଆ</string>
     <string name="language_english">English</string>
     <string name="language_hindi">हिन्दी</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_santali">(Coming soon)</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">ଭାଷା</string>
     <string name="settings_language_desc">ଆପ୍ ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
@@ -424,4 +430,8 @@
     <string name="changelog_header_title">ପରିଚାଳକ/ଯୋଗଦାନକାରୀ ଖୋଜୁଛୁ</string>
     <string name="changelog_header_description">ଆମେ ବର୍ତ୍ତମାନ ଆମ ପ୍ରୋଜେକ୍ଟକୁ ବିକଶିତ ଏବଂ ଉନ୍ନତ କରିବାରେ ସାହାଯ୍ୟ କରିବା ପାଇଁ ପରିଚାଳକ/ଯୋଗଦାନକାରୀ ଖୋଜୁଛୁ। ଯଦି ଆପଣ ଆପଣଙ୍କର ଦକ୍ଷତା ଏବଂ ଅଭିଜ୍ଞତା ଯୋଗଦାନ କରିବାକୁ ଚାହାଁନ୍ତି, ତେବେ ଆପଣ ଆମର GitHub କୁ ଏଠାରେ ପରିଦର୍ଶନ କରିପାରିବେ, ପୁଲ୍ ଅନୁରୋଧ ସ୍ୱାଗତଯୋଗ୍ୟ। ଏହି ଆପ୍ କୋଟଲିନ୍ ଉପରେ ଅଧିକ ନିର୍ଭର କରେ।</string>
     <string name="changelog_fixed_title">ସମାଧାନ କରାଯାଇଛି</string>
+
+    <string name="settings_sound_title">ଧ୍ୱନି ପ୍ରଭାବ</string>
+    <string name="settings_sound_description">ସଠିକ ଉତ୍ତର ପାଇଁ ଧ୍ୱନି</string>
+    <string name="changelog_whats_new_title">ନୂଆ କଣ ଅଛି</string>
 </resources>

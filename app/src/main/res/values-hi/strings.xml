@@ -1,5 +1,390 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Name -->
     <string name="app_name">गणित बिज्ञ</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_text_1">जय जगन्नाथ</string>
+    <string name="splash_text_2">गणित बिज्ञ में आपका स्वागत है</string>
+
+    <!-- Universal -->
+    <string name="back_button_description">वापस</string>
+    <string name="ok_button">ठीक है</string>
+    <string name="app_logo_description">ऐप लोगो</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">गणित बिज्ञ</string>
+    <string name="settings_button_description">सेटिंग्स</string>
+    <string name="menu_start_game">खेल शुरू करें</string>
+    <string name="menu_start_game_desc">५+४, ४-२</string>
+    <string name="menu_progress">आपकी प्रगति</string>
+    <string name="menu_progress_desc">कितने सही? कितने गलत?</string>
+    <string name="menu_panikia">पहाड़े</string>
+    <string name="menu_panikia_desc">दो एकम दो</string>
+    <string name="menu_numbers">संख्याएँ</string>
+    <string name="menu_numbers_desc">० १ २ ३ ४ ५ ६ ७ ८ ९</string>
+    <string name="menu_drawing_pad">ड्राइंग पैड</string>
+    <string name="menu_calculator">कैलकुलेटर</string>
+
+    <!-- Game Screen & ViewModel -->
+    <string name="game_title">गणित बिज्ञ</string>
+    <string name="game_settings_button_text">प्रकार: %1$s | स्तर: %2$s</string>
+    <string name="game_go_to_current_question">वर्तमान प्रश्न पर जाएँ</string>
+    <string name="game_auto_scroll">ऑटो स्क्रॉल</string>
+    <string name="game_auto_scroll_icon_desc">ऑटो स्क्रॉल आइकन</string>
+    <string name="game_show_solution">हल देखें</string>
+    <string name="game_top_bar_stop">रोकें</string>
+    <string name="game_top_bar_score_info">सही: %1$s | गलत: %2$s</string>
+    <string name="game_settings_dialog_title">सेटिंग्स बदलें</string>
+    <string name="game_settings_dialog_type">प्रकार</string>
+    <string name="game_settings_dialog_level">स्तर</string>
+    <string name="game_settings_dialog_cancel">रद्द करें</string>
+    <string name="game_summary_dialog_title">समय समाप्त!</string>
+    <string name="game_summary_dialog_your_score">आपका स्कोर:</string>
+    <string name="game_summary_dialog_play_again">फिर से खेलें</string>
+    <string name="game_summary_dialog_stop_challenge">चुनौती रोकें</string>
+    <string name="game_solution_dialog_title">हल</string>
+    <string name="game_solution_dialog_close">बंद करें</string>
+    <string name="feedback_correct">वाह! सही उत्तर</string>
+    <string name="feedback_streak">लगातार %1$s सही उत्तर!</string>
+    <string name="feedback_incorrect">गलत उत्तर। सही उत्तर है: %1$s</string>
+    <string name="feedback_skipped">%1$s प्रश्न छोड़े गए</string>
+    <string name="qna_log_question">प्रश्न</string>
+    <string name="qna_log_your_answer">आपका उत्तर</string>
+    <string name="qna_log_correct_answer">सही उत्तर</string>
+    <string name="qna_log_result">परिणाम</string>
+    <string name="qna_log_correct">सही</string>
+    <string name="qna_log_incorrect">गलत</string>
+    <string name="qna_log_skipped">छोड़ दिया</string>
+    <string name="question_find_correct_equation">%1$s के लिए सही समीकरण खोजें</string>
+
+    <string-array name="motivational_quotes">
+        <item>आप बहुत अच्छा कर रहे हैं, लगे रहें!</item>
+        <item>हर प्रश्न का उत्तर दें</item>
+        <item>गणित एक मजेदार खेल है</item>
+        <item>आप एक गणितज्ञ बन रहे हैं!</item>
+        <item>अभ्यास ही सफलता की कुंजी है।</item>
+        <item>जय जगन्नाथ</item>
+    </string-array>
+    <string name="game_type_addition">जोड़</string>
+    <string name="game_type_subtraction">घटाव</string>
+    <string name="game_type_multiplication">गुणा</string>
+    <string name="game_type_division">भाग</string>
+    <string name="game_type_mixed">मिश्रित</string>
+    <string name="game_type_find_equation">समीकरण खोजें</string>
+    <string name="difficulty_easy">आसान</string>
+    <string name="difficulty_medium">मध्यम</string>
+    <string name="difficulty_hard">कठिन</string>
+    <string name="difficulty_very_hard">बहुत कठिन</string>
+
+    <!-- Panikia Screen -->
+    <string name="panikia_title">पहाड़े</string>
+    <string name="panikia_title_for_table">%1$s का पहाड़ा</string>
+    <string-array name="panikia_terms">
+        <item>एकम</item>
+        <item>दूनी</item>
+        <item>तिया</item>
+        <item>चौके</item>
+        <item>पंचे</item>
+        <item>छक्के</item>
+        <item>सत्ते</item>
+        <item>अट्ठे</item>
+        <item>नम्मे</item>
+        <item>दहाम</item>
+    </string-array>
+    <string name="swipe_up_hint">ऊपर स्क्रॉल करें</string>
+    <!-- Score & History Screens -->
+    <string name="score_history_title">आपकी प्रगति</string>
+    <string name="score_history_tab_lifetime">लाइफटाइम स्कोर</string>
+    <string name="score_history_tab_qna">प्रश्न इतिहास</string>
+    <string name="score_total_results">कुल परिणाम</string>
+    <string name="score_correct">सही</string>
+    <string name="score_incorrect">गलत</string>
+
+    <!-- Stable keys (copy-paste, do not translate) -->
+    <string name="qna_log_question_key" translatable="false">Question</string>
+    <string name="qna_log_your_answer_key" translatable="false">Your Answer</string>
+    <string name="qna_log_correct_answer_key" translatable="false">Correct Answer</string>
+    <string name="qna_log_result_key" translatable="false">Result</string>
+    <string name="qna_log_result_correct_id" translatable="false">correct_id</string>
+    <string name="qna_log_result_incorrect_id" translatable="false">incorrect_id</string>
+
+    <!-- Display text -->
+    <string name="history_question_label">प्रश्न: %1$s</string>
+    <string name="history_your_answer">आपका उत्तर: %1$s</string>
+    <string name="history_correct_answer">सही उत्तर: %1$s</string>
+    <string name="history_result">परिणाम: %1$s</string>
+    <string name="history_no_history_found">कोई इतिहास नहीं मिला</string>
+
+    <!-- Number Screen -->
+    <string name="numbers_screen_title">संख्याएँ</string>
+
+    <!-- Drawing Screens -->
+    <string name="drawing_pad_title">ड्राइंग पैड</string>
+    <string name="drawing_history_button">इतिहास</string>
+    <string name="drawing_mode_label">मोड चुनें</string>
+    <string name="drawing_mode_serial">क्रमिक</string>
+    <string name="drawing_mode_random_double">दो अंकों की संख्या</string>
+    <string name="drawing_mode_random_triple">तीन अंकों की संख्या</string>
+    <string name="drawing_undo_button">पूर्ववत करें</string>
+    <string name="drawing_redo_button">फिर से करें</string>
+    <string name="drawing_clear_button">सब साफ़ करें</string>
+    <string name="drawing_next_button">अगला</string>
+    <string name="drawing_history_title">ड्राइंग इतिहास</string>
+    <string name="drawing_history_delete_all">सब मिटाएँ</string>
+    <string name="drawing_history_delete_dialog_title">सब मिटाएँ?</string>
+    <string name="drawing_history_delete_dialog_message">क्या आप वाकई सभी सहेजे गए चित्र मिटाना चाहते हैं?</string>
+    <string name="drawing_history_delete_confirm">हाँ, मिटाएँ</string>
+    <string name="drawing_history_delete_cancel">नहीं</string>
+    <string name="drawing_history_empty">कोई चित्र सहेजा नहीं गया</string>
+    <string name="drawing_history_saved_drawing_desc">सहेजे गए चित्र</string>
+    <string name="drawing_history_question_label">प्रश्न: %1$s</string>
+
+    <!-- Calculator Screen -->
+    <string name="calculator_title">कैलकुलेटर</string>
+    <string name="calculator_clear_button">साफ़ करें</string>
+    <string name="calculator_backspace_icon">⌫</string>
+    <string name="calculator_toggle_scientific_pad">वैज्ञानिक पैड टॉगल करें</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_vibration_title">कंपन</string>
+    <string name="settings_vibration_desc">गलत उत्तर पर कंपन करें</string>
+    <string name="settings_reminders_title">रिमाइंडर</string>
+    <string name="settings_morning_reminder">सुबह का रिमाइंडर</string>
+    <string name="settings_evening_reminder">शाम का रिमाइंडर</string>
+    <string name="settings_select_time">समय चुनें</string>
+    <string name="settings_reminder_set_for">रिमाइंडर %1$s के लिए सेट है</string>
+
+    <!-- About Screen -->
+    <string name="about_screen_title">ऐप के बारे में</string>
+    <string name="members_and_contributors">सदस्य और योगदानकर्ता</string>
+    <string name="sandeep_biswal_name">संदीप् बिस्वाल जी</string>
+    <string name="sandeep_biswal_role">एडमिन, कॉन्सेप्ट, डिज़ाइन और भाषा (ओडिया, हिंदी, अंग्रेजी और अधिक)</string>
+    <string name="show_more">और दिखाओ</string>
+    <string name="show_less">कम दिखाओ</string>
+    <string name="support_development">समर्थन और विकास</string>
+    <string name="support_github">गिटहब</string>
+    <string name="support_github_desc">इस प्रोजेक्ट को गिटहब पर फोर्क करें</string>
+    <string name="support_translate">अनुवाद करें</string>
+    <string name="support_translate_desc">ऐप को अपनी भाषा में अनुवाद करने में मदद करें</string>
+    <string name="support_donate">दान करें</string>
+    <string name="support_donate_desc">यदि आपको लगता है कि मुझे मेरे काम के लिए भुगतान मिलना चाहिए</string>
+    <string name="support_report_bug">बग की रिपोर्ट करें</string>
+    <string name="support_report_bug_desc">कोई समस्या मिली? हमें बताएं</string>
+    <string name="support_share">शेयर करें</string>
+    <string name="support_share_desc">इस ऐप को अपने दोस्तों और परिवार के साथ शेयर करें</string>
+    <string name="share_message">गणित बिज्ञ डाउनलोड करें और खेलें: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="social">सोशल</string>
+    <string name="social_website">वेबसाइट</string>
+    <string name="social_website_desc">हमारी वेबसाइट पर जाएँ</string>
+    <string name="social_instagram">मुझे इंस्टाग्राम पर फॉलो करें</string>
+    <string name="social_instagram_desc">नवीनतम समाचारों से अपडेट रहें</string>
+    <string name="social_twitter">मुझे एक्स (ट्विटर) पर फॉलो करें</string>
+    <string name="social_twitter_desc">विचारों और अपडेट के लिए फॉलो करें</string>
+    <string name="social_telegram">टेलीग्राम पर जुड़ें</string>
+    <string name="social_telegram_desc">बग और सुविधाओं पर चर्चा करने के लिए समूह में शामिल हों</string>
+    <string name="other">अन्य</string>
+    <string name="other_changelog">चेंजलॉग</string>
+    <string name="other_changelog_desc">देखें क्या नया है</string>
+    <string name="other_check_for_updates">अपडेट के लिए जांचें</string>
+    <string name="other_version">संस्करण</string>
+    <string name="changelog_dialog_title">नया क्या है</string>
+    <string name="changelog_loading">चेंजलॉग लोड हो रहा है...</string>
+    <string name="changelog_error">चेंजलॉग लोड करने में विफल। कृपया अपना कनेक्शन जांचें।</string>
+    <string name="other_language">भाषा</string>
+    <string name="other_language_desc">ऐप की भाषा बदलें</string>
+    <string name="language_dialog_title">भाषा चुनें</string>
+    <string name="made_with_love">भारत में ❤️ के साथ बनाया गया</string>
+    <string name="download_notification_title">गणित बिज्ञ v%1$s डाउनलोड हो रहा है</string>
+    <string name="download_notification_description">नया अपडेट डाउनलोड हो रहा है...</string>
+    <string name="download_started">डाउनलोड शुरू हो रहा है...</string>
+    <string name="download_failed">डाउनलोड विफल: %1$s</string>
+    <string name="update_available_title">नया अपडेट उपलब्ध है</string>
+    <string name="update_available_message">एक नया संस्करण (v%1$s) उपलब्ध है। आप वर्तमान में (v%2$s) का उपयोग कर रहे हैं।</string>
+    <string name="download_button">डाउनलोड</string>
+    <string name="later_button">बाद में</string>
+    <string name="permission_request_toast">कृपया इस स्रोत से ऐप इंस्टॉलेशन की अनुमति दें।</string>
+    <string name="up_to_date_title">ऐप अप-टू-डेट है</string>
+    <string name="up_to_date_message">आप गणित बिज्ञ के नवीनतम संस्करण का उपयोग कर रहे हैं।</string>
+    <string name="error_title">त्रुटि</string>
+    <string name="error_check_connection">अपडेट की जांच करने में असमर्थ, कृपया अपना इंटरनेट कनेक्शन जांचें</string>
+
+    <!-- Crash Handler -->
+    <string name="crash_screen_app_name">गणित बिज्ञ</string>
+    <string name="crash_screen_oops_title">ओह, कुछ गलत हो गया</string>
+    <string name="crash_screen_oops_message">ऐप क्रैश हो गया है। आप यह त्रुटि रिपोर्ट डेवलपर को भेज सकते हैं।</string>
+    <string name="crash_screen_copy_report">रिपोर्ट कॉपी करें</string>
+    <string name="crash_screen_close_app">ऐप बंद करें</string>
+    <string name="crash_report_copied">क्रैश रिपोर्ट क्लिपबोर्ड पर कॉपी की गई।</string>
+    <string name="crash_no_details">कोई त्रुटि विवरण उपलब्ध नहीं है।</string>
+
+    <!-- Download Receiver -->
+    <string name="failed_to_start_installer">इंस्टॉलर शुरू करने में विफल।</string>
+    <string name="download_failed_generic">डाउनलोड विफल।</string>
+
+    <!-- Math Reminder -->
+    <string name="reminder_channel_name">जीबी गणित रिमाइंडर</string>
+    <string name="reminder_channel_description">दैनिक अधिसूचना सेवा</string>
+    <string name="reminder_notification_title">गणित बिज्ञ</string>
+    <string name="reminder_notification_text">क्या आप आज गणित पढ़ने जा रहे हैं? मैं इंतज़ार कर रहा हूँ</string>
+
+    <!-- SettingsScreen.kt -->
+    <string name="settings_back_button_desc">वापस</string>
+
+    <string name="settings_category_general">सामान्य</string>
+    <string name="settings_vibration_description">गलत उत्तर के लिए फीडबैक</string>
+
+    <string name="settings_category_reminders">रिमाइंडर</string>
+    <string name="settings_morning_reminder_title">सुबह का रिमाइंडर</string>
+    <string name="settings_evening_reminder_title">शाम का रिमाइंडर</string>
+
+    <string name="settings_category_other">अन्य</string>
+    <string name="settings_about_app_title">ऐप के बारे में</string>
+    <string name="settings_about_app_description">संस्करण और जानकारी</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="dialog_ok">ठीक है</string>
+    <string name="dialog_cancel">रद्द करें</string>
+
+    <!-- Toasts -->
+    <string name="toast_morning_reminder_set">सुबह का रिमाइंडर सेट हो गया</string>
+    <string name="toast_evening_reminder_set">शाम का रिमाइंडर सेट हो गया</string>
+
+    <!-- New strings for WelcomeScreen -->
+    <string name="welcome_title">स्वागत है</string>
+    <string name="choose_language_prompt">अपनी भाषा चुनें</string>
+    <string name="button_continue">जारी रखें</string>
+
+    <!-- Language Names -->
+    <string name="language_system_default">सिस्टम डिफ़ॉल्ट</string>
+    <string name="language_odia">ଓଡ଼ିଆ</string>
+    <string name="language_english">English</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="settings_language_title">भाषा</string>
+    <string name="settings_language_desc">ऐप की भाषा बदलें</string>
+
+    <string-array name="odia_number_words">
+        <item>शून्य</item>
+        <item>एक</item>
+        <item>दो</item>
+        <item>तीन</item>
+        <item>चार</item>
+        <item>पांच</item>
+        <item>छह</item>
+        <item>सात</item>
+        <item>आठ</item>
+        <item>नौ</item>
+        <item>दस</item>
+        <item>ग्यारह</item>
+        <item>बारह</item>
+        <item>तेरह</item>
+        <item>चौदह</item>
+        <item>पंद्रह</item>
+        <item>सोलह</item>
+        <item>सत्रह</item>
+        <item>अठारह</item>
+        <item>उन्नीस</item>
+        <item>बीस</item>
+        <item>इक्कीस</item>
+        <item>बाईस</item>
+        <item>तेईस</item>
+        <item>चौबीस</item>
+        <item>पच्चीस</item>
+        <item>छब्बीस</item>
+        <item>सत्ताईस</item>
+        <item>अट्ठाईस</item>
+        <item>उनतीस</item>
+        <item>तीस</item>
+        <item>इकतीस</item>
+        <item>बत्तीस</item>
+        <item>तैंतीस</item>
+        <item>चौंतीस</item>
+        <item>पैंतीस</item>
+        <item>छत्तीस</item>
+        <item>सैंतीस</item>
+        <item>अड़तीस</item>
+        <item>उनतालीस</item>
+        <item>चालीस</item>
+        <item>इकतालीस</item>
+        <item>बयालीस</item>
+        <item>तैंतालीस</item>
+        <item>चौवालीस</item>
+        <item>पैंतालीस</item>
+        <item>छियालीस</item>
+        <item>सैंतालीस</item>
+        <item>अड़तालीस</item>
+        <item>उनचास</item>
+        <item>पचास</item>
+        <item>इक्यावन</item>
+        <item>बावन</item>
+        <item>तिरपन</item>
+        <item>चौवन</item>
+        <item>पचपन</item>
+        <item>छप्पन</item>
+        <item>सत्तावन</item>
+        <item>अट्ठावन</item>
+        <item>उनसठ</item>
+        <item>साठ</item>
+        <item>इकसठ</item>
+        <item>बासठ</item>
+        <item>तिरसठ</item>
+        <item>चौंसठ</item>
+        <item>पैंसठ</item>
+        <item>छियासठ</item>
+        <item>सरसठ</item>
+        <item>अड़सठ</item>
+        <item>उनहत्तर</item>
+        <item>सत्तर</item>
+        <item>इकहत्तर</item>
+        <item>बहत्तर</item>
+        <item>तिहत्तर</item>
+        <item>चौहत्तर</item>
+        <item>पचहत्तर</item>
+        <item>छिहत्तर</item>
+        <item>सतहत्तर</item>
+        <item>अठहत्तर</item>
+        <item>उनासी</item>
+        <item>अस्सी</item>
+        <item>इक्यासी</item>
+        <item>बयासी</item>
+        <item>तिरासी</item>
+        <item>चौरासी</item>
+        <item>पचासी</item>
+        <item>छियासी</item>
+        <item>सतासी</item>
+        <item>अट्ठासी</item>
+        <item>नवासी</item>
+        <item>नब्बे</item>
+        <item>इक्यानबे</item>
+        <item>बानवे</item>
+        <item>तिरानवे</item>
+        <item>चौरानवे</item>
+        <item>पंचानवे</item>
+        <item>छियानवे</item>
+        <item>सत्तानवे</item>
+        <item>अट्ठानवे</item>
+        <item>निन्यानवे</item>
+        <item>एक सौ</item>
+    </string-array>
+
+    <string name="language_dialog_description">भाषा बदलने के बाद ऐप को पुनरारंभ करें।</string>
+    <string name="language_restart_dialog_title">पुनरारंभ आवश्यक है</string>
+    <string name="language_restart_dialog_message">भाषा परिवर्तन लागू करने के लिए ऐप को पुनरारंभ करने की आवश्यकता है।</string>
+    <string name="dialog_restart">पुनरारंभ करें</string>
+
+    <string name="social_github">गिटहब</string>
+    <string name="social_github_desc">हमारा स्रोत कोड देखें</string>
+    <string name="dialog_close">बंद करें</string>
+    <string name="changelog_header_title">मेंटेनर्स/योगदानकर्ताओं की तलाश है</string>
+    <string name="changelog_header_description">हम वर्तमान में हमारे प्रोजेक्ट को विकसित करने और बेहतर बनाने में मदद करने के लिए मेंटेनर्स/योगदानकर्ताओं की तलाश कर रहे हैं। यदि आप अपने कौशल और विशेषज्ञता का योगदान करना चाहते हैं, तो आप हमारे गिटहब पर जा सकते हैं, पुल अनुरोधों का स्वागत है। ऐप काफी हद तक कोटलिन पर निर्भर करता है।</string>
+    <string name="changelog_fixed_title">ठीक किया गया</string>
+
+    <string name="settings_sound_title">ध्वनि प्रभाव</string>
+    <string name="settings_sound_description">सही उत्तर के लिए ध्वनि</string>
 </resources>

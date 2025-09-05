@@ -21,8 +21,8 @@ android {
         applicationId = "com.sandeep.ganitabigyan"
         minSdk = 26
         targetSdk = 34
-        versionCode = 6
-        versionName = "4.0.0"
+        versionCode = 7
+        versionName = "5.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -76,7 +76,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
-
+    implementation("io.coil-kt:coil-compose:2.6.0")
     // --- NEW DEPENDENCIES FOR LANGUAGE SWITCHING AND SPLASH SCREEN ---
     implementation("androidx.appcompat:appcompat:1.6.1") // For AppCompatDelegate (language switching)
     implementation("androidx.core:core-splashscreen:1.0.1") // For the splash screen API

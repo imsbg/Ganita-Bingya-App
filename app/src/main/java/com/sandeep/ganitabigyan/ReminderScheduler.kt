@@ -1,4 +1,5 @@
-// ReminderScheduler.kt
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/ReminderScheduler.kt
+// VERSION: Your original, reliable code.
 
 package com.sandeep.ganitabigyan
 
@@ -15,7 +16,6 @@ fun scheduleReminders(context: Context) {
     val workManager = WorkManager.getInstance(context)
     val dataStore = SettingsDataStore(context)
 
-    // This creates a coroutine to safely call the 'suspend' function '.first()'
     GlobalScope.launch(Dispatchers.IO) {
         val morningTime = dataStore.morningReminderTime.first().split(":")
         val eveningTime = dataStore.eveningReminderTime.first().split(":")
@@ -26,15 +26,14 @@ fun scheduleReminders(context: Context) {
         val eveningHour = eveningTime[0].toInt()
         val eveningMinute = eveningTime[1].toInt()
 
-        // Cancel any existing reminders to avoid duplicates
-        workManager.cancelUniqueWork("morning_reminder")
-        workManager.cancelUniqueWork("evening_reminder")
+        // Use REPLACE policy to ensure time changes are updated
+        // This cancels and replaces any existing reminders with the same name.
 
         // Schedule Morning Reminder
         val morningRequest = createReminderRequest(morningHour, morningMinute)
         workManager.enqueueUniquePeriodicWork(
             "morning_reminder",
-            ExistingPeriodicWorkPolicy.UPDATE,
+            ExistingPeriodicWorkPolicy.REPLACE, // Changed from UPDATE to REPLACE for safety
             morningRequest
         )
 
@@ -42,7 +41,7 @@ fun scheduleReminders(context: Context) {
         val eveningRequest = createReminderRequest(eveningHour, eveningMinute)
         workManager.enqueueUniquePeriodicWork(
             "evening_reminder",
-            ExistingPeriodicWorkPolicy.UPDATE,
+            ExistingPeriodicWorkPolicy.REPLACE, // Changed from UPDATE to REPLACE for safety
             eveningRequest
         )
     }

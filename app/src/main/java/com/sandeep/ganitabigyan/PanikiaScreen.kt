@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/PanikiaScreen.kt
-// VERSION: FINAL - Fully multilingual.
+// VERSION: FINAL - Supports starting on a specific view via deep link.
 
 package com.sandeep.ganitabigyan
 
@@ -27,10 +27,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-// <<< CHANGE 1: Import the new data class and generator function >>>
 import com.sandeep.ganitabigyan.utils.PanikiaRow
 import com.sandeep.ganitabigyan.utils.getPanikiaTable
-// <<< CHANGE 2: Import the smart numeral converter >>>
 import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +49,6 @@ fun PanikiaListScreen(
             )
         }
     ) { padding ->
-        // <<< CHANGE 3: Get the context to translate numbers >>>
         val context = LocalContext.current
         val tableNumbers = (2..25).toList()
 
@@ -71,7 +68,6 @@ fun PanikiaListScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                         Text(
-                            // <<< CHANGE 4: Use the new multilingual function >>>
                             text = number.toLocaleNumerals(context),
                             fontSize = 32.sp,
                             fontWeight = FontWeight.Bold
@@ -88,12 +84,22 @@ fun PanikiaListScreen(
 @Composable
 fun PanikiaDetailScreen(
     tableNumber: Int,
+    // <<< NEW PARAMETER: Added to accept the view type from the nav graph >>>
+    initialView: String?,
     onNavigateBack: () -> Unit
 ) {
     val totalTablesToDisplay = 25 - tableNumber + 1
     val pageCount = totalTablesToDisplay * 2
-    val pagerState = rememberPagerState(pageCount = { pageCount })
-    val context = LocalContext.current // Get the context here
+
+    // <<< FIX: Set the initial page based on the deep link parameter >>>
+    // If the initialView is "word", start on page 1 (the script view). Otherwise, start on page 0.
+    val initialPage = if (initialView == "word") 1 else 0
+
+    val pagerState = rememberPagerState(
+        initialPage = initialPage,
+        pageCount = { pageCount }
+    )
+    val context = LocalContext.current
 
     val currentTableForTitle by remember {
         derivedStateOf { tableNumber + (pagerState.currentPage / 2) }
@@ -103,7 +109,6 @@ fun PanikiaDetailScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    // <<< CHANGE 5: Use the new multilingual function for the title >>>
                     Text(stringResource(R.string.panikia_title_for_table, currentTableForTitle.toLocaleNumerals(context)))
                 },
                 navigationIcon = {
@@ -125,10 +130,7 @@ fun PanikiaDetailScreen(
             ) { page ->
                 val currentTableNumber = tableNumber + (page / 2)
                 val isNumericalView = page % 2 == 0
-
-                // <<< CHANGE 6: Use the new multilingual generator function >>>
                 val panikiaTableData = getPanikiaTable(currentTableNumber, context)
-
                 if (isNumericalView) {
                     NumericalTableView(panikiaTable = panikiaTableData)
                 } else {

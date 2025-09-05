@@ -2,19 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Your existing permissions -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- ==================================================================== -->
-    <!-- ============= NEW PERMISSION FOR IN-APP UPDATES ==================== -->
-    <!-- ==================================================================== -->
-    <!-- This permission is required to ask the user to install the downloaded APK -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <!-- ==================================================================== -->
-    <!-- ======================= END OF NEW BLOCK =========================== -->
-    <!-- ==================================================================== -->
-
 
     <application
         android:name=".GanitaBigyanApp"
@@ -39,12 +30,10 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.GanitaBigyan">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -53,7 +42,6 @@
                 <data android:host="ganitabingya.netlify.app" />
                 <data android:path="/open" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -66,12 +54,15 @@
             </intent-filter>
         </activity>
 
-        <!-- ==================================================================== -->
-        <!-- =========== NEW COMPONENTS FOR IN-APP UPDATES ====================== -->
-        <!-- ==================================================================== -->
+        <!-- <<< ADD THIS NEW SERVICE for Firebase Cloud Messaging >>> -->
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-        <!-- 1. FILE PROVIDER -->
-        <!-- This securely shares the downloaded APK with the system installer. -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -82,8 +73,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <!-- 2. DOWNLOAD COMPLETED RECEIVER -->
-        <!-- This listens for when the download is finished and starts the installation. -->
         <receiver
             android:name=".DownloadCompletedReceiver"
             android:exported="true">
@@ -91,10 +80,5 @@
                 <action android:name="android.app.DownloadManager.ACTION_DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
-
-        <!-- ==================================================================== -->
-        <!-- ======================= END OF NEW BLOCK =========================== -->
-        <!-- ==================================================================== -->
-
     </application>
 </manifest>
