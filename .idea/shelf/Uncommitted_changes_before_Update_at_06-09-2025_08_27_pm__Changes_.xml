@@ -1,0 +1,27 @@
+<changelist name="Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]" date="1757170662462" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 06-09-2025 08:27 pm [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="app/src/main/res/drawable/soubhagya.jpg" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/release/baselineProfiles/0/app-release.dm" />
+    <option name="AFTER_PATH" value="app/release/baselineProfiles/0/app-release.dm" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]/app-release.dm" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/release/baselineProfiles/1/app-release.dm" />
+    <option name="AFTER_PATH" value="app/release/baselineProfiles/1/app-release.dm" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]/app-release1.dm" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/release/app-release.apk" />
+    <option name="AFTER_PATH" value="app/release/app-release.apk" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]/app-release.apk" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/release/app-release.aab" />
+    <option name="AFTER_PATH" value="app/release/app-release.aab" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-09-2025_08_27_pm_[Changes]/app-release.aab" />
+  </binary>
+</changelist>
