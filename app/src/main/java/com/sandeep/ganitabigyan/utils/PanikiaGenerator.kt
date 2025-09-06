@@ -1,48 +1,39 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/utils/PanikiaGenerator.kt
-// VERSION: FINAL - Fully multilingual panikia/table generator.
+// VERSION: FINAL - Provides separate parts for the script line.
 
 package com.sandeep.ganitabigyan.utils
 
 import android.content.Context
 import com.sandeep.ganitabigyan.R
 
-// Generic data class for a row in the multiplication table
+// <<< FIX: The data class now holds the parts of the script line separately >>>
 data class PanikiaRow(
     val numericalExpression: String,
     val numericalResult: String,
-    val scriptLine: String
+    val scriptPart1: String, // e.g., "Twenty-one"
+    val scriptPart2: String, // e.g., "times five is"
+    val scriptPart3: String  // e.g., "One hundred five"
 )
 
-/**
- * Generates a full multiplication table (Panikia) for a given number
- * in the app's current language using string resources.
- */
 fun getPanikiaTable(tableNumber: Int, context: Context): List<PanikiaRow> {
     val table = mutableListOf<PanikiaRow>()
-
-    // Get the localized terms and formats from resources
     val panikiaTerms = context.resources.getStringArray(R.array.panikia_terms)
     val tableNumberWord = tableNumber.toWords(context)
 
     for (i in 1..10) {
         val resultInt = tableNumber * i
-
-        // 1. Generate the Numerical Version for the current language
         val numericalExpression = "${tableNumber.toLocaleNumerals(context)} × ${i.toLocaleNumerals(context)}"
         val numericalResult = resultInt.toLocaleNumerals(context)
-
-        // 2. Generate the full Script Line
         val resultWord = resultInt.toWords(context)
-
-        // Get the correct term (e.g., "ଏକେ", "ਦੂਣੀ", "ones are")
-        // Arrays are 0-indexed, so we use (i-1)
         val scriptTerm = panikiaTerms.getOrNull(i - 1) ?: ""
-
-        val scriptLine = "$tableNumberWord $scriptTerm $resultWord"
 
         table.add(
             PanikiaRow(
-                numericalExpression, numericalResult, scriptLine
+                numericalExpression = numericalExpression,
+                numericalResult = numericalResult,
+                scriptPart1 = tableNumberWord,
+                scriptPart2 = scriptTerm,
+                scriptPart3 = resultWord
             )
         )
     }

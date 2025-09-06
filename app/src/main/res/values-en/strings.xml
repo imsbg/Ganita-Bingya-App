@@ -373,6 +373,10 @@
         <item>One hundred</item>
     </string-array>
 
+    <string name="word_one_hundred">One Hundred</string>
+    <string name="word_hundreds_suffix">Hundred</string>
+    <string name="word_hundred_odia_standalone">One Hundred</string>
+
     <string name="language_dialog_description">Restart the app after changing the language.</string>
     <string name="language_restart_dialog_title">Restart Required</string>
     <string name="language_restart_dialog_message">The app needs to restart to apply the language change.</string>
@@ -387,4 +391,7 @@
 
     <string name="settings_sound_title">Sound Effects</string>
     <string name="settings_sound_description">Sound for correct answer</string>
+
+
+
 </resources>

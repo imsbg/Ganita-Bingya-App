@@ -268,7 +268,7 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_gujarati">ગુજરાતી</string>
     <string name="language_punjabi">ਪੰਜਾਬੀ</string>
-    <string name="language_santali">(Coming soon)</string>
+    <string name="language_santali">(Coming fsoon)</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">ଭାଷା</string>
     <string name="settings_language_desc">ଆପ୍ ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
@@ -278,8 +278,9 @@
     <!-- ============================================= -->
 
     <!-- Standalone Words for the Number Converter -->
-    <string name="word_one_hundred">ଶହେ</string>
+    <string name="word_one_hundred">ଏକ ଶହ</string>
     <string name="word_hundreds_suffix">ଶହ</string>
+    <string name="word_hundred_odia_standalone">ଶହେ</string>
 
     <!-- Number Words (0-100) - Copied EXACTLY from your file -->
     <string-array name="odia_number_words">

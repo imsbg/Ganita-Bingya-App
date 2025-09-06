@@ -373,6 +373,10 @@
         <item>એક સો</item>
     </string-array>
 
+    <string name="word_one_hundred">એક સો</string>
+    <string name="word_hundreds_suffix">સો</string>
+    <string name="word_hundred_odia_standalone">એક સો</string>
+
     <string name="language_dialog_description">ભાષા બદલ્યા પછી એપ પુનઃપ્રારંભ કરો.</string>
     <string name="language_restart_dialog_title">પુનઃપ્રારંભ જરૂરી છે</string>
     <string name="language_restart_dialog_message">ભાષા બદલવા માટે એપને પુનઃપ્રારંભ કરવાની જરૂર છે.</string>

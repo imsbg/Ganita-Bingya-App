@@ -373,6 +373,10 @@
         <item>వంద</item>
     </string-array>
 
+    <string name="word_one_hundred">వంద</string>
+    <string name="word_hundreds_suffix">వందల</string>
+    <string name="word_hundred_odia_standalone">వంద</string>
+
     <string name="language_dialog_description">భాషను మార్చిన తర్వాత యాప్‌ను పునఃప్రారంభించండి.</string>
     <string name="language_restart_dialog_title">పునఃప్రారంభం అవసరం</string>
     <string name="language_restart_dialog_message">భాష మార్పును వర్తింపజేయడానికి యాప్ పునఃప్రారంభం కావాలి.</string>

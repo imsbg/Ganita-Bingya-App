@@ -373,6 +373,10 @@
         <item>शतम्</item>
     </string-array>
 
+    <string name="word_one_hundred">एकशतम्</string>
+    <string name="word_hundreds_suffix">शतम्</string>
+    <string name="word_hundred_odia_standalone">एकशतम्</string>
+
     <string name="language_dialog_description">भाषापरिवर्तनस्य अनन्तरम् अनुप्रयोगं पुनः आरभस्व।</string>
     <string name="language_restart_dialog_title">पुनारम्भः आवश्यकः</string>
     <string name="language_restart_dialog_message">भाषापरिवर्तनं प्रभावयितुम् अनुप्रयोगस्य पुनारम्भः आवश्यकः।</string>

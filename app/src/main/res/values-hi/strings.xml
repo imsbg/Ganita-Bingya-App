@@ -373,6 +373,10 @@
         <item>एक सौ</item>
     </string-array>
 
+    <string name="word_one_hundred">एक सौ</string>
+    <string name="word_hundreds_suffix">सौ</string>
+    <string name="word_hundred_odia_standalone">एक सौ</string>
+
     <string name="language_dialog_description">भाषा बदलने के बाद ऐप को पुनरारंभ करें।</string>
     <string name="language_restart_dialog_title">पुनरारंभ आवश्यक है</string>
     <string name="language_restart_dialog_message">भाषा परिवर्तन लागू करने के लिए ऐप को पुनरारंभ करने की आवश्यकता है।</string>

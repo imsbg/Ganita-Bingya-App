@@ -373,6 +373,10 @@
         <item>একশ</item>
     </string-array>
 
+    <string name="word_one_hundred">এক শত</string>
+    <string name="word_hundreds_suffix">শত</string>
+    <string name="word_hundred_odia_standalone">এক শত</string>
+
     <string name="language_dialog_description">ভাষা পরিবর্তন করার পরে অ্যাপটি পুনরায় চালু করুন।</string>
     <string name="language_restart_dialog_title">পুনরায় চালু করা প্রয়োজন</string>
     <string name="language_restart_dialog_message">ভাষা পরিবর্তন প্রয়োগ করতে অ্যাপটি পুনরায় চালু করতে হবে।</string>
