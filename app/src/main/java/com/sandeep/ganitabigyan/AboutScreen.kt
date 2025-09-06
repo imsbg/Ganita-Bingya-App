@@ -1,4 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/AboutScreen.kt
+// VERSION: FINAL - Removes Soubhagya Padhan from the contributor list.
 
 package com.sandeep.ganitabigyan
 
@@ -106,18 +107,10 @@ private fun AboutCard(title: String, content: @Composable ColumnScope.() -> Unit
     }
 }
 
-// <<< THIS IS THE MAIN CHANGE >>>
 @Composable
 private fun ContributorsCard() {
-    // Add the new contributor to this list
-    val contributors = listOf(
-        Contributor(
-            name = stringResource(R.string.soubhagya_padhan_name),
-            role = stringResource(R.string.soubhagya_padhan_role),
-            imageResId = R.drawable.soubhagya, // Make sure soubhagya.jpg is in res/drawable
-            profileUrl = "https://tinyurl.com/soubagya"
-        )
-    )
+    // <<< THIS IS THE ONLY CHANGE: The list is now empty again >>>
+    val contributors = emptyList<Contributor>()
     var isExpanded by remember { mutableStateOf(false) }
 
     AboutCard(title = stringResource(R.string.members_and_contributors)) {
@@ -129,12 +122,12 @@ private fun ContributorsCard() {
             profileUrl = "https://www.instagram.com/sandeepbiswalg/"
         ))
 
-        // Other contributors (visible when expanded)
+        // This will now be hidden
         AnimatedVisibility(visible = isExpanded) {
             Column { contributors.forEach { ContributorRow(it) } }
         }
 
-        // The "Show more" button will now appear because the list is not empty
+        // This button will now be hidden
         if (contributors.isNotEmpty()) {
             TextButton(onClick = { isExpanded = !isExpanded }, modifier = Modifier.align(Alignment.End)) {
                 Text(if (isExpanded) stringResource(R.string.show_less) else stringResource(R.string.show_more))
