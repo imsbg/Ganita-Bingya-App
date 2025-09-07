@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UPI ମାଧ୍ୟମରେ ଦାନ କରନ୍ତୁ - ଗଣିତ ବିଜ୍ଞ</title>
+  <title data-lang="doc_title">UPI ମାଧ୍ୟମରେ ଦାନ କରନ୍ତୁ - ଗଣିତ ବିଜ୍ଞ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
       margin: 0;
       background-color: var(--body-bg);
       color: var(--text-color);
-      transition: background-color 0.3s; /* Smooth transition for overlay effect */
+      transition: background-color 0.3s;
     }
     
     .content-wrapper {
@@ -43,7 +43,6 @@
       transition: filter 0.3s;
     }
 
-    /* Dim content when menu is open */
     body.menu-open .content-wrapper {
       filter: blur(4px) brightness(0.7);
     }
@@ -120,9 +119,53 @@
       to { transform: translateY(240px); }
     }
 
+    /* --- UPI ID Below QR --- */
+    .upi-id-container {
+      margin-top: 15px;
+      font-size: 16px;
+      color: var(--text-light);
+      position: relative;
+    }
+    .upi-id-copyable { 
+      color: var(--text-color); 
+      background-color: #e8f5e9;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .upi-id-copyable:hover {
+        background-color: #dceddc;
+    }
 
+    /* --- Tooltip --- */
+    .upi-id-copyable::after {
+        content: attr(data-tooltip-text);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .upi-id-copyable.copied::after,
+    .upi-id-copyable:hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     /* --- Form Elements & Buttons --- */
     .amount-input {
+      margin-top: 25px;
       margin-bottom: 10px;
     }
 
@@ -153,7 +196,7 @@
     .note {
       font-size: 13px;
       color: var(--text-light);
-      margin-top: 15px;
+      margin-top: 25px;
       line-height: 1.6;
     }
 
@@ -176,12 +219,23 @@
         box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
     }
 
-    .upi-id {
-      margin-top: 25px;
-      font-size: 16px;
-      color: var(--text-light);
+    /* --- Payment App Logos --- */
+    .payment-logos {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* Adjusted gap */
     }
-    .upi-id strong { color: var(--text-color); }
+    .payment-logos span {
+        font-size: 10px;
+        color: var(--text-light);
+    }
+    .payment-logos img {
+        height: 20px; /* Adjusted size */
+        width: auto;
+
+    }
     
     /* --- Hamburger Menu --- */
     .menu-toggle {
@@ -212,7 +266,6 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
     
-    /* Animate hamburger to 'X' */
     body.menu-open .menu-toggle .bar1 {
       transform: translateY(8px) rotate(45deg);
     }
@@ -258,13 +311,49 @@
     .menu-panel a:hover {
       background-color: var(--body-bg);
     }
-
+    
+    /* --- Language Switcher --- */
+    .lang-switcher {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+    .lang-switcher-label {
+        font-size: 14px;
+        color: var(--text-light);
+        margin-bottom: 10px;
+        text-align: left;
+        padding-left: 15px;
+    }
+    .lang-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+    }
+    .lang-button {
+        background: none;
+        border: 1px solid var(--border-color);
+        padding: 8px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .lang-button:hover {
+        background-color: var(--body-bg);
+    }
+    .lang-button.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        font-weight: 500;
+    }
   </style>
 </head>
 <body>
 
   <!-- Menu Toggle Button -->
-  <button class="menu-toggle" aria-label="ମେନୁ ଖୋଲନ୍ତୁ" aria-expanded="false">
+  <button class="menu-toggle" aria-label="ମେନୁ ଖୋଲନ୍ତୁ" aria-expanded="false" data-lang-aria="menu_toggle_label">
     <span class="bar bar1"></span>
     <span class="bar bar2"></span>
     <span class="bar bar3"></span>
@@ -272,16 +361,29 @@
   
   <!-- Slide-in Menu Panel -->
   <nav class="menu-panel">
-    <a href="https://ganitabingya.netlify.app/open">ଆପ୍ ଖୋଲନ୍ତୁ</a>
-    <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
-    <a href="https://github.com/imsbg/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer">ଗିଟ୍‌ହବ୍ ପ୍ରୋଜେକ୍ଟ</a>
-    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer">ଗୋପନୀୟତା ନୀତି</a>
-    <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ଇନଷ୍ଟାଗ୍ରାମରେ ଫଲୋ କରନ୍ତୁ</a>
+    <a href="https://ganitabingya.netlify.app/open" data-lang="menu_open_app">ଆପ୍ ଖୋଲନ୍ତୁ</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer" data-lang="menu_download">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+    <a href="https://github.com/imsbg/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer" data-lang="menu_github">ଗିଟ୍‌ହବ୍ ପ୍ରୋଜେକ୍ଟ</a>
+    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer" data-lang="menu_privacy">ଗୋପନୀୟତା ନୀତି</a>
+    <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" data-lang="menu_instagram">ଇନଷ୍ଟାଗ୍ରାମରେ ଫଲୋ କରନ୍ତୁ</a>
+
+    <div class="lang-switcher">
+        <div class="lang-switcher-label" data-lang="language_switcher_label">ଭାଷା ବାଛନ୍ତୁ</div>
+        <div class="lang-buttons">
+            <button class="lang-button active" data-lang-code="or">ଓଡ଼ିଆ</button>
+            <button class="lang-button" data-lang-code="hi">हिन्दी</button>
+            <button class="lang-button" data-lang-code="sa">संस्कृतम्</button>
+            <button class="lang-button" data-lang-code="te">తెలుగు</button>
+            <button class="lang-button" data-lang-code="bn">বাংলা</button>
+            <button class="lang-button" data-lang-code="gu">ગુજરાતી</button>
+            <button class="lang-button" data-lang-code="en">English</button>
+        </div>
+    </div>
   </nav>
 
   <div class="content-wrapper">
-    <h1>ଗଣିତ ବିଜ୍ଞକୁ ସମର୍ଥନ କରନ୍ତୁ</h1>
-    <p>ଜୟ ଜଗନ୍ନାଥ</p>
+    <h1 data-lang="support_title">ଗଣିତ ବିଜ୍ଞକୁ ସମର୍ଥନ କରନ୍ତୁ</h1>
+    <p data-lang="subtitle">ଜୟ ଜଗନ୍ନାଥ</p>
 
     <div class="qr-container">
       <svg id="qr-code-svg" viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg">
@@ -296,66 +398,273 @@
       </svg>
     </div>
 
+    <div class="upi-id-container">
+      <span data-lang="upi_id_label">UPI ଆଇଡି:</span>
+      <strong id="upiId" class="upi-id-copyable" data-tooltip-text="କପି କରିବାକୁ କ୍ଲିକ୍ କରନ୍ତୁ">biswal9@ptyes</strong>
+    </div>
+
     <div class="amount-input">
-      <label for="amount">ରାଶି ପ୍ରବେଶ କରନ୍ତୁ (₹)</label>
+      <label for="amount" data-lang="amount_label">ରାଶି ପ୍ରବେଶ କରନ୍ତୁ (₹)</label>
       <input type="number" id="amount" min="1" value="10">
     </div>
 
-    <a id="payLink" class="btn" href="#">
+    <a id="payLink" class="btn" href="#" data-lang="pay_button">
       UPI ମାଧ୍ୟମରେ ପେମେଣ୍ଟ କରନ୍ତୁ
     </a>
 
-    <div class="note">
+    <div class="payment-logos">
+        <span data-lang="pay_using">Pay using:</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Pay">
+        <img src="https://navi.com/static/media/naviLogo.c2380d7b.svg" alt="Navi UPI">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Amazon_Pay_logo.svg" alt="Amazon Pay">
+    </div>
+
+    <div class="note" data-lang="note_text">
       ଆପଣଙ୍କ ପସନ୍ଦର ଯେକୌଣସି ରାଶି (ସର୍ବନିମ୍ନ ₹1) ଦେଇ ଆମକୁ ସମର୍ଥନ କରନ୍ତୁ। ଆପଣଙ୍କ ପେମେଣ୍ଟ ସୁରକ୍ଷିତ ଅଟେ ଏବଂ ଆପଣଙ୍କ UPI ପିନ୍ ଦ୍ୱାରା ନିଶ୍ଚିତ କରିବା ପରେ ହିଁ ଏହା ସମ୍ପୂର୍ଣ୍ଣ ହେବ ।
     </div>
 
-    <div class="upi-id">
-      UPI ଆଇଡି: <strong>biswal9@ptyes</strong>
-    </div>
   </div>
 
   <script>
-    // --- UPI Link Logic ---
-    const payLink = document.getElementById('payLink');
-    const amountInput = document.getElementById('amount');
+    document.addEventListener('DOMContentLoaded', () => {
 
-    function updateLink() {
-      let amount = parseFloat(amountInput.value);
-      if (isNaN(amount) || amount < 1) {
-        amount = 1;
-      }
-      // Note: Payee Name (pn) should remain as registered. Transaction Note (tn) is translated.
-      const upiUrl = `upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&am=${amount}&cu=INR&tn=Proud%20supporter,%20Ganita%20Bingya%20donation`;
-      payLink.href = upiUrl;
-    }
+        const translations = {
+            or: {
+                doc_title: "UPI ମାଧ୍ୟମରେ ଦାନ କରନ୍ତୁ - ଗଣିତ ବିଜ୍ଞ",
+                menu_toggle_label: "ମେନୁ ଖୋଲନ୍ତୁ",
+                menu_open_app: "ଆପ୍ ଖୋଲନ୍ତୁ",
+                menu_download: "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+                menu_github: "ଗିଟ୍‌ହବ୍ ପ୍ରୋଜେକ୍ଟ",
+                menu_privacy: "ଗୋପନୀୟତା ନୀତି",
+                menu_instagram: "ଇନଷ୍ଟାଗ୍ରାମରେ ଫଲୋ କରନ୍ତୁ",
+                language_switcher_label: "ଭାଷା ବାଛନ୍ତୁ",
+                support_title: "ଗଣିତ ବିଜ୍ଞକୁ ସମର୍ଥନ କରନ୍ତୁ",
+                subtitle: "ଜୟ ଜଗନ୍ନାଥ",
+                amount_label: "ରାଶି ପ୍ରବେଶ କରନ୍ତୁ (₹)",
+                pay_button: "UPI ମାଧ୍ୟମରେ ପେମେଣ୍ଟ କରନ୍ତୁ",
+                note_text: "ଆପଣଙ୍କ ପସନ୍ଦର ଯେକୌଣସି ରାଶି (ସର୍ବନିମ୍ନ ₹1) ଦେଇ ଆମକୁ ସମର୍ଥନ କରନ୍ତୁ। ଆପଣଙ୍କ ପେମେଣ୍ଟ ସୁରକ୍ଷିତ ଅଟେ। କିଛି UPI ଆପ୍ସ ପେମେଣ୍ଟ ଲିଙ୍କ୍ ସହିତ କାମ ନକରିପାରେ; ସେପରି ସ୍ଥଳେ, ଆପଣ UPI ID କପି କରିପାରିବେ କିମ୍ବା QR କୋଡ୍ ସ୍କାନ୍ କରି ପେମେଣ୍ଟ କରିପାରିବେ।",
+                upi_id_label: "UPI ଆଇଡି:",
+                upi_copy_prompt: "କପି କରିବାକୁ କ୍ଲିକ୍ କରନ୍ତୁ",
+                copied_feedback: "କପି ହେଲା!",
+                upi_tn: "ଗର୍ବିତ ସମର୍ଥକ, ଗଣିତ ବିଜ୍ଞ ଦାନ",
+                pay_using: "ଏହା ଦ୍ବାରା ପେମେଣ୍ଟ କରନ୍ତୁ:"
+            },
+            en: {
+                doc_title: "Donate via UPI - Ganita Bingya",
+                menu_toggle_label: "Open Menu",
+                menu_open_app: "Open App",
+                menu_download: "Download App",
+                menu_github: "GitHub Project",
+                menu_privacy: "Privacy Policy",
+                menu_instagram: "Follow on Instagram",
+                language_switcher_label: "Select Language",
+                support_title: "Support Ganita Bingya",
+                subtitle: "Jai Jagannath",
+                amount_label: "Enter Amount (₹)",
+                pay_button: "Pay via UPI",
+                note_text: "Support us with any amount (minimum ₹1). Your payment is secure. Some UPI apps may not work with the payment link; in that case, you can copy the UPI ID or scan the QR code to pay.",
+                upi_id_label: "UPI ID:",
+                upi_copy_prompt: "Click to copy",
+                copied_feedback: "Copied!",
+                upi_tn: "Proud supporter, Ganita Bingya donation",
+                pay_using: "Pay using:"
+            },
+            hi: {
+                doc_title: "UPI के माध्यम से दान करें - गणित विज्ञ",
+                menu_toggle_label: "मेन्यू खोलें",
+                menu_open_app: "ऐप खोलें",
+                menu_download: "ऐप डाउनलोड करें",
+                menu_github: "गिटहब प्रोजेक्ट",
+                menu_privacy: "गोपनीयता नीति",
+                menu_instagram: "इंस्टाग्राम पर फॉलो करें",
+                language_switcher_label: "भाषा चुनें",
+                support_title: "गणित विज्ञ का समर्थन करें",
+                subtitle: "जय जगन्नाथ",
+                amount_label: "राशि दर्ज करें (₹)",
+                pay_button: "UPI से पेमेंट करें",
+                note_text: "किसी भी राशि (न्यूनतम ₹1) के साथ हमारा समर्थन करें। आपका भुगतान सुरक्षित है। कुछ UPI ऐप्स पेमेंट लिंक के साथ काम नहीं कर सकते हैं; उस स्थिति में, आप UPI आईडी कॉपी कर सकते हैं या QR कोड स्कैन करके भुगतान कर सकते हैं।",
+                upi_id_label: "UPI आईडी:",
+                upi_copy_prompt: "कॉपी करने के लिए क्लिक करें",
+                copied_feedback: "कॉपी किया गया!",
+                upi_tn: "गौरवान्वित समर्थक, गणित विज्ञ दान",
+                pay_using: "इसके द्वारा पेमेंट करें:"
+            },
+            sa: {
+                doc_title: "UPI माध्यमेन दानं कुर्वन्तु - गणित विज्ञ",
+                menu_toggle_label: "मेनु उद्घाटयन्तु",
+                menu_open_app: "अॅप उद्घाटयन्तु",
+                menu_download: "अॅप डाउनलोड कुर्वन्तु",
+                menu_github: "गिटहब प्रकल्पः",
+                menu_privacy: "गोपनीयता नीतिः",
+                menu_instagram: "इन्स्टाग्रामे अनुसरन्तु",
+                language_switcher_label: "भाषां चिनोतु",
+                support_title: "गणित विज्ञस्य समर्थनं कुर्वन्तु",
+                subtitle: "जय जगन्नाथ",
+                amount_label: "राशिं प्रविशन्तु (₹)",
+                pay_button: "UPI माध्यमेन भुगतानं कुर्वन्तु",
+                note_text: "यत्किमपि राशिं (न्यूनतमं ₹1) दत्त्वा अस्मान् समर्थयन्तु। भवतः भुक्तिः सुरक्षिता अस्ति। केचन UPI प्रयोगाः भुक्ति-लिङ्केन सह कार्यं न कर्तुं शक्नुवन्ति; तस्मिन् सति, भवान् UPI ID प्रतिलिपिं कर्तुं शक्नोति अथवा QR कोडं स्कैन् कृत्वा भुक्तिं कर्तुं शक्नोति।",
+                upi_id_label: "UPI ID:",
+                upi_copy_prompt: "प्रतिलिपिं कर्तुं क्लिक् कुर्वन्तु",
+                copied_feedback: "प्रतिलिपितम्!",
+                upi_tn: "गौरवान्वितः समर्थकः, गणित विज्ञ दानम्",
+                pay_using: "एतेन भुक्तिं कुर्वन्तु:"
+            },
+            te: {
+                doc_title: "UPI ద్వారా విరాళం ఇవ్వండి - గణిత బింగ్యా",
+                menu_toggle_label: "మెను తెరవండి",
+                menu_open_app: "యాప్ తెరవండి",
+                menu_download: "యాప్ డౌన్‌లోడ్ చేయండి",
+                menu_github: "GitHub ప్రాజెక్ట్",
+                menu_privacy: "గోప్యతా విధానం",
+                menu_instagram: "Instagram లో అనుసరించండి",
+                language_switcher_label: "భాషను ఎంచుకోండి",
+                support_title: "గణిత బింగ్యాకు మద్దతు ఇవ్వండి",
+                subtitle: "జై జగన్నాథ్",
+                amount_label: "మొత్తాన్ని నమోదు చేయండి (₹)",
+                pay_button: "UPI ద్వారా చెల్లించండి",
+                note_text: "ఏదైనా మొత్తంతో (కనీసం ₹1) మాకు మద్దతు ఇవ్వండి. మీ చెల్లింపు సురక్షితమైనది। కొన్ని UPI యాప్‌లు చెల్లింపు లింక్‌తో పనిచేయకపోవచ్చు; ఆ సందర్భంలో, మీరు UPI IDని కాపీ చేయవచ్చు లేదా QR కోడ్‌ను స్కాన్ చేసి చెల్లించవచ్చు।",
+                upi_id_label: "UPI ID:",
+                upi_copy_prompt: "కాపీ చేయడానికి క్లిక్ చేయండి",
+                copied_feedback: "కాపీ చేయబడింది!",
+                upi_tn: "గర్వించదగిన మద్దతుదారు, గణిత బింగ్యా విరాళం",
+                pay_using: "దీని ద్వారా చెల్లించండి:"
+            },
+            bn: {
+                doc_title: "UPI এর মাধ্যমে দান করুন - গণিত বিজ্ঞ",
+                menu_toggle_label: "মেনু খুলুন",
+                menu_open_app: "অ্যাপ খুলুন",
+                menu_download: "অ্যাপ ডাউনলোড করুন",
+                menu_github: "গিটহাব প্রজেক্ট",
+                menu_privacy: "গোপনীয়তা নীতি",
+                menu_instagram: "ইনস্টাগ্রামে ফলো করুন",
+                language_switcher_label: "ভাষা নির্বাচন করুন",
+                support_title: "গণিত বিজ্ঞকে সমর্থন করুন",
+                subtitle: "জয় জগন্নাথ",
+                amount_label: "টাকার পরিমাণ লিখুন (₹)",
+                pay_button: "UPI দিয়ে পেমেন্ট করুন",
+                note_text: "যেকোনো পরিমাণ অর্থ (ন্যূনতম ₹1) দিয়ে আমাদের সমর্থন করুন। আপনার পেমেন্ট সুরক্ষিত। কিছু UPI অ্যাপ পেমেন্ট লিঙ্কের সাথে কাজ নাও করতে পারে; সেক্ষেত্রে, আপনি UPI আইডি কপি করতে পারেন বা QR কোড স্ক্যান করে পেমেন্ট করতে পারেন।",
+                upi_id_label: "UPI আইডি:",
+                upi_copy_prompt: "কপি করতে ক্লিক করুন",
+                copied_feedback: "কপি করা হয়েছে!",
+                upi_tn: "গর্বিত সমর্থক, গণিত বিজ্ঞ দান",
+                pay_using: "এর মাধ্যমে পেমেন্ট করুন:"
+            },
+            gu: {
+                doc_title: "UPI દ્વારા દાન કરો - ગણિત વિજ્ઞ",
+                menu_toggle_label: "મેનુ ખોલો",
+                menu_open_app: "એપ ખોલો",
+                menu_download: "એપ ડાઉનલોડ કરો",
+                menu_github: "ગિટહબ પ્રોજેક્ટ",
+                menu_privacy: "ગોપનીયતા નીતિ",
+                menu_instagram: "ઇન્સ્ટાગ્રામ પર ફોલો કરો",
+                language_switcher_label: "ભાષા પસંદ કરો",
+                support_title: "ગણિત વિજ્ઞને સમર્થન આપો",
+                subtitle: "જય જગન્નાથ",
+                amount_label: "રકમ દાખલ કરો (₹)",
+                pay_button: "UPI દ્વારા પેમેન્ટ કરો",
+                note_text: "કોઈપણ રકમ (ન્યૂનતમ ₹1) સાથે અમને સમર્થન આપો। તમારું પેમેન્ટ સુરક્ષિત છે। કેટલીક UPI એપ્સ પેમેન્ટ લિંક સાથે કામ ન કરી શકે; તે કિસ્સામાં, તમે UPI ID કૉપિ કરી શકો છો અથવા QR કોડ સ્કેન કરીને ચુકવણી કરી શકો છો।",
+                upi_id_label: "UPI ID:",
+                upi_copy_prompt: "કૉપિ કરવા માટે ક્લિક કરો",
+                copied_feedback: "કૉપિ કર્યું!",
+                upi_tn: "ગૌરવપૂર્ણ સમર્થક, ગણિત વિજ્ઞ દાન",
+                pay_using: "આનાથી પેમેન્ટ કરો:"
+            }
+        };
 
-    amountInput.addEventListener('input', updateLink);
-    updateLink(); // Initialize on load
+        const payLink = document.getElementById('payLink');
+        const amountInput = document.getElementById('amount');
+        const upiIdElement = document.getElementById('upiId');
+        let currentLang = localStorage.getItem('language') || 'or';
 
-    // --- Menu Toggle Logic ---
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menuPanel = document.querySelector('.menu-panel');
-    const contentWrapper = document.querySelector('.content-wrapper');
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            const langStrings = translations[lang];
+            
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (langStrings[key]) {
+                    el.innerHTML = langStrings[key];
+                }
+            });
 
-    const toggleMenu = () => {
-      const isMenuOpen = document.body.classList.toggle('menu-open');
-      menuToggle.setAttribute('aria-expanded', isMenuOpen);
-    };
+            document.querySelectorAll('[data-lang-aria]').forEach(el => {
+                const key = el.getAttribute('data-lang-aria');
+                if (langStrings[key]) {
+                    el.setAttribute('aria-label', langStrings[key]);
+                }
+            });
+            
+            upiIdElement.dataset.tooltipText = langStrings.upi_copy_prompt;
 
-    menuToggle.addEventListener('click', toggleMenu);
-
-    // Close menu when clicking on a link
-    menuPanel.addEventListener('click', (event) => {
-      if (event.target.tagName === 'A') {
-        toggleMenu();
-      }
-    });
-
-    // Close menu when clicking on the content overlay
-    contentWrapper.addEventListener('click', () => {
-        if (document.body.classList.contains('menu-open')) {
-            toggleMenu();
+            updateLink();
+            
+            document.querySelectorAll('.lang-button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.langCode === lang);
+            });
         }
+
+        function updateLink() {
+            let amount = parseFloat(amountInput.value);
+            if (isNaN(amount) || amount < 1) {
+                amount = 1;
+            }
+            const transactionNote = translations[currentLang].upi_tn;
+            const upiUrl = `upi://pay?pa=biswal9@ptyes&pn=Sandeep%20Biswal&am=${amount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
+            payLink.href = upiUrl;
+        }
+
+        amountInput.addEventListener('input', updateLink);
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuPanel = document.querySelector('.menu-panel');
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        const toggleMenu = () => {
+            const isMenuOpen = document.body.classList.toggle('menu-open');
+            menuToggle.setAttribute('aria-expanded', isMenuOpen);
+        };
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        menuPanel.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                toggleMenu();
+            }
+        });
+
+        contentWrapper.addEventListener('click', () => {
+            if (document.body.classList.contains('menu-open')) {
+                toggleMenu();
+            }
+        });
+
+        upiIdElement.addEventListener('click', () => {
+            navigator.clipboard.writeText('biswal9@ptyes').then(() => {
+                upiIdElement.classList.add('copied');
+                upiIdElement.dataset.tooltipText = translations[currentLang].copied_feedback;
+                
+                setTimeout(() => {
+                    upiIdElement.classList.remove('copied');
+                    upiIdElement.dataset.tooltipText = translations[currentLang].upi_copy_prompt;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy UPI ID: ', err);
+            });
+        });
+
+        document.querySelector('.lang-buttons').addEventListener('click', (event) => {
+            if (event.target.classList.contains('lang-button')) {
+                const langCode = event.target.dataset.langCode;
+                setLanguage(langCode);
+            }
+        });
+
+        setLanguage(currentLang);
+
     });
   </script>
 
