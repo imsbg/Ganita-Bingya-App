@@ -28,7 +28,7 @@
     <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;500;700&family=Noto+Sans+Gujarati:wght@400;500;700&family=Noto+Sans+Telugu:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -40,11 +40,19 @@
             --section-heading-font: 'Noto Serif Oriya', serif;
             --body-font: 'Baloo Bhaina 2', sans-serif;
             --odia-font: 'Noto Sans Oriya', sans-serif;
+            --default-font: 'Noto Sans', sans-serif;
         }
+        html[lang="or"] body, html[lang="or"] .odia-font-element { font-family: var(--odia-font), var(--body-font); }
+        html[lang="en"] body { font-family: var(--default-font), sans-serif; }
+        html[lang="hi"] body { font-family: 'Noto Sans Devanagari', sans-serif; }
+        html[lang="sa"] body { font-family: 'Noto Sans Devanagari', sans-serif; }
+        html[lang="bn"] body { font-family: 'Noto Sans Bengali', sans-serif; }
+        html[lang="gu"] body { font-family: 'Noto Sans Gujarati', sans-serif; }
+        html[lang="te"] body { font-family: 'Noto Sans Telugu', sans-serif; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: var(--body-font);
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -59,7 +67,7 @@
             transition: opacity 0.5s ease-out;
         }
         .curtain img { width: 150px; }
-        .curtain h2 { font-family: var(--odia-font); font-size: 2.5rem; color: var(--brand-dark); margin-top: 1rem; }
+        .curtain h2 { font-size: 2.5rem; color: var(--brand-dark); margin-top: 1rem; }
         .curtain.hidden { opacity: 0; pointer-events: none; }
 
         header {
@@ -71,11 +79,11 @@
         }
         header.visible { opacity: 1; transform: translateY(0); }
         nav { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: 1.5rem; font-weight: 700; font-family: var(--odia-font); color: var(--brand-dark); }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--brand-dark); }
         .nav-button {
             background-color: var(--brand-dark); color: #fff; padding: 0.6rem 1.4rem;
             border-radius: 50px; text-decoration: none; font-size: 0.9rem;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease; white-space: nowrap;
         }
         .nav-button:hover { background-color: #333; }
 
@@ -102,50 +110,24 @@
             will-change: transform, opacity;
             transition: transform 0.15s ease-out, opacity 0.15s ease-out;
         }
-        .mockup-background-shape {
-            position: absolute; background-color: var(--brand-color);
-            border-radius: 40px;
-        }
-        /* --- REUSABLE PHONE FRAME --- */
-        .phone-frame {
-            position: relative; background: #1e1e1e;
-            padding: 10px; border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 2px solid #444;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .phone-frame::before {
-            content: ''; position: absolute; top: 20px;
-            left: 50%; transform: translateX(-50%);
-            width: 10px; height: 10px; background: #111;
-            border-radius: 50%; z-index: 2; box-shadow: 0 0 2px rgba(0,0,0,0.5);
-        }
-        .phone-frame img { display: block; width: 100%; height: 100%; border-radius: 30px; object-fit: cover; }
-
-        .mockup-container {
-            position: relative;
-            z-index: 2; 
-            transform: translateZ(0); 
+        .hero-mockup-img {
+            width: 100%; display: block;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
         }
 
+        .mockup-container { position: relative; z-index: 2; transform: translateZ(0); }
         .mockup-container.mobile-view { height: 200vh; }
         .mobile-view .mockup-content { width: 85vw; max-width: 380px; }
         .mobile-view .mockup-image { width: 100%; }
         
-        .mockup-container.desktop-view { height: 350vh; }
-        .desktop-view .mockup-content { width: 90vw; max-width: 1400px; }
-        .desktop-view .mockup-background-shape { width: 100%; height: 90%; }
+        .mockup-container.desktop-view { height: 350vh; display: none; }
         .desktop-view .desktop-mockup-image { width: 95%; position: relative; }
         .desktop-view .desktop-mockup-image img { width: 100%; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
 
-        .features-wrapper { 
-            position: relative; 
-            z-index: 1;
-            background-color: var(--bg-color);
-            margin-top: -100vh;
-        }
-
-        section { padding: 6rem 0; background-color: transparent; }
-        .section-title { font-family: var(--section-heading-font); text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        #features { background-color: var(--bg-color); position: relative; z-index: 1; margin-top: -100vh; }
+        
+        section { padding: 6rem 0; }
+        .section-title { font-family: var(--headline-font); font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 3rem; color: var(--brand-dark); }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
         .feature-card {
             background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -154,600 +136,449 @@
         }
         .feature-card:hover { transform: translateY(-5px); }
         .feature-card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--brand-dark); }
-        .feature-card h3 { font-family: var(--odia-font); font-size: 1.5rem; margin-bottom: 0.5rem; }
-
-        #features .section-title,
-        #features .feature-card {
-            opacity: 0;
-            transform: translateY(40px);
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        #features .section-title, #features .feature-card {
+            opacity: 0; transform: translateY(40px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        #features .section-title.is-visible,
-        #features .feature-card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
+        #features .section-title.is-visible, #features .feature-card.is-visible { opacity: 1; transform: translateY(0); }
         #features .feature-card.is-visible:nth-of-type(1) { transition-delay: 0.1s; }
         #features .feature-card.is-visible:nth-of-type(2) { transition-delay: 0.2s; }
         #features .feature-card.is-visible:nth-of-type(3) { transition-delay: 0.3s; }
         #features .feature-card.is-visible:nth-of-type(4) { transition-delay: 0.4s; }
 
-        /* --- SCREENSHOTS SECTION STYLES --- */
-        #screenshots { background-color: #EFECE6; }
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            justify-items: center;
+        /* --- FADE IN/OUT SCREENSHOTS SECTION --- */
+        #screenshots { 
+            background-color: #EFECE6;
+            height: 400vh; /* Taller section = slower fade transition per scroll */
+            padding: 0;
+            position: relative;
+            z-index: 5;
         }
-        @media (min-width: 768px) {
-            .screenshots-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .screenshots-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        .screenshot-card {
+        .screenshot-sticky-parent {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-        /* Adapting phone frame for the grid */
-        .screenshot-card .phone-frame {
-            padding: 8px;
-            border-radius: 25px;
-            border-width: 1px;
-            border-color: #555;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .screenshot-card-fade {
+            position: absolute;
+            width: clamp(250px, 30vw, 380px);
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            transform: scale(0.95); /* Start slightly smaller */
         }
-        .screenshot-card .phone-frame::before {
-            width: 6px;
-            height: 6px;
-            top: 12px;
+        .screenshot-card-fade.is-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
-        .screenshot-card .phone-frame img {
-            border-radius: 18px;
-        }
-        .screenshot-card:hover .phone-frame {
-            transform: translateY(-8px) scale(1.03);
+        .screenshot-card-fade img {
+            width: 100%; border-radius: 18px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            display: block;
         }
         
-        /* --- ANIMATION STYLES --- */
-        .animated-screenshot {
-            opacity: 0;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        #dynamic-island-title {
+            position: fixed; top: 20px; left: 50%;
+            background-color: rgba(34, 34, 34, 0.8);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: white; padding: 0.5rem 1.5rem; border-radius: 50px;
+            z-index: 1002; opacity: 0;
+            transform: translate(-50%, -150%);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+            font-size: 1rem;
         }
-        .animated-screenshot.is-visible {
+        #dynamic-island-title.show {
             opacity: 1;
-            transform: none !important;
+            transform: translate(-50%, 0);
         }
-        .animate-up { transform: translateY(50px); }
-        .animate-down { transform: translateY(-50px); }
-        .animate-left { transform: translateX(-50px); }
-        .animate-right { transform: translateX(50px); }
-        .animate-zoom { transform: scale(0.9); }
-        /* ---------------------------------- */
 
-
-        .download-section { background-color: var(--bg-color); }
+        .download-section { background-color: var(--bg-color); text-align: center; }
         .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
         
         .button-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            display: flex; justify-content: center; align-items: center;
+            gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
         }
+        .button-group a img { height: 60px; transition: transform 0.2s ease; }
+        .button-group a:hover img { transform: scale(1.05); }
         .download-button, .open-app-button {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-size: 1.1rem; display: inline-flex; align-items: center;
+            justify-content: center; transition: all 0.3s ease; border: 2px solid transparent;
         }
-        .download-button {
-            background-color: var(--brand-dark);
-            color: #fff;
-        }
-        .download-button:hover {
-            background-color: #333;
-        }
-        .open-app-button {
-            background-color: transparent;
-            color: var(--brand-dark);
-            border: 2px solid var(--brand-dark);
-        }
-        .open-app-button:hover {
-            background-color: var(--brand-dark);
-            color: #fff;
-        }
+        .download-button { background-color: var(--brand-dark); color: #fff; }
+        .download-button:hover { background-color: #333; }
+        .open-app-button { background-color: transparent; color: var(--brand-dark); border: 2px solid var(--brand-dark); }
+        .open-app-button:hover { background-color: var(--brand-dark); color: #fff; }
         .version-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 0.2em 0.6em;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-left: 0.75rem;
-            font-family: sans-serif;
+            display: inline-block; background-color: rgba(255, 255, 255, 0.2); color: #fff;
+            padding: 0.2em 0.6em; border-radius: 6px; font-size: 0.8rem;
+            font-weight: 500; margin-left: 0.75rem;
         }
-        
         #download-count-container {
-            margin-top: 1.5rem;
-            font-size: 1rem;
-            font-family: var(--odia-font);
-            color: var(--brand-dark);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            margin-top: 1.5rem; font-size: 1rem; color: var(--brand-dark);
+            opacity: 0; transition: opacity 0.5s ease;
         }
-        #download-count {
-            font-weight: 700;
-            font-size: 1.3rem;
-            font-family: var(--odia-font); 
-            margin-right: 0.25rem;
-        }
-        
-        /* --- WHAT'S NEW SECTION STYLES --- */
-        #whats-new { display: none; /* Hidden by default, shown via JS */ }
+        #download-count { font-weight: 700; font-size: 1.3rem; margin-right: 0.25rem; }
+        #whats-new { display: none; }
         .release-notes-content {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            border: 1px solid rgba(0,0,0,0.08);
+            background: #fff; padding: 2.5rem; border-radius: 16px; max-width: 800px;
+            margin: 0 auto; text-align: left; border: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .release-notes-content h3 {
-            font-family: var(--odia-font);
-            font-size: 1.5rem;
-            color: var(--brand-dark);
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 0.5rem;
-        }
+        .release-notes-content h3 { font-size: 1.5rem; color: var(--brand-dark); margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
         .release-notes-content h3:first-child { margin-top: 0; }
-        .release-notes-content p { margin-bottom: 1rem; }
-        .release-notes-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
-        .release-notes-content li { margin-bottom: 0.5rem; }
-        .release-notes-content code {
-            background-color: #eef;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9em;
-        }
-        .release-notes-content strong { font-weight: bold; }
-        /* ------------------------------------- */
-
+        
         footer { text-align: center; padding: 4rem 0; background-color: var(--bg-color); }
         footer a { color: var(--brand-dark); text-decoration: none; }
+        
+        /* START: FAQ Styles */
+        .faq-section {
+            background-color: #EFECE6;
+            padding: 6rem 0;
+            text-align: left;
+        }
+        .faq-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-family: var(--section-heading-font);
+            font-size: 1.4rem;
+            color: var(--brand-dark);
+            margin-bottom: 0.75rem;
+        }
+        .faq-answer p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+        .faq-answer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .faq-answer li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        .faq-answer a {
+            color: var(--brand-dark);
+            font-weight: 500;
+            text-decoration: underline;
+        }
+        /* END: FAQ Styles */
 
-        .desktop-view { display: none; }
-        
-        .os-android, .os-other { display: none; }
-        
-        @media (max-width: 768px) { .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); } }
-        
-        @media (min-width: 1024px) { 
-            .desktop-view { display: flex; } 
-            .mobile-view { display: none; } 
-            .features-wrapper { margin-top: -250vh; }
+        @media (max-width: 768px) {
+            .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+            .header-play-online-btn { display: none !important; }
+        }
+        @media (min-width: 1024px) {
+            .desktop-view { display: flex; }
+            .mobile-view { display: none; }
+            #features { margin-top: -250vh; }
         }
 
         #scroll-down-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 210;
-            background-color: var(--brand-dark);
-            color: #fff;
-            padding: 0.8rem 1.6rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: var(--headline-font);
-            font-weight: 500;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            opacity: 1;
+            position: fixed; bottom: 30px; left: 50%;
+            transform: translateX(-50%); z-index: 210;
+            background-color: var(--brand-dark); color: #fff; padding: 0.8rem 1.6rem;
+            border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1;
             transition: opacity 0.4s ease, transform 0.4s ease;
-            animation: bounce 2s infinite;
+            animation: bounce 2s infinite; white-space: nowrap;
+            font-family: var(--headline-font);
         }
-
-        #scroll-down-btn:hover {
-            background-color: #333;
-            animation-play-state: paused;
-        }
-
-        #scroll-down-btn.hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(-50%, 20px);
-        }
+        #scroll-down-btn:hover { background-color: #333; animation-play-state: paused; }
+        #scroll-down-btn.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 20px); }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translate(-50%, 0);
-            }
-            40% {
-                transform: translate(-50%, -10px);
-            }
-            60% {
-                transform: translate(-50%, -5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -10px); }
+            60% { transform: translate(-50%, -5px); }
         }
 
         .social-icons-fixed {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 150;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            position: fixed; bottom: 25px; right: 25px;
+            z-index: 150; display: flex; flex-direction: column; gap: 15px;
         }
-
         .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background-color: var(--brand-dark);
-            color: #fff;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            width: 48px; height: 48px; background-color: var(--brand-dark);
+            color: #fff; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
+        .social-icon:hover { background-color: #333; transform: translateY(-4px) scale(1.05); }
+        .social-icon svg { width: 24px; height: 24px; }
 
-        .social-icon:hover {
-            background-color: #333;
-            transform: translateY(-4px) scale(1.05);
-        }
-        
-        .social-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* --- POP-UP CSS --- */
         #overlay {
-          display: none;
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 999;
+          display: none; position: fixed; inset: 0;
+          background: rgba(0, 0, 0, 0.5); z-index: 999;
         }
-
         #bottomSheet {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          background: #efece6;
-          border-top-left-radius: 28px;
-          border-top-right-radius: 28px;
-          padding: 20px 16px;
-          box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
-          animation: slideUp 0.25s ease;
-          box-sizing: border-box;
-          font-family: 'Roboto', sans-serif;
+          position: fixed; bottom: 0; left: 0; width: 100%;
+          background: #efece6; border-top-left-radius: 28px; border-top-right-radius: 28px;
+          padding: 20px 16px; box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+          animation: slideUp 0.25s ease; box-sizing: border-box;
         }
-
-        .sheet-title {
-          font-size: 18px;
-          font-weight: 500;
-          margin-bottom: 16px;
-          color: #000;
-        }
-
-        .app-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 12px 0;
-          flex-wrap: wrap;
-          gap: 12px;
-        }
-
-        .app-info {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          flex: 1;
-          min-width: 140px;
-        }
-
-        .app-info img {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-        }
-
-        .app-name {
-          font-size: 16px;
-          color: #000;
-          font-weight: 400;
-          font-family: var(--odia-font);
-        }
-
+        .sheet-title { font-size: 18px; font-weight: 500; margin-bottom: 16px; color: #000; }
+        .app-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; flex-wrap: wrap; gap: 12px; }
+        .app-info { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 140px; }
+        .app-info img { width: 48px; height: 48px; border-radius: 12px; }
+        .app-name { font-size: 16px; color: #000; font-weight: 400; }
         .md3-btn {
-          flex-shrink: 0;
-          border: none;
-          padding: 10px 18px;
-          font-size: 14px;
-          font-weight: 500;
-          border-radius: 20px;
-          cursor: pointer;
+          flex-shrink: 0; border: none; padding: 10px 18px; font-size: 14px;
+          font-weight: 500; border-radius: 20px; cursor: pointer;
           transition: background 0.2s ease;
         }
-
-        .filled-btn {
-          background: #0a1557;
-          color: white;
+        .filled-btn { background: #0a1557; color: white; }
+        .filled-btn:hover { background: #0e29c4; }
+        .outlined-btn { background: transparent; color: #0d1545; border: 1px solid #857910; }
+        .outlined-btn:hover { background: rgba(103, 80, 164, 0.08); }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        
+        .language-switcher { 
+            position: fixed; top: 20px; right: 20px; z-index: 1001;
+            transition: transform 0.4s ease;
         }
-
-        .filled-btn:hover {
-          background: #0e29c4;
+        /* FIXED: New class to move button down when header is visible */
+        .language-switcher.scrolled {
+            transform: translateY(70px);
         }
-
-        .outlined-btn {
-          background: transparent;
-          color: #0d1545;
-          border: 1px solid #857910;
+        .language-button {
+            background-color: var(--brand-dark); color: white; border: none;
+            border-radius: 50%; width: 48px; height: 48px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s ease;
         }
-
-        .outlined-btn:hover {
-          background: rgba(103, 80, 164, 0.08);
+        .language-button:hover { transform: scale(1.1); }
+        .language-button svg { width: 24px; height: 24px; }
+        .language-menu {
+            display: none; position: absolute; right: 0; top: 55px;
+            background-color: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            list-style: none; padding: 8px 0; margin: 0; overflow: hidden; min-width: 150px;
         }
-
-        @keyframes slideUp {
-          from { transform: translateY(100%); }
-          to { transform: translateY(0); }
-        }
-        /* --- END: POP-UP CSS --- */
-
+        .language-menu.show { display: block; }
+        .language-menu li { padding: 10px 20px; cursor: pointer; font-family: 'Noto Sans', sans-serif; font-size: 14px; }
+        .language-menu li:hover { background-color: #f0f0f0; }
     </style>
 </head>
 <body>
-
+    <div class="language-switcher" id="lang-switcher">
+        <button class="language-button" id="lang-btn" aria-label="Choose language"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" /></svg></button>
+        <ul class="language-menu" id="lang-menu">
+            <li data-lang="or">ଓଡ଼ିଆ</li>
+            <li data-lang="en">English</li>
+            <li data-lang="hi">हिन्दी</li>
+            <li data-lang="sa">संस्कृतम्</li>
+            <li data-lang="te">తెలుగు</li>
+            <li data-lang="bn">বাংলা</li>
+            <li data-lang="gu">ગુજરાતી </li>
+            
+        </ul>
+    </div>
+    <div id="dynamic-island-title" data-translate="screenshots_title">ଆପ୍‌ର କିଛି ଝଲକ</div>
     <div class="curtain" id="curtain">
         <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="ଗଣିତ ବିଜ୍ଞ ଲୋଗୋ">
-        <h2>ଗଣିତ ବିଜ୍ଞ</h2>
+        <h2 data-translate="curtain_title">ଗଣିତ ବିଜ୍ଞ</h2>
     </div>
-
     <header id="header">
         <nav class="container">
-            <div class="nav-logo">ଗଣିତ ବିଜ୍ଞ</div>
-            <a href="#download" id="header-download-btn" class="nav-button os-android">ଡାଉନଲୋଡ୍</a>
-            <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button os-other">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
+            <div class="nav-logo odia-font-element" data-translate="nav_logo">ଗଣିତ ବିଜ୍ଞ</div>
+            <a href="#download" id="header-download-btn" class="nav-button os-android" data-translate="nav_download">ଡାଉନଲୋଡ୍</a>
+            <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="nav-button os-other header-play-online-btn" data-translate="nav_play_online">ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a>
         </nav>
     </header>
-
     <main id="main-content">
-        <div class="hero">
-            <div class="container">
-                <h1 class="hero-title" id="hero-title">ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ</h1>
-            </div>
-        </div>
+        <div class="hero"><div class="container"><h1 class="hero-title" id="hero-title" data-translate="hero_title">ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ</h1></div></div>
+        <div class="mockup-container mobile-view" id="mockup-container-mobile"><div class="mockup-sticky-parent"><div class="mockup-wrapper"><div class="mockup-content" id="mobile-mockup-content"><div class="mockup-image"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/2e.png" alt="Ganita Bingya App Screenshot" class="hero-mockup-img"></div></div></div></div></div>
+        <div class="mockup-container desktop-view" id="mockup-container-desktop"><div class="mockup-sticky-parent"><div class="mockup-wrapper"><div class="mockup-content" id="desktop-mockup-content"><div class="desktop-mockup-image"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png" alt="Ganita Bingya Web Version Screenshot"></div></div></div></div></div>
         
-        <div class="mockup-container mobile-view" id="mockup-container-mobile">
-            <div class="mockup-sticky-parent">
-                <div class="mockup-wrapper">
-                    <div class="mockup-content" id="mobile-mockup-content">
-                        <div class="mockup-image">
-                            <div class="phone-frame">
-                                <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/1.jpg" alt="Ganita Bingya App Screenshot">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section id="features"><div class="container"><h2 class="section-title" data-translate="features_title">ଶିଖିବାର ନୂଆ ଉପାୟ</h2><div class="features-grid"><div class="feature-card"><div class="icon">🎮</div><h3 data-translate="feature1_title">ମଜାଦାର ଖେଳ</h3><p data-translate="feature1_desc">ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ</p></div><div class="feature-card"><div class="icon">💡</div><h3 data-translate="feature2_title">ଫଳପ୍ରଦ ସମୟ</h3><p data-translate="feature2_desc">ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ</p></div><div class="feature-card"><div class="icon">💻📱</div><h3 data-translate="feature3_title">ସବୁ ଡିଭାଇସ୍‌ରେ</h3><p data-translate="feature3_desc">ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</p></div><div class="feature-card"><div class="icon">➕➖✖️➗</div><h3 data-translate="feature4_title">ଚାରୋଟି ପ୍ରକ୍ରିୟା</h3><p data-translate="feature4_desc">ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ</p></div></div></div></section>
 
-        <div class="mockup-container desktop-view" id="mockup-container-desktop">
-            <div class="mockup-sticky-parent">
-                 <div class="mockup-wrapper">
-                    <div class="mockup-content" id="desktop-mockup-content">
-                        <div class="mockup-background-shape"></div>
-                        <div class="desktop-mockup-image">
-                            <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png" alt="Ganita Bingya Web Version Screenshot">
-                        </div>
-                    </div>
-                </div>
+        <section id="screenshots">
+            <div class="screenshot-sticky-parent">
+                <div class="screenshot-card-fade"><img alt='Screenshot 1' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/0e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 2' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/1e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 3' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/2e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 4' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/3e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 5' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/4e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 6' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/5e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 7' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/6e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 8' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/7e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 9' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/8e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 10' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/9e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 11' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/10e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 12' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/11e.png' loading="lazy"/></div>
+                <div class="screenshot-card-fade"><img alt='Screenshot 13' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/13e.png' loading="lazy"/></div>
             </div>
-        </div>
-
-        <div class="features-wrapper" id="features-wrapper">
-            <section id="features">
-                <div class="container">
-                    <h2 class="section-title">ଶିଖିବାର ନୂଆ ଉପାୟ</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="icon">🎮</div><h3>ମଜାଦାର ଖେଳ</h3><p>ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">💡</div><h3>ଫଳପ୍ରଦ ସମୟ</h3><p>ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">💻📱</div><h3>ସବୁ ଡିଭାଇସ୍‌ରେ</h3><p>ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">➕➖✖️➗</div><h3>ଚାରୋଟି ପ୍ରକ୍ରିୟା</h3><p>ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="screenshots">
-                <div class="container">
-                    <h2 class="section-title">ଆପ୍‌ର କିଛି ଝଲକ</h2>
-                    <div class="screenshots-grid">
-                        <div class="screenshot-card animated-screenshot animate-up">
-                            <div class="phone-frame">
-                                <img alt='Screenshot of the Ganita Bingya main game screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/0.jpg' loading="lazy"/>
-                            </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-left">
-                            <div class="phone-frame">
-                                <img alt='Splash screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/1.jpg' loading="lazy"/>
-                            </div>
-                        </div>
-                         <div class="screenshot-card animated-screenshot animate-right">
-                            <div class="phone-frame">
-                                <img alt='Solution.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/2.jpg' loading="lazy"/>
-                            </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-zoom">
-                           <div class="phone-frame">
-                               <img alt='Screenshot showing the all score.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/3.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-left">
-                           <div class="phone-frame">
-                               <img alt='Lifetime Score screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/00.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-up">
-                           <div class="phone-frame">
-                               <img alt='Menu screen of Ganita Bingya.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/4.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                         <div class="screenshot-card animated-screenshot animate-right">
-                           <div class="phone-frame">
-                               <img alt='OdiaTables/ Odia Panikia screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/5.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                         <div class="screenshot-card animated-screenshot animate-zoom">
-                           <div class="phone-frame">
-                               <img alt='10th OdiaTables/ 10th Odia Panikia screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/6.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                         <div class="screenshot-card animated-screenshot animate-left">
-                           <div class="phone-frame">
-                               <img alt='OdiaTables/ Odia Panikia traditional spoken format screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/7.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-up">
-                           <div class="phone-frame">
-                               <img alt='Odia Numbers 1 to 13 till 100 screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/8.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                        <div class="screenshot-card animated-screenshot animate-zoom">
-                           <div class="phone-frame">
-                               <img alt='Odia Calculator screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/10.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                         <div class="screenshot-card animated-screenshot animate-up">
-                           <div class="phone-frame">
-                               <img alt='Odia scientific Calculator screen.' src='https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/11.jpg' loading="lazy"/>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="download" class="download-section">
-                <div class="container">
-                    <h2 class="section-title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2>
-                    <div class="os-android">
-                        <p>"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p>
-                        
-                        <div class="button-group">
-                            <a href="https://ganitabingya.netlify.app/open" class="open-app-button">ଆପ୍ ଖୋଲନ୍ତୁ</a>
-                            <a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v2.0.1/app-release.apk" id="main-download-btn" target="_blank" class="download-button" rel="noopener noreferrer">
-                                ଡାଉନଲୋଡ୍ କରନ୍ତୁ
-                                <span class="version-badge" id="version-badge">v2.0.1</span>
-                            </a>
-                        </div>
-                     <center>
-                        <div id="download-count-container">
-                            <span id="download-count">୦୦</span> ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି
-                        </div> </center>
-                    </div>
-                    <div class="os-other">
-                        <p>କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ</p>
-                        <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" class="download-button" rel="noopener noreferrer">ପ୍ଲେ ଅନଲାଇନ୍</a>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="whats-new">
-                <div class="container">
-                    <h2 class="section-title">ନୂଆ କଣ ଅଛି?</h2>
-                    <div id="release-notes" class="release-notes-content">
-                         <p>Loading latest updates...</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+        </section>
+        
+        <div class="post-scroll-content"><section id="download" class="download-section"><div class="container"><h2 class="section-title" data-translate="download_title">ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?</h2><div class="os-android"><p data-translate="download_desc_android">"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!</p><div class="button-group"><a href="https://ganitabingya.netlify.app/open" class="open-app-button" data-translate="open_app_btn">ଆପ୍ ଖୋଲନ୍ତୁ</a><a href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v2.0.1/app-release.apk" id="main-download-btn" target="_blank" class="download-button" rel="noopener noreferrer"><span data-translate="download_btn">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</span><span class="version-badge" id="version-badge">v2.0.1</span></a><a href='https://indusapp.store/u2s75zsh'><img alt='Get it on Indus Appstore' src='https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-english.png'/></a></div><div id="download-count-container"><span id="download-count">୦୦</span> <span data-translate="download_count_text">ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି</span></div></div><div class="os-other"><p data-translate="download_desc_other">କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ</p><a href="https://odiagames.netlify.app/math-wizard/" target="_blank" class="download-button" rel="noopener noreferrer" data-translate="play_online_btn">ପ୍ଲେ ଅନଲାଇନ୍</a></div></div></section><section id="whats-new"><div class="container"><h2 class="section-title" data-translate="whats_new_title">ନୂଆ କଣ ଅଛି?</h2><div id="release-notes" class="release-notes-content"><p data-translate="loading_updates">Loading latest updates...</p></div></div></section></div>
     </main>
-
     <footer>
+        <!-- START: NEW FAQ SECTION -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">1. Is Ganita Bingya free to play?</h3>
+                    <div class="faq-answer">
+                        <p>Yes, Ganita Bingya is completely free to play. There are no hidden costs or in-app purchases.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">2. Does Ganita Bingya have ads?</h3>
+                    <div class="faq-answer">
+                        <p>No, Ganita Bingya is 100% ad-free. We are committed to providing a focused and uninterrupted learning experience, and the game will remain ad-free forever.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">3. Where can I download Ganita Bingya?</h3>
+                    <div class="faq-answer">
+                        <p>You can download Ganita Bingya for free from our official sources:</p>
+                        <ul>
+                            <li>Official Website: <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener">https://imsbg.github.io/Ganita-Bingya-App/</a></li>
+                            <li>GitHub Releases: <a href="https://github.com/imsbg/Ganita-Bingya-App/releases" target="_blank" rel="noopener">https://github.com/imsbg/Ganita-Bingya-App/releases</a></li>
+                            <li>Indus Appstore: <a href="https://www.indusappstore.com/apps/educational/ganita-bingya/com.sandeep.ganitabigyan" target="_blank" rel="noopener">https://www.indusappstore.com/...</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">4. What languages are supported in Ganita Bingya?</h3>
+                    <div class="faq-answer">
+                        <p>Ganita Bingya is a multilingual app. It currently supports English, Hindi, Odia, Sanskrit, Telugu, Bengali, and Gujarati.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">5. Who created the Ganita Bingya app?</h3>
+                    <div class="faq-answer">
+                        <p>Ganita Bingya is an open-source math game created and maintained by Sandeep Biswal G. As an open-source project, its source code is publicly available on GitHub.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">6. Was AI involved in the development of Ganita Bingya?</h3>
+                    <div class="faq-answer">
+                        <p>Yes, AI was used as a key development tool. While the programming code was generated by an AI, the core concept, user interface (UI) design, game features, and guiding prompts were all created by Sandeep Biswal G.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: NEW FAQ SECTION -->
         <div class="container">
-            <p>&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ</p>
+            <p data-translate="footer_text">&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ</p>
         </div>
     </footer>
-
-    <a href="#main-content" id="scroll-down-btn" aria-label="Scroll down to content">
-        ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ &nbsp;↓
-    </a>
-
-    <div class="social-icons-fixed">
-        <a href="https://github.com/imsbg/Ganita-Bingya-App" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View project on GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
-        <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
-         <a href="https://imsbg.github.io/Ganita-Bingya-App/donate" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Donate or support the project">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-        </a>
+    <a href="#main-content" id="scroll-down-btn" aria-label="Scroll down to content"><span data-translate="scroll_down_btn">ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ</span> &nbsp;↓</a>
+    <div class="social-icons-fixed"><a href="https://github.com/imsbg/Ganita-Bingya-App" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View project on GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a><a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+         <a href="https://imsbg.github.io/Ganita-Bingya-App/donate" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Donate or support the project"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></a>
         <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="View Privacy Policy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="currentColor"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" /></svg></a>
     </div>
-
-    <div id="overlay">
-      <div id="bottomSheet">
-        <div class="sheet-title">Open in app</div>
-        <div class="app-row">
-          <div class="app-info">
-            <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bingya App Logo">
-            <div class="app-name">ଗଣିତ ବିଜ୍ଞ</div>
-          </div>
-          <button class="md3-btn filled-btn" onclick="openInApp()">Open</button>
-        </div>
-        <div class="app-row">
-          <div class="app-info">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Browser Icon">
-            <div class="app-name">Browser</div>
-          </div>
-          <button class="md3-btn outlined-btn" onclick="closeSheet()">Continue</button>
-        </div>
-      </div>
-    </div>
+    <div id="overlay"><div id="bottomSheet"><div class="sheet-title" data-translate="popup_title">Open in app</div><div class="app-row"><div class="app-info"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bingya App Logo"><div class="app-name odia-font-element" data-translate="popup_app_name">ଗଣିତ ବିଜ୍ଞ</div></div><button class="md3-btn filled-btn" onclick="openInApp()" data-translate="popup_open_btn">Open</button></div><div class="app-row"><div class="app-info"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Browser Icon"><div class="app-name" data-translate="popup_browser_name">Browser</div></div><button class="md3-btn outlined-btn" onclick="closeSheet()" data-translate="popup_continue_btn">Continue</button></div></div></div>
+    
+    <!-- START: NEW JSON-LD SCRIPT FOR GOOGLE FAQ RICH RESULTS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Ganita Bingya free to play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Ganita Bingya is completely free to play. There are no hidden costs or in-app purchases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Ganita Bingya have ads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Ganita Bingya is 100% ad-free. We are committed to providing a focused and uninterrupted learning experience, and the game will remain ad-free forever."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I download Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download Ganita Bingya for free from our official sources:\nOfficial Website: https://imsbg.github.io/Ganita-Bingya-App/\nGitHub Releases: https://github.com/imsbg/Ganita-Bingya-App/releases\nIndus Appstore: https://www.indusappstore.com/apps/educational/ganita-bingya/com.sandeep.ganitabigyan"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What languages are supported in Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ganita Bingya is a multilingual app. It currently supports English, Hindi, Odia, Sanskrit, Telugu, Bengali, and Gujarati."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who created the Ganita Bingya app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ganita Bingya is an open-source math game created and maintained by Sandeep Biswal G. As an open-source project, its source code is publicly available on GitHub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was AI involved in the development of Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, AI was used as a key development tool. While the programming code was generated by an AI, the core concept, user interface (UI) design, game features, and guiding prompts were all created by Sandeep Biswal G."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- END: NEW JSON-LD SCRIPT -->
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const translations_data = {
+            or: { curtain_title: "ଗଣିତ ବିଜ୍ଞ", nav_logo: "ଗଣିତ ବିଜ୍ଞ", nav_download: "ଡାଉନଲୋଡ୍", nav_play_online: "ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ", hero_title: "ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ", features_title: "ଶିଖିବାର ନୂଆ ଉପାୟ", feature1_title: "ମଜାଦାର ଖେଳ", feature1_desc: "ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ", feature2_title: "ଫଳପ୍ରଦ ସମୟ", feature2_desc: "ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ", feature3_title: "ସବୁ ଡିଭାଇସ୍‌ରେ", feature3_desc: "ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ", feature4_title: "ଚାରୋଟି ପ୍ରକ୍ରିୟା", feature4_desc: "ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ", screenshots_title: "ଆପ୍‌ର କିଛି ଝଲକ", download_title: "ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?", download_desc_android: "\"ଗଣିତ ବିଜ୍ଞ\" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!", open_app_btn: "ଆପ୍ ଖୋଲନ୍ତୁ", download_btn: "ଡାଉନଲୋଡ୍ କରନ୍ତୁ", download_count_text: "ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି", download_desc_other: "କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ", play_online_btn: "ପ୍ଲେ ଅନଲାଇନ୍", whats_new_title: "ନୂଆ କଣ ଅଛି?", loading_updates: "ନୂତନ ଅପଡେଟ୍ ଲୋଡ୍ ହେଉଛି...", footer_text: "&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ", scroll_down_btn: "ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ", popup_title: "ଆପ୍‌ରେ ଖୋଲନ୍ତୁ", popup_app_name: "ଗଣିତ ବିଜ୍ଞ", popup_open_btn: "ଖୋଲନ୍ତୁ", popup_browser_name: "ବ୍ରାଉଜର୍", popup_continue_btn: "ଜାରି ରଖନ୍ତୁ" },
+            en: { curtain_title: "Ganita Bingya", nav_logo: "Ganita Bingya", nav_download: "Download", nav_play_online: "Play Online", hero_title: "Scroll, but wisely", features_title: "A New Way to Learn", feature1_title: "Fun Gameplay", feature1_desc: "Makes practicing math as entertaining as a game.", feature2_title: "Productive Time", feature2_desc: "Turn your idle time into a productive practice session.", feature3_title: "On All Devices", feature3_desc: "Play online on your desktop or download the Android app.", feature4_title: "Four Operations", feature4_desc: "Practice addition, subtraction, multiplication, and division with one, two, or three-digit numbers.", screenshots_title: "App Glimpses", download_title: "Ready to Play Now?", download_desc_android: "Download the \"Ganita Bingya\" app today and start a new journey with math!", open_app_btn: "Open App", download_btn: "Download", download_count_text: "downloads", download_desc_other: "No download required! Start playing directly in your browser.", play_online_btn: "Play Online", whats_new_title: "What's New?", loading_updates: "Loading latest updates...", footer_text: "&copy; 2025 Ganita Bingya. Made by <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>Sandeep Biswal G</a>.", scroll_down_btn: "Scroll Down", popup_title: "Open in app", popup_app_name: "Ganita Bingya", popup_open_btn: "Open", popup_browser_name: "Browser", popup_continue_btn: "Continue" },
+            hi: { curtain_title: "गणित बिज्ञ", nav_logo: "गणित बिज्ञ", nav_download: "डाउनलोड", nav_play_online: "ऑनलाइन खेलें", hero_title: "स्क्रॉल करें, लेकिन समझदारी से", features_title: "सीखने का नया तरीका", feature1_title: "मज़ेदार गेमप्ले", feature1_desc: "गणित का अभ्यास एक खेल की तरह मनोरंजक बनाता है।", feature2_title: "उपयोगी समय", feature2_desc: "अपने खाली समय को एक उत्पादक अभ्यास सत्र में बदलें।", feature3_title: "सभी डिवाइस पर", feature3_desc: "डेस्कटॉप पर ऑनलाइन खेलें या एंड्रॉइड ऐप डाउनलोड करें।", feature4_title: "चार प्रक्रियाएं", feature4_desc: "एक, दो, या तीन अंकों की संख्याओं के साथ जोड़, घटाव, गुणा और भाग का अभ्यास करें।", screenshots_title: "ऐप की झलकियाँ", download_title: "अब खेलने के लिए तैयार हैं?", download_desc_android: "\"गणित बिज्ञ\" ऐप आज ही डाउनलोड करें और गणित के साथ एक नई यात्रा शुरू करें!", open_app_btn: "ऐप खोलें", download_btn: "डाउनलोड करें", download_count_text: "डाउनलोड", download_desc_other: "कोई डाउनलोड आवश्यक नहीं! सीधे अपने ब्राउज़र में खेलना शुरू करें।", play_online_btn: "ऑनलाइन खेलें", whats_new_title: "नया क्या है?", loading_updates: "नवीनतम अपडेट लोड हो रहे हैं...", footer_text: "&copy; २०२५ गणित बिज्ञ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>संदीप बिस्वाल जी</a> द्वारा निर्मित।", scroll_down_btn: "नीचे स्क्रॉल करें", popup_title: "ऐप में खोलें", popup_app_name: "गणित बिज्ञ", popup_open_btn: "खोलें", popup_browser_name: "ब्राउज़र", popup_continue_btn: "जारी रखें" },
+            sa: { curtain_title: "गणितविज्ञः", nav_logo: "गणितविज्ञः", nav_download: "अवरोपयतु", nav_play_online: "ऑनलाइन क्रीडतु", hero_title: "स्क्रॉल् करोतु, परन्तु विवेकेन", features_title: "शिक्षणस्य नूतनः मार्गः", feature1_title: "मनोरञ्जकक्रीडा", feature1_desc: "गणितस्य अभ्यासं क्रीडावत् मनोरञ्जकं करोति।", feature2_title: "उत्पादकसमयः", feature2_desc: "स्वस्य रिक्तकालं उत्पादके अभ्यासे परिवर्तयतु।", feature3_title: "सर्वत्र उपकरणेषु", feature3_desc: "सङ्गणके ऑनलाइन क्रीडतु अथवा एंड्रॉयड-अनुप्रयोगम् अवरोपयतु।", feature4_title: "चत्वारः प्रक्रियाः", feature4_desc: "एक, द्वि, त्रि-अङ्कानां सङ्ख्याभिः सह सङ्कलनं, व्यवकलनं, गुणनं, भाजनं च अभ्यस्यतु।", screenshots_title: "अनुप्रयोगस्य दर्शनानि", download_title: "इदानीं क्रीडितुं सज्जः?", download_desc_android: "\"गणितविज्ञः\" अनुप्रयोगम् अद्यैव अवरोपयतु गणितस्य सह नूतनां यात्रां आरभताम्!", open_app_btn: "अनुप्रयोगम् उद्घाटयतु", download_btn: "अवरोपयतु", download_count_text: "अवरोपिताः", download_desc_other: "अवरोपणं अनावश्यकम्! साक्षात् स्वस्य ब्राउजरे क्रीडितुं आरभताम्।", play_online_btn: "ऑनलाइन क्रीडतु", whats_new_title: "किं नवीनम्?", loading_updates: "नवीनतमाः सूचनाः आगच्छन्ति...", footer_text: "&copy; २०२५ गणितविज्ञः। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>सन्दीपबिस्वाल-महोदयेन</a> निर्मितम्।", scroll_down_btn: "अधः सरकतु", popup_title: "अनुप्रयोगे उद्घाटयतु", popup_app_name: "गणितविज्ञः", popup_open_btn: "उद्घाटयतु", popup_browser_name: "ब्राउजर", popup_continue_btn: "अनुवर्तताम्" },
+            bn: { curtain_title: "গণিত বিজ্ঞ", nav_logo: "গণিত বিজ্ঞ", nav_download: "ডাউনলোড", nav_play_online: "অনলাইনে খেলুন", hero_title: "স্ক্রল করুন, কিন্তু বুদ্ধিমত্তার সাথে", features_title: "শেখার নতুন উপায়", feature1_title: "মজাদার গেমপ্লে", feature1_desc: "গণিত অনুশীলনকে একটি খেলার মতো বিনোদনমূলক করে তোলে।", feature2_title: "ফলপ্রসূ সময়", feature2_desc: "আপনার অবসর সময়কে একটি ઉત્પાદক অনুশীলন সেশনে পরিণত করুন।", feature3_title: "সমস্ত ডিভাইসে", feature3_desc: "আপনার ডেস্কটপে অনলাইনে খেলুন বা অ্যান্ড্রয়েড অ্যাপ ডাউনলোড করুন।", feature4_title: "চারটি প্রক্রিয়া", feature4_desc: "এক, দুই, বা তিন-অঙ্কের সংখ্যা দিয়ে যোগ, বিয়োগ, গুণ এবং ভাগ অনুশীলন করুন।", screenshots_title: "অ্যাপের ঝলক", download_title: "এখন খেলতে প্রস্তুত?", download_desc_android: "\"গণিত বিজ্ঞ\" অ্যাপটি আজই ডাউনলোড করুন এবং গণিতের সাথে একটি নতুন যাত্রা শুরু করুন!", open_app_btn: "অ্যাপ খুলুন", download_btn: "ডাউনলোড করুন", download_count_text: "ডাউনলোড", download_desc_other: "কোন ডাউনলোডের প্রয়োজন নেই! সরাসরি আপনার ব্রাউজারে খেলা শুরু করুন।", play_online_btn: "অনলাইনে খেলুন", whats_new_title: "নতুন কি আছে?", loading_updates: "সর্বশেষ আপডেট লোড হচ্ছে...", footer_text: "&copy; ২০২৫ গণিত বিজ্ঞ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>সন্দীপ বিস্বাল জি</a> দ্বারা নির্মিত।", scroll_down_btn: "নিচে স্ক্রল করুন", popup_title: "অ্যাপে খুলুন", popup_app_name: "গণিত বিজ্ঞ", popup_open_btn: "খুলুন", popup_browser_name: "ব্রাউজার", popup_continue_btn: "চালিয়ে যান" },
+            gu: { curtain_title: "ગણિત બિજ્ઞ", nav_logo: "ગણિત બિજ્ઞ", nav_download: "ડાઉનલોડ", nav_play_online: "ઓનલાઈન રમો", hero_title: "સ્ક્રોલ કરો, પણ ડહાપણપૂર્વક", features_title: "શીખવાની નવી રીત", feature1_title: "મજેદાર ગેમપ્લે", feature1_desc: "ગણિતના અભ્યાસને રમતની જેમ મનોરંજક બનાવે છે.", feature2_title: "ઉત્પાદક સમય", feature2_desc: "તમારા ખાલી સમયને ઉત્પાદક અભ્યાસ સત્રમાં ફેરવો.", feature3_title: "બધા ઉપકરણો પર", feature3_desc: "તમારા ડેસ્કટોપ પર ઓનલાઈન રમો અથવા એન્ડ્રોઇડ એપ ડાઉનલોડ કરો.", feature4_title: "ચાર પ્રક્રિયાઓ", feature4_desc: "એક, બે, અથવા ત્રણ-અંકની સંખ્યાઓ સાથે સરવાળો, બાદબાકી, ગુણાકાર અને ભાગાકારનો અભ્યાસ કરો.", screenshots_title: "એપની ઝલક", download_title: "હવે રમવા માટે તૈયાર છો?", download_desc_android: "\"ગણિત બિજ્ઞ\" એપ આજે જ ડાઉનલોડ કરો અને ગણિત સાથે નવી સફર શરૂ કરો!", open_app_btn: "એપ ખોલો", download_btn: "ડાઉનલોડ કરો", download_count_text: "ડાઉનલોડ્સ", download_desc_other: "કોઈ ડાઉનલોડની જરૂર નથી! સીધા તમારા બ્રાઉઝરમાં રમવાનું શરૂ કરો.", play_online_btn: "ઓનલાઈન રમો", whats_new_title: "નવું શું છે?", loading_updates: "નવીનતમ અપડેટ્સ લોડ કરી રહ્યું છે...", footer_text: "&copy; ૨૦૨૫ ગણિત બિજ્ઞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>સંદીપ બિસ્વાલ જી</a> દ્વારા નિર્મિત।", scroll_down_btn: "નીચે સ્ક્રોલ કરો", popup_title: "એપમાં ખોલો", popup_app_name: "ગણિત બિજ્ઞ", popup_open_btn: "ખોલો", popup_browser_name: "બ્રાઉઝર", popup_continue_btn: "ચાલુ રાખો" },
+            te: { curtain_title: "గణిత బిగ్యా", nav_logo: "గణిత బిగ్యా", nav_download: "డౌన్‌లోడ్", nav_play_online: "ఆన్‌లైన్‌లో ఆడండి", hero_title: "స్క్రోల్ చేయండి, కానీ వివేకంతో", features_title: "నేర్చుకోవడానికి ఒక కొత్త మార్గం", feature1_title: "వినోదాత్మక గేమ్‌ప్లే", feature1_desc: "గణిత అభ్యాసాన్ని ఆటలాగా వినోదాత్మకంగా చేస్తుంది.", feature2_title: "ఉత్పాదక సమయం", feature2_desc: "మీ ఖాళీ సమయాన్ని ఉత్పాదక ప్రాక్టీస్ సెషన్‌గా మార్చండి.", feature3_title: "అన్ని పరికరాల్లో", feature3_desc: "మీ డెస్క్‌టాప్‌లో ఆన్‌లైన్‌లో ఆడండి లేదా ఆండ్రాయిడ్ యాప్‌ను డౌన్‌లోడ్ చేయండి.", feature4_title: "నాలుగు ఆపరేషన్లు", feature4_desc: "ఒక, రెండు, లేదా మూడు అంకెల సంఖ్యలతో కూడిక, తీసివేత, గుణకారం మరియు భాగాహారం ప్రాక్టీస్ చేయండి.", screenshots_title: "యాప్ సంగ్రహావలోకనం", download_title: "ఇప్పుడు ఆడటానికి సిద్ధంగా ఉన్నారా?", download_desc_android: "\"గణిత బిగ్యా\" యాప్‌ను ఈరోజే డౌన్‌లోడ్ చేసుకోండి మరియు గణితంతో కొత్త ప్రయాణాన్ని ప్రారంభించండి!", open_app_btn: "యాప్ తెరవండి", download_btn: "డౌన్‌లోడ్ చేయండి", download_count_text: "డౌన్‌లోడ్‌లు", download_desc_other: "డౌన్‌లోడ్ అవసరం లేదు! నేరుగా మీ బ్రౌజర్‌లో ఆడటం ప్రారంభించండి.", play_online_btn: "ఆన్‌లైన్‌లో ఆడండి", whats_new_title: "కొత్తగా ఏమి ఉంది?", loading_updates: "తాజా నవీకరణలు లోడ్ అవుతున్నాయి...", footer_text: "&copy; ౨౦౨౫ గణిత బిగ్యా. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>సందీప్ బిస్వాల్ జి</a> ద్వారా తయారు చేయబడింది.", scroll_down_btn: "కిందికి స్క్రోల్ చేయండి", popup_title: "యాప్‌లో తెరవండి", popup_app_name: "గణిత బిగ్యా", popup_open_btn: "తెరవండి", popup_browser_name: "బ్రౌజర్", popup_continue_btn: "కొనసాగించు" }
+        };
+        const langMenu = document.getElementById('lang-menu');
+        const langBtn = document.getElementById('lang-btn');
+        const setLanguage = (lang) => { document.documentElement.lang = lang; const translation = translations_data[lang]; document.querySelectorAll('[data-translate]').forEach(el => { const key = el.dataset.translate; if (translation[key]) { el.innerHTML = translation[key]; } }); localStorage.setItem('language', lang); langMenu.classList.remove('show'); };
+        langMenu.addEventListener('click', (e) => { if (e.target.tagName === 'LI') { setLanguage(e.target.dataset.lang); } });
+        langBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('show'); });
+        document.addEventListener('click', (e) => { if (!langMenu.contains(e.target) && !langBtn.contains(e.target)) { langMenu.classList.remove('show'); } });
+        const savedLang = localStorage.getItem('language') || 'or';
+        setLanguage(savedLang);
 
-        // --- PART 1: UI ANIMATIONS (HEADER, MOCKUP, FEATURES) ---
+        // --- PART 1: UI ANIMATIONS ---
         const curtain = document.getElementById('curtain');
         const header = document.getElementById('header');
         const heroTitle = document.getElementById('hero-title');
         const scrollDownBtn = document.getElementById('scroll-down-btn');
         let animationStartScrollPosition = 0;
+        
+        const langSwitcher = document.getElementById('lang-switcher');
+        const screenshotsSection = document.getElementById('screenshots');
+        const screenshotCards = document.querySelectorAll('.screenshot-card-fade');
+        const dynamicIsland = document.getElementById('dynamic-island-title');
 
         function calculateAnimationStart() {
             const headerHeight = header.offsetHeight;
@@ -764,179 +595,128 @@
                 curtain.classList.remove('hidden');
                 if (scrollDownBtn) scrollDownBtn.classList.remove('hidden');
             }
-            if (scrollY > 100) {
+            if (scrollY > 100) { 
                 header.classList.add('visible');
-            } else {
-                header.classList.remove('visible');
+                langSwitcher.classList.add('scrolled'); // Move lang button down
+            }
+            else { 
+                header.classList.remove('visible'); 
+                langSwitcher.classList.remove('scrolled'); // Move lang button up
             }
         }
 
         function handleMockupAnimation() {
-            const isDesktopView = window.innerWidth >= 1024;
+            if (window.innerWidth >= 1024) return;
             const scrollY = window.scrollY;
-            const activeMockupContainer = isDesktopView ? document.getElementById('mockup-container-desktop') : document.getElementById('mockup-container-mobile');
-            const activeMockupContent = isDesktopView ? document.getElementById('desktop-mockup-content') : document.getElementById('mobile-mockup-content');
+            const activeMockupContainer = document.getElementById('mockup-container-mobile');
+            const activeMockupContent = document.getElementById('mobile-mockup-content');
             if (!activeMockupContainer || !activeMockupContent) return;
+            
             if (scrollY < animationStartScrollPosition) {
                 activeMockupContent.style.opacity = '0';
-                activeMockupContent.style.transform = `scale(${isDesktopView ? 0.5 : 0.7})`;
+                activeMockupContent.style.transform = `scale(0.85)`;
                 return;
             }
             const animationDuration = activeMockupContainer.offsetHeight - window.innerHeight;
             const progress = Math.max(0, Math.min(1, (scrollY - animationStartScrollPosition) / animationDuration));
             let scale, opacity = 1, translateY = 0;
-            if (isDesktopView) { 
-                if (progress < 0.25) { 
-                    const p = progress / 0.25;
-                    scale = 0.5 + p * 0.5;
-                    opacity = p;
-                } else if (progress < 0.7) {
-                    scale = 1.0;
-                    opacity = 1;
-                } else {
-                    const p = (progress - 0.7) / 0.3;
-                    scale = 1.0 + p * 1.5;
-                    opacity = 1 - p;
-                }
-            } else { 
-                if (progress < 0.4) {
-                    const p = progress / 0.4;
-                    scale = 0.7 + p * 0.3;
-                    opacity = 1;
-                } else if (progress < 0.8) {
-                    scale = 1.0;
-                    opacity = 1;
-                } else {
-                    const p = (progress - 0.8) / 0.2;
-                    scale = 1.0 - p * 0.2;
-                    translateY = -p * 100;
-                    opacity = 1 - p;
-                }
+            if (progress < 0.5) {
+                const p = progress / 0.5;
+                scale = 0.85 + p * 0.2;
+                opacity = 1;
+            } else {
+                const p = (progress - 0.5) / 0.5;
+                scale = 1.05;
+                translateY = -p * 100;
+                opacity = 1 - p;
             }
             activeMockupContent.style.transform = `scale(${scale}) translateY(${translateY}vh)`;
             activeMockupContent.style.opacity = opacity;
         }
+        
+        function handleScreenshotFade() {
+            if (!screenshotsSection || screenshotCards.length === 0) return;
+            
+            const sectionRect = screenshotsSection.getBoundingClientRect();
+            const scrollableHeight = screenshotsSection.offsetHeight - window.innerHeight;
+
+            if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
+                const progress = Math.max(0, Math.min(1, -sectionRect.top / scrollableHeight));
+                const activeIndex = Math.min(screenshotCards.length - 1, Math.floor(progress * screenshotCards.length));
+                
+                screenshotCards.forEach((card, index) => {
+                    if (index === activeIndex) {
+                        card.classList.add('is-active');
+                    } else {
+                        card.classList.remove('is-active');
+                    }
+                });
+            }
+
+            if (sectionRect.top < (window.innerHeight * 0.8) && sectionRect.bottom > (window.innerHeight * 0.2)) {
+                dynamicIsland.classList.add('show');
+            } else {
+                dynamicIsland.classList.remove('show');
+            }
+        }
 
         let ticking = false;
         function onScroll() {
-            handleCurtainAndHeader();
-            handleMockupAnimation();
-            ticking = false;
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(() => {
+                    handleCurtainAndHeader();
+                    handleMockupAnimation();
+                    handleScreenshotFade();
+                    ticking = false;
+                });
+            }
         }
-        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); } }, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', () => { calculateAnimationStart(); handleMockupAnimation(); });
         
-        // --- Animate on scroll observer (for features & screenshots) ---
-        // *** MODIFIED FOR REVERSIBLE ANIMATIONS ***
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.3 };
-        const observerCallback = (entries, observer) => {
+        const observerCallback = (entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                } else {
-                    // When it leaves the screen, remove the class to reset the animation
-                    entry.target.classList.remove('is-visible');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+                else { entry.target.classList.remove('is-visible'); }
             });
         };
         const animationObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-        // Observe elements
-        document.querySelectorAll('#features .feature-card, .animated-screenshot').forEach(el => {
-            animationObserver.observe(el);
-        });
-
+        document.querySelectorAll('#features .feature-card').forEach(el => animationObserver.observe(el));
         setTimeout(() => { calculateAnimationStart(); handleCurtainAndHeader(); handleMockupAnimation(); }, 100);
 
         // --- PART 2: OS DETECTION ---
         const userAgent = navigator.userAgent;
         const isAndroid = /Android/i.test(userAgent);
-        const androidElements = document.querySelectorAll('.os-android');
-        const otherOsElements = document.querySelectorAll('.os-other');
         if (isAndroid) {
-            androidElements.forEach(el => { el.style.display = (el.tagName === 'A') ? 'inline-flex' : 'block'; });
+            document.querySelectorAll('.os-android').forEach(el => el.style.display = 'block');
         } else {
-            otherOsElements.forEach(el => { el.style.display = (el.tagName === 'A') ? 'inline-flex' : 'block'; });
+            document.querySelectorAll('.os-other').forEach(el => el.style.display = 'block');
+        }
+        if (window.innerWidth >= 1024) {
+             document.querySelectorAll('.desktop-view').forEach(el => el.style.display = 'flex');
+             document.querySelectorAll('.mobile-view').forEach(el => el.style.display = 'none');
         }
 
-        // --- PART 3: GITHUB API FOR DOWNLOADS & RELEASE NOTES ---
+        // --- PART 3: GITHUB API & POPUP --- (UNCHANGED)
         const REPO_URL = 'https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases';
-
-        function formatReleaseNotes(text) {
-            return text.replace(/### (.*)/g, '<h3>$1</h3>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\* (.*)/g, '<li>$1</li>').replace(/(\r\n|\n|\r)/gm, '<br>').replace(/(<br>){2,}/g, '<br><br>');
-        }
-
-        async function fetchLatestRelease() {
-            try {
-                const response = await fetch(`${REPO_URL}/latest`);
-                if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
-                const latestRelease = await response.json();
-
-                const version = latestRelease.tag_name;
-                const releaseNotes = latestRelease.body;
-                const apkAsset = latestRelease.assets.find(asset => asset.name.endsWith('.apk'));
-                const apkUrl = apkAsset ? apkAsset.browser_download_url : '#';
-                
-                document.getElementById('version-badge').textContent = version;
-                document.getElementById('main-download-btn').href = apkUrl;
-                if (isAndroid) {
-                    const headerBtn = document.getElementById('header-download-btn');
-                    headerBtn.href = apkUrl;
-                    headerBtn.setAttribute('download', `Ganita-Bingya-${version}.apk`);
-                }
-                
-                const whatsNewSection = document.getElementById('whats-new');
-                const releaseNotesContainer = document.getElementById('release-notes');
-                if (releaseNotes) {
-                    releaseNotesContainer.innerHTML = formatReleaseNotes(releaseNotes);
-                    whatsNewSection.style.display = 'block';
-                }
-            } catch (error) { console.error('Failed to fetch latest release:', error); }
-        }
-        
-        async function fetchTotalDownloads() {
-            const countElement = document.getElementById('download-count');
-            const countContainer = document.getElementById('download-count-container');
-            if (!countElement || !countContainer) return;
-            try {
-                const response = await fetch(REPO_URL);
-                 if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
-                const releases = await response.json();
-                let totalDownloads = 0;
-                releases.forEach(release => {
-                    release.assets.forEach(asset => {
-                        if (asset.name.endsWith('.apk')) totalDownloads += asset.download_count;
-                    });
-                });
-                if (totalDownloads > 0) {
-                    countElement.innerText = new Intl.NumberFormat('or').format(totalDownloads);
-                    countContainer.style.opacity = '1';
-                } else {
-                    countContainer.style.display = 'none';
-                }
-            } catch (error) { console.error('Failed to fetch download count:', error); countContainer.style.display = 'none'; }
-        }
-        
+        function formatReleaseNotes(text) { return text.replace(/### (.*)/g, '<h3>$1</h3>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\* (.*)/g, '<li>$1</li>').replace(/(\r\n|\n|\r)/gm, '<br>').replace(/(<br>){2,}/g, '<br><br>'); }
+        async function fetchLatestRelease() { try { const response = await fetch(`${REPO_URL}/latest`); if (!response.ok) throw new Error(`GitHub API error: ${response.status}`); const latestRelease = await response.json(); const version = latestRelease.tag_name; const releaseNotes = latestRelease.body; const apkAsset = latestRelease.assets.find(asset => asset.name.endsWith('.apk')); const apkUrl = apkAsset ? apkAsset.browser_download_url : '#'; document.getElementById('version-badge').textContent = version; document.getElementById('main-download-btn').href = apkUrl; if (isAndroid) { const headerBtn = document.getElementById('header-download-btn'); headerBtn.href = apkUrl; headerBtn.setAttribute('download', `Ganita-Bingya-${version}.apk`); } const whatsNewSection = document.getElementById('whats-new'); const releaseNotesContainer = document.getElementById('release-notes'); if (releaseNotes) { releaseNotesContainer.innerHTML = formatReleaseNotes(releaseNotes); whatsNewSection.style.display = 'block'; } } catch (error) { console.error('Failed to fetch latest release:', error); } }
+        async function fetchTotalDownloads() { const countElement = document.getElementById('download-count'); const countContainer = document.getElementById('download-count-container'); if (!countElement || !countContainer) return; try { const response = await fetch(REPO_URL); if (!response.ok) throw new Error(`GitHub API error: ${response.status}`); const releases = await response.json(); let totalDownloads = 0; releases.forEach(release => { release.assets.forEach(asset => { if (asset.name.endsWith('.apk')) totalDownloads += asset.download_count; }); }); if (totalDownloads > 0) { countElement.innerText = new Intl.NumberFormat().format(totalDownloads); countContainer.style.opacity = '1'; } else { countContainer.style.display = 'none'; } } catch (error) { console.error('Failed to fetch download count:', error); countContainer.style.display = 'none'; } }
         fetchLatestRelease();
         fetchTotalDownloads();
-
-        // --- PART 4: POP-UP SCRIPT ---
         const overlay = document.getElementById('overlay');
+        const bottomSheet = document.getElementById('bottomSheet');
         const STORAGE_KEY = "ganitaBingyaPopupDismissTime";
-        const HIDE_DURATION = 1 * 60 * 60 * 1000; // 1 hour
-
-        window.showSheet = function() {
-            if (isAndroid) {
-                const lastDismiss = localStorage.getItem(STORAGE_KEY);
-                const now = Date.now();
-                if (!lastDismiss || (now - lastDismiss > HIDE_DURATION)) {
-                    if (overlay) overlay.style.display = 'block';
-                }
-            }
-        }
+        const HIDE_DURATION = 1 * 60 * 60 * 1000;
+        window.showSheet = function() { if (isAndroid) { const lastDismiss = localStorage.getItem(STORAGE_KEY); const now = Date.now(); if (!lastDismiss || (now - lastDismiss > HIDE_DURATION)) { if (overlay) overlay.style.display = 'block'; } } }
         window.closeSheet = function() { if (overlay) { overlay.style.display = 'none'; localStorage.setItem(STORAGE_KEY, Date.now()); } }
         window.openInApp = function() { localStorage.setItem(STORAGE_KEY, Date.now()); window.location.href = "https://ganitabingya.netlify.app/open"; }
-        
+        if (overlay && bottomSheet) {
+            overlay.addEventListener('click', closeSheet);
+            bottomSheet.addEventListener('click', (e) => e.stopPropagation());
+        }
         setTimeout(showSheet, 2500);
     });
     </script>
