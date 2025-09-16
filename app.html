@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <!-- ============== Primary Meta Tags ============== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganita Bingya | ଗଣିତ ବିଜ୍ଞ - Fun Maths Learning App for Kids</title>
+    <meta name="description" content="ଗଣିତ ବିଜ୍ଞ (Ganita Bingya) is a fun and interactive educational app for children to learn mathematics in Odia, English, Hindi and more Indian languages.">
+    <meta name="keywords" content="Ganita Bingya, ଗଣିତ ବିଜ୍ଞ, Odia maths app, learn math, kids math, children education, panikia, odia panikia, multiplication tables, educational app, odia learning">
+    <meta name="author" content="Sandeep Biswal G">
+
+    <!-- ============== Open Graph / Facebook Meta Tags ============== -->
+    <meta property="og:title" content="ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)">
+    <meta property="og:description" content="Ganita Bingya is a fun and easy educational app that helps children learn mathematics in Odia, Hindi, Sanskrit, English, and many other Indian languages.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+    <meta property="og:url" content="https://imsbg.github.io/Ganita-Bingya-App/app">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ganita Bingya | ଗଣିତ ବିଜ୍ଞ">
+
+    <!-- ============== Twitter Meta Tags ============== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)">
+    <meta name="twitter:description" content="Ganita Bingya is a fun and easy educational app that helps children learn mathematics in Odia, Hindi, Sanskrit, English, and many other Indian languages.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+
+    <!-- ============== Favicon ============== -->
+    <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" type="image/png">
+
+    <!-- ============== Google Fonts & Icons ============== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- ============== CSS STYLES ============== -->
+    <style>
+        :root {
+            --bg-color: #f8f7f2;
+            --text-color: #5a664e;
+            --primary-color: #e57373;
+            --secondary-color: #81c784;
+            --header-bg: rgba(248, 247, 242, 0.8);
+            --font-odia: 'Baloo Bhaina 2', cursive;
+            --font-english: 'Fredoka', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-color); color: var(--text-color);
+            font-family: var(--font-english); line-height: 1.6; overflow-x: hidden;
+        }
+        :lang(or) { font-family: var(--font-odia); }
+        :lang(sa) { font-family: var(--font-odia); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        .site-header {
+            position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+            background-color: var(--header-bg); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(90, 102, 78, 0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .site-title { font-size: 1.8rem; font-weight: 700; }
+        .site-title a { text-decoration: none; color: inherit; }
+        .nav-and-hamburger { display: flex; align-items: center; gap: 20px; }
+
+        /* MODIFIED: main-nav is now a flex container for desktop */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-switcher button {
+            background: none; border: 1px solid var(--text-color); border-radius: 20px;
+            padding: 5px 12px; cursor: pointer; font-family: inherit;
+            color: var(--text-color); transition: background-color 0.3s, color 0.3s;
+        }
+        .lang-switcher button.active, .lang-switcher button:hover { background-color: var(--text-color); color: var(--bg-color); }
+        
+        .main-nav ul { display: flex; list-style: none; gap: 20px; }
+        .main-nav a { text-decoration: none; color: var(--text-color); font-weight: 600; position: relative; padding: 5px 0; }
+        .main-nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background-color: var(--primary-color); transition: width 0.3s;
+        }
+        .main-nav a:hover::after { width: 100%; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger .bar { width: 25px; height: 3px; background-color: var(--text-color); border-radius: 3px; transition: all 0.3s ease; }
+
+        main { padding: 40px 0; text-align: center; }
+        .hero { margin-bottom: 50px; }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+        .action-btn {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20px; border-radius: 20px; text-decoration: none; color: #fff;
+            font-size: 1.5rem; font-weight: 700; min-height: 150px;
+            transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .action-btn:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+
+        .icon-wrapper {
+            height: 52px; width: 100%; margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
+        }
+        .icon-wrapper img { height: 100%; width: auto; border-radius: 10px; }
+        .icon-wrapper .material-symbols-outlined { font-size: 52px; line-height: 1; font-family: 'Material Symbols Outlined' !important; }
+        .action-btn svg { width: 48px; height: 48px; margin-bottom: 10px; }
+
+        .btn-game { background: linear-gradient(135deg, #ff8a65, #ff7043); }
+        .btn-numbers { background: linear-gradient(135deg, #4dd0e1, #26c6da); }
+        .btn-draw { background: linear-gradient(135deg, #9575cd, #7e57c2); }
+        .btn-calc { background: linear-gradient(135deg, #ffd54f, #ffca28); }
+        .btn-tables { background: linear-gradient(135deg, #aed581, #9ccc65); }
+        
+        .tables-section {
+            background-color: rgba(255, 255, 255, 0.8); padding: 30px; border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); max-width: 600px; margin: 60px auto 0;
+            border: 1px solid rgba(90, 102, 78, 0.1);
+        }
+        .tables-section h3 { font-size: 2rem; margin-bottom: 25px; }
+        .table-input-group { display: flex; justify-content: center; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+        .table-input-group label { display: none; }
+        .table-input-group input {
+            padding: 15px; border-radius: 15px; border: 2px solid #ddd; width: 120px;
+            text-align: center; font-size: 1.5rem; font-weight: 600; font-family: var(--font-english);
+            color: var(--text-color); transition: all 0.3s ease;
+        }
+        .table-input-group input::placeholder { color: #ccc; font-weight: 400; }
+        .table-input-group input:focus {
+            outline: none; border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.3);
+        }
+        #open-table-btn {
+            padding: 0 30px; border-radius: 15px; border: none; background-color: var(--text-color);
+            color: white; font-size: 1.5rem; font-weight: 700; font-family: inherit; cursor: pointer;
+            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+        }
+        #open-table-btn:hover { background-color: #454e3d; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        #open-table-btn svg { width: 24px; height: 24px; stroke: white; transition: transform 0.3s; }
+        #open-table-btn:hover svg { transform: translateX(5px); }
+        #table-error { color: var(--primary-color); margin-top: 15px; font-size: 1rem; font-weight: 600; height: 1.2em; }
+
+        .site-footer { margin-top: 40px; padding: 20px 0; border-top: 1px solid rgba(90, 102, 78, 0.1); text-align: center; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .site-title { font-size: 1.5rem; }
+            .main-nav {
+                position: absolute; top: 100%; left: 0; right: 0; background-color: var(--bg-color);
+                flex-direction: column; align-items: center; gap: 0; /* Mobile menu styles */
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.3s ease-out; border-bottom: 1px solid rgba(90, 102, 78, 0.1);
+            }
+            .main-nav ul { flex-direction: column; width: 100%; padding: 10px 0; gap: 0; }
+            .main-nav li { text-align: center; padding: 10px 0; width: 100%; }
+            .main-nav.active { max-height: 500px; }
+
+            /* MODIFIED: Add spacing for the language switcher inside the mobile menu */
+            .main-nav .lang-switcher {
+                justify-content: center;
+                margin-top: 15px;
+                padding-bottom: 20px;
+            }
+
+            .hamburger { display: flex; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .hero h2 { font-size: 2rem; }
+            .tables-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <h1 class="site-title"><a href="https://imsbg.github.io/Ganita-Bingya-App/" data-lang-key="siteTitle">ଗଣିତ ବିଜ୍ଞ</a></h1>
+            
+            <div class="nav-and-hamburger">
+                <!-- MODIFIED: lang-switcher is now inside main-nav -->
+                <nav class="main-nav" id="main-nav">
+                    <ul>
+                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer" data-lang-key="navHome">Home</a></li>
+                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/#download" target="_blank" rel="noopener noreferrer" data-lang-key="navDownload">Download</a></li>
+                        <li><a href="https://indusapp.store/u2s75zsh" target="_blank" rel="noopener noreferrer" data-lang-key="navIndus">IndusApp Store</a></li>
+                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer" data-lang-key="navPrivacy">Privacy Policy</a></li>
+                    </ul>
+                    <div class="lang-switcher">
+                        <button id="lang-or" class="active">ଓଡ଼ିଆ</button>
+                        <button id="lang-en">English</button>
+                        <button id="lang-sa">संस्कृतम्</button>
+                    </div>
+                </nav>
+
+                <div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h2 data-lang-key="welcomeTitle">ଗଣିତ ଶିଖିବା, ମଜା କରିବା!</h2>
+                <p data-lang-key="welcomeSubtitle">ଗଣିତ ବିଜ୍ଞ ଆପ୍ ଖୋଲିବାକୁ ନିମ୍ନରେ ଥିବା ବଟନ୍ ଗୁଡ଼ିକୁ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଶିକ୍ଷାର ଏକ ନୂତନ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ।</p>
+            </section>
+
+            <section class="actions-grid">
+                <a href="ganitabingya://open" class="action-btn btn-game">
+                    <div class="icon-wrapper"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Game Icon"></div>
+                    <span data-lang-key="btnGame">ଖେଳ</span>
+                </a>
+                <a href="ganitabingya://open?numbers" class="action-btn btn-numbers">
+                    <div class="icon-wrapper"><span class="material-symbols-outlined">looks_one</span><span class="material-symbols-outlined">looks_two</span></div>
+                    <span data-lang-key="btnNumbers">ସଂଖ୍ୟା</span>
+                </a>
+                <a href="ganitabingya://open?ap" class="action-btn btn-draw">
+                    <div class="icon-wrapper"><span class="material-symbols-outlined">stylus_note</span></div>
+                    <span data-lang-key="btnDrawing">ଅଙ୍କନ ପ୍ୟାଡ୍</span>
+                </a>
+                <a href="ganitabingya://open?calculator" class="action-btn btn-calc">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18,3H6A3,3,0,0,0,3,6V18a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V6A3,3,0,0,0,18,3Zm1,15a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6A1,1,0,0,1,6,5H18a1,1,0,0,1,1,1Z"></path><rect x="7.5" y="7.5" width="9" height="3" rx="1"></rect><circle cx="8.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle><circle cx="15.5" cy="13" r="1"></circle><circle cx="8.5" cy="16.5" r="1"></circle><circle cx="12" cy="16.5" r="1"></circle><circle cx="15.5" cy="16.5" r="1"></circle></svg>
+                    <span data-lang-key="btnCalculator">କାଲକୁଲେଟର</span>
+                </a>
+                <a href="ganitabingya://open?panikia" class="action-btn btn-tables">
+                    <div class="icon-wrapper"><span class="material-symbols-outlined">menu_book</span></div>
+                    <span data-lang-key="btnTablesList">ପଣିକିଆ</span>
+                </a>
+            </section>
+            
+            <section class="tables-section">
+                <h3 data-lang-key="tablesTitle">ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ପଣିକିଆ ଖୋଲନ୍ତୁ</h3>
+                <div class="table-input-group">
+                    <label for="table-number-input">Table Number</label>
+                    <input type="number" id="table-number-input" min="2" max="25" placeholder="2-25" aria-label="Table Number">
+                    <a id="open-table-btn" href="#">
+                        <span data-lang-key="btnOpenTable">ଖୋଲନ୍ତୁ</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+                <p id="table-error"></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p data-lang-key="footerText">&copy; 2025 Ganita Bingya | ଗଣିତ ବିଜ୍ଞ. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const handleDeepLink = () => {
+                const params = new URLSearchParams(window.location.search);
+                const openAction = params.get('open');
+                const panikiaTable = params.get('panikia');
+                const validOpenActions = ['play', 'numbers', 'ap', 'calculator', 'panikia'];
+
+                if (openAction && validOpenActions.includes(openAction)) {
+                    const finalUrl = openAction === 'play' ? 'ganitabingya://open' : `ganitabingya://open?${openAction}`;
+                    window.location.href = finalUrl;
+                } else if (panikiaTable) {
+                    window.location.href = `ganitabingya://open?panikia=${panikiaTable}`;
+                }
+            };
+            handleDeepLink();
+
+            const translations = {};
+            const langButtons = { or: document.getElementById('lang-or'), en: document.getElementById('lang-en'), sa: document.getElementById('lang-sa') };
+            const changeLanguage = (lang) => {
+                localStorage.setItem('ganitaBingyaLang', lang);
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+                });
+                Object.values(langButtons).forEach(btn => btn.classList.remove('active'));
+                if(langButtons[lang]) langButtons[lang].classList.add('active');
+            };
+            Object.keys(langButtons).forEach(lang => { if(langButtons[lang]) langButtons[lang].addEventListener('click', () => changeLanguage(lang)); });
+            
+            const savedLang = localStorage.getItem('ganitaBingyaLang') || 'or';
+            
+            const hamburger = document.getElementById('hamburger');
+            const mainNav = document.getElementById('main-nav');
+            hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mainNav.classList.toggle('active'); });
+            
+            document.addEventListener('click', function(event) {
+                const isClickInsideMenu = mainNav.contains(event.target);
+                const isClickOnHamburger = hamburger.contains(event.target);
+                if (mainNav.classList.contains('active') && !isClickInsideMenu && !isClickOnHamburger) {
+                    mainNav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+            
+            const tableInput = document.getElementById('table-number-input');
+            const openTableBtn = document.getElementById('open-table-btn');
+            const tableError = document.getElementById('table-error');
+            const updateTableLink = () => {
+                const num = parseInt(tableInput.value, 10);
+                const currentLang = document.documentElement.lang || 'or';
+                if (num >= 2 && num <= 25) {
+                    openTableBtn.href = `ganitabingya://open?panikia=${num}`;
+                    tableError.textContent = '';
+                } else {
+                    openTableBtn.href = '#';
+                    tableError.textContent = tableInput.value !== '' ? (translations[currentLang]?.tableError || translations.en.tableError) : '';
+                }
+            };
+            tableInput.addEventListener('input', updateTableLink);
+            updateTableLink();
+
+            translations.or = { siteTitle: "ଗଣିତ ବିଜ୍ଞ", navHome: "ହୋମ୍", navDownload: "ଡାଉନଲୋଡ୍", navIndus: "ଇଣ୍ଡସ୍ଆପ୍ ଷ୍ଟୋର୍", navPrivacy: "ଗୋପନୀୟତା ନୀତି", welcomeTitle: "ଗଣିତ ଶିଖିବା, ମଜା କରିବା!", welcomeSubtitle: "ଗଣିତ ବିଜ୍ଞ ଆପ୍ ଖୋଲିବାକୁ ନିମ୍ନରେ ଥିବା ବଟନ୍ ଗୁଡ଼ିକୁ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଶିକ୍ଷାର ଏକ ନୂତନ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ।", btnGame: "ଖେଳ", btnNumbers: "ସଂଖ୍ୟା", btnDrawing: "ଅଙ୍କନ ପ୍ୟାଡ୍", btnCalculator: "କାଲକୁଲେଟର", btnTablesList: "ପଣିକିଆ", tablesTitle: "ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ପଣିକିଆ ଖୋଲନ୍ତୁ", btnOpenTable: "ଖୋଲନ୍ତୁ", tableError: "ଦୟାକରି ୨ ରୁ ୨୫ ମଧ୍ୟରେ ଏକ ସଂଖ୍ୟା ଦିଅନ୍ତୁ।", footerText: "&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।" };
+            translations.en = { siteTitle: "Ganita Bingya", navHome: "Home", navDownload: "Download", navIndus: "IndusApp Store", navPrivacy: "Privacy Policy", welcomeTitle: "Let's Learn Math, Let's Have Fun!", welcomeSubtitle: "Click the buttons below to open features in the Ganita Bingya app and start a new journey of learning.", btnGame: "Game", btnNumbers: "Numbers", btnDrawing: "Drawing Pad", btnCalculator: "Calculator", btnTablesList: "Multiplication Tables", tablesTitle: "Open a Specific Table", btnOpenTable: "Open", tableError: "Please enter a number between 2 and 25.", footerText: "&copy; 2025 Ganita Bingya. All Rights Reserved." };
+            translations.sa = { siteTitle: "गणित विज्ञः", navHome: "गृहम्", navDownload: "अवरोपयतु", navIndus: "इण्डस्आप् आपणः", navPrivacy: "गोपनीयता नीतिः", welcomeTitle: "गणितं पठामः, आनन्दं कुर्मः!", welcomeSubtitle: "गणितविज्ञः-अनुप्रयोगं उद्घाटयितुं अधः प्रदत्तानि पिञ्जानि नुदन्तु तथा च शिक्षणस्य नूतनां यात्राम् आरभताम्।", btnGame: "क्रीडा", btnNumbers: "संख्याः", btnDrawing: "चित्रफलकम्", btnCalculator: "गणकयन्त्रम्", btnTablesList: "गुणनसारणी", tablesTitle: "विशिष्टां सारणीम् उद्घाटयतु", btnOpenTable: "उद्घाटयतु", tableError: "कृपया २ तः ২৫ मध्ये एकां संख्यां लिखन्तु।", footerText: "&copy; २०२५ गणित विज्ञः. सर्वे अधिकाराः सुरक्षिताः।" };
+            
+            changeLanguage(savedLang); 
+        });
+    </script>
+</body>
+</html>
