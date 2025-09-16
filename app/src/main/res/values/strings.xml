@@ -435,4 +435,11 @@
     <string name="settings_sound_title">ଧ୍ୱନି ପ୍ରଭାବ</string>
     <string name="settings_sound_description">ସଠିକ ଉତ୍ତର ପାଇଁ ଧ୍ୱନି</string>
     <string name="changelog_whats_new_title">ନୂଆ କଣ ଅଛି</string>
+
+    <string name="widget_description">ଗଣିତ ବିଜ୍ଞ ଆପ୍‌କୁ ଶୀଘ୍ର ଖୋଲନ୍ତୁ</string>
+    <string name="widget_start_game">ଖେଳ</string>
+    <string name="widget_panikia">ପଣିକିଆ</string>
+    <string name="widget_numbers">ସଙ୍ଖ୍ୟା</string>
+    <string name="widget_drawing_pad">ଅଙ୍କନ</string>
+
 </resources>

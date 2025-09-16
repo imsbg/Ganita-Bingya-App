@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shortcut to Start Game -->
+    <shortcut
+        android:shortcutId="id_game"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_game"
+        android:shortcutShortLabel="@string/menu_start_game">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.sandeep.ganitabigyan"
+            android:targetClass="com.sandeep.ganitabigyan.MainActivity">
+            <!-- This is the same key we used for the widget! -->
+            <extra android:name="widget_destination_route" android:value="game" />
+        </intent>
+    </shortcut>
+
+    <!-- Shortcut to Multiplication Tables -->
+    <shortcut
+        android:shortcutId="id_panikia"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_panikia"
+        android:shortcutShortLabel="@string/menu_panikia">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.sandeep.ganitabigyan"
+            android:targetClass="com.sandeep.ganitabigyan.MainActivity">
+            <extra android:name="widget_destination_route" android:value="panikia_list" />
+        </intent>
+    </shortcut>
+
+    <!-- Shortcut to Numbers -->
+    <shortcut
+        android:shortcutId="id_numbers"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_numbers"
+        android:shortcutShortLabel="@string/menu_numbers">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.sandeep.ganitabigyan"
+            android:targetClass="com.sandeep.ganitabigyan.MainActivity">
+            <extra android:name="widget_destination_route" android:value="numbers" />
+        </intent>
+    </shortcut>
+
+    <!-- Shortcut to Drawing Pad -->
+    <shortcut
+        android:shortcutId="id_drawing"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_drawing"
+        android:shortcutShortLabel="@string/menu_drawing_pad">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.sandeep.ganitabigyan"
+            android:targetClass="com.sandeep.ganitabigyan.MainActivity">
+            <extra android:name="widget_destination_route" android:value="drawing" />
+        </intent>
+    </shortcut>
+
+</shortcuts>

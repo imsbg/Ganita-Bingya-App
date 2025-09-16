@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
-// VERSION: FINAL - Adds the animated footer to the Splash Screen.
 
 package com.sandeep.ganitabigyan
 
@@ -43,6 +42,7 @@ import androidx.navigation.navArgument
 import coil.compose.AsyncImage
 import com.sandeep.ganitabigyan.utils.DynamicAssetManager
 import com.sandeep.ganitabigyan.utils.SplashConfig
+import com.sandeep.ganitabigyan.widget.GanitaWidgetReceiver.Companion.WIDGET_DESTINATION_KEY
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -82,35 +82,46 @@ fun SplashScreen(navController: NavHostController) {
     val scale by animateFloatAsState(targetValue = if (startAnimation) 1f else 0.8f, animationSpec = tween(durationMillis = 1000), label = "logoScale")
     val alpha by animateFloatAsState(targetValue = if (startAnimation) 1f else 0f, animationSpec = tween(durationMillis = 1000), label = "logoAlpha")
 
-    // <<< NEW STATE for the footer visibility >>>
     var isFooterVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
+        // <<< FIX: Corrected typo from checkForupdates to checkForUpdates >>>
         launch { assetManager.checkForUpdates() }
         splashConfig = assetManager.getSplashConfig()
         startAnimation = true
 
         delay(200); currentText = splashConfig?.splashText1 ?: ""
-
-        // <<< FIX: Show the footer after the first text appears >>>
         isFooterVisible = true
-
         delay(1500); currentText = splashConfig?.splashText2 ?: ""
         if (splashConfig?.splashText3?.isNotBlank() == true) {
             delay(1500); currentText = splashConfig!!.splashText3
         }
         delay(1500)
-
-        // <<< FIX: Hide the footer before the final delay >>>
         isFooterVisible = false
         currentText = ""
         delay(300)
 
-        val hasCompletedWelcome = dataStore.hasCompletedWelcome.first()
         val intent = (context as? Activity)?.intent
+        if (intent?.hasExtra(WIDGET_DESTINATION_KEY) == true) {
+            val destinationRoute = intent.getStringExtra(WIDGET_DESTINATION_KEY)
+            if (destinationRoute != null) {
+                navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }
+                navController.navigate(destinationRoute)
+                intent.removeExtra(WIDGET_DESTINATION_KEY)
+                return@LaunchedEffect
+            }
+        }
+
         val data = intent?.data
-        if (data?.scheme == "https" && data.host == "ganitabingya.netlify.app" && data.path == "/open") { val queryParams = data.queryParameterNames; var finalRoute: String? = null; if (queryParams.contains("play")) finalRoute = AppDestinations.GAME_ROUTE; else if (queryParams.contains("numbers")) finalRoute = AppDestinations.NUMBERS_ROUTE; else if (queryParams.contains("ap")) finalRoute = AppDestinations.DRAWING_ROUTE; else if (queryParams.contains("calculator")) finalRoute = AppDestinations.CALCULATOR_ROUTE; else if (queryParams.contains("panikia")) { val value = data.getQueryParameter("panikia"); val number = value?.toIntOrNull() ?: convertWordToNumber(value); if (number != null) { val viewType = if (value?.toIntOrNull() != null) "number" else "word"; finalRoute = "panikia_detail/$number?view=$viewType" } }; if (finalRoute != null) { navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }; navController.navigate(finalRoute); intent?.data = null; return@LaunchedEffect } }
+        val isAppLink = data?.scheme == "https" && data.host == "ganitabingya.netlify.app"
+        val isCustomScheme = data?.scheme == "ganitabingya" && data.host == "open"
+
+        if (isAppLink || isCustomScheme) {
+            val queryParams = data.queryParameterNames; var finalRoute: String? = null; if (queryParams.contains("play")) finalRoute = AppDestinations.GAME_ROUTE; else if (queryParams.contains("numbers")) finalRoute = AppDestinations.NUMBERS_ROUTE; else if (queryParams.contains("ap")) finalRoute = AppDestinations.DRAWING_ROUTE; else if (queryParams.contains("calculator")) finalRoute = AppDestinations.CALCULATOR_ROUTE; else if (queryParams.contains("panikia")) { val value = data.getQueryParameter("panikia"); val number = value?.toIntOrNull() ?: convertWordToNumber(value); if (number != null) { val viewType = if (value?.toIntOrNull() != null) "number" else "word"; finalRoute = "panikia_detail/$number?view=$viewType" } }; if (finalRoute != null) { navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }; navController.navigate(finalRoute); intent?.data = null; return@LaunchedEffect }
+        }
+
         if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }; intent?.data = null; return@LaunchedEffect }
+        val hasCompletedWelcome = dataStore.hasCompletedWelcome.first()
         val destination = if (hasCompletedWelcome) AppDestinations.HOME_ROUTE else AppDestinations.WELCOME_ROUTE
         navController.navigate(destination) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }
     }
@@ -120,7 +131,6 @@ fun SplashScreen(navController: NavHostController) {
             .fillMaxSize()
             .background(brush = splashConfig?.backgroundBrush ?: SolidColor(Color.White))
     ) {
-        // Main content in the center
         Column(
             modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -147,7 +157,6 @@ fun SplashScreen(navController: NavHostController) {
             }
         }
 
-        // <<< NEW FOOTER UI aligned to the bottom >>>
         AnimatedVisibility(
             visible = isFooterVisible,
             modifier = Modifier.align(Alignment.BottomCenter),

@@ -391,4 +391,10 @@
 
     <string name="settings_sound_title">ध्वनिप्रभावाः</string>
     <string name="settings_sound_description">सम्यक् उत्तरस्य कृते ध्वनिः</string>
+
+    <string name="widget_description">गणित विज्ञ ऐपं शीघ्रं उद्घाटयन्तु</string>
+    <string name="widget_start_game">क्रीडा</string>
+    <string name="widget_panikia">गुणन सारणी</string>
+    <string name="widget_numbers">संख्याः</string>
+    <string name="widget_drawing_pad">अङ्कनम्</string>
 </resources>

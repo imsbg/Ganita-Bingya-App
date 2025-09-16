@@ -391,4 +391,11 @@
 
     <string name="settings_sound_title">ध्वनि प्रभाव</string>
     <string name="settings_sound_description">सही उत्तर के लिए ध्वनि</string>
+
+    <string name="widget_description">गणित बिज्ञ ऐप को जल्दी से खोलें</string>
+    <string name="widget_start_game">खेल</string>
+    <string name="widget_panikia">पहाड़ा</string>
+    <string name="widget_numbers">संख्याएँ</string>
+    <string name="widget_drawing_pad">अंकन</string>
+
 </resources>

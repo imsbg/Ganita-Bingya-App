@@ -391,4 +391,10 @@
 
     <string name="settings_sound_title">సౌండ్ ఎఫెక్ట్స్</string>
     <string name="settings_sound_description">సరైన సమాధానం కోసం ధ్వని</string>
+
+    <string name="widget_description">గణిత బిగ్య యాప్‌ను త్వరగా తెరవండి</string>
+    <string name="widget_start_game">ఆట</string>
+    <string name="widget_panikia">ఎక్కాలు</string>
+    <string name="widget_numbers">సంఖ్యలు</string>
+    <string name="widget_drawing_pad">గీయడం</string>
 </resources>

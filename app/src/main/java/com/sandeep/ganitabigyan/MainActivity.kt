@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/MainActivity.kt
-// VERSION: FINAL - Schedules the new background worker for dynamic assets.
 
 package com.sandeep.ganitabigyan
 
@@ -24,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-// <<< NEW IMPORTS for WorkManager >>>
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
@@ -66,9 +64,6 @@ class MainActivity : ComponentActivity() {
 
         installSplashScreen()
         askNotificationPermission()
-
-        // <<< THIS IS THE NEW CODE BLOCK >>>
-        // Schedule the background tasks when the app starts.
         scheduleBackgroundTasks()
 
         setContent {
@@ -93,21 +88,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // <<< THIS IS THE NEW FUNCTION >>>
     private fun scheduleBackgroundTasks() {
-        // 1. Re-schedule the daily reminders to ensure they are always set correctly.
         scheduleReminders(this)
 
-        // 2. Schedule the new worker to check for dynamic assets.
         val assetUpdateRequest = PeriodicWorkRequestBuilder<DynamicAssetWorker>(
-            // We can check for a new logo/background every 12 hours.
-            // Android will optimize this to save battery.
             12, TimeUnit.HOURS
         ).build()
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "dynamic_asset_update_worker",
-            ExistingPeriodicWorkPolicy.KEEP, // KEEP means if a worker is already scheduled, don't replace it.
+            ExistingPeriodicWorkPolicy.KEEP,
             assetUpdateRequest
         )
     }

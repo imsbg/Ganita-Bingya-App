@@ -391,4 +391,10 @@
 
     <string name="settings_sound_title">শব্দ প্রভাব</string>
     <string name="settings_sound_description">সঠিক উত্তরের জন্য শব্দ</string>
+
+    <string name="widget_description">গণিত বিজ্ঞ অ্যাপটি দ্রুত খুলুন</string>
+    <string name="widget_start_game">খেলা</string>
+    <string name="widget_panikia">নামতা</string>
+    <string name="widget_numbers">সংখ্যা</string>
+    <string name="widget_drawing_pad">অঙ্কন</string>
 </resources>

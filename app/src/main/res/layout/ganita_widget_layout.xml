@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/widget_background"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/widget_button_game"
+        style="@style/WidgetButton"
+        android:text="@string/widget_start_game"
+        android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/widget_button_panikia"
+        style="@style/WidgetButton"
+        android:text="@string/widget_panikia"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/widget_button_numbers"
+        style="@style/WidgetButton"
+        android:text="@string/widget_numbers"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/widget_button_drawing"
+        style="@style/WidgetButton"
+        android:text="@string/widget_drawing_pad"
+        android:layout_marginStart="4dp"/>
+
+</LinearLayout>

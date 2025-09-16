@@ -392,6 +392,11 @@
     <string name="settings_sound_title">Sound Effects</string>
     <string name="settings_sound_description">Sound for correct answer</string>
 
+    <string name="widget_description">Quickly open the Ganita Bingya app</string>
+    <string name="widget_start_game">Game</string>
+    <string name="widget_panikia">Multiplication Tables</string>
+    <string name="widget_numbers">Numbers</string>
+    <string name="widget_drawing_pad">Drawing</string>
 
 
 </resources>
