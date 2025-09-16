@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>ଗଣିତ ବିଜ୍ଞ</title>
+    
+    <!-- =================== NEW: OPEN GRAPH TAGS FOR RICH PREVIEWS =================== -->
+    <!-- These tags will be read by WhatsApp, Facebook, etc. to create the link preview -->
+    <meta property="og:title" content="ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)">
+    <meta property="og:description" content="An educational app to learn mathematics in Odia, Hindi, English and many more Indian languages.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
+    <meta property="og:url" content="https://ganitabingya.netlify.app/open">
+    <meta property="og:type" content="website">
+    <!-- ============================================================================== -->
+
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +27,8 @@
 <body>
     <div class="container">
         <img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Ganita Bigyan Logo" width="100">
-        <h1>ଗଣିତ ବିଜ୍ଞ</h1>
+        <!-- The h1 tag will now be updated dynamically by the script -->
+        <h1 id="title-heading">ଗଣିତ ବିଜ୍ଞ</h1>
         <p id="status-message">ଆପ୍ ଖୋଲିବାକୁ ଚେଷ୍ଟା କରାଯାଉଛି...</p>
         <div class="loader"></div>
         <p>ଯଦି ଆପ୍ ଖୋଲୁନାହିଁ, ଆପଣଙ୍କ ଡାଉନଲୋଡ୍ ଖୁବ୍ ଶୀଘ୍ର ଆରମ୍ଭ ହୋଇଯିବ</p>
@@ -32,6 +43,37 @@
         const GITHUB_API_URL = "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases/latest";
         const APK_FILE_NAME = "app-release.apk";
         const REDIRECT_DELAY = 1500; // 1.5 seconds
+
+        // --- NEW: FUNCTION TO UPDATE PAGE CONTENT FOR HUMAN VISITORS ---
+        function updatePageContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const titleHeading = document.getElementById('title-heading');
+            const statusMessage = document.getElementById('status-message');
+
+            if (urlParams.has('play')) {
+                titleHeading.textContent = "Start Game";
+                statusMessage.textContent = "Opening the game screen...";
+            } else if (urlParams.has('calculator')) {
+                titleHeading.textContent = "Calculator";
+                statusMessage.textContent = "Opening the calculator...";
+            } else if (urlParams.has('numbers')) {
+                titleHeading.textContent = "Numbers (1-100)";
+                statusMessage.textContent = "Opening the numbers screen...";
+            } else if (urlParams.has('ap')) {
+                titleHeading.textContent = "Drawing Pad";
+                statusMessage.textContent = "Opening the drawing pad...";
+            } else if (urlParams.has('panikia')) {
+                const tableNumber = urlParams.get('panikia');
+                // Check if a specific table number was provided
+                if (tableNumber) {
+                    titleHeading.textContent = `Multiplication Table of ${tableNumber}`;
+                    statusMessage.textContent = `Opening the table of ${tableNumber}...`;
+                } else {
+                    titleHeading.textContent = "Multiplication Tables";
+                    statusMessage.textContent = "Opening the list of tables...";
+                }
+            }
+        }
 
         async function fetchAndDownload() {
             const statusMessage = document.getElementById('status-message');
@@ -63,15 +105,12 @@
         }
 
         // --- MAIN LOGIC ---
-        // This timer is the key. When a user visits this page, we wait a moment.
-        // If the app is installed, the Android system will have already switched
-        // to the app, and the user will never see the page content.
-        // If the app is NOT installed, the browser stays on this page, the timer
-        // completes, and we trigger the download.
+
+        // NEW: Run the function to update the on-page text immediately
+        updatePageContent();
+
         const fallbackTimer = setTimeout(fetchAndDownload, REDIRECT_DELAY);
 
-        // To make this more robust, if the user switches tabs away from the page,
-        // we assume the app opened successfully and we cancel the download timer.
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 clearTimeout(fallbackTimer);
