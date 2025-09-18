@@ -398,4 +398,11 @@
     <string name="widget_numbers">संख्याएँ</string>
     <string name="widget_drawing_pad">अंकन</string>
 
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">नया अपडेट उपलब्ध है</string>
+    <string name="update_dialog_message">एक नया संस्करण (v%1$s) उपलब्ध है। आप v%2$s का उपयोग कर रहे हैं।</string>
+    <string name="update_dialog_update_now">अभी अपडेट करें</string>
+    <string name="update_dialog_ignore_time">इस बार अनदेखा करें</string>
+    <string name="update_dialog_ignore_version">इस संस्करण को अनदेखा करें</string>
+
 </resources>

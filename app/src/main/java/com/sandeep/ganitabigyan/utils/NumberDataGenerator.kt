@@ -17,7 +17,7 @@ data class NumberWordPair(
  */
 fun getNumberList(context: Context): List<NumberWordPair> {
     val list = mutableListOf<NumberWordPair>()
-    for (i in 1..100) {
+    for (i in 0..100) {
         list.add(
             NumberWordPair(
                 numeral = i.toLocaleNumerals(context),

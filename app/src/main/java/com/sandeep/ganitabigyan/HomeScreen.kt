@@ -2,6 +2,14 @@
 
 package com.sandeep.ganitabigyan
 
+import android.app.DownloadManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.provider.Settings
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,6 +32,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,6 +43,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.navigation.NavController
+import kotlinx.coroutines.launch
 
 // --- DEFINE APP BAR HEIGHTS FOR ACCURATE CALCULATIONS ---
 private val CollapsedAppBarHeight = 64.dp
@@ -53,6 +63,49 @@ private data class HomeMenuItem(
 @Composable
 fun HomeScreen(navController: NavController) {
 
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var showUpdateDialog by remember { mutableStateOf(false) }
+    var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
+    val dataStore = remember { SettingsDataStore(context) }
+
+    LaunchedEffect(Unit) {
+        val result = UpdateChecker.checkForUpdates(context)
+        if (result is UpdateCheckResult.UpdateAvailable) {
+            updateResult = result
+            showUpdateDialog = true
+        }
+    }
+
+    if (showUpdateDialog && updateResult is UpdateCheckResult.UpdateAvailable) {
+        // <<< FIX: Get the version name here, outside the Dialog Composable >>>
+        val currentVersionName = try {
+            context.packageManager.getPackageInfo(context.packageName, 0).versionName
+        } catch (e: Exception) { "1.0" }
+
+        AutoUpdateDialog(
+            result = updateResult as UpdateCheckResult.UpdateAvailable,
+            // <<< FIX: Pass the version name as a parameter >>>
+            currentVersionName = currentVersionName,
+            onDismiss = { showUpdateDialog = false },
+            onIgnoreVersion = { versionToIgnore ->
+                scope.launch {
+                    dataStore.setIgnoredUpdateVersion(versionToIgnore)
+                    showUpdateDialog = false
+                }
+            },
+            onUpdateNow = { downloadUrl, versionName ->
+                if (canInstallUnknownApps(context)) {
+                    startUpdateDownload(context, downloadUrl, versionName)
+                } else {
+                    Toast.makeText(context, R.string.permission_request_toast, Toast.LENGTH_LONG).show()
+                    requestInstallPermission(context)
+                }
+                showUpdateDialog = false
+            }
+        )
+    }
+
     val gradientOrange = listOf(Color(0xFFFFB74D), Color(0xFFFF9800))
     val gradientBlue = listOf(Color(0xFF64B5F6), Color(0xFF2196F3))
     val gradientPurple = listOf(Color(0xFFBA68C8), Color(0xFF9C27B0))
@@ -60,7 +113,6 @@ fun HomeScreen(navController: NavController) {
     val gradientTeal = listOf(Color(0xFF4DB6AC), Color(0xFF009688))
     val gradientCyan = listOf(Color(0xFF4DD0E1), Color(0xFF00BCD4))
 
-    // List now uses R.string resource IDs
     val menuItems = listOf(
         HomeMenuItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
         HomeMenuItem(R.string.menu_progress, R.string.menu_progress_desc, AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
@@ -120,26 +172,24 @@ private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
     val density = LocalDensity.current
 
     val topPadding = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    // Define the final (collapsed) and initial (expanded) padding here for clarity
     val collapsedStartPadding = 16.dp
-    val expandedHorizontalPadding = 24.dp // <<< NEW: Added padding for the expanded title
+    val expandedHorizontalPadding = 24.dp
 
     val collapsedHeightPx = with(density) { CollapsedAppBarHeight.toPx() }
     val expandedHeightPx = with(density) { ExpandedAppBarHeight.toPx() }
     val collapsedStartPaddingPx = with(density) { collapsedStartPadding.toPx() }
-    val expandedHorizontalPaddingPx = with(density) { expandedHorizontalPadding.toPx() } // <<< NEW: Convert to Px
+    val expandedHorizontalPaddingPx = with(density) { expandedHorizontalPadding.toPx() }
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(ExpandedAppBarHeight + topPadding)
             .padding(top = topPadding)
-            // <<< CHANGE 1: Apply horizontal padding to the container Box
             .padding(horizontal = expandedHorizontalPadding),
         contentAlignment = Alignment.TopStart
     ) {
         Text(
-            stringResource(R.string.home_title), // Using string resource here
+            stringResource(R.string.home_title),
             style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold),
             maxLines = 1,
             modifier = Modifier
@@ -149,15 +199,8 @@ private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
                     val startScale = 1.0f
                     val endScale = 0.7f
                     val currentScale = lerp(startScale, endScale, collapsedFraction)
-
-                    // This calculation now correctly centers the title within the new padded parent Box.
                     val startTranslationX = (size.width / 2) - (titleSize.width / 2)
-
-                    // <<< CHANGE 2: Adjust the final X position to account for the new padding
-                    // The Text is now laid out inside a padded area. To move it to its final
-                    // position, we calculate the difference between the target and the start.
                     val endTranslationX = collapsedStartPaddingPx - expandedHorizontalPaddingPx
-
                     val currentTranslationX = lerp(startTranslationX, endTranslationX, collapsedFraction)
                     val startTranslationY = expandedHeightPx - titleSize.height
                     val endTranslationY = (collapsedHeightPx / 2) - (titleSize.height / 2)
@@ -244,5 +287,71 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun AutoUpdateDialog(
+    result: UpdateCheckResult.UpdateAvailable,
+    // <<< FIX: Added new parameter >>>
+    currentVersionName: String,
+    onDismiss: () -> Unit,
+    onIgnoreVersion: (String) -> Unit,
+    onUpdateNow: (String, String) -> Unit
+) {
+    // <<< FIX: The try-catch is now removed from here >>>
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(id = R.string.update_dialog_title)) },
+        text = { Text(stringResource(id = R.string.update_dialog_message, result.latestVersion, currentVersionName)) },
+        confirmButton = {
+            TextButton(
+                onClick = { onUpdateNow(result.downloadUrl, result.latestVersion) }
+            ) { Text(stringResource(id = R.string.update_dialog_update_now)) }
+        },
+        dismissButton = {
+            Column(horizontalAlignment = Alignment.End) {
+                TextButton(onClick = onDismiss) {
+                    Text(stringResource(id = R.string.update_dialog_ignore_time))
+                }
+                TextButton(
+                    onClick = { onIgnoreVersion(result.latestVersion) }
+                ) {
+                    Text(
+                        stringResource(id = R.string.update_dialog_ignore_version),
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
+        }
+    )
+}
+
+private fun canInstallUnknownApps(context: Context): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) context.packageManager.canRequestPackageInstalls() else true
+}
+
+private fun requestInstallPermission(context: Context) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+            data = Uri.parse("package:${context.packageName}")
+        }
+        context.startActivity(intent)
+    }
+}
+
+private fun startUpdateDownload(context: Context, url: String, versionName: String) {
+    try {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val request = DownloadManager.Request(Uri.parse(url))
+            .setTitle(context.getString(R.string.download_notification_title, versionName))
+            .setDescription(context.getString(R.string.download_notification_description))
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Ganita-Bigyan-v$versionName.apk")
+            .setMimeType("application/vnd.android.package-archive")
+        downloadManager.enqueue(request)
+        Toast.makeText(context, R.string.download_started, Toast.LENGTH_SHORT).show()
+    } catch (e: Exception) {
+        Toast.makeText(context, context.getString(R.string.download_failed, e.message), Toast.LENGTH_LONG).show()
     }
 }

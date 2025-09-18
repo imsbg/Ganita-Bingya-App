@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsDataStore.kt
-// VERSION: FINAL - Stores the entire dynamic text JSON.
 
 package com.sandeep.ganitabigyan
 
@@ -30,6 +29,9 @@ class SettingsDataStore(private val context: Context) {
         private val DYNAMIC_BACKGROUND_JSON_KEY = stringPreferencesKey("dynamic_background_json")
         private val DYNAMIC_TEXT_COLOR_KEY = stringPreferencesKey("dynamic_text_color")
         private val DYNAMIC_SPLASH_TEXTS_JSON_KEY = stringPreferencesKey("dynamic_splash_texts_json")
+
+        // <<< NEW KEY FOR THE IGNORED UPDATE VERSION >>>
+        private val IGNORED_UPDATE_VERSION_KEY = stringPreferencesKey("ignored_update_version")
     }
 
     val hasCompletedWelcome: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[WELCOME_COMPLETED_KEY] ?: false }
@@ -62,6 +64,17 @@ class SettingsDataStore(private val context: Context) {
             settings[DYNAMIC_BACKGROUND_JSON_KEY] = backgroundJson
             settings[DYNAMIC_TEXT_COLOR_KEY] = textColorHex
             settings[DYNAMIC_SPLASH_TEXTS_JSON_KEY] = splashTextsJson
+        }
+    }
+
+    // <<< NEW FLOW AND FUNCTION TO HANDLE THE IGNORED VERSION >>>
+    val ignoredUpdateVersion: Flow<String> = context.dataStore.data.map { preferences ->
+        preferences[IGNORED_UPDATE_VERSION_KEY] ?: ""
+    }
+
+    suspend fun setIgnoredUpdateVersion(version: String) {
+        context.dataStore.edit { settings ->
+            settings[IGNORED_UPDATE_VERSION_KEY] = version
         }
     }
 }

@@ -397,4 +397,11 @@
     <string name="widget_panikia">गुणन सारणी</string>
     <string name="widget_numbers">संख्याः</string>
     <string name="widget_drawing_pad">अङ्कनम्</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">नूतनम् अद्यतनीकरणम् उपलब्धम्</string>
+    <string name="update_dialog_message">एकं नूतनं संस्करणं (v%1$s) उपलब्धम् अस्ति। भवान् v%2$s उपयुङ्क्ते।</string>
+    <string name="update_dialog_update_now">अधुना अद्यतनीकरोतु</string>
+    <string name="update_dialog_ignore_time">अस्मिन् वारे अवगणयतु</string>
+    <string name="update_dialog_ignore_version">इदं संस्करणम् अवगणयतु</string>
 </resources>

@@ -397,4 +397,12 @@
     <string name="widget_panikia">নামতা</string>
     <string name="widget_numbers">সংখ্যা</string>
     <string name="widget_drawing_pad">অঙ্কন</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">ନୂଆ ଅପଡେଟ୍ ଉପଲବ୍ଧ</string>
+    <string name="update_dialog_message">ଏକ ନୂଆ ସଂସ୍କରଣ (v%1$s) ଉପଲବ୍ଧ ଅଛି। ଆପଣ v%2$s ବ୍ୟବହାର କରୁଛନ୍ତି।</string>
+    <string name="update_dialog_update_now">Update Now</string>
+    <string name="update_dialog_ignore_time">ଏଥର ପାଇଁ ଅଣଦେଖା କରନ୍ତୁ</string>
+    <string name="update_dialog_ignore_version">Ignore This Version</string>
+
 </resources>

@@ -397,4 +397,11 @@
     <string name="widget_panikia">ఎక్కాలు</string>
     <string name="widget_numbers">సంఖ్యలు</string>
     <string name="widget_drawing_pad">గీయడం</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">కొత్త నవీకరణ అందుబాటులో ఉంది</string>
+    <string name="update_dialog_message">ఒక కొత్త వెర్షన్ (v%1$s) అందుబాటులో ఉంది. మీరు v%2$sను వాడుతున్నారు.</string>
+    <string name="update_dialog_update_now">ఇప్పుడే అప్‌డేట్ చేయండి</string>
+    <string name="update_dialog_ignore_time">ఈ సారికి విస్మరించండి</string>
+    <string name="update_dialog_ignore_version">ఈ వెర్షన్‌ను విస్మరించండి</string>
 </resources>

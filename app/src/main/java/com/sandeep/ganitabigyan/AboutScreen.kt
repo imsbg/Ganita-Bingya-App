@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/AboutScreen.kt
-// VERSION: FINAL - Removes Soubhagya Padhan from the contributor list.
 
 package com.sandeep.ganitabigyan
 
@@ -43,12 +42,10 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.URL
 
-// Data models are simplified as changelog logic is moved
+// <<< FIX: The UpdateCheckResult sealed class is REMOVED from this file >>>
+// It will now use the shared version from UpdateChecker.kt
+
 data class Contributor(val name: String, val role: String, val imageResId: Int, val profileUrl: String)
-sealed class UpdateCheckResult {
-    data class UpdateAvailable(val latestVersion: String, val downloadUrl: String) : UpdateCheckResult()
-    object UpToDate : UpdateCheckResult(); object Error : UpdateCheckResult()
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,25 +106,19 @@ private fun AboutCard(title: String, content: @Composable ColumnScope.() -> Unit
 
 @Composable
 private fun ContributorsCard() {
-    // <<< THIS IS THE ONLY CHANGE: The list is now empty again >>>
     val contributors = emptyList<Contributor>()
     var isExpanded by remember { mutableStateOf(false) }
 
     AboutCard(title = stringResource(R.string.members_and_contributors)) {
-        // Main contributor (always visible)
         ContributorRow(Contributor(
             name = stringResource(R.string.sandeep_biswal_name),
             role = stringResource(R.string.sandeep_biswal_role),
             imageResId = R.drawable.sandeep_biswal,
             profileUrl = "https://www.instagram.com/sandeepbiswalg/"
         ))
-
-        // This will now be hidden
         AnimatedVisibility(visible = isExpanded) {
             Column { contributors.forEach { ContributorRow(it) } }
         }
-
-        // This button will now be hidden
         if (contributors.isNotEmpty()) {
             TextButton(onClick = { isExpanded = !isExpanded }, modifier = Modifier.align(Alignment.End)) {
                 Text(if (isExpanded) stringResource(R.string.show_less) else stringResource(R.string.show_more))
@@ -137,7 +128,6 @@ private fun ContributorsCard() {
 }
 
 
-// ... All other Composables and Helper Functions are unchanged ...
 @Composable private fun SupportCard() { val context = LocalContext.current; AboutCard(title = stringResource(R.string.support_development)) { InfoRow(painterResource(id = R.drawable.ic_github), stringResource(R.string.support_github), stringResource(R.string.support_github_desc)) { openUrl(context, "https://github.com/imsbg/Ganita-Bingya-App") }; InfoRow(Icons.Default.Translate, stringResource(R.string.support_translate), stringResource(R.string.support_translate_desc)) { openUrl(context, "https://crowdin.com/project/ganita-bingya") }; InfoRow(Icons.Default.VolunteerActivism, stringResource(R.string.support_donate), stringResource(R.string.support_donate_desc)) { openUrl(context, "https://imsbg.github.io/Ganita-Bingya-App/donate") }; InfoRow(Icons.Default.BugReport, stringResource(R.string.support_report_bug), stringResource(R.string.support_report_bug_desc)) { openUrl(context, "https://github.com/imsbg/ganita-bingya-app/issues") }; InfoRow(Icons.Default.Share, stringResource(R.string.support_share), stringResource(R.string.support_share_desc)) { val shareText = context.getString(R.string.share_message); val intent = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, shareText) }; context.startActivity(Intent.createChooser(intent, null)) } } }
 @Composable private fun SocialCard() { val context = LocalContext.current; AboutCard(title = stringResource(R.string.social)) { InfoRow(Icons.Default.Language, stringResource(R.string.social_website), stringResource(R.string.social_website_desc)) { openUrl(context, "https://imsbg.github.io/Ganita-Bingya-App/") }; InfoRow(painterResource(id = R.drawable.ic_instagram), stringResource(R.string.social_instagram), stringResource(R.string.social_instagram_desc)) { openUrl(context, "https://www.instagram.com/sandeepbiswalg/") }; InfoRow(painterResource(id = R.drawable.ic_twitter_x), stringResource(R.string.social_twitter), stringResource(R.string.social_twitter_desc)) { openUrl(context, "https://x.com/SandeepBiswalG") }; InfoRow(Icons.Default.Send, stringResource(R.string.social_telegram), stringResource(R.string.social_telegram_desc)) { openUrl(context, "https://t.me/sbgapps") } } }
 @Composable private fun InfoRow(icon: ImageVector, title: String, subtitle: String, onClick: () -> Unit) { InfoRowContent(icon = { Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurface) }, title = title, subtitle = subtitle, onClick = onClick) }

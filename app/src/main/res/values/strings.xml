@@ -20,7 +20,7 @@
     <string name="menu_progress_desc">କେତେ ଠିକ? କେତେ ଭୁଲ?</string>
     <string name="menu_panikia">ପଣିକିଆ</string>
     <string name="menu_panikia_desc">ଦୁଇ କେ ଦୁଇ</string>
-    <string name="menu_numbers">ସଙ୍ଖ୍ୟା</string>
+    <string name="menu_numbers">ସଂଖ୍ୟା</string>
     <string name="menu_numbers_desc">୦ ୧ ୨ ୩ ୪ ୫ ୬ ୭ ୮ ୯</string>
     <string name="menu_drawing_pad">ଅଙ୍କନ ପ୍ୟାଡ୍</string>
     <string name="menu_calculator">କ୍ୟାଲକୁଲେଟର</string>
@@ -117,7 +117,7 @@
 
 
     <!-- Number Screen -->
-    <string name="numbers_screen_title">ସଙ୍ଖ୍ୟା</string>
+    <string name="numbers_screen_title">ସଂଖ୍ୟା</string>
 
     <!-- Drawing Screens -->
     <string name="drawing_pad_title">ଅଙ୍କନ ପ୍ୟାଡ୍</string>
@@ -439,7 +439,14 @@
     <string name="widget_description">ଗଣିତ ବିଜ୍ଞ ଆପ୍‌କୁ ଶୀଘ୍ର ଖୋଲନ୍ତୁ</string>
     <string name="widget_start_game">ଖେଳ</string>
     <string name="widget_panikia">ପଣିକିଆ</string>
-    <string name="widget_numbers">ସଙ୍ଖ୍ୟା</string>
+    <string name="widget_numbers">ସଂଖ୍ୟା</string>
     <string name="widget_drawing_pad">ଅଙ୍କନ</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">ନୂଆ ଅପଡେଟ୍ ଉପଲବ୍ଧ</string>
+    <string name="update_dialog_message">ଏକ ନୂଆ ସଂସ୍କରଣ (v%1$s) ଉପଲବ୍ଧ ଅଛି। ଆପଣ v%2$s ବ୍ୟବହାର କରୁଛନ୍ତି।</string>
+    <string name="update_dialog_update_now">ଏବେ ଅପଡେଟ୍ କରନ୍ତୁ</string>
+    <string name="update_dialog_ignore_time">ଏଥର ପାଇଁ ଅଣଦେଖା କରନ୍ତୁ</string>
+    <string name="update_dialog_ignore_version">ଏହି ସଂସ୍କରଣକୁ ଅଣଦେଖା କରନ୍ତୁ</string>
 
 </resources>
