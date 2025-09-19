@@ -306,3 +306,8 @@ If you like **Ganita Bingya** and want to support its development, you can donat
 
 </div>
 
+## Copyright and License
+
+Copyright (c) 2025 Sandeep Biswal G.
+
+This project is licensed under the **GNU General Public License v3.0**. See the `LICENSE` file for details.
