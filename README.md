@@ -147,7 +147,7 @@
 </a>
 
 ## 📄 ଲାଇସେନ୍ସ
-ଏହି ପ୍ରୋଜେକ୍ଟଟି [MIT License](LICENSE) ଅଧୀନରେ ଅଛି।
+ଏହି ପ୍ରୋଜେକ୍ଟଟି [GNU General Public License v3.0](LICENSE) ଅଧୀନରେ ଅଛି।
 
 ## 💖 ଏହି ପ୍ରକଳ୍ପକୁ ସମର୍ଥନ କରନ୍ତୁ
 
@@ -293,7 +293,7 @@ This app is developed by **Sandeep Biswal G**.
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 ## 💖 Support This Project
 
