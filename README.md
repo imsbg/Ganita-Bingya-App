@@ -17,6 +17,7 @@
       <img src="https://img.shields.io/github/issues/imsbg/ganita-bingya-app" alt="Issues">
     </a>
     <img src="https://img.shields.io/github/license/imsbg/ganita-bingya-app?style=social" alt="License">
+    
   </p>
 </div>
 
@@ -28,8 +29,9 @@
 
 ## 📥 ଡାଉନଲୋଡ୍
 
-ଆପଣ ଏହି ଆପ୍‌ର ସର୍ବଶେଷ ସଂସ୍କରଣକୁ **[Releases/ମୁକ୍ତିଲାଭ](https://github.com/imsbg/ganita-bingya-app/releases)** ପୃଷ୍ଟା ରୁ ଡାଉନଲୋଡ୍ କରିପାରିବେ।
-
+ଆପଣ ଏହି ଆପ୍‌ର ସର୍ବଶେଷ ସଂସ୍କରଣକୁ **[Releases/ମୁକ୍ତିଲାଭ](https://github.com/imsbg/ganita-bingya-app/releases)** ପୃଷ୍ଟା ରୁ ଡାଉନଲୋଡ୍ କରିପାରିବେ। <br>
+[![Indus Appstore](https://img.shields.io/badge/Indus_Appstore-Get_App-blue?style=social&logo=googleplay)](https://indusapp.store/u2s75zsh)
+[![Website](https://img.shields.io/badge/Website-Download-green?style=social&logo=abdownloadmanager)](https://imsbg.github.io/Ganita-Bingya-App/#download)
 ## 📱 ସ୍କ୍ରିନସଟ୍ ଗୁଡିକ
 <table align="center">
   <tr>
