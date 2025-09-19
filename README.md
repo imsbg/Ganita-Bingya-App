@@ -12,12 +12,16 @@
 
   <p>
     <img src="https://img.shields.io/github/stars/imsbg/ganita-bingya-app?style=social" alt="Stars">
-    <img src="https://img.shields.io/github/forks/imsbg/ganita-bingya-app?style=social" alt="Forks">
     <a href="https://github.com/imsbg/ganita-bingya-app/issues">
       <img src="https://img.shields.io/github/issues/imsbg/ganita-bingya-app" alt="Issues">
     </a>
-    <img src="https://img.shields.io/github/license/imsbg/ganita-bingya-app?style=social" alt="License">
-    
+
+  <a href="https://github.com/imsbg/Ganita-Bingya-App/blob/master/LICENSE" style="text-decoration:none" area-label="License: GPL v3">
+    <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg">
+  </a>
+     <a href="https://x.com/SandeepBiswalG" style="text-decoration:none" area-label="Twitter Follow">
+    <img src="https://img.shields.io/twitter/follow/SandeepBiswalG?style=social">
+  </a>
   </p>
 </div>
 
