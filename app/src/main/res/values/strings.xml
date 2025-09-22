@@ -449,4 +449,38 @@
     <string name="update_dialog_ignore_time">ଏଥର ପାଇଁ ଅଣଦେଖା କରନ୍ତୁ</string>
     <string name="update_dialog_ignore_version">ଏହି ସଂସ୍କରଣକୁ ଅଣଦେଖା କରନ୍ତୁ</string>
 
+    <!-- ନୂଆ ଦୃଶ୍ୟ ତୁଳନା ଖେଳ -->
+    <string name="menu_visual_game">ଫଳ ତୁଳନା</string>
+    <string name="menu_visual_game_desc">କେଉଁ ଦଳରେ ଅଧିକ ଅଛି?</string>
+    <string name="visual_game_title">ଫଳ ତୁଳନା</string>
+    <string name="visual_game_question_more">କେଉଁ ଦଳରେ ଅଧିକ ଅଛି?</string>
+    <string name="visual_game_question_less">କେଉଁ ଦଳରେ କମ୍ ଅଛି?</string>
+
+    <string name="qs_tile_subtitle">Ganita Bingya</string>
+    <!-- ନୂଆ ବୁଦ୍ଧି ଖେଳ -->
+    <string name="menu_logic_game">ବୁଦ୍ଧି ଖେଳ</string>
+    <string name="menu_logic_game_desc">ଅଯୁଗ୍ମ, ଯୁଗ୍ମ, କ୍ରମ…</string>
+    <string name="logic_game_title">ବୁଦ୍ଧି ଖେଳ</string>
+    <string name="logic_game_question_odd">ଅଯୁଗ୍ମ ସଂଖ୍ୟାଟି ବାଛ</string>
+    <string name="logic_game_question_even">ଯୁଗ୍ମ ସଂଖ୍ୟାଟି ବାଛ</string>
+    <!-- ଲଜିକ୍ ଖେଳ ପ୍ରଗତି ଏବଂ ଖେଳ ସମାପ୍ତ -->
+    <string name="game_over_title">ଖେଳ ସମାପ୍ତ!</string>
+    <string name="game_over_score_message">ଆପଣ %2$d ରୁ %1$d ସ୍କୋର କରିଛନ୍ତି।</string>
+    <string name="game_over_play_again">ପୁଣି ଖେଳନ୍ତୁ</string>
+    <string name="game_over_go_home">ହୋମକୁ ଯାଆନ୍ତୁ</string>
+    <!-- ଲଜିକ୍ ଖେଳ ପ୍ରଗତି ଏବଂ ମାଇଲଖୁଣ୍ଟ -->
+    <string name="logic_game_progress">ପ୍ରଶ୍ନ: %1$d</string>
+    <string name="milestone_title">ଅଭିନନ୍ଦନ!</string>
+    <string name="milestone_message">ଆପଣ %1$dଟି ପ୍ରଶ୍ନର ସଠିକ ଉତ୍ତର ଦେଇଛନ୍ତି! ଏମିତି ଆଗକୁ ବଢ଼ନ୍ତୁ!</string>
+
+    <!-- ଲଜିକ୍ ଖେଳ - ସଂଖ୍ୟା କ୍ରମ -->
+    <string name="logic_game_question_pattern">ଏହି କ୍ରମରେ ପରବର୍ତ୍ତୀ ସଂଖ୍ୟା କ\'ଣ?</string>
+    <!-- ଲଜିକ୍ ଖେଳ - ବୁଦ୍ଧି ପ୍ରଶ୍ନ -->
+    <string name="logic_riddle_1">ମୁଁ %1$d ଏବଂ %2$d ମଧ୍ୟରେ ଥିବା ଏକ ଅଯୁଗ୍ମ ସଂଖ୍ୟା। ମୁଁ କେଉଁ ସଂଖ୍ୟା?</string>
+    <string name="logic_riddle_2">ମୁଁ %1$d ଏବଂ %2$d ମଧ୍ୟରେ ଥିବା ଏକ ଯୁଗ୍ମ ସଂଖ୍ୟା। ମୁଁ କେଉଁ ସଂଖ୍ୟା?</string>
+    <string name="logic_game_question_fill_blank">ଖାଲି ସ୍ଥାନରେ ଥିବା ସଂଖ୍ୟାଟି ପୂରଣ କର</string>
+    <string name="feedback_correct_n">ଆରେ ବାଃ, ସଠିକ ଉତ୍ତର!</string>
+    <string name="feedback_incorrect_n">ଫୁଣି ଚେଷ୍ଟା କରନ୍ତୁ! ଉତ୍ତର ଥିଲା %1$s</string>
+    <string name="visual_game_progress">ପ୍ରଶ୍ନ: %1$d</string>
+
 </resources>

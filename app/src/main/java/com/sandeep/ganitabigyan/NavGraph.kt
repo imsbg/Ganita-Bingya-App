@@ -47,7 +47,24 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-object AppDestinations { const val SPLASH_ROUTE = "splash"; const val WELCOME_ROUTE = "welcome"; const val HOME_ROUTE = "home"; const val GAME_ROUTE = "game"; const val ABOUT_ROUTE = "about"; const val SCORE_HISTORY_ROUTE = "score_history"; const val SETTINGS_ROUTE = "settings"; const val CALCULATOR_ROUTE = "calculator"; const val PANIKIA_LIST_ROUTE = "panikia_list"; const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}?view={viewType}"; const val NUMBERS_ROUTE = "numbers"; const val DRAWING_ROUTE = "drawing"; const val DRAWING_HISTORY_ROUTE = "drawing_history"; const val CHANGELOG_ROUTE = "changelog" }
+object AppDestinations {
+    const val SPLASH_ROUTE = "splash"
+    const val WELCOME_ROUTE = "welcome"
+    const val HOME_ROUTE = "home"
+    const val GAME_ROUTE = "game"
+    const val VISUAL_GAME_ROUTE = "visual_game"
+    const val LOGIC_GAME_ROUTE = "logic_game"
+    const val ABOUT_ROUTE = "about"
+    const val SCORE_HISTORY_ROUTE = "score_history"
+    const val SETTINGS_ROUTE = "settings"
+    const val CALCULATOR_ROUTE = "calculator"
+    const val PANIKIA_LIST_ROUTE = "panikia_list"
+    const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}?view={viewType}"
+    const val NUMBERS_ROUTE = "numbers"
+    const val DRAWING_ROUTE = "drawing"
+    const val DRAWING_HISTORY_ROUTE = "drawing_history"
+    const val CHANGELOG_ROUTE = "changelog"
+}
 
 @Composable
 fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navController: NavHostController = rememberNavController()) {
@@ -56,6 +73,8 @@ fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navCon
         composable(AppDestinations.WELCOME_ROUTE) { WelcomeScreen(onStartClick = { navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.WELCOME_ROUTE) { inclusive = true } } }) }
         composable(route = AppDestinations.HOME_ROUTE) { HomeScreen(navController = navController) }
         composable(route = AppDestinations.GAME_ROUTE) { GameScreen(viewModel = gameViewModel, onNavigateBack = { navController.popBackStack() }, onNavigateToScore = { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) }) }
+        composable(route = AppDestinations.VISUAL_GAME_ROUTE) { VisualGameScreen(navController = navController) }
+        composable(route = AppDestinations.LOGIC_GAME_ROUTE) { LogicGameScreen(navController = navController) }
         composable(route = AppDestinations.SCORE_HISTORY_ROUTE) { ScoreHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
         composable(route = AppDestinations.SETTINGS_ROUTE) { SettingsScreen(navController = navController) }
         composable(route = AppDestinations.ABOUT_ROUTE) { AboutScreen(navController = navController, onNavigateBack = { navController.popBackStack() }) }
@@ -85,7 +104,6 @@ fun SplashScreen(navController: NavHostController) {
     var isFooterVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        // <<< FIX: Corrected typo from checkForupdates to checkForUpdates >>>
         launch { assetManager.checkForUpdates() }
         splashConfig = assetManager.getSplashConfig()
         startAnimation = true
@@ -117,7 +135,31 @@ fun SplashScreen(navController: NavHostController) {
         val isCustomScheme = data?.scheme == "ganitabingya" && data.host == "open"
 
         if (isAppLink || isCustomScheme) {
-            val queryParams = data.queryParameterNames; var finalRoute: String? = null; if (queryParams.contains("play")) finalRoute = AppDestinations.GAME_ROUTE; else if (queryParams.contains("numbers")) finalRoute = AppDestinations.NUMBERS_ROUTE; else if (queryParams.contains("ap")) finalRoute = AppDestinations.DRAWING_ROUTE; else if (queryParams.contains("calculator")) finalRoute = AppDestinations.CALCULATOR_ROUTE; else if (queryParams.contains("panikia")) { val value = data.getQueryParameter("panikia"); val number = value?.toIntOrNull() ?: convertWordToNumber(value); if (number != null) { val viewType = if (value?.toIntOrNull() != null) "number" else "word"; finalRoute = "panikia_detail/$number?view=$viewType" } }; if (finalRoute != null) { navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }; navController.navigate(finalRoute); intent?.data = null; return@LaunchedEffect }
+            val queryParams = data.queryParameterNames
+            var finalRoute: String? = null
+
+            // <<< FIX: Added the new game checks here >>>
+            if (queryParams.contains("play")) finalRoute = AppDestinations.GAME_ROUTE
+            else if (queryParams.contains("compare")) finalRoute = AppDestinations.VISUAL_GAME_ROUTE
+            else if (queryParams.contains("logic")) finalRoute = AppDestinations.LOGIC_GAME_ROUTE
+            else if (queryParams.contains("numbers")) finalRoute = AppDestinations.NUMBERS_ROUTE
+            else if (queryParams.contains("ap")) finalRoute = AppDestinations.DRAWING_ROUTE
+            else if (queryParams.contains("calculator")) finalRoute = AppDestinations.CALCULATOR_ROUTE
+            else if (queryParams.contains("panikia")) {
+                val value = data.getQueryParameter("panikia")
+                val number = value?.toIntOrNull() ?: convertWordToNumber(value)
+                if (number != null) {
+                    val viewType = if (value?.toIntOrNull() != null) "number" else "word"
+                    finalRoute = "panikia_detail/$number?view=$viewType"
+                }
+            }
+
+            if (finalRoute != null) {
+                navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }
+                navController.navigate(finalRoute)
+                intent?.data = null
+                return@LaunchedEffect
+            }
         }
 
         if (data?.path?.endsWith("qna.gba") == true || data?.path?.endsWith("lifetime_score.gba") == true) { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }; intent?.data = null; return@LaunchedEffect }

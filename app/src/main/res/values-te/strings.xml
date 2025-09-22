@@ -404,4 +404,39 @@
     <string name="update_dialog_update_now">ఇప్పుడే అప్‌డేట్ చేయండి</string>
     <string name="update_dialog_ignore_time">ఈ సారికి విస్మరించండి</string>
     <string name="update_dialog_ignore_version">ఈ వెర్షన్‌ను విస్మరించండి</string>
+    <string name="visual_game_question_less">ఏ గుంపులో తక్కువ ఉన్నాయి?</string>
+
+    <!-- New Visual Comparison Game -->
+    <string name="menu_visual_game">పండ్లను పోల్చండి</string>
+    <string name="menu_visual_game_desc">ఏ గుంపులో ఎక్కువ ఉన్నాయి?</string>
+    <string name="visual_game_title">పండ్లను పోల్చండి</string>
+    <string name="visual_game_question_more">ఏ గుంపులో ఎక్కువ ఉన్నాయి?</string>
+
+    <!-- New Logic Puzzle Game -->
+    <string name="menu_logic_game">తార్కిక పజిల్స్</string>
+    <string name="menu_logic_game_desc">బేసి, సరి, నమూనాలు…</string>
+    <string name="logic_game_title">తార్కిక పజిల్స్</string>
+    <string name="logic_game_question_odd">బేసి సంఖ్యను కనుగొనండి</string>
+    <string name="logic_game_question_even">సరి సంఖ్యను కనుగొనండి</string>
+    <!-- Logic Game Progress and Game Over -->
+    <string name="game_over_title">ఆట ముగిసింది!</string>
+    <string name="game_over_score_message">మీరు %2$dకి %1$d స్కోర్ చేసారు.</string>
+    <string name="game_over_play_again">మళ్లీ ఆడండి</string>
+    <string name="game_over_go_home">హోమ్‌కు వెళ్లండి</string>
+    <!-- Logic Game Progress and Milestones -->
+    <string name="logic_game_progress">ప్రశ్న: %1$d</string>
+    <string name="milestone_title">అభినందనలు!</string>
+    <string name="milestone_message">మీరు %1$d ప్రశ్నలకు సరిగ్గా సమాధానమిచ్చారు! కొనసాగించండి!</string>
+
+    <!-- Logic Game - Number Patterns -->
+    <string name="logic_game_question_pattern">నమూనాలో తర్వాత ఏమి వస్తుంది?</string>
+
+    <!-- Logic Game - Logic Riddles -->
+    <string name="logic_riddle_1">నేను %1$d మరియు %2$d మధ్య ఉన్న ఒక సంఖ్యను. నేను ఒక బేసి సంఖ్యను. నేను ఏ సంఖ్య కావచ్చు?</string>
+    <string name="logic_riddle_2">నేను %1$d మరియు %2$d మధ్య ఉన్న ఒక సంఖ్యను. నేను ఒక సరి సంఖ్యను. నేను ఏ సంఖ్య కావచ్చు?</string>
+    <string name="logic_game_question_fill_blank">తప్పిన సంఖ్యను పూరించండి</string>
+    <string name="feedback_correct_n">సరియైనది!</string>
+    <string name="feedback_incorrect_n">మళ్లీ ప్రయత్నించండి! సమాధానం %1$s.</string>
+    <string name="visual_game_progress">ప్రశ్న: %1$d</string>
+
 </resources>

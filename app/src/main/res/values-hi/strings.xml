@@ -405,4 +405,39 @@
     <string name="update_dialog_ignore_time">इस बार अनदेखा करें</string>
     <string name="update_dialog_ignore_version">इस संस्करण को अनदेखा करें</string>
 
+    <!-- New Visual Comparison Game -->
+    <string name="menu_visual_game">फलों की तुलना</string>
+    <string name="menu_visual_game_desc">किस समूह में अधिक है?</string>
+    <string name="visual_game_title">फलों की तुलना</string>
+    <string name="visual_game_question_more">किस समूह में अधिक है?</string>
+    <string name="visual_game_question_less">किस समूह में कम है?</string>
+
+    <!-- New Logic Puzzle Game -->
+    <string name="menu_logic_game">तर्क पहेलियाँ</string>
+    <string name="menu_logic_game_desc">विषम, सम, पैटर्न…</string>
+    <string name="logic_game_title">तर्क पहेलियाँ</string>
+    <string name="logic_game_question_odd">विषम संख्या खोजें</string>
+    <string name="logic_game_question_even">सम संख्या खोजें</string>
+    <!-- Logic Game Progress and Game Over -->
+    <string name="game_over_title">खेल समाप्त!</string>
+    <string name="game_over_score_message">आपने %2$d में से %1$d अंक प्राप्त किए।</string>
+    <string name="game_over_play_again">फिर से खेलें</string>
+    <string name="game_over_go_home">होम पर जाएं</string>
+    <!-- Logic Game Progress and Milestones -->
+    <string name="logic_game_progress">प्रश्न: %1$d</string>
+    <string name="milestone_title">बधाई हो!</string>
+    <string name="milestone_message">आपने %1$d प्रश्नों के सही उत्तर दिए हैं! आगे बढ़ते रहें!</string>
+
+    <!-- Logic Game - Number Patterns -->
+    <string name="logic_game_question_pattern">पैटर्न में आगे क्या आएगा?</string>
+
+    <!-- Logic Game - Logic Riddles -->
+    <string name="logic_riddle_1">मैं %1$d और %2$d के बीच की एक संख्या हूँ। मैं एक विषम संख्या हूँ। मैं कौन सी संख्या हो सकती हूँ?</string>
+    <string name="logic_riddle_2">मैं %1$d और %2$d के बीच की एक संख्या हूँ। मैं एक सम संख्या हूँ। मैं कौन सी संख्या हो सकती हूँ?</string>
+    <string name="logic_game_question_fill_blank">रिक्त संख्या भरें</string>
+    <string name="feedback_correct_n">सही!</string>
+    <string name="feedback_incorrect_n">पुनः प्रयास करें! उत्तर %1$s था।</string>
+    <string name="visual_game_progress">प्रश्न: %1$d</string>
+
+
 </resources>

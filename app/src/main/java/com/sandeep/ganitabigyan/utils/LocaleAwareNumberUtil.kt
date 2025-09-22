@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/utils/LocaleAwareNumberUtil.kt
-// VERSION: FINAL - With correct linguistic rules for number-to-word conversion.
 
 package com.sandeep.ganitabigyan.utils
 

@@ -399,10 +399,44 @@
     <string name="widget_drawing_pad">অঙ্কন</string>
 
     <!-- Auto Update Dialog -->
-    <string name="update_dialog_title">ନୂଆ ଅପଡେଟ୍ ଉପଲବ୍ଧ</string>
+    <string name="update_dialog_title">New Update Available</string>
     <string name="update_dialog_message">ଏକ ନୂଆ ସଂସ୍କରଣ (v%1$s) ଉପଲବ୍ଧ ଅଛି। ଆପଣ v%2$s ବ୍ୟବହାର କରୁଛନ୍ତି।</string>
     <string name="update_dialog_update_now">Update Now</string>
     <string name="update_dialog_ignore_time">ଏଥର ପାଇଁ ଅଣଦେଖା କରନ୍ତୁ</string>
     <string name="update_dialog_ignore_version">Ignore This Version</string>
+
+    <!-- New Visual Comparison Game -->
+    <string name="menu_visual_game">ফলের তুলনা</string>
+    <string name="menu_visual_game_desc">কোন দলে বেশি আছে?</string>
+    <string name="visual_game_title">ফলের তুলনা</string>
+    <string name="visual_game_question_more">কোন দলে বেশি আছে?</string>
+    <string name="visual_game_question_less">কোন দলে কম আছে?</string>
+
+    <!-- New Logic Puzzle Game -->
+    <string name="menu_logic_game">যুক্তি ধাঁধা</string>
+    <string name="menu_logic_game_desc">বিজোড়, জোড়, প্যাটার্ন…</string>
+    <string name="logic_game_title">যুক্তি ধাঁধা</string>
+    <string name="logic_game_question_odd">বিজোড় সংখ্যাটি খুঁজুন</string>
+    <string name="logic_game_question_even">জোড় সংখ্যাটি খুঁজুন</string>
+    <!-- Logic Game Progress and Game Over -->
+    <string name="game_over_title">খেলা শেষ!</string>
+    <string name="game_over_score_message">আপনি %2$d এর মধ্যে %1$d স্কোর করেছেন।</string>
+    <string name="game_over_play_again">আবার খেলুন</string>
+    <string name="game_over_go_home">হোমে যান</string>
+    <!-- Logic Game Progress and Milestones -->
+    <string name="logic_game_progress">প্রশ্ন: %1$d</string>
+    <string name="milestone_title">অভিনন্দন!</string>
+    <string name="milestone_message">আপনি %1$dটি প্রশ্নের সঠিক উত্তর দিয়েছেন! এগিয়ে যান!</string>
+
+    <!-- Logic Game - Number Patterns -->
+    <string name="logic_game_question_pattern">প্যাটার্নে এরপর কী আসবে?</string>
+
+    <!-- Logic Game - Logic Riddles -->
+    <string name="logic_riddle_1">আমি %1$d এবং %2$d এর মধ্যে একটি সংখ্যা। আমি একটি বিজোড় সংখ্যা। আমি কোন সংখ্যা হতে পারি?</string>
+    <string name="logic_riddle_2">আমি %1$d এবং %2$d এর মধ্যে একটি সংখ্যা। আমি একটি জোড় সংখ্যা। আমি কোন সংখ্যা হতে পারি?</string>
+    <string name="logic_game_question_fill_blank">অনুপস্থিত সংখ্যাটি পূরণ করুন</string>
+    <string name="feedback_correct_n">সঠিক!</string>
+    <string name="feedback_incorrect_n">আবার চেষ্টা করুন! উত্তরটি ছিল %1$s।</string>
+    <string name="visual_game_progress">প্রশ্ন: %1$d</string>
 
 </resources>

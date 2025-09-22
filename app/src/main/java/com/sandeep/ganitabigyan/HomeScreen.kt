@@ -78,14 +78,12 @@ fun HomeScreen(navController: NavController) {
     }
 
     if (showUpdateDialog && updateResult is UpdateCheckResult.UpdateAvailable) {
-        // <<< FIX: Get the version name here, outside the Dialog Composable >>>
         val currentVersionName = try {
             context.packageManager.getPackageInfo(context.packageName, 0).versionName
         } catch (e: Exception) { "1.0" }
 
         AutoUpdateDialog(
             result = updateResult as UpdateCheckResult.UpdateAvailable,
-            // <<< FIX: Pass the version name as a parameter >>>
             currentVersionName = currentVersionName,
             onDismiss = { showUpdateDialog = false },
             onIgnoreVersion = { versionToIgnore ->
@@ -107,6 +105,9 @@ fun HomeScreen(navController: NavController) {
     }
 
     val gradientOrange = listOf(Color(0xFFFFB74D), Color(0xFFFF9800))
+    val gradientGreen = listOf(Color(0xFF81C784), Color(0xFF4CAF50))
+    // <<< NEW GRADIENT FOR THE LOGIC GAME >>>
+    val gradientIndigo = listOf(Color(0xFF7986CB), Color(0xFF3F51B5))
     val gradientBlue = listOf(Color(0xFF64B5F6), Color(0xFF2196F3))
     val gradientPurple = listOf(Color(0xFFBA68C8), Color(0xFF9C27B0))
     val gradientRed = listOf(Color(0xFFE57373), Color(0xFFF44336))
@@ -115,6 +116,9 @@ fun HomeScreen(navController: NavController) {
 
     val menuItems = listOf(
         HomeMenuItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
+        HomeMenuItem(R.string.menu_visual_game, R.string.menu_visual_game_desc, AppDestinations.VISUAL_GAME_ROUTE, gradientGreen, Icons.Default.Compare),
+        // <<< NEW MENU ITEM FOR THE LOGIC GAME >>>
+        HomeMenuItem(R.string.menu_logic_game, R.string.menu_logic_game_desc, AppDestinations.LOGIC_GAME_ROUTE, gradientIndigo, Icons.Default.Psychology),
         HomeMenuItem(R.string.menu_progress, R.string.menu_progress_desc, AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
         HomeMenuItem(R.string.menu_panikia, R.string.menu_panikia_desc, AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, Icons.Default.MenuBook),
         HomeMenuItem(R.string.menu_numbers, R.string.menu_numbers_desc, AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
@@ -293,27 +297,29 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
 @Composable
 fun AutoUpdateDialog(
     result: UpdateCheckResult.UpdateAvailable,
-    // <<< FIX: Added new parameter >>>
     currentVersionName: String,
     onDismiss: () -> Unit,
     onIgnoreVersion: (String) -> Unit,
     onUpdateNow: (String, String) -> Unit
 ) {
-    // <<< FIX: The try-catch is now removed from here >>>
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(id = R.string.update_dialog_title)) },
         text = { Text(stringResource(id = R.string.update_dialog_message, result.latestVersion, currentVersionName)) },
+
         confirmButton = {
-            TextButton(
-                onClick = { onUpdateNow(result.downloadUrl, result.latestVersion) }
-            ) { Text(stringResource(id = R.string.update_dialog_update_now)) }
-        },
-        dismissButton = {
-            Column(horizontalAlignment = Alignment.End) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.End
+            ) {
+                TextButton(
+                    onClick = { onUpdateNow(result.downloadUrl, result.latestVersion) }
+                ) { Text(stringResource(id = R.string.update_dialog_update_now)) }
+
                 TextButton(onClick = onDismiss) {
                     Text(stringResource(id = R.string.update_dialog_ignore_time))
                 }
+
                 TextButton(
                     onClick = { onIgnoreVersion(result.latestVersion) }
                 ) {
@@ -323,7 +329,8 @@ fun AutoUpdateDialog(
                     )
                 }
             }
-        }
+        },
+        dismissButton = {}
     )
 }
 
