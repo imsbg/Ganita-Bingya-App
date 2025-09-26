@@ -439,4 +439,56 @@
     <string name="feedback_incorrect_n">మళ్లీ ప్రయత్నించండి! సమాధానం %1$s.</string>
     <string name="visual_game_progress">ప్రశ్న: %1$d</string>
 
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_big_even">ఒక పెద్ద సరి సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_small_odd">ఒక చిన్న బేసి సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_big_odd">ఒక పెద్ద బేసి సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_small_even">ఒక చిన్న సరి సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_divisible_by_10">౧౦ తో భాగించబడే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_ends_in_5">౫ తో ముగిసే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_ends_in_3">౩ తో ముగిసే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_with_5">౫ తో ప్రారంభమయ్యే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_1_ends_3">౧ తో ప్రారంభమై ౩ తో ముగిసే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_with_9">౯ తో ప్రారంభమయ్యే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_with_3">౩ తో ప్రారంభమయ్యే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_pick_largest">అతిపెద్ద సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_pick_smallest">అతిచిన్న సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_with_7">౭ తో ప్రారంభమయ్యే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_ends_with_1">౧ తో ముగిసే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_starts_8_ends_8">౮ తో ప్రారంభమై, ౮ తో ముగిసే సంఖ్యను ఎంచుకోండి</string>
+    <string name="logic_game_question_two_identical_digits">రెండు ఒకే రకమైన అంకెలు ఉన్న సంఖ్యను ఎంచుకోండి</string>
+
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">ప్రశ్న రకం:</string>
+    <string name="history_options">ఎంపికలు: %1$s</string>
+    <string name="history_you_picked">మీరు ఎంచుకున్నది: %1$s</string>
+    <string name="history_correct_choice">సరైన ఎంపిక: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">నమస్కారం,</string>
+    <string name="home_greeting_morning">శుభోదయం</string>
+    <string name="home_greeting_afternoon">శుభ మధ్యాహ్నం</string>
+    <string name="home_greeting_evening">శుభ సాయంత్రం</string>
+    <string name="home_greeting_night">శుభ రాత్రి</string>
+    <string name="home_category_games">ఆటలు</string>
+    <string name="home_category_learning">నేర్చుకోవడం</string>
+    <string name="home_category_score">మీ పురోగతి</string>
+    <string name="home_category_utility">యుటిలిటీ</string>
+    <string name="home_popular_title">జనాదరణ</string>
+    <string name="home_search_button_desc">వెతకండి</string>
+    <string name="home_menu_button_desc">మెనూ</string>
+    <string name="games_category_title">ఆటలు</string>
+    <string name="learning_category_title">నేర్చుకునే సాధనాలు</string>
+    <string name="home_search_placeholder">ఆటలు, సాధనాలు మొదలైన వాటి కోసం వెతకండి...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">స్వరూపం</string>
+    <string name="settings_dark_mode_title">డార్క్ మోడ్</string>
+    <string name="settings_dark_mode_description">మీకు ఇష్టమైన థీమ్‌ను ఎంచుకోండి</string>
+    <string name="settings_dark_mode_dialog_title">థీమ్‌ను ఎంచుకోండి</string>
+    <string name="dark_mode_option_light">లైట్</string>
+    <string name="dark_mode_option_dark">డార్క్</string>
+    <string name="dark_mode_option_system">సిస్టమ్ డిఫాల్ట్</string>
+    <string name="settings_reminders_enabled_title">రిమైండర్‌లను ప్రారంభించండి</string>
+    <string name="settings_reminders_enabled_description">రోజువారీ అభ్యాస నోటిఫికేషన్‌లను స్వీకరించండి</string>
 </resources>

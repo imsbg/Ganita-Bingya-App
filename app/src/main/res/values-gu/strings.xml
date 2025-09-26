@@ -439,5 +439,55 @@
     <string name="feedback_incorrect_n">ફરી પ્રયાસ કરો! જવાબ %1$s હતો.</string>
     <string name="visual_game_progress">પ્રશ્ન: %1$d</string>
 
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_big_even">એક મોટી બેકી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_small_odd">એક નાની એકી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_big_odd">એક મોટી એકી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_small_even">એક નાની બેકી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_divisible_by_10">૧૦ વડે વિભાજ્ય સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_ends_in_5">૫ થી સમાપ્ત થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_ends_in_3">૩ થી સમાપ્ત થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_with_5">૫ થી શરૂ થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_1_ends_3">૧ થી શરૂ અને ૩ થી સમાપ્ત થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_with_9">૯ થી શરૂ થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_with_3">૩ થી શરૂ થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_pick_largest">સૌથી મોટી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_pick_smallest">સૌથી નાની સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_with_7">૭ થી શરૂ થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_ends_with_1">૧ થી સમાપ્ત થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_starts_8_ends_8">૮ થી શરૂ અને સમાપ્ત થતી સંખ્યા પસંદ કરો</string>
+    <string name="logic_game_question_two_identical_digits">બે સરખા અંકોવાળી સંખ્યા પસંદ કરો</string>
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">પ્રશ્નનો પ્રકાર:</string>
+    <string name="history_options">વિકલ્પો: %1$s</string>
+    <string name="history_you_picked">તમે પસંદ કર્યું: %1$s</string>
+    <string name="history_correct_choice">સાચી પસંદગી: %1$s</string>
 
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">નમસ્કાર,</string>
+    <string name="home_greeting_morning">સુપ્રભાત</string>
+    <string name="home_greeting_afternoon">શુભ બપોર</string>
+    <string name="home_greeting_evening">શુભ સાંજ</string>
+    <string name="home_greeting_night">શુભ રાત્રી</string>
+    <string name="home_category_games">ગેમ્સ</string>
+    <string name="home_category_learning">શિક્ષણ</string>
+    <string name="home_category_score">તમારી પ્રગતિ</string>
+    <string name="home_category_utility">યુટિલિટી</string>
+    <string name="home_popular_title">લોકપ્રિય</string>
+    <string name="home_search_button_desc">શોધો</string>
+    <string name="home_menu_button_desc">મેનુ</string>
+    <string name="games_category_title">ગેમ્સ</string>
+    <string name="learning_category_title">શીખવાના સાધનો</string>
+    <string name="home_search_placeholder">ગેમ્સ, સાધનો વગેરે માટે શોધો...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">દેખાવ</string>
+    <string name="settings_dark_mode_title">ડાર્ક મોડ</string>
+    <string name="settings_dark_mode_description">તમારી પસંદગીની થીમ પસંદ કરો</string>
+    <string name="settings_dark_mode_dialog_title">થીમ પસંદ કરો</string>
+    <string name="dark_mode_option_light">લાઇટ</string>
+    <string name="dark_mode_option_dark">ડાર્ક</string>
+    <string name="dark_mode_option_system">સિસ્ટમ ડિફોલ્ટ</string>
+    <string name="settings_reminders_enabled_title">રિમાઇન્ડર્સ સક્ષમ કરો</string>
+    <string name="settings_reminders_enabled_description">દૈનિક અભ્યાસ માટે સૂચનાઓ મેળવો</string>
 </resources>

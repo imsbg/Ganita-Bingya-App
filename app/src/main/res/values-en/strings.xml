@@ -438,5 +438,74 @@
     <string name="feedback_correct_n">Correct!</string>
     <string name="feedback_incorrect_n">Try again! The answer was %1$s.</string>
     <string name="visual_game_progress">Question: %1$d</string>
-    <string name="qs_tile_subtitle">Ganita Bingya</string>
+
+    <!-- All Logic Game Question Types -->
+
+    <string name="logic_game_question_big_even">Pick a big even number</string>
+    <string name="logic_game_question_small_odd">Pick a small odd number</string>
+    <string name="logic_game_question_big_odd">Pick a big odd number</string>
+    <string name="logic_game_question_small_even">Pick a small even number</string>
+
+    <string name="logic_game_question_divisible_by_10">Pick a number divisible by 10</string>
+    <string name="logic_game_question_ends_in_5">Pick a number that ends with 5</string>
+    <string name="logic_game_question_ends_in_3">Pick a number that ends with 3</string>
+
+    <string name="logic_game_question_starts_with_5">Pick a number that starts with 5</string>
+    <string name="logic_game_question_starts_1_ends_3">Pick a number that starts with 1 and ends with 3</string>
+    <string name="logic_game_question_starts_with_9">Pick a number that starts with 9</string>
+    <string name="logic_game_question_starts_with_3">Pick a number that starts with 3</string>
+
+    <string name="logic_game_question_pick_largest">Pick the largest number</string>
+    <string name="logic_game_question_pick_smallest">Pick the smallest number</string>
+    <string name="logic_game_question_starts_with_7">Pick a number that starts with 7</string>
+    <string name="logic_game_question_ends_with_1">Pick a number that ends with 1</string>
+    <string name="logic_game_question_starts_8_ends_8">Pick a number that starts and ends with 8</string>
+    <string name="logic_game_question_two_identical_digits">Pick a number with two identical digits</string>
+
+    <!-- Keys for SAVING logic history to a file (Do NOT translate these) -->
+    <string name="logic_log_question_type_key" translatable="false">logic_question_type</string>
+    <string name="logic_log_options_key" translatable="false">options</string>
+    <string name="logic_log_selected_answer_key" translatable="false">selected_answer</string>
+    <string name="logic_log_correct_answer_key" translatable="false">correct_answer</string>
+    <string name="logic_log_result_key" translatable="false">result</string>
+
+  <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">Question Type:</string>
+    <string name="history_options">Options: %1$s</string>
+    <string name="history_you_picked">You Picked: %1$s</string>
+    <string name="history_correct_choice">Correct Choice: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">Hello,</string>
+    <string name="home_greeting_morning">Good morning</string>
+    <string name="home_greeting_afternoon">Good afternoon</string>
+    <string name="home_greeting_evening">Good evening</string>
+    <string name="home_greeting_night">Good night</string>
+
+    <string name="home_category_games">Games</string>
+    <string name="home_category_learning">Learning</string>
+    <string name="home_category_score">Your Progress</string>
+    <string name="home_category_utility">Utility</string>
+
+    <string name="home_popular_title">Popular</string>
+    <string name="home_search_button_desc">Search</string>
+    <string name="home_menu_button_desc">Menu</string>
+
+    <string name="games_category_title">Games</string>
+    <string name="learning_category_title">Learning Tools</string>
+    <string name="home_search_placeholder">Search for games, tools, etc...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">Appearance</string>
+    <string name="settings_dark_mode_title">Dark Mode</string>
+    <string name="settings_dark_mode_description">Choose your preferred theme</string>
+    <string name="settings_dark_mode_dialog_title">Select Theme</string>
+    <string name="dark_mode_option_light">Light</string>
+    <string name="dark_mode_option_dark">Dark</string>
+    <string name="dark_mode_option_system">System Default</string>
+
+    <string name="settings_reminders_enabled_title">Enable Reminders</string>
+    <string name="settings_reminders_enabled_description">Receive daily practice notifications</string>
+
+
 </resources>

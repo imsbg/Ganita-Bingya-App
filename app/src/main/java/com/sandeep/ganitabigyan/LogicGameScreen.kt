@@ -1,4 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/LogicGameScreen.kt
+// PASTE THIS ENTIRE CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -33,6 +34,8 @@ fun LogicGameScreen(
     viewModel: LogicGameViewModel = viewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
+    // <<< FIX 1: We get the context here, at the top, so we can use it below. >>>
+    val context = LocalContext.current
 
     val milestone = state.milestoneReached
     if (milestone != null) {
@@ -57,7 +60,8 @@ fun LogicGameScreen(
         GameContent(
             modifier = Modifier.padding(paddingValues),
             state = state,
-            onAnswerSelected = { selectedNumber -> viewModel.onAnswerSelected(selectedNumber) }
+            // <<< FIX 2: We now pass the 'context' to the function, which fixes the error. >>>
+            onAnswerSelected = { selectedNumber -> viewModel.onAnswerSelected(selectedNumber, context) }
         )
     }
 }
@@ -106,17 +110,15 @@ private fun GameContent(
             onAnswerSelected = onAnswerSelected
         )
 
-        // <<< FIX: This Text now uses the new resource ID from the ViewModel >>>
         val feedbackText = state.feedbackResId?.let { resId ->
-            // This builds the string with its arguments (like the correct number)
             stringResource(id = resId, formatArgs = state.feedbackArgs.toTypedArray())
         } ?: ""
 
         Text(
             text = feedbackText.toLocaleNumerals(context),
-            style = MaterialTheme.typography.bodyLarge, // <<< CHANGE: Use a smaller style
-            fontWeight = FontWeight.Bold, // <<< OPTIONAL: Make it bold to stand out
-            textAlign = TextAlign.Center, // <<< NEW: Center the text
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
             color = if (state.feedbackResId == R.string.feedback_correct_n) Color(0xFF4CAF50) else MaterialTheme.colorScheme.error,
             modifier = Modifier.height(48.dp)
         )

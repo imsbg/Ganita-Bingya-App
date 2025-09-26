@@ -439,5 +439,58 @@
     <string name="feedback_incorrect_n">पुनः प्रयतताम्! उत्तरम् %1$s आसीत्।</string>
     <string name="visual_game_progress">प्रश्नः %1$d</string>
 
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_big_even">एकां बृहत् समसंख्यां चिनोतु</string>
+    <string name="logic_game_question_small_odd">एकां लघु विषमसंख्यां चिनोतु</string>
+    <string name="logic_game_question_big_odd">एकां बृहत् विषमसंख्यां चिनोतु</string>
+    <string name="logic_game_question_small_even">एकां लघु समसंख्यां चिनोतु</string>
+    <string name="logic_game_question_divisible_by_10">१०-भिः विभाज्यां संख्यां चिनोतु</string>
+    <string name="logic_game_question_ends_in_5">५-अङ्केन समाप्तां संख्यां चिनोतु</string>
+    <string name="logic_game_question_ends_in_3">३-अङ्केन समाप्तां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_with_5">५-अङ्केन आरब्धां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_1_ends_3">१-अङ्केन आरब्धां ३-अङ्केन च समाप्तां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_with_9">९-अङ्केन आरब्धां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_with_3">३-अङ्केन आरब्धां संख्यां चिनोतु</string>
+    <string name="logic_game_question_pick_largest">बृहत्तमां संख्यां चिनोतु</string>
+    <string name="logic_game_question_pick_smallest">लघुतमां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_with_7">७-अङ्केन आरब्धां संख्यां चिनोतु</string>
+    <string name="logic_game_question_ends_with_1">१-अङ्केन समाप्तां संख्यां चिनोतु</string>
+    <string name="logic_game_question_starts_8_ends_8">८-अङ्केन आरब्धां समाप्तां च संख्यां चिनोतु</string>
+    <string name="logic_game_question_two_identical_digits">द्वयोः समानयोः अङ्कयोः युक्तां संख्यां चिनोतु</string>
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">प्रश्नप्रकारः:</string>
+    <string name="history_options">विकल्पाः: %1$s</string>
+    <string name="history_you_picked">भवता चितम्: %1$s</string>
+    <string name="history_correct_choice">सम्यक् चयनम्: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">नमस्ते,</string>
+    <string name="home_greeting_morning">सुप्रभातम्</string>
+    <string name="home_greeting_afternoon">शुभमध्याह्नम्</string>
+    <string name="home_greeting_evening">शुभसायंकालः</string>
+    <string name="home_greeting_night">शुभरात्रिः</string>
+    <string name="home_category_games">क्रीडाः</string>
+    <string name="home_category_learning">शिक्षणम्</string>
+    <string name="home_category_score">भवतः प्रगतिः</string>
+    <string name="home_category_utility">उपयोगिता</string>
+    <string name="home_popular_title">लोकप्रियम्</string>
+    <string name="home_search_button_desc">अन्वेषणम्</string>
+    <string name="home_menu_button_desc">सूची</string>
+    <string name="games_category_title">क्रीडाः</string>
+    <string name="learning_category_title">शिक्षणोपकरणानि</string>
+    <string name="home_search_placeholder">क्रीडाः, उपकरणानि इत्यादीनि अन्विष्यताम्...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">स्वरूपम्</string>
+    <string name="settings_dark_mode_title">तमस्-शैली</string>
+    <string name="settings_dark_mode_description">स्वप्रियां शैलीं चिनोतु</string>
+    <string name="settings_dark_mode_dialog_title">शैलीं चिनोतु</string>
+    <string name="dark_mode_option_light">प्रकाशः</string>
+    <string name="dark_mode_option_dark">तमः</string>
+    <string name="dark_mode_option_system">तन्त्र-निर्धारितम्</string>
+    <string name="settings_reminders_enabled_title">स्मारकाणि योजयन्तु</string>
+    <string name="settings_reminders_enabled_description">प्रतिदिनम् अभ्यासार्थं सूचनाः प्राप्नुवन्तु</string>
+
+
 
 </resources>

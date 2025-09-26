@@ -461,8 +461,7 @@
     <string name="menu_logic_game">ବୁଦ୍ଧି ଖେଳ</string>
     <string name="menu_logic_game_desc">ଅଯୁଗ୍ମ, ଯୁଗ୍ମ, କ୍ରମ…</string>
     <string name="logic_game_title">ବୁଦ୍ଧି ଖେଳ</string>
-    <string name="logic_game_question_odd">ଅଯୁଗ୍ମ ସଂଖ୍ୟାଟି ବାଛ</string>
-    <string name="logic_game_question_even">ଯୁଗ୍ମ ସଂଖ୍ୟାଟି ବାଛ</string>
+
     <!-- ଲଜିକ୍ ଖେଳ ପ୍ରଗତି ଏବଂ ଖେଳ ସମାପ୍ତ -->
     <string name="game_over_title">ଖେଳ ସମାପ୍ତ!</string>
     <string name="game_over_score_message">ଆପଣ %2$d ରୁ %1$d ସ୍କୋର କରିଛନ୍ତି।</string>
@@ -482,5 +481,74 @@
     <string name="feedback_correct_n">ଆରେ ବାଃ, ସଠିକ ଉତ୍ତର!</string>
     <string name="feedback_incorrect_n">ଫୁଣି ଚେଷ୍ଟା କରନ୍ତୁ! ଉତ୍ତର ଥିଲା %1$s</string>
     <string name="visual_game_progress">ପ୍ରଶ୍ନ: %1$d</string>
+
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_odd">ଅଯୁଗ୍ମ ସଂଖ୍ୟା ଖୋଜନ୍ତୁ</string>
+    <string name="logic_game_question_even">ଯୁଗ୍ମ ସଂଖ୍ୟା ଖୋଜନ୍ତୁ</string>
+
+    <string name="logic_game_question_big_even">ଏକ ବଡ ଯୁଗ୍ମ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_small_odd">ଏକ ଛୋଟ ଅଯୁଗ୍ମ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_big_odd">ଏକ ବଡ ଅଯୁଗ୍ମ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_small_even">ଏକ ଛୋଟ ଯୁଗ୍ମ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+
+    <string name="logic_game_question_divisible_by_10">୧୦ ଦ୍ୱାରା ବିଭାଜ୍ୟ ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_ends_in_5">୫ ରେ ଶେଷ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_ends_in_3">୩ ରେ ଶେଷ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+
+    <string name="logic_game_question_starts_with_5">୫ ରୁ ଆରମ୍ଭ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_starts_1_ends_3">୧ ରୁ ଆରମ୍ଭ ହୋଇ ୩ ରେ ଶେଷ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_starts_with_9">୯ ରୁ ଆରମ୍ଭ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_starts_with_3">୩ ରୁ ଆରମ୍ଭ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+
+    <string name="logic_game_question_pick_largest">ସବୁଠାରୁ ବଡ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_pick_smallest">ସବୁଠାରୁ ଛୋଟ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_starts_with_7">୭ ରୁ ଆରମ୍ଭ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_ends_with_1">୧ ରେ ଶେଷ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_starts_8_ends_8">୮ ରୁ ଆରମ୍ଭ ହୋଇ ୮ ରେ ଶେଷ ହେଉଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <string name="logic_game_question_two_identical_digits">ଦୁଇଟି ସମାନ ଅଙ୍କ ଥିବା ଏକ ସଂଖ୍ୟା ବାଛନ୍ତୁ</string>
+    <!-- Keys for SAVING logic history to a file (Do NOT translate these) -->
+    <string name="logic_log_question_type_key" translatable="false">logic_question_type</string>
+    <string name="logic_log_options_key" translatable="false">options</string>
+    <string name="logic_log_selected_answer_key" translatable="false">selected_answer</string>
+    <string name="logic_log_correct_answer_key" translatable="false">correct_answer</string>
+    <string name="logic_log_result_key" translatable="false">result</string>
+
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">ପ୍ରଶ୍ନର ପ୍ରକାର:</string>
+    <string name="history_options">ବିକଳ୍ପଗୁଡ଼ିକ: %1$s</string>
+    <string name="history_you_picked">ଆପଣ ବାଛିଛନ୍ତି: %1$s</string>
+    <string name="history_correct_choice">ସଠିକ୍ ବିକଳ୍ପ: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">ନମସ୍କାର,</string>
+    <string name="home_greeting_morning">ସୁପ୍ରଭାତ</string>
+    <string name="home_greeting_afternoon">ଶୁଭ ଅପରାହ୍ନ</string>
+    <string name="home_greeting_evening">ଶୁଭ ସନ୍ଧ୍ୟା</string>
+    <string name="home_greeting_night">ଶୁଭ ରାତ୍ରି</string>
+
+    <string name="home_category_games">ଖେଳ</string>
+    <string name="home_category_learning">ଶିକ୍ଷା</string>
+    <string name="home_category_score">ଆପଣଙ୍କ ପ୍ରଗତି</string>
+    <string name="home_category_utility">ଉପଯୋଗିତା</string>
+
+    <string name="home_popular_title">ଲୋକପ୍ରିୟ</string>
+    <string name="home_search_button_desc">ଖୋଜନ୍ତୁ</string>
+    <string name="home_menu_button_desc">ମେନୁ</string>
+
+    <string name="games_category_title">ଖେଳ</string>
+    <string name="learning_category_title">ଶିକ୍ଷଣୀୟ ଉପକରଣ</string>
+    <string name="home_search_placeholder">ଖେଳ, ଉପକରଣ ଆଦି ଖୋଜନ୍ତୁ...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">ଦୃଶ୍ୟ</string>
+    <string name="settings_dark_mode_title">ଡାର୍କ ମୋଡ୍</string>
+    <string name="settings_dark_mode_description">ଆପଣଙ୍କ ପସନ୍ଦର ଥିମ୍ ବାଛନ୍ତୁ</string>
+    <string name="settings_dark_mode_dialog_title">ଥିମ୍ ବାଛନ୍ତୁ</string>
+    <string name="dark_mode_option_light">ଲାଇଟ୍</string>
+    <string name="dark_mode_option_dark">ଡାର୍କ</string>
+    <string name="dark_mode_option_system">ସିଷ୍ଟମ୍ ଡିଫଲ୍ଟ</string>
+
+    <string name="settings_reminders_enabled_title">ରିମାଇଣ୍ଡର୍ ସକ୍ଷମ କରନ୍ତୁ</string>
+    <string name="settings_reminders_enabled_description">ଦୈନିକ ଅଭ୍ୟାସ ପାଇଁ ବିଜ୍ଞପ୍ତି ପାଆନ୍ତୁ</string>
 
 </resources>

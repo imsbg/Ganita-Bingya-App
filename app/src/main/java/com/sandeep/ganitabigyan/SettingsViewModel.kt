@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsViewModel.kt
-// VERSION: FINAL - Corrects initial values and re-schedules reminders on change.
+// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -18,7 +18,6 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     val isSoundEnabled: StateFlow<Boolean> = dataStore.isSoundEnabled
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
-    // <<< FIX 2: Set the correct initial values to match the DataStore >>>
     val morningReminderTime: StateFlow<String> = dataStore.morningReminderTime
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "07:00")
 
@@ -27,6 +26,13 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     val language: StateFlow<String> = dataStore.language
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "system")
+
+    // <<< NEW: StateFlows for the new settings >>>
+    val darkModePreference: StateFlow<String> = dataStore.darkModePreference
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), DarkMode.SYSTEM)
+
+    val areRemindersEnabled: StateFlow<Boolean> = dataStore.areRemindersEnabled
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
     fun setVibrationEnabled(isEnabled: Boolean) {
         viewModelScope.launch { dataStore.setVibrationEnabled(isEnabled) }
@@ -39,16 +45,20 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     fun setMorningReminderTime(time: String) {
         viewModelScope.launch {
             dataStore.setMorningReminderTime(time)
-            // <<< FIX 3: Re-schedule all reminders immediately after the time is changed >>>
-            scheduleReminders(getApplication())
+            // Re-schedule reminders only if they are enabled
+            if (areRemindersEnabled.first()) {
+                scheduleReminders(getApplication())
+            }
         }
     }
 
     fun setEveningReminderTime(time: String) {
         viewModelScope.launch {
             dataStore.setEveningReminderTime(time)
-            // <<< FIX 4: Re-schedule all reminders immediately after the time is changed >>>
-            scheduleReminders(getApplication())
+            // Re-schedule reminders only if they are enabled
+            if (areRemindersEnabled.first()) {
+                scheduleReminders(getApplication())
+            }
         }
     }
 
@@ -58,5 +68,22 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     fun saveLanguage(languageCode: String) {
         viewModelScope.launch { dataStore.saveLanguage(languageCode) }
+    }
+
+    // <<< NEW: Functions to update the new settings >>>
+    fun setDarkModePreference(mode: String) {
+        viewModelScope.launch { dataStore.setDarkModePreference(mode) }
+    }
+
+    fun setRemindersEnabled(enabled: Boolean) {
+        viewModelScope.launch {
+            dataStore.setRemindersEnabled(enabled)
+            // If reminders are enabled, schedule them. If disabled, cancel them.
+            if (enabled) {
+                scheduleReminders(getApplication())
+            } else {
+                cancelAllReminders(getApplication())
+            }
+        }
     }
 }

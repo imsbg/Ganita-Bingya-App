@@ -1,20 +1,17 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/HomeScreen.kt
+// PASTE THIS ENTIRE, FINAL CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
-import android.app.DownloadManager
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import android.os.Environment
-import android.provider.Settings
-import android.widget.Toast
-import androidx.annotation.StringRes
+import android.content.res.Configuration
+import androidx.compose.animation.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,269 +22,163 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.util.lerp
 import androidx.navigation.NavController
-import kotlinx.coroutines.launch
+import java.util.Calendar
+import java.util.Locale
 
-// --- DEFINE APP BAR HEIGHTS FOR ACCURATE CALCULATIONS ---
-private val CollapsedAppBarHeight = 64.dp
-private val ExpandedAppBarHeight = 152.dp
-
-// --- UPDATED Data class to use String Resources ---
-private data class HomeMenuItem(
-    @StringRes val titleResId: Int,
-    @StringRes val subtitleResId: Int?,
-    val route: String,
-    val gradient: List<Color>,
-    val icon: ImageVector? = null,
-    val textIcon: String? = null
+// A single data class for all searchable items
+private data class SearchableItem(
+    val titleResId: Int,
+    val subtitleResId: Int? = null,
+    val icon: ImageVector,
+    val route: String
 )
+
+// <<< NEW: A richer data class that holds both English and Odia titles for fast searching >>>
+private data class EnrichedSearchableItem(
+    val originalItem: SearchableItem,
+    val englishTitle: String,
+    val odiaTitle: String
+)
+
+// Data classes for the main UI (unchanged)
+private data class CategoryItem(val titleResId: Int, val icon: ImageVector, val color: Color, val route: String)
+private data class PopularItem(val titleResId: Int, val imageResId: Int, val color: Color, val route: String)
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
 
-    val context = LocalContext.current
-    val scope = rememberCoroutineScope()
-    var showUpdateDialog by remember { mutableStateOf(false) }
-    var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
-    val dataStore = remember { SettingsDataStore(context) }
+    // --- STATE MANAGEMENT for SEARCH ---
+    var isSearching by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
 
-    LaunchedEffect(Unit) {
-        val result = UpdateChecker.checkForUpdates(context)
-        if (result is UpdateCheckResult.UpdateAvailable) {
-            updateResult = result
-            showUpdateDialog = true
-        }
-    }
-
-    if (showUpdateDialog && updateResult is UpdateCheckResult.UpdateAvailable) {
-        val currentVersionName = try {
-            context.packageManager.getPackageInfo(context.packageName, 0).versionName
-        } catch (e: Exception) { "1.0" }
-
-        AutoUpdateDialog(
-            result = updateResult as UpdateCheckResult.UpdateAvailable,
-            currentVersionName = currentVersionName,
-            onDismiss = { showUpdateDialog = false },
-            onIgnoreVersion = { versionToIgnore ->
-                scope.launch {
-                    dataStore.setIgnoredUpdateVersion(versionToIgnore)
-                    showUpdateDialog = false
-                }
-            },
-            onUpdateNow = { downloadUrl, versionName ->
-                if (canInstallUnknownApps(context)) {
-                    startUpdateDownload(context, downloadUrl, versionName)
-                } else {
-                    Toast.makeText(context, R.string.permission_request_toast, Toast.LENGTH_LONG).show()
-                    requestInstallPermission(context)
-                }
-                showUpdateDialog = false
-            }
+    // --- A single, unified list of ALL items that can be searched ---
+    val allSearchableItems = remember {
+        listOf(
+            SearchableItem(R.string.menu_start_game, R.string.menu_start_game_desc, Icons.Default.PlayArrow, AppDestinations.GAME_ROUTE),
+            SearchableItem(R.string.menu_logic_game, R.string.menu_logic_game_desc, Icons.Default.Psychology, AppDestinations.LOGIC_GAME_ROUTE),
+            SearchableItem(R.string.menu_visual_game, R.string.menu_visual_game_desc, Icons.Default.Compare, AppDestinations.VISUAL_GAME_ROUTE),
+            SearchableItem(R.string.menu_panikia, subtitleResId = null, Icons.Default.MenuBook, AppDestinations.PANIKIA_LIST_ROUTE),
+            SearchableItem(R.string.menu_numbers, subtitleResId = null, Icons.Default.LooksOne, AppDestinations.NUMBERS_ROUTE),
+            SearchableItem(R.string.menu_drawing_pad, subtitleResId = null, Icons.Default.Draw, AppDestinations.DRAWING_ROUTE),
+            SearchableItem(R.string.menu_calculator, subtitleResId = null, Icons.Default.Calculate, AppDestinations.CALCULATOR_ROUTE),
+            SearchableItem(R.string.home_category_score, subtitleResId = null, Icons.Default.Insights, AppDestinations.SCORE_HISTORY_ROUTE)
         )
     }
 
-    val gradientOrange = listOf(Color(0xFFFFB74D), Color(0xFFFF9800))
-    val gradientGreen = listOf(Color(0xFF81C784), Color(0xFF4CAF50))
-    // <<< NEW GRADIENT FOR THE LOGIC GAME >>>
-    val gradientIndigo = listOf(Color(0xFF7986CB), Color(0xFF3F51B5))
-    val gradientBlue = listOf(Color(0xFF64B5F6), Color(0xFF2196F3))
-    val gradientPurple = listOf(Color(0xFFBA68C8), Color(0xFF9C27B0))
-    val gradientRed = listOf(Color(0xFFE57373), Color(0xFFF44336))
-    val gradientTeal = listOf(Color(0xFF4DB6AC), Color(0xFF009688))
-    val gradientCyan = listOf(Color(0xFF4DD0E1), Color(0xFF00BCD4))
+    // <<< NEW: Prepare the search data ONCE. This is the key to making it fast and multilingual. >>>
+    // We get both English and Odia strings for every item and store them.
+    val context = LocalContext.current
+    val enrichedSearchableList = remember {
+        allSearchableItems.map { item ->
+            EnrichedSearchableItem(
+                originalItem = item,
+                englishTitle = getStringForLocale(context, item.titleResId, Locale.ENGLISH),
+                odiaTitle = getStringForLocale(context, item.titleResId, Locale("or")) // "or" is the code for Odia
+            )
+        }
+    }
 
-    val menuItems = listOf(
-        HomeMenuItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, gradientOrange, Icons.Default.PlayArrow),
-        HomeMenuItem(R.string.menu_visual_game, R.string.menu_visual_game_desc, AppDestinations.VISUAL_GAME_ROUTE, gradientGreen, Icons.Default.Compare),
-        // <<< NEW MENU ITEM FOR THE LOGIC GAME >>>
-        HomeMenuItem(R.string.menu_logic_game, R.string.menu_logic_game_desc, AppDestinations.LOGIC_GAME_ROUTE, gradientIndigo, Icons.Default.Psychology),
-        HomeMenuItem(R.string.menu_progress, R.string.menu_progress_desc, AppDestinations.SCORE_HISTORY_ROUTE, gradientBlue, Icons.Default.Insights),
-        HomeMenuItem(R.string.menu_panikia, R.string.menu_panikia_desc, AppDestinations.PANIKIA_LIST_ROUTE, gradientPurple, Icons.Default.MenuBook),
-        HomeMenuItem(R.string.menu_numbers, R.string.menu_numbers_desc, AppDestinations.NUMBERS_ROUTE, gradientRed, textIcon = "୪୫"),
-        HomeMenuItem(R.string.menu_drawing_pad, null, AppDestinations.DRAWING_ROUTE, gradientTeal, Icons.Default.Draw),
-        HomeMenuItem(R.string.menu_calculator, null, AppDestinations.CALCULATOR_ROUTE, gradientCyan, Icons.Default.Calculate)
-    )
-
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        Scaffold(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-            topBar = {
-                LargeTopAppBar(
-                    title = { /* Empty */ },
-                    actions = {
-                        IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) {
-                            Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_button_description))
-                        }
-                    },
-                    colors = TopAppBarDefaults.largeTopAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
-                        scrolledContainerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(6.dp).copy(alpha = 0.9f)
-                    ),
-                    scrollBehavior = scrollBehavior
-                )
-            }
-        ) { paddingValues ->
-            LazyColumn(
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .fillMaxSize()
-                    .background(Color(0xFFF0F4F8)),
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                items(menuItems) { item ->
-                    MenuItemCard(
-                        item = item,
-                        onClick = { navController.navigate(item.route) }
-                    )
-                }
+    // --- The list that gets filtered based on the search query ---
+    val filteredItems = remember(searchQuery, enrichedSearchableList) {
+        if (searchQuery.isBlank()) {
+            enrichedSearchableList
+        } else {
+            // <<< NEW: The filter now checks BOTH the English and Odia titles >>>
+            enrichedSearchableList.filter { enrichedItem ->
+                enrichedItem.englishTitle.contains(searchQuery, ignoreCase = true) ||
+                        enrichedItem.odiaTitle.contains(searchQuery, ignoreCase = true)
             }
         }
+    }
 
-        CollapsingToolbar(scrollBehavior = scrollBehavior)
+    // --- UI Structure ---
+    AnimatedContent(
+        targetState = isSearching,
+        transitionSpec = { fadeIn() togetherWith fadeOut() },
+        label = "SearchModeAnimation"
+    ) { searching ->
+        if (searching) {
+            SearchScreen(
+                searchQuery = searchQuery,
+                onQueryChange = { searchQuery = it },
+                onCloseSearch = {
+                    isSearching = false
+                    searchQuery = ""
+                },
+                items = filteredItems,
+                onItemClick = { route ->
+                    navController.navigate(route)
+                    isSearching = false
+                    searchQuery = ""
+                }
+            )
+        } else {
+            MainHomeScreen(
+                navController = navController,
+                onSearchClick = { isSearching = true }
+            )
+        }
     }
 }
 
+// <<< NEW: A helper function to get a string for a specific language >>>
+private fun getStringForLocale(context: Context, resId: Int, locale: Locale): String {
+    val config = Configuration(context.resources.configuration)
+    config.setLocale(locale)
+    return context.createConfigurationContext(config).getString(resId)
+}
 
+
+// --- The NEW Search UI ---
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun CollapsingToolbar(scrollBehavior: TopAppBarScrollBehavior) {
-    var titleSize by remember { mutableStateOf(IntSize.Zero) }
-    val density = LocalDensity.current
-
-    val topPadding = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    val collapsedStartPadding = 16.dp
-    val expandedHorizontalPadding = 24.dp
-
-    val collapsedHeightPx = with(density) { CollapsedAppBarHeight.toPx() }
-    val expandedHeightPx = with(density) { ExpandedAppBarHeight.toPx() }
-    val collapsedStartPaddingPx = with(density) { collapsedStartPadding.toPx() }
-    val expandedHorizontalPaddingPx = with(density) { expandedHorizontalPadding.toPx() }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(ExpandedAppBarHeight + topPadding)
-            .padding(top = topPadding)
-            .padding(horizontal = expandedHorizontalPadding),
-        contentAlignment = Alignment.TopStart
-    ) {
-        Text(
-            stringResource(R.string.home_title),
-            style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold),
-            maxLines = 1,
-            modifier = Modifier
-                .onSizeChanged { if (titleSize != it) titleSize = it }
-                .graphicsLayer {
-                    val collapsedFraction = scrollBehavior.state.collapsedFraction
-                    val startScale = 1.0f
-                    val endScale = 0.7f
-                    val currentScale = lerp(startScale, endScale, collapsedFraction)
-                    val startTranslationX = (size.width / 2) - (titleSize.width / 2)
-                    val endTranslationX = collapsedStartPaddingPx - expandedHorizontalPaddingPx
-                    val currentTranslationX = lerp(startTranslationX, endTranslationX, collapsedFraction)
-                    val startTranslationY = expandedHeightPx - titleSize.height
-                    val endTranslationY = (collapsedHeightPx / 2) - (titleSize.height / 2)
-                    val currentTranslationY = lerp(startTranslationY, endTranslationY, collapsedFraction)
-                    scaleX = currentScale
-                    scaleY = currentScale
-                    translationX = currentTranslationX
-                    translationY = currentTranslationY
-                }
-        )
-    }
-}
-
-
-@Composable
-private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
-    val title = stringResource(id = item.titleResId)
-    val subtitle = item.subtitleResId?.let { stringResource(id = it) }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(140.dp)
-            .shadow(
-                elevation = 8.dp,
-                shape = RoundedCornerShape(28.dp),
-                ambientColor = Color.Black.copy(alpha = 0.2f),
-                spotColor = Color.Black.copy(alpha = 0.1f)
-            )
-            .clip(RoundedCornerShape(28.dp))
-            .background(brush = Brush.horizontalGradient(colors = item.gradient))
-            .clickable(onClick = onClick)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 24.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                    color = Color.White,
-                    fontSize = 26.sp
+private fun SearchScreen(
+    searchQuery: String,
+    onQueryChange: (String) -> Unit,
+    onCloseSearch: () -> Unit,
+    items: List<EnrichedSearchableItem>, // Takes the new enriched list
+    onItemClick: (String) -> Unit
+) {
+    Scaffold { paddingValues ->
+        Column(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            TextField(
+                value = searchQuery,
+                onValueChange = onQueryChange,
+                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                placeholder = { Text(stringResource(id = R.string.home_search_placeholder)) },
+                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+                trailingIcon = {
+                    IconButton(onClick = onCloseSearch) {
+                        Icon(Icons.Default.Close, contentDescription = stringResource(id = R.string.back_button_description))
+                    }
+                },
+                singleLine = true,
+                shape = CircleShape,
+                colors = TextFieldDefaults.colors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
-                subtitle?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color.White.copy(alpha = 0.8f),
-                        fontSize = 20.sp
-                    )
-                }
-            }
+            )
 
-            Box(
-                modifier = Modifier
-                    .size(90.dp)
-                    .clip(CircleShape)
-                    .background(Color.White.copy(alpha = 0.2f)),
-                contentAlignment = Alignment.Center
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                if (item.icon != null) {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = title,
-                        modifier = Modifier.size(60.dp),
-                        tint = Color.White
-                    )
-                } else if (item.textIcon != null) {
-                    Text(
-                        text = item.textIcon,
-                        color = Color.White,
-                        fontSize = 45.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.em,
-                        maxLines = 2
-                    )
+                items(items) { enrichedItem ->
+                    // We pass the original item to the card so it can display the text in the current language
+                    SearchItemCard(item = enrichedItem.originalItem, onClick = { onItemClick(enrichedItem.originalItem.route) })
                 }
             }
         }
@@ -295,70 +186,160 @@ private fun MenuItemCard(item: HomeMenuItem, onClick: () -> Unit) {
 }
 
 @Composable
-fun AutoUpdateDialog(
-    result: UpdateCheckResult.UpdateAvailable,
-    currentVersionName: String,
-    onDismiss: () -> Unit,
-    onIgnoreVersion: (String) -> Unit,
-    onUpdateNow: (String, String) -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(id = R.string.update_dialog_title)) },
-        text = { Text(stringResource(id = R.string.update_dialog_message, result.latestVersion, currentVersionName)) },
-
-        confirmButton = {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.End
-            ) {
-                TextButton(
-                    onClick = { onUpdateNow(result.downloadUrl, result.latestVersion) }
-                ) { Text(stringResource(id = R.string.update_dialog_update_now)) }
-
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(id = R.string.update_dialog_ignore_time))
-                }
-
-                TextButton(
-                    onClick = { onIgnoreVersion(result.latestVersion) }
-                ) {
-                    Text(
-                        stringResource(id = R.string.update_dialog_ignore_version),
-                        color = MaterialTheme.colorScheme.error
-                    )
-                }
-            }
+private fun SearchItemCard(item: SearchableItem, onClick: () -> Unit) {
+    ListItem(
+        headlineContent = { Text(stringResource(id = item.titleResId), fontWeight = FontWeight.SemiBold) },
+        supportingContent = {
+            item.subtitleResId?.let { Text(stringResource(id = it)) }
         },
-        dismissButton = {}
+        leadingContent = {
+            Icon(imageVector = item.icon, contentDescription = null)
+        },
+        modifier = Modifier.clip(RoundedCornerShape(16.dp)).clickable(onClick = onClick)
     )
 }
 
-private fun canInstallUnknownApps(context: Context): Boolean {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) context.packageManager.canRequestPackageInstalls() else true
-}
 
-private fun requestInstallPermission(context: Context) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
-            data = Uri.parse("package:${context.packageName}")
+// --- The Original Home Screen UI (now in its own composable) ---
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun MainHomeScreen(navController: NavController, onSearchClick: () -> Unit) {
+    val greeting = remember {
+        when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
+            in 0..11 -> R.string.home_greeting_morning
+            in 12..16 -> R.string.home_greeting_afternoon
+            in 17..20 -> R.string.home_greeting_evening
+            else -> R.string.home_greeting_night
         }
-        context.startActivity(intent)
+    }
+
+    val categories = listOf(
+        CategoryItem(R.string.home_category_games, Icons.Default.VideogameAsset, Color(0xFFFFA726), AppDestinations.GAMES_CATEGORY_ROUTE),
+        CategoryItem(R.string.home_category_learning, Icons.Default.School, Color(0xFF3F51B5), AppDestinations.LEARNING_CATEGORY_ROUTE),
+        CategoryItem(R.string.home_category_score, Icons.Default.Insights, Color(0xFF2196F3), AppDestinations.SCORE_HISTORY_ROUTE),
+        CategoryItem(R.string.home_category_utility, Icons.Default.Construction, Color(0xFF009688), AppDestinations.CALCULATOR_ROUTE)
+    )
+
+    val popularItemsBase = listOf(
+        PopularItem(R.string.menu_start_game, R.drawable.popular_math, Color(0xFF4CAF50), AppDestinations.GAME_ROUTE),
+        PopularItem(R.string.menu_logic_game, R.drawable.popular_logic, Color(0xFF673AB7), AppDestinations.LOGIC_GAME_ROUTE),
+        PopularItem(R.string.menu_visual_game, R.drawable.popular_fruits, Color(0xFFF44336), AppDestinations.VISUAL_GAME_ROUTE),
+    )
+    val popularItems = remember { List(3) { popularItemsBase }.flatten() }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { },
+                actions = {
+                    IconButton(onClick = onSearchClick) {
+                        Icon(Icons.Default.Search, contentDescription = stringResource(R.string.home_search_button_desc))
+                    }
+                    IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) {
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_button_description))
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().padding(paddingValues),
+            contentPadding = PaddingValues(horizontal = 24.dp)
+        ) {
+            item {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(stringResource(id = R.string.home_greeting_hello), style = MaterialTheme.typography.headlineLarge)
+                Text(stringResource(id = greeting), style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold), modifier = Modifier.padding(bottom = 24.dp))
+            }
+
+            item {
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        CategoryCard(item = categories[0], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[0].route) })
+                        CategoryCard(item = categories[1], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[1].route) })
+                    }
+                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        CategoryCard(item = categories[2], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[2].route) })
+                        CategoryCard(item = categories[3], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[3].route) })
+                    }
+                }
+            }
+
+            item {
+                Text(
+                    text = stringResource(R.string.home_popular_title),
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+                    modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
+                )
+            }
+
+            item {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(bottom = 32.dp)
+                ) {
+                    items(popularItems) { item ->
+                        PopularCard(item = item, onClick = { navController.navigate(item.route) })
+                    }
+                }
+            }
+        }
     }
 }
 
-private fun startUpdateDownload(context: Context, url: String, versionName: String) {
-    try {
-        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val request = DownloadManager.Request(Uri.parse(url))
-            .setTitle(context.getString(R.string.download_notification_title, versionName))
-            .setDescription(context.getString(R.string.download_notification_description))
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Ganita-Bigyan-v$versionName.apk")
-            .setMimeType("application/vnd.android.package-archive")
-        downloadManager.enqueue(request)
-        Toast.makeText(context, R.string.download_started, Toast.LENGTH_SHORT).show()
-    } catch (e: Exception) {
-        Toast.makeText(context, context.getString(R.string.download_failed, e.message), Toast.LENGTH_LONG).show()
+@Composable
+private fun CategoryCard(item: CategoryItem, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Card(
+        modifier = modifier.aspectRatio(1.5f).clickable(onClick = onClick),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = item.color.copy(alpha = 0.9f))
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp).fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Icon(
+                imageVector = item.icon,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier
+                    .size(36.dp)
+                    .background(Color.White.copy(alpha = 0.2f), CircleShape)
+                    .padding(8.dp)
+            )
+            Text(
+                text = stringResource(id = item.titleResId),
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            )
+        }
+    }
+}
+
+@Composable
+private fun PopularCard(item: PopularItem, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.width(160.dp).height(200.dp).clickable(onClick = onClick),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = item.color.copy(alpha = 0.2f))
+    ) {
+        Column {
+            Image(
+                painter = painterResource(id = item.imageResId),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(140.dp)
+                    .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+            )
+            Text(
+                text = stringResource(id = item.titleResId),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(12.dp)
+            )
+        }
     }
 }

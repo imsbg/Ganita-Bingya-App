@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/ScoreScreen.kt
-// VERSION: FINAL - Uses the correct multilingual number converter.
 
 package com.sandeep.ganitabigyan
 
@@ -13,29 +12,51 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-// <<< CHANGE 1: Import the new, correct function >>>
 import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 import java.io.File
 
 @Composable
 fun ScoreContent() {
     val context = LocalContext.current
-    var lifetimeScore by remember { mutableStateOf(Pair(0, 0)) } // Correct, Wrong
+    var totalLifetimeScore by remember { mutableStateOf(Pair(0, 0)) } // Correct, Wrong
 
     LaunchedEffect(Unit) {
+        var totalCorrect = 0
+        var totalIncorrect = 0
+
+        val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+        val ganitaBigyanDir = File(documentsDir, "GanitaBigyan")
+
+        // --- Read Math Game Score ---
         try {
-            val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
-            val ganitaBigyanDir = File(documentsDir, "GanitaBigyan")
-            val file = File(ganitaBigyanDir, "lifetime_score.gba")
-            if (file.exists()) {
-                val parts = file.readText().split(",")
+            val mathScoreFile = File(ganitaBigyanDir, "lifetime_score.gba")
+            if (mathScoreFile.exists()) {
+                val parts = mathScoreFile.readText().split(",")
                 if (parts.size == 2) {
-                    lifetimeScore = Pair(parts[0].toIntOrNull() ?: 0, parts[1].toIntOrNull() ?: 0)
+                    totalCorrect += parts[0].toIntOrNull() ?: 0
+                    totalIncorrect += parts[1].toIntOrNull() ?: 0
                 }
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
+        // --- Read Logic Game Score ---
+        try {
+            val logicScoreFile = File(ganitaBigyanDir, "logic_lifetime_score.gba")
+            if (logicScoreFile.exists()) {
+                val parts = logicScoreFile.readText().split(",")
+                if (parts.size == 2) {
+                    totalCorrect += parts[0].toIntOrNull() ?: 0
+                    totalIncorrect += parts[1].toIntOrNull() ?: 0
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        // Update the UI with the combined total
+        totalLifetimeScore = Pair(totalCorrect, totalIncorrect)
     }
 
     Column(
@@ -53,19 +74,20 @@ fun ScoreContent() {
         Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
             ScoreCard(
                 label = stringResource(R.string.score_correct),
-                score = lifetimeScore.first
+                score = totalLifetimeScore.first // Show total correct
             )
             ScoreCard(
                 label = stringResource(R.string.score_incorrect),
-                score = lifetimeScore.second
+                score = totalLifetimeScore.second // Show total incorrect
             )
         }
+        // NOTE: The Share Score button will now share the combined total score.
+        // No changes were needed for its code, as it captures the screen as-is.
     }
 }
 
 @Composable
 fun ScoreCard(label: String, score: Int) {
-    // <<< CHANGE 2: Get the context to pass to the converter function >>>
     val context = LocalContext.current
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -76,7 +98,6 @@ fun ScoreCard(label: String, score: Int) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(label, style = MaterialTheme.typography.titleLarge)
-            // <<< CHANGE 3: Use the new multilingual function instead of the old toOdia() >>>
             Text(score.toLocaleNumerals(context), style = MaterialTheme.typography.displayMedium)
         }
     }

@@ -439,4 +439,56 @@
     <string name="feedback_incorrect_n">আবার চেষ্টা করুন! উত্তরটি ছিল %1$s।</string>
     <string name="visual_game_progress">প্রশ্ন: %1$d</string>
 
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_big_even">একটি বড় জোড় সংখ্যা বাছুন</string>
+    <string name="logic_game_question_small_odd">একটি ছোট বিজোড় সংখ্যা বাছুন</string>
+    <string name="logic_game_question_big_odd">একটি বড় বিজোড় সংখ্যা বাছুন</string>
+    <string name="logic_game_question_small_even">একটি ছোট জোড় সংখ্যা বাছুন</string>
+    <string name="logic_game_question_divisible_by_10">১০ দিয়ে বিভাজ্য একটি সংখ্যা বাছুন</string>
+    <string name="logic_game_question_ends_in_5">এমন একটি সংখ্যা বাছুন যা ৫ দিয়ে শেষ হয়</string>
+    <string name="logic_game_question_ends_in_3">এমন একটি সংখ্যা বাছুন যা ৩ দিয়ে শেষ হয়</string>
+    <string name="logic_game_question_starts_with_5">এমন একটি সংখ্যা বাছুন যা ৫ দিয়ে শুরু হয়</string>
+    <string name="logic_game_question_starts_1_ends_3">এমন একটি সংখ্যা বাছুন যা ১ দিয়ে শুরু এবং ৩ দিয়ে শেষ হয়</string>
+    <string name="logic_game_question_starts_with_9">এমন একটি সংখ্যা বাছুন যা ৯ দিয়ে শুরু হয়</string>
+    <string name="logic_game_question_starts_with_3">এমন একটি সংখ্যা বাছুন যা ৩ দিয়ে শুরু হয়</string>
+    <string name="logic_game_question_pick_largest">সবচেয়ে বড় সংখ্যাটি বাছুন</string>
+    <string name="logic_game_question_pick_smallest">সবচেয়ে ছোট সংখ্যাটি বাছুন</string>
+    <string name="logic_game_question_starts_with_7">এমন একটি সংখ্যা বাছুন যা ৭ দিয়ে শুরু হয়</string>
+    <string name="logic_game_question_ends_with_1">এমন একটি সংখ্যা বাছুন যা ১ দিয়ে শেষ হয়</string>
+    <string name="logic_game_question_starts_8_ends_8">এমন একটি সংখ্যা বাছুন যা ৮ দিয়ে শুরু এবং শেষ হয়</string>
+    <string name="logic_game_question_two_identical_digits">দুটি একই অঙ্ক সহ একটি সংখ্যা বাছুন</string>
+
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">প্রশ্নের প্রকার:</string>
+    <string name="history_options">বিকল্প: %1$s</string>
+    <string name="history_you_picked">আপনি বেছেছেন: %1$s</string>
+    <string name="history_correct_choice">সঠিক পছন্দ: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">নমস্কার,</string>
+    <string name="home_greeting_morning">সুপ্রভাত</string>
+    <string name="home_greeting_afternoon">শুভ অপরাহ্ন</string>
+    <string name="home_greeting_evening">শুভ সন্ধ্যা</string>
+    <string name="home_greeting_night">শুভ রাত্রি</string>
+    <string name="home_category_games">গেমস</string>
+    <string name="home_category_learning">শিক্ষা</string>
+    <string name="home_category_score">আপনার অগ্রগতি</string>
+    <string name="home_category_utility">ইউটিলিটি</string>
+    <string name="home_popular_title">জনপ্রিয়</string>
+    <string name="home_search_button_desc">অনুসন্ধান</string>
+    <string name="home_menu_button_desc">মেনু</string>
+    <string name="games_category_title">গেমস</string>
+    <string name="learning_category_title">শেখার সরঞ্জাম</string>
+    <string name="home_search_placeholder">গেম, সরঞ্জাম ইত্যাদি খুঁজুন...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">অ্যাপিয়ারেন্স</string>
+    <string name="settings_dark_mode_title">ডার্ক মোড</string>
+    <string name="settings_dark_mode_description">আপনার পছন্দের থিম বাছুন</string>
+    <string name="settings_dark_mode_dialog_title">থিম নির্বাচন করুন</string>
+    <string name="dark_mode_option_light">হালকা</string>
+    <string name="dark_mode_option_dark">ডার্ক</string>
+    <string name="dark_mode_option_system">সিস্টেম ডিফল্ট</string>
+    <string name="settings_reminders_enabled_title">রিমাইন্ডার সক্রিয় করুন</string>
+    <string name="settings_reminders_enabled_description">প্রতিদিন অনুশীলনের বিজ্ঞপ্তি পান</string>
 </resources>
