@@ -1,10 +1,10 @@
 {
-  "logo_version": 22,
+  "logo_version": 23,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
     "colors": [
-      "#A1E0F0",
+      "#f0a22e",
       "#FFFFFF"
     ],
     "angle": 180.0
@@ -34,11 +34,13 @@
       "sat": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
   },
     "splash_text_3": {
-      "default": "🙏",
-      "en": "🙏",
-      "hi": "",
-      "te": "",
-      "sa": ""
+      "default": "ଦଶହରାର ହାର୍ଦ୍ଦିକ ଅଭିନନ୍ଦନ ଓ ଶୁଭେଚ୍ଛା",
+      "en": "Happy Vijayadashami",
+      "hi": "दशहरा की हार्दिक शुभकामनाएँ",
+      "te": "గణిత బిగ్యకు స్వాగతం",
+      "bn": "শুভ বিজয়াদশমীর শুভেচ্ছা",
+      "gu": "દશેરાની હાર્દિક શુભેચ્છાઓ",
+      "sa": "विजयादशम्याः शुभकामनाः"
     }
   }
 }
