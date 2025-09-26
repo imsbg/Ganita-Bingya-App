@@ -1,0 +1,7 @@
+First, Your Question: The Best Image Ratio
+This is a very important question. Phones have many different screen sizes. You cannot use one exact size that fits all perfectly. Instead, you should use a strategy:
+Ratio: Use a tall, portrait ratio like 9:18 or 9:16. This matches most modern phones.
+Resolution: A good, safe resolution is 1080 pixels wide by 2160 pixels tall (1080x2160). This is high quality for most devices.
+Important Part: Keep the most important part of your image (like a character or a greeting) in the center of the image. The very top and very bottom might get cut off on shorter phones, so don't put anything essential there.
+File Size: Use a tool like TinyPNG to make your image file size smaller without losing much quality. This is very important for faster downloads on slow internet.
+The code I will give you will use ContentScale.Crop. This means the image will always fill the entire screen without getting stretched or distorted, which is exactly what you want.
