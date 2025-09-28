@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsDataStore.kt
-// PASTE THIS ENTIRE, CORRECTED CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -13,26 +12,34 @@ import java.util.Locale
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-object DarkMode {
+object AppTheme {
     const val LIGHT = "light"
     const val DARK = "dark"
+    const val AMOLED = "amoled"
+    const val CUSTOM = "custom"
     const val SYSTEM = "system"
 }
 
 class SettingsDataStore(private val context: Context) {
 
     companion object {
+        // General Settings
         private val WELCOME_COMPLETED_KEY = booleanPreferencesKey("welcome_completed")
         private val LANGUAGE_KEY = stringPreferencesKey("app_language")
         private val VIBRATION_KEY = booleanPreferencesKey("vibration_enabled")
         private val SOUND_KEY = booleanPreferencesKey("sound_enabled")
+        private val IGNORED_UPDATE_VERSION_KEY = stringPreferencesKey("ignored_update_version")
+
+        // Theme Settings
+        private val THEME_PREFERENCE_KEY = stringPreferencesKey("theme_preference")
+        private val CUSTOM_THEME_COLOR_KEY = stringPreferencesKey("custom_theme_color")
+
+        // Reminder Settings
+        private val REMINDERS_ENABLED_KEY = booleanPreferencesKey("reminders_enabled")
         private val MORNING_REMINDER_TIME_KEY = stringPreferencesKey("morning_reminder_time")
         private val EVENING_REMINDER_TIME_KEY = stringPreferencesKey("evening_reminder_time")
-        private val IGNORED_UPDATE_VERSION_KEY = stringPreferencesKey("ignored_update_version")
-        private val DARK_MODE_KEY = stringPreferencesKey("dark_mode_preference")
-        private val REMINDERS_ENABLED_KEY = booleanPreferencesKey("reminders_enabled")
 
-        // <<< FIX: Adding the missing keys back in >>>
+        // Game Settings
         private val GAME_TYPE_KEY = stringPreferencesKey("game_type")
         private val DIFFICULTY_LEVEL_KEY = stringPreferencesKey("difficulty_level")
         private val AUTO_SCROLL_KEY = booleanPreferencesKey("auto_scroll")
@@ -47,32 +54,44 @@ class SettingsDataStore(private val context: Context) {
         private val DYNAMIC_BACKGROUND_IMAGE_PATH_KEY = stringPreferencesKey("dynamic_background_image_path")
     }
 
+    // --- Flows and Functions for each setting ---
+
     val hasCompletedWelcome: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[WELCOME_COMPLETED_KEY] ?: false }
     suspend fun setWelcomeCompleted() { context.dataStore.edit { settings -> settings[WELCOME_COMPLETED_KEY] = true } }
+
     val language: Flow<String> = context.dataStore.data.map { preferences -> preferences[LANGUAGE_KEY] ?: "system" }
     suspend fun saveLanguage(languageCode: String) { context.dataStore.edit { settings -> settings[LANGUAGE_KEY] = languageCode } }
+
     val isVibrationEnabled: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[VIBRATION_KEY] ?: true }
     suspend fun setVibrationEnabled(enabled: Boolean) { context.dataStore.edit { settings -> settings[VIBRATION_KEY] = enabled } }
+
     val isSoundEnabled: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[SOUND_KEY] ?: true }
     suspend fun setSoundEnabled(enabled: Boolean) { context.dataStore.edit { settings -> settings[SOUND_KEY] = enabled } }
-    val morningReminderTime: Flow<String> = context.dataStore.data.map { preferences -> preferences[MORNING_REMINDER_TIME_KEY] ?: "07:00" }
-    suspend fun setMorningReminderTime(time: String) { context.dataStore.edit { settings -> settings[MORNING_REMINDER_TIME_KEY] = time } }
-    val eveningReminderTime: Flow<String> = context.dataStore.data.map { preferences -> preferences[EVENING_REMINDER_TIME_KEY] ?: "19:00" }
-    suspend fun setEveningReminderTime(time: String) { context.dataStore.edit { settings -> settings[EVENING_REMINDER_TIME_KEY] = time } }
+
     val ignoredUpdateVersion: Flow<String> = context.dataStore.data.map { preferences -> preferences[IGNORED_UPDATE_VERSION_KEY] ?: "" }
     suspend fun setIgnoredUpdateVersion(version: String) { context.dataStore.edit { settings -> settings[IGNORED_UPDATE_VERSION_KEY] = version } }
-    val darkModePreference: Flow<String> = context.dataStore.data.map { preferences -> preferences[DARK_MODE_KEY] ?: DarkMode.SYSTEM }
-    suspend fun setDarkModePreference(mode: String) { context.dataStore.edit { settings -> settings[DARK_MODE_KEY] = mode } }
+
+    val themePreference: Flow<String> = context.dataStore.data.map { preferences -> preferences[THEME_PREFERENCE_KEY] ?: AppTheme.SYSTEM }
+    suspend fun setThemePreference(theme: String) { context.dataStore.edit { settings -> settings[THEME_PREFERENCE_KEY] = theme } }
+
+    val customThemeColor: Flow<String> = context.dataStore.data.map { preferences -> preferences[CUSTOM_THEME_COLOR_KEY] ?: "#6750A4" }
+    suspend fun setCustomThemeColor(hexColor: String) { context.dataStore.edit { settings -> settings[CUSTOM_THEME_COLOR_KEY] = hexColor } }
+
     val areRemindersEnabled: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[REMINDERS_ENABLED_KEY] ?: true }
     suspend fun setRemindersEnabled(enabled: Boolean) { context.dataStore.edit { settings -> settings[REMINDERS_ENABLED_KEY] = enabled } }
 
-    // <<< FIX: Adding the missing flows and functions back in >>>
+    val morningReminderTime: Flow<String> = context.dataStore.data.map { preferences -> preferences[MORNING_REMINDER_TIME_KEY] ?: "07:00" }
+    suspend fun setMorningReminderTime(time: String) { context.dataStore.edit { settings -> settings[MORNING_REMINDER_TIME_KEY] = time } }
+
+    val eveningReminderTime: Flow<String> = context.dataStore.data.map { preferences -> preferences[EVENING_REMINDER_TIME_KEY] ?: "19:00" }
+    suspend fun setEveningReminderTime(time: String) { context.dataStore.edit { settings -> settings[EVENING_REMINDER_TIME_KEY] = time } }
+
     val gameType: Flow<String> = context.dataStore.data.map { preferences -> preferences[GAME_TYPE_KEY] ?: "game_type_mixed" }
     val difficultyLevel: Flow<String> = context.dataStore.data.map { preferences -> preferences[DIFFICULTY_LEVEL_KEY] ?: "difficulty_easy" }
     suspend fun saveSettings(typeKey: String, levelKey: String) { context.dataStore.edit { settings -> settings[GAME_TYPE_KEY] = typeKey; settings[DIFFICULTY_LEVEL_KEY] = levelKey } }
+
     val autoScroll: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[AUTO_SCROLL_KEY] ?: false }
     suspend fun saveAutoScroll(enabled: Boolean) { context.dataStore.edit { settings -> settings[AUTO_SCROLL_KEY] = enabled } }
-
 
     // --- Dynamic Asset Flows and Functions ---
     val dynamicAssetVersion: Flow<Int> = context.dataStore.data.map { preferences -> preferences[DYNAMIC_ASSET_VERSION_KEY] ?: 0 }

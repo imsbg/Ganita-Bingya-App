@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/GamesCategoryScreen.kt
-// PASTE THIS ENTIRE CODE INTO THE NEW FILE
 
 package com.sandeep.ganitabigyan
 
@@ -15,6 +14,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Compare
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Psychology
+import androidx.compose.material.icons.filled.ViewModule // <<< NEW IMPORT FOR SUDOKU ICON
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,8 +41,10 @@ private data class GameItem(
 @Composable
 fun GamesCategoryScreen(navController: NavController) {
     val gameItems = listOf(
+        // <<< NEW SUDOKU CARD ADDED AT THE TOP >>>
         GameItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, listOf(Color(0xFFFFB74D), Color(0xFFFF9800)), Icons.Default.PlayArrow),
         GameItem(R.string.menu_logic_game, R.string.menu_logic_game_desc, AppDestinations.LOGIC_GAME_ROUTE, listOf(Color(0xFF7986CB), Color(0xFF3F51B5)), Icons.Default.Psychology),
+        GameItem(R.string.menu_sudoku, R.string.menu_sudoku_desc, AppDestinations.SUDOKU_ROUTE, listOf(Color(0xFFBA68C8), Color(0xFF9C27B0)), Icons.Default.ViewModule),
         GameItem(R.string.menu_visual_game, R.string.menu_visual_game_desc, AppDestinations.VISUAL_GAME_ROUTE, listOf(Color(0xFF81C784), Color(0xFF4CAF50)), Icons.Default.Compare)
     )
 

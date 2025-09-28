@@ -551,4 +551,29 @@
     <string name="settings_reminders_enabled_title">ରିମାଇଣ୍ଡର୍ ସକ୍ଷମ କରନ୍ତୁ</string>
     <string name="settings_reminders_enabled_description">ଦୈନିକ ଅଭ୍ୟାସ ପାଇଁ ବିଜ୍ଞପ୍ତି ପାଆନ୍ତୁ</string>
 
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">ଥିମ୍</string>
+    <string name="settings_theme_description">ଆପଣଙ୍କ ଆପ୍ ଥିମ୍ ବାଛନ୍ତୁ</string>
+    <string name="theme_dialog_title">ଥିମ୍ ବାଛନ୍ତୁ</string>
+    <string name="theme_option_light">ଲାଇଟ୍</string>
+    <string name="theme_option_dark">ଡାର୍କ</string>
+    <string name="theme_option_amoled">ଆମୋଲେଡ୍</string>
+    <string name="theme_option_system">ସିଷ୍ଟମ୍ ଡିଫଲ୍ଟ</string>
+    <string name="theme_option_custom">ନିଜସ୍ୱ ରଙ୍ଗ</string>
+    <string name="custom_color_dialog_title">ଏକ ନିଜସ୍ୱ ରଙ୍ଗ ବାଛନ୍ତୁ</string>
+    <string name="menu_multiplication_tables">ପଣିକିଆ</string>
+
+    <string name="menu_sudoku">ସୁଡୋକୁ</string>
+    <string name="menu_sudoku_desc">ଏକ କ୍ଲାସିକ୍ ସଂଖ୍ୟା ପହେଳି ଖେଳ</string>
+    <string name="congratulations">ଅଭିନନ୍ଦନ!</string>
+    <string name="puzzle_solved">ଆପଣ ପହେଳିଟି ସମାଧାନ କରିଛନ୍ତି।</string>
+    <string name="play_again">ପୁଣିଥରେ ଖେଳନ୍ତୁ</string>
+    <string name="new_game">ନୂଆ ଖେଳ</string>
+    <string name="erase">ଲିଭାନ୍ତୁ</string>
+    <string name="select_difficulty">କଠିନତା ବାଛନ୍ତୁ</string>
+    <string name="select_difficulty_prompt">ନୂଆ ଖେଳ ଆରମ୍ଭ କରିବା ପାଇଁ ଏକ କଠିନତା ବାଛନ୍ତୁ।</string>
+    <string name="undo">ପୂର୍ବବତ୍ କରନ୍ତୁ</string>
+    <string name="redo">ପୁନର୍ବାର କରନ୍ତୁ</string>
+    <string name="hint">ସଙ୍କେତ</string>
+
 </resources>

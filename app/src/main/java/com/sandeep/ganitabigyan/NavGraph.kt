@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
-// PASTE THIS ENTIRE, FINAL CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -65,6 +64,7 @@ object AppDestinations {
     const val CHANGELOG_ROUTE = "changelog"
     const val GAMES_CATEGORY_ROUTE = "games_category"
     const val LEARNING_CATEGORY_ROUTE = "learning_category"
+    const val SUDOKU_ROUTE = "sudoku" // <<< NEW ROUTE ADDED
 }
 
 @Composable
@@ -88,9 +88,11 @@ fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navCon
         composable(route = AppDestinations.DRAWING_HISTORY_ROUTE) { DrawingHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
         composable(route = AppDestinations.GAMES_CATEGORY_ROUTE) { GamesCategoryScreen(navController = navController) }
         composable(route = AppDestinations.LEARNING_CATEGORY_ROUTE) { LearningCategoryScreen(navController = navController) }
+        composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) } // <<< NEW COMPOSABLE ADDED
     }
 }
 
+// ... SplashScreen composable is unchanged ...
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
@@ -120,7 +122,6 @@ fun SplashScreen(navController: NavHostController) {
         currentText = ""
         delay(300)
 
-        // --- All the existing navigation logic is correct and unchanged ---
         val intent = (context as? Activity)?.intent
         if (intent?.hasExtra(WIDGET_DESTINATION_KEY) == true) {
             val destinationRoute = intent.getStringExtra(WIDGET_DESTINATION_KEY)
@@ -139,17 +140,14 @@ fun SplashScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            // <<< CHANGE 1: Use the color background ONLY if there's no image >>>
             .background(brush = if (splashConfig?.backgroundImagePath?.isBlank() == true) splashConfig!!.backgroundBrush else SolidColor(Color.Transparent))
     ) {
-        // <<< CHANGE 2: Add an AsyncImage for the background >>>
-        // It will only be visible if a valid image path exists.
         if (splashConfig?.backgroundImagePath?.isNotBlank() == true) {
             AsyncImage(
                 model = splashConfig?.backgroundImagePath,
                 contentDescription = "Festival Background",
                 modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop // This ensures the image fills the screen
+                contentScale = ContentScale.Crop
             )
         }
 

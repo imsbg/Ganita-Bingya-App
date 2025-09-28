@@ -1,5 +1,5 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/MathReminderWorker.kt
-// VERSION: FINAL - Uses a modern, monochrome notification icon.
+// PASTE THIS ENTIRE, FINAL CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -13,6 +13,7 @@ import android.net.Uri
 import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.flow.first
 
 class MathReminderWorker(
     context: Context,
@@ -20,8 +21,17 @@ class MathReminderWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
-        sendNotification()
-        scheduleReminders(applicationContext)
+        val dataStore = SettingsDataStore(applicationContext)
+        val remindersAreEnabled = dataStore.areRemindersEnabled.first()
+
+        // Only proceed if the setting is turned ON.
+        if (remindersAreEnabled) {
+            sendNotification()
+            // <<< THE FIX IS HERE: We REMOVED the line "scheduleReminders(applicationContext)" >>>
+            // The WorkManager is already periodic. It knows to run again tomorrow.
+            // We do NOT need to schedule it again from here.
+        }
+
         return Result.success()
     }
 
@@ -54,8 +64,6 @@ class MathReminderWorker(
         )
 
         val notification = NotificationCompat.Builder(context, channelId)
-            // <<< THIS IS THE ONLY CHANGE NEEDED >>>
-            // We now point to the monochrome drawable icon instead of the mipmap launcher icon.
             .setSmallIcon(R.drawable.ic_launcher_monochrome)
             .setContentTitle(context.getString(R.string.reminder_notification_title))
             .setContentText(context.getString(R.string.reminder_notification_text))

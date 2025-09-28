@@ -507,5 +507,30 @@
     <string name="settings_reminders_enabled_title">Enable Reminders</string>
     <string name="settings_reminders_enabled_description">Receive daily practice notifications</string>
 
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_description">Choose your app theme</string>
+    <string name="theme_dialog_title">Select Theme</string>
+    <string name="theme_option_light">Light</string>
+    <string name="theme_option_dark">Dark</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">System Default</string>
+    <string name="theme_option_custom">Custom Color</string>
+    <string name="custom_color_dialog_title">Pick a Custom Color</string>
+    <string name="menu_multiplication_tables">Multiplication Tables</string>
+
+    <string name="menu_sudoku">Sudoku</string>
+    <string name="menu_sudoku_desc">Classic number puzzle game</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="puzzle_solved">You have solved the puzzle.</string>
+    <string name="play_again">Play Again</string>
+    <string name="new_game">New Game</string>
+    <string name="erase">Erase</string>
+    <string name="select_difficulty">Select Difficulty</string>
+    <string name="select_difficulty_prompt">Select a difficulty to start a new game.</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="hint">Hint</string>
+
 
 </resources>

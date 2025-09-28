@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsScreen.kt
-// PASTE THIS ENTIRE, FINAL CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -8,11 +7,17 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -21,6 +26,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -43,25 +51,26 @@ fun SettingsScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val activity = (LocalContext.current as? Activity)
+
+    // Collect all states from ViewModel
+    val themePreference by settingsViewModel.themePreference.collectAsStateWithLifecycle()
     val isVibrationEnabled by settingsViewModel.isVibrationEnabled.collectAsStateWithLifecycle()
     val isSoundEnabled by settingsViewModel.isSoundEnabled.collectAsStateWithLifecycle()
     val morningTime by settingsViewModel.morningReminderTime.collectAsStateWithLifecycle()
     val eveningTime by settingsViewModel.eveningReminderTime.collectAsStateWithLifecycle()
     val currentLanguageCode by settingsViewModel.language.collectAsStateWithLifecycle()
-
-    // <<< NEW: Get the new states from the ViewModel >>>
-    val darkModePreference by settingsViewModel.darkModePreference.collectAsStateWithLifecycle()
     val areRemindersEnabled by settingsViewModel.areRemindersEnabled.collectAsStateWithLifecycle()
 
+    // State for managing dialog visibility
     var showLanguageDialog by remember { mutableStateOf(false) }
     var showRestartDialog by remember { mutableStateOf(false) }
     var languageToRestart by remember { mutableStateOf<String?>(null) }
     var showMorningTimePicker by remember { mutableStateOf(false) }
     var showEveningTimePicker by remember { mutableStateOf(false) }
+    var showThemeDialog by remember { mutableStateOf(false) }
+    var showColorPickerDialog by remember { mutableStateOf(false) }
 
-    // <<< NEW: State for the Dark Mode dialog >>>
-    var showDarkModeDialog by remember { mutableStateOf(false) }
-
+    // State for Time Pickers
     val timePickerStateMorning = rememberTimePickerState(
         initialHour = morningTime.split(":")[0].toInt(),
         initialMinute = morningTime.split(":")[1].toInt(),
@@ -91,17 +100,15 @@ fun SettingsScreen(
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
         ) {
-            // --- APPEARANCE CATEGORY ---
             SettingsCategory(title = stringResource(R.string.settings_category_appearance))
             SettingsClickableItem(
-                title = stringResource(id = R.string.settings_dark_mode_title),
-                description = getCurrentDarkModeName(mode = darkModePreference),
+                title = stringResource(id = R.string.settings_theme_title),
+                description = getCurrentThemeName(theme = themePreference),
                 icon = Icons.Default.Brightness4,
-                onClick = { showDarkModeDialog = true }
+                onClick = { showThemeDialog = true }
             )
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-            // --- GENERAL CATEGORY ---
             SettingsCategory(title = stringResource(R.string.settings_category_general))
             SettingsClickableItem(
                 title = stringResource(id = R.string.settings_language_title),
@@ -125,7 +132,6 @@ fun SettingsScreen(
             )
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-            // --- REMINDERS CATEGORY ---
             SettingsCategory(title = stringResource(R.string.settings_category_reminders))
             SettingsSwitchItem(
                 title = stringResource(R.string.settings_reminders_enabled_title),
@@ -134,7 +140,6 @@ fun SettingsScreen(
                 checked = areRemindersEnabled,
                 onCheckedChange = { settingsViewModel.setRemindersEnabled(it) }
             )
-            // The time pickers are only visible if reminders are enabled
             AnimatedVisibility(visible = areRemindersEnabled) {
                 Column {
                     SettingsClickableItem(
@@ -153,7 +158,6 @@ fun SettingsScreen(
             }
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-            // --- OTHER CATEGORY ---
             SettingsCategory(title = stringResource(R.string.settings_category_other))
             SettingsClickableItem(
                 title = stringResource(R.string.settings_about_app_title),
@@ -165,13 +169,27 @@ fun SettingsScreen(
     }
 
     // --- DIALOGS ---
-    if (showDarkModeDialog) {
-        DarkModeSelectionDialog(
-            currentMode = darkModePreference,
-            onDismiss = { showDarkModeDialog = false },
-            onModeSelected = { mode ->
-                settingsViewModel.setDarkModePreference(mode)
-                showDarkModeDialog = false
+    if (showThemeDialog) {
+        ThemeSelectionDialog(
+            currentTheme = themePreference,
+            onDismiss = { showThemeDialog = false },
+            onThemeSelected = { theme ->
+                settingsViewModel.setThemePreference(theme)
+                showThemeDialog = false
+                if (theme == AppTheme.CUSTOM) {
+                    showColorPickerDialog = true
+                }
+            }
+        )
+    }
+
+    if (showColorPickerDialog) {
+        ColorPickerDialog(
+            onDismiss = { showColorPickerDialog = false },
+            onColorSelected = { color ->
+                val hexColor = String.format("#%06X", (0xFFFFFF and color.toArgb()))
+                settingsViewModel.setCustomThemeColor(hexColor)
+                showColorPickerDialog = false
             }
         )
     }
@@ -233,59 +251,87 @@ fun SettingsScreen(
     }
 }
 
-// <<< NEW: Dialog for selecting the theme >>>
 @Composable
-private fun DarkModeSelectionDialog(
-    currentMode: String,
+private fun ThemeSelectionDialog(
+    currentTheme: String,
     onDismiss: () -> Unit,
-    onModeSelected: (String) -> Unit
+    onThemeSelected: (String) -> Unit
 ) {
-    val modes = remember {
+    val themes = remember {
         listOf(
-            DarkMode.LIGHT to R.string.dark_mode_option_light,
-            DarkMode.DARK to R.string.dark_mode_option_dark,
-            DarkMode.SYSTEM to R.string.dark_mode_option_system,
+            AppTheme.SYSTEM to R.string.theme_option_system,
+            AppTheme.LIGHT to R.string.theme_option_light,
+            AppTheme.DARK to R.string.theme_option_dark,
+            AppTheme.AMOLED to R.string.theme_option_amoled,
+            AppTheme.CUSTOM to R.string.theme_option_custom,
         )
     }
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(id = R.string.settings_dark_mode_dialog_title)) },
+        title = { Text(stringResource(id = R.string.theme_dialog_title)) },
         text = {
             Column {
-                modes.forEach { (mode, stringId) ->
+                themes.forEach { (theme, stringId) ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { onModeSelected(mode) }
-                            .padding(vertical = 12.dp),
+                            .clickable { onThemeSelected(theme) }
+                            .padding(vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        RadioButton(
-                            selected = currentMode == mode,
-                            onClick = { onModeSelected(mode) }
-                        )
+                        RadioButton(selected = currentTheme == theme, onClick = { onThemeSelected(theme) })
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(stringResource(id = stringId))
                     }
                 }
             }
         },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.dialog_cancel))
-            }
-        }
+        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }
     )
 }
 
-// <<< NEW: Function to get the current dark mode name for display >>>
 @Composable
-private fun getCurrentDarkModeName(mode: String): String {
-    return when (mode) {
-        DarkMode.LIGHT -> stringResource(R.string.dark_mode_option_light)
-        DarkMode.DARK -> stringResource(R.string.dark_mode_option_dark)
-        else -> stringResource(R.string.dark_mode_option_system)
+private fun ColorPickerDialog(
+    onDismiss: () -> Unit,
+    onColorSelected: (Color) -> Unit
+) {
+    val colors = remember {
+        listOf(
+            Color(0xFF6750A4), // Material Purple
+            Color(0xFFE91E63), // Pink
+            Color(0xFF4CAF50), // Green
+            Color(0xFF03A9F4), // Light Blue
+            Color(0xFFFF9800), // Orange
+            Color(0xFF009688), // Teal
+            Color(0xFF795548), // Brown
+            Color(0xFFF44336)  // Red
+        )
     }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(id = R.string.custom_color_dialog_title)) },
+        text = {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(4),
+                contentPadding = PaddingValues(top = 16.dp)
+            ) {
+                items(colors) { color ->
+                    Box(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .size(48.dp)
+                            .clip(CircleShape)
+                            .background(color)
+                            .clickable { onColorSelected(color) }
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) }
+        }
+    )
 }
 
 
@@ -356,15 +402,14 @@ private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Un
     )
 }
 
-private fun formatTime(time24h: String, context: Context): String {
-    return try {
-        val sdf24h = SimpleDateFormat("HH:mm", Locale.US)
-        val sdf12h = SimpleDateFormat("hh:mm a", Locale.US)
-        val date = sdf24h.parse(time24h)
-        val formattedTime = sdf12h.format(date!!)
-        formattedTime.toLocaleNumerals(context)
-    } catch (e: Exception) {
-        time24h
+@Composable
+private fun getCurrentThemeName(theme: String): String {
+    return when (theme) {
+        AppTheme.LIGHT -> stringResource(R.string.theme_option_light)
+        AppTheme.DARK -> stringResource(R.string.theme_option_dark)
+        AppTheme.AMOLED -> stringResource(R.string.theme_option_amoled)
+        AppTheme.CUSTOM -> stringResource(R.string.theme_option_custom)
+        else -> stringResource(R.string.theme_option_system)
     }
 }
 
@@ -381,6 +426,18 @@ private fun getCurrentLanguageName(code: String): String {
         "gu" -> stringResource(R.string.language_gujarati)
         "sat" -> stringResource(R.string.language_santali)
         else -> stringResource(R.string.language_system_default)
+    }
+}
+
+private fun formatTime(time24h: String, context: Context): String {
+    return try {
+        val sdf24h = SimpleDateFormat("HH:mm", Locale.US)
+        val sdf12h = SimpleDateFormat("hh:mm a", Locale.US)
+        val date = sdf24h.parse(time24h)
+        val formattedTime = sdf12h.format(date!!)
+        formattedTime.toLocaleNumerals(context)
+    } catch (e: Exception) {
+        time24h
     }
 }
 

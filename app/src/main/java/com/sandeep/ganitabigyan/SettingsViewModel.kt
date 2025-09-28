@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsViewModel.kt
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -12,10 +11,23 @@ import kotlinx.coroutines.launch
 class SettingsViewModel(application: Application) : AndroidViewModel(application) {
     private val dataStore = SettingsDataStore(application)
 
-    val isVibrationEnabled: StateFlow<Boolean> = dataStore.isVibrationEnabled
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
+    // --- THEME SETTINGS ---
+    val themePreference: StateFlow<String> = dataStore.themePreference
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), AppTheme.SYSTEM)
 
-    val isSoundEnabled: StateFlow<Boolean> = dataStore.isSoundEnabled
+    val customThemeColor: StateFlow<String> = dataStore.customThemeColor
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "#6750A4")
+
+    fun setThemePreference(theme: String) {
+        viewModelScope.launch { dataStore.setThemePreference(theme) }
+    }
+
+    fun setCustomThemeColor(hexColor: String) {
+        viewModelScope.launch { dataStore.setCustomThemeColor(hexColor) }
+    }
+
+    // --- REMINDER SETTINGS ---
+    val areRemindersEnabled: StateFlow<Boolean> = dataStore.areRemindersEnabled
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
     val morningReminderTime: StateFlow<String> = dataStore.morningReminderTime
@@ -23,57 +35,6 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     val eveningReminderTime: StateFlow<String> = dataStore.eveningReminderTime
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "19:00")
-
-    val language: StateFlow<String> = dataStore.language
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "system")
-
-    // <<< NEW: StateFlows for the new settings >>>
-    val darkModePreference: StateFlow<String> = dataStore.darkModePreference
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), DarkMode.SYSTEM)
-
-    val areRemindersEnabled: StateFlow<Boolean> = dataStore.areRemindersEnabled
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
-
-    fun setVibrationEnabled(isEnabled: Boolean) {
-        viewModelScope.launch { dataStore.setVibrationEnabled(isEnabled) }
-    }
-
-    fun setSoundEnabled(isEnabled: Boolean) {
-        viewModelScope.launch { dataStore.setSoundEnabled(isEnabled) }
-    }
-
-    fun setMorningReminderTime(time: String) {
-        viewModelScope.launch {
-            dataStore.setMorningReminderTime(time)
-            // Re-schedule reminders only if they are enabled
-            if (areRemindersEnabled.first()) {
-                scheduleReminders(getApplication())
-            }
-        }
-    }
-
-    fun setEveningReminderTime(time: String) {
-        viewModelScope.launch {
-            dataStore.setEveningReminderTime(time)
-            // Re-schedule reminders only if they are enabled
-            if (areRemindersEnabled.first()) {
-                scheduleReminders(getApplication())
-            }
-        }
-    }
-
-    fun setWelcomeCompleted() {
-        viewModelScope.launch { dataStore.setWelcomeCompleted() }
-    }
-
-    fun saveLanguage(languageCode: String) {
-        viewModelScope.launch { dataStore.saveLanguage(languageCode) }
-    }
-
-    // <<< NEW: Functions to update the new settings >>>
-    fun setDarkModePreference(mode: String) {
-        viewModelScope.launch { dataStore.setDarkModePreference(mode) }
-    }
 
     fun setRemindersEnabled(enabled: Boolean) {
         viewModelScope.launch {
@@ -85,5 +46,51 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 cancelAllReminders(getApplication())
             }
         }
+    }
+
+    fun setMorningReminderTime(time: String) {
+        viewModelScope.launch {
+            dataStore.setMorningReminderTime(time)
+            // Re-schedule reminders only if the master switch is enabled
+            if (areRemindersEnabled.first()) {
+                scheduleReminders(getApplication())
+            }
+        }
+    }
+
+    fun setEveningReminderTime(time: String) {
+        viewModelScope.launch {
+            dataStore.setEveningReminderTime(time)
+            // Re-schedule reminders only if the master switch is enabled
+            if (areRemindersEnabled.first()) {
+                scheduleReminders(getApplication())
+            }
+        }
+    }
+
+    // --- GENERAL SETTINGS ---
+    val isVibrationEnabled: StateFlow<Boolean> = dataStore.isVibrationEnabled
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
+
+    val isSoundEnabled: StateFlow<Boolean> = dataStore.isSoundEnabled
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
+
+    val language: StateFlow<String> = dataStore.language
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "system")
+
+    fun setVibrationEnabled(isEnabled: Boolean) {
+        viewModelScope.launch { dataStore.setVibrationEnabled(isEnabled) }
+    }
+
+    fun setSoundEnabled(isEnabled: Boolean) {
+        viewModelScope.launch { dataStore.setSoundEnabled(isEnabled) }
+    }
+
+    fun saveLanguage(languageCode: String) {
+        viewModelScope.launch { dataStore.saveLanguage(languageCode) }
+    }
+
+    fun setWelcomeCompleted() {
+        viewModelScope.launch { dataStore.setWelcomeCompleted() }
     }
 }

@@ -19,6 +19,17 @@
         android:theme="@style/Theme.GanitaBigyan"
         tools:targetApi="31">
 
+        <!-- THIS WHOLE <service> BLOCK IS NEW FOR FIREBASE -->
+        <service
+            android:name=".utils.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- END OF NEW FIREBASE BLOCK -->
+
+
         <activity
             android:name=".CrashActivity"
             android:exported="false"
@@ -29,11 +40,21 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.GanitaBigyan">
+            android:theme="@style/Theme.GanitaBigyan"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- THIS NEW INTENT-FILTER IS FOR SIMPLE DEEP LINKS LIKE "ganitabingya://app/history" -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="ganitabingya" android:host="app" />
+            </intent-filter>
+            <!-- END OF NEW DEEP LINK BLOCK -->
 
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.gms.google-services") // THIS LINE IS ADDED
 }
 
 android {
@@ -21,8 +22,8 @@ android {
         applicationId = "com.sandeep.ganitabigyan"
         minSdk = 26
         targetSdk = 34
-        versionCode = 700
-        versionName = "7.0.0"
+        versionCode = 800
+        versionName = "8.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -82,6 +83,12 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1") // For the splash screen API
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3") // Ensure you have the latest ViewModel Compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3") // Ensure you have the latest runtime Compose
+
+
+    // --- THESE 3 LINES ARE ADDED FOR FIREBASE PUSH NOTIFICATIONS ---
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-messaging-ktx")
+    // -----------------------------------------------------------------
 
 
     // Test dependencies (unchanged)
