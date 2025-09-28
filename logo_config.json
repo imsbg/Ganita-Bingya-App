@@ -1,5 +1,5 @@
 {
-  "logo_version": 24,
+  "logo_version": 25,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
@@ -12,8 +12,8 @@
 
   // <<< NEW: The festival background image is added here >>>
   "background_image": {
-    "version": 1,
-    "url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/parba/ds1.jpg"
+    "version": 2,
+    "url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/parba/hdp.jpg"
   },
 
   // <<< CHANGE: Text color is now white for better visibility on the image >>>
@@ -43,13 +43,13 @@
       "sat": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
     },
     "splash_text_3": {
-      "default": "ଦଶହରାର ହାର୍ଦ୍ଦିକ ଅଭିନନ୍ଦନ",
-      "en": "Happy Vijayadashami",
-      "hi": "दशहरा की हार्दिक शुभकामनाएँ",
-      "te": "గణిత బిగ్యకు స్వాగతం",
-      "bn": "শুভ বিজয়াদশমীর শুভেচ্ছা",
-      "gu": "દશેરાની હાર્દિક શુભેચ્છાઓ",
-      "sa": "विजयादशम्याः शुभकामनाः"
+      "default": "ଜୟ ମା ଦୁର୍ଗା",
+      "en": "Jai Maa Durga",
+      "hi": "जय माँ दुर्गा",
+      "te": "జై మా దుర్గా",
+      "bn": "জয় মা দুর্গা",
+      "gu": "જય મા દુર્ગા",
+      "sa": "जय माँ दुर्गा"
     }
   }
 }
