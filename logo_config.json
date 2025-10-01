@@ -1,5 +1,5 @@
 {
-  "logo_version": 25,
+  "logo_version": 26,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
   "splash_background": {
     "type": "gradient",
@@ -12,12 +12,12 @@
 
   // <<< NEW: The festival background image is added here >>>
   "background_image": {
-    "version": 2,
-    "url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/parba/hdp.jpg"
+    "version": 3,
+    "url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/parba/hdr.jpg"
   },
 
   // <<< CHANGE: Text color is now white for better visibility on the image >>>
-  "text_color": "#000000",
+  "text_color": "#FFFFFF",
 
   "texts": {
     "splash_text_1": {
@@ -30,7 +30,8 @@
       "gu": "જય જગન્નાથ",
       "pa": "ਜੈ ਜਗਨਨਾਥ",
       "sa": "जय जगन्नाथ",
-      "sat": "ଜୟ ଜଗନ୍ନାଥ"
+      "as": "জয় জগন্নাথ",
+      "ml": "ജയ് ജഗന്നാഥ്",
     },
     "splash_text_2": {
       "default": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ",
@@ -40,16 +41,19 @@
       "bn": "গণিত বিজ্ঞে আপনাকে স্বাগত",
       "gu": "ગણિત બિજ્ઞ માં આપનું સ્વાગત છે",
       "sa": "गणित बिज्ञ मध्ये स्वागतम्",
-      "sat": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ"
+      "as": "গণিত বিজ্ঞলৈ স্বাগতম",
+      "ml": "ഗണിത് വിഗ്യയിലേക്ക് സ്വാഗതം",
     },
     "splash_text_3": {
-      "default": "ଜୟ ମା ଦୁର୍ଗା",
-      "en": "Jai Maa Durga",
-      "hi": "जय माँ दुर्गा",
-      "te": "జై మా దుర్గా",
-      "bn": "জয় মা দুর্গা",
-      "gu": "જય મા દુર્ગા",
-      "sa": "जय माँ दुर्गा"
+      "default": "Happy Dussehra",
+      "en": "Happy Dussehra",
+      "hi": "Happy Dussehra",
+      "te": "Happy Dussehra",
+      "bn": "Happy Dussehra",
+      "gu": "Happy Dussehra",
+      "sa": "Happy Dussehra",
+      "as": "Happy Dussehra",
+      "ml": "Happy Dussehra",
     }
   }
 }
