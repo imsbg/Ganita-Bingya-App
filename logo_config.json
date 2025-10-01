@@ -1,6 +1,6 @@
 {
-  "logo_version": 26,
-  "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo2.png",
+  "logo_version": 28,
+  "logo_url": "http://imsbg.github.io/Ganita-Bingya-App/images/logo2.png",
   "splash_background": {
     "type": "gradient",
     "colors": [
@@ -12,8 +12,8 @@
 
   // <<< NEW: The festival background image is added here >>>
   "background_image": {
-    "version": 3,
-    "url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/parba/hdr.jpg"
+    "version": 4,
+    "url": "http://imsbg.github.io/Ganita-Bingya-App/images/parba/hdr.png"
   },
 
   // <<< CHANGE: Text color is now white for better visibility on the image >>>
