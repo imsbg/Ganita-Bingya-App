@@ -1,5 +1,5 @@
 {
-  "logo_version": 28,
+  "logo_version": 30,
   "logo_url": "http://imsbg.github.io/Ganita-Bingya-App/images/logo2.png",
   "splash_background": {
     "type": "gradient",
@@ -12,7 +12,7 @@
 
   // <<< NEW: The festival background image is added here >>>
   "background_image": {
-    "version": 4,
+    "version": 6,
     "url": "http://imsbg.github.io/Ganita-Bingya-App/images/parba/hdr.png"
   },
 
