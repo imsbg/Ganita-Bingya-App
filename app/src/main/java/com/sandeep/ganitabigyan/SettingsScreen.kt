@@ -138,7 +138,7 @@ fun SettingsScreen(
                 description = stringResource(R.string.settings_reminders_enabled_description),
                 icon = Icons.Default.NotificationsActive,
                 checked = areRemindersEnabled,
-                onCheckedChange = { settingsViewModel.setRemindersEnabled(it) }
+                onCheckedChange = { settingsViewModel.onRemindersToggled(it) }
             )
             AnimatedVisibility(visible = areRemindersEnabled) {
                 Column {
@@ -351,7 +351,8 @@ private fun LanguageSelectionDialog(
             "te" to R.string.language_telugu,
             "bn" to R.string.language_bengali,
             "gu" to R.string.language_gujarati,
-            "sat" to R.string.language_santali
+            "as" to R.string.language_assamese,
+            "ml" to R.string.language_malayalam
         )
     }
     AlertDialog(
@@ -424,7 +425,8 @@ private fun getCurrentLanguageName(code: String): String {
         "te" -> stringResource(R.string.language_telugu)
         "bn" -> stringResource(R.string.language_bengali)
         "gu" -> stringResource(R.string.language_gujarati)
-        "sat" -> stringResource(R.string.language_santali)
+        "as" -> stringResource(R.string.language_assamese)
+        "ml" -> stringResource(R.string.language_malayalam)
         else -> stringResource(R.string.language_system_default)
     }
 }

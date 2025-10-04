@@ -490,4 +490,30 @@
     <string name="dark_mode_option_system">સિસ્ટમ ડિફોલ્ટ</string>
     <string name="settings_reminders_enabled_title">રિમાઇન્ડર્સ સક્ષમ કરો</string>
     <string name="settings_reminders_enabled_description">દૈનિક અભ્યાસ માટે સૂચનાઓ મેળવો</string>
+
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">થીમ</string>
+    <string name="settings_theme_description">તમારી એપની થીમ પસંદ કરો</string>
+    <string name="theme_dialog_title">થીમ પસંદ કરો</string>
+    <string name="theme_option_light">લાઇટ</string>
+    <string name="theme_option_dark">ડાર્ક</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">સિસ્ટમ ડિફોલ્ટ</string>
+    <string name="theme_option_custom">કસ્ટમ રંગ</string>
+    <string name="custom_color_dialog_title">કસ્ટમ રંગ પસંદ કરો</string>
+    <string name="menu_multiplication_tables">ગુણાકાર કોષ્ટકો</string>
+
+    <string name="menu_sudoku">સુડોકુ</string>
+    <string name="menu_sudoku_desc">ક્લાસિક નંબર પઝલ ગેમ</string>
+    <string name="congratulations">અભિનંદન!</string>
+    <string name="puzzle_solved">તમે કોયડો ઉકેલી દીધો છે.</string>
+    <string name="play_again">ફરી રમો</string>
+    <string name="new_game">નવી રમત</string>
+    <string name="erase">ભૂંસો</string>
+    <string name="select_difficulty">મુશ્કેલી પસંદ કરો</string>
+    <string name="select_difficulty_prompt">નવી રમત શરૂ કરવા માટે મુશ્કેલી પસંદ કરો।</string>
+    <string name="undo">પૂર્વવત્ કરો</string>
+    <string name="redo">ફરીથી કરો</string>
+    <string name="hint">સંકેત</string>
+
 </resources>

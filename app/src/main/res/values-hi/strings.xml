@@ -491,4 +491,28 @@
     <string name="settings_reminders_enabled_title">रिमाइंडर सक्षम करें</string>
     <string name="settings_reminders_enabled_description">दैनिक अभ्यास की सूचनाएं प्राप्त करें</string>
 
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">थीम</string>
+    <string name="settings_theme_description">अपने ऐप की थीम चुनें</string>
+    <string name="theme_dialog_title">थीम चुनें</string>
+    <string name="theme_option_light">लाइट</string>
+    <string name="theme_option_dark">डार्क</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">सिस्टम डिफ़ॉल्ट</string>
+    <string name="theme_option_custom">कस्टम रंग</string>
+    <string name="custom_color_dialog_title">एक कस्टम रंग चुनें</string>
+    <string name="menu_multiplication_tables">गुणा तालिका</string>
+
+    <string name="menu_sudoku">सुडोकू</string>
+    <string name="menu_sudoku_desc">क्लासिक नंबर पहेली खेल</string>
+    <string name="congratulations">बधाई हो!</string>
+    <string name="puzzle_solved">आपने पहेली हल कर ली है।</string>
+    <string name="play_again">फिर से खेलें</string>
+    <string name="new_game">नया गेम</string>
+    <string name="erase">मिटाएँ</string>
+    <string name="select_difficulty">कठिनाई चुनें</string>
+    <string name="select_difficulty_prompt">नया गेम शुरू करने के लिए एक कठिनाई चुनें।</string>
+    <string name="undo">पूर्ववत् करें</string>
+    <string name="redo">फिर से करें</string>
+    <string name="hint">संकेत</string>
 </resources>

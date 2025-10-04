@@ -491,4 +491,29 @@
     <string name="dark_mode_option_system">সিস্টেম ডিফল্ট</string>
     <string name="settings_reminders_enabled_title">রিমাইন্ডার সক্রিয় করুন</string>
     <string name="settings_reminders_enabled_description">প্রতিদিন অনুশীলনের বিজ্ঞপ্তি পান</string>
+
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">থিম</string>
+    <string name="settings_theme_description">আপনার অ্যাপের থিম বেছে নিন</string>
+    <string name="theme_dialog_title">থিম নির্বাচন করুন</string>
+    <string name="theme_option_light">লাইট</string>
+    <string name="theme_option_dark">ডার্ক</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">সিস্টেম ডিফল্ট</string>
+    <string name="theme_option_custom">কাস্টম রঙ</string>
+    <string name="custom_color_dialog_title">একটি কাস্টম রঙ বাছুন</string>
+    <string name="menu_multiplication_tables">গুণের নামতা</string>
+
+    <string name="menu_sudoku">সুডোকু</string>
+    <string name="menu_sudoku_desc">ক্লাসিক নম্বর পাজল গেম</string>
+    <string name="congratulations">অভিনন্দন!</string>
+    <string name="puzzle_solved">আপনি পাজলটি সমাধান করেছেন।</string>
+    <string name="play_again">আবার খেলুন</string>
+    <string name="new_game">নতুন গেম</string>
+    <string name="erase">মুছুন</string>
+    <string name="select_difficulty">অসুবিধা নির্বাচন করুন</string>
+    <string name="select_difficulty_prompt">নতুন গেম শুরু করতে একটি অসুবিধা স্তর নির্বাচন করুন।</string>
+    <string name="undo">পূর্বাবস্থায় ফিরুন</string>
+    <string name="redo">আবার করুন</string>
+    <string name="hint">ইঙ্গিত</string>
 </resources>

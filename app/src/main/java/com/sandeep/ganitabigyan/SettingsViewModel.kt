@@ -36,7 +36,11 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     val eveningReminderTime: StateFlow<String> = dataStore.eveningReminderTime
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "19:00")
 
-    fun setRemindersEnabled(enabled: Boolean) {
+    // <<< THIS IS THE FIX: I have renamed the function >>>
+    // from setRemindersEnabled(enabled: Boolean)
+    // to onRemindersToggled(enabled: Boolean)
+    // The UI is already calling onRemindersToggled, but it didn't exist before.
+    fun onRemindersToggled(enabled: Boolean) {
         viewModelScope.launch {
             dataStore.setRemindersEnabled(enabled)
             // If reminders are enabled, schedule them. If disabled, cancel them.
@@ -52,7 +56,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             dataStore.setMorningReminderTime(time)
             // Re-schedule reminders only if the master switch is enabled
-            if (areRemindersEnabled.first()) {
+            if (areRemindersEnabled.value) { // Use .value here for immediate access
                 scheduleReminders(getApplication())
             }
         }
@@ -62,7 +66,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             dataStore.setEveningReminderTime(time)
             // Re-schedule reminders only if the master switch is enabled
-            if (areRemindersEnabled.first()) {
+            if (areRemindersEnabled.value) { // Use .value here for immediate access
                 scheduleReminders(getApplication())
             }
         }

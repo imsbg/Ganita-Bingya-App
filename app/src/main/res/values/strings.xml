@@ -161,8 +161,6 @@
     <string name="members_and_contributors">ସଦସ୍ୟ ଏବଂ ଯୋଗଦାନକାରୀ</string>
     <string name="sandeep_biswal_name">ସନ୍ଦୀପ୍ ବିଶ୍ଵାଳ ଜି</string>
     <string name="sandeep_biswal_role">ପ୍ରଶାସକ, ପରିକଳ୍ପନା, ଡିଜାଇନ୍ ଓ ଭାଷା (ଓଡ଼ିଆ, ହିନ୍ଦୀ, ଇଂରାଜୀ ଓ ଅନ୍ୟାନ୍ୟ)</string>
-        <string name="soubhagya_padhan_name">ସୌଭାଗ୍ୟ ପ୍ରଧାନ</string>
-        <string name="soubhagya_padhan_role">ଭାଷା ଅନୁବାଦକ</string>
     <string name="show_more">ଅଧିକ ଦେଖନ୍ତୁ</string>
     <string name="show_less">କମ୍ ଦେଖାନ୍ତୁ</string>
     <string name="support_development">ସମର୍ଥନ ଏବଂ ବିକାଶ</string>
@@ -268,7 +266,8 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_gujarati">ગુજરાતી</string>
     <string name="language_punjabi">ਪੰਜਾਬੀ</string>
-    <string name="language_santali">(Coming soon)</string>
+    <string name="language_assamese">অসমীয়া</string>
+    <string name="language_malayalam">മലയാളം</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">ଭାଷା</string>
     <string name="settings_language_desc">ଆପ୍ ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>

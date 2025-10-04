@@ -491,4 +491,29 @@
     <string name="dark_mode_option_system">సిస్టమ్ డిఫాల్ట్</string>
     <string name="settings_reminders_enabled_title">రిమైండర్‌లను ప్రారంభించండి</string>
     <string name="settings_reminders_enabled_description">రోజువారీ అభ్యాస నోటిఫికేషన్‌లను స్వీకరించండి</string>
+
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">థీమ్</string>
+    <string name="settings_theme_description">మీ యాప్ థీమ్‌ను ఎంచుకోండి</string>
+    <string name="theme_dialog_title">థీమ్‌ను ఎంచుకోండి</string>
+    <string name="theme_option_light">లైట్</string>
+    <string name="theme_option_dark">డార్క్</string>
+    <string name="theme_option_amoled">అమోలెడ్</string>
+    <string name="theme_option_system">సిస్టమ్ డిఫాల్ట్</string>
+    <string name="theme_option_custom">కస్టమ్ రంగు</string>
+    <string name="custom_color_dialog_title">ఒక కస్టమ్ రంగును ఎంచుకోండి</string>
+    <string name="menu_multiplication_tables">గుణకార పట్టికలు</string>
+
+    <string name="menu_sudoku">సుడోకు</string>
+    <string name="menu_sudoku_desc">క్లాసిక్ నంబర్ పజిల్ గేమ్</string>
+    <string name="congratulations">అభినందనలు!</string>
+    <string name="puzzle_solved">మీరు పజిల్‌ను పరిష్కరించారు.</string>
+    <string name="play_again">మళ్లీ ఆడండి</string>
+    <string name="new_game">కొత్త గేమ్</string>
+    <string name="erase">చెరిపివేయి</string>
+    <string name="select_difficulty">కష్టాన్ని ఎంచుకోండి</string>
+    <string name="select_difficulty_prompt">కొత్త గేమ్ ప్రారంభించడానికి ఒక కష్టాన్ని ఎంచుకోండి.</string>
+    <string name="undo">వెనక్కి వెళ్ళు</string>
+    <string name="redo">మళ్ళీ చేయి</string>
+    <string name="hint">సూచన</string>
 </resources>

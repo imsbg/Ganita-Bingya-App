@@ -1,4 +1,4 @@
-// FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
+// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -44,6 +44,7 @@ import com.sandeep.ganitabigyan.widget.GanitaWidgetReceiver.Companion.WIDGET_DES
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.io.File
 
 object AppDestinations {
     const val SPLASH_ROUTE = "splash"
@@ -64,7 +65,8 @@ object AppDestinations {
     const val CHANGELOG_ROUTE = "changelog"
     const val GAMES_CATEGORY_ROUTE = "games_category"
     const val LEARNING_CATEGORY_ROUTE = "learning_category"
-    const val SUDOKU_ROUTE = "sudoku" // <<< NEW ROUTE ADDED
+    const val SUDOKU_ROUTE = "sudoku"
+    const val GAME_2048_ROUTE = "game_2048" // <<< ADDED FOR 2048
 }
 
 @Composable
@@ -88,11 +90,10 @@ fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navCon
         composable(route = AppDestinations.DRAWING_HISTORY_ROUTE) { DrawingHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
         composable(route = AppDestinations.GAMES_CATEGORY_ROUTE) { GamesCategoryScreen(navController = navController) }
         composable(route = AppDestinations.LEARNING_CATEGORY_ROUTE) { LearningCategoryScreen(navController = navController) }
-        composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) } // <<< NEW COMPOSABLE ADDED
+        composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) }
     }
 }
 
-// ... SplashScreen composable is unchanged ...
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
@@ -142,21 +143,32 @@ fun SplashScreen(navController: NavHostController) {
             .fillMaxSize()
             .background(brush = if (splashConfig?.backgroundImagePath?.isBlank() == true) splashConfig!!.backgroundBrush else SolidColor(Color.Transparent))
     ) {
-        if (splashConfig?.backgroundImagePath?.isNotBlank() == true) {
-            AsyncImage(
-                model = splashConfig?.backgroundImagePath,
-                contentDescription = "Festival Background",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
+        val bgPath = splashConfig?.backgroundImagePath
+        if (!bgPath.isNullOrBlank()) {
+            val imageFile = File(bgPath)
+            if (imageFile.exists()) {
+                AsyncImage(
+                    model = imageFile,
+                    contentDescription = "Festival Background",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+            }
         }
 
         Column(
             modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            val logoPath = splashConfig?.logoPath
+            val logoModel = if (!logoPath.isNullOrBlank() && File(logoPath).exists()) {
+                File(logoPath)
+            } else {
+                R.drawable.logo
+            }
+
             AsyncImage(
-                model = splashConfig?.logoPath ?: R.drawable.logo,
+                model = logoModel,
                 contentDescription = appLogoDesc,
                 modifier = Modifier
                     .size(150.dp)
@@ -201,6 +213,7 @@ fun SplashScreen(navController: NavHostController) {
         }
     }
 }
+
 
 private fun convertWordToNumber(word: String?): Int? {
     return when (word?.lowercase()) { "one" -> 1; "two" -> 2; "three" -> 3; "four" -> 4; "five" -> 5; "six" -> 6; "seven" -> 7; "eight" -> 8; "nine" -> 9; "ten" -> 10; else -> null }

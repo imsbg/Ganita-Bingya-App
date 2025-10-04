@@ -491,6 +491,31 @@
     <string name="settings_reminders_enabled_title">स्मारकाणि योजयन्तु</string>
     <string name="settings_reminders_enabled_description">प्रतिदिनम् अभ्यासार्थं सूचनाः प्राप्नुवन्तु</string>
 
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">विषयः</string>
+    <string name="settings_theme_description">स्व-अनुप्रयोगस्य विषयं चिनोतु</string>
+    <string name="theme_dialog_title">विषयं चिनोतु</string>
+    <string name="theme_option_light">प्रकाशः</string>
+    <string name="theme_option_dark">तमः</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">तन्त्र-निर्धारितम्</string>
+    <string name="theme_option_custom">स्वेच्छित-वर्णः</string>
+    <string name="custom_color_dialog_title">स्वेच्छित-वर्णं चिनोतु</string>
+    <string name="menu_multiplication_tables">गुणनसारणी</string>
+
+    <string name="menu_sudoku">सुडोकू</string>
+    <string name="menu_sudoku_desc">शास्त्रीय-अङ्क-प्रहेलिका</string>
+    <string name="congratulations">अभिनन्दनम्!</string>
+    <string name="puzzle_solved">भवता प्रहेलिका समाहिता।</string>
+    <string name="play_again">पुनः क्रीडतु</string>
+    <string name="new_game">नवीन क्रीडा</string>
+    <string name="erase">मार्जयतु</string>
+    <string name="select_difficulty">काठिन्यं चिनोतु</string>
+    <string name="select_difficulty_prompt">नवीन क्रीडा आरब्धुं काठिन्यं चिनोतु।</string>
+    <string name="undo">प्रत्यावर्तयतु</string>
+    <string name="redo">पुनः करोतु</string>
+    <string name="hint">सङ्केतः</string>
+
 
 
 </resources>

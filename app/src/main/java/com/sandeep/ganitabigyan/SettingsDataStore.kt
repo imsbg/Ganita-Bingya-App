@@ -1,4 +1,4 @@
-// FILE: app/src/main/java/com/sandeep/ganitabigyan/SettingsDataStore.kt
+// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -43,6 +43,7 @@ class SettingsDataStore(private val context: Context) {
         private val GAME_TYPE_KEY = stringPreferencesKey("game_type")
         private val DIFFICULTY_LEVEL_KEY = stringPreferencesKey("difficulty_level")
         private val AUTO_SCROLL_KEY = booleanPreferencesKey("auto_scroll")
+        private val BEST_SCORE_2048_KEY = intPreferencesKey("best_score_2048") // <<< ADDED FOR 2048
 
         // Dynamic Splash Keys
         private val DYNAMIC_ASSET_VERSION_KEY = intPreferencesKey("dynamic_asset_version")
@@ -92,6 +93,11 @@ class SettingsDataStore(private val context: Context) {
 
     val autoScroll: Flow<Boolean> = context.dataStore.data.map { preferences -> preferences[AUTO_SCROLL_KEY] ?: false }
     suspend fun saveAutoScroll(enabled: Boolean) { context.dataStore.edit { settings -> settings[AUTO_SCROLL_KEY] = enabled } }
+
+    // <<< ADDED FOR 2048 >>>
+    val bestScore2048: Flow<Int> = context.dataStore.data.map { preferences -> preferences[BEST_SCORE_2048_KEY] ?: 0 }
+    suspend fun setBestScore2048(score: Int) { context.dataStore.edit { settings -> settings[BEST_SCORE_2048_KEY] = score } }
+
 
     // --- Dynamic Asset Flows and Functions ---
     val dynamicAssetVersion: Flow<Int> = context.dataStore.data.map { preferences -> preferences[DYNAMIC_ASSET_VERSION_KEY] ?: 0 }

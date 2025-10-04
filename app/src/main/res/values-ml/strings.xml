@@ -1,0 +1,537 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">ഗണിത വിജ്ഞ</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_text_1">ജയ് ജഗന്നാഥ്</string>
+    <string name="splash_text_2">ഗണിത വിജ്ഞയിലേക്ക് സ്വാഗതം</string>
+
+    <!-- Universal -->
+    <string name="back_button_description">പിന്നോട്ട്</string>
+    <string name="ok_button">ശരി</string>
+    <string name="app_logo_description">ആപ്പ് ലോഗോ</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">ഗണിത വിജ്ഞ</string>
+    <string name="settings_button_description">ക്രമീകരണങ്ങൾ</string>
+    <string name="menu_start_game">ഗെയിം ആരംഭിക്കുക</string>
+    <string name="menu_start_game_desc">5+4, 4-2</string>
+    <string name="menu_progress">നിങ്ങളുടെ പുരോഗതി</string>
+    <string name="menu_progress_desc">എത്രയെണ്ണം ശരി? എത്രയെണ്ണം തെറ്റ്?</string>
+    <string name="menu_panikia">ഗുണനപ്പട്ടിക</string>
+    <string name="menu_panikia_desc">ഈരൊന്ന് രണ്ട്</string>
+    <string name="menu_numbers">സംഖ്യകൾ</string>
+    <string name="menu_numbers_desc">0 1 2 3 4 5 6 7 8 9</string>
+    <string name="menu_drawing_pad">ഡ്രോയിംഗ് പാഡ്</string>
+    <string name="menu_calculator">കാൽക്കുലേറ്റർ</string>
+
+    <!-- Game Screen & ViewModel -->
+    <string name="game_title">ഗണിത വിജ്ഞ</string>
+    <string name="game_settings_button_text">തരം: %1$s | ലെവൽ: %2$s</string>
+    <string name="game_go_to_current_question">നിലവിലെ ചോദ്യത്തിലേക്ക് പോകുക</string>
+    <string name="game_auto_scroll">ഓട്ടോ സ്ക്രോൾ</string>
+    <string name="game_auto_scroll_icon_desc">ഓട്ടോ സ്ക്രോൾ ഐക്കൺ</string>
+    <string name="game_show_solution">ഉത്തരം കാണിക്കുക</string>
+    <string name="game_top_bar_stop">നിർത്തുക</string>
+    <string name="game_top_bar_score_info">ശരി: %1$s | തെറ്റ്: %2$s</string>
+    <string name="game_settings_dialog_title">ക്രമീകരണങ്ങൾ മാറ്റുക</string>
+    <string name="game_settings_dialog_type">തരം</string>
+    <string name="game_settings_dialog_level">ലെവൽ</string>
+    <string name="game_settings_dialog_cancel">റദ്ദാക്കുക</string>
+    <string name="game_summary_dialog_title">സമയം കഴിഞ്ഞു!</string>
+    <string name="game_summary_dialog_your_score">നിങ്ങളുടെ സ്കോർ:</string>
+    <string name="game_summary_dialog_play_again">വീണ്ടും കളിക്കുക</string>
+    <string name="game_summary_dialog_stop_challenge">വെല്ലുവിളി നിർത്തുക</string>
+    <string name="game_solution_dialog_title">ഉത്തരം</string>
+    <string name="game_solution_dialog_close">അടയ്ക്കുക</string>
+    <string name="feedback_correct">കൊള്ളാം! ശരിയായ ഉത്തരം</string>
+    <string name="feedback_streak">തുടർച്ചയായി %1$s ശരിയുത്തരങ്ങൾ!</string>
+    <string name="feedback_incorrect">തെറ്റായ ഉത്തരം. ശരിയായ ഉത്തരം: %1$s</string>
+    <string name="feedback_skipped">%1$s ചോദ്യങ്ങൾ ഒഴിവാക്കി</string>
+    <string name="qna_log_question">ചോദ്യം</string>
+    <string name="qna_log_your_answer">നിങ്ങളുടെ ഉത്തരം</string>
+    <string name="qna_log_correct_answer">ശരിയായ ഉത്തരം</string>
+    <string name="qna_log_result">ഫലം</string>
+    <string name="qna_log_correct">ശരി</string>
+    <string name="qna_log_incorrect">തെറ്റ്</string>
+    <string name="qna_log_skipped">ഒഴിവാക്കി</string>
+    <string name="question_find_correct_equation">%1$s-നുള്ള ശരിയായ സമവാക്യം കണ്ടെത്തുക</string>
+
+    <string-array name="motivational_quotes">
+        <item>നിങ്ങൾ നന്നായി ചെയ്യുന്നു, തുടരുക!</item>
+        <item>എല്ലാ ചോദ്യങ്ങൾക്കും ഉത്തരം നൽകുക</item>
+        <item>കണക്ക് ഒരു രസകരമായ കളിയാണ്</item>
+        <item>നിങ്ങൾ ഒരു ഗണിതശാസ്ത്രജ്ഞനായി മാറുകയാണ്!</item>
+        <item>പരിശീലനമാണ് വിജയത്തിന്റെ താക്കോൽ.</item>
+        <item>ജയ് ജഗന്നാഥ്</item>
+    </string-array>
+    <string name="game_type_addition">സങ്കലനം</string>
+    <string name="game_type_subtraction">വ്യവകലനം</string>
+    <string name="game_type_multiplication">ഗുണനം</string>
+    <string name="game_type_division">ഹരണം</string>
+    <string name="game_type_mixed">മിശ്രിതം</string>
+    <string name="game_type_find_equation">സമവാക്യം കണ്ടെത്തുക</string>
+    <string name="difficulty_easy">എളുപ്പം</string>
+    <string name="difficulty_medium">ഇടത്തരം</string>
+    <string name="difficulty_hard">കഠിനം</string>
+    <string name="difficulty_very_hard">വളരെ കഠിനം</string>
+
+    <!-- Panikia Screen -->
+    <string name="panikia_title">ഗുണനപ്പട്ടിക</string>
+    <string name="panikia_title_for_table">%1$s-ന്റെ പട്ടിക</string>
+    <string-array name="panikia_terms">
+        <item>ഒന്ന്</item>
+        <item>രണ്ട്</item>
+        <item>മൂന്ന്</item>
+        <item>നാല്</item>
+        <item>അഞ്ച്</item>
+        <item>ആറ്</item>
+        <item>ഏഴ്</item>
+        <item>എട്ട്</item>
+        <item>ഒൻപത്</item>
+        <item>പത്ത്</item>
+    </string-array>
+    <string name="swipe_up_hint">മുകളിലേക്ക് സ്ക്രോൾ ചെയ്യുക</string>
+    <!-- Score & History Screens -->
+    <string name="score_history_title">നിങ്ങളുടെ പുരോഗതി</string>
+    <string name="score_history_tab_lifetime">ആജീവനാന്ത സ്കോർ</string>
+    <string name="score_history_tab_qna">ചോദ്യങ്ങളുടെ ചരിത്രം</string>
+    <string name="score_total_results">ആകെ ഫലങ്ങൾ</string>
+    <string name="score_correct">ശരി</string>
+    <string name="score_incorrect">തെറ്റ്</string>
+
+    <!-- Stable keys (copy-paste, do not translate) -->
+    <string name="qna_log_question_key" translatable="false">Question</string>
+    <string name="qna_log_your_answer_key" translatable="false">Your Answer</string>
+    <string name="qna_log_correct_answer_key" translatable="false">Correct Answer</string>
+    <string name="qna_log_result_key" translatable="false">Result</string>
+    <string name="qna_log_result_correct_id" translatable="false">correct_id</string>
+    <string name="qna_log_result_incorrect_id" translatable="false">incorrect_id</string>
+
+    <!-- Display text -->
+    <string name="history_question_label">ചോദ്യം: %1$s</string>
+    <string name="history_your_answer">നിങ്ങളുടെ ഉത്തരം: %1$s</string>
+    <string name="history_correct_answer">ശരിയായ ഉത്തരം: %1$s</string>
+    <string name="history_result">ഫലം: %1$s</string>
+    <string name="history_no_history_found">ചരിത്രം ഒന്നും കണ്ടെത്തിയില്ല</string>
+
+    <!-- Number Screen -->
+    <string name="numbers_screen_title">സംഖ്യകൾ</string>
+
+    <!-- Drawing Screens -->
+    <string name="drawing_pad_title">ഡ്രോയിംഗ് പാഡ്</string>
+    <string name="drawing_history_button">ചരിത്രം</string>
+    <string name="drawing_mode_label">മോഡ് തിരഞ്ഞെടുക്കുക</string>
+    <string name="drawing_mode_serial">ക്രമമായി</string>
+    <string name="drawing_mode_random_double">രണ്ടക്ക സംഖ്യ</string>
+    <string name="drawing_mode_random_triple">മൂന്നക്ക സംഖ്യ</string>
+    <string name="drawing_undo_button">പഴയപടി ആക്കുക</string>
+    <string name="drawing_redo_button">വീണ്ടും ചെയ്യുക</string>
+    <string name="drawing_clear_button">എല്ലാം മായ്ക്കുക</string>
+    <string name="drawing_next_button">അടുത്തത്</string>
+    <string name="drawing_history_title">ഡ്രോയിംഗുകളുടെ ചരിത്രം</string>
+    <string name="drawing_history_delete_all">എല്ലാം ഇല്ലാതാക്കുക</string>
+    <string name="drawing_history_delete_dialog_title">എല്ലാം ഇല്ലാതാക്കണോ?</string>
+    <string name="drawing_history_delete_dialog_message">സംരക്ഷിച്ച എല്ലാ ഡ്രോയിംഗുകളും ഇല്ലാതാക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
+    <string name="drawing_history_delete_confirm">അതെ, ഇല്ലാതാക്കുക</string>
+    <string name="drawing_history_delete_cancel">വേണ്ട</string>
+    <string name="drawing_history_empty">ഡ്രോയിംഗുകൾ ഒന്നും സംരക്ഷിച്ചിട്ടില്ല</string>
+    <string name="drawing_history_saved_drawing_desc">സംരക്ഷിച്ച ഡ്രോയിംഗുകൾ</string>
+    <string name="drawing_history_question_label">ചോദ്യം: %1$s</string>
+
+    <!-- Calculator Screen -->
+    <string name="calculator_title">കാൽക്കുലേറ്റർ</string>
+    <string name="calculator_clear_button">മായ്ക്കുക</string>
+    <string name="calculator_backspace_icon">⌫</string>
+    <string name="calculator_toggle_scientific_pad">സയന്റിഫിക് പാഡ് മാറ്റുക</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">ക്രമീകരണങ്ങൾ</string>
+    <string name="settings_vibration_title">വൈബ്രേഷൻ</string>
+    <string name="settings_vibration_desc">തെറ്റായ ഉത്തരത്തിൽ വൈബ്രേറ്റ് ചെയ്യുക</string>
+    <string name="settings_reminders_title">ഓർമ്മപ്പെടുത്തലുകൾ</string>
+    <string name="settings_morning_reminder">രാവിലത്തെ ഓർമ്മപ്പെടുത്തൽ</string>
+    <string name="settings_evening_reminder">വൈകുന്നേരത്തെ ഓർമ്മപ്പെടുത്തൽ</string>
+    <string name="settings_select_time">സമയം തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_reminder_set_for">%1$s-ലേക്ക് ഓർമ്മപ്പെടുത്തൽ സജ്ജീകരിച്ചു</string>
+
+    <!-- About Screen -->
+    <string name="about_screen_title">വിവരണം</string>
+    <string name="members_and_contributors">അംഗങ്ങളും സംഭാവകരും</string>
+    <string name="sandeep_biswal_name">സന്ദീപ് ബിസ്വാൾ ജി</string>
+    <string name="sandeep_biswal_role">അഡ്മിൻ, ആശയം, ഡിസൈൻ &amp; ഭാഷ (ഒഡിയ, ഹിന്ദി, ഇംഗ്ലീഷ് &amp; കൂടുതൽ)</string>
+    <string name="show_more">കൂടുതൽ കാണിക്കുക</string>
+    <string name="show_less">കുറച്ച് കാണിക്കുക</string>
+    <string name="support_development">പിന്തുണയും വികസനവും</string>
+    <string name="support_github">ഗിറ്റ്ഹബ്</string>
+    <string name="support_github_desc">ഈ പ്രോജക്റ്റ് ഗിറ്റ്ഹബിൽ ഫോർക്ക് ചെയ്യുക</string>
+    <string name="support_translate">വിവർത്തനം ചെയ്യുക</string>
+    <string name="support_translate_desc">ആപ്പ് നിങ്ങളുടെ ഭാഷയിലേക്ക് വിവർത്തനം ചെയ്യാൻ സഹായിക്കുക</string>
+    <string name="support_donate">സംഭാവന ചെയ്യുക</string>
+    <string name="support_donate_desc">എന്റെ പ്രവൃത്തിക്ക് പ്രതിഫലം അർഹിക്കുന്നു എന്ന് നിങ്ങൾ കരുതുന്നുവെങ്കിൽ</string>
+    <string name="support_report_bug">ഒരു ബഗ് റിപ്പോർട്ട് ചെയ്യുക</string>
+    <string name="support_report_bug_desc">എന്തെങ്കിലും പ്രശ്നങ്ങൾ കണ്ടെത്തിയോ? ഞങ്ങളെ അറിയിക്കുക</string>
+    <string name="support_share">പങ്കിടുക</string>
+    <string name="support_share_desc">ഈ ആപ്പ് നിങ്ങളുടെ സുഹൃത്തുക്കളുമായും കുടുംബവുമായും പങ്കിടുക</string>
+    <string name="share_message">ഗണിത വിജ്ഞ ഡൗൺലോഡ് ചെയ്ത് കളിക്കൂ: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="social">സോഷ്യൽ</string>
+    <string name="social_website">വെബ്സൈറ്റ്</string>
+    <string name="social_website_desc">ഞങ്ങളുടെ വെബ്സൈറ്റ് സന്ദർശിക്കുക</string>
+    <string name="social_instagram">എന്നെ ഇൻസ്റ്റാഗ്രാമിൽ പിന്തുടരുക</string>
+    <string name="social_instagram_desc">ഏറ്റവും പുതിയ വാർത്തകൾ അറിയുക</string>
+    <string name="social_twitter">എന്നെ X (ട്വിറ്റർ)-ൽ പിന്തുടരുക</string>
+    <string name="social_twitter_desc">ചിന്തകൾക്കും അപ്ഡേറ്റുകൾക്കുമായി പിന്തുടരുക</string>
+    <string name="social_telegram">ടെലിഗ്രാമിൽ ചേരുക</string>
+    <string name="social_telegram_desc">ബഗുകളും ഫീച്ചറുകളും ചർച്ച ചെയ്യാൻ ഗ്രൂപ്പിൽ ചേരുക</string>
+    <string name="other">മറ്റുള്ളവ</string>
+    <string name="other_changelog">മാറ്റങ്ങളുടെ പട്ടിക</string>
+    <string name="other_changelog_desc">പുതിയതെന്താണെന്ന് കാണുക</string>
+    <string name="other_check_for_updates">അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുക</string>
+    <string name="other_version">പതിപ്പ്</string>
+    <string name="changelog_dialog_title">പുതിയതെന്ത്</string>
+    <string name="changelog_loading">മാറ്റങ്ങളുടെ പട്ടിക ലോഡ് ചെയ്യുന്നു...</string>
+    <string name="changelog_error">മാറ്റങ്ങളുടെ പട്ടിക ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു. ദയവായി നിങ്ങളുടെ കണക്ഷൻ പരിശോധിക്കുക.</string>
+    <string name="other_language">ഭാഷ</string>
+    <string name="other_language_desc">ആപ്പിന്റെ ഭാഷ മാറ്റുക</string>
+    <string name="language_dialog_title">ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="made_with_love">ഇന്ത്യയിൽ ❤️-യോടെ നിർമ്മിച്ചത്</string>
+    <string name="download_notification_title">ഗണിത വിജ്ഞ v%1$s ഡൗൺലോഡ് ചെയ്യുന്നു</string>
+    <string name="download_notification_description">പുതിയ അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു...</string>
+    <string name="download_started">ഡൗൺലോഡ് ആരംഭിക്കുന്നു...</string>
+    <string name="download_failed">ഡൗൺലോഡ് പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="update_available_title">പുതിയ അപ്ഡേറ്റ് ലഭ്യമാണ്</string>
+    <string name="update_available_message">ഒരു പുതിയ പതിപ്പ് (v%1$s) ലഭ്യമാണ്. നിങ്ങൾ നിലവിൽ ഉപയോഗിക്കുന്നത് (v%2$s) ആണ്.</string>
+    <string name="download_button">ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="later_button">പിന്നീട്</string>
+    <string name="permission_request_toast">ദയവായി ഈ ഉറവിടത്തിൽ നിന്ന് ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യാൻ അനുവദിക്കുക.</string>
+    <string name="up_to_date_title">ആപ്പ് ഏറ്റവും പുതിയതാണ്</string>
+    <string name="up_to_date_message">നിങ്ങൾ ഗണിത വിജ്ഞയുടെ ഏറ്റവും പുതിയ പതിപ്പാണ് ഉപയോഗിക്കുന്നത്.</string>
+    <string name="error_title">പിശക്</string>
+    <string name="error_check_connection">അപ്‌ഡേറ്റുകൾ പരിശോധിക്കാൻ കഴിയുന്നില്ല, ദയവായി നിങ്ങളുടെ ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുക</string>
+
+    <!-- Crash Handler -->
+    <string name="crash_screen_app_name">ഗണിത വിജ്ഞ</string>
+    <string name="crash_screen_oops_title">അയ്യോ, എന്തോ കുഴപ്പം സംഭവിച്ചു</string>
+    <string name="crash_screen_oops_message">ആപ്പ് ക്രാഷ് ആയി. ഈ പിശക് റിപ്പോർട്ട് ഡെവലപ്പർക്ക് അയക്കാവുന്നതാണ്.</string>
+    <string name="crash_screen_copy_report">റിപ്പോർട്ട് പകർത്തുക</string>
+    <string name="crash_screen_close_app">ആപ്പ് അടയ്ക്കുക</string>
+    <string name="crash_report_copied">ക്രാഷ് റിപ്പോർട്ട് ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി.</string>
+    <string name="crash_no_details">പിശകിന്റെ വിശദാംശങ്ങൾ ലഭ്യമല്ല.</string>
+
+    <!-- Download Receiver -->
+    <string name="failed_to_start_installer">ഇൻസ്റ്റാളർ ആരംഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു.</string>
+    <string name="download_failed_generic">ഡൗൺലോഡ് പരാജയപ്പെട്ടു.</string>
+
+    <!-- Math Reminder -->
+    <string name="reminder_channel_name">GB കണക്ക് ഓർമ്മപ്പെടുത്തലുകൾ</string>
+    <string name="reminder_channel_description">പ്രതിദിന അറിയിപ്പ് സേവനം</string>
+    <string name="reminder_notification_title">ഗണിത വിജ്ഞ</string>
+    <string name="reminder_notification_text">ഇന്ന് കണക്ക് പഠിക്കുന്നുണ്ടോ? ഞാൻ കാത്തിരിക്കുകയാണ്</string>
+
+    <!-- SettingsScreen.kt -->
+    <string name="settings_back_button_desc">പിന്നോട്ട്</string>
+
+    <string name="settings_category_general">പൊതുവായത്</string>
+    <string name="settings_vibration_description">തെറ്റായ ഉത്തരത്തിനുള്ള ഫീഡ്ബാക്ക്</string>
+
+    <string name="settings_category_reminders">ഓർമ്മപ്പെടുത്തലുകൾ</string>
+    <string name="settings_morning_reminder_title">രാവിലത്തെ ഓർമ്മപ്പെടുത്തൽ</string>
+    <string name="settings_evening_reminder_title">വൈകുന്നേരത്തെ ഓർമ്മപ്പെടുത്തൽ</string>
+
+    <string name="settings_category_other">മറ്റുള്ളവ</string>
+    <string name="settings_about_app_title">ആപ്പിനെക്കുറിച്ച്</string>
+    <string name="settings_about_app_description">പതിപ്പും വിവരങ്ങളും</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="dialog_ok">ശരി</string>
+    <string name="dialog_cancel">റദ്ദാക്കുക</string>
+
+    <!-- Toasts -->
+    <string name="toast_morning_reminder_set">രാവിലത്തെ ഓർമ്മപ്പെടുത്തൽ സജ്ജീകരിച്ചു</string>
+    <string name="toast_evening_reminder_set">വൈകുന്നേരത്തെ ഓർമ്മപ്പെടുത്തൽ സജ്ജീകരിച്ചു</string>
+
+    <!-- New strings for WelcomeScreen -->
+    <string name="welcome_title">സ്വാഗതം</string>
+    <string name="choose_language_prompt">നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="button_continue">തുടരുക</string>
+
+    <!-- Language Names -->
+    <string name="language_system_default">സിസ്റ്റം ഡിഫോൾട്ട്</string>
+    <string name="language_odia">ഒഡിയ</string>
+    <string name="language_english">ഇംഗ്ലീഷ്</string>
+    <string name="language_sanskrit">സംസ്കൃതം</string>
+    <string name="language_telugu">തെലുങ്ക്</string>
+    <string name="language_bengali">ബംഗാളി</string>
+    <string name="language_gujarati">ഗുജറാത്തി</string>
+    <string name="language_punjabi">പഞ്ചാബി</string>
+    <string name="language_hindi">ഹിന്ദി</string>
+    <string name="language_tamil">തമിഴ്</string>
+    <string name="settings_language_title">ഭാഷ</string>
+    <string name="settings_language_desc">ആപ്പിന്റെ ഭാഷ മാറ്റുക</string>
+
+    <string-array name="odia_number_words">
+        <item>പൂജ്യം</item>
+        <item>ഒന്ന്</item>
+        <item>രണ്ട്</item>
+        <item>മൂന്ന്</item>
+        <item>നാല്</item>
+        <item>അഞ്ച്</item>
+        <item>ആറ്</item>
+        <item>ഏഴ്</item>
+        <item>എട്ട്</item>
+        <item>ഒൻപത്</item>
+        <item>പത്ത്</item>
+        <item>പതിനൊന്ന്</item>
+        <item>പന്ത്രണ്ട്</item>
+        <item>പതിമൂന്ന്</item>
+        <item>പതിനാല്</item>
+        <item>പതിനഞ്ച്</item>
+        <item>പതിനാറ്</item>
+        <item>പതിനേഴ്</item>
+        <item>പതിനെട്ട്</item>
+        <item>പത്തൊൻപത്</item>
+        <item>ഇരുപത്</item>
+        <item>ഇരുപത്തിയൊന്ന്</item>
+        <item>ഇരുപത്തിരണ്ട്</item>
+        <item>ഇരുപത്തിമൂന്ന്</item>
+        <item>ഇരുപത്തിനാല്</item>
+        <item>ഇരുപത്തിയഞ്ച്</item>
+        <item>ഇരുപത്തിയാറ്</item>
+        <item>ഇരുപത്തിയേഴ്</item>
+        <item>ഇരുപത്തെട്ട്</item>
+        <item>ഇരുപത്തിയൊൻപത്</item>
+        <item>മുപ്പത്</item>
+        <item>മുപ്പത്തിയൊന്ന്</item>
+        <item>മുപ്പത്തിരണ്ട്</item>
+        <item>മുപ്പത്തിമൂന്ന്</item>
+        <item>മുപ്പത്തിനാല്</item>
+        <item>മുപ്പത്തിയഞ്ച്</item>
+        <item>മുപ്പത്തിയാറ്</item>
+        <item>മുപ്പത്തിയേഴ്</item>
+        <item>മുപ്പത്തെട്ട്</item>
+        <item>മുപ്പത്തിയൊൻപത്</item>
+        <item>നാൽപ്പത്</item>
+        <item>നാൽപ്പത്തിയൊന്ന്</item>
+        <item>നാൽപ്പത്തിരണ്ട്</item>
+        <item>നാൽപ്പത്തിമൂന്ന്</item>
+        <item>നാൽപ്പത്തിനാല്</item>
+        <item>നാൽപ്പത്തിയഞ്ച്</item>
+        <item>നാൽപ്പത്തിയാറ്</item>
+        <item>നാൽപ്പത്തിയേഴ്</item>
+        <item>നാൽപ്പത്തെട്ട്</item>
+        <item>നാൽപ്പത്തിയൊൻപത്</item>
+        <item>അൻപത്</item>
+        <item>അൻപത്തിയൊന്ന്</item>
+        <item>അൻപത്തിരണ്ട്</item>
+        <item>അൻപത്തിമൂന്ന്</item>
+        <item>അൻപത്തിനാല്</item>
+        <item>അൻപത്തിയഞ്ച്</item>
+        <item>അൻപത്തിയാറ്</item>
+        <item>അൻപത്തിയേഴ്</item>
+        <item>അൻപത്തെട്ട്</item>
+        <item>അൻപത്തിയൊൻപത്</item>
+        <item>അറുപത്</item>
+        <item>അറുപത്തിയൊന്ന്</item>
+        <item>അറുപത്തിരണ്ട്</item>
+        <item>അറുപത്തിമൂന്ന്</item>
+        <item>അറുപത്തിനാല്</item>
+        <item>അറുപത്തിയഞ്ച്</item>
+        <item>അറുപത്തിയാറ്</item>
+        <item>അറുപത്തിയേഴ്</item>
+        <item>അറുപത്തെട്ട്</item>
+        <item>അറുപത്തിയൊൻപത്</item>
+        <item>എഴുപത്</item>
+        <item>എഴുപത്തിയൊന്ന്</item>
+        <item>എഴുപത്തിരണ്ട്</item>
+        <item>എഴുപത്തിമൂന്ന്</item>
+        <item>എഴുപത്തിനാല്</item>
+        <item>എഴുപത്തിയഞ്ച്</item>
+        <item>എഴുപത്തിയാറ്</item>
+        <item>എഴുപത്തിയേഴ്</item>
+        <item>എഴുപത്തെട്ട്</item>
+        <item>എഴുപത്തിയൊൻപത്</item>
+        <item>എൺപത്</item>
+        <item>എൺപത്തിയൊന്ന്</item>
+        <item>എൺപത്തിരണ്ട്</item>
+        <item>എൺപത്തിമൂന്ന്</item>
+        <item>എൺപത്തിനാല്</item>
+        <item>എൺപത്തിയഞ്ച്</item>
+        <item>എൺപത്തിയാറ്</item>
+        <item>എൺപത്തിയേഴ്</item>
+        <item>എൺപത്തെട്ട്</item>
+        <item>എൺപത്തിയൊൻപത്</item>
+        <item>തൊണ്ണൂറ്</item>
+        <item>തൊണ്ണൂറ്റിയൊന്ന്</item>
+        <item>തൊണ്ണൂറ്റിരണ്ട്</item>
+        <item>തൊണ്ണൂറ്റിമൂന്ന്</item>
+        <item>തൊണ്ണൂറ്റിനാല്</item>
+        <item>തൊണ്ണൂറ്റിയഞ്ച്</item>
+        <item>തൊണ്ണൂറ്റിയാറ്</item>
+        <item>തൊണ്ണൂറ്റിയേഴ്</item>
+        <item>തൊണ്ണൂറ്റിയെട്ട്</item>
+        <item>തൊണ്ണൂറ്റൊൻപത്</item>
+        <item>നൂറ്</item>
+    </string-array>
+
+    <string name="word_one_hundred">നൂറ്</string>
+    <string name="word_hundreds_suffix">നൂറ്</string>
+    <string name="word_hundred_odia_standalone">നൂറ്</string>
+
+    <string name="language_dialog_description">ഭാഷ മാറ്റിയ ശേഷം ആപ്പ് പുനരാരംഭിക്കുക.</string>
+    <string name="language_restart_dialog_title">പുനരാരംഭിക്കേണ്ടതുണ്ട്</string>
+    <string name="language_restart_dialog_message">ഭാഷാ മാറ്റം പ്രയോഗിക്കുന്നതിന് ആപ്പ് പുനരാരംഭിക്കേണ്ടതുണ്ട്.</string>
+    <string name="dialog_restart">പുനരാരംഭിക്കുക</string>
+
+    <string name="social_github">ഗിറ്റ്ഹബ്</string>
+    <string name="social_github_desc">ഞങ്ങളുടെ സോഴ്സ് കോഡ് പരിശോധിക്കുക</string>
+    <string name="dialog_close">അടയ്ക്കുക</string>
+    <string name="changelog_header_title">പരിപാലകരെ/സംഭാവകരെ തിരയുന്നു</string>
+    <string name="changelog_header_description">ഞങ്ങളുടെ പ്രോജക്റ്റ് വികസിപ്പിക്കുന്നതിനും മെച്ചപ്പെടുത്തുന്നതിനും സഹായിക്കുന്നതിന് ഞങ്ങൾ നിലവിൽ പരിപാലകരെ/സംഭാവകരെ തേടുന്നു. നിങ്ങളുടെ കഴിവുകളും വൈദഗ്ധ്യവും സംഭാവന ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, നിങ്ങൾക്ക് ഞങ്ങളുടെ ഗിറ്റ്ഹബ് സന്ദർശിക്കാവുന്നതാണ്, പുൾ അഭ്യർത്ഥനകൾ സ്വാഗതം ചെയ്യുന്നു. ആപ്പ് പ്രധാനമായും കോട്ലിനെ ആശ്രയിച്ചാണ് പ്രവർത്തിക്കുന്നത്.</string>
+    <string name="changelog_fixed_title">പരിഹരിച്ചു</string>
+
+    <string name="settings_sound_title">ശബ്ദ ഇഫക്റ്റുകൾ</string>
+    <string name="settings_sound_description">ശരിയായ ഉത്തരത്തിനുള്ള ശബ്ദം</string>
+
+    <string name="widget_description">ഗണിത വിജ്ഞ ആപ്പ് വേഗത്തിൽ തുറക്കുക</string>
+    <string name="widget_start_game">ഗെയിം</string>
+    <string name="widget_panikia">ഗുണനപ്പട്ടിക</string>
+    <string name="widget_numbers">സംഖ്യകൾ</string>
+    <string name="widget_drawing_pad">ഡ്രോയിംഗ്</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">പുതിയ അപ്ഡേറ്റ് ലഭ്യമാണ്</string>
+    <string name="update_dialog_message">ഒരു പുതിയ പതിപ്പ് (v%1$s) ലഭ്യമാണ്. നിങ്ങൾ ഉപയോഗിക്കുന്നത് v%2$s ആണ്.</string>
+    <string name="update_dialog_update_now">ഇപ്പോൾ അപ്ഡേറ്റ് ചെയ്യുക</string>
+    <string name="update_dialog_ignore_time">ഈ സമയം ഒഴിവാക്കുക</string>
+    <string name="update_dialog_ignore_version">ഈ പതിപ്പ് ഒഴിവാക്കുക</string>
+
+    <!-- New Visual Comparison Game -->
+    <string name="menu_visual_game">പഴങ്ങൾ താരതമ്യം ചെയ്യുക</string>
+    <string name="menu_visual_game_desc">ഏത് ഗ്രൂപ്പിലാണ് കൂടുതൽ?</string>
+    <string name="visual_game_title">പഴങ്ങൾ താരതമ്യം ചെയ്യുക</string>
+    <string name="visual_game_question_more">ഏത് ഗ്രൂപ്പിലാണ് കൂടുതൽ?</string>
+    <string name="visual_game_question_less">ഏത് ഗ്രൂപ്പിലാണ് കുറവ്?</string>
+
+    <!-- New Logic Puzzle Game -->
+    <string name="menu_logic_game">ലോജിക് പസിലുകൾ</string>
+    <string name="menu_logic_game_desc">ഒറ്റ, ഇരട്ട, പാറ്റേണുകൾ…</string>
+    <string name="logic_game_title">ലോജിക് പസിലുകൾ</string>
+    <string name="logic_game_question_odd">ഒറ്റ സംഖ്യ കണ്ടെത്തുക</string>
+    <string name="logic_game_question_even">ഇരട്ട സംഖ്യ കണ്ടെത്തുക</string>
+    <!-- Logic Game Progress and Game Over -->
+    <string name="game_over_title">ഗെയിം കഴിഞ്ഞു!</string>
+    <string name="game_over_score_message">നിങ്ങൾ %2$d-ൽ %1$d സ്കോർ ചെയ്തു.</string>
+    <string name="game_over_play_again">വീണ്ടും കളിക്കുക</string>
+    <string name="game_over_go_home">ഹോമിലേക്ക് പോകുക</string>
+    <!-- Logic Game Progress and Milestones -->
+    <string name="logic_game_progress">ചോദ്യം: %1$d</string>
+    <string name="milestone_title">അഭിനന്ദനങ്ങൾ!</string>
+    <string name="milestone_message">നിങ്ങൾ %1$d ചോദ്യങ്ങൾക്ക് ശരിയായി ഉത്തരം നൽകി! തുടരുക!</string>
+
+    <!-- Logic Game - Number Patterns -->
+    <string name="logic_game_question_pattern">പാറ്റേണിൽ അടുത്തത് എന്താണ്?</string>
+
+    <!-- Logic Game - Logic Riddles -->
+    <string name="logic_riddle_1">ഞാൻ %1$d-നും %2$d-നും ഇടയിലുള്ള ഒരു സംഖ്യയാണ്. ഞാൻ ഒരു ഒറ്റ സംഖ്യയാണ്. ഞാൻ ഏത് സംഖ്യയാകാം?</string>
+    <string name="logic_riddle_2">ഞാൻ %1$d-നും %2$d-നും ഇടയിലുള്ള ഒരു സംഖ്യയാണ്. ഞാൻ ഒരു ഇരട്ട സംഖ്യയാണ്. ഞാൻ ഏത് സംഖ്യയാകാം?</string>
+    <string name="logic_game_question_fill_blank">വിട്ടുപോയ സംഖ്യ പൂരിപ്പിക്കുക</string>
+    <string name="feedback_correct_n">ശരി!</string>
+    <string name="feedback_incorrect_n">വീണ്ടും ശ്രമിക്കുക! ഉത്തരം %1$s ആയിരുന്നു.</string>
+    <string name="visual_game_progress">ചോദ്യം: %1$d</string>
+
+    <!-- All Logic Game Question Types -->
+
+    <string name="logic_game_question_big_even">ഒരു വലിയ ഇരട്ട സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_small_odd">ഒരു ചെറിയ ഒറ്റ സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_big_odd">ഒരു വലിയ ഒറ്റ സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_small_even">ഒരു ചെറിയ ഇരട്ട സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+
+    <string name="logic_game_question_divisible_by_10">10 കൊണ്ട് ഹരിക്കാവുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_ends_in_5">5-ൽ അവസാനിക്കുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_ends_in_3">3-ൽ അവസാനിക്കുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+
+    <string name="logic_game_question_starts_with_5">5-ൽ തുടങ്ങുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_starts_1_ends_3">1-ൽ തുടങ്ങി 3-ൽ അവസാനിക്കുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_starts_with_9">9-ൽ തുടങ്ങുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_starts_with_3">3-ൽ തുടങ്ങുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+
+    <string name="logic_game_question_pick_largest">ഏറ്റവും വലിയ സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_pick_smallest">ഏറ്റവും ചെറിയ സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_starts_with_7">7-ൽ തുടങ്ങുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_ends_with_1">1-ൽ അവസാനിക്കുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_starts_8_ends_8">8-ൽ തുടങ്ങി 8-ൽ അവസാനിക്കുന്ന ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="logic_game_question_two_identical_digits">ഒരേപോലെയുള്ള രണ്ട് അക്കങ്ങളുള്ള ഒരു സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+
+    <!-- Keys for SAVING logic history to a file (Do NOT translate these) -->
+    <string name="logic_log_question_type_key" translatable="false">logic_question_type</string>
+    <string name="logic_log_options_key" translatable="false">options</string>
+    <string name="logic_log_selected_answer_key" translatable="false">selected_answer</string>
+    <string name="logic_log_correct_answer_key" translatable="false">correct_answer</string>
+    <string name="logic_log_result_key" translatable="false">result</string>
+
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">ചോദ്യത്തിന്റെ തരം:</string>
+    <string name="history_options">ഓപ്ഷനുകൾ: %1$s</string>
+    <string name="history_you_picked">നിങ്ങൾ തിരഞ്ഞെടുത്തത്: %1$s</string>
+    <string name="history_correct_choice">ശരിയായ തിരഞ്ഞെടുപ്പ്: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">നമസ്കാരം,</string>
+    <string name="home_greeting_morning">സുപ്രഭാതം</string>
+    <string name="home_greeting_afternoon">ശുഭദിനം</string>
+    <string name="home_greeting_evening">ശുഭസായാഹ്നം</string>
+    <string name="home_greeting_night">ശുഭരാത്രി</string>
+
+    <string name="home_category_games">ഗെയിമുകൾ</string>
+    <string name="home_category_learning">പഠനം</string>
+    <string name="home_category_score">നിങ്ങളുടെ പുരോഗതി</string>
+    <string name="home_category_utility">യൂട്ടിലിറ്റി</string>
+
+    <string name="home_popular_title">ജനപ്രിയം</string>
+    <string name="home_search_button_desc">തിരയുക</string>
+    <string name="home_menu_button_desc">മെനു</string>
+
+    <string name="games_category_title">ഗെയിമുകൾ</string>
+    <string name="learning_category_title">പഠനോപകരണങ്ങൾ</string>
+    <string name="home_search_placeholder">ഗെയിമുകൾ, ഉപകരണങ്ങൾ തുടങ്ങിയവയ്ക്കായി തിരയുക...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">രൂപഭാവം</string>
+    <string name="settings_dark_mode_title">ഡാർക്ക് മോഡ്</string>
+    <string name="settings_dark_mode_description">നിങ്ങൾക്ക് ഇഷ്ടപ്പെട്ട തീം തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_dark_mode_dialog_title">തീം തിരഞ്ഞെടുക്കുക</string>
+    <string name="dark_mode_option_light">ലൈറ്റ്</string>
+    <string name="dark_mode_option_dark">ഡാർക്ക്</string>
+    <string name="dark_mode_option_system">സിസ്റ്റം ഡിഫോൾട്ട്</string>
+
+    <string name="settings_reminders_enabled_title">ഓർമ്മപ്പെടുത്തലുകൾ പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="settings_reminders_enabled_description">ദിവസേനയുള്ള പരിശീലന അറിയിപ്പുകൾ സ്വീകരിക്കുക</string>
+
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">തീം</string>
+    <string name="settings_theme_description">നിങ്ങളുടെ ആപ്പ് തീം തിരഞ്ഞെടുക്കുക</string>
+    <string name="theme_dialog_title">തീം തിരഞ്ഞെടുക്കുക</string>
+    <string name="theme_option_light">ലൈറ്റ്</string>
+    <string name="theme_option_dark">ഡാർക്ക്</string>
+    <string name="theme_option_amoled">അമോലെഡ്</string>
+    <string name="theme_option_system">സിസ്റ്റം ഡിഫോൾട്ട്</string>
+    <string name="theme_option_custom">ഇഷ്ടമുള്ള നിറം</string>
+    <string name="custom_color_dialog_title">ഒരു ഇഷ്ടമുള്ള നിറം തിരഞ്ഞെടുക്കുക</string>
+    <string name="menu_multiplication_tables">ഗുണനപ്പട്ടിക</string>
+
+    <string name="menu_sudoku">സുഡോകു</string>
+    <string name="menu_sudoku_desc">ക്ലാസിക് നമ്പർ പസിൽ ഗെയിം</string>
+    <string name="congratulations">അഭിനന്ദനങ്ങൾ!</string>
+    <string name="puzzle_solved">നിങ്ങൾ പസിൽ പരിഹരിച്ചു.</string>
+    <string name="play_again">വീണ്ടും കളിക്കുക</string>
+    <string name="new_game">പുതിയ ഗെയിം</string>
+    <string name="erase">മായ്ക്കുക</string>
+    <string name="select_difficulty">കാഠിന്യം തിരഞ്ഞെടുക്കുക</string>
+    <string name="select_difficulty_prompt">ഒരു പുതിയ ഗെയിം ആരംഭിക്കാൻ കാഠിന്യം തിരഞ്ഞെടുക്കുക.</string>
+    <string name="undo">പഴയപടി ആക്കുക</string>
+    <string name="redo">വീണ്ടും ചെയ്യുക</string>
+    <string name="hint">സൂചന</string>
+
+
+
+</resources>
