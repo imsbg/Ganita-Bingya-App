@@ -1,5 +1,5 @@
 {
-  "logo_version": 32,
+  "logo_version": 33,
   "logo_url": "https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/logo.png",
   "splash_background": {
     "type": "gradient",
@@ -31,7 +31,8 @@
       "pa": "ਜੈ ਜਗਨਨਾਥ",
       "sa": "जय जगन्नाथ",
       "as": "জয় জগন্নাথ",
-      "ml": "ജയ് ജഗന്നാഥ്"
+      "ml": "ജയ് ജഗന്നാഥ്",
+      "ur": "جئے جگناتھ"
     },
     "splash_text_2": {
       "default": "ଗଣିତ ବିଜ୍ଞକୁ ସ୍ୱାଗତ",
@@ -42,7 +43,8 @@
       "gu": "ગણિત બિજ્ઞ માં આપનું સ્વાગત છે",
       "sa": "गणित बिज्ञ मध्ये स्वागतम्",
       "as": "গণিত বিজ্ঞলৈ স্বাগতম",
-      "ml": "ഗണിത് വിഗ്യയിലേക്ക് സ്വാഗതം"
+      "ml": "ഗണിത് വിഗ്യയിലേക്ക് സ്വാഗതം",
+      "ur": "گنیتا بنگیا میں خوش آمدید"
     },
     "splash_text_3": {
       "default": "",
@@ -53,7 +55,8 @@
       "gu": "",
       "sa": "",
       "as": "",
-      "ml": ""
+      "ml": "",
+      "ur": ""
     }
   }
 }
