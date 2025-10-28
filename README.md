@@ -40,64 +40,19 @@
 <table align="center">
   <tr>
     <td align="center">
-      <img src="/images/1.jpg" alt="ଗେମ୍ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="/images/eng/home.png" alt="ହୋମ୍ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b>ଗେମ୍ ସ୍କ୍ରିନ୍</b></sub>
-    </td>
-    <td align="center">
-      <img src="/images/2.jpg" alt="ସମାଧାନ" width="200"/>
-      <br />
-      <sub><b>ସମାଧାନ</b></sub>
-    </td>
-    <td align="center">
-      <img src="/images/3.jpg" alt="ପ୍ରଶ୍ନ ଇତିହାସ" width="200"/>
-      <br />
-      <sub><b>ପ୍ରଶ୍ନ ଇତିହାସ</b></sub>
+      <sub><b>ହୋମ୍ ସ୍କ୍ରିନ୍</b></sub>
     </td>
         <td align="center">
-      <img src="/images/4.jpg" alt="" width="200"/>
+      <img src="/images/eng/game.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b></b></sub>
+      <sub><b>ଗେମ ସ୍କ୍ରିନ୍</b></sub>
     </td>
-        <td align="center">
-      <img src="/images/5.jpg" alt="" width="200"/>
+          <td align="center">
+      <img src="/images/eng/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/6.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/7.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/8.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/9.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/10.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/11.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/0.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
+      <sub><b>ଶିକ୍ଷା ସ୍କ୍ରିନ୍</b></sub>
     </td>
   </tr>
 </table>
@@ -183,65 +138,20 @@ You can download the latest version of the app from the **[Releases](https://git
 
 <table align="center">
   <tr>
-    <td align="center">
-      <img src="/images/1.jpg" alt="Game Screen" width="200"/>
+       <td align="center">
+      <img src="/images/eng/home.png" alt="Home ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b>Game Screen</b></sub>
-    </td>
-    <td align="center">
-      <img src="/images/2.jpg" alt="Solution" width="200"/>
-      <br />
-      <sub><b>Solution</b></sub>
-    </td>
-    <td align="center">
-      <img src="/images/3.jpg" alt="Question History" width="200"/>
-      <br />
-      <sub><b>Question History</b></sub>
-    </td>
-     <td align="center">
-      <img src="/images/4.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
+      <sub><b>Home screen</b></sub>
     </td>
         <td align="center">
-      <img src="/images/5.jpg" alt="" width="200"/>
+      <img src="/images/eng/game.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b></b></sub>
+      <sub><b>Games page</b></sub>
     </td>
-        <td align="center">
-      <img src="/images/6.jpg" alt="" width="200"/>
+          <td align="center">
+      <img src="/images/eng/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/7.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/8.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/9.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/10.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/11.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
-    </td>
-        <td align="center">
-      <img src="/images/0.jpg" alt="" width="200"/>
-      <br />
-      <sub><b></b></sub>
+      <sub><b>Learning tools</b></sub>
     </td>
   </tr>
 </table>
