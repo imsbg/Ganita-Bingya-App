@@ -1,5 +1,4 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/HistoryScreen.kt
-// PASTE THIS ENTIRE, CORRECTED CODE INTO YOUR FILE
 
 package com.sandeep.ganitabigyan
 
@@ -26,10 +25,12 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+// A sealed interface is a modern way to handle different types of related data.
 sealed interface HistoryEntry {
     val date: Date
 }
 
+// Data class for the simple Math Game history
 data class MathHistoryEntry(
     val question: String,
     val userAnswer: String,
@@ -38,9 +39,19 @@ data class MathHistoryEntry(
     override val date: Date
 ) : HistoryEntry
 
-// <<< CHANGE 1: The data class now stores the Resource ID (an Int) instead of a String >>>
+// Data class for the Logic Game history
 data class LogicHistoryEntry(
     val questionTypeResId: Int,
+    val options: List<String>,
+    val selectedAnswer: String,
+    val correctAnswer: String,
+    val result: String,
+    override val date: Date
+) : HistoryEntry
+
+// Data class for the new Find the Missing Number Game history
+data class FtmHistoryEntry(
+    val sequence: List<String>,
     val options: List<String>,
     val selectedAnswer: String,
     val correctAnswer: String,
@@ -55,10 +66,13 @@ fun HistoryContent() {
     val context = LocalContext.current
     var historyList by remember { mutableStateOf<List<HistoryEntry>>(emptyList()) }
 
+    // This effect now reads from all three history files
     LaunchedEffect(Unit) {
         val mathHistory = parseMathHistory(context)
         val logicHistory = parseLogicHistory(context)
-        historyList = (mathHistory + logicHistory).sortedByDescending { it.date }
+        val ftmnHistory = parseFtmHistory(context)
+        // Combine all lists and sort by date
+        historyList = (mathHistory + logicHistory + ftmnHistory).sortedByDescending { it.date }
     }
 
     val groupedHistory = historyList.groupBy {
@@ -90,9 +104,11 @@ fun HistoryContent() {
                 }
 
                 items(items) { item ->
+                    // A 'when' statement intelligently chooses the correct card for each history type
                     when (item) {
                         is MathHistoryEntry -> MathHistoryCard(item = item)
                         is LogicHistoryEntry -> LogicHistoryCard(item = item)
+                        is FtmHistoryEntry -> FtmHistoryCard(item = item)
                     }
                 }
             }
@@ -100,6 +116,7 @@ fun HistoryContent() {
     }
 }
 
+// This is your original card for the Math Game, it's perfect.
 @Composable
 private fun MathHistoryCard(item: MathHistoryEntry) {
     val context = LocalContext.current
@@ -110,7 +127,6 @@ private fun MathHistoryCard(item: MathHistoryEntry) {
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(Modifier.padding(16.dp)) {
@@ -131,6 +147,7 @@ private fun MathHistoryCard(item: MathHistoryEntry) {
     }
 }
 
+// This is the new card for the Logic Game, matching your screenshot
 @Composable
 private fun LogicHistoryCard(item: LogicHistoryEntry) {
     val context = LocalContext.current
@@ -140,7 +157,6 @@ private fun LogicHistoryCard(item: LogicHistoryEntry) {
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -149,8 +165,6 @@ private fun LogicHistoryCard(item: LogicHistoryEntry) {
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
-            // <<< CHANGE 3: We now use stringResource() to get the correct translation >>>
-            // If the ResId is 0 (not found), we show an empty text to avoid crashes.
             Text(
                 text = if (item.questionTypeResId != 0) stringResource(id = item.questionTypeResId) else "",
                 style = MaterialTheme.typography.titleLarge
@@ -166,7 +180,7 @@ private fun LogicHistoryCard(item: LogicHistoryEntry) {
                 text = stringResource(R.string.history_you_picked, item.selectedAnswer.toLocaleNumerals(context)),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Bold,
-                color = resultColor
+                color = if (resultIsCorrect) Color(0xFF4CAF50) else Color(0xFFF44336)
             )
 
             if (!resultIsCorrect) {
@@ -181,12 +195,41 @@ private fun LogicHistoryCard(item: LogicHistoryEntry) {
     }
 }
 
+// This is the new card for the "Find the Missing Number" game
+@Composable
+private fun FtmHistoryCard(item: FtmHistoryEntry) {
+    val context = LocalContext.current
+    val correctResultId = stringResource(R.string.qna_log_result_correct_id)
+    val resultIsCorrect = item.result == correctResultId
+    val resultColor = if (resultIsCorrect) Color(0xFF4CAF50) else Color(0xFFF44336)
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(text = stringResource(R.string.history_ftmn_sequence), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f))
+            val sequenceText = item.sequence.joinToString(" , ") {
+                if (it == "null") "__" else it.toLocaleNumerals(context)
+            }
+            Text(text = sequenceText, style = MaterialTheme.typography.titleLarge)
+            Spacer(Modifier.height(8.dp))
+            Text(text = stringResource(R.string.history_options, item.options.joinToString { it.toLocaleNumerals(context) }), style = MaterialTheme.typography.bodyMedium)
+            Spacer(Modifier.height(4.dp))
+            Text(text = stringResource(R.string.history_you_picked, item.selectedAnswer.toLocaleNumerals(context)), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold, color = resultColor)
+            if (!resultIsCorrect) {
+                Text(text = stringResource(R.string.history_correct_choice, item.correctAnswer.toLocaleNumerals(context)), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold, color = Color(0xFF4CAF50))
+            }
+        }
+    }
+}
+
+
+// This is the parser for the Math Game file (qna.gba)
 private fun parseMathHistory(context: Context): List<MathHistoryEntry> {
     val items = mutableListOf<MathHistoryEntry>()
     try {
-        val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
-        val ganitaBigyanDir = File(documentsDir, "GanitaBigyan")
-        val file = File(ganitaBigyanDir, "qna.gba")
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "GanitaBigyan/qna.gba")
         if (!file.exists()) return emptyList()
         val keyQuestion = context.getString(R.string.qna_log_question_key) + ": "
         val keyYourAnswer = context.getString(R.string.qna_log_your_answer_key) + ": "
@@ -210,12 +253,11 @@ private fun parseMathHistory(context: Context): List<MathHistoryEntry> {
     return items
 }
 
+// This is the new parser for the Logic Game file (logic_history.gba)
 private fun parseLogicHistory(context: Context): List<LogicHistoryEntry> {
     val items = mutableListOf<LogicHistoryEntry>()
     try {
-        val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
-        val ganitaBigyanDir = File(documentsDir, "GanitaBigyan")
-        val file = File(ganitaBigyanDir, "logic_history.gba")
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "GanitaBigyan/logic_history.gba")
         if (!file.exists()) return emptyList()
         val keyQuestionType = context.getString(R.string.logic_log_question_type_key) + ": "
         val keyOptions = context.getString(R.string.logic_log_options_key) + ": "
@@ -228,16 +270,43 @@ private fun parseLogicHistory(context: Context): List<LogicHistoryEntry> {
             if (i + 5 < lines.size) {
                 try {
                     val date = dateFormat.parse(lines[i].trim().removeSurrounding("[", "]")) ?: Date()
-
-                    // <<< CHANGE 2: Read the resource NAME from the file and convert it to an ID >>>
                     val questionTypeName = lines[i + 1].substringAfter(keyQuestionType)
                     val questionTypeResId = context.resources.getIdentifier(questionTypeName, "string", context.packageName)
-
                     val options = lines[i + 2].substringAfter(keyOptions).split(',')
                     val selected = lines[i + 3].substringAfter(keySelected)
                     val correct = lines[i + 4].substringAfter(keyCorrect)
                     val result = lines[i + 5].substringAfter(keyResult)
                     items.add(LogicHistoryEntry(questionTypeResId, options, selected, correct, result, date))
+                } catch (e: Exception) { /* Skip malformed entries */ }
+            }
+        }
+    } catch (e: Exception) { e.printStackTrace() }
+    return items
+}
+
+// This is the new parser for the "Find the Missing Number" file (ftmn_history.gba)
+private fun parseFtmHistory(context: Context): List<FtmHistoryEntry> {
+    val items = mutableListOf<FtmHistoryEntry>()
+    try {
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "GanitaBigyan/ftmn_history.gba")
+        if (!file.exists()) return emptyList()
+        val keySequence = context.getString(R.string.ftmn_log_sequence_key) + ": "
+        val keyOptions = context.getString(R.string.logic_log_options_key) + ": "
+        val keySelected = context.getString(R.string.logic_log_selected_answer_key) + ": "
+        val keyCorrect = context.getString(R.string.logic_log_correct_answer_key) + ": "
+        val keyResult = context.getString(R.string.logic_log_result_key) + ": "
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+        val lines = file.readLines().filter { it.isNotBlank() }
+        for (i in lines.indices step 6) {
+            if (i + 5 < lines.size) {
+                try {
+                    val date = dateFormat.parse(lines[i].trim().removeSurrounding("[", "]")) ?: Date()
+                    val sequence = lines[i + 1].substringAfter(keySequence).split(',')
+                    val options = lines[i + 2].substringAfter(keyOptions).split(',')
+                    val selected = lines[i + 3].substringAfter(keySelected)
+                    val correct = lines[i + 4].substringAfter(keyCorrect)
+                    val result = lines[i + 5].substringAfter(keyResult)
+                    items.add(FtmHistoryEntry(sequence, options, selected, correct, result, date))
                 } catch (e: Exception) { /* Skip malformed entries */ }
             }
         }

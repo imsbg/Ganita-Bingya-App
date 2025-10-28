@@ -27,76 +27,52 @@ fun ScoreContent() {
         val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
         val ganitaBigyanDir = File(documentsDir, "GanitaBigyan")
 
-        // --- Read Math Game Score ---
-        try {
-            val mathScoreFile = File(ganitaBigyanDir, "lifetime_score.gba")
-            if (mathScoreFile.exists()) {
-                val parts = mathScoreFile.readText().split(",")
-                if (parts.size == 2) {
-                    totalCorrect += parts[0].toIntOrNull() ?: 0
-                    totalIncorrect += parts[1].toIntOrNull() ?: 0
+        // Helper function to read a score file
+        fun readScoreFile(fileName: String): Pair<Int, Int> {
+            try {
+                val file = File(ganitaBigyanDir, fileName)
+                if (file.exists()) {
+                    val parts = file.readText().split(",")
+                    if (parts.size == 2) {
+                        return Pair(parts[0].toIntOrNull() ?: 0, parts[1].toIntOrNull() ?: 0)
+                    }
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+            return Pair(0, 0)
         }
 
-        // --- Read Logic Game Score ---
-        try {
-            val logicScoreFile = File(ganitaBigyanDir, "logic_lifetime_score.gba")
-            if (logicScoreFile.exists()) {
-                val parts = logicScoreFile.readText().split(",")
-                if (parts.size == 2) {
-                    totalCorrect += parts[0].toIntOrNull() ?: 0
-                    totalIncorrect += parts[1].toIntOrNull() ?: 0
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        val mathScore = readScoreFile("lifetime_score.gba")
+        val logicScore = readScoreFile("logic_lifetime_score.gba")
+        // <<< NEW: READ FTMN SCORE >>>
+        val ftmnScore = readScoreFile("ftmn_lifetime_score.gba")
 
-        // Update the UI with the combined total
+        totalCorrect = mathScore.first + logicScore.first + ftmnScore.first
+        totalIncorrect = mathScore.second + logicScore.second + ftmnScore.second
+
         totalLifetimeScore = Pair(totalCorrect, totalIncorrect)
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+        modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = stringResource(R.string.score_total_results),
-            style = MaterialTheme.typography.displaySmall
-        )
+        Text(text = stringResource(R.string.score_total_results), style = MaterialTheme.typography.displaySmall)
         Spacer(Modifier.height(32.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            ScoreCard(
-                label = stringResource(R.string.score_correct),
-                score = totalLifetimeScore.first // Show total correct
-            )
-            ScoreCard(
-                label = stringResource(R.string.score_incorrect),
-                score = totalLifetimeScore.second // Show total incorrect
-            )
+            ScoreCard(label = stringResource(R.string.score_correct), score = totalLifetimeScore.first)
+            ScoreCard(label = stringResource(R.string.score_incorrect), score = totalLifetimeScore.second)
         }
-        // NOTE: The Share Score button will now share the combined total score.
-        // No changes were needed for its code, as it captures the screen as-is.
     }
 }
 
 @Composable
 fun ScoreCard(label: String, score: Int) {
     val context = LocalContext.current
-    Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = RoundedCornerShape(16.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(32.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+    Card(elevation = CardDefaults.cardElevation(defaultElevation = 4.dp), shape = RoundedCornerShape(16.dp)) {
+        Column(modifier = Modifier.padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(label, style = MaterialTheme.typography.titleLarge)
             Text(score.toLocaleNumerals(context), style = MaterialTheme.typography.displayMedium)
         }

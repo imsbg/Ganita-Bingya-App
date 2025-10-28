@@ -268,6 +268,7 @@
     <string name="language_punjabi">ਪੰਜਾਬੀ</string>
     <string name="language_assamese">অসমীয়া</string>
     <string name="language_malayalam">മലയാളം</string>
+    <string name="language_urdu">اُردُو </string>
     <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">ଭାଷା</string>
     <string name="settings_language_desc">ଆପ୍ ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
@@ -574,5 +575,37 @@
     <string name="undo">ପୂର୍ବବତ୍ କରନ୍ତୁ</string>
     <string name="redo">ପୁନର୍ବାର କରନ୍ତୁ</string>
     <string name="hint">ସଙ୍କେତ</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">ହଜିଲା ସଂଖ୍ୟା</string>
+    <string name="menu_ftmn_game_desc">କ୍ରମରେ ପରବର୍ତ୍ତୀ ସଂଖ୍ୟାଟି ଖୋଜନ୍ତୁ</string>
+    <string name="ftmn_title">ହଜିଲା ସଂଖ୍ୟା ଖୋଜନ୍ତୁ</string>
+    <string name="ftmn_score">ସ୍କୋର</string>
+    <string name="ftmn_select_answer">ଠିକ୍ ସଂଖ୍ୟାଟି ବାଛନ୍ତୁ</string>
+    <string name="ftmn_check_button">ଯାଞ୍ଚ କରନ୍ତୁ</string>
+    <string name="ftmn_next_button">ପରବର୍ତ୍ତୀ ପ୍ରଶ୍ନ</string>
+    <string name="ftmn_feedback_correct">ସଠିକ୍!</string>
+    <string name="ftmn_feedback_incorrect">ଭୁଲ୍ । ଠିକ୍ ଉତ୍ତର ହେଲା %1$s</string>
+    <string name="ftmn_correct">ଠିକ୍</string>
+    <string name="ftmn_wrong">ଭୁଲ୍</string>
+    <string name="ftmn_show_solution">ସମାଧାନ ଦେଖାନ୍ତୁ</string>
+    <string name="ftmn_solution_title">ବ୍ୟାଖ୍ୟା:</string>
+    <string name="ftmn_solution_add">ଏହା ଏକ ସମାନ୍ତର ପ୍ରଗତି । ଏଠାରେ ପ୍ରତି ସଂଖ୍ୟାରେ %1$s ଯୋଗ କରାଯାଇଛି ।</string>
+    <string name="ftmn_solution_subtract">ଏହା ଏକ ସମାନ୍ତର ପ୍ରଗତି । ଏଠାରେ ପ୍ରତି ସଂଖ୍ୟାରୁ %1$s ବିୟୋଗ କରାଯାଇଛି ।</string>
+    <string name="ftmn_solution_multiply">ଏହା ଏକ ଗୁଣୋତ୍ତର ପ୍ରଗତି । ଏଠାରେ ପ୍ରତି ସଂଖ୍ୟାରେ %1$s ଗୁଣନ କରାଯାଇଛି ।</string>
+    <string name="ftmn_solution_divide">ଏହା ଏକ ଗୁଣୋତ୍ତର ପ୍ରଗତି । ଏଠାରେ ପ୍ରତି ସଂଖ୍ୟାକୁ %1$s ଦ୍ୱାରା ହରଣ କରାଯାଇଛି ।</string>
+    <string name="ftmn_solution_increasing_diff">ଏହି କ୍ରମରେ, ସଂଖ୍ୟାଗୁଡ଼ିକ ମଧ୍ୟରେ ପାର୍ଥକ୍ୟ ପ୍ରତିଥର 1 ଲେଖାଏଁ ବଢ଼ିଥାଏ (+1, +2, +3…)।</string>
+    <string name="ftmn_solution_fibonacci">ଏହା ଏକ ଫିବୋନାଚି ଶୈଳୀର କ୍ରମ । ଏଠାରେ ପ୍ରତି ସଂଖ୍ୟା ତା’ର ପୂର୍ବବର୍ତ୍ତୀ ଦୁଇଟି ସଂଖ୍ୟାର ଯୋଗଫଳ ଅଟେ ।</string>
+    <string name="ftmn_hide_solution">ସମାଧାନ ଲୁଚାନ୍ତୁ</string>
+    <string name="game_over_message">ଆପଣ %2$s ମଧ୍ୟରୁ %1$s ସ୍କୋର କରିଛନ୍ତି!</string>
+    <string name="game_over_ok_button">ଠିକ୍ ଅଛି</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">କ୍ରମ:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">କ୍ରମ</string>
+    <!-- App Footer Text -->
+    <string name="home_footer_text">With love,\nfrom ସନ୍ଦୀପ୍</string>
 
 </resources>

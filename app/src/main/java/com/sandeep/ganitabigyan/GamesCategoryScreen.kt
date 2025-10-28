@@ -1,4 +1,4 @@
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/GamesCategoryScreen.kt
 
 package com.sandeep.ganitabigyan
 
@@ -11,23 +11,20 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Apps // <<< NEW IMPORT FOR 2048 ICON
-import androidx.compose.material.icons.filled.Compare
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Psychology
-import androidx.compose.material.icons.filled.ViewModule
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 private data class GameItem(
@@ -42,7 +39,8 @@ private data class GameItem(
 @Composable
 fun GamesCategoryScreen(navController: NavController) {
     val gameItems = listOf(
-        // <<< 2048 GAME CARD ADDED >>>
+        // <<< NEW GAME ITEM ADDED HERE >>>
+        GameItem(R.string.menu_ftmn_game, R.string.menu_ftmn_game_desc, AppDestinations.FTMN_GAME_ROUTE, listOf(Color(0xFF4DB6AC), Color(0xFF009688)), Icons.Default.HelpOutline),
         GameItem(R.string.menu_start_game, R.string.menu_start_game_desc, AppDestinations.GAME_ROUTE, listOf(Color(0xFFFFB74D), Color(0xFFFF9800)), Icons.Default.PlayArrow),
         GameItem(R.string.menu_logic_game, R.string.menu_logic_game_desc, AppDestinations.LOGIC_GAME_ROUTE, listOf(Color(0xFF7986CB), Color(0xFF3F51B5)), Icons.Default.Psychology),
         GameItem(R.string.menu_sudoku, R.string.menu_sudoku_desc, AppDestinations.SUDOKU_ROUTE, listOf(Color(0xFFBA68C8), Color(0xFF9C27B0)), Icons.Default.ViewModule),
@@ -93,9 +91,17 @@ private fun GameItemCard(item: GameItem, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(stringResource(id = item.titleResId), style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
-                Text(stringResource(id = item.subtitleResId), style = MaterialTheme.typography.bodyLarge, color = Color.White.copy(alpha = 0.8f))
+            Column(modifier = Modifier.weight(1f).padding(end = 16.dp)) {
+                AutoResizeText(
+                    text = stringResource(id = item.titleResId),
+                    color = Color.White,
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                )
+                AutoResizeText(
+                    text = stringResource(id = item.subtitleResId),
+                    color = Color.White.copy(alpha = 0.8f),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
             }
             Box(
                 modifier = Modifier.size(70.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.2f)),
@@ -105,4 +111,38 @@ private fun GameItemCard(item: GameItem, onClick: () -> Unit) {
             }
         }
     }
+}
+
+
+@Composable
+fun AutoResizeText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = Color.Unspecified,
+    style: TextStyle = LocalTextStyle.current,
+) {
+    var scaledTextStyle by remember { mutableStateOf(style) }
+    var readyToDraw by remember { mutableStateOf(false) }
+
+    Text(
+        text = text,
+        color = color,
+        modifier = modifier.drawWithContent {
+            if (readyToDraw) {
+                drawContent()
+            }
+        },
+        onTextLayout = { textLayoutResult ->
+            if (textLayoutResult.hasVisualOverflow) {
+                scaledTextStyle = scaledTextStyle.copy(
+                    fontSize = scaledTextStyle.fontSize * 0.95
+                )
+            } else {
+                readyToDraw = true
+            }
+        },
+        style = scaledTextStyle,
+        softWrap = false,
+        maxLines = 1
+    )
 }

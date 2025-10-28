@@ -516,6 +516,32 @@
     <string name="redo">पुनः करोतु</string>
     <string name="hint">सङ्केतः</string>
 
-
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">लुप्तसंख्या</string>
+    <string name="menu_ftmn_game_desc">अनुक्रमे आगामि संख्यां अन्विष्यतु</string>
+    <string name="ftmn_title">लुप्तां संख्याम् अन्विष्यतु</string>
+    <string name="ftmn_score">प्राप्ताङ्काः</string>
+    <string name="ftmn_select_answer">समीचीनां संख्यां चिनोतु</string>
+    <string name="ftmn_check_button">परीक्ष्यताम्</string>
+    <string name="ftmn_next_button">अग्रिमः प्रश्नः</string>
+    <string name="ftmn_feedback_correct">समीचीनम्!</string>
+    <string name="ftmn_feedback_incorrect">असमीचीनम्। उत्तरं %1$s आसीत्।</string>
+    <string name="ftmn_correct">समीचीनम्</string>
+    <string name="ftmn_wrong">असमीचीनम्</string>
+    <string name="ftmn_show_solution">समाधानं दर्शयतु</string>
+    <string name="ftmn_solution_title">व्याख्या:</string>
+    <string name="ftmn_solution_add">एषा समानान्तरश्रेणी अस्ति। प्रतिसंख्यायां %1$s योजनीयः।</string>
+    <string name="ftmn_solution_subtract">एषा समानान्तरश्रेणी अस्ति। प्रतिसंख्यातः %1$s व्यवकलनीयः।</string>
+    <string name="ftmn_solution_multiply">एषा गुणोत्तरश्रेणी अस्ति। प्रतिसंख्या %1$s इत्यनेन गुणनीया।</string>
+    <string name="ftmn_solution_divide">एषा गुणोत्तरश्रेणी अस्ति। प्रतिसंख्या %1$s इत्यनेन भाजनीया।</string>
+    <string name="ftmn_solution_increasing_diff">अस्यां श्रेण्यां, संख्यानाम् अन्तरं प्रतिपदम् एकेन वर्धते (+१, +२, +३…)।</string>
+    <string name="ftmn_solution_fibonacci">एषा फिबोनाची-सदृशी श्रेणी अस्ति। अत्र प्रतिसंख्या पूर्वयोः द्वयोः संख्ययोः योगः भवति।</string>
+    <string name="ftmn_hide_solution">समाधानं गोपयतु</string>
+    <string name="game_over_message">भवता %2$s मध्ये %1$s अङ्काः प्राप्ताः!</string>
+    <string name="game_over_ok_button">अस्तु</string>
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">श्रेणी:</string>
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">श्रेणी</string>
 
 </resources>

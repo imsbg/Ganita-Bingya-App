@@ -257,15 +257,16 @@
 
     <!-- Language Names -->
     <string name="language_system_default">സിസ്റ്റം ഡിഫോൾട്ട്</string>
-    <string name="language_odia">ഒഡിയ</string>
-    <string name="language_english">ഇംഗ്ലീഷ്</string>
-    <string name="language_sanskrit">സംസ്കൃതം</string>
-    <string name="language_telugu">തെലുങ്ക്</string>
-    <string name="language_bengali">ബംഗാളി</string>
-    <string name="language_gujarati">ഗുജറാത്തി</string>
-    <string name="language_punjabi">പഞ്ചാബി</string>
-    <string name="language_hindi">ഹിന്ദി</string>
-    <string name="language_tamil">തമിഴ്</string>
+    <string name="language_odia">ଓଡ଼ିଆ</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_assamese">অসমীয়া</string>
+    <string name="language_malayalam">മലയാളം</string>
     <string name="settings_language_title">ഭാഷ</string>
     <string name="settings_language_desc">ആപ്പിന്റെ ഭാഷ മാറ്റുക</string>
 
@@ -532,6 +533,35 @@
     <string name="redo">വീണ്ടും ചെയ്യുക</string>
     <string name="hint">സൂചന</string>
 
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">വിട്ടുപോയ സംഖ്യ</string>
+    <string name="menu_ftmn_game_desc">ശ്രേണിയിലെ അടുത്ത സംഖ്യ കണ്ടെത്തുക</string>
+    <string name="ftmn_title">വിട്ടുപോയ സംഖ്യ കണ്ടെത്തുക</string>
+    <string name="ftmn_score">സ്കോർ</string>
+    <string name="ftmn_select_answer">ശരിയായ സംഖ്യ തിരഞ്ഞെടുക്കുക</string>
+    <string name="ftmn_check_button">പരിശോധിക്കുക</string>
+    <string name="ftmn_next_button">അടുത്ത ചോദ്യം</string>
+    <string name="ftmn_feedback_correct">ശരിയാണ്!</string>
+    <string name="ftmn_feedback_incorrect">തെറ്റാണ്. ഉത്തരം %1$s ആയിരുന്നു</string>
+    <string name="ftmn_correct">ശരി</string>
+    <string name="ftmn_wrong">തെറ്റ്</string>
+    <string name="ftmn_show_solution">ഉത്തരം കാണിക്കുക</string>
+    <string name="ftmn_solution_title">വിശദീകരണം:</string>
+    <string name="ftmn_solution_add">ഇതൊരു സമാന്തര ശ്രേണിയാണ്. ഓരോ സംഖ്യയോടും %1$s കൂട്ടുന്നു.</string>
+    <string name="ftmn_solution_subtract">ഇതൊരു സമാന്തര ശ്രേണിയാണ്. ഓരോ സംഖ്യയിൽ നിന്നും %1$s കുറയ്ക്കുന്നു.</string>
+    <string name="ftmn_solution_multiply">ഇതൊരു ഗുണോത്തര ശ്രേണിയാണ്. ഓരോ സംഖ്യയേയും %1$s കൊണ്ട് ഗുണിക്കുന്നു.</string>
+    <string name="ftmn_solution_divide">ഇതൊരു ഗുണോത്തര ശ്രേണിയാണ്. ഓരോ സംഖ്യയേയും %1$s കൊണ്ട് ഹരിക്കുന്നു.</string>
+    <string name="ftmn_solution_increasing_diff">ഈ ശ്രേണിയിൽ, സംഖ്യകൾ തമ്മിലുള്ള വ്യത്യാസം ഓരോ തവണയും 1 വീതം വർദ്ധിക്കുന്നു (+1, +2, +3…).</string>
+    <string name="ftmn_solution_fibonacci">ഇതൊരു ഫിബൊനാച്ചി (Fibonacci) രീതിയിലുള്ള ശ്രേണിയാണ്. ഓരോ സംഖ്യയും അതിന് മുൻപുള്ള രണ്ട് സംഖ്യകളുടെ തുകയാണ്.</string>
+    <string name="ftmn_hide_solution">ഉത്തരം മറയ്ക്കുക</string>
+    <string name="game_over_message">നിങ്ങൾ %2$s-ൽ %1$s സ്കോർ നേടി!</string>
+    <string name="game_over_ok_button">ശരി</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">ശ്രേണി:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">ശ്രേണി</string>
 
 
 </resources>

@@ -515,4 +515,34 @@
     <string name="undo">पूर्ववत् करें</string>
     <string name="redo">फिर से करें</string>
     <string name="hint">संकेत</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">लुप्त संख्या</string>
+    <string name="menu_ftmn_game_desc">श्रृंखला में अगला खोजें</string>
+    <string name="ftmn_title">लुप्त संख्या खोजें</string>
+    <string name="ftmn_score">स्कोर</string>
+    <string name="ftmn_select_answer">सही संख्या चुनें</string>
+    <string name="ftmn_check_button">जाँच करें</string>
+    <string name="ftmn_next_button">अगला प्रश्न</string>
+    <string name="ftmn_feedback_correct">सही!</string>
+    <string name="ftmn_feedback_incorrect">गलत। जवाब %1$s था</string>
+    <string name="ftmn_correct">सही</string>
+    <string name="ftmn_wrong">गलत</string>
+    <string name="ftmn_show_solution">हल दिखाएँ</string>
+    <string name="ftmn_solution_title">व्याख्या:</string>
+    <string name="ftmn_solution_add">यह एक समांतर श्रेणी है। हर संख्या में %1$s जोड़ा जाता है।</string>
+    <string name="ftmn_solution_subtract">यह एक समांतर श्रेणी है। हर संख्या से %1$s घटाया जाता है।</string>
+    <string name="ftmn_solution_multiply">यह एक गुणोत्तर श्रेणी है। हर संख्या को %1$s से गुणा किया जाता है।</string>
+    <string name="ftmn_solution_divide">यह एक गुणोत्तर श्रेणी है। हर संख्या को %1$s से विभाजित किया जाता है।</string>
+    <string name="ftmn_solution_increasing_diff">इस श्रृंखला में, संख्याओं के बीच का अंतर हर बार 1 बढ़ता है (+1, +2, +3…)।</string>
+    <string name="ftmn_solution_fibonacci">यह एक फाइबोनैचि (Fibonacci) जैसी श्रृंखला है। प्रत्येक संख्या पिछली दो संख्याओं का योग है।</string>
+    <string name="ftmn_hide_solution">हल छिपाएँ</string>
+    <string name="game_over_message">आपने %2$s में से %1$s स्कोर किया!</string>
+    <string name="game_over_ok_button">ठीक है</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">श्रृंखला:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">श्रृंखला</string>
 </resources>

@@ -516,4 +516,34 @@
     <string name="redo">ફરીથી કરો</string>
     <string name="hint">સંકેત</string>
 
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">ખૂટતી સંખ્યા</string>
+    <string name="menu_ftmn_game_desc">ક્રમમાં આગલી સંખ્યા શોધો</string>
+    <string name="ftmn_title">ખૂટતી સંખ્યા શોધો</string>
+    <string name="ftmn_score">સ્કોર</string>
+    <string name="ftmn_select_answer">સાચી સંખ્યા પસંદ કરો</string>
+    <string name="ftmn_check_button">તપાસો</string>
+    <string name="ftmn_next_button">આગલો પ્રશ્ન</string>
+    <string name="ftmn_feedback_correct">સાચું!</string>
+    <string name="ftmn_feedback_incorrect">ખોટું. જવાબ %1$s હતો</string>
+    <string name="ftmn_correct">સાચું</string>
+    <string name="ftmn_wrong">ખોટું</string>
+    <string name="ftmn_show_solution">ઉકેલ બતાવો</string>
+    <string name="ftmn_solution_title">સમજૂતી:</string>
+    <string name="ftmn_solution_add">આ એક સમાંતર શ્રેણી છે. દરેક સંખ્યામાં %1$s ઉમેરવામાં આવે છે.</string>
+    <string name="ftmn_solution_subtract">આ એક સમાંતર શ્રેણી છે. દરેક સંખ્યામાંથી %1$s બાદ કરવામાં આવે છે.</string>
+    <string name="ftmn_solution_multiply">આ એક ગુણોત્તર શ્રેણી છે. દરેક સંખ્યાને %1$s વડે ગુણવામાં આવે છે.</string>
+    <string name="ftmn_solution_divide">આ એક ગુણોત્તર શ્રેણી છે. દરેક સંખ્યાને %1$s વડે ભાગવામાં આવે છે.</string>
+    <string name="ftmn_solution_increasing_diff">આ શ્રેણીમાં, સંખ્યાઓ વચ્ચેનો તફાવત દર વખતે 1 વધે છે (+1, +2, +3…).</string>
+    <string name="ftmn_solution_fibonacci">આ એક ફિબોનાકી (Fibonacci) જેવી શ્રેણી છે. દરેક સંખ્યા તેની આગળની બે સંખ્યાઓનો સરવાળો છે.</string>
+    <string name="ftmn_hide_solution">ઉકેલ શોધો</string>
+    <string name="game_over_message">તમે %2$s માંથી %1$s સ્કોર કર્યો!</string>
+    <string name="game_over_ok_button">ઠીક છે</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">શ્રેણી:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">શ્રેણી</string>
+
 </resources>

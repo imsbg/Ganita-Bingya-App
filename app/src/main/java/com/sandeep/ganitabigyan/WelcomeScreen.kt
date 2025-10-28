@@ -50,7 +50,8 @@ fun WelcomeScreen(
             "bn" to R.string.language_bengali,
             "gu" to R.string.language_gujarati,
             "as" to R.string.language_assamese,
-            "ml" to R.string.language_malayalam
+            "ml" to R.string.language_malayalam,
+            "ur" to R.string.language_urdu
         ).map { (code, nameResId) ->
             // <<< THIS IS THE ONLY CHANGE NEEDED TO FIX THE BUG >>>
             // Create a completely new Configuration object for each language.

@@ -265,7 +265,6 @@
     <string name="language_gujarati">ગુજરાતી</string>
     <string name="language_punjabi">ਪੰਜਾਬੀ</string>
     <string name="language_hindi">हिन्दी</string>
-    <string name="language_tamil">தமிழ்</string>
     <string name="settings_language_title">Language</string>
     <string name="settings_language_desc">Change app language</string>
 
@@ -531,5 +530,36 @@
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     <string name="hint">Hint</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">Missing Number</string>
+    <string name="menu_ftmn_game_desc">Find the next in the sequence</string>
+    <string name="ftmn_title">Find the Missing Number</string>
+    <string name="ftmn_score">Score</string>
+    <string name="ftmn_select_answer">Select the correct number</string>
+    <string name="ftmn_check_button">Check</string>
+    <string name="ftmn_next_button">Next Question</string>
+    <string name="ftmn_feedback_correct">Correct!</string>
+    <string name="ftmn_feedback_incorrect">Incorrect. The answer was %1$s</string>    <string name="ftmn_correct">Correct</string>
+    <string name="ftmn_wrong">Wrong</string>
+    <string name="ftmn_show_solution">Show Solution</string>
+    <string name="ftmn_solution_title">Explanation:</string>
+    <string name="ftmn_solution_add">This is an arithmetic sequence. The pattern is to add %1$s to each number.</string>
+    <string name="ftmn_solution_subtract">This is an arithmetic sequence. The pattern is to subtract %1$s from each number.</string>
+    <string name="ftmn_solution_multiply">This is a geometric sequence. The pattern is to multiply each number by %1$s.</string>
+    <string name="ftmn_solution_divide">This is a geometric sequence. The pattern is to divide each number by %1$s.</string>
+    <string name="ftmn_solution_increasing_diff">In this sequence, the difference between numbers increases by 1 each time (+1, +2, +3…).</string>
+    <string name="ftmn_solution_fibonacci">This is a Fibonacci-style sequence. Each number is the sum of the two preceding numbers.</string>
+    <string name="ftmn_hide_solution">Hide Solution</string>
+    <string name="game_over_message">You scored %1$s out of %2$s!</string>
+    <string name="game_over_ok_button">OK</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">Sequence:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">Sequence</string>
+
+
 
 </resources>

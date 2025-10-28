@@ -516,4 +516,32 @@
     <string name="undo">వెనక్కి వెళ్ళు</string>
     <string name="redo">మళ్ళీ చేయి</string>
     <string name="hint">సూచన</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">లోపించిన సంఖ్య</string>
+    <string name="menu_ftmn_game_desc">శ్రేణిలో తర్వాతి సంఖ్యను కనుగొనండి</string>
+    <string name="ftmn_title">లోపించిన సంఖ్యను కనుగొనండి</string>
+    <string name="ftmn_score">స్కోరు</string>
+    <string name="ftmn_select_answer">సరైన సంఖ్యను ఎంచుకోండి</string>
+    <string name="ftmn_check_button">తనిఖీ చేయండి</string>
+    <string name="ftmn_next_button">తర్వాతి ప్రశ్న</string>
+    <string name="ftmn_feedback_correct">సరియైనది!</string>
+    <string name="ftmn_feedback_incorrect">తప్పు. సమాధానం %1$s</string>
+    <string name="ftmn_correct">సరియైనది</string>
+    <string name="ftmn_wrong">తప్పు</string>
+    <string name="ftmn_show_solution">సమాధానం చూపండి</string>
+    <string name="ftmn_solution_title">వివరణ:</string>
+    <string name="ftmn_solution_add">ఇది అంకశ్రేఢి. ప్రతి సంఖ్యకు %1$s కలపాలి.</string>
+    <string name="ftmn_solution_subtract">ఇది అంకశ్రేఢి. ప్రతి సంఖ్య నుండి %1$s తీసివేయాలి.</string>
+    <string name="ftmn_solution_multiply">ఇది గుణశ్రేఢి. ప్రతి సంఖ్యను %1$s తో గుణించాలి.</string>
+    <string name="ftmn_solution_divide">ఇది గుణశ్రేఢి. ప్రతి సంఖ్యను %1$s తో భాగించాలి.</string>
+    <string name="ftmn_solution_increasing_diff">ఈ శ్రేణిలో, సంఖ్యల మధ్య వ్యత్యాసం ప్రతీసారి 1 పెరుగుతుంది (+1, +2, +3…).</string>
+    <string name="ftmn_solution_fibonacci">ఇది ఫైబొనాచీ (Fibonacci) వంటి శ్రేణి. ప్రతి సంఖ్య దాని ముందున్న రెండు సంఖ్యల మొత్తం.</string>
+    <string name="ftmn_hide_solution">సమాధానం దాచండి</string>
+    <string name="game_over_message">మీరు %2$s కి %1$s స్కోర్ చేసారు!</string>
+    <string name="game_over_ok_button">సరే</string>
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">శ్రేణి:</string>
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">శ్రేణి</string>
 </resources>

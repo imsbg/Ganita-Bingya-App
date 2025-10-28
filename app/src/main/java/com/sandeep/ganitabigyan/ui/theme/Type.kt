@@ -9,8 +9,8 @@ import androidx.compose.ui.unit.sp
 import com.sandeep.ganitabigyan.R
 
 val OdiaFontFamily = FontFamily(
-    Font(R.font.anekodia_semiexpanded_bold, FontWeight.Normal),
-    Font(R.font.anekodia_semiexpanded_bold, FontWeight.Bold)
+    Font(R.font.odia, FontWeight.Normal),
+    Font(R.font.odia, FontWeight.Bold)
 )
 
 // FIX: We are now defining our own larger font sizes.

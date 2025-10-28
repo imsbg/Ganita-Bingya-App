@@ -1,0 +1,547 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">ریاضی سائنس</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_text_1">جے جگناتھ</string>
+    <string name="splash_text_2">ریاضی سائنس میں آپ کا استقبال ہے</string>
+
+    <!-- Universal -->
+    <string name="back_button_description">واپس</string>
+    <string name="ok_button">ٹھیک ہے</string>
+    <string name="app_logo_description">ایپ کا لوگو</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">ریاضی سائنس</string>
+    <string name="settings_button_description">سیٹنگز</string>
+    <string name="menu_start_game">کھیل شروع کریں</string>
+    <string name="menu_start_game_desc">۵+۴, ۴-۲</string>
+    <string name="menu_progress">آپ کی پیشرفت</string>
+    <string name="menu_progress_desc">کتنے صحیح؟ کتنے غلط؟</string>
+    <string name="menu_panikia">پہاڑے</string>
+    <string name="menu_panikia_desc">دو ایکم دو</string>
+    <string name="menu_numbers">اعداد</string>
+    <string name="menu_numbers_desc">۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹</string>
+    <string name="menu_drawing_pad">ڈرائنگ پیڈ</string>
+    <string name="menu_calculator">کیلکولیٹر</string>
+
+    <!-- Game Screen & ViewModel -->
+    <string name="game_title">ریاضی سائنس</string>
+    <string name="game_settings_button_text">قسم: %1$s | سطح: %2$s</string>
+    <string name="game_go_to_current_question">موجودہ سوال پر جائیں</string>
+    <string name="game_auto_scroll">آٹو سکرول</string>
+    <string name="game_auto_scroll_icon_desc">آٹو سکرول آئیکن</string>
+    <string name="game_show_solution">حل دیکھیں</string>
+    <string name="game_top_bar_stop">روکیں</string>
+    <string name="game_top_bar_score_info">صحیح: %1$s | غلط: %2$s</string>
+    <string name="game_settings_dialog_title">سیٹنگز تبدیل کریں</string>
+    <string name="game_settings_dialog_type">قسم</string>
+    <string name="game_settings_dialog_level">سطح</string>
+    <string name="game_settings_dialog_cancel">منسوخ کریں</string>
+    <string name="game_summary_dialog_title">وقت ختم!</string>
+    <string name="game_summary_dialog_your_score">آپ کا سکور:</string>
+    <string name="game_summary_dialog_play_again">دوبارہ کھیلیں</string>
+    <string name="game_summary_dialog_stop_challenge">چیلنج روکیں</string>
+    <string name="game_solution_dialog_title">حل</string>
+    <string name="game_solution_dialog_close">بند کریں</string>
+    <string name="feedback_correct">واہ! صحیح جواب</string>
+    <string name="feedback_streak">مسلسل %1$s صحیح جوابات!</string>
+    <string name="feedback_incorrect">غلط جواب۔ صحیح جواب ہے: %1$s</string>
+    <string name="feedback_skipped">%1$s سوالات چھوڑ دیے گئے</string>
+    <string name="qna_log_question">سوال</string>
+    <string name="qna_log_your_answer">آپ کا جواب</string>
+    <string name="qna_log_correct_answer">صحیح جواب</string>
+    <string name="qna_log_result">نتیجہ</string>
+    <string name="qna_log_correct">صحیح</string>
+    <string name="qna_log_incorrect">غلط</string>
+    <string name="qna_log_skipped">چھوڑ دیا</string>
+    <string name="question_find_correct_equation">%1$s کے لیے صحیح مساوات تلاش کریں</string>
+
+    <string-array name="motivational_quotes">
+        <item>آپ بہت اچھا کر رہے ہیں، لگے رہیں!</item>
+        <item>ہر سوال کا جواب دیں</item>
+        <item>ریاضی ایک मजेदार کھیل ہے</item>
+        <item>آپ ایک ریاضی دان بن رہے ہیں!</item>
+        <item>مشق ہی کامیابی کی کنجی ہے۔</item>
+        <item>جے جگناتھ</item>
+    </string-array>
+    <string name="game_type_addition">جمع</string>
+    <string name="game_type_subtraction">تفریق</string>
+    <string name="game_type_multiplication">ضرب</string>
+    <string name="game_type_division">تقسیم</string>
+    <string name="game_type_mixed">مخلوط</string>
+    <string name="game_type_find_equation">مساوات تلاش کریں</string>
+    <string name="difficulty_easy">آسان</string>
+    <string name="difficulty_medium">درمیانہ</string>
+    <string name="difficulty_hard">مشکل</string>
+    <string name="difficulty_very_hard">بہت مشکل</string>
+
+    <!-- Panikia Screen -->
+    <string name="panikia_title">پہاڑے</string>
+    <string name="panikia_title_for_table">%1$s کا پہاڑا</string>
+    <string-array name="panikia_terms">
+        <item>ایکم</item>
+        <item>دونی</item>
+        <item>تیا</item>
+        <item>چوکے</item>
+        <item>پنجے</item>
+        <item>چھکے</item>
+        <item>ستے</item>
+        <item>اٹھے</item>
+        <item>نمے</item>
+        <item>دہام</item>
+    </string-array>
+    <string name="swipe_up_hint">اوپر سکرول کریں</string>
+    <!-- Score & History Screens -->
+    <string name="score_history_title">آپ کی پیشرفت</string>
+    <string name="score_history_tab_lifetime">لائف ٹائم سکور</string>
+    <string name="score_history_tab_qna">سوالات کی تاریخ</string>
+    <string name="score_total_results">کل نتائج</string>
+    <string name="score_correct">صحیح</string>
+    <string name="score_incorrect">غلط</string>
+
+    <!-- Stable keys (copy-paste, do not translate) -->
+    <string name="qna_log_question_key" translatable="false">Question</string>
+    <string name="qna_log_your_answer_key" translatable="false">Your Answer</string>
+    <string name="qna_log_correct_answer_key" translatable="false">Correct Answer</string>
+    <string name="qna_log_result_key" translatable="false">Result</string>
+    <string name="qna_log_result_correct_id" translatable="false">correct_id</string>
+    <string name="qna_log_result_incorrect_id" translatable="false">incorrect_id</string>
+
+    <!-- Display text -->
+    <string name="history_question_label">سوال: %1$s</string>
+    <string name="history_your_answer">آپ کا جواب: %1$s</string>
+    <string name="history_correct_answer">صحیح جواب: %1$s</string>
+    <string name="history_result">نتیجہ: %1$s</string>
+    <string name="history_no_history_found">کوئی تاریخ نہیں ملی</string>
+
+    <!-- Number Screen -->
+    <string name="numbers_screen_title">اعداد</string>
+
+    <!-- Drawing Screens -->
+    <string name="drawing_pad_title">ڈرائنگ پیڈ</string>
+    <string name="drawing_history_button">تاریخ</string>
+    <string name="drawing_mode_label">موڈ منتخب کریں</string>
+    <string name="drawing_mode_serial">ترتیب وار</string>
+    <string name="drawing_mode_random_double">دو ہندسوں کا عدد</string>
+    <string name="drawing_mode_random_triple">تین ہندسوں کا عدد</string>
+    <string name="drawing_undo_button">انڈو</string>
+    <string name="drawing_redo_button">ریڈو</string>
+    <string name="drawing_clear_button">سب صاف کریں</string>
+    <string name="drawing_next_button">اگلا</string>
+    <string name="drawing_history_title">ڈرائنگ کی تاریخ</string>
+    <string name="drawing_history_delete_all">سب مٹائیں</string>
+    <string name="drawing_history_delete_dialog_title">سب مٹائیں؟</string>
+    <string name="drawing_history_delete_dialog_message">کیا آپ واقعی تمام محفوظ کردہ تصاویر مٹانا چاہتے ہیں؟</string>
+    <string name="drawing_history_delete_confirm">ہاں، مٹائیں</string>
+    <string name="drawing_history_delete_cancel">نہیں</string>
+    <string name="drawing_history_empty">کوئی تصویر محفوظ نہیں کی گئی</string>
+    <string name="drawing_history_saved_drawing_desc">محفوظ کردہ تصاویر</string>
+    <string name="drawing_history_question_label">سوال: %1$s</string>
+
+    <!-- Calculator Screen -->
+    <string name="calculator_title">کیلکولیٹر</string>
+    <string name="calculator_clear_button">صاف کریں</string>
+    <string name="calculator_backspace_icon">⌫</string>
+    <string name="calculator_toggle_scientific_pad">سائنسی پیڈ ٹوگل کریں</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">سیٹنگز</string>
+    <string name="settings_vibration_title">وائبریشن</string>
+    <string name="settings_vibration_desc">غلط جواب پر وائبریٹ کریں</string>
+    <string name="settings_reminders_title">یاد دہانیاں</string>
+    <string name="settings_morning_reminder">صبح کی یاد دہانی</string>
+    <string name="settings_evening_reminder">شام کی یاد دہانی</string>
+    <string name="settings_select_time">وقت منتخب کریں</string>
+    <string name="settings_reminder_set_for">یاد دہانی %1$s کے لیے سیٹ ہے</string>
+
+    <!-- About Screen -->
+    <string name="about_screen_title">ایپ کے بارے میں</string>
+    <string name="members_and_contributors">اراکین اور معاونین</string>
+    <string name="sandeep_biswal_name">سندیپ بسوال جی</string>
+    <string name="sandeep_biswal_role">ایڈمن، تصور، ڈیزائن اور زبان (اوڈیا، ہندی، انگریزی اور مزید)</string>
+    <string name="show_more">مزید دکھائیں</string>
+    <string name="show_less">کم دکھائیں</string>
+    <string name="support_development">سپورٹ اور ترقی</string>
+    <string name="support_github">گٹ ہب</string>
+    <string name="support_github_desc">اس پروجیکٹ کو گٹ ہب پر فورک کریں</string>
+    <string name="support_translate">ترجمہ کریں</string>
+    <string name="support_translate_desc">ایپ کو اپنی زبان میں ترجمہ کرنے میں مدد کریں</string>
+    <string name="support_donate">عطیہ کریں</string>
+    <string name="support_donate_desc">اگر آپ کو لگتا ہے کہ مجھے اپنے کام کے لیے ادائیگی ملنی چاہیے</string>
+    <string name="support_report_bug">بگ کی اطلاع دیں</string>
+    <string name="support_report_bug_desc">کوئی مسئلہ ملا؟ ہمیں بتائیں</string>
+    <string name="support_share">شیئر کریں</string>
+    <string name="support_share_desc">اس ایپ کو اپنے دوستوں اور خاندان کے ساتھ شیئر کریں</string>
+    <string name="share_message">ریاضی سائنس ڈاؤن لوڈ کریں اور کھیلیں: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="social">سوشل</string>
+    <string name="social_website">ویب سائٹ</string>
+    <string name="social_website_desc">ہماری ویب سائٹ پر جائیں</string>
+    <string name="social_instagram">مجھے انسٹاگرام پر فالو کریں</string>
+    <string name="social_instagram_desc">تازہ ترین خبروں سے باخبر رہیں</string>
+    <string name="social_twitter">مجھے ایکس (ٹویٹر) پر فالو کریں</string>
+    <string name="social_twitter_desc">خیالات اور اپ ڈیٹس کے لیے فالو کریں</string>
+    <string name="social_telegram">ٹیلیگرام پر شامل ہوں</string>
+    <string name="social_telegram_desc">بگ اور خصوصیات پر بات کرنے کے لیے گروپ میں شامل ہوں</string>
+    <string name="other">دیگر</string>
+    <string name="other_changelog">چینج لاگ</string>
+    <string name="other_changelog_desc">دیکھیں کیا نیا ہے</string>
+    <string name="other_check_for_updates">اپ ڈیٹس کے لیے چیک کریں</string>
+    <string name="other_version">ورژن</string>
+    <string name="changelog_dialog_title">نیا کیا ہے</string>
+    <string name="changelog_loading">چینج لاگ لوڈ ہو رہا ہے...</string>
+    <string name="changelog_error">چینج لاگ لوڈ کرنے میں ناکام۔ براہ کرم اپنا کنکشن چیک کریں۔</string>
+    <string name="other_language">زبان</string>
+    <string name="other_language_desc">ایپ کی زبان تبدیل کریں</string>
+    <string name="language_dialog_title">زبان منتخب کریں</string>
+    <string name="made_with_love">بھارت میں ❤️ کے ساتھ بنایا گیا</string>
+    <string name="download_notification_title">ریاضی سائنس v%1$s ڈاؤن لوڈ ہو رہا ہے</string>
+    <string name="download_notification_description">نیا اپ ڈیٹ ڈاؤن لوڈ ہو رہا ہے...</string>
+    <string name="download_started">ڈاؤن لوڈ شروع ہو رہا ہے...</string>
+    <string name="download_failed">ڈاؤن لوڈ ناکام: %1$s</string>
+    <string name="update_available_title">نیا اپ ڈیٹ دستیاب ہے</string>
+    <string name="update_available_message">ایک نیا ورژن (v%1$s) دستیاب ہے۔ آپ فی الحال (v%2$s) استعمال کر رہے ہیں۔</string>
+    <string name="download_button">ڈاؤن لوڈ</string>
+    <string name="later_button">بعد میں</string>
+    <string name="permission_request_toast">براہ کرم اس ذریعہ سے ایپ انسٹالیشن کی اجازت دیں۔</string>
+    <string name="up_to_date_title">ایپ اپ ٹو ڈیٹ ہے</string>
+    <string name="up_to_date_message">آپ ریاضی سائنس کا تازہ ترین ورژن استعمال کر رہے ہیں۔</string>
+    <string name="error_title">خرابی</string>
+    <string name="error_check_connection">اپ ڈیٹس کی جانچ کرنے سے قاصر، براہ کرم اپنا انٹرنیٹ کنکشن چیک کریں</string>
+
+    <!-- Crash Handler -->
+    <string name="crash_screen_app_name">ریاضی سائنس</string>
+    <string name="crash_screen_oops_title">اوہ، کچھ غلط ہو گیا</string>
+    <string name="crash_screen_oops_message">ایپ کریش ہو گئی ہے۔ آپ یہ خرابی کی رپورٹ ڈویلپر کو بھیج سکتے ہیں۔</string>
+    <string name="crash_screen_copy_report">رپورٹ کاپی کریں</string>
+    <string name="crash_screen_close_app">ایپ بند کریں</string>
+    <string name="crash_report_copied">کریش رپورٹ کلپ بورڈ پر کاپی ہو گئی۔</string>
+    <string name="crash_no_details">کوئی خرابی کی تفصیلات دستیاب نہیں ہیں۔</string>
+
+    <!-- Download Receiver -->
+    <string name="failed_to_start_installer">انسٹالر شروع کرنے میں ناکام۔</string>
+    <string name="download_failed_generic">ڈاؤن لوڈ ناکام۔</string>
+
+    <!-- Math Reminder -->
+    <string name="reminder_channel_name">جی بی ریاضی کی یاد دہانی</string>
+    <string name="reminder_channel_description">روزانہ نوٹیفکیشن سروس</string>
+    <string name="reminder_notification_title">ریاضی سائنس</string>
+    <string name="reminder_notification_text">کیا آپ آج ریاضی پڑھنے جا رہے ہیں؟ میں انتظار کر رہا ہوں</string>
+
+    <!-- SettingsScreen.kt -->
+    <string name="settings_back_button_desc">واپس</string>
+
+    <string name="settings_category_general">عمومی</string>
+    <string name="settings_vibration_description">غلط جواب کے لیے فیڈبیک</string>
+
+    <string name="settings_category_reminders">یاد دہانیاں</string>
+    <string name="settings_morning_reminder_title">صبح کی یاد دہانی</string>
+    <string name="settings_evening_reminder_title">شام کی یاد دہانی</string>
+
+    <string name="settings_category_other">دیگر</string>
+    <string name="settings_about_app_title">ایپ کے بارے میں</string>
+    <string name="settings_about_app_description">ورژن اور معلومات</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="dialog_ok">ٹھیک ہے</string>
+    <string name="dialog_cancel">منسوخ کریں</string>
+
+    <!-- Toasts -->
+    <string name="toast_morning_reminder_set">صبح کی یاد دہانی سیٹ ہو گئی</string>
+    <string name="toast_evening_reminder_set">شام کی یاد دہانی سیٹ ہو گئی</string>
+
+    <!-- New strings for WelcomeScreen -->
+    <string name="welcome_title">خوش آمدید</string>
+    <string name="choose_language_prompt">اپنی زبان منتخب کریں</string>
+    <string name="button_continue">جاری رکھیں</string>
+
+    <!-- Language Names -->
+    <string name="language_system_default">سسٹم ڈیفالٹ</string>
+    <string name="language_odia">ଓଡ଼ିଆ</string>
+    <string name="language_english">English</string>
+    <string name="language_sanskrit">संस्कृतम्</string>
+    <string name="language_telugu">తెలుగు</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_gujarati">ગુજરાતી</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="settings_language_title">زبان</string>
+    <string name="settings_language_desc">ایپ کی زبان تبدیل کریں</string>
+
+    <string-array name="odia_number_words">
+        <item>صفر</item>
+        <item>ایک</item>
+        <item>دو</item>
+        <item>تین</item>
+        <item>چار</item>
+        <item>پانچ</item>
+        <item>چھ</item>
+        <item>سات</item>
+        <item>آٹھ</item>
+        <item>نو</item>
+        <item>دس</item>
+        <item>گیارہ</item>
+        <item>بارہ</item>
+        <item>تیرہ</item>
+        <item>چودہ</item>
+        <item>پندرہ</item>
+        <item>سولہ</item>
+        <item>سترہ</item>
+        <item>اٹھارہ</item>
+        <item>انیس</item>
+        <item>بیس</item>
+        <item>اکیس</item>
+        <item>بائیس</item>
+        <item>تئیس</item>
+        <item>چوبیس</item>
+        <item>پچیس</item>
+        <item>چھبیس</item>
+        <item>ستائیس</item>
+        <item>اٹھائیس</item>
+        <item>انتیس</item>
+        <item>تیس</item>
+        <item>اکتیس</item>
+        <item>بتیس</item>
+        <item>تینتیس</item>
+        <item>چونتیس</item>
+        <item>پینتیس</item>
+        <item>چھتیس</item>
+        <item>سینتیس</item>
+        <item>اڑتیس</item>
+        <item>انتالیس</item>
+        <item>چالیس</item>
+        <item>اکتالیس</item>
+        <item>بیالیس</item>
+        <item>تینتالیس</item>
+        <item>چوالیس</item>
+        <item>پینتالیس</item>
+        <item>چھیالیس</item>
+        <item>سینتالیس</item>
+        <item>اڑتالیس</item>
+        <item>انچاس</item>
+        <item>پچاس</item>
+        <item>اکاون</item>
+        <item>باون</item>
+        <item>ترپن</item>
+        <item>چون</item>
+        <item>پچپن</item>
+        <item>چھپن</item>
+        <item>ستاون</item>
+        <item>اٹھاون</item>
+        <item>انسٹھ</item>
+        <item>ساٹھ</item>
+        <item>اکسٹھ</item>
+        <item>باسٹھ</item>
+        <item>ترسٹھ</item>
+        <item>چونسٹھ</item>
+        <item>پینسٹھ</item>
+        <item>چھیاسٹھ</item>
+        <item>سڑسٹھ</item>
+        <item>اڑسٹھ</item>
+        <item>انہتر</item>
+        <item>ستر</item>
+        <item>اکہتر</item>
+        <item>بہتر</item>
+        <item>تہتر</item>
+        <item>چوہتر</item>
+        <item>پچہتر</item>
+        <item>چھہتر</item>
+        <item>ستتر</item>
+        <item>اٹھتر</item>
+        <item>اناسی</item>
+        <item>اسی</item>
+        <item>اکیاسی</item>
+        <item>بیاسی</item>
+        <item>تراسی</item>
+        <item>چوراسی</item>
+        <item>پچاسی</item>
+        <item>چھیاسی</item>
+        <item>ستاسی</item>
+        <item>اٹھاسی</item>
+        <item>نواسی</item>
+        <item>نوے</item>
+        <item>اکانوے</item>
+        <item>بانوے</item>
+        <item>ترانوے</item>
+        <item>چورانوے</item>
+        <item>پچانوے</item>
+        <item>چھیانوے</item>
+        <item>ستانوے</item>
+        <item>اٹھانوے</item>
+        <item>ننانوے</item>
+        <item>ایک سو</item>
+    </string-array>
+
+    <string name="word_one_hundred">ایک سو</string>
+    <string name="word_hundreds_suffix">سو</string>
+    <string name="word_hundred_odia_standalone">ایک سو</string>
+
+    <string name="language_dialog_description">زبان تبدیل کرنے کے بعد ایپ کو دوبارہ شروع کریں۔</string>
+    <string name="language_restart_dialog_title">دوبارہ شروع کرنا ضروری ہے</string>
+    <string name="language_restart_dialog_message">زبان کی تبدیلی کو لاگو کرنے کے لیے ایپ کو دوبارہ شروع کرنے کی ضرورت ہے۔</string>
+    <string name="dialog_restart">دوبارہ شروع کریں</string>
+
+    <string name="social_github">گٹ ہب</string>
+    <string name="social_github_desc">ہمارا سورس کوڈ دیکھیں</string>
+    <string name="dialog_close">بند کریں</string>
+    <string name="changelog_header_title">مینٹینرز/شراکت داروں کی تلاش ہے</string>
+    <string name="changelog_header_description">ہم فی الحال اپنے پروجیکٹ کو تیار کرنے اور بہتر بنانے میں مدد کے لیے مینٹینرز/شراکت داروں کی تلاش میں ہیں۔ اگر آپ اپنی مہارتوں اور مہارت کا حصہ ڈالنا چاہتے ہیں، تو آپ ہمارے گٹ ہب پر جا سکتے ہیں، پل کی درخواستوں کا خیرمقدم ہے۔ ایپ زیادہ تر کوٹلن پر منحصر ہے۔</string>
+    <string name="changelog_fixed_title">ٹھیک کیا گیا</string>
+
+    <string name="settings_sound_title">صوتی اثرات</string>
+    <string name="settings_sound_description">صحیح جواب کے لیے آواز</string>
+
+    <string name="widget_description">ریاضی سائنس ایپ کو جلدی سے کھولیں</string>
+    <string name="widget_start_game">کھیل</string>
+    <string name="widget_panikia">پہاڑا</string>
+    <string name="widget_numbers">اعداد</string>
+    <string name="widget_drawing_pad">ڈرائنگ</string>
+
+    <!-- Auto Update Dialog -->
+    <string name="update_dialog_title">نیا اپ ڈیٹ دستیاب ہے</string>
+    <string name="update_dialog_message">ایک نیا ورژن (v%1$s) دستیاب ہے۔ آپ v%2$s استعمال کر رہے ہیں۔</string>
+    <string name="update_dialog_update_now">ابھی اپ ڈیٹ کریں</string>
+    <string name="update_dialog_ignore_time">اس بار نظر انداز کریں</string>
+    <string name="update_dialog_ignore_version">اس ورژن کو نظر انداز کریں</string>
+
+    <!-- New Visual Comparison Game -->
+    <string name="menu_visual_game">پھلوں کا موازنہ</string>
+    <string name="menu_visual_game_desc">کس گروپ میں زیادہ ہے؟</string>
+    <string name="visual_game_title">پھلوں کا موازنہ</string>
+    <string name="visual_game_question_more">کس گروپ میں زیادہ ہے؟</string>
+    <string name="visual_game_question_less">کس گروپ میں کم ہے؟</string>
+
+    <!-- New Logic Puzzle Game -->
+    <string name="menu_logic_game">منطقی پہیلیاں</string>
+    <string name="menu_logic_game_desc">طاق، جفت، پیٹرن…</string>
+    <string name="logic_game_title">منطقی پہیلیاں</string>
+    <string name="logic_game_question_odd">طاق عدد تلاش کریں</string>
+    <string name="logic_game_question_even">جفت عدد تلاش کریں</string>
+    <!-- Logic Game Progress and Game Over -->
+    <string name="game_over_title">کھیل ختم!</string>
+    <string name="game_over_score_message">آپ نے %2$d میں سے %1$d نمبر حاصل کیے۔</string>
+    <string name="game_over_play_again">دوبارہ کھیلیں</string>
+    <string name="game_over_go_home">ہوم پر جائیں</string>
+    <!-- Logic Game Progress and Milestones -->
+    <string name="logic_game_progress">سوال: %1$d</string>
+    <string name="milestone_title">مبارک ہو!</string>
+    <string name="milestone_message">آپ نے %1$d سوالات کے صحیح جوابات دیے ہیں! آگے بڑھتے رہیں!</string>
+
+    <!-- Logic Game - Number Patterns -->
+    <string name="logic_game_question_pattern">پیٹرن میں آگے کیا آئے گا؟</string>
+
+    <!-- Logic Game - Logic Riddles -->
+    <string name="logic_riddle_1">میں %1$d اور %2$d کے درمیان ایک عدد ہوں۔ میں ایک طاق عدد ہوں۔ میں کون سا عدد ہو سکتا ہوں؟</string>
+    <string name="logic_riddle_2">میں %1$d اور %2$d کے درمیان ایک عدد ہوں۔ میں ایک جفت عدد ہوں۔ میں کون سا عدد ہو سکتا ہوں؟</string>
+    <string name="logic_game_question_fill_blank">خالی جگہ پر عدد بھریں</string>
+    <string name="feedback_correct_n">صحیح!</string>
+    <string name="feedback_incorrect_n">دوبارہ کوشش کریں! جواب %1$s تھا۔</string>
+    <string name="visual_game_progress">سوال: %1$d</string>
+
+    <!-- All Logic Game Question Types -->
+    <string name="logic_game_question_big_even">ایک بڑا جفت عدد منتخب کریں</string>
+    <string name="logic_game_question_small_odd">ایک چھوٹا طاق عدد منتخب کریں</string>
+    <string name="logic_game_question_big_odd">ایک بڑا طاق عدد منتخب کریں</string>
+    <string name="logic_game_question_small_even">ایک چھوٹا جفت عدد منتخب کریں</string>
+    <string name="logic_game_question_divisible_by_10">۱۰ سے تقسیم ہونے والا عدد منتخب کریں</string>
+    <string name="logic_game_question_ends_in_5">ایک عدد منتخب کریں جو ۵ پر ختم ہوتا ہے</string>
+    <string name="logic_game_question_ends_in_3">ایک عدد منتخب کریں جو ۳ پر ختم ہوتا ہے</string>
+    <string name="logic_game_question_starts_with_5">ایک عدد منتخب کریں جو ۵ سے شروع ہوتا ہے</string>
+    <string name="logic_game_question_starts_1_ends_3">ایک عدد منتخب کریں جو ۱ سے شروع اور ۳ پر ختم ہوتا ہے</string>
+    <string name="logic_game_question_starts_with_9">ایک عدد منتخب کریں جو ۹ سے شروع ہوتا ہے</string>
+    <string name="logic_game_question_starts_with_3">ایک عدد منتخب کریں جو ۳ سے شروع ہوتا ہے</string>
+    <string name="logic_game_question_pick_largest">سب سے بڑا عدد منتخب کریں</string>
+    <string name="logic_game_question_pick_smallest">سب سے چھوٹا عدد منتخب کریں</string>
+    <string name="logic_game_question_starts_with_7">ایک عدد منتخب کریں جو ۷ سے شروع ہوتا ہے</string>
+    <string name="logic_game_question_ends_with_1">ایک عدد منتخب کریں جو ۱ پر ختم ہوتا ہے</string>
+    <string name="logic_game_question_starts_8_ends_8">ایک عدد منتخب کریں جو ۸ سے شروع اور ختم ہوتا ہے</string>
+    <string name="logic_game_question_two_identical_digits">دو یکساں ہندسوں والا عدد منتخب کریں</string>
+    <!-- Labels for DISPLAYING logic history in the UI (Translate these) -->
+    <string name="history_logic_question_type">سوال کی قسم:</string>
+    <string name="history_options">اختیارات: %1$s</string>
+    <string name="history_you_picked">آپ نے منتخب کیا: %1$s</string>
+    <string name="history_correct_choice">صحیح انتخاب: %1$s</string>
+
+    <!-- New Home Screen -->
+    <string name="home_greeting_hello">ہیلو،</string>
+    <string name="home_greeting_morning">صبح بخیر</string>
+    <string name="home_greeting_afternoon">سہ پہر بخیر</string>
+    <string name="home_greeting_evening">شام بخیر</string>
+    <string name="home_greeting_night">شب بخیر</string>
+    <string name="home_category_games">کھیل</string>
+    <string name="home_category_learning">سیکھنا</string>
+    <string name="home_category_score">آپ کی پیشرفت</string>
+    <string name="home_category_utility">یوٹیلیٹی</string>
+    <string name="home_popular_title">مقبول</string>
+    <string name="home_search_button_desc">تلاش کریں</string>
+    <string name="home_menu_button_desc">مینو</string>
+    <string name="games_category_title">کھیل</string>
+    <string name="learning_category_title">سیکھنے کے اوزار</string>
+    <string name="home_search_placeholder">گیمز، اوزار، وغیرہ تلاش کریں...</string>
+
+    <!-- New Settings Options -->
+    <string name="settings_category_appearance">ظاہری شکل</string>
+    <string name="settings_dark_mode_title">ڈارک موڈ</string>
+    <string name="settings_dark_mode_description">اپنی پسندیدہ تھیم منتخب کریں</string>
+    <string name="settings_dark_mode_dialog_title">تھیم منتخب کریں</string>
+    <string name="dark_mode_option_light">لائٹ</string>
+    <string name="dark_mode_option_dark">ڈارک</string>
+    <string name="dark_mode_option_system">سسٹم ڈیفالٹ</string>
+    <string name="settings_reminders_enabled_title">یاد دہانیاں فعال کریں</string>
+    <string name="settings_reminders_enabled_description">روزانہ مشق کی اطلاعات حاصل کریں</string>
+
+    <!-- New Theme Settings -->
+    <string name="settings_theme_title">تھیم</string>
+    <string name="settings_theme_description">اپنی ایپ کی تھیم منتخب کریں</string>
+    <string name="theme_dialog_title">تھیم منتخب کریں</string>
+    <string name="theme_option_light">لائٹ</string>
+    <string name="theme_option_dark">ڈارک</string>
+    <string name="theme_option_amoled">AMOLED</string>
+    <string name="theme_option_system">سسٹم ڈیفالٹ</string>
+    <string name="theme_option_custom">حسب ضرورت رنگ</string>
+    <string name="custom_color_dialog_title">ایک حسب ضرورت رنگ منتخب کریں</string>
+    <string name="menu_multiplication_tables">ضرب کی میز</string>
+
+    <string name="menu_sudoku">سوڈوکو</string>
+    <string name="menu_sudoku_desc">کلاسک نمبر پزل گیم</string>
+    <string name="congratulations">مبارک ہو!</string>
+    <string name="puzzle_solved">آپ نے پہیلی حل کر لی ہے۔</string>
+    <string name="play_again">دوبارہ کھیلیں</string>
+    <string name="new_game">نیا گیم</string>
+    <string name="erase">مٹائیں</string>
+    <string name="select_difficulty">مشکل کا انتخاب کریں</string>
+    <string name="select_difficulty_prompt">نیا گیم شروع کرنے کے لیے ایک مشکل کا انتخاب کریں۔</string>
+    <string name="undo">انڈو</string>
+    <string name="redo">ریڈو</string>
+    <string name="hint">اشارہ</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">گمشدہ عدد</string>
+    <string name="menu_ftmn_game_desc">سیریز میں اگلا تلاش کریں</string>
+    <string name="ftmn_title">گمشدہ عدد تلاش کریں</string>
+    <string name="ftmn_score">سکور</string>
+    <string name="ftmn_select_answer">صحیح عدد منتخب کریں</string>
+    <string name="ftmn_check_button">چیک کریں</string>
+    <string name="ftmn_next_button">اگلا سوال</string>
+    <string name="ftmn_feedback_correct">صحیح!</string>
+    <string name="ftmn_feedback_incorrect">غلط۔ جواب %1$s تھا</string>
+    <string name="ftmn_correct">صحیح</string>
+    <string name="ftmn_wrong">غلط</string>
+    <string name="ftmn_show_solution">حل دکھائیں</string>
+    <string name="ftmn_solution_title">وضاحت:</string>
+    <string name="ftmn_solution_add">یہ ایک حسابی سلسلہ ہے۔ ہر عدد میں %1$s کا اضافہ کیا جاتا ہے۔</string>
+    <string name="ftmn_solution_subtract">یہ ایک حسابی سلسلہ ہے۔ ہر عدد سے %1$s کو گھٹایا جاتا ہے۔</string>
+    <string name="ftmn_solution_multiply">یہ ایک ہندسی سلسلہ ہے۔ ہر عدد کو %1$s سے ضرب دیا جاتا ہے۔</string>
+    <string name="ftmn_solution_divide">یہ ایک ہندسی سلسلہ ہے۔ ہر عدد کو %1$s سے تقسیم کیا جاتا ہے۔</string>
+    <string name="ftmn_solution_increasing_diff">اس سلسلے میں، اعداد کے درمیان فرق ہر بار 1 بڑھتا ہے (+1، +2، +3…)۔</string>
+    <string name="ftmn_solution_fibonacci">یہ ایک فبونیکی (Fibonacci) جیسا سلسلہ ہے۔ ہر عدد پچھلے دو اعداد کا مجموعہ ہے۔</string>
+    <string name="ftmn_hide_solution">حل چھپائیں</string>
+    <string name="game_over_message">آپ نے %2$s میں سے %1$s سکور کیا!</string>
+    <string name="game_over_ok_button">ٹھیک ہے</string>
+
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">سلسلہ:</string>
+
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">سلسلہ</string>
+</resources>

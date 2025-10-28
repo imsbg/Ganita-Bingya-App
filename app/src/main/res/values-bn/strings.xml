@@ -516,4 +516,33 @@
     <string name="undo">পূর্বাবস্থায় ফিরুন</string>
     <string name="redo">আবার করুন</string>
     <string name="hint">ইঙ্গিত</string>
+
+    <!-- Find the Missing Number Game -->
+    <string name="menu_ftmn_game">হারানো সংখ্যা</string>
+    <string name="menu_ftmn_game_desc">ক্রমের পরবর্তী সংখ্যাটি খুঁজুন</string>
+    <string name="ftmn_title">হারানো সংখ্যাটি খুঁজুন</string>
+    <string name="ftmn_score">স্কোর</string>
+    <string name="ftmn_select_answer">সঠিক সংখ্যাটি নির্বাচন করুন</string>
+    <string name="ftmn_check_button">যাচাই করুন</string>
+    <string name="ftmn_next_button">পরবর্তী প্রশ্ন</string>
+    <string name="ftmn_feedback_correct">সঠিক!</string>
+    <string name="ftmn_feedback_incorrect">ভুল। উত্তরটি ছিল %1$s</string>
+    <string name="ftmn_correct">সঠিক</string>
+    <string name="ftmn_wrong">ভুল</string>
+    <string name="ftmn_show_solution">সমাধান দেখান</string>
+    <string name="ftmn_solution_title">ব্যাখ্যা:</string>
+    <string name="ftmn_solution_add">এটি একটি সমান্তর প্রগতি। প্রতিটি সংখ্যার সাথে %1$s যোগ করা হয়েছে।</string>
+    <string name="ftmn_solution_subtract">এটি একটি সমান্তর প্রগতি। প্রতিটি সংখ্যা থেকে %1$s বিয়োগ করা হয়েছে।</string>
+    <string name="ftmn_solution_multiply">এটি একটি গুণোত্তর প্রগতি। প্রতিটি সংখ্যাকে %1$s দিয়ে গুণ করা হয়েছে।</string>
+    <string name="ftmn_solution_divide">এটি একটি গুণোত্তর প্রগতি। প্রতিটি সংখ্যাকে %1$s দিয়ে ভাগ করা হয়েছে।</string>
+    <string name="ftmn_solution_increasing_diff">এই ক্রমে, সংখ্যাগুলির মধ্যে পার্থক্য প্রতিবার ১ করে বাড়ে (+1, +2, +3…)।</string>
+    <string name="ftmn_solution_fibonacci">এটি একটি ফিবোনাচি (Fibonacci) ক্রম। প্রতিটি সংখ্যা তার আগের দুটি সংখ্যার যোগফল।</string>
+    <string name="ftmn_hide_solution">সমাধান লুকান</string>
+    <string name="game_over_message">আপনি %2$s এর মধ্যে %1$s স্কোর করেছেন!</string>
+    <string name="game_over_ok_button">ঠিক আছে</string>
+    <!-- History Screen Labels for FTMN Game -->
+    <string name="history_ftmn_sequence">ক্রম:</string>
+    <!-- Keys for FTMN history log file -->
+    <string name="ftmn_log_sequence_key">ক্রম</string>
+
 </resources>

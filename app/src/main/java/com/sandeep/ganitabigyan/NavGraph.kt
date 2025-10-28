@@ -66,7 +66,9 @@ object AppDestinations {
     const val GAMES_CATEGORY_ROUTE = "games_category"
     const val LEARNING_CATEGORY_ROUTE = "learning_category"
     const val SUDOKU_ROUTE = "sudoku"
-    const val GAME_2048_ROUTE = "game_2048" // <<< ADDED FOR 2048
+    const val GAME_2048_ROUTE = "game_2048"
+    // <<< NEW ROUTE ADDED HERE >>>
+    const val FTMN_GAME_ROUTE = "ftmn_game"
 }
 
 @Composable
@@ -91,9 +93,12 @@ fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navCon
         composable(route = AppDestinations.GAMES_CATEGORY_ROUTE) { GamesCategoryScreen(navController = navController) }
         composable(route = AppDestinations.LEARNING_CATEGORY_ROUTE) { LearningCategoryScreen(navController = navController) }
         composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) }
+        // <<< NEW SCREEN REGISTRATION ADDED HERE >>>
+        composable(route = AppDestinations.FTMN_GAME_ROUTE) { FTMNScreen(navController = navController) }
     }
 }
 
+// ... The rest of your SplashScreen code is unchanged ...
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
