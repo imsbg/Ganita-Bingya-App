@@ -50,7 +50,7 @@
       <sub><b>ଗେମ ସ୍କ୍ରିନ୍</b></sub>
     </td>
           <td align="center">
-      <img src="/images/eng/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="/images/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>ଶିକ୍ଷା ସ୍କ୍ରିନ୍</b></sub>
     </td>
@@ -149,7 +149,7 @@ You can download the latest version of the app from the **[Releases](https://git
       <sub><b>Games page</b></sub>
     </td>
           <td align="center">
-      <img src="/images/eng/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="/images/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>Learning tools</b></sub>
     </td>
