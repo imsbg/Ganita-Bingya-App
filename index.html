@@ -360,11 +360,11 @@
         .outlined-btn:hover { background: rgba(103, 80, 164, 0.08); }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         
+        /* START: Language Switcher Fixes */
         .language-switcher { 
             position: fixed; top: 20px; right: 20px; z-index: 1001;
             transition: transform 0.4s ease;
         }
-        /* FIXED: New class to move button down when header is visible */
         .language-switcher.scrolled {
             transform: translateY(70px);
         }
@@ -377,13 +377,60 @@
         .language-button:hover { transform: scale(1.1); }
         .language-button svg { width: 24px; height: 24px; }
         .language-menu {
-            display: none; position: absolute; right: 0; top: 55px;
+            position: absolute; right: 0; top: 55px;
             background-color: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            list-style: none; padding: 8px 0; margin: 0; overflow: hidden; min-width: 150px;
+            list-style: none; padding: 8px 0; margin: 0; 
+            min-width: 160px;
+            max-height: 70vh; /* Make it scrollable on small screens */
+            overflow-y: auto;
+            /* Animation */
+            opacity: 0;
+            transform: scale(0.95) translateY(-10px);
+            transform-origin: top right;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
-        .language-menu.show { display: block; }
-        .language-menu li { padding: 10px 20px; cursor: pointer; font-family: 'Noto Sans', sans-serif; font-size: 14px; }
+        .language-menu.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+        .language-menu li {
+            padding: 10px 20px 10px 40px; /* Make space for checkmark */
+            position: relative;
+            cursor: pointer;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            white-space: nowrap; /* Prevent long text from wrapping */
+            transition: background-color 0.2s ease;
+        }
         .language-menu li:hover { background-color: #f0f0f0; }
+
+        /* Style for the selected language item */
+        .language-menu li.selected-lang {
+            font-weight: 700;
+            color: var(--brand-dark);
+        }
+        .language-menu li.selected-lang::before {
+            content: '✓';
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: var(--brand-dark);
+        }
+         /* START: RTL support for specific languages */
+        .language-menu li[data-lang="ur"] {
+            /* Swap the padding to make space on the right */
+            padding: 10px 40px 10px 200px;
+        .language-menu li[data-lang="ur"].selected-lang::before {
+            /* Move the checkmark from the left to the right */
+            left: auto;
+            right: 18px;
+        }
+        /* END: RTL support for specific languages */
+        /* END: Language Switcher Fixes */
     </style>
 </head>
 <body>
@@ -399,7 +446,7 @@
             <li data-lang="bn">বাংলা</li>
             <li data-lang="as">অসমীয়া</li>
             <li data-lang="ml">മലയാളം</li>
-            <li data-lang="ur">اردو</li>
+            <li data-lang="ur" dir="rtl">اردو</li>
             <!-- କେବଳ ୱେବସାଇଟ ରେ ଉପଲବ୍ଧ, ଗଣିତ ବିଜ୍ଞ ଆପ୍ ରେ କେବଳ ୧୦ ଟି ଭାଷା ରେ ଉପଲବ୍ଧ ଅଛି । -->
             <li data-lang="sat_Olck">ᱥᱟᱱᱛᱟᱲᱤ (coming soon)</li>
             <li data-lang="pa">ਪੰਜਾਬੀ (coming soon)</li>
@@ -423,7 +470,7 @@
     </header>
     <main id="main-content">
         <div class="hero"><div class="container"><h1 class="hero-title" id="hero-title" data-translate="hero_title">ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ</h1></div></div>
-        <div class="mockup-container mobile-view" id="mockup-container-mobile"><div class="mockup-sticky-parent"><div class="mockup-wrapper"><div class="mockup-content" id="mobile-mockup-content"><div class="mockup-image"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/refs/heads/master/images/eng/2e.png" alt="Ganita Bingya App Screenshot" class="hero-mockup-img"></div></div></div></div></div>
+        <div class="mockup-container mobile-view" id="mockup-container-mobile"><div class="mockup-sticky-parent"><div class="mockup-wrapper"><div class="mockup-content" id="mobile-mockup-content"><div class="mockup-image"><img src="https://imsbg.github.io/Ganita-Bingya-App/images/eng/home.png" alt="Ganita Bingya App Screenshot" class="hero-mockup-img"></div></div></div></div></div>
         <div class="mockup-container desktop-view" id="mockup-container-desktop"><div class="mockup-sticky-parent"><div class="mockup-wrapper"><div class="mockup-content" id="desktop-mockup-content"><div class="desktop-mockup-image"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png" alt="Ganita Bingya Web Version Screenshot"></div></div></div></div></div>
         
         <section id="features"><div class="container"><h2 class="section-title" data-translate="features_title">ଶିଖିବାର ନୂଆ ଉପାୟ</h2><div class="features-grid"><div class="feature-card"><div class="icon">🎮</div><h3 data-translate="feature1_title">ମଜାଦାର ଖେଳ</h3><p data-translate="feature1_desc">ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ</p></div><div class="feature-card"><div class="icon">💡</div><h3 data-translate="feature2_title">ଫଳପ୍ରଦ ସମୟ</h3><p data-translate="feature2_desc">ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ</p></div><div class="feature-card"><div class="icon">💻📱</div><h3 data-translate="feature3_title">ସବୁ ଡିଭାଇସ୍‌ରେ</h3><p data-translate="feature3_desc">ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</p></div><div class="feature-card"><div class="icon">➕➖✖️➗</div><h3 data-translate="feature4_title">ଚାରୋଟି ପ୍ରକ୍ରିୟା</h3><p data-translate="feature4_desc">ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ</p></div></div></div></section>
@@ -732,7 +779,7 @@
         "feature4_desc": "ᱢᱤᱫ, ᱵᱟᱨ ᱥᱮ ᱯᱮ ᱚᱝᱠᱚ ᱟᱱ ᱥᱟᱝଖ୍ୟᱟ ᱥᱟᱶ ᱡᱚᱜ, ᱯᱷᱮᱰ, ᱜᱩᱱ ᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱭᱟᱜ ᱟᱹᱵᱷᱭᱟᱥ ᱢᱮ᱾",
         "screenshots_title": "ᱮᱯ ᱨᱮᱭᱟᱜ ᱡᱷᱚᱞᱚᱠ",
         "download_title": "ᱱᱤᱛᱚᱜ ᱮᱱᱮᱡ ᱞᱟᱹᱜᱤᱛ ᱥᱟᱯᱲᱟᱣ ᱢᱮᱱᱟᱢᱟ?",
-        "download_desc_android": "ᱛᱮᱦᱮᱧ \"ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ\" ᱮᱯ ᱟᱹᱛᱩᱨ ᱢᱮ ᱟᱨ ᱚᱝᱠᱚ ᱥᱟᱶ ᱢᱤᱫ ᱱᱟᱣᱟ ᱰᱟᱦᱟᱨ ᱮᱛᱚᱦᱚᱵ ᱢᱮ!",
+        "download_desc_android": "ᱛᱮᱦେᱧ \"ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ\" ᱮᱯ ᱟᱹᱛᱩᱨ ᱢᱮ ᱟᱨ ᱚᱝᱠᱚ ᱥᱟᱶ ᱢᱤᱫ ᱱᱟᱣᱟ ᱰᱟᱦᱟᱨ ᱮᱛᱚᱦᱚᱵ ᱢᱮ!",
         "open_app_btn": "ᱮᱯ ᱡᱷᱤᱡᱽ ᱢᱮ",
         "download_btn": "ᱟᱹᱛᱩᱨ ᱢᱮ",
         "download_count_text": "ᱰᱟᱣᱩᱱᱞᱳᱰᱥ",
@@ -824,13 +871,13 @@
         "feature1_title": "ਮਜ਼ੇਦਾਰ ਗੇਮਪਲੇ",
         "feature1_desc": "ਗਣਿਤ ਦੇ ਅਭਿਆਸ ਨੂੰ ਇੱਕ ਖੇਡ ਵਾਂਗ ਮਨੋਰੰਜਕ ਬਣਾਉਂਦਾ ਹੈ।",
         "feature2_title": "ਉਪਯੋਗੀ ਸਮਾਂ",
-        "feature2_desc": "ਆਪਣੇ ਵਿਹਲੇ ਸਮੇਂ ਨੂੰ ਇੱਕ ਲਾਭਕਾਰੀ ਅਭਿਆਸ ਸੈਸ਼ਨ ਵਿੱਚ ਬਦਲੋ।",
+        "feature2_desc": "ਆਪਣੇ ਵਿਹਲੇ ਸਮੇਂ ਨੂੰ ਇੱਕ ਲਾਭਕਾਰੀ ਅਭਿਆસ ਸੈਸ਼ਨ ਵਿੱਚ ਬਦਲੋ।",
         "feature3_title": "ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ 'ਤੇ",
         "feature3_desc": "ਆਪਣੇ ਡੈਸਕਟਾਪ 'ਤੇ ਆਨਲਾਈਨ ਖੇਡੋ ਜਾਂ ਐਂਡਰੌਇਡ ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ।",
         "feature4_title": "ਚਾਰ ਕਿਰਿਆਵਾਂ",
-        "feature4_desc": "ਇੱਕ, ਦੋ, ਜਾਂ ਤਿੰਨ-ਅੰਕਾਂ ਵਾਲੀਆਂ ਸੰਖਿਆਵਾਂ ਨਾਲ ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ, ਅਤੇ ਭਾਗ ਦਾ ਅਭਿਆਸ ਕਰੋ।",
+        "feature4_desc": "ਇੱਕ, ਦੋ, ਜਾਂ ਤਿੰਨ-ਅੰਕਾਂ ਵਾਲੀਆਂ ਸੰਖਿਆਵਾਂ ਨਾਲ ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ, ਅਤੇ ਭਾਗ ਦਾ ਅਭਿਆસ ਕਰੋ।",
         "screenshots_title": "ਐਪ ਦੀਆਂ ਝਲਕੀਆਂ",
-        "download_title": "ਹੁਣ ਖੇਡਣ ਲਈ ਤਿਆਰ ਹੋ?",
+        "download_title": "ਹੁਣ ਖେਡਣ ਲਈ ਤਿਆਰ ਹੋ?",
         "download_desc_android": "ਅੱਜ ਹੀ \"ਗਣਿਤ ਬਿੰਗਿਆ\" ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਗਣਿਤ ਨਾਲ ਇੱਕ ਨਵਾਂ ਸਫ਼ਰ ਸ਼ੁਰੂ ਕਰੋ!",
         "open_app_btn": "ਐਪ ਖੋਲ੍ਹੋ",
         "download_btn": "ਡਾਊਨਲੋਡ ਕਰੋ",
@@ -951,10 +998,61 @@
         };
         const langMenu = document.getElementById('lang-menu');
         const langBtn = document.getElementById('lang-btn');
-        const setLanguage = (lang) => { document.documentElement.lang = lang; const translation = translations_data[lang]; document.querySelectorAll('[data-translate]').forEach(el => { const key = el.dataset.translate; if (translation[key]) { el.innerHTML = translation[key]; } }); localStorage.setItem('language', lang); langMenu.classList.remove('show'); };
-        langMenu.addEventListener('click', (e) => { if (e.target.tagName === 'LI') { setLanguage(e.target.dataset.lang); } });
-        langBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('show'); });
-        document.addEventListener('click', (e) => { if (!langMenu.contains(e.target) && !langBtn.contains(e.target)) { langMenu.classList.remove('show'); } });
+        
+        // --- MODIFIED: Function to set language and update visual indicator ---
+        const setLanguage = (lang) => {
+            // Set the lang attribute on the HTML element
+            document.documentElement.lang = lang;
+            const translation = translations_data[lang];
+
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if (translation && translation[key]) { // Check if translation exists for the lang
+                    el.innerHTML = translation[key];
+                }
+            });
+
+            // Save preference to local storage
+            localStorage.setItem('language', lang);
+            
+            // --- START: NEW code for visual indicator ---
+            // 1. Remove 'selected-lang' class from any currently selected item
+            const currentSelected = langMenu.querySelector('.selected-lang');
+            if (currentSelected) {
+                currentSelected.classList.remove('selected-lang');
+            }
+
+            // 2. Add 'selected-lang' class to the newly clicked item
+            const newSelected = langMenu.querySelector(`li[data-lang="${lang}"]`);
+            if (newSelected) {
+                newSelected.classList.add('selected-lang');
+            }
+            // --- END: NEW code for visual indicator ---
+
+            // Hide the menu after selection
+            langMenu.classList.remove('show');
+        };
+
+        langMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI' && e.target.dataset.lang) {
+                setLanguage(e.target.dataset.lang);
+            }
+        });
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the document click listener from firing
+            langMenu.classList.toggle('show');
+        });
+
+        // Close the dropdown if user clicks outside of it
+        document.addEventListener('click', (e) => {
+            if (!langMenu.contains(e.target) && !langBtn.contains(e.target)) {
+                langMenu.classList.remove('show');
+            }
+        });
+
+        // Load saved language or default to 'or'
         const savedLang = localStorage.getItem('language') || 'or';
         setLanguage(savedLang);
 
