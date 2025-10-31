@@ -1,7 +1,7 @@
 # ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)
 
 <div align="center">
-  <img src="images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
+  <img src="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
   <h3>ଗଣିତ ଶିଖିବା ଏବେ ମଜାଦାର</h3>
 
   <p>
