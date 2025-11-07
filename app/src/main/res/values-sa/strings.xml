@@ -544,4 +544,109 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">श्रेणी</string>
 
+    <string name="reorder_description">क्रीडाः पुनः क्रमानयन्तु</string>
+    <string name="save_order_description">नूतनं क्रमं रक्षन्तु</string>
+    <string name="drag_handle_description">पुनः क्रमानयितुं कर्षन्तु</string>
+    <string name="reset_order_description">पूर्वनिर्धारित-क्रमे पुनः स्थापयन्तु</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">सरत्-खण्ड-प्रहेलिका</string>
+    <string name="sliding_block_puzzle_desc">संख्याः क्रमेण योजयन्तु</string>
+    <string name="congratulations_puzzle_solved">साधुवादः!\nभवता एतत् साधितम्!</string>
+    <string name="choose_grid_size">जालस्य आकारं चिनोतु</string>
+    <string name="moves">चलनानि</string>
+    <string name="time">समयः</string>
+    <string name="change_grid_size">जालस्य आकारं परिवर्तयन्तु</string>
+    <string name="restart">पुनरारम्भः</string>
+    <string name="level_complete">स्तरः सम्पूर्णः!</string>
+    <string name="next_level">अग्रिमः स्तरः</string>
+    <string name="continue_last_game">अन्तिमां क्रीडाम् अनुवर्तयन्तु</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">शाब्दिक-समस्याः</string>
+    <string name="word_problem_game_desc">दैनन्दिन-जीवनस्य गणितं साधयन्तु</string>
+    <string name="score">अङ्काः</string>
+    <string name="correct_answer">सम्यक्!</string>
+    <string name="wrong_answer">अशुद्धम् उत्तरम्</string>
+    <string name="show_solution">समाधानं दर्शयन्तु</string>
+    <string name="skip_question">प्रश्नं त्यजन्तु</string>
+    <string name="solution">समाधानम्</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">त्वया {1} रक्त-वातगोलकाः {2} नील-वातगोलकाः च क्रीताः। तव पार्श्वे आहत्य कति वातगोलकाः सन्ति?</string>
+    <string name="s_add_balloons">आहत्य वातगोलकाः = {1} + {2} = {ans}।</string>
+    <string name="q_add_birds">एकस्मिन् वृक्षे {1} कपोताः {2} शुकाः च उपविष्टाः सन्ति। आहत्य कति पक्षिणः सन्ति?</string>
+    <string name="s_add_birds">आहत्य पक्षिणः = {1} + {2} = {ans}।</string>
+    <string name="q_add_fish">एकः धीवरः {1} मत्स्यान् गृहीतवान्, पश्चात् {2} अधिकान् गृहीतवान्। तेन आहत्य कति मत्स्याः गृहीताः?</string>
+    <string name="s_add_fish">आहत्य मत्स्याः = {1} + {2} = {ans}।</string>
+    <string name="q_add_money">तव पार्श्वे {1} रूप्यकाणि आसन्। तव पितामहः तुभ्यं {2} अधिकानि रूप्यकाणि दत्तवान्। अधुना तव पार्श्वे आहत्य कति रूप्यकाणि सन्ति?</string>
+    <string name="s_add_money">आहत्य धनम् = {1} + {2} = {ans} रूप्यकाणि।</string>
+    <string name="q_add_children">{1} बालकाः {2} बालिकाः च एकस्मिन् क्रीडाङ्गणॆ क्रीडन्ति। आहत्य कति बालाः सन्ति?</string>
+    <string name="s_add_children">आहत्य बालाः = {1} + {2} = {ans}।</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">एकस्मिन् उद्याने {1} पुष्पाणि आसन्। तेभ्यः {2} पुष्पाणि चितानि। अधुना कति पुष्पाणि अवशिष्टानि सन्ति?</string>
+    <string name="s_sub_flowers">अवशिष्टानि पुष्पाणि = {1} - {2} = {ans}।</string>
+    <string name="q_sub_pencils">रमायाः पार्श्वे {1} अङ्कन्यः आसन्। सा स्वमित्राय {2} अङ्कन्यः दत्तवती। तस्याः पार्श्वे कति अङ्कन्यः अवशिष्टाः?</string>
+    <string name="s_sub_pencils">अवशिष्टाः अङ्कन्यः = {1} - {2} = {ans}।</string>
+    <string name="q_sub_birds">आकाशे {1} पक्षिणः डयन्ते स्म। तेषु {2} एकस्मिन् वृक्षे उपाविशन्। कति पक्षिणः अधुनापि डयन्ते?</string>
+    <string name="s_sub_birds">डयन्तः पक्षिणः = {1} - {2} = {ans}।</string>
+    <string name="q_sub_money">तव माता तुभ्यं {1} रूप्यकाणि दत्तवती। त्वया {2} रूप्यकाणां पुस्तकम् एकं क्रीतम्। तव पार्श्वे कियत् धनम् अवशिष्टम्?</string>
+    <string name="s_sub_money">अवशिष्टं धनम् = {1} - {2} = {ans} रूप्यकाणि।</string>
+    <string name="q_sub_pages">एकस्मिन् पुस्तके {1} पृष्ठानि सन्ति, मया च {2} पृष्ठानि पठितानि। पठितुं कति पृष्ठानि अवशिष्टानि सन्ति?</string>
+    <string name="s_sub_pages">अवशिष्टानि पृष्ठानि = {1} - {2} = {ans}।</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">यदि एकस्मिन् द्वादशके {1} कदलीफलाः सन्ति, तर्हि {2} द्वादशकेषु कति कदलीफलाः भविष्यन्ति?</string>
+    <string name="s_mul_dozen">आहत्य कदलीफलाः = {1} x {2} = {ans}।</string>
+    <string name="q_mul_pencils">यदि एकस्यां पेटिकायाम् {1} अङ्कन्यः सन्ति, तर्हि {2} तादृशीषु पेटिकासु कति अङ्कन्यः भविष्यन्ति?</string>
+    <string name="s_mul_pencils">आहत्य अङ्कन्यः = {1} x {2} = {ans}।</string>
+    <string name="q_mul_pages">त्वं प्रतिदिनं पुस्तकस्य {1} पृष्ठानि पठसि। {2} दिनेषु त्वं कति पृष्ठानि पठिष्यसि?</string>
+    <string name="s_mul_pages">आहत्य पृष्ठानि = {1} x {2} = {ans}।</string>
+    <string name="q_mul_wheels">यदि एकस्मिन् याने {1} चक्राणि सन्ति, तर्हि {2} तादृशेषु यानेषु कति चक्राणि भविष्यन्ति?</string>
+    <string name="s_mul_wheels">आहत्य चक्राणि = {1} x {2} = {ans}।</string>
+    <string name="q_mul_price">यदि एकस्याः लेखन्याः मूल्यं {1} रूप्यकाणि अस्ति, तर्हि {2} लेखनीनां मूल्यं कियत् भविष्यति?</string>
+    <string name="s_mul_price">आहत्य मूल्यम् = {1} x {2} = {ans} रूप्यकाणि।</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">यदि {1} आम्रफलानि {2} बालेभ्यः समरूपेण विभज्यन्ते, तर्हि प्रत्येकः बालः कति आम्रफलानि प्राप्स्यति?</string>
+    <string name="s_div_mangoes">प्रत्येकः बालः प्राप्स्यति = {1} ÷ {2} = {ans} आम्रफलानि।</string>
+    <string name="q_div_toffee">यदि {1} मधुखण्डाः {2} मित्रेभ्यः समरूपेण विभज्यन्ते, तर्हि प्रत्येकं मित्रं कति मधुखण्डान् प्राप्स्यति?</string>
+    <string name="s_div_toffee">प्रत्येकं प्राप्स्यति = {1} ÷ {2} = {ans} मधुखण्डान्।</string>
+    <string name="q_div_bananas">यदि {1} कदलीफलाः {2} वानरेभ्यः समरूपेण विभज्यन्ते, तर्हि प्रत्येकः वानरः कति कदलीफलाः प्राप्स्यति?</string>
+    <string name="s_div_bananas">प्रत्येकः वानरः प्राप्स्यति = {1} ÷ {2} = {ans} कदलीफलाः।</string>
+    <string name="q_div_weeks">{1} दिनेषु कति सप्ताहाः भवन्ति? (१ सप्ताहः = {2} दिनानि)</string>
+    <string name="s_div_weeks">यदि १ सप्ताहः ७ दिनानि, तर्हि\nआहत्य सप्ताहाः = {1} ÷ {2} = {ans}।</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">त्वया {1} स्थालिकासु प्रतिस्थालिकां {2} मिष्टान्नानि स्थापितानि। तव पार्श्वे {3} मिष्टान्नानि अवशिष्टानि। आदौ तव पार्श्वे आहत्य कति मिष्टान्नानि आसन्?</string>
+    <string name="s_mix_mul_add">स्थालिकासु मिष्टान्नानि: {1} x {2} = {sub_total}।\nतर्हि, आहत्य मिष्टान्नानि = {sub_total} + {3} = {ans}।</string>
+    <string name="q_mix_mul_sub">रोहितस्य पार्श्वे {1} रूप्यकाणि आसन्। तेन {2} रूप्यकाणां मूल्येन {3} लेखन्यः क्रीताः। तस्य पार्श्वे कियत् धनम् अवशिष्टम्?</string>
+    <string name="s_mix_mul_sub">लेखनीनाम् आहत्य मूल्यम् = {2} x {3} = {sub_total}।\nअवशिष्टं धनम् = {1} - {sub_total} = {ans} रूप्यकाणि।</string>
+    <string name="q_mix_add_sub">मया एकस्य पुस्तकस्य कृते {1} रूप्यकाणि, एकस्याः अभ्यासपुस्तिकायाः कृते {2} रूप्यकाणि च दत्तानि। यदि अहं आपणिकाय {3} रूप्यकाणि ददामि, तर्हि सः मह्यं कियत् धनं प्रतिदास्यति?</string>
+    <string name="s_mix_add_sub">आहत्य व्ययः = {1} + {2} = {sub_total} रूप्यकाणि।\nसः प्रतिदास्यति = {3} - {sub_total} = {ans} रूप्यकाणि।</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">प्रश्नः</string>
+    <string name="wp_log_your_answer_key">भवतः उत्तरम्</string>
+    <string name="wp_log_correct_answer_key">सम्यक् उत्तरम्</string>
+    <string name="wp_log_result_key">परिणामः</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">सङ्केतः उपयुक्तः</string>
+
+    <string name="qna_log_skipped_hint">सङ्केतः उपयुक्तः</string>
+    <string name="history_hint_used">सङ्केतः उपयुक्तः आसीत्</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">ऊर्ध्वं गम्यताम्</string>
+    <string name="move_down_description">अधः गम्यताम्</string>
+
+
+    <string name="choose_a_language">भाषां चिनोतु</string>
+    <string name="welcome_title_new">भवतीया प्रिया भाषा का?</string>
+    <string name="button_next">अग्रिमम्</string>
+    <string name="translate_icon_description">अनुवाद-चिह्नम्</string>
+    <string name="recommended_language">अनुशंसिता भाषा</string>
+    <string name="all_languages">सर्वाः भाषाः</string>
+    <string name="save_settings">अग्रिमम्</string>
+
 </resources>

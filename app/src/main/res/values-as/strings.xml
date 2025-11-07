@@ -563,5 +563,109 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">শৃংখলা</string>
 
+    <string name="reorder_description">গেমবোৰ পুনৰ ক্ৰম কৰক</string>
+    <string name="save_order_description">নতুন ক্ৰম সংৰক্ষণ কৰক</string>
+    <string name="drag_handle_description">পুনৰ ক্ৰম কৰিবলৈ টানক</string>
+    <string name="reset_order_description">ডিফল্ট ক্ৰমলৈ ৰিছেট কৰক</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">স্লাইডিং ব্লক পাজল</string>
+    <string name="sliding_block_puzzle_desc">সংখ্যাবোৰ ক্ৰমত সজাওক</string>
+    <string name="congratulations_puzzle_solved">অভিনন্দন!\nআপুনি সমাধান কৰিলে!</string>
+    <string name="choose_grid_size">গ্ৰীডৰ আকাৰ বাছনি কৰক</string>
+    <string name="moves">চাল</string>
+    <string name="time">সময়</string>
+    <string name="change_grid_size">গ্ৰীডৰ আকাৰ সলনি কৰক</string>
+    <string name="restart">পুনৰ আৰম্ভ কৰক</string>
+    <string name="level_complete">স্তৰ সম্পূৰ্ণ!</string>
+    <string name="next_level">পৰৱৰ্তী স্তৰ</string>
+    <string name="continue_last_game">শেষৰ খেলখন অব্যাহত ৰাখক</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">কথାର অংক</string>
+    <string name="word_problem_game_desc">দৈনন্দিন জীৱনৰ গণিত সমাধান কৰক</string>
+    <string name="score">স্কোৰ</string>
+    <string name="correct_answer">সঠিক!</string>
+    <string name="wrong_answer">ভুল উত্তৰ</string>
+    <string name="show_solution">সমাধান দেখুৱাওক</string>
+    <string name="skip_question">প্ৰশ্নটো এৰি দিয়ক</string>
+    <string name="solution">সমাধান</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">তুমি {1}টা ৰঙা বেলুন আৰু {2}টা নীলা বেলুন কিনিলা। তোমাৰ ওচৰত মুঠতে কেইটা বেলুন আছে?</string>
+    <string name="s_add_balloons">মুঠ বেলুন = {1} + {2} = {ans} টা।</string>
+    <string name="q_add_birds">এটা গছত {1}টা পাৰ আৰু {2}টা ভাটৌ বহি আছে। গছজোপাত মুঠতে কেইটা চৰাই আছে?</string>
+    <string name="s_add_birds">মুঠ চৰাই = {1} + {2} = {ans} টা।</string>
+    <string name="q_add_fish">এজন মাছমৰীয়াই প্ৰথমে {1}টা মাছ আৰু পিছত {2}টা মাছ ধৰিলে। তেওঁ মুঠতে কেইটা মাছ ধৰিলে?</string>
+    <string name="s_add_fish">মুঠ মাছ = {1} + {2} = {ans} টা।</string>
+    <string name="q_add_money">তোমাৰ ওচৰত {1} টকা আছিল। তোমাৰ ককাদেউতাই তোমাক আৰু {2} টকা দিলে। এতিয়া তোমাৰ ওচৰত মুঠতে কিমান টকা হ\'ল?</string>
+    <string name="s_add_money">মুঠ টকা = {1} + {2} = {ans} টকা।</string>
+    <string name="q_add_children">এখন খেলপথাৰত {1}জন ল\'ৰা আৰু {2}জনী ছোৱালীয়ে খেলি আছে। পথাৰখনত মুঠতে কেইজন শিশু আছে?</string>
+    <string name="s_add_children">মুঠ শিশু = {1} + {2} = {ans} জন।</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">এখন বাগিচাত {1}টা ফুল আছিল। তাৰে {2}টা ফুল ছিঙা হ\'ল। এতিয়া কেইটা ফুল বাকী থাকিল?</string>
+    <string name="s_sub_flowers">বাকী থকা ফুল = {1} - {2} = {ans} টা।</string>
+    <string name="q_sub_pencils">ৰমাৰ ওচৰত {1}টা পেঞ্চিল আছিল। তাই তাইৰ বান্ধৱীক {2}টা পেঞ্চিল দিলে। তাইৰ ওচৰত আৰু কেইটা পেঞ্চিল থাকিল?</string>
+    <string name="s_sub_pencils">বাকী থকা পেঞ্চিল = {1} - {2} = {ans} টা।</string>
+    <string name="q_sub_birds">আকাশত {1}টা চৰাই উৰি আছিল। তাৰে {2}টা চৰাই এটা গছত বহিল। এতিয়া আৰু কেইটা চৰাই উৰি আছে?</string>
+    <string name="s_sub_birds">উৰি থকা চৰাই = {1} - {2} = {ans} টা।</string>
+    <string name="q_sub_money">তোমাৰ মায়ে তোমাক {1} টকা দিছিল। তুমি {2} টকাৰে এখন কিতাপ কিনিল। তোমাৰ ওচৰত আৰু কিমান টকা বাকী থাকিল?</string>
+    <string name="s_sub_money">বাকী থকা টকা = {1} - {2} = {ans} টকা।</string>
+    <string name="q_sub_pages">এখন কিতাপত {1}টা পৃষ্ঠা আছে, আৰু মই {2}টা পৃষ্ঠা পঢ়িলোঁ। আৰু কেইটা পৃষ্ঠা পঢ়িবলৈ বাকী আছে?</string>
+    <string name="s_sub_pages">বাকী থকা পৃষ্ঠা = {1} - {2} = {ans} টা।</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">যদি এ ডজনত {1}টা কল থাকে, তেন্তে {2} ডজনত কেইটা কল থাকিব?</string>
+    <string name="s_mul_dozen">মুঠ কল = {1} x {2} = {ans} টা।</string>
+    <string name="q_mul_pencils">যদি এটা বাকচত {1}টা পেঞ্চিল থাকে, তেন্তে {2}টা তেনেকুৱা বাকচত মুঠতে কেইটা পেঞ্চিল থাকিব?</string>
+    <string name="s_mul_pencils">মুঠ পেঞ্চিল = {1} x {2} = {ans} টা।</string>
+    <string name="q_mul_pages">তুমি প্ৰতিদিনে এখন কিতাপৰ {1}টা পৃষ্ঠা পঢ়া। {2} দিনত তুমি মুঠতে কেইটা পৃষ্ঠা পঢ়িবা?</string>
+    <string name="s_mul_pages">মুঠ পৃষ্ঠা = {1} x {2} = {ans} টা।</string>
+    <string name="q_mul_wheels">যদি এখন গাড়ীত {1}টা চকা থাকে, তেন্তে {2}খন তেনেকুৱা গাড়ীত মুঠতে কেইটা চকা থাকিব?</string>
+    <string name="s_mul_wheels">মুঠ চকা = {1} x {2} = {ans} টা।</string>
+    <string name="q_mul_price">যদি এটা কলমৰ দাম {1} টকা হয়, তেন্তে {2}টা কলমৰ দাম কিমান হ\'ব?</string>
+    <string name="s_mul_price">মুঠ দাম = {1} x {2} = {ans} টকা।</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">যদি {1}টা আম {2}জন শিশুৰ মাজত সমানে ভগোৱা হয়, তেন্তে প্ৰতিজন শিশুৱে কেইটাকৈ আম পাব?</string>
+    <string name="s_div_mangoes">প্ৰতিজন শিশুৱে পাব = {1} ÷ {2} = {ans} টাকৈ আম।</string>
+    <string name="q_div_toffee">যদি {1}টা চকলেট {2}জন বন্ধুৰ মাজত সমানে ভগোৱা হয়, তেন্তে প্ৰতিজন বন্ধুৱে কেইটাকৈ চকলেট পাব?</string>
+    <string name="s_div_toffee">প্ৰত্যেকে পাব = {1} ÷ {2} = {ans} টাকৈ চকলেট।</string>
+    <string name="q_div_bananas">যদি {1}টা কল {2}টা বান্দৰৰ মাজত সমানে ভগোৱা হয়, তেন্তে প্ৰতিটো বান্দৰে কেইটাকৈ কল পাব?</string>
+    <string name="s_div_bananas">প্ৰতিটো বান্দৰে পাব = {1} ÷ {2} = {ans} টাকৈ কল।</string>
+    <string name="q_div_weeks">{1} দিনত কিমান সপ্তাহ হয়? (১ সপ্তাহ = {2} দিন)</string>
+    <string name="s_div_weeks">যদি ১ সপ্তাহত ৭ দিন হয়, তেন্তে\nমুঠ সপ্তাহ = {1} ÷ {2} = {ans} টা।</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">তুমি {1}খন প্লেটত {2}টাকৈ মিঠাই ৰাখিলা। তোমাৰ ওচৰত আৰু {3}টা মিঠাই বাকী থাকিল। তেন্তে তোমাৰ ওচৰত প্ৰথমে মুঠতে কেইটা মিঠাই আছিল?</string>
+    <string name="s_mix_mul_add">প্লেটত থকা মিঠাই: {1} x {2} = {sub_total} টা।\nগতিকে, মুঠ মিঠাই = {sub_total} + {3} = {ans} টা।</string>
+    <string name="q_mix_mul_sub">ৰোহিতৰ ওচৰত {1} টকা আছিল। তেওঁ {2} টকাকৈ {3}টা কলম কিনিলে। তেওঁৰ ওচৰত আৰু কিমান টকা বাকী থাকিল?</string>
+    <string name="s_mix_mul_sub">কলমৰ মুঠ দাম = {2} x {3} = {sub_total} টকা।\nবাকী থকা টকা = {1} - {sub_total} = {ans} টকা।</string>
+    <string name="q_mix_add_sub">মই এখন কিতাপৰ বাবে {1} টকা আৰু এখন বহীৰ বাবে {2} টকা দিলোঁ। যদি মই দোকানীজনক {3} টকা দিওঁ, তেন্তে তেওঁ মোক কিমান টকা ঘূৰাই দিব?</string>
+    <string name="s_mix_add_sub">মুঠ খৰচ = {1} + {2} = {sub_total} টকা।\nতেওঁ মোক ঘূৰাই দিব = {3} - {sub_total} = {ans} টকা।</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">প্ৰশ্ন</string>
+    <string name="wp_log_your_answer_key">আপোনাৰ উত্তৰ</string>
+    <string name="wp_log_correct_answer_key">সঠিক উত্তৰ</string>
+    <string name="wp_log_result_key">ফলাফল</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">ইংগিত ব্যৱহৃত</string>
+
+    <string name="qna_log_skipped_hint">ইংগিত ব্যৱহৃত</string>
+    <string name="history_hint_used">ইংগিত ব্যৱহাৰ কৰা হৈছিল</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">ওপৰলৈ যাওক</string>
+    <string name="move_down_description">তললৈ যাওক</string>
+
+    <string name="choose_a_language">ভাষা বাছনি কৰক</string>
+    <string name="welcome_title_new">আপোনাৰ পছন্দৰ ভাষা কি?</string>
+    <string name="button_next">পৰৱৰ্তী</string>
+    <string name="translate_icon_description">অনুবাদ আইকন</string>
+    <string name="recommended_language">সুপাৰিছ কৰা ভাষা</string>
+    <string name="all_languages">সকলো ভাষা</string>
+    <string name="save_settings">পৰৱৰ্তী</string>
+
 
 </resources>

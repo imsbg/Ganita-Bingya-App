@@ -608,4 +608,109 @@
     <!-- App Footer Text -->
     <string name="home_footer_text">With love,\nfrom ସନ୍ଦୀପ୍</string>
 
+    <string name="reorder_description">ଖେଳଗୁଡ଼ିକୁ ପୁନଃ-କ୍ରମ କରନ୍ତୁ</string>
+    <string name="save_order_description">ନୂଆ କ୍ରମ ସେଭ୍ କରନ୍ତୁ</string>
+    <string name="drag_handle_description">ପୁନଃ-କ୍ରମ କରିବାକୁ ଟାଣନ୍ତୁ</string>
+    <string name="reset_order_description">ଡିଫଲ୍ଟ କ୍ରମକୁ ରିସେଟ୍ କରନ୍ତୁ</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">ଖସା ବ୍ଲକ ପଜଲ୍</string>
+    <string name="sliding_block_puzzle_desc">ସଂଖ୍ୟାଗୁଡ଼ିକୁ କ୍ରମରେ ସଜାନ୍ତୁ</string>
+    <string name="congratulations_puzzle_solved">ଅଭିନନ୍ଦନ!\nଆପଣ ଏହାକୁ ସମାଧାନ କରିଛନ୍ତି!</string>
+    <string name="choose_grid_size">ଗ୍ରୀଡ୍ ଆକାର ବାଛନ୍ତୁ</string>
+    <string name="moves">ଚାଲ</string>
+    <string name="time">ସମୟ</string>
+    <string name="change_grid_size">ଗ୍ରୀଡ୍ ଆକାର ବଦଳାନ୍ତୁ</string>
+    <string name="restart">ପୁନଃ ଆରମ୍ଭ</string>
+    <string name="level_complete">ସ୍ତର ସମ୍ପୂର୍ଣ୍ଣ!</string>
+    <string name="next_level">ପରବର୍ତ୍ତୀ ସ୍ତର</string>
+    <string name="continue_last_game">ଶେଷ ଖେଳ ଜାରି ରଖନ୍ତୁ</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">ଗାଣିତିକ କାହାଣୀ</string>
+    <string name="word_problem_game_desc">ଦୈନନ୍ଦିନ ଜୀବନର ଗଣିତ ସମାଧାନ କରନ୍ତୁ</string>
+    <string name="score">ସ୍କୋର୍</string>
+    <string name="correct_answer">ସଠିକ୍!</string>
+    <string name="wrong_answer">ଭୁଲ୍ ଉତ୍ତର</string>
+    <string name="show_solution">ସମାଧାନ</string>
+    <string name="skip_question">ଛାଡ଼ିଦିଅନ୍ତୁ</string>
+    <string name="solution">ସମାଧାନ</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">ତୁମେ {1} ଟି ଲାଲ୍ ବେଲୁନ୍ ଏବଂ {2} ଟି ନୀଳ ବେଲୁନ୍ କିଣିଲ । ତେବେ ତୁମ ପାଖରେ ମୋଟ କେତେଟି ବେଲୁନ୍ ହେଲା?</string>
+    <string name="s_add_balloons">ମୋଟ ବେଲୁନ୍ = {1} + {2} = {ans} ଟି ।</string>
+    <string name="q_add_birds">ଗୋଟିଏ ଗଛରେ {1} ଟି ପାରା ଓ {2} ଟି ଶୁଆ ବସିଛନ୍ତି, ତାହେଲେ ମୋଟ କେତୋଟି ପକ୍ଷୀ ବସିଛନ୍ତି?</string>
+    <string name="s_add_birds">ମୋଟ ପକ୍ଷୀ = {1} + {2} = {ans} ଟି । ବୁଝିପାରିଲ ତ</string>
+    <string name="q_add_fish">ଜଣେ ମାଛ ଧରାଳି ପ୍ରଥମେ {1} ଟି ମାଛ ଓ ପରେ {2} ଟି ମାଛ ଧରିଲା । ତାହେଲେ ସେ ମୋଟ କେତେଟି ମାଛ ଧରିଲା?</string>
+    <string name="s_add_fish">ମୋଟ ମାଛ = {1} + {2} = {ans} ଟି ।</string>
+    <string name="q_add_money">ତୁମ ପାଖରେ {1} ଟଙ୍କା ଥିଲା । ତୁମ ଜେଜେବାପା ତୁମକୁ ଆଉ {2} ଟଙ୍କା ଦେଲେ । ତାହେଲେ କୁହ ତୁମ ପାଖରେ ଏବେ ମୋଟ କେତେ ଟଙ୍କା ହେଲା?</string>
+    <string name="s_add_money">ମୋଟ ଟଙ୍କା = {1} + {2} = {ans} ଟଙ୍କା ।</string>
+    <string name="q_add_children">ଗୋଟିଏ ଖେଳ ପଡ଼ିଆରେ {1} ଜଣ ପୁଅ ଓ {2} ଜଣ ଝିଅ ଖେଳୁଛନ୍ତି । ତେବେ ପଡ଼ିଆରେ ମୋଟ କେତେ ଜଣ ପିଲା ଅଛନ୍ତି?</string>
+    <string name="s_add_children">ମୋଟ ପିଲା = {1} + {2} = {ans} ଜଣ ।</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">ଗୋଟିଏ ବଗିଚାରେ {1} ଟି ଫୁଲ ଫୁଟିଥିଲା । ସେଥିରୁ {2} ଟି ଫୁଲ ଛିଣ୍ଡି ଗଲା। ତେବେ ବର୍ତ୍ତମାନ କେତେଟି ଫୁଲ ବାକି ଅଛି?</string>
+    <string name="s_sub_flowers">ବାକି ଫୁଲ = {1} - {2} = {ans} ଟି ।</string>
+    <string name="q_sub_pencils">ରମା ପାଖରେ {1} ଟି ପେନସିଲ୍ ଥିଲା । ସେ {2} ଟି ପେନସିଲ୍ ତା\' ସାଙ୍ଗକୁ ଦେଇଦେଲା । ତାହେଲେ ତା\' ପାଖରେ ଆଉ କେତେଟି ପେନସିଲ୍ ରହିଲା?</string>
+    <string name="s_sub_pencils">ବାକି ପେନସିଲ୍ = {1} - {2} = {ans} ଟି ।</string>
+    <string name="q_sub_birds">ଆକାଶରେ {1} ଟି ଚଢ଼େଇ ଉଡୁଥିଲେ । ସେମାନଙ୍କ ମଧ୍ୟରୁ {2} ଟି ଚଢ଼େଇ ଆସି ଗଛରେ ବସିଗଲେ । ତେବେ ଆଉ କେତେଟି ଚଢ଼େଇ ଉଡୁଛନ୍ତି?</string>
+    <string name="s_sub_birds">ଉଡୁଥିବା ଚଢ଼େଇ = {1} - {2} = {ans} ଟି ।</string>
+    <string name="q_sub_money">ତୁମ ମା\' ତୁମକୁ {1} ଟଙ୍କା ଦେଇଥିଲେ । ତୁମେ {2} ଟଙ୍କା ରେ ବହିଟିଏ କିଣିଲ । ତେବେ ତୁମ ପାଖରେ ଆଉ କେତେ ଟଙ୍କା ରହିଲା?</string>
+    <string name="s_sub_money">ବାକି ଟଙ୍କା = {1} - {2} = {ans} ଟଙ୍କା ।</string>
+    <string name="q_sub_pages">ଗୋଟିଏ ବହିରେ {1} ପୃଷ୍ଠା ଅଛି, ଏବଂ ମୁଁ {2} ପୃଷ୍ଠା ପଢ଼ି ସାରିଛି । ତେବେ ଆଉ କେତେ ପୃଷ୍ଠା ପଢ଼ିବାକୁ ବାକି ଅଛି?</string>
+    <string name="s_sub_pages">ବାକି ପୃଷ୍ଠା = {1} - {2} = {ans} ଟି ।</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">ଯଦି ଗୋଟିଏ ଡଜନରେ {1} ଟି କଦଳୀ ଥାଏ, ତାହେଲେ {2} ଡଜନରେ କେତୋଟି କଦଳୀ ହେବ?</string>
+    <string name="s_mul_dozen">ମୋଟ କଦଳୀ = {1} x {2} = {ans} ଟି ।</string>
+    <string name="q_mul_pencils">ଯଦି ଗୋଟିଏ ବାକ୍ସରେ {1} ଟି ଲେଖାଏଁ ପେନସିଲ୍ ଥାଏ, ତେବେ ଏହିପରି {2} ଟି ବାକ୍ସରେ ମୋଟ କେତେଟି ପେନସିଲ୍ ଥିବ?</string>
+    <string name="s_mul_pencils">ମୋଟ ପେନସିଲ୍ = {1} x {2} = {ans} ଟି ।</string>
+    <string name="q_mul_pages">ତୁମେ ପ୍ରତ୍ୟେକ ଦିନ {1} ପୃଷ୍ଠା ଲେଖାଏଁ ବହି ପଢ଼ୁଛ । ତେବେ {2} ଦିନରେ ତୁମେ ମୋଟ କେତେ ପୃଷ୍ଠା ବହି ପଢ଼ିବ?</string>
+    <string name="s_mul_pages">ମୋଟ ପୃଷ୍ଠା = {1} x {2} = {ans} ଟି ।</string>
+    <string name="q_mul_wheels">ଯଦି ଗୋଟିଏ କାର୍ ରେ {1} ଟି ଚକ ଅଛି, ତେବେ ଏହିପରି {2} ଟି କାର୍ ରେ ମୋଟ କେତୋଟି ଚକ ଥିବ?</string>
+    <string name="s_mul_wheels">ମୋଟ ଚକ = {1} x {2} = {ans} ଟି ।</string>
+    <string name="q_mul_price">ଯଦି ଗୋଟିଏ କଲମର ଦାମ୍ {1} ଟଙ୍କା ହୁଏ, ତାହେଲେ {2} ଟି କଲମର ଦାମ୍ କେତେ ହେବ?</string>
+    <string name="s_mul_price">ମୋଟ ଦାମ୍ = {1} x {2} = {ans} ଟଙ୍କା ।</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">ମୋଟ {1} ଟି ଆମ୍ବକୁ {2} ଜଣ ପିଲାଙ୍କୁ ସମାନ ଭାବରେ ବାଣ୍ଟିଲେ, ପ୍ରତ୍ୟେକ ପିଲା କେତୋଟି ଲେଖାଏଁ ଆମ୍ବ ପାଇବେ?</string>
+    <string name="s_div_mangoes">ସମସ୍ତେ = {1} ÷ {2} = {ans} ଟି ଆମ୍ବ ପାଇବେ ।</string>
+    <string name="q_div_toffee">{1} ଟି ଚକୋଲେଟ କୁ {2} ଜଣ ସାଙ୍ଗଙ୍କ ମଧ୍ୟରେ ସମାନ ଭାବରେ ବାଣ୍ଟିଲେ, ପ୍ରତ୍ୟେକ ସାଙ୍ଗ କେତୋଟି ଲେଖାଏଁ ଚକୋଲେଟ ପାଇବେ?</string>
+    <string name="s_div_toffee">ପ୍ରତ୍ୟେକ ପାଇବେ = {1} ÷ {2} = {ans} ଟି ଚକୋଲେଟ ।</string>
+    <string name="q_div_bananas">{1} ଟି କଦଳୀକୁ {2} ଟି ମାଙ୍କଡ଼ ମଧ୍ୟରେ ସମାନ ଭାବରେ ବାଣ୍ଟିଲେ, ପ୍ରତ୍ୟେକ ମାଙ୍କଡ଼ କେତୋଟି ଲେଖାଏଁ କଦଳୀ ପାଇବେ?</string>
+    <string name="s_div_bananas">ପ୍ରତ୍ୟେକ ମାଙ୍କଡ଼ = {1} ÷ {2} = {ans} ଟି କଦଳୀ ପାଇବେ ।</string>
+    <string name="q_div_weeks">{1} ଦିନରେ କେତୋଟି ସପ୍ତାହ ହେବ? (୧ ସପ୍ତାହ = {2} ଦିନ)</string>
+    <string name="s_div_weeks">ଯଦି ୧ ସପ୍ତାହ ୭ ଦିନ ହୁଏ ତେବେ\nମୋଟ = {1} ÷ {2} = {ans} ସପ୍ତାହ ହେବ ।</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">ତୁମେ {1} ଟି ଥାଳିରେ {2} ଟି ଲେଖାଏଁ ମିଠା ରଖିଲ । ତୁମ ପାଖରେ ଆଉ {3} ଟି ମିଠା ବଳକା ରହିଲା । ତେବେ ତୁମ ପାଖରେ ପ୍ରଥମେ ମୋଟ କେତେଟି ମିଠା ଥିଲା?</string>
+    <string name="s_mix_mul_add">ପ୍ରଥମେ ଥାଳିରେ ଥିବା ମିଠା: {1} x {2} = {sub_total} ।\nତାହେଲେ ମୋଟ ମିଠା = {sub_total} + {3} = {ans} ଟି ହେବ ।</string>
+    <string name="q_mix_mul_sub">ରୋହିତ ପାଖରେ {1} ଟଙ୍କା ଥିଲା। ସେ {2} ଟଙ୍କା ରେ {3} ଟି ପେନ୍ କିଣିଲା। ତାହେଲେ ତାଙ୍କ ପାଖରେ ଆଉ କେତେ ଟଙ୍କା ବାକି ରହିଲା?</string>
+    <string name="s_mix_mul_sub">ପେନ୍ ର ମୋଟ ଦାମ୍ = {2} x {3} = {sub_total} ।\nବାକି ଟଙ୍କା = {1} - {sub_total} = {ans} ଟଙ୍କା ବାକି ରହିଲା ।</string>
+    <string name="q_mix_add_sub">ମୁଁ ଗୋଟିଏ ବହି ପାଇଁ {1} ଟଙ୍କା ଓ ଗୋଟିଏ ଖାତା ପାଇଁ {2} ଟଙ୍କା ଦେଲି । ଯଦି ମୁଁ ଦୋକାନୀକୁ {3} ଟଙ୍କା ଦିଏ, ତେବେ ସେ ମୋତେ କେତେ ଟଙ୍କା ଫେରାଇବ?</string>
+    <string name="s_mix_add_sub">ମୋଟ ଖର୍ଚ୍ଚ = {1} + {2} = {sub_total} ଟଙ୍କା ହେଲେ ।\nସେ ମୋତେ = {3} - {sub_total} = {ans} ଟଙ୍କା ଫେରାଇବ ।</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">ପ୍ରଶ୍ନ</string>
+    <string name="wp_log_your_answer_key">ଆପଣଙ୍କର ଉତ୍ତର</string>
+    <string name="wp_log_correct_answer_key">ସଠିକ୍ ଉତ୍ତର</string>
+    <string name="wp_log_result_key">ଫଳାଫଳ</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">ସଙ୍କେତ ବ୍ୟବହୃତ</string>
+
+    <string name="qna_log_skipped_hint">ସଙ୍କେତ ବ୍ୟବହୃତ</string>
+    <string name="history_hint_used">ସଙ୍କେତ ବ୍ୟବହାର କରାଯାଇଥିଲା</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">ଉପରକୁ ଯାଆନ୍ତୁ</string>
+    <string name="move_down_description">ତଳକୁ ଯାଆନ୍ତୁ</string>
+
+
+    <string name="choose_a_language">ଭାଷା ବାଛନ୍ତୁ</string>
+    <string name="welcome_title_new">ଆପଣଙ୍କ ପସନ୍ଦର ଭାଷା କେଉଁଟି?</string>
+    <string name="button_next">ପରବର୍ତ୍ତୀ</string>
+    <string name="translate_icon_description">ଅନୁବାଦ ଆଇକନ୍</string>
+    <string name="recommended_language">ସୁପାରିଶ କରାଯାଇଥିବା ଭାଷା</string>
+    <string name="all_languages">ସମସ୍ତ ଭାଷା</string>
+    <string name="save_settings">ପରବର୍ତ୍ତୀ</string>
+
 </resources>

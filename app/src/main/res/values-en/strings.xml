@@ -560,6 +560,109 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">Sequence</string>
 
+    <string name="reorder_description">Reorder games</string>
+    <string name="save_order_description">Save new order</string>
+    <string name="drag_handle_description">Drag to reorder</string>
+    <string name="reset_order_description">Reset to default order</string>
 
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">Sliding Block Puzzle</string>
+    <string name="sliding_block_puzzle_desc">Arrange the numbers in order</string>
+    <string name="congratulations_puzzle_solved">Congratulations!\nYou solved it!</string>
+    <string name="choose_grid_size">Choose grid size</string>
+    <string name="moves">Moves</string>
+    <string name="time">Time</string>
+    <string name="change_grid_size">Change grid size</string>
+    <string name="restart">Restart</string>
+    <string name="level_complete">Level Complete!</string>
+    <string name="next_level">Next Level</string>
+    <string name="continue_last_game">Continue last game</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">Word Problems</string>
+    <string name="word_problem_game_desc">Solve math from everyday life</string>
+    <string name="score">Score</string>
+    <string name="correct_answer">Correct!</string>
+    <string name="wrong_answer">Wrong Answer</string>
+    <string name="show_solution">Show Solution</string>
+    <string name="skip_question">Skip Question</string>
+    <string name="solution">Solution</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">You bought {1} red balloons and {2} blue balloons. How many balloons do you have in total?</string>
+    <string name="s_add_balloons">Total balloons = {1} + {2} = {ans}.</string>
+    <string name="q_add_birds">There are {1} pigeons and {2} parrots on a tree. How many birds are there in total?</string>
+    <string name="s_add_birds">Total birds = {1} + {2} = {ans}.</string>
+    <string name="q_add_fish">A fisherman caught {1} fish and later caught {2} more. How many fish did he catch in total?</string>
+    <string name="s_add_fish">Total fish = {1} + {2} = {ans}.</string>
+    <string name="q_add_money">You had {1} rupees. Your grandfather gave you {2} more rupees. How many rupees do you have now in total?</string>
+    <string name="s_add_money">Total money = {1} + {2} = {ans} rupees.</string>
+    <string name="q_add_children">{1} boys and {2} girls are playing in a field. How many children are there in total?</string>
+    <string name="s_add_children">Total children = {1} + {2} = {ans}.</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">A garden had {1} flowers. {2} flowers were plucked. How many flowers are left now?</string>
+    <string name="s_sub_flowers">Remaining flowers = {1} - {2} = {ans}.</string>
+    <string name="q_sub_pencils">Rama had {1} pencils. She gave {2} pencils to her friend. How many pencils are left with her?</string>
+    <string name="s_sub_pencils">Remaining pencils = {1} - {2} = {ans}.</string>
+    <string name="q_sub_birds">{1} birds were flying in the sky. {2} of them sat on a tree. How many birds are still flying?</string>
+    <string name="s_sub_birds">Flying birds = {1} - {2} = {ans}.</string>
+    <string name="q_sub_money">Your mother gave you {1} rupees. You bought a book for {2} rupees. How much money do you have left?</string>
+    <string name="s_sub_money">Remaining money = {1} - {2} = {ans} rupees.</string>
+    <string name="q_sub_pages">A book has {1} pages, and I have read {2} pages. How many pages are left to read?</string>
+    <string name="s_sub_pages">Remaining pages = {1} - {2} = {ans}.</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">If one dozen has {1} bananas, how many bananas will be in {2} dozens?</string>
+    <string name="s_mul_dozen">Total bananas = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pencils">If one box contains {1} pencils, how many pencils will be in {2} such boxes?</string>
+    <string name="s_mul_pencils">Total pencils = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pages">You read {1} pages of a book every day. How many pages will you read in {2} days?</string>
+    <string name="s_mul_pages">Total pages = {1} x {2} = {ans}.</string>
+    <string name="q_mul_wheels">If one car has {1} wheels, how many wheels will {2} such cars have?</string>
+    <string name="s_mul_wheels">Total wheels = {1} x {2} = {ans}.</string>
+    <string name="q_mul_price">If the price of one pen is {1} rupees, what is the price of {2} pens?</string>
+    <string name="s_mul_price">Total price = {1} x {2} = {ans} rupees.</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">If {1} mangoes are distributed equally among {2} children, how many mangoes will each child get?</string>
+    <string name="s_div_mangoes">Each child will get = {1} ÷ {2} = {ans} mangoes.</string>
+    <string name="q_div_toffee">If {1} chocolates are distributed equally among {2} friends, how many chocolates will each friend get?</string>
+    <string name="s_div_toffee">Each will get = {1} ÷ {2} = {ans} chocolates.</string>
+    <string name="q_div_bananas">If {1} bananas are distributed equally among {2} monkeys, how many bananas will each monkey get?</string>
+    <string name="s_div_bananas">Each monkey will get = {1} ÷ {2} = {ans} bananas.</string>
+    <string name="q_div_weeks">How many weeks are in {1} days? (1 week = {2} days)</string>
+    <string name="s_div_weeks">If 1 week is 7 days, then\nTotal weeks = {1} ÷ {2} = {ans}.</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">You put {2} sweets on each of {1} plates. You have {3} sweets left over. How many sweets did you have in total at first?</string>
+    <string name="s_mix_mul_add">Sweets on plates: {1} x {2} = {sub_total}.\nSo, total sweets = {sub_total} + {3} = {ans}.</string>
+    <string name="q_mix_mul_sub">Rohit had {1} rupees. He bought {3} pens for {2} rupees each. How much money does he have left?</string>
+    <string name="s_mix_mul_sub">Total price of pens = {2} x {3} = {sub_total}.\nRemaining money = {1} - {sub_total} = {ans} rupees.</string>
+    <string name="q_mix_add_sub">I paid {1} rupees for a book and {2} rupees for a notebook. If I give the shopkeeper {3} rupees, how much will he return?</string>
+    <string name="s_mix_add_sub">Total cost = {1} + {2} = {sub_total} rupees.\nHe will return = {3} - {sub_total} = {ans} rupees.</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">Question</string>
+    <string name="wp_log_your_answer_key">Your Answer</string>
+    <string name="wp_log_correct_answer_key">Correct Answer</string>
+    <string name="wp_log_result_key">Result</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">Hint Used</string>
+
+    <string name="qna_log_skipped_hint">Hint Used</string>
+    <string name="history_hint_used">Hint Used</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">Move up</string>
+    <string name="move_down_description">Move down</string>
+
+
+    <string name="choose_a_language">Choose a language</string>
+    <string name="welcome_title_new">What is your preferred language?</string>
+    <string name="button_next">Next</string>
+    <string name="translate_icon_description">Translate icon</string>
+    <string name="recommended_language">Recommended language</string>
+    <string name="all_languages">All languages</string>
+    <string name="save_settings">Next</string>
 
 </resources>

@@ -178,10 +178,9 @@ private fun MainHomeScreen(navController: NavController, onSearchClick: () -> Un
                         // <<< THIS IS THE FIX: A custom font size is now set >>>
                         style = MaterialTheme.typography.displayLarge.copy(
                             fontWeight = FontWeight.Bold,
-                            fontSize = 60.sp // You can change this number
+                            fontSize = 40.sp // You can change this number
                         ),
-                        color = Color(0xFF8D6E63),
-                        textAlign = TextAlign.Start
+                        color = Color(0xFFC0C0C0),                        textAlign = TextAlign.Start
                     )
                 }
             }

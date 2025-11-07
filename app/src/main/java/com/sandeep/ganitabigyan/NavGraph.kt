@@ -1,4 +1,5 @@
 // PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
 
 package com.sandeep.ganitabigyan
 
@@ -45,6 +46,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.io.File
+import com.sandeep.ganitabigyan.VersionManager
 
 object AppDestinations {
     const val SPLASH_ROUTE = "splash"
@@ -67,8 +69,9 @@ object AppDestinations {
     const val LEARNING_CATEGORY_ROUTE = "learning_category"
     const val SUDOKU_ROUTE = "sudoku"
     const val GAME_2048_ROUTE = "game_2048"
-    // <<< NEW ROUTE ADDED HERE >>>
     const val FTMN_GAME_ROUTE = "ftmn_game"
+    const val SLIDING_BLOCK_PUZZLE_ROUTE = "sliding_block_puzzle"
+    const val WORD_PROBLEM_GAME_ROUTE = "word_problem_game"
 }
 
 @Composable
@@ -93,12 +96,13 @@ fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navCon
         composable(route = AppDestinations.GAMES_CATEGORY_ROUTE) { GamesCategoryScreen(navController = navController) }
         composable(route = AppDestinations.LEARNING_CATEGORY_ROUTE) { LearningCategoryScreen(navController = navController) }
         composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) }
-        // <<< NEW SCREEN REGISTRATION ADDED HERE >>>
         composable(route = AppDestinations.FTMN_GAME_ROUTE) { FTMNScreen(navController = navController) }
+        composable(route = AppDestinations.SLIDING_BLOCK_PUZZLE_ROUTE) { SlidingBlockPuzzleScreen(navController = navController) }
+        composable(route = AppDestinations.WORD_PROBLEM_GAME_ROUTE) { WordProblemScreen(navController = navController) }
     }
 }
 
-// ... The rest of your SplashScreen code is unchanged ...
+
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
@@ -113,6 +117,9 @@ fun SplashScreen(navController: NavHostController) {
     var isFooterVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
+        // <<< 2. ADD THIS LINE TO RUN THE UPDATE CHECK >>>
+        VersionManager.handleUpdate(context)
+
         launch { assetManager.checkForUpdates() }
         splashConfig = assetManager.getSplashConfig()
         startAnimation = true

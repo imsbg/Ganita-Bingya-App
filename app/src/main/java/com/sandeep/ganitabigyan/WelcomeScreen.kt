@@ -1,34 +1,47 @@
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/WelcomeScreen.kt
-// VERSION: FINAL - Fixes the app name display bug.
 
 package com.sandeep.ganitabigyan
 
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import androidx.compose.animation.*
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
 
 private data class LanguageOption(val code: String, val name: String)
 
-@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun localizedString(localeCode: String, stringResId: Int): String {
+    val context = LocalContext.current
+    return remember(localeCode) {
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(Locale(localeCode))
+        val localizedContext = context.createConfigurationContext(config)
+        localizedContext.getString(stringResId)
+    }
+}
+
 @Composable
 fun WelcomeScreen(
     onStartClick: () -> Unit,
@@ -37,24 +50,28 @@ fun WelcomeScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var isLoading by remember { mutableStateOf(false) }
-    var showRestartDialog by remember { mutableStateOf(false) }
-    var languageToRestart by remember { mutableStateOf<LanguageOption?>(null) }
 
-    val languageOptions = remember {
+    val backgroundColor = Color(0xFFEAF2F8)
+    val cardColor = Color.White
+    val primaryColor = Color(0xFF3498DB)
+    val buttonColor = Color(0xFF1A5276)
+    val textColor = Color(0xFF2C3E50)
+
+    val allLanguageOptions = remember {
+        // <<< THIS LIST IS NOW MANUALLY SORTED for predictable, correct alphabetical order >>>
         listOf(
-            "or" to R.string.language_odia,
+            "or" to R.string.language_odia,       // ଓଡ଼ିଆ
+            "sa" to R.string.language_sanskrit,   // संस्कृतम्
             "en" to R.string.language_english,
-            "sa" to R.string.language_sanskrit,
-            "hi" to R.string.language_hindi,
-            "te" to R.string.language_telugu,
-            "bn" to R.string.language_bengali,
-            "gu" to R.string.language_gujarati,
-            "as" to R.string.language_assamese,
-            "ml" to R.string.language_malayalam,
-            "ur" to R.string.language_urdu
+            "hi" to R.string.language_hindi,      // हिन्दी
+            "as" to R.string.language_assamese,   // ଅସମୀୟା
+            "gu" to R.string.language_gujarati,   // ગુજરાતી
+            "te" to R.string.language_telugu,     // తెలుగు
+            "bn" to R.string.language_bengali,    // বাংলা
+            "ml" to R.string.language_malayalam,  // മലയാളം
+            "ur" to R.string.language_urdu       // اردو
+
         ).map { (code, nameResId) ->
-            // <<< THIS IS THE ONLY CHANGE NEEDED TO FIX THE BUG >>>
-            // Create a completely new Configuration object for each language.
             val config = Configuration()
             config.setLocale(Locale(code))
             val localizedContext = context.createConfigurationContext(config)
@@ -63,33 +80,13 @@ fun WelcomeScreen(
     }
 
     val (selectedLanguage, setSelectedLanguage) = remember {
-        val deviceLangCode = Locale.getDefault().language
-        val initialLang = languageOptions.find { it.code == deviceLangCode } ?: languageOptions.first()
-        mutableStateOf(initialLang)
+        mutableStateOf(allLanguageOptions.find { it.code == "en" } ?: allLanguageOptions.first())
     }
 
-    var welcomeText by remember { mutableStateOf("") }
-    var chooseLanguageText by remember { mutableStateOf("") }
-    var continueText by remember { mutableStateOf("") }
-
-    LaunchedEffect(selectedLanguage) {
-        val locale = Locale(selectedLanguage.code)
-        val config = Configuration(context.resources.configuration)
-        config.setLocale(locale)
-        val localizedContext = context.createConfigurationContext(config)
-        welcomeText = localizedContext.getString(R.string.welcome_title)
-        chooseLanguageText = localizedContext.getString(R.string.choose_language_prompt)
-        continueText = localizedContext.getString(R.string.button_continue)
-    }
-
-    var isDropdownExpanded by remember { mutableStateOf(false) }
-    var currentAppNameIndex by remember { mutableStateOf(0) }
-
-    LaunchedEffect(key1 = true) {
-        while (true) {
-            delay(2000)
-            currentAppNameIndex = (currentAppNameIndex + 1) % languageOptions.size
-        }
+    val recommendedLanguages = remember(allLanguageOptions) {
+        val odia = allLanguageOptions.find { it.code == "or" }
+        val english = allLanguageOptions.find { it.code == "en" }
+        listOfNotNull(odia, english)
     }
 
     fun changeLanguageAndRestart(language: LanguageOption) {
@@ -106,95 +103,191 @@ fun WelcomeScreen(
         }
     }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = backgroundColor
+    ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(32.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            modifier = Modifier
+                .fillMaxSize()
+                .systemBarsPadding()
         ) {
-            Spacer(modifier = Modifier.weight(0.5f))
-            Image(painter = painterResource(id = R.drawable.ic_welcome_mascot), contentDescription = "Welcome Mascot", modifier = Modifier.fillMaxWidth(0.7f), contentScale = ContentScale.Fit)
-            Spacer(modifier = Modifier.height(32.dp))
-
-            AnimatedContent(targetState = currentAppNameIndex, transitionSpec = { fadeIn(initialAlpha = 0.3f) togetherWith fadeOut(targetAlpha = 0.3f) }, label = "AppNameAnimation") { index ->
-                val animLangCode = languageOptions[index].code
-                val animConfig = Configuration(context.resources.configuration)
-                animConfig.setLocale(Locale(animLangCode))
-                val animLocalizedContext = context.createConfigurationContext(animConfig)
-                Text(text = animLocalizedContext.getString(R.string.app_name), style = MaterialTheme.typography.displaySmall, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Use the new "Choose a language" string for the header
+                Text(
+                    text = localizedString(selectedLanguage.code, R.string.choose_a_language),
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = textColor
+                )
             }
 
-            Text(text = welcomeText, style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Spacer(modifier = Modifier.weight(1f))
-
-            ExposedDropdownMenuBox(expanded = isDropdownExpanded, onExpandedChange = { expanded -> isDropdownExpanded = expanded }) {
-                OutlinedTextField(value = selectedLanguage.name, onValueChange = {}, readOnly = true, label = { Text(chooseLanguageText) }, trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isDropdownExpanded) }, modifier = Modifier.menuAnchor().fillMaxWidth())
-                ExposedDropdownMenu(expanded = isDropdownExpanded, onDismissRequest = { isDropdownExpanded = false }) {
-                    languageOptions.forEach { languageOption ->
-                        DropdownMenuItem(
-                            text = { Text(languageOption.name) },
-                            onClick = {
-                                setSelectedLanguage(languageOption)
-                                isDropdownExpanded = false
-                                languageToRestart = languageOption
-                                showRestartDialog = true
-                            },
-                            contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
+            LazyColumn(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 24.dp)
+            ) {
+                item {
+                    Text(
+                        text = localizedString(selectedLanguage.code, R.string.recommended_language),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                }
+                items(recommendedLanguages) { language ->
+                    LanguageRow(
+                        language = language,
+                        isSelected = selectedLanguage.code == language.code,
+                        onSelect = { setSelectedLanguage(language) },
+                        colors = LanguageRowColors(
+                            card = cardColor,
+                            highlightedCard = primaryColor,
+                            text = textColor,
+                            highlightedText = Color.White,
+                            iconBg = backgroundColor,
+                            highlightedIconBg = Color.White,
+                            iconTint = primaryColor,
+                            highlightedIconTint = primaryColor
                         )
-                    }
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
+
+                item { Spacer(modifier = Modifier.height(24.dp)) }
+
+                item {
+                    Text(
+                        text = localizedString(selectedLanguage.code, R.string.all_languages),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = textColor,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                }
+                // The list is now taken directly from the manually sorted 'allLanguageOptions'
+                items(allLanguageOptions) { language ->
+                    LanguageRow(
+                        language = language,
+                        isSelected = selectedLanguage.code == language.code,
+                        onSelect = { setSelectedLanguage(language) },
+                        colors = LanguageRowColors(
+                            card = cardColor,
+                            highlightedCard = primaryColor,
+                            text = textColor,
+                            highlightedText = Color.White,
+                            iconBg = backgroundColor,
+                            highlightedIconBg = Color.White,
+                            iconTint = primaryColor,
+                            highlightedIconTint = primaryColor
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
                 }
             }
-
-            Spacer(modifier = Modifier.height(32.dp))
 
             Button(
-                onClick = {
-                    languageToRestart = selectedLanguage
-                    showRestartDialog = true
-                },
-                modifier = Modifier.fillMaxWidth().height(50.dp),
-                shape = RoundedCornerShape(12.dp),
+                onClick = { changeLanguageAndRestart(selectedLanguage) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 20.dp)
+                    .height(56.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
+                enabled = !isLoading
             ) {
-                AnimatedContent(targetState = isLoading, transitionSpec = { fadeIn() togetherWith fadeOut() }, label = "button content animation") { loadingState ->
-                    if (loadingState) {
-                        CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary, strokeWidth = 2.dp)
-                    } else {
-                        Text(text = continueText, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
-                    }
-                }
+                // Use the new "Next" string for the button
+                Text(
+                    text = localizedString(selectedLanguage.code, R.string.button_next),
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = null,
+                    tint = Color.White
+                )
             }
-            Spacer(modifier = Modifier.height(32.dp))
         }
-    }
-
-    if (showRestartDialog) {
-        RestartConfirmationDialog(
-            onDismiss = { showRestartDialog = false },
-            onConfirm = {
-                showRestartDialog = false
-                languageToRestart?.let { lang ->
-                    changeLanguageAndRestart(lang)
-                }
-            }
-        )
     }
 }
 
+private data class LanguageRowColors(
+    val card: Color,
+    val text: Color,
+    val iconBg: Color,
+    val iconTint: Color,
+    val highlightedCard: Color,
+    val highlightedText: Color,
+    val highlightedIconBg: Color,
+    val highlightedIconTint: Color,
+)
+
 @Composable
-private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.language_restart_dialog_title)) },
-        text = { Text(stringResource(R.string.language_restart_dialog_message)) },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.dialog_cancel))
+private fun LanguageRow(
+    language: LanguageOption,
+    isSelected: Boolean,
+    onSelect: () -> Unit,
+    colors: LanguageRowColors
+) {
+    val cardColor = if (isSelected) colors.highlightedCard else colors.card
+    val textColor = if (isSelected) colors.highlightedText else colors.text
+    val iconBgColor = if (isSelected) colors.highlightedIconBg else colors.iconBg
+    val iconTintColor = if (isSelected) colors.highlightedIconTint else colors.iconTint
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(onClick = onSelect),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = cardColor),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(iconBgColor),
+                contentAlignment = Alignment.Center
+            ) {
+                val firstLetter = language.name.take(1)
+                Text(
+                    text = firstLetter,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = iconTintColor
+                )
             }
-        },
-        confirmButton = {
-            Button(onClick = onConfirm) {
-                Text(stringResource(R.string.dialog_restart))
-            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text = language.name,
+                modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.bodyLarge,
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Medium,
+                color = textColor
+            )
+            RadioButton(
+                selected = isSelected,
+                onClick = onSelect,
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = if (isSelected) Color.White else colors.highlightedCard,
+                    unselectedColor = textColor.copy(alpha = 0.6f)
+                )
+            )
         }
-    )
+    }
 }

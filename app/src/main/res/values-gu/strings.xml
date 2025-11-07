@@ -546,4 +546,110 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">શ્રેણી</string>
 
+    <string name="reorder_description">ગેમ્સને ફરીથી ગોઠવો</string>
+    <string name="save_order_description">નવો ક્રમ સાચવો</string>
+    <string name="drag_handle_description">ફરીથી ગોઠવવા માટે ખેંચો</string>
+    <string name="reset_order_description">ડિફૉલ્ટ ક્રમ પર રીસેટ કરો</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">સ્લાઇડિંગ બ્લોક પઝલ</string>
+    <string name="sliding_block_puzzle_desc">સંખ્યાઓને ક્રમમાં ગોઠવો</string>
+    <string name="congratulations_puzzle_solved">અભિનંદન!\nતમે તેને ઉકેલી નાખ્યું!</string>
+    <string name="choose_grid_size">ગ્રીડનું કદ પસંદ કરો</string>
+    <string name="moves">ચાલ</string>
+    <string name="time">સમય</string>
+    <string name="change_grid_size">ગ્રીડનું કદ બદલો</string>
+    <string name="restart">ફરીથી શરૂ કરો</string>
+    <string name="level_complete">સ્તર પૂર્ણ!</string>
+    <string name="next_level">આગલું સ્તર</string>
+    <string name="continue_last_game">છેલ્લી ગેમ ચાલુ રાખો</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">શાબ્દિક સમસ્યાઓ</string>
+    <string name="word_problem_game_desc">રોજિંદા જીવનના ગણિત ઉકેલો</string>
+    <string name="score">સ્કોર</string>
+    <string name="correct_answer">સાચું!</string>
+    <string name="wrong_answer">ખોટો જવાબ</string>
+    <string name="show_solution">ઉકેલ બતાવો</string>
+    <string name="skip_question">પ્રશ્ન છોડી દો</string>
+    <string name="solution">ઉકેલ</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">તમે {1} લાલ ફુગ્ગા અને {2} વાદળી ફુગ્ગા ખરીદ્યા. તમારી પાસે કુલ કેટલા ફુગ્ગા છે?</string>
+    <string name="s_add_balloons">કુલ ફુગ્ગા = {1} + {2} = {ans}.</string>
+    <string name="q_add_birds">એક ઝાડ પર {1} કબૂતર અને {2} પોપટ બેઠા છે. કુલ કેટલા પક્ષીઓ છે?</string>
+    <string name="s_add_birds">કુલ પક્ષીઓ = {1} + {2} = {ans}.</string>
+    <string name="q_add_fish">એક માછીમારે {1} માછલી પકડી અને પછી {2} વધુ પકડી. તેણે કુલ કેટલી માછલીઓ પકડી?</string>
+    <string name="s_add_fish">કુલ માછલીઓ = {1} + {2} = {ans}.</string>
+    <string name="q_add_money">તમારી પાસે {1} રૂપિયા હતા. તમારા દાદાએ તમને {2} વધુ રૂપિયા આપ્યા. હવે તમારી પાસે કુલ કેટલા રૂપિયા છે?</string>
+    <string name="s_add_money">કુલ પૈસા = {1} + {2} = {ans} રૂપિયા.</string>
+    <string name="q_add_children">એક મેદાનમાં {1} છોકરાઓ અને {2} છોકરીઓ રમી રહ્યા છે. કુલ કેટલા બાળકો છે?</string>
+    <string name="s_add_children">કુલ બાળકો = {1} + {2} = {ans}.</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">એક બગીચામાં {1} ફૂલો હતા. {2} ફૂલો તોડી લેવાયા. હવે કેટલા ફૂલો બાકી છે?</string>
+    <string name="s_sub_flowers">બાકી ફૂલો = {1} - {2} = {ans}.</string>
+    <string name="q_sub_pencils">રમા પાસે {1} પેન્સિલ હતી. તેણે તેની મિત્રને {2} પેન્સિલ આપી. તેની પાસે કેટલી પેન્સિલ બાકી રહી?</string>
+    <string name="s_sub_pencils">બાકી પેન્સિલ = {1} - {2} = {ans}.</string>
+    <string name="q_sub_birds">આકાશમાં {1} પક્ષીઓ ઉડી રહ્યા હતા. તેમાંથી {2} ઝાડ પર બેસી ગયા. કેટલા પક્ષીઓ હજી ઉડી રહ્યા છે?</string>
+    <string name="s_sub_birds">ઉડતા પક્ષીઓ = {1} - {2} = {ans}.</string>
+    <string name="q_sub_money">તમારી માતાએ તમને {1} રૂપિયા આપ્યા. તમે {2} રૂપિયાનું એક પુસ્તક ખરીદ્યું. તમારી પાસે કેટલા પૈસા બચ્યા?</string>
+    <string name="s_sub_money">બાકી પૈસા = {1} - {2} = {ans} રૂપિયા.</string>
+    <string name="q_sub_pages">એક પુસ્તકમાં {1} પાનાં છે, અને મેં {2} પાનાં વાંચી લીધા છે. વાંચવા માટે કેટલા પાનાં બાકી છે?</string>
+    <string name="s_sub_pages">બાકી પાનાં = {1} - {2} = {ans}.</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">જો એક ડઝનમાં {1} કેળા હોય, તો {2} ડઝનમાં કેટલા કેળા હશે?</string>
+    <string name="s_mul_dozen">કુલ કેળા = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pencils">જો એક બોક્સમાં {1} પેન્સિલ હોય, તો {2} આવા બોક્સમાં કેટલી પેન્સિલ હશે?</string>
+    <string name="s_mul_pencils">કુલ પેન્સિલ = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pages">તમે દરરોજ {1} પાનાં વાંચો છો. તમે {2} દિવસમાં કેટલા પાનાં વાંચશો?</string>
+    <string name="s_mul_pages">કુલ પાનાં = {1} x {2} = {ans}.</string>
+    <string name="q_mul_wheels">જો એક કારમાં {1} પૈડાં હોય, તો {2} આવી કારમાં કેટલા પૈડાં હશે?</string>
+    <string name="s_mul_wheels">કુલ પૈડાં = {1} x {2} = {ans}.</string>
+    <string name="q_mul_price">જો એક પેનની કિંમત {1} રૂપિયા હોય, તો {2} પેનની કિંમત શું છે?</string>
+    <string name="s_mul_price">કુલ કિંમત = {1} x {2} = {ans} રૂપિયા.</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">જો {1} કેરીઓ {2} બાળકોમાં સમાન રીતે વહેંચવામાં આવે, તો દરેક બાળકને કેટલી કેરીઓ મળશે?</string>
+    <string name="s_div_mangoes">દરેક બાળકને મળશે = {1} ÷ {2} = {ans} કેરીઓ.</string>
+    <string name="q_div_toffee">જો {1} ચોકલેટ {2} મિત્રોમાં સમાન રીતે વહેંચવામાં આવે, તો દરેક મિત્રને કેટલી ચોકલેટ મળશે?</string>
+    <string name="s_div_toffee">દરેકને મળશે = {1} ÷ {2} = {ans} ચોકલેટ.</string>
+    <string name="q_div_bananas">જો {1} કેળા {2} વાંદરાઓમાં સમાન રીતે વહેંચવામાં આવે, તો દરેક વાંદરાને કેટલા કેળા મળશે?</string>
+    <string name="s_div_bananas">દરેક વાંદરાને મળશે = {1} ÷ {2} = {ans} કેળા.</string>
+    <string name="q_div_weeks">{1} દિવસમાં કેટલા અઠવાડિયા હોય છે? (૧ અઠવાડિયું = {2} દિવસ)</string>
+    <string name="s_div_weeks">જો ૧ અઠવાડિયું ૭ દિવસનું હોય, તો\nકુલ અઠવાડિયા = {1} ÷ {2} = {ans}.</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">તમે {1} પ્લેટમાં દરેક પર {2} મીઠાઈ મૂકી. તમારી પાસે {3} મીઠાઈઓ બાકી રહી. તો શરૂઆતમાં તમારી પાસે કુલ કેટલી મીઠાઈઓ હતી?</string>
+    <string name="s_mix_mul_add">પ્લેટમાં મીઠાઈઓ: {1} x {2} = {sub_total}.\nતો, કુલ મીઠાઈઓ = {sub_total} + {3} = {ans}.</string>
+    <string name="q_mix_mul_sub">રોહિત પાસે {1} રૂપિયા હતા. તેણે {2} રૂપિયાની {3} પેન ખરીદી. તેની પાસે કેટલા પૈસા બચ્યા?</string>
+    <string name="s_mix_mul_sub">પેનની કુલ કિંમત = {2} x {3} = {sub_total}.\nબાકી પૈસા = {1} - {sub_total} = {ans} રૂપિયા.</string>
+    <string name="q_mix_add_sub">મેં એક પુસ્તક માટે {1} રૂપિયા અને એક નોટબુક માટે {2} રૂપિયા ચૂકવ્યા. જો હું દુકાનદારને {3} રૂપિયા આપું, તો તે મને કેટલા પાછા આપશે?</string>
+    <string name="s_mix_add_sub">કુલ ખર્ચ = {1} + {2} = {sub_total} રૂપિયા.\nતે પાછા આપશે = {3} - {sub_total} = {ans} રૂપિયા.</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">પ્રશ્ન</string>
+    <string name="wp_log_your_answer_key">તમારો જવાબ</string>
+    <string name="wp_log_correct_answer_key">સાચો જવાબ</string>
+    <string name="wp_log_result_key">પરિણામ</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">સંકેતનો ઉપયોગ થયો</string>
+
+    <string name="qna_log_skipped_hint">સંકેતનો ઉપયોગ થયો</string>
+    <string name="history_hint_used">સંકેતનો ઉપયોગ થયો હતો</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">ઉપર ખસેડો</string>
+    <string name="move_down_description">નીચે ખસેડો</string>
+
+    <string name="choose_a_language">ભાષા પસંદ કરો</string>
+    <string name="welcome_title_new">તમારી પસંદગીની ભાષા કઈ છે?</string>
+    <string name="button_next">આગળ</string>
+    <string name="translate_icon_description">અનુવાદ આઇકન</string>
+    <string name="recommended_language">ભલામણ કરેલ ભાષા</string>
+    <string name="all_languages">બધી ભાષાઓ</string>
+    <string name="save_settings">આગળ</string>
+
+
+
 </resources>

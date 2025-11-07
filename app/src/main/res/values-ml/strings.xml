@@ -563,5 +563,110 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">ശ്രേണി</string>
 
+    <string name="reorder_description">ഗെയിമുകൾ പുനഃക്രമീകരിക്കുക</string>
+    <string name="save_order_description">പുതിയ ക്രമം സേവ് ചെയ്യുക</string>
+    <string name="drag_handle_description">പുനഃക്രമീകരിക്കാൻ വലിച്ചിടുക</string>
+    <string name="reset_order_description">ഡിഫോൾട്ട് ക്രമത്തിലേക്ക് പുനഃസ്ഥാപിക്കുക</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">സ്ലൈഡിംഗ് ബ്ലോക്ക് പസിൽ</string>
+    <string name="sliding_block_puzzle_desc">അക്കങ്ങൾ ക്രമത്തിൽ সাজയ്ക്കുക</string>
+    <string name="congratulations_puzzle_solved">അഭിനന്ദനങ്ങൾ!\nനിങ്ങളിത് പരിഹരിച്ചു!</string>
+    <string name="choose_grid_size">ഗ്രിഡ് വലുപ്പം തിരഞ്ഞെടുക്കുക</string>
+    <string name="moves">നീക്കങ്ങൾ</string>
+    <string name="time">സമയം</string>
+    <string name="change_grid_size">ഗ്രിഡ് വലുപ്പം മാറ്റുക</string>
+    <string name="restart">പുനരാരംഭിക്കുക</string>
+    <string name="level_complete">ലെവൽ പൂർത്തിയായി!</string>
+    <string name="next_level">അടുത്ത ലെവൽ</string>
+    <string name="continue_last_game">അവസാന ഗെയിം തുടരുക</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">വാക്യത്തിലെ കണക്കുകൾ</string>
+    <string name="word_problem_game_desc">ദൈനംദിന ജീവിതത്തിലെ കണക്കുകൾ പരിഹരിക്കുക</string>
+    <string name="score">സ്കോർ</string>
+    <string name="correct_answer">ശരി!</string>
+    <string name="wrong_answer">തെറ്റായ ഉത്തരം</string>
+    <string name="show_solution">ഉത്തരം കാണിക്കുക</string>
+    <string name="skip_question">ചോദ്യം ഒഴിവാക്കുക</string>
+    <string name="solution">ഉത്തരം</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">നിങ്ങൾ {1} ചുവന്ന ബലൂണുകളും {2} നീല ബലൂണുകളും വാങ്ങി. നിങ്ങളുടെ കയ്യിൽ ആകെ എത്ര ബലൂണുകളുണ്ട്?</string>
+    <string name="s_add_balloons">ആകെ ബലൂണുകൾ = {1} + {2} = {ans}.</string>
+    <string name="q_add_birds">ഒരു മരത്തിൽ {1} പ്രാവുകളും {2} തത്തകളുമുണ്ട്. ആകെ എത്ര പക്ഷികളുണ്ട്?</string>
+    <string name="s_add_birds">ആകെ പക്ഷികൾ = {1} + {2} = {ans}.</string>
+    <string name="q_add_fish">ഒരു മീൻപിടുത്തക്കാരൻ {1} മീനുകളെ പിടിച്ചു, പിന്നീട് {2} എണ്ണത്തിനെ കൂടി പിടിച്ചു. അയാൾ ആകെ എത്ര മീനുകളെ പിടിച്ചു?</string>
+    <string name="s_add_fish">ആകെ മീനുകൾ = {1} + {2} = {ans}.</string>
+    <string name="q_add_money">നിങ്ങളുടെ കയ്യിൽ {1} രൂപയുണ്ടായിരുന്നു. നിങ്ങളുടെ മുത്തച്ഛൻ നിങ്ങൾക്ക് {2} രൂപ കൂടി തന്നു. ഇപ്പോൾ നിങ്ങളുടെ കയ്യിൽ ആകെ എത്ര രൂപയുണ്ട്?</string>
+    <string name="s_add_money">ആകെ പണം = {1} + {2} = {ans} രൂപ.</string>
+    <string name="q_add_children">ഒരു മൈതാനത്ത് {1} ആൺകുട്ടികളും {2} പെൺകുട്ടികളും കളിക്കുന്നു. ആകെ എത്ര കുട്ടികളുണ്ട്?</string>
+    <string name="s_add_children">ആകെ കുട്ടികൾ = {1} + {2} = {ans}.</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">ഒരു പൂന്തോട്ടത്തിൽ {1} പൂക്കളുണ്ടായിരുന്നു. {2} പൂക്കൾ പറിച്ചെടുത്തു. ഇപ്പോൾ എത്ര പൂക്കൾ ബാക്കിയുണ്ട്?</string>
+    <string name="s_sub_flowers">ബാക്കിയുള്ള പൂക്കൾ = {1} - {2} = {ans}.</string>
+    <string name="q_sub_pencils">രമയുടെ കയ്യിൽ {1} പെൻസിലുകൾ ഉണ്ടായിരുന്നു. അവൾ {2} പെൻസിലുകൾ അവളുടെ സുഹൃത്തിന് കൊടുത്തു. അവളുടെ കയ്യിൽ എത്ര പെൻസിലുകൾ ബാക്കിയുണ്ട്?</string>
+    <string name="s_sub_pencils">ബാക്കിയുള്ള പെൻസിലുകൾ = {1} - {2} = {ans}.</string>
+    <string name="q_sub_birds">ആകാശത്ത് {1} പക്ഷികൾ പറക്കുന്നുണ്ടായിരുന്നു. അവയിൽ {2} എണ്ണം ഒരു മരത്തിൽ ഇരുന്നു. എത്ര പക്ഷികൾ ഇപ്പോഴും പറക്കുന്നുണ്ട്?</string>
+    <string name="s_sub_birds">പറക്കുന്ന പക്ഷികൾ = {1} - {2} = {ans}.</string>
+    <string name="q_sub_money">നിങ്ങളുടെ അമ്മ നിങ്ങൾക്ക് {1} രൂപ തന്നു. നിങ്ങൾ {2} രൂപയ്ക്ക് ഒരു പുസ്തകം വാങ്ങി. നിങ്ങളുടെ കയ്യിൽ എത്ര പണം ബാക്കിയുണ്ട്?</string>
+    <string name="s_sub_money">ബാക്കിയുള്ള പണം = {1} - {2} = {ans} രൂപ.</string>
+    <string name="q_sub_pages">ഒരു പുസ്തകത്തിൽ {1} പേജുകളുണ്ട്, ഞാൻ {2} പേജുകൾ വായിച്ചു. വായിക്കാൻ ഇനി എത്ര പേജുകൾ ബാക്കിയുണ്ട്?</string>
+    <string name="s_sub_pages">ബാക്കിയുള്ള പേജുകൾ = {1} - {2} = {ans}.</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">ഒരു ഡസനിൽ {1} പഴങ്ങളുണ്ടെങ്കിൽ, {2} ഡസനിൽ എത്ര പഴങ്ങളുണ്ടാകും?</string>
+    <string name="s_mul_dozen">ആകെ പഴങ്ങൾ = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pencils">ഒരു പെട്ടിയിൽ {1} പെൻസിലുകളുണ്ടെങ്കിൽ, അത്തരം {2} പെട്ടികളിൽ എത്ര പെൻസിലുകളുണ്ടാകും?</string>
+    <string name="s_mul_pencils">ആകെ പെൻസിലുകൾ = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pages">നിങ്ങൾ എല്ലാ ദിവസവും ഒരു പുസ്തകത്തിലെ {1} പേജുകൾ വായിക്കുന്നു. {2} ദിവസത്തിനുള്ളിൽ നിങ്ങൾ എത്ര പേജുകൾ വായിക്കും?</string>
+    <string name="s_mul_pages">ആകെ പേജുകൾ = {1} x {2} = {ans}.</string>
+    <string name="q_mul_wheels">ഒരു കാറിന് {1} ചക്രങ്ങളുണ്ടെങ്കിൽ, അത്തരം {2} കാറുകൾക്ക് എത്ര ചക്രങ്ങളുണ്ടാകും?</string>
+    <string name="s_mul_wheels">ആകെ ചക്രങ്ങൾ = {1} x {2} = {ans}.</string>
+    <string name="q_mul_price">ഒരു പേനയുടെ വില {1} രൂപയാണെങ്കിൽ, {2} പേനകളുടെ വിലയെത്ര?</string>
+    <string name="s_mul_price">ആകെ വില = {1} x {2} = {ans} രൂപ.</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">{1} മാങ്ങകൾ {2} കുട്ടികൾക്ക് തുല്യമായി വീതിച്ചാൽ ഓരോ കുട്ടിക്കും എത്ര മാങ്ങകൾ കിട്ടും?</string>
+    <string name="s_div_mangoes">ഓരോ കുട്ടിക്കും ലഭിക്കുന്നത് = {1} ÷ {2} = {ans} മാങ്ങകൾ.</string>
+    <string name="q_div_toffee">{1} ചോക്ലേറ്റുകൾ {2} സുഹൃത്തുക്കൾക്ക് തുല്യമായി വീതിച്ചാൽ ഓരോ സുഹൃത്തിനും എത്ര ചോക്ലേറ്റുകൾ കിട്ടും?</string>
+    <string name="s_div_toffee">ഓരോരുത്തർക്കും ലഭിക്കുന്നത് = {1} ÷ {2} = {ans} ചോക്ലേറ്റുകൾ.</string>
+    <string name="q_div_bananas">{1} പഴങ്ങൾ {2} കുരങ്ങന്മാർക്ക് തുല്യമായി വീതിച്ചാൽ ഓരോ കുരങ്ങനും എത്ര പഴങ്ങൾ കിട്ടും?</string>
+    <string name="s_div_bananas">ഓരോ കുരങ്ങനും ലഭിക്കുന്നത് = {1} ÷ {2} = {ans} പഴങ്ങൾ.</string>
+    <string name="q_div_weeks">{1} ദിവസങ്ങളിൽ എത്ര ആഴ്ചകളുണ്ട്? (1 ആഴ്ച = {2} ദിവസം)</string>
+    <string name="s_div_weeks">1 ആഴ്ച 7 ദിവസമാണെങ്കിൽ\nആകെ ആഴ്ചകൾ = {1} ÷ {2} = {ans}.</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">നിങ്ങൾ {1} പ്ലേറ്റുകളിൽ ഓരോന്നിലും {2} മിഠായികൾ വെച്ചു. നിങ്ങളുടെ കയ്യിൽ {3} മിഠായികൾ ബാക്കിയുണ്ട്. ആദ്യം നിങ്ങളുടെ കയ്യിൽ ആകെ എത്ര മിഠായികളുണ്ടായിരുന്നു?</string>
+    <string name="s_mix_mul_add">പ്ലേറ്റുകളിലെ മിഠായികൾ: {1} x {2} = {sub_total}.\nഅതുകൊണ്ട്, ആകെ മിഠായികൾ = {sub_total} + {3} = {ans}.</string>
+    <string name="q_mix_mul_sub">രോഹിത്തിന്റെ കയ്യിൽ {1} രൂപയുണ്ടായിരുന്നു. അവൻ {2} രൂപ വീതം വിലയുള്ള {3} പേനകൾ വാങ്ങി. അവന്റെ കയ്യിൽ എത്ര പണം ബാക്കിയുണ്ട്?</string>
+    <string name="s_mix_mul_sub">പേനകളുടെ ആകെ വില = {2} x {3} = {sub_total}.\nബാക്കിയുള്ള പണം = {1} - {sub_total} = {ans} രൂപ.</string>
+    <string name="q_mix_add_sub">ഞാനൊരു പുസ്തകത്തിന് {1} രൂപയും ഒരു നോട്ട്ബുക്കിന് {2} രൂപയും നൽകി. ഞാൻ കടക്കാരന് {3} രൂപ നൽകിയാൽ, അയാൾ എനിക്ക് എത്ര രൂപ തിരികെ തരും?</string>
+    <string name="s_mix_add_sub">ആകെ ചെലവ് = {1} + {2} = {sub_total} രൂപ.\nഅയാൾ തിരികെ നൽകും = {3} - {sub_total} = {ans} രൂപ.</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">ചോദ്യം</string>
+    <string name="wp_log_your_answer_key">നിങ്ങളുടെ ഉത്തരം</string>
+    <string name="wp_log_correct_answer_key">ശരിയായ ഉത്തരം</string>
+    <string name="wp_log_result_key">ഫലം</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">സൂചന ഉപയോഗിച്ചു</string>
+
+    <string name="qna_log_skipped_hint">സൂചന ഉപയോഗിച്ചു</string>
+    <string name="history_hint_used">സൂചന ഉപയോഗിച്ചു</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">മുകളിലേക്ക് നീക്കുക</string>
+    <string name="move_down_description">താഴേക്ക് നീക്കുക</string>
+
+
+    <string name="choose_a_language">ഒരു ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="welcome_title_new">നിങ്ങൾ ഇഷ്ടപ്പെടുന്ന ഭാഷ ഏതാണ്?</string>
+    <string name="button_next">അടുത്തത്</string>
+    <string name="translate_icon_description">വിവർത്തന ഐക്കൺ</string>
+    <string name="recommended_language">ശുപാർശ ചെയ്യുന്ന ഭാഷ</string>
+    <string name="all_languages">എല്ലാ ഭാഷകളും</string>
+    <string name="save_settings">അടുത്തത്</string>
+
 
 </resources>

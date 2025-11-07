@@ -544,4 +544,110 @@
     <string name="history_ftmn_sequence">శ్రేణి:</string>
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">శ్రేణి</string>
+
+    <string name="reorder_description">ఆటలను పునఃక్రమబద్ధీకరించండి</string>
+    <string name="save_order_description">కొత్త క్రమాన్ని సేవ్ చేయండి</string>
+    <string name="drag_handle_description">పునఃక్రమబద్ధీకరించడానికి లాగండి</string>
+    <string name="reset_order_description">డిఫాల్ట్ క్రమానికి రీసెట్ చేయండి</string>
+
+    <!-- Odia Strings for Sliding Block Puzzle -->
+    <string name="sliding_block_puzzle_title">జారే బ్లాక్ పజిల్</string>
+    <string name="sliding_block_puzzle_desc">సంఖ్యలను క్రమంలో అమర్చండి</string>
+    <string name="congratulations_puzzle_solved">అభినందనలు!\nమీరు దీనిని సాధించారు!</string>
+    <string name="choose_grid_size">గ్రిడ్ పరిమాణాన్ని ఎంచుకోండి</string>
+    <string name="moves">ఎత్తులు</string>
+    <string name="time">సమయం</string>
+    <string name="change_grid_size">గ్రిడ్ పరిమాణాన్ని మార్చండి</string>
+    <string name="restart">పునఃప్రారంభించండి</string>
+    <string name="level_complete">స్థాయి పూర్తయింది!</string>
+    <string name="next_level">తదుపరి స్థాయి</string>
+    <string name="continue_last_game">చివరి ఆటను కొనసాగించండి</string>
+
+    <!-- Strings for Word Problem Game (Odia) -->
+    <string name="word_problem_game_title">మాటల లెక్కలు</string>
+    <string name="word_problem_game_desc">రోజువారీ జీవితంలోని గణితాన్ని పరిష్కరించండి</string>
+    <string name="score">స్కోరు</string>
+    <string name="correct_answer">సరియైనది!</string>
+    <string name="wrong_answer">తప్పు సమాధానం</string>
+    <string name="show_solution">పరిష్కారం చూపించు</string>
+    <string name="skip_question">ప్రశ్నను దాటవేయి</string>
+    <string name="solution">పరిష్కారం</string>
+
+    <!-- Addition Templates -->
+    <string name="q_add_balloons">మీరు {1} ఎర్ర బెలూన్లు మరియు {2} నీలి బెలూన్లు కొన్నారు. మీ దగ్గర మొత్తం ఎన్ని బెలూన్లు ఉన్నాయి?</string>
+    <string name="s_add_balloons">మొత్తం బెలూన్లు = {1} + {2} = {ans}.</string>
+    <string name="q_add_birds">ఒక చెట్టుపై {1} పావురాలు మరియు {2} చిలుకలు ఉన్నాయి. మొత్తం ఎన్ని పక్షులు ఉన్నాయి?</string>
+    <string name="s_add_birds">మొత్తం పక్షులు = {1} + {2} = {ans}.</string>
+    <string name="q_add_fish">ఒక జాలరి {1} చేపలను మరియు తరువాత {2} మరిన్ని చేపలను పట్టాడు. అతను మొత్తం ఎన్ని చేపలను పట్టాడు?</string>
+    <string name="s_add_fish">మొత్తం చేపలు = {1} + {2} = {ans}.</string>
+    <string name="q_add_money">మీ దగ్గర {1} రూపాయలు ఉన్నాయి. మీ తాత మీకు {2} రూపాయలు ఇచ్చారు. ఇప్పుడు మీ దగ్గర మొత్తం ఎన్ని రూపాయలు ఉన్నాయి?</string>
+    <string name="s_add_money">మొత్తం డబ్బు = {1} + {2} = {ans} రూపాయలు.</string>
+    <string name="q_add_children">ఒక మైదానంలో {1} మంది అబ్బాయిలు మరియు {2} మంది అమ్మాయిలు ఆడుతున్నారు. మొత్తం ఎంత మంది పిల్లలు ఉన్నారు?</string>
+    <string name="s_add_children">మొత్తం పిల్లలు = {1} + {2} = {ans} మంది.</string>
+
+    <!-- Subtraction Templates -->
+    <string name="q_sub_flowers">ఒక తోటలో {1} పువ్వులు ఉన్నాయి. {2} పువ్వులు కోశారు. ఇప్పుడు ఎన్ని పువ్వులు మిగిలి ఉన్నాయి?</string>
+    <string name="s_sub_flowers">మిగిలిన పువ్వులు = {1} - {2} = {ans}.</string>
+    <string name="q_sub_pencils">రమ దగ్గర {1} పెన్సిళ్లు ఉన్నాయి. ఆమె తన స్నేహితురాలికి {2} పెన్సిళ్లు ఇచ్చింది. ఆమె దగ్గర ఎన్ని పెన్సిళ్లు మిగిలి ఉన్నాయి?</string>
+    <string name="s_sub_pencils">మిగిలిన పెన్సిళ్లు = {1} - {2} = {ans}.</string>
+    <string name="q_sub_birds">ఆకాశంలో {1} పక్షులు ఎగురుతున్నాయి. వాటిలో {2} ఒక చెట్టుపై కూర్చున్నాయి. ఇంకా ఎన్ని పక్షులు ఎగురుతున్నాయి?</string>
+    <string name="s_sub_birds">ఎగురుతున్న పక్షులు = {1} - {2} = {ans}.</string>
+    <string name="q_sub_money">మీ అమ్మ మీకు {1} రూపాయలు ఇచ్చింది. మీరు {2} రూపాయలకు ఒక పుస్తకం కొన్నారు. మీ దగ్గర ఎంత డబ్బు మిగిలి ఉంది?</string>
+    <string name="s_sub_money">మిగిలిన డబ్బు = {1} - {2} = {ans} రూపాయలు.</string>
+    <string name="q_sub_pages">ఒక పుస్తకంలో {1} పేజీలు ఉన్నాయి, నేను {2} పేజీలు చదివాను. చదవడానికి ఇంకా ఎన్ని పేజీలు మిగిలి ఉన్నాయి?</string>
+    <string name="s_sub_pages">మిగిలిన పేజీలు = {1} - {2} = {ans}.</string>
+
+    <!-- Multiplication Templates -->
+    <string name="q_mul_dozen">ఒక డజనుకు {1} అరటిపండ్లు ఉంటే, {2} డజన్లలో ఎన్ని అరటిపండ్లు ఉంటాయి?</string>
+    <string name="s_mul_dozen">మొత్తం అరటిపండ్లు = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pencils">ఒక పెట్టెలో {1} పెన్సిళ్లు ఉంటే, {2} పెట్టెలలో ఎన్ని పెన్సిళ్లు ఉంటాయి?</string>
+    <string name="s_mul_pencils">మొత్తం పెన్సిళ్లు = {1} x {2} = {ans}.</string>
+    <string name="q_mul_pages">మీరు ప్రతిరోజూ {1} పేజీలు చదువుతారు. {2} రోజుల్లో మీరు ఎన్ని పేజీలు చదువుతారు?</string>
+    <string name="s_mul_pages">మొత్తం పేజీలు = {1} x {2} = {ans}.</string>
+    <string name="q_mul_wheels">ఒక కారుకు {1} చక్రాలు ఉంటే, {2} కార్లకు ఎన్ని చక్రాలు ఉంటాయి?</string>
+    <string name="s_mul_wheels">మొత్తం చక్రాలు = {1} x {2} = {ans}.</string>
+    <string name="q_mul_price">ఒక కలం ధర {1} రూపాయలు అయితే, {2} కలాల ధర ఎంత?</string>
+    <string name="s_mul_price">మొత్తం ధర = {1} x {2} = {ans} రూపాయలు.</string>
+
+    <!-- Division Templates -->
+    <string name="q_div_mangoes">{1} మామిడి పండ్లను {2} మంది పిల్లలకు సమానంగా పంచితే, ప్రతి ఒక్కరికి ఎన్ని మామిడి పండ్లు వస్తాయి?</string>
+    <string name="s_div_mangoes">ప్రతి ఒక్కరికి వచ్చేవి = {1} ÷ {2} = {ans} మామిడి పండ్లు.</string>
+    <string name="q_div_toffee">{1} చాక్లెట్లను {2} మంది స్నేహితులకు సమానంగా పంచితే, ప్రతి ఒక్కరికి ఎన్ని చాక్లెట్లు వస్తాయి?</string>
+    <string name="s_div_toffee">ప్రతి ఒక్కరికి వచ్చేవి = {1} ÷ {2} = {ans} చాక్లెట్లు.</string>
+    <string name="q_div_bananas">{1} అరటి పండ్లను {2} కోతులకు సమానంగా పంచితే, ప్రతి కోతికి ఎన్ని అరటి పండ్లు వస్తాయి?</string>
+    <string name="s_div_bananas">ప్రతి కోతికి వచ్చేవి = {1} ÷ {2} = {ans} అరటి పండ్లు.</string>
+    <string name="q_div_weeks">{1} రోజులలో ఎన్ని వారాలు ఉంటాయి? (1 వారం = {2} రోజులు)</string>
+    <string name="s_div_weeks">1 వారం 7 రోజులు అయితే,\nమొత్తం వారాలు = {1} ÷ {2} = {ans}.</string>
+
+    <!-- Mixed Templates -->
+    <string name="q_mix_mul_add">మీరు {1} పళ్లెంలో ఒక్కొక్క దానిలో {2} స్వీట్లు పెట్టారు. మీ దగ్గర {3} స్వీట్లు మిగిలాయి. మొదట మీ దగ్గర మొత్తం ఎన్ని స్వీట్లు ఉన్నాయి?</string>
+    <string name="s_mix_mul_add">పళ్లెంలో స్వీట్లు: {1} x {2} = {sub_total}.\nకాబట్టి, మొత్తం స్వీట్లు = {sub_total} + {3} = {ans}.</string>
+    <string name="q_mix_mul_sub">రోహిత్ దగ్గర {1} రూపాయలు ఉన్నాయి. అతను {2} రూపాయల చొప్పున {3} కలాలను కొన్నాడు. అతని దగ్గర ఎంత డబ్బు మిగిలి ఉంది?</string>
+    <string name="s_mix_mul_sub">కలాల మొత్తం ధర = {2} x {3} = {sub_total}.\nమిగిలిన డబ్బు = {1} - {sub_total} = {ans} రూపాయలు.</string>
+    <string name="q_mix_add_sub">నేను ఒక పుస్తకానికి {1} రూపాయలు మరియు ఒక నోట్బుక్ కోసం {2} రూపాయలు చెల్లించాను. నేను దుకాణదారునికి {3} రూపాయలు ఇస్తే, అతను ఎంత తిరిగి ఇస్తాడు?</string>
+    <string name="s_mix_add_sub">మొత్తం ఖర్చు = {1} + {2} = {sub_total} రూపాయలు.\nఅతను తిరిగి ఇస్తాడు = {3} - {sub_total} = {ans} రూపాయలు.</string>
+
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_question_key">ప్రశ్న</string>
+    <string name="wp_log_your_answer_key">మీ సమాధానం</string>
+    <string name="wp_log_correct_answer_key">సరియైన సమాధానం</string>
+    <string name="wp_log_result_key">ఫలితం</string>
+    <!-- New Strings for Word Problem History Log -->
+    <string name="wp_log_hint_used_key">సూచన వాడబడింది</string>
+
+    <string name="qna_log_skipped_hint">సూచన వాడబడింది</string>
+    <string name="history_hint_used">సూచన వాడబడింది</string>
+    <!-- ADD THESE TWO LINES -->
+    <string name="move_up_description">పైకి జరపండి</string>
+    <string name="move_down_description">కిందకి జరపండి</string>
+
+
+    <string name="choose_a_language">భాషను ఎంచుకోండి</string>
+    <string name="welcome_title_new">మీకు ఇష్టమైన భాష ఏది?</string>
+    <string name="button_next">తదుపరి</string>
+    <string name="translate_icon_description">అనువాద చిహ్నం</string>
+    <string name="recommended_language">సిఫార్సు చేయబడిన భాష</string>
+    <string name="all_languages">అన్ని భాషలు</string>
+    <string name="save_settings">తదుపరి</string>
+
 </resources>
