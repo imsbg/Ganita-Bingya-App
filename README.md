@@ -1,7 +1,7 @@
 # ଗଣିତ ବିଜ୍ଞ (Ganita Bingya)
 
 <div align="center">
-  <img src="images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
+  <img src="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png" alt="ଆପ୍ ଲୋଗୋ" width="150"/>
   <h3>ଗଣିତ ଶିଖିବା ଏବେ ମଜାଦାର</h3>
 
   <p>
@@ -29,7 +29,7 @@
 **[Visit Website](https://imsbg.github.io/Ganita-Bingya-App/)**
 ---
 
-"ଗଣିତ ବିଜ୍ଞ" ହେଉଛି ଏକ ଶିକ୍ଷଣୀୟ ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍, ଯାହାକୁ ସମ୍ପୂର୍ଣ୍ଣ ଭାବରେ ଜେଟପ୍ୟାକ୍ କମ୍ପୋଜ୍ (Jetpack Compose) ଦ୍ୱାରା ତିଆରି କରାଯାଇଛି। ଏହି ଆପ୍‌ଟି ବ୍ୟବହାରକାରୀମାନଙ୍କୁ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଭଳି ମୌଳିକ ଗାଣିତିକ ପ୍ରକ୍ରିୟାକୁ ଏକ ମଜାଦାର ଏବଂ ଆକର୍ଷଣୀୟ ଉପାୟରେ ଅଭ୍ୟାସ କରିବାରେ ସାହାଯ୍ୟ କରେ।
+"ଗଣିତ ବିଜ୍ଞ" ହେଉଛି ଭାରତର ଆମ ଛୋଟ ସାଙ୍ଗମାନଙ୍କ ପାଇଁ ଏକ ସ୍ବତନ୍ତ୍ର ଆପ୍। ଆମେ ଗଣିତକୁ ମଜାଦାର ଓ ସଂଖ୍ୟାକୁ ସହଜ କରିବାକୁ ଚାହୁଁ, କେବଳ ତୁମ ପାଇଁ!
 
 ## 📥 ଡାଉନଲୋଡ୍
 
@@ -40,33 +40,66 @@
 <table align="center">
   <tr>
     <td align="center">
-      <img src="/images/eng/home.png" alt="ହୋମ୍ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/1.png" alt="ହୋମ୍ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>ହୋମ୍ ସ୍କ୍ରିନ୍</b></sub>
     </td>
         <td align="center">
-      <img src="/images/eng/game.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/2.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>ଗେମ ସ୍କ୍ରିନ୍</b></sub>
     </td>
           <td align="center">
-      <img src="/images/learn.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
+      <img src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/3.png" alt="ଗେମ ସ୍କ୍ରିନ୍" width="200"/>
       <br />
       <sub><b>ଶିକ୍ଷା ସ୍କ୍ରିନ୍</b></sub>
     </td>
   </tr>
 </table>
 
-## ✨ ମୁଖ୍ୟ ବୈଶିଷ୍ଟ୍ୟ 
+### **ମୁଖ୍ୟ ବୈଶିଷ୍ଟ୍ୟ**
 
-- **ଚାରୋଟି ମୌଳିକ ପ୍ରକ୍ରିୟା:** ମିଶାଣ (+), ଫେଡ଼ାଣ (-), ଗୁଣନ (×), ଏବଂ ହରଣ (÷) ଏବଂ ସମୀକରଣ ଖୋଜ ଅଭ୍ୟାସ କରନ୍ତୁ।
-- **ପଣିକିଆ:** ୨କ ଠାରୁ ୨୫କ ପଣିକିଆ ଶିଖନ୍ତୁ, ପ୍ରଥମେ ସାଙ୍ଖ୍ୟିକ ରୂପରେ (ଯେପରି: ୨ × ୧ = ୨) ପଣିକିଆ ଦେଖନ୍ତୁ ।
-- **ସଙ୍ଖ୍ୟା ବିଭାଗ:** ବର୍ତ୍ତମାନ ଆପଣ ୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଙ୍ଖ୍ୟାକୁ ତାହାର ଓଡ଼ିଆ ନାମ ସହିତ ଶିଖିପାରିବେ (ଯେପରି: ୧ - ଏକ) ।
-- **ଆକର୍ଷଣୀୟ ଇଣ୍ଟରଫେସ୍:** ସରଳ ଏବଂ ସୁନ୍ଦର UI ଯାହା ବ୍ୟବହାର କରିବାକୁ ସହଜ।
-- **ଇଣ୍ଟରାକ୍ଟିଭ୍ ଶିକ୍ଷା:** ପ୍ରଶ୍ନର ତୁରନ୍ତ ଉତ୍ତର ଏବଂ ଫଳାଫଳ ପାଆନ୍ତୁ।
-- **ଆଧୁନିକ ଟେକ୍ନୋଲୋଜି:** 100% କୋଟଲିନ୍ ଏବଂ ଜେଟପ୍ୟାକ୍ କମ୍ପୋଜ୍ ସହିତ ନିର୍ମିତ।
-- **ଅଫଲାଇନ୍:** ଇଣ୍ଟରନେଟ୍ ବିନା ଯେକୌଣସି ସ୍ଥାନରେ, ଯେକୌଣସି ସମୟରେ ଅଭ୍ୟାସ କରନ୍ତୁ।
-- **ସମ୍ପୂର୍ଣ୍ଣ ବିଜ୍ଞାପନ-ମୁକ୍ତ:** ଏହି ଆପ୍ ସର୍ବଦା ବିଜ୍ଞାପନ-ମୁକ୍ତ ରହିବ। ଆମେ ପ୍ରତିଶ୍ରୁତି ଦେଉଛୁ ଯେ ଆମେ କୌଣସି ବିଜ୍ଞାପନ ଦେଖାଇବୁ ନାହିଁ କିମ୍ବା ଅନାବଶ୍ୟକ ନୋଟିଫିକେସନ୍ ପଠାଇବୁ ନାହିଁ। କେବଳ ଅଭ୍ୟାସ ପାଇଁ ପ୍ରତିଦିନ ସକାଳେ ଓ ସନ୍ଧ୍ୟାରେ ଦୁଇଟି ରିମାଇଣ୍ଡର୍ ପଠାଯିବ।
+**🧠 ମୌଳିକ ଅଭ୍ୟାସ କରନ୍ତୁ**
+ମିଶାଣ (+), ଫେଡ଼ାଣ (-), ଗୁଣନ (×), ଓ ହରଣ (÷) - ଏହି ଚାରୋଟି ମୁଖ୍ୟ ପ୍ରକ୍ରିୟାର ଅଭ୍ୟାସ କରନ୍ତୁ। 'ହଜିଯାଇଥିବା ସଂଖ୍ୟା ଖୋଜନ୍ତୁ' ପଜଲ୍ ଖେଳି ନିଜ ମୂଳଦୁଆକୁ ମଜବୁତ କରନ୍ତୁ।
+
+**🔢 ପଣକିଆ (୨କ ରୁ ୨୫କ)**
+୨କ ରୁ ୨୫କ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ଶିଖନ୍ତୁ ଓ ମନେରଖନ୍ତୁ। ପ୍ରତ୍ୟେକ ପଣିକିଆ ଏକ ସ୍ପଷ୍ଟ ଓ ସହଜ ଫର୍ମାଟରେ (ଯେପରିକି: ୨ × ୧ = ୨) ଦିଆଯାଇଛି, ଯାହା ଶୀଘ୍ର ମନେ ରଖିବାରେ ସାହାଯ୍ୟ କରେ।
+
+**✍️ ଅକ୍ଷରରେ ସଂଖ୍ୟା**
+କେବଳ ସଂଖ୍ୟାରେ ସୀମିତ ରୁହନ୍ତୁ ନାହିଁ! ୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ଲେଖିବା ଶିଖନ୍ତୁ। ଏହା ଛୋଟ ପିଲା ଏବଂ ଭାଷା ଶିଖୁଥିବା ଲୋକଙ୍କ ପାଇଁ ଏକ ଉତ୍ତମ ସୁବିଧା।
+
+**✍️ ଅଙ୍କନ ପ୍ୟାଡ**
+ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଆମର ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ ବ୍ୟବହାର କରି ଅଭ୍ୟାସ କରନ୍ତୁ, ହିସାବ କରନ୍ତୁ କିମ୍ବା ସଂଖ୍ୟା ଲେଖି ଶିଖନ୍ତୁ।
+
+**🧩 ବୁଦ୍ଧି ଖେଳ**
+*   **ତର୍କ ପଜଲ୍:** ତର୍କ ଶକ୍ତି ବଢ଼ାଇବା ପାଇଁ ଅସୀମିତ ପଜଲ୍ ଖେଳନ୍ତୁ।
+*   **ସୁଡୋକୁ:** ଏକାଗ୍ରତା ଓ ସମସ୍ୟା ସମାଧାନର ଦକ୍ଷତା ବଢ଼ାଇବା ପାଇଁ କ୍ଲାସିକ୍ ସୁଡୋକୁ ଖେଳନ୍ତୁ।
+*   **ଫଳ ତୁଳନା:** ଏକ ମଜାଦାର ଖେଳ ଯାହା ଆପଣଙ୍କର ଦେଖିବା ଓ ତୁଳନା କରିବାର କ୍ଷମତାକୁ ବଢ଼ାଇବ।
+
+**🧮 ସହଜ କ୍ୟାଲକୁଲେଟର୍**
+ଶୀଘ୍ର ହିସାବ କରିବା ଏବଂ ଦୈନନ୍ଦିନ ବ୍ୟବହାର ପାଇଁ ଏକ ସରଳ ଓ ଉପଯୋଗୀ କ୍ୟାଲକୁଲେଟର୍।
+
+---
+
+### **ଆପଣ ଆମ ଆପ୍ କାହିଁକି ଭଲ ପାଇବେ**
+
+**🌍 ବହୁଭାଷୀ ସୁବିଧା**
+ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ, ତେଲୁଗୁ, ଆସାମୀ, ବଙ୍ଗଳା, ଗୁଜୁରାଟୀ, ଏବଂ ଉର୍ଦ୍ଦୁ। ଆମେ ଖୁବ୍ ଶୀଘ୍ର ଅଧିକ ଭାଷା ଯୋଡିବାକୁ କାରଯ୍ୟ କରୁଛୁ!
+
+**✨ ସରଳ ଓ ଉପଯୋଗୀ**
+ଏକ ସରଳ ଓ ସ୍ପଷ୍ଟ ୟୁଜର୍ ଇଣ୍ଟରଫେସ୍, ଯାହା ଶିଖିବାକୁ ସହଜ ଓ ଆନନ୍ଦଦାୟକ କରେ। କୌଣସି ଜଟିଳ ମେନୁ ନାହିଁ, ସିଧା ମଜାକୁ ଯାଆନ୍ତୁ!
+
+**⏰ ଦୈନିକ ଅଭ୍ୟାସ ପାଇଁ ରିମାଇଣ୍ଡର୍**
+ନିଜର ଶିଖିବା ଲକ୍ଷ୍ୟ ସହିତ ନିୟମିତ ରୁହନ୍ତୁ। ଦିନକୁ ଦୁଇଥର ରିମାଇଣ୍ଡର୍ ସେଟ୍ କରନ୍ତୁ ଏବଂ ଅଭ୍ୟାସ ଜାରି ରଖିବାକୁ ନୋଟିଫିକେସନ୍ ପାଆନ୍ତୁ।
+
+**🔒 କୌଣସି ଲଗଇନ୍ ଆବଶ୍ୟକ ନାହିଁ**
+ଆପଣଙ୍କ ଗୋପନୀୟତା ଆମ ପାଇଁ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ। କୌଣସି ରେଜିଷ୍ଟ୍ରେସନ୍ ବିନା ସିଧାସଳଖ ଶିଖିବା ଆରମ୍ଭ କରନ୍ତୁ।
+
+---
+
+**ଏବେ ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତକୁ ନିଜର ପ୍ରିୟ ଖେଳରେ ପରିଣତ କରନ୍ତୁ!**
+
+**ଓଡ଼ିଶାରେ ନିର୍ମିତ, ଭାରତର ପିଲାମାନଙ୍କ ପାଇଁ। 🇮🇳**
 
 ## 🛠️ ବ୍ୟବହୃତ ଟେକ୍ନୋଲୋଜି
 
@@ -156,14 +189,50 @@ You can download the latest version of the app from the **[Releases](https://git
   </tr>
 </table>
 
-## ✨ Features
+### **Key Features**
 
-- **Four Basic Operations:** Practice addition (+), subtraction (-), multiplication (×), and division (÷).
-- **Engaging Interface:** A clean and beautiful UI that is easy to navigate.
-- **Interactive Learning:** Get instant feedback on your answers and track your progress.
-- **Modern Tech:** Built with 100% Kotlin and Jetpack Compose for a smooth experience.
-- **Offline First:** Practice anywhere, anytime without needing an internet connection.
-- **Completely Ad-Free:** This app will always remain ad-free. We promise that we will not show any ads or send unnecessary notifications. Only two reminders for practice will be sent daily, one in the morning and one in the evening.
+**🧠 Master the Basics**
+Practice the four core operations: Addition (+), Subtraction (-), Multiplication (×), and Division (÷). Challenge yourself with unlimited "Find the Missing Number" puzzles to build a strong foundation.
+
+**🔢 Multiplication Tables (2-25)**
+Learn and master multiplication tables from 2 to 25. Each table is presented in a clear, easy-to-read format (e.g., 2 × 1 = 2) to help with quick memorization.
+
+**✍️ Numbers in Words**
+Go beyond digits! Learn to write numbers from 1 to 100 in words. A great tool for young learners and language enthusiasts.
+
+**✍️ Digital Slate (Ankana Pad)**
+No need for pen and paper! Use our built-in digital slate for all your rough work, calculations, or just to practice writing numbers and equations.
+
+**🧩 Brain-Boosting Puzzles**
+*   **Logic Puzzles:** Engage your mind with an unlimited supply of puzzles designed to improve critical thinking.
+*   **Sudoku:** Enjoy classic Sudoku puzzles to enhance your concentration and problem-solving skills.
+*   **Compare Fruits:** A fun and colorful visual game to sharpen your observation and comparison abilities.
+
+**🧮 Handy Calculator**
+A simple and effective built-in calculator for quick verifications and everyday use.
+
+---
+
+### **Why You'll Love Our App**
+
+**🌍 Multi-Language Support**
+Proudly available in 10 Indian languages: Odia, Sanskrit, English, Hindi, Telugu, Assamese, Bengali, Gujarati, and Urdu. We are working hard to add more languages soon!
+
+**✨ Simple and Useful**
+A clean, intuitive user interface that makes learning easy and enjoyable. No complex menus, just straight to the fun!
+
+**⏰ Daily Practice Reminders**
+Stay consistent with your learning goals. Set up to two reminders a day and get notifications to keep your practice on track.
+
+**🔒 No Login Required**
+Your privacy matters. Jump right into learning without any registration or sign-up. Just open the app and start practicing!
+
+---
+
+**Download now and turn math into your favorite game!**
+
+**Made in Odisha, for the children of India. 🇮🇳**
+
 
 ## 🛠️ Tech Stack
 
