@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dynamic SEO Tags -->
+    <title>ପଣିକିଆ (୨ ରୁ ୨୫) - Odia Multiplication Tables | ଗଣିତ ବିଜ୍ଞ</title>
+    <meta name="description" content="Learn Odia Multiplication Tables (Panikia) from 2 to 25. Interactive learning tool for Odia students.">
+    <meta name="keywords" content="odia panikia, multiplication table, math learning, ganita bingya, odia math">
+    <meta name="author" content="Ganita Bingya">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: #eef0f6;
+            --text-primary: #222222;
+            --text-secondary: #555555;
+            --accent-color: #009688;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans Oriya', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 1px solid #f0f0f0;
+            border-right: 1px solid #f0f0f0;
+            padding-bottom: 60px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 100;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        header.scrolled {
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-header-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .nav-header-btn:active {
+            background-color: #f0f0f0;
+        }
+
+        .material-icons-round {
+            font-size: 28px;
+            color: #000;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Grid Menu */
+        #menu-view {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .grid-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 32px;
+            font-weight: 700;
+            transition: transform 0.1s;
+        }
+
+        .grid-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Detail View */
+        #detail-view {
+            display: none;
+            flex-direction: column;
+            padding: 10px 20px;
+        }
+
+        /* Navigation Buttons (Top/Bottom) */
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn.next {
+            background-color: #222;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .nav-btn:active {
+            opacity: 0.8;
+        }
+
+        /* Numeric Table */
+        .numeric-table {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .calc-left, .calc-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Rhyme Section */
+        .rhyme-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .rhyme-title {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .rhyme-row {
+            font-size: 20px;
+            font-weight: 600;
+            padding: 12px 0;
+            color: #333;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <!-- The ID nav-header-btn is used to change behavior in JS -->
+        <button class="nav-header-btn" id="header-btn" onclick="handleHeaderClick()">
+            <span class="material-icons-round" id="header-icon">home</span>
+        </button>
+        <h1 id="page-title">ପଣିକିଆ</h1>
+    </header>
+
+    <!-- Grid Menu -->
+    <div id="menu-view"></div>
+
+    <!-- Detail View -->
+    <div id="detail-view">
+        
+        <!-- Previous Button (Top) -->
+        <a href="#" id="prev-link" class="nav-btn" style="display:none;">
+            <span class="material-icons-round">arrow_upward</span>
+            ପୂର୍ବବର୍ତ୍ତୀ ପଣିକିଆ
+        </a>
+
+        <!-- Numeric Table -->
+        <div class="numeric-table" id="numeric-container"></div>
+
+        <!-- Rhyme Table -->
+        <div class="rhyme-section">
+            <div class="rhyme-title">ଡାକିକରି ପଢ଼ନ୍ତୁ</div>
+            <div id="rhyme-container"></div>
+        </div>
+
+        <!-- Next Button (Bottom) -->
+        <a href="#" id="next-link" class="nav-btn next" style="display:none;">
+            ପରବର୍ତ୍ତୀ ପଣିକିଆ
+            <span class="material-icons-round">arrow_downward</span>
+        </a>
+    </div>
+
+    <script>
+        /* --- DATA --- */
+        const digitsMap = {'0':'୦','1':'୧','2':'୨','3':'୩','4':'୪','5':'୫','6':'୬','7':'୭','8':'୮','9':'୯'};
+        const toOdiaNum = (num) => num.toString().split('').map(d => digitsMap[d] || d).join('');
+
+        const numberWords0to100 = [
+            "ଶୂନ","ଏକ","ଦୁଇ","ତିନି","ଚାରି","ପାଞ୍ଚ","ଛଅ","ସାତ","ଆଠ","ନଅ","ଦଶ",
+            "ଏଗାର","ବାର","ତେର","ଚଉଦ","ପନ୍ଦର","ଷୋହଳ","ସତର","ଅଠର","ଉଣେଇଶି","କୋଡ଼ିଏ",
+            "ଏକୋଇଶି","ବାଇଶି","ତେଇଶି","ଚବିଶି","ପଚିଶି","ଛବିଶି","ସତେଇଶି","ଅଠେଇଶି","ଅଣତିରିଶି","ତିରିଶି",
+            "ଏକତିରିଶି","ବତିଶି","ତେତିଶି","ଚଉତିରିଶି","ପଞ୍ଚତିରିଶି","ଛତିଶି","ସଇଁତିରିଶି","ଅଠତିରିଶି","ଅଣଚାଳିଶି","ଚାଳିଶି",
+            "ଏକଚାଳିଶି","ବୟାଳିଶି","ତେୟାଳିଶି","ଚଉରାଳିଶି","ପଞ୍ଚଚାଳିଶି","ଛୟାଳିଶି","ସତଚାଳିଶି","ଅଠଚାଳିଶି","ଅଣଚାଶ","ପଚାଶ",
+            "ଏକାବନ","ବାଉନ","ତେପନ","ଚଉବନ","ପଞ୍ଚାବନ","ଛପନ","ସତାବନ","ଅଠାବନ","ଅଣଷଠି","ଷାଠିଏ",
+            "ଏକଷଠି","ବାଷଠି","ତେଷଠି","ଚଉଷଠି","ପଞ୍ଚଷଠି","ଛଅଷଠି","ସତଷଠି","ଅଠଷଠି","ଅଣସ୍ତରି","ସତୁରି",
+            "ଏକସ୍ତରି","ବାସ୍ତରି","ତେସ୍ତରି","ଚଉସ୍ତରି","ପଞ୍ଚସ୍ତରି","ଛଅସ୍ତରି","ସତସ୍ତରି","ଅଠସ୍ତରି","ଅଣାଅଶୀ","ଅଶୀ",
+            "ଏକାଅଶୀ","ବୟାଅଶୀ","ତେୟାଅଶୀ","ଚଉରାଅଶୀ","ପଞ୍ଚାଅଶୀ","ଛୟାଅଶୀ","ସତାଅଶୀ","ଅଠାଅଶୀ","ଅଣାନବେ","ନବେ",
+            "ଏକାନବେ","ବୟାନବେ","ତେୟାନବେ","ଚଉରାନବେ","ପଞ୍ଚାନବେ","ଛୟାନବେ","ସତାନବେ","ଅଠାନବେ","ଅନେଶୋତ","ଶହେ"
+        ];
+
+        const panikiaTerms = ["କେ", "ଦୁଗୁଣେ", "ତିରି", "ଚଉ", "ପଞ୍ଚା", "ଷୋ", "ସତା", "ଅଷ୍ଟା", "ନୂଆଁ", "ଦଶା"];
+
+        function getNumberWord(num) {
+            if (num <= 100) return numberWords0to100[num];
+            const hundreds = Math.floor(num / 100);
+            const remainder = num % 100;
+            let str = (hundreds === 1) ? "ଶହେ" : numberWords0to100[hundreds] + " ଶହ";
+            if (remainder > 0) str += " " + numberWords0to100[remainder];
+            return str;
+        }
+
+        /* --- NAVIGATION LOGIC --- */
+
+        // Dynamic Header Button Click Handler
+        function handleHeaderClick() {
+            const hash = window.location.hash;
+            if (hash && hash.length > 1) {
+                // STATE: Inside a table (Back Button Logic)
+                // Clear hash to return to menu
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+                handleRoute(); 
+            } else {
+                // STATE: On Menu (Home Button Logic)
+                // Go to main Index page
+                window.location.href = "index.html";
+            }
+        }
+
+        /* --- RENDERING LOGIC --- */
+
+        function renderMenu() {
+            const container = document.getElementById('menu-view');
+            if(container.innerHTML === "") {
+                for (let i = 2; i <= 25; i++) {
+                    const a = document.createElement('a');
+                    a.className = 'grid-item';
+                    a.href = `#${i}`;
+                    a.innerText = toOdiaNum(i);
+                    container.appendChild(a);
+                }
+            }
+        }
+
+        function renderTable(baseNum) {
+            baseNum = parseInt(baseNum);
+            if(isNaN(baseNum) || baseNum < 2 || baseNum > 25) return;
+
+            const numericContainer = document.getElementById('numeric-container');
+            const rhymeContainer = document.getElementById('rhyme-container');
+            const prevLink = document.getElementById('prev-link');
+            const nextLink = document.getElementById('next-link');
+            const title = document.getElementById('page-title');
+
+            title.innerText = `${toOdiaNum(baseNum)} କ ପଣିକିଆ`;
+            // SEO update
+            document.title = `${toOdiaNum(baseNum)} କ ପଣିକିଆ - Odia Multiplication Table`;
+            document.querySelector('meta[name="description"]').setAttribute("content", `Learn the multiplication table of ${baseNum} in Odia.`);
+
+            numericContainer.innerHTML = '';
+            rhymeContainer.innerHTML = '';
+
+            const baseWord = getNumberWord(baseNum);
+            const baseOdia = toOdiaNum(baseNum);
+
+            for (let i = 1; i <= 10; i++) {
+                const result = baseNum * i;
+                const resultOdia = toOdiaNum(result);
+                const multiplierOdia = toOdiaNum(i);
+
+                // Numeric Row
+                const numRow = document.createElement('div');
+                numRow.className = 'calc-row';
+                numRow.innerHTML = `
+                    <div class="calc-left"><span>${baseOdia}</span><span>×</span><span>${multiplierOdia}</span></div>
+                    <div class="calc-right"><span>=</span><span>${resultOdia}</span></div>
+                `;
+                numericContainer.appendChild(numRow);
+
+                // Rhyme Row
+                const rhymeRow = document.createElement('div');
+                rhymeRow.className = 'rhyme-row';
+                rhymeRow.innerText = `${baseWord} ${panikiaTerms[i-1]} ${getNumberWord(result)}`;
+                rhymeContainer.appendChild(rhymeRow);
+            }
+
+            // Setup Nav Buttons
+            if (baseNum > 2) {
+                prevLink.href = `#${baseNum - 1}`;
+                prevLink.style.display = 'flex';
+            } else {
+                prevLink.style.display = 'none';
+            }
+
+            if (baseNum < 25) {
+                nextLink.href = `#${baseNum + 1}`;
+                nextLink.style.display = 'flex';
+            } else {
+                nextLink.style.display = 'none';
+            }
+        }
+
+        function handleRoute() {
+            const hash = window.location.hash;
+            const menuView = document.getElementById('menu-view');
+            const detailView = document.getElementById('detail-view');
+            const headerIcon = document.getElementById('header-icon');
+
+            if (hash && hash.length > 1) {
+                // SHOW TABLE VIEW
+                const num = hash.substring(1);
+                menuView.style.display = 'none';
+                detailView.style.display = 'flex';
+                
+                // Change Icon to Back
+                headerIcon.innerText = 'arrow_back';
+                
+                renderTable(num);
+                window.scrollTo(0, 0);
+            } else {
+                // SHOW MENU VIEW
+                document.getElementById('page-title').innerText = 'ପଣିକିଆ';
+                document.title = 'ପଣିକିଆ (୨ ରୁ ୨୫) - Odia Multiplication Tables';
+                
+                menuView.style.display = 'grid';
+                detailView.style.display = 'none';
+                
+                // Change Icon to Home
+                headerIcon.innerText = 'home';
+                
+                renderMenu();
+            }
+        }
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 10) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            renderMenu();
+            handleRoute();
+        });
+        window.addEventListener('hashchange', handleRoute);
+
+    </script>
+</body>
+</html>
