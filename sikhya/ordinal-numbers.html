@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Metatags -->
+    <title>ପୂରଣବାଚକ ସଂଖ୍ୟା - Odia Ordinal Numbers | ଗଣିତ ବିଜ୍ଞ</title>
+    <meta name="description" content="Learn Odia ordinal numbers (Prathama, Dwitiya, Trutiya) with symbols and digits. ଓଡ଼ିଆ ପୂରଣବାଚକ ସଂଖ୍ୟା ତାଲିକା - ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ ଶିଖନ୍ତୁ।">
+    <meta name="keywords" content="odia ordinal numbers, puranabachaka sankhya, odia first second third, prathama dwitiya odia, odia math, ganita bingya, odia ranking numbers">
+    <meta name="author" content="Ganita Bingya">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ପୂରଣବାଚକ ସଂଖ୍ୟା - Odia Ordinal Numbers">
+    <meta property="og:description" content="Complete list of Odia ordinal numbers from 1st to 100th and beyond.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        :root {
+            --text-dark: #222;
+            --header-bg: #333333;
+            --header-text: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans Oriya', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text-dark);
+            min-height: 100vh;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* App Bar / Header */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+
+        .material-icons-round {
+            font-size: 28px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* Table Header (Dark Strip) */
+        .table-head {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            display: grid;
+            /* Columns: Number(15%) - Word(60%) - Symbol(25%) */
+            grid-template-columns: 15% 60% 25%; 
+            padding: 12px 0;
+            font-weight: 700;
+            font-size: 18px;
+            position: sticky;
+            top: 60px; /* Height of main header roughly */
+            z-index: 90;
+        }
+
+        .col-1 { text-align: center; }
+        .col-2 { text-align: left; padding-left: 10px; }
+        .col-3 { text-align: center; }
+
+        /* List Content */
+        .list-container {
+            background-color: #fff;
+            flex-grow: 1;
+        }
+
+        .list-row {
+            display: grid;
+            grid-template-columns: 15% 60% 25%;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .list-row:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Specific font weights based on screenshot */
+        .row-num { 
+            font-weight: 700; 
+            text-align: center;
+        }
+        .row-word { 
+            font-weight: 600; 
+            text-align: left;
+            padding-left: 10px;
+        }
+        .row-sym { 
+            font-weight: 700; 
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <button class="back-btn" onclick="goBack()" aria-label="Go Back">
+            <span class="material-icons-round">arrow_back</span>
+        </button>
+        <h1>ପୂରଣବାଚକ ସଂଖ୍ୟା</h1>
+    </header>
+
+    <!-- Table Column Headers -->
+    <div class="table-head">
+        <div class="col-1">ସଂଖ୍ୟା</div>
+        <div class="col-2">ଶବ୍ଦ</div>
+        <div class="col-3">ଚିହ୍ନ</div>
+    </div>
+
+    <!-- Scrollable List -->
+    <div class="list-container" id="dataList">
+        <!-- Javascript will populate this -->
+    </div>
+
+    <script>
+        // Data Arrays extracted from your request
+        const numbers = [
+            "୧","୨","୩","୪","୫","୬","୭","୮","୯","୧୦",
+            "୧୧","୧୨","୧୩","୧୪","୧୫","୧୬","୧୭","୧୮","୧୯","୨୦",
+            "୨୧","୨୨","୨୩","୨୪","୨୫","୨୬","୨୭","୨୮","୨୯","୩୦",
+            "୩୧","୩୨","୩୩","୩୪","୩୫","୩୬","୩୭","୩୮","୩୯","୪୦",
+            "୪୧","୪୨","୪୩","୪୪","୪୫","୪୬","୪୭","୪୮","୪୯","୫୦",
+            "୫୧","୫୨","୫୩","୫୪","୫୫","୫୬","୫୭","୫୮","୫୯","୬୦",
+            "୬୧","୬୨","୬୩","୬୪","୬୫","୬୬","୬୭","୬୮","୬୯","୭୦",
+            "୭୧","୭୨","୭୩","୭୪","୭୫","୭୬","୭୭","୭୮","୭୯","୮୦",
+            "୮୧","୮୨","୮୩","୮୪","୮୫","୮୬","୮୭","୮୮","୮୯","୯୦",
+            "୯୧","୯୨","୯୩","୯୪","୯୫","୯୬","୯୭","୯୮","୯୯","୧୦୦",
+            "୨୦୦","୩୦୦","୪୦୦","୫୦୦","୬୦୦","୭୦୦","୮୦୦","୯୦୦","୧୦୦୦",
+            "୧୦୦୦୦୦","୧୦୦୦୦୦୦୦"
+        ];
+
+        const words = [
+            "ପ୍ରଥମ","ଦ୍ୱିତୀୟ","ତୃତୀୟ","ଚତୁର୍ଥ","ପଞ୍ଚମ","ଷଷ୍ଠ","ସପ୍ତମ","ଅଷ୍ଟମ","ନବମ","ଦଶମ",
+            "ଏକାଦଶ","ଦ୍ୱାଦଶ","ତ୍ରୟୋଦଶ","ଚତୁର୍ଦ୍ଦଶ","ପଞ୍ଚଦଶ","ଷୋଡ଼ଶ","ସପ୍ତଦଶ","ଅଷ୍ଟାଦଶ","ଊନବିଂଶ","ବିଂଶ",
+            "ଏକବିଂଶ","ଦ୍ୱାବିଂଶ","ତ୍ରୟୋବିଂଶ","ଚତୁବିଂଶ","ପଞ୍ଚବିଂଶ","ଷଡବିଂଶ","ସପ୍ତବିଂଶ","ଅଷ୍ଟବିଂଶ","ଊନତ୍ରିଂଶ","ତ୍ରିଂଶ",
+            "ଏକତ୍ରିଂଶ","ଦ୍ୱାତ୍ରିଂଶ","ତ୍ରୟତ୍ରିଂଶ","ଚତୁତ୍ରିଂଶ","ପଞ୍ଚତ୍ରିଂଶ","ଷଟ୍ ତ୍ରିଂଶ","ସପ୍ତତ୍ରିଂଶ","ଅଷ୍ଟତ୍ରିଂଶ","ଊନଚତ୍ୱାରିଂଶ","ଚତ୍ୱାରିଂଶ",
+            "ଏକଚତ୍ୱାରିଂଶ","ଦ୍ୱିଚତ୍ୱାରିଂଶ","ତ୍ରିଚତ୍ୱାରିଂଶ","ଚତୁଃଚତ୍ୱାରିଂଶ","ପଞ୍ଚଚତ୍ୱାରିଂଶ","ଷଟ୍ ଚତ୍ୱାରିଂଶ","ସପ୍ତଚତ୍ୱାରିଂଶ","ଅଷ୍ଟଚତ୍ୱାରିଂଶ","ଊନପଞ୍ଚାଶତ୍","ପଞ୍ଚାଶତ୍",
+            "ଏକପଞ୍ଚାଶତ୍","ଦ୍ୱିପଞ୍ଚାଶତ୍","ତ୍ରିପଞ୍ଚାଶତ୍","ଚତୁପଞ୍ଚାଶତ୍","ପଞ୍ଚପଞ୍ଚାଶତ୍","ଷଡପଞ୍ଚାଶତ୍","ସପ୍ତପଞ୍ଚାଶତ୍","ଅଷ୍ଟପଞ୍ଚାଶତ୍","ଊନଷଷ୍ଠୀତମ","ଷଷ୍ଠୀତମ",
+            "ଏକଷଷ୍ଠୀତମ","ଦ୍ୱିଷଷ୍ଠୀତମ","ତ୍ରିଷଷ୍ଠୀତମ","ଚତୁଷଷ୍ଠୀତମ","ପଞ୍ଚଷଷ୍ଠୀତମ","ଷଟ୍ ଷଷ୍ଠୀତମ","ସପ୍ତଷଷ୍ଠୀତମ","ଅଷ୍ଟଷଷ୍ଠୀତମ","ଊନସପ୍ତତିତମ","ସପ୍ତତିତମ",
+            "ଏକସପ୍ତତିତମ","ଦ୍ୱିସପ୍ତତିତମ","ତ୍ରିସପ୍ତତିତମ","ଚତୁସପ୍ତତିତମ","ପଞ୍ଚସପ୍ତତିତମ","ଷଟ୍ ସପ୍ତତିତମ","ସତସପ୍ତତିତମ","ଅଷ୍ଟସପ୍ତତିତମ","ଊନଶୀତିତମ","ଅଶୀତିତମ",
+            "ଏକାଶୀତିତମ","ଦ୍ଵାଶୀତିତମ","ତ୍ରିଶୀତିତମ","ଚତୁଶୀତିତମ","ପଞ୍ଚଶୀତିତମ","ଷଟ୍ ଶୀତିତମ","ସପ୍ତଶୀତିତମ","ଅଷ୍ଟଶୀତିତମ","ଊନନବତିତମ","ନବତିତମ",
+            "ଏକନବତିତମ","ଦ୍ୱିନବତିତମ","ତ୍ରିନବତିତମ","ଚତୁନବତିତମ","ପଞ୍ଚନବତିତମ","ଷଟ୍ ନବତିତମ","ସପ୍ତନବତିତମ","ଅଷ୍ଟନବତିତମ","ନବନବତିତମ","ଶତତମ",
+            "ଦ୍ୱିଶତତମ","ତ୍ରିଶତତମ","ଚତୁଶତତମ","ପଞ୍ଚଶତତମ","ଷଟ୍ ତତମ","ସପ୍ତଶତତମ","ଅଷ୍ଟଶତତମ","ନବଶତତମ","ସହସ୍ରତମ",
+            "ଲକ୍ଷତମ","କୋଟିତମ"
+        ];
+
+        const symbols = [
+            "୧ମ","୨ୟ","୩ୟ","୪ର୍ଥ","୫ମ","୬ଷ୍ଠ","୭ମ","୮ମ","୯ମ","୧୦ମ",
+            "୧୧ଶ","୧୨ଶ","୧୩ଶ","୧୪ଶ","୧୫ଶ","୧୬ଶ","୧୭ଶ","୧୮ଶ","୧୯ଶ","୨୦ଶ",
+            "୨୧ଶ","୨୨ଶ","୨୩ଶ","୨୪ଶ","୨୫ଶ","୨୬ଶ","୨୭ଶ","୨୮ଶ","୨୯ଶ","୩୦ଶ",
+            "୩୧ଶ","୩୨ଶ","୩୩ଶ","୩୪ଶ","୩୫ଶ","୩୬ଶ","୩୭ଶ","୩୮ଶ","୩୯ଶ","୪୦ଶ",
+            "୪୧ଶ","୪୨ଶ","୪୩ଶ","୪୪ଶ","୪୫ଶ","୪୬ଶ","୪୭ଶ","୪୮ଶ","୪୯ଶ","୫୦ମ",
+            "୫୧ମ","୫୨ମ","୫୩ମ","୫୪ମ","୫୫ମ","୫୬ମ","୫୭ମ","୫୮ମ","୫୯ମ","୬୦ମ",
+            "୬୧ମ","୬୨ମ","୬୩ମ","୬୪ମ","୬୫ମ","୬୬ମ","୬୭ମ","୬୮ମ","୬୯ମ","୭୦ମ",
+            "୭୧ମ","୭୨ମ","୭୩ମ","୭୪ମ","୭୫ମ","୭୬ମ","୭୭ମ","୭୮ମ","୭୯ମ","୮୦ମ",
+            "୮୧ମ","୮୨ମ","୮୩ମ","୮୪ମ","୮୫ମ","୮୬ମ","୮୭ମ","୮୮ମ","୮୯ମ","୯୦ମ",
+            "୯୧ମ","୯୨ମ","୯୩ମ","୯୪ମ","୯୫ମ","୯୬ମ","୯୭ମ","୯୮ମ","୯୯ମ","୧୦୦ମ",
+            "୨୦୦ମ","୩୦୦ମ","୪୦୦ମ","୫୦୦ମ","୬୦୦ମ","୭୦୦ମ","୮୦୦ମ","୯୦୦ମ","୧୦୦୦ତମ",
+            "୧୦୦୦୦୦ତମ","୧୦୦୦୦୦୦୦ତମ"
+        ];
+
+        function renderList() {
+            const container = document.getElementById('dataList');
+            let html = '';
+
+            // Loop through the arrays to build the rows
+            for (let i = 0; i < numbers.length; i++) {
+                html += `
+                    <div class="list-row">
+                        <div class="row-num">${numbers[i]}</div>
+                        <div class="row-word">${words[i]}</div>
+                        <div class="row-sym">${symbols[i]}</div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function goBack() {
+            if (document.referrer) {
+                history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+
+        // Initialize
+        window.onload = renderList;
+    </script>
+</body>
+</html>
