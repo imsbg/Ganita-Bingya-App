@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Ganita Bingya - Team & Contributors</title>
+    <meta name="description" content="Meet the team behind Ganita Bingya, the multilingual math educational app for Odisha. Empowering students with technology in Odia and English.">
+    <meta name="keywords" content="Ganita Bingya, Odia Math App, Odisha Education, Sandeep Biswal, Monalisa Biswal, Math App Contributors, Odia Tech, Sandeep Biswal G, Ganita Bingya Team, Math Education Odisha, Odia Learning App, Multilingual Math App">
+    <meta name="author" content="Sandeep Biswal G">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imsbg.github.io/Ganita-Bingya-App/contributors">
+    <meta property="og:title" content="Ganita Bingya - Team & Contributors">
+    <meta property="og:description" content="Meet the creators and contributors of Ganita Bingya.">
+    <meta property="og:image" content="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #4f46e5; /* Indigo */
+            --secondary: #ec4899; /* Pink */
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Oriya', sans-serif;
+            background-color: #f3f4f6;
+            background: radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, hsla(253,16%,7%,0) 50%), 
+                        radial-gradient(at 50% 0%, hsla(225,39%,30%,0) 0, hsla(225,39%,30%,0) 50%), 
+                        radial-gradient(at 100% 0%, hsla(339,49%,30%,0) 0, hsla(339,49%,30%,0) 50%);
+            background: linear-gradient(to bottom right, #eef2f3, #e6e9f0, #ffeef5);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-top: 90px;
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+        .logo:hover img { transform: rotate(-5deg) scale(1.05); }
+
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+
+        .lang-btn {
+            background: white;
+            border: 1px solid #ddd;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans Oriya', sans-serif;
+        }
+        .lang-btn:hover { background: var(--primary); color: white; }
+
+        .hamburger { display: none; font-size: 1.4rem; cursor: pointer; color: var(--text-main); }
+
+        @media (max-width: 768px) {
+            header { width: 95%; padding: 8px 20px; border-radius: 16px; }
+            .nav-links {
+                position: absolute; top: 70px; left: 0; width: 100%;
+                background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+                flex-direction: column; align-items: center; padding: 20px 0;
+                border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                display: none; border: 1px solid rgba(255,255,255,0.5);
+            }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease forwards; }
+            .hamburger { display: block; }
+        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Main Layout --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 {
+            text-align: center; margin-bottom: 20px; font-size: 1.3rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* New Paragraph Style */
+        .page-description {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .section-header { display: flex; align-items: center; margin-top: 40px; margin-bottom: 20px; }
+        .section-header h2 { font-size: 1.4rem; margin-right: 15px; color: var(--text-main); }
+        .line { flex-grow: 1; height: 1px; background: rgba(0,0,0,0.1); }
+
+        /* --- Cards --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .card {
+            background: var(--glass-bg); border: 1px solid white; border-radius: 24px;
+            padding: 20px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15); background: rgba(255, 255, 255, 0.8); }
+
+        .plus-btn {
+            position: absolute; top: 15px; right: 15px; width: 32px; height: 32px;
+            background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; z-index: 2;
+        }
+        .plus-btn:hover { background: var(--primary); color: white; transform: scale(1.1); }
+
+        .profile-img-small {
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 12px;
+        }
+
+        .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+        .card span {
+            font-size: 0.8rem; color: var(--secondary); font-weight: 500;
+            background: rgba(236, 72, 153, 0.1); padding: 4px 10px; border-radius: 12px;
+        }
+
+        /* --- AI Chips --- */
+        .ai-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px 0 40px 0; }
+        .chip {
+            background: white; padding: 8px 18px; border-radius: 30px; font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 10px;
+            border: 1px solid rgba(255,255,255,0.8); font-weight: 600; color: #444;
+        }
+        .chip img { height: 20px; width: auto; display: block; }
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); z-index: 2000;
+            display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.2s ease-in-out;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .modal-content {
+            width: 100%; height: 100%; padding: 20px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            transform: scale(0.5); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.open .modal-content { transform: scale(1); }
+        .close-modal {
+            position: absolute; top: 30px; right: 30px; font-size: 2.5rem; color: var(--text-light);
+            cursor: pointer; transition: 0.2s; z-index: 2001;
+        }
+        .close-modal:hover { color: var(--primary); transform: rotate(90deg); }
+        .modal-img {
+            width: 180px; height: 180px; border-radius: 50%; border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(79, 70, 229, 0.25); object-fit: cover;
+            margin-bottom: 25px; animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .modal-name { font-size: 2rem; font-weight: 700; margin-bottom: 5px; color: var(--text-main); }
+        .modal-role {
+            font-size: 1.1rem; color: var(--primary); font-weight: 600; margin-bottom: 30px;
+            background: white; padding: 5px 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .modal-bio-box {
+            background: rgba(255,255,255,0.5); padding: 25px; border-radius: 20px;
+            border: 1px solid white; max-width: 600px; margin-bottom: 30px; max-height: 40vh; overflow-y: auto;
+        }
+        .modal-bio { color: var(--text-main); font-size: 1rem; line-height: 1.7; }
+        .modal-socials { display: flex; justify-content: center; gap: 25px; }
+        .modal-socials a {
+            width: 60px; height: 60px; border-radius: 50%; background: white; display: flex; align-items: center;
+            justify-content: center; color: var(--text-main); font-size: 1.6rem; transition: 0.3s; text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .modal-socials a:hover { background: var(--primary); color: white; transform: translateY(-5px) scale(1.1); }
+
+        /* --- Footer --- */
+        .download-box {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            border: 1px solid white; border-radius: 30px; padding: 40px 20px; text-align: center;
+            margin-top: 50px; margin-bottom: 50px; box-shadow: 0 10px 40px rgba(79, 70, 229, 0.1);
+        }
+        .stats-row { display: flex; justify-content: center; gap: 40px; margin: 20px 0 30px 0; }
+        .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: block; }
+        .action-btn {
+            display: inline-flex; align-items: center; gap: 10px; padding: 12px 30px;
+            border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; margin: 5px;
+        }
+        .btn-main { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3); }
+        .btn-main:hover { background: #4338ca; transform: translateY(-2px); }
+        .btn-outline { background: white; color: var(--text-main); border: 1px solid #ddd; }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="logo">
+            <img src="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png" alt="Ganita Bingya Logo">
+            <span data-i18n="app_name">Ganita Bingya</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://imsbg.github.io/Ganita-Bingya-App/" data-i18n="menu_home">Home</a></li>
+            <li><a href="https://imsbg.github.io/Ganita-Bingya-App/#features" data-i18n="menu_features">Features</a></li>
+            <li><a href="mailto:message.sbg@gmail.com" data-i18n="menu_contact">Contact</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <button class="lang-btn" id="langSwitch">ଓ</button>
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <h1 data-i18n="page_title">Members & Contributors</h1>
+        
+        <!-- NEW: About App Paragraph -->
+        <p class="page-description" data-i18n="page_desc">
+            ଗଣିତ ବିଜ୍ଞ ହେଉଛି ଏକ ମୁକ୍ତ ଶିକ୍ଷାମୂଳକ ପ୍ରୟାସ ଯାହା ଓଡ଼ିଶାର ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ଗଣିତକୁ ସହଜ କରିବାକୁ ଲକ୍ଷ୍ୟ ରଖିଛି । ମାତୃଭାଷାରେ ଜ୍ଞାନକୌଶଳ ମାଧ୍ୟମରେ ଆମେ ଜଟିଳ ବିଷୟଗୁଡ଼ିକୁ ସରଳ କରିବା ଏବଂ ଶିଖିବା ପାଇଁ ଆଗ୍ରହ ସୃଷ୍ଟି କରିବାକୁ ଚେଷ୍ଟା କରୁଛୁ ।
+        </p>
+
+        <!-- ADMIN GROUP -->
+        <div class="section-header">
+            <h2 data-i18n="group_admin">Admin Group</h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="grid">
+            <!-- Sandeep Biswal -->
+            <div class="card">
+                <div class="plus-btn" onclick="openProfile('SandeepBiswalG')"><i class="fa-solid fa-plus"></i></div>
+                <img src="https://ui-avatars.com/api/?name=Sandeep+Biswal&background=4f46e5&color=fff&size=200" alt="Sandeep Biswal" class="profile-img-small">
+                <h3 class="card-name" data-name-id="SandeepBiswalG">Sandeep Biswal G</h3>
+                <span data-i18n="role_short_sandeep">Admin & Creator</span>
+            </div>
+        </div>
+
+        <!-- DEV GROUP -->
+        <div class="section-header">
+            <h2 data-i18n="group_dev">Dev Group</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic;">
+                <i class="fa-solid fa-code"></i> <span data-i18n="no_devs">ଅପେକ୍ଷା କର ଲୋଡ ହଉଛି...</span>
+            </div>
+        </div>
+
+        <!-- SPECIAL THANKS -->
+        <div class="section-header">
+            <h2 data-i18n="group_thanks">Special Thanks</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid">
+            <!-- Monalisa Biswal -->
+            <div class="card">
+                <div class="plus-btn" onclick="openProfile('MonalisaBiswal')"><i class="fa-solid fa-plus"></i></div>
+                <img src="https://ui-avatars.com/api/?name=Monalisa+Biswal&background=ec4899&color=fff&size=200" alt="Monalisa Biswal" class="profile-img-small">
+                <h3 class="card-name" data-name-id="MonalisaBiswal">Monalisa Biswal</h3>
+                <span data-i18n="role_short_rupa">Language Expert</span>
+            </div>
+        </div>
+
+        <!-- AI TOOLS -->
+        <div class="section-header" style="justify-content:center; border:none;">
+            <h3 style="font-size: 1.1rem; color:var(--text-light);" data-i18n="section_ai">AI tools used for this app</h3>
+        </div>
+        <div class="ai-chips">
+            <div class="chip">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini">
+                Google Gemini
+            </div>
+            <div class="chip">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                Chat GPT
+            </div>
+            <div class="chip">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="Grok">
+                Grok
+            </div>
+        </div>
+
+        <!-- DOWNLOAD & STATS -->
+        <div class="download-box" id="footer">
+            <h2 data-i18n="download_title">Get the App</h2>
+            <p style="color:#777; margin-bottom:20px;" data-i18n="download_desc">Experience mathematics in your local language.</p>
+
+            <div class="stats-row">
+                <div>
+                    <span class="stat-num" id="currentVersion">...</span>
+                    <small style="color:#888" data-i18n="stat_version">Version</small>
+                </div>
+                <div>
+                    <span class="stat-num" id="totalDownloads">...</span>
+                    <small style="color:#888" data-i18n="stat_downloads">Downloads</small>
+                </div>
+            </div>
+
+            <div>
+                <a href="#" id="downloadBtn" class="action-btn btn-main">
+                    <i class="fa-solid fa-download"></i> <span data-i18n="btn_download">Download APK</span>
+                </a>
+                <a href="ganitabingya://open" class="action-btn btn-outline">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="btn_open">Open</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FULL SCREEN POPUP MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="close-modal" onclick="closeProfile()">&times;</div>
+        <div class="modal-content">
+            <img src="" id="m_img" class="modal-img">
+            <h2 id="m_name" class="modal-name"></h2>
+            <span id="m_role" class="modal-role"></span>
+            
+            <div class="modal-bio-box">
+                <p id="m_bio" class="modal-bio"></p>
+            </div>
+            
+            <div id="m_social" class="modal-socials"></div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            'SandeepBiswalG': {
+                img: "https://ui-avatars.com/api/?name=Sandeep+Biswal&background=4f46e5&color=fff&size=300",
+                social: `
+                    <a href="https://www.youtube.com/@ସନ୍ଦୀପ୍" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/sandeepbiswalg" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                `,
+                translations: {
+                    en: {
+                        name: "Sandeep Biswal G",
+                        role: "Admin, Design, Concept, Odia Language",
+                        bio: "Sandeep Biswal G is the passionate creator behind the Ganita Bingya app. Hailing from Odisha, he is a technologist and explorer with a deep love for both nature and digital innovation. A core part of his mission is to promote and integrate the Odia language into the world of technology, making digital tools more accessible for Odisha."
+                    },
+                    od: {
+                        name: "ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି",
+                        role: "ପ୍ରଶାସକ, ଡିଜାଇନ୍, ଧାରଣା, ଓଡିଆ ଭାଷା",
+                        bio: "ସନ୍ଦୀପ ବିଶ୍ୱାଳ ଜି ହେଉଛନ୍ତି ଗଣିତ ବିଜ୍ଞ ଆପ୍ ର ଉତ୍ସାହୀ ସ୍ରଷ୍ଟା । ଓଡିଶାର ବାସିନ୍ଦା ଭାବରେ, ସେ ଜଣେ ପ୍ରଯୁକ୍ତିବିଦ୍ୟା ଏବଂ ଅନୁସନ୍ଧାନକାରୀ, ଯିଏ ପ୍ରକୃତି ଏବଂ ଡିଜିଟାଲ୍ ଉଦ୍ଭାବନକୁ ଭଲ ପାଆନ୍ତି । ଟେକ୍ନୋଲୋଜି ଦୁନିଆରେ ଓଡିଆ ଭାଷାକୁ ପ୍ରୋତ୍ସାହିତ କରିବା ଏବଂ ଓଡିଶା ପାଇଁ ଡିଜିଟାଲ୍ ଉପକରଣଗୁଡ଼ିକୁ ଅଧିକ ସୁଗମ କରିବା ତାଙ୍କର ମୁଖ୍ୟ ଲକ୍ଷ୍ୟ ।"
+                    }
+                }
+            },
+            'MonalisaBiswal': {
+                img: "https://ui-avatars.com/api/?name=Monalisa+Biswal&background=ec4899&color=fff&size=300",
+                social: `<a href="https://www.youtube.com/@rupaeducation" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>`,
+                translations: {
+                    en: {
+                        name: "Monalisa Biswal (Rupa)",
+                        role: "Odia Language Contributor",
+                        bio: "Monalisa Biswal is a dedicated teacher and a vital contributor to the educational mission of the Ganita Bingya app. Known for her gift in simplifying complex concepts, she makes learning easy for everyone. Thank you Rupa Nani."
+                    },
+                    od: {
+                        name: "ମୋନାଲିସା ବିଶ୍ୱାଳ (ରୁପା)",
+                        role: "ଓଡିଆ ଭାଷା ସହଯୋଗୀ",
+                        bio: "ମୋନାଲିସା ବିଶ୍ୱାଳ ଜଣେ ଉତ୍ସର୍ଗୀକୃତ ଶିକ୍ଷୟିତ୍ରୀ ଏବଂ ଗଣିତ ବିଜ୍ଞାନ ଆପ୍ ର ଶିକ୍ଷାଗତ ଲକ୍ଷ୍ୟରେ ଜଣେ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସହଯୋଗୀ । ଜଟିଳ ଧାରଣାଗୁଡ଼ିକୁ ସରଳ କରିବାରେ ତାଙ୍କର ଦକ୍ଷତା ପାଇଁ ଜଣାଶୁଣା । ଧନ୍ୟବାଦ ରୁପା ନାନୀ ।"
+                    }
+                }
+            }
+        };
+
+        const uiTranslations = {
+            en: {
+                app_name: "Ganita Bingya",
+                menu_home: "Home",
+                menu_features: "Features",
+                menu_contact: "Contact",
+                page_title: "Members & Contributors",
+                // New Translation Key
+                page_desc: "Ganita Bingya is a math educational app for children where they can learn numbers, multiplication tables (with words), play brain games, solve calculation questions, and much more. The app is available in major Indian languages, including Odia, English, and Hindi. a love for learning in the mother tongue.",
+                group_admin: "Admin Group",
+                group_dev: "Dev Group",
+                no_devs: "No one is here;",
+                group_thanks: "Special Thanks",
+                role_short_sandeep: "Admin & Creator",
+                role_short_rupa: "Odia Language Contributor",
+                section_ai: "AI tools used for this app",
+                download_title: "Get the App",
+                download_desc: "Experience mathematics in your local language.",
+                stat_version: "Latest Version",
+                stat_downloads: "Total Downloads",
+                btn_download: "Download Latest",
+                btn_open: "Open App"
+            },
+            od: {
+                app_name: "ଗଣିତ ବିଜ୍ଞାନ",
+                menu_home: "ମୁଖ୍ୟ ପୃଷ୍ଠା",
+                menu_features: "ବିଶେଷତ୍ୱ",
+                menu_contact: "ଯୋଗାଯୋଗ",
+                page_title: "ସଦସ୍ୟ ଓ ସହଯୋଗୀ",
+                // New Translation Key
+                page_desc: "ଗଣିତ ବିଜ୍ଞ ହେଉଛି ପିଲାମାନଙ୍କ ପାଇଁ ଏକ ଗାଣିତିକ ଶିକ୍ଷଣ ଆପ୍‌, ଯେଉଁଥିରେ ସେମାନେ ସଂଖ୍ୟା, ପଣିକିଆ (ଶବ୍ଦ ସହିତ), ମସ୍ତିଷ୍କ ଖେଳ, ଗଣନା ପ୍ରଶ୍ନ ଏବଂ ଆହୁରି ଅନେକ କିଛି ଶିଖିପାରିବେ । ଏହି ଆପ୍ ଓଡ଼ିଆ, ଇଂରାଜୀ ଏବଂ ହିନ୍ଦୀ ସମେତ ଅନେକ ମୁଖ୍ୟ ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ । ମାତୃଭାଷାରେ ଶିଖିବା ପ୍ରତି ଏକ ଭଲପାଇବା ଉତ୍ସାହ ସୃଷ୍ଟି କରେ ।",
+                group_admin: "ପ୍ରଶାସକ",
+                group_dev: "ଡେଭଲପର୍ ଗ୍ରୁପ୍",
+                no_devs: "କେହି ନାହାନ୍ତି, ଆସିଲେ ଏଠାରେ ଯୋଗ କରାଯିବ",
+                group_thanks: "ବିଶେଷ ଧନ୍ୟବାଦ",
+                role_short_sandeep: "ପ୍ରଶାସକ ଓ ସ୍ରଷ୍ଟା",
+                role_short_rupa: "ଓଡିଆ ଭାଷା ସହଯୋଗୀ",
+                section_ai: "ଏହି ଆପ୍ ପାଇଁ ବ୍ୟବହୃତ AI ଉପକରଣ",
+                download_title: "ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+                download_desc: "ଆପଣଙ୍କ ନିଜ ଭାଷାରେ ଗଣିତ ଶିଖନ୍ତୁ।",
+                stat_version: "ବର୍ତ୍ତମାନର ଭର୍ସନ୍",
+                stat_downloads: "ମୋଟ ଡାଉନଲୋଡ୍",
+                btn_download: "ଡାଉନଲୋଡ୍",
+                btn_open: "ଆପ୍ ଖୋଲନ୍ତୁ"
+            }
+        };
+
+        let currentLang = 'od';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'od' ? 'or' : 'en';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (uiTranslations[lang][key]) el.innerText = uiTranslations[lang][key];
+            });
+
+            document.querySelectorAll('.card-name').forEach(el => {
+                const id = el.getAttribute('data-name-id');
+                if(data[id] && data[id].translations[lang]) {
+                    el.innerText = data[id].translations[lang].name;
+                }
+            });
+
+            document.getElementById('langSwitch').innerText = lang === 'od' ? 'E' : 'ଓ';
+
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete('od');
+            newUrl.searchParams.delete('en');
+            newUrl.searchParams.set(lang, '');
+            window.history.replaceState({}, '', newUrl);
+            localStorage.setItem('gb_lang', lang);
+
+            const hash = window.location.hash.substring(1);
+            if(hash && data[hash] && document.getElementById('modalOverlay').classList.contains('open')) {
+                populateModal(hash);
+            }
+        }
+
+        function openProfile(id) {
+            if(!data[id]) return;
+            populateModal(id);
+            const modal = document.getElementById('modalOverlay');
+            modal.classList.add('open');
+            window.history.pushState(null, null, `#${id}`);
+        }
+
+        function populateModal(id) {
+            const person = data[id];
+            const content = person.translations[currentLang];
+            document.getElementById('m_img').src = person.img;
+            document.getElementById('m_name').innerText = content.name; 
+            document.getElementById('m_role').innerText = content.role;
+            document.getElementById('m_bio').innerText = content.bio;
+            document.getElementById('m_social').innerHTML = person.social;
+        }
+
+        function closeProfile() {
+            document.getElementById('modalOverlay').classList.remove('open');
+            const url = new URL(window.location);
+            url.hash = '';
+            window.history.pushState({}, '', url);
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        async function fetchStats() {
+            try {
+                const res = await fetch('https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases');
+                const json = await res.json();
+                if(Array.isArray(json) && json.length > 0) {
+                    const latest = json[0];
+                    document.getElementById('currentVersion').innerText = latest.tag_name;
+                    if(latest.assets?.[0]) document.getElementById('downloadBtn').href = latest.assets[0].browser_download_url;
+                    let total = 0;
+                    json.forEach(r => r.assets?.forEach(a => total += a.download_count));
+                    document.getElementById('totalDownloads').innerText = total;
+                } else {
+                    document.getElementById('currentVersion').innerText = "v1.0";
+                    document.getElementById('totalDownloads').innerText = "0";
+                }
+            } catch(e) {}
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if(params.has('en')) updateLanguage('en');
+            else if(params.has('od')) updateLanguage('od');
+            else updateLanguage(localStorage.getItem('gb_lang') || 'od');
+
+            document.getElementById('langSwitch').addEventListener('click', () => {
+                updateLanguage(currentLang === 'od' ? 'en' : 'od');
+            });
+
+            const hash = window.location.hash.substring(1);
+            if(hash && data[hash]) openProfile(hash);
+            
+            fetchStats();
+        });
+    </script>
+</body>
+</html>
