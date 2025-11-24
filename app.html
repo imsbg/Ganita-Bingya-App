@@ -31,299 +31,553 @@
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- ============== CSS STYLES ============== -->
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png" type="image/png">
+
     <style>
         :root {
-            --bg-color: #f8f7f2;
-            --text-color: #5a664e;
-            --primary-color: #e57373;
-            --secondary-color: #81c784;
-            --header-bg: rgba(248, 247, 242, 0.8);
+            --bg-color: #F4F7F6;
+            --text-dark: #1a1a1a;
             --font-odia: 'Baloo Bhaina 2', cursive;
-            --font-english: 'Fredoka', sans-serif;
+            --font-eng: 'Fredoka', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--bg-color); color: var(--text-color);
-            font-family: var(--font-english); line-height: 1.6; overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-eng);
+            overflow-x: hidden;
         }
-        :lang(or) { font-family: var(--font-odia); }
-        :lang(sa) { font-family: var(--font-odia); }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        .site-header {
-            position: sticky; top: 0; z-index: 1000; padding: 15px 0;
-            background-color: var(--header-bg); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(90, 102, 78, 0.1);
+        /* Odia Font Override */
+        [lang="or"] body { font-family: var(--font-odia); }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* HEADER */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; position: sticky; top: 0; z-index: 100;
+            background: rgba(244, 247, 246, 0.95); backdrop-filter: blur(8px);
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .site-title { font-size: 1.8rem; font-weight: 700; }
-        .site-title a { text-decoration: none; color: inherit; }
-        .nav-and-hamburger { display: flex; align-items: center; gap: 20px; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #000; }
+        .brand img { width: 48px; height: 48px; }
+        .brand h1 { font-size: 1.8rem; font-weight: 700; }
+        
+        .lang-toggle {
+            background: #fff; padding: 5px; border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; gap: 5px;
+        }
+        .lang-toggle button {
+            border: none; padding: 8px 18px; border-radius: 25px; cursor: pointer;
+            font-weight: 600; background: transparent; transition: 0.3s; font-size: 0.9rem;
+        }
+        .lang-toggle button.active { background: #000; color: #fff; }
 
-        /* MODIFIED: main-nav is now a flex container for desktop */
-        .main-nav {
-            display: flex;
+        /* HERO SECTION */
+        .hero {
+            display: flex; align-items: center; justify-content: space-between;
+            min-height: 90vh; padding: 40px 0; overflow: hidden;
+        }
+        .hero-text { flex: 1; max-width: 550px; z-index: 10; }
+        .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 24px; color: #111; letter-spacing: -1px; }
+        .hero-subtitle { font-size: 1.2rem; color: #555; margin-bottom: 40px; line-height: 1.6; max-width: 480px; }
+        
+        /* BUTTONS */
+        .btn-group { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+        
+        .dl-btn {
+            display: flex; align-items: center; gap: 14px;
+            background: #000; color: #fff; padding: 14px 28px;
+            border-radius: 16px; text-decoration: none; transition: transform 0.9s, box-shadow 0.5s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .dl-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(5, 144, 224, 0.3); }
+        .dl-info { display: flex; flex-direction: column; }
+        .dl-title { font-size: 1.1rem; font-weight: 700; line-height: 1.2; }
+        .dl-sub { font-size: 0.75rem; opacity: 0.7; }
+        
+        .indus-link img { height: 60px; width: auto; transition: transform 0.2s; border-radius: 8px; }
+        .indus-link:hover img { transform: translateY(-4px); }
+
+        /* --- DUAL SCROLLING COLUMNS (କେବଳ ଡେସ୍କଟପ ରେ ଦେଖାଯିବ) --- */
+        .visual-container {
+            flex: 1; 
+            height: 100vh; 
+            display: flex; 
+            gap: 20px;
+            justify-content: center;
             align-items: center;
-            gap: 25px;
+            /* The 3D Tilt Effect */
+            perspective: 1500px;
+            transform: rotateY(-15deg) rotateZ(5deg) translateX(50px);
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
 
-        .lang-switcher {
+        .scrolling-col {
+            width: 240px;
             display: flex;
-            gap: 8px;
+            flex-direction: column;
+            gap: 20px;
         }
-        .lang-switcher button {
-            background: none; border: 1px solid var(--text-color); border-radius: 20px;
-            padding: 5px 12px; cursor: pointer; font-family: inherit;
-            color: var(--text-color); transition: background-color 0.3s, color 0.3s;
+
+        .scrolling-col img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: block;
         }
-        .lang-switcher button.active, .lang-switcher button:hover { background-color: var(--text-color); color: var(--bg-color); }
+
+        /* Animation for Column 1 (UP) */
+        #col-1 { animation: scrollUp 60s linear infinite; }
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* Animation for Column 2 (DOWN) */
+        #col-2 { animation: scrollDown 60s linear infinite; }
+        @keyframes scrollDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+        }
+
+        /* FEATURES GRID */
+        .features { padding: 60px 0 100px; }
+        .section-head { text-align: center; margin-bottom: 70px; }
+        .section-head h2 { font-size: 2.5rem; margin-bottom: 10px; color: #222; }
         
-        .main-nav ul { display: flex; list-style: none; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--text-color); font-weight: 600; position: relative; padding: 5px 0; }
-        .main-nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background-color: var(--primary-color); transition: width 0.3s;
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-        .main-nav a:hover::after { width: 100%; }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger .bar { width: 25px; height: 3px; background-color: var(--text-color); border-radius: 3px; transition: all 0.3s ease; }
-
-        main { padding: 40px 0; text-align: center; }
-        .hero { margin-bottom: 50px; }
-        .hero h2 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
-
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-        .action-btn {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 20px; border-radius: 20px; text-decoration: none; color: #fff;
-            font-size: 1.5rem; font-weight: 700; min-height: 150px;
-            transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .action-btn:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
-
-        .icon-wrapper {
-            height: 52px; width: 100%; margin-bottom: 10px;
-            display: flex; align-items: center; justify-content: center; gap: 4px;
-        }
-        .icon-wrapper img { height: 100%; width: auto; border-radius: 10px; }
-        .icon-wrapper .material-symbols-outlined { font-size: 52px; line-height: 1; font-family: 'Material Symbols Outlined' !important; }
-        .action-btn svg { width: 48px; height: 48px; margin-bottom: 10px; }
-
-        .btn-game { background: linear-gradient(135deg, #ff8a65, #ff7043); }
-        .btn-numbers { background: linear-gradient(135deg, #4dd0e1, #26c6da); }
-        .btn-draw { background: linear-gradient(135deg, #9575cd, #7e57c2); }
-        .btn-calc { background: linear-gradient(135deg, #ffd54f, #ffca28); }
-        .btn-tables { background: linear-gradient(135deg, #aed581, #9ccc65); }
         
-        .tables-section {
-            background-color: rgba(255, 255, 255, 0.8); padding: 30px; border-radius: 25px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); max-width: 600px; margin: 60px auto 0;
-            border: 1px solid rgba(90, 102, 78, 0.1);
+        .card {
+            padding: 40px 30px; border-radius: 35px; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            min-height: 260px; display: flex; flex-direction: column; justify-content: center;
+            color: #fff;
         }
-        .tables-section h3 { font-size: 2rem; margin-bottom: 25px; }
-        .table-input-group { display: flex; justify-content: center; align-items: stretch; gap: 10px; flex-wrap: wrap; }
-        .table-input-group label { display: none; }
-        .table-input-group input {
-            padding: 15px; border-radius: 15px; border: 2px solid #ddd; width: 120px;
-            text-align: center; font-size: 1.5rem; font-weight: 600; font-family: var(--font-english);
-            color: var(--text-color); transition: all 0.3s ease;
-        }
-        .table-input-group input::placeholder { color: #ccc; font-weight: 400; }
-        .table-input-group input:focus {
-            outline: none; border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.3);
-        }
-        #open-table-btn {
-            padding: 0 30px; border-radius: 15px; border: none; background-color: var(--text-color);
-            color: white; font-size: 1.5rem; font-weight: 700; font-family: inherit; cursor: pointer;
-            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
-        }
-        #open-table-btn:hover { background-color: #454e3d; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        #open-table-btn svg { width: 24px; height: 24px; stroke: white; transition: transform 0.3s; }
-        #open-table-btn:hover svg { transform: translateX(5px); }
-        #table-error { color: var(--primary-color); margin-top: 15px; font-size: 1rem; font-weight: 600; height: 1.2em; }
-
-        .site-footer { margin-top: 40px; padding: 20px 0; border-top: 1px solid rgba(90, 102, 78, 0.1); text-align: center; font-size: 0.9rem; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .card h3 { font-size: 1.6rem; margin-bottom: 12px; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card p { font-size: 1.1rem; font-weight: 500; line-height: 1.5; opacity: 0.95; }
         
+        /* Vibrant Gradients */
+        .card:nth-child(10) { background: linear-gradient(135deg, #FFD54F 0%, #FFB300 100%); box-shadow: 0 15px 30px rgba(255, 179, 0, 0.3); }
+        .card:nth-child(2) { background: linear-gradient(135deg, #4FC3F7 0%, #039BE5 100%); box-shadow: 0 15px 30px rgba(3, 155, 229, 0.3); }
+        .card:nth-child(3) { background: linear-gradient(135deg, #9575CD 0%, #5E35B1 100%); box-shadow: 0 15px 30px rgba(94, 53, 177, 0.3); }
+        .card:nth-child(4) { background: linear-gradient(135deg, #81C784 0%, #43A047 100%); box-shadow: 0 15px 30px rgba(67, 160, 71, 0.3); }
+        .card:nth-child(5) { background: linear-gradient(135deg, #FF8A65 0%, #E64A19 100%); box-shadow: 0 15px 30px rgba(230, 74, 25, 0.3); }
+        .card:nth-child(7) { background: linear-gradient(135deg, #F06292 0%, #C2185B 100%); box-shadow: 0 15px 30px rgba(194, 24, 91, 0.3); }
+        .card:nth-child(8) { background: linear-gradient(135deg, #7986CB 0%, #303F9F 100%); box-shadow: 0 15px 30px rgba(48, 63, 159, 0.3); }
+        .card:nth-child(9) { background: linear-gradient(135deg, #E57373 0%, #D32F2F 100%); box-shadow: 0 15px 30px rgba(211, 47, 47, 0.3); }
+        .card:nth-child(10) { background: linear-gradient(135deg, #75a6e7 0%, #2bb439 100%); box-shadow: 0 15px 30px rgba(175, 180, 43, 0.3); }
+        .card:nth-child(6) { background: linear-gradient(135deg, #90A4AE 0%, #455A64 100%); box-shadow: 0 15px 30px rgba(69, 90, 100, 0.3); }
+        .card:nth-child(1) { background: linear-gradient(135deg, #4DB6AC 0%, #00897B 100%); box-shadow: 0 15px 30px rgba(0, 137, 123, 0.3); }
+
+        .footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eaeaea; font-size: 0.9rem; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 3rem; }
+            .visual-container { transform: none; perspective: none; margin-left: 0; }
+        }
+
         @media (max-width: 768px) {
-            .site-title { font-size: 1.5rem; }
-            .main-nav {
-                position: absolute; top: 100%; left: 0; right: 0; background-color: var(--bg-color);
-                flex-direction: column; align-items: center; gap: 0; /* Mobile menu styles */
-                max-height: 0; overflow: hidden;
-                transition: max-height 0.3s ease-out; border-bottom: 1px solid rgba(90, 102, 78, 0.1);
-            }
-            .main-nav ul { flex-direction: column; width: 100%; padding: 10px 0; gap: 0; }
-            .main-nav li { text-align: center; padding: 10px 0; width: 100%; }
-            .main-nav.active { max-height: 500px; }
-
-            /* MODIFIED: Add spacing for the language switcher inside the mobile menu */
-            .main-nav .lang-switcher {
+            /* IMPORTANT: Mobile UI Changes */
+            .hero { 
+                flex-direction: column; 
+                text-align: center; 
                 justify-content: center;
-                margin-top: 15px;
-                padding-bottom: 20px;
+                padding-top: 60px;
+                min-height: auto;
             }
-
-            .hamburger { display: flex; }
-            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-            .hero h2 { font-size: 2rem; }
-            .tables-section { padding: 20px; }
+            
+            /* Hide Image Gallery on Mobile */
+            .visual-container { display: none; }
+            
+            .hero-text { max-width: 100%; margin-bottom: 40px; }
+            .hero-subtitle { margin: 0 auto 40px; }
+            .btn-group { justify-content: center; flex-direction: column; }
+            .dl-btn, .indus-link { width: 100%; justify-content: center; max-width: 350px; }
+            
+            .grid { grid-template-columns: 1fr; }
+            .card { min-height: auto; padding: 30px; }
         }
+        /* Existing footer styles ... */
+.footer {
+    text-align: center;
+    padding: 20px;
+    /* Ensure background color is set if not already */
+}
+
+/* New styles for the links */
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: inherit; /* Keeps the link color same as your text */
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.separator {
+    margin: 0 10px;
+    opacity: 0.5;
+}
+
+
+/* Container layout */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between cards */
+    max-width: 800px; /* Adjust width as needed */
+    margin: 0 auto;
+}
+
+/* Base Card Style (Gradients come from your existing CSS) */
+.card {
+    border-radius: 15px;
+    color: white;
+    overflow: hidden; /* Hides the answer when closed */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Your existing gradient/shadow CSS applies here automatically */
+}
+
+/* Header: Question + Icon */
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.faq-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1; /* Text takes available space */
+    padding-right: 10px;
+}
+
+/* The Plus Icon */
+.toggle-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+/* The Answer Body (Hidden by default) */
+.faq-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.faq-body p {
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.2); /* Light divider line */
+    padding-top: 15px;
+}
+
+/* --- Active State (When clicked) --- */
+.card.active .toggle-icon {
+    transform: rotate(45deg); /* Turns + into x */
+}
+
+.card.active .faq-body {
+    max-height: 200px; /* Enough height to show text */
+    opacity: 1;
+    padding-bottom: 20px; /* Restore padding */
+}
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container header-content">
-            <h1 class="site-title"><a href="https://imsbg.github.io/Ganita-Bingya-App/" data-lang-key="siteTitle">ଗଣିତ ବିଜ୍ଞ</a></h1>
-            
-            <div class="nav-and-hamburger">
-                <!-- MODIFIED: lang-switcher is now inside main-nav -->
-                <nav class="main-nav" id="main-nav">
-                    <ul>
-                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer" data-lang-key="navHome">Home</a></li>
-                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/#download" target="_blank" rel="noopener noreferrer" data-lang-key="navDownload">Download</a></li>
-                        <li><a href="https://indusapp.store/u2s75zsh" target="_blank" rel="noopener noreferrer" data-lang-key="navIndus">IndusApp Store</a></li>
-                        <li><a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy" target="_blank" rel="noopener noreferrer" data-lang-key="navPrivacy">Privacy Policy</a></li>
-                    </ul>
-                    <div class="lang-switcher">
-                        <button id="lang-or" class="active">ଓଡ଼ିଆ</button>
-                        <button id="lang-en">English</button>
-                        <button id="lang-sa">संस्कृतम्</button>
-                    </div>
-                </nav>
-
-                <div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+    <div class="container">
+        <!-- Header -->
+        <nav class="navbar">
+            <a href="#" class="brand">
+                <img src="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png" alt="Logo">
+                <h1 id="app-name">ଗଣିତ ବିଜ୍ଞ</h1>
+            </a>
+            <div class="lang-toggle">
+                <button id="btn-or" class="active">ଓଡ଼ିଆ</button>
+                <button id="btn-en">Eng</button>
             </div>
-        </div>
-    </header>
+        </nav>
 
-    <main>
-        <div class="container">
-            <section class="hero">
-                <h2 data-lang-key="welcomeTitle">ଗଣିତ ଶିଖିବା, ମଜା କରିବା!</h2>
-                <p data-lang-key="welcomeSubtitle">ଗଣିତ ବିଜ୍ଞ ଆପ୍ ଖୋଲିବାକୁ ନିମ୍ନରେ ଥିବା ବଟନ୍ ଗୁଡ଼ିକୁ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଶିକ୍ଷାର ଏକ ନୂତନ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ।</p>
-            </section>
-
-            <section class="actions-grid">
-                <a href="ganitabingya://open" class="action-btn btn-game">
-                    <div class="icon-wrapper"><img src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png" alt="Game Icon"></div>
-                    <span data-lang-key="btnGame">ଖେଳ</span>
-                </a>
-                <a href="ganitabingya://open?numbers" class="action-btn btn-numbers">
-                    <div class="icon-wrapper"><span class="material-symbols-outlined">looks_one</span><span class="material-symbols-outlined">looks_two</span></div>
-                    <span data-lang-key="btnNumbers">ସଂଖ୍ୟା</span>
-                </a>
-                <a href="ganitabingya://open?ap" class="action-btn btn-draw">
-                    <div class="icon-wrapper"><span class="material-symbols-outlined">stylus_note</span></div>
-                    <span data-lang-key="btnDrawing">ଅଙ୍କନ ପ୍ୟାଡ୍</span>
-                </a>
-                <a href="ganitabingya://open?calculator" class="action-btn btn-calc">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18,3H6A3,3,0,0,0,3,6V18a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V6A3,3,0,0,0,18,3Zm1,15a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6A1,1,0,0,1,6,5H18a1,1,0,0,1,1,1Z"></path><rect x="7.5" y="7.5" width="9" height="3" rx="1"></rect><circle cx="8.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle><circle cx="15.5" cy="13" r="1"></circle><circle cx="8.5" cy="16.5" r="1"></circle><circle cx="12" cy="16.5" r="1"></circle><circle cx="15.5" cy="16.5" r="1"></circle></svg>
-                    <span data-lang-key="btnCalculator">କାଲକୁଲେଟର</span>
-                </a>
-                <a href="ganitabingya://open?panikia" class="action-btn btn-tables">
-                    <div class="icon-wrapper"><span class="material-symbols-outlined">menu_book</span></div>
-                    <span data-lang-key="btnTablesList">ପଣିକିଆ</span>
-                </a>
-            </section>
-            
-            <section class="tables-section">
-                <h3 data-lang-key="tablesTitle">ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ପଣିକିଆ ଖୋଲନ୍ତୁ</h3>
-                <div class="table-input-group">
-                    <label for="table-number-input">Table Number</label>
-                    <input type="number" id="table-number-input" min="2" max="25" placeholder="2-25" aria-label="Table Number">
-                    <a id="open-table-btn" href="#">
-                        <span data-lang-key="btnOpenTable">ଖୋଲନ୍ତୁ</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h2 class="hero-title" data-key="heroTitle">ଶିକ୍ଷାର ଏକ ନୂତନ ଯାତ୍ରା</h2>
+                <p class="hero-subtitle" data-key="heroDesc">ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ | ଗଣିତ ଏବେ ଆହୁରି ସହଜ ଓ ମଜାଦାର |</p>
+                
+                <div class="btn-group">
+                    <!-- GitHub Download -->
+                    <a href="#" id="apk-download" class="dl-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <div class="dl-info">
+                            <span class="dl-title" data-key="downloadBtn">ଡାଉନଲୋଡ୍</span>
+                            <span class="dl-sub"><span data-key="totalDl">ମୋଟ ଡାଉନଲୋଡ୍</span>: <span id="dl-count">...</span></span>
+                        </div>
+                    </a>
+                    
+                    <!-- Indus Appstore -->
+                    <a href="https://indusapp.store/u2s75zsh" class="indus-link" target="_blank">
+                        <img id="indus-badge" src="https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-oriya.png" alt="Indus Appstore">
                     </a>
                 </div>
-                <p id="table-error"></p>
-            </section>
-        </div>
-    </main>
+            </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p data-lang-key="footerText">&copy; 2025 Ganita Bingya | ଗଣିତ ବିଜ୍ଞ. All Rights Reserved.</p>
+            <!-- Dual Column Image Gallery (Desktop Only) -->
+            <div class="visual-container">
+                <div class="scrolling-col" id="col-1">
+                    <!-- Images 1 to 14 (Scrolling UP) -->
+                </div>
+                <div class="scrolling-col" id="col-2">
+                    <!-- Images 14 to 1 (Scrolling DOWN) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="section-head">
+                <h2 data-key="featHeader">ଆପ୍ ର ବିଶେଷତା</h2>
+                <p data-key="featSub">ସବୁକିଛି ଯାହା ଆପଣଙ୍କ ପିଲାଙ୍କୁ ଗଣିତରେ ଧୁରନ୍ଧର କରିବ</p>
+            </div>
+            
+            <div class="grid" id="features-grid">
+                <!-- Cards injected via JS -->
+            </div>
+            
+        </section>
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="https://imsbg.github.io/Ganita-Bingya-App/">Home</a>
+            <span class="separator">|</span>
+            <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy">Privacy Policy</a>  | </span>
+            <a href="https://imsbg.github.io/Ganita-Bingya-App/sikhya/">ଅନଲାଇନ ଶିକ୍ଷା</a>
         </div>
-    </footer>
+        <p>&copy; 2025 Ganita Bingya. Made with ❤️ for Kids.</p>
+        <p>Sandeep Biswal G | <strong>Made in Odisha, India</strong></p>
+    </div>
+</footer>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const handleDeepLink = () => {
-                const params = new URLSearchParams(window.location.search);
-                const openAction = params.get('open');
-                const panikiaTable = params.get('panikia');
-                const validOpenActions = ['play', 'numbers', 'ap', 'calculator', 'panikia'];
+        // --- 1. TRANSLATION DATA ---
+        const content = {
+            or: {
+                appName: "ଗଣିତ ବିଜ୍ଞ",
+                heroTitle: "ମୋ ଗଣିତ ବିଜ୍ଞ",
+                heroDesc: "ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ । ଗଣିତ ଏବେ ଆହୁରି ସହଜ ଓ ମଜାଦାର ।",
+                downloadBtn: "ଡାଉନଲୋଡ୍ APK",
+                totalDl: "ମୋଟ ଡାଉନଲୋଡ୍",
+                featHeader: "ଆପ୍ ର ବିଶେଷତା",
+                featSub: "ଗଣିତ ଶିଖିବା ପାଇଁ ଏକ ଆନନ୍ଦଦାୟକ ଉପାୟ",
+                indusImg: "https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-oriya.png",
+                features: [
+                    { title: "ଫଳପ୍ରଦ ସମୟ", desc: "ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ" },
+                    { title: "ଚାରୋଟି ପ୍ରକ୍ରିୟା", desc: "ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ" },
+                    { title: "ପଣିକିଆ (୨କ ରୁ ୨୫କ)", desc: "୨ ରୁ ୨୫ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ସହଜ ଉପାୟରେ ମନେରଖନ୍ତୁ (ଦୁଇ କେ ଦୁଇ, ଦୁଇ ଦୁଗୁଣେ ଚାରି)" },
+                    { title: "ଅକ୍ଷରରେ ସଂଖ୍ୟା", desc: "୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ଲେଖିବା ଶିଖନ୍ତୁ" },
+                     { title: "ପୂରଣବାଚକ ସଂଖ୍ୟା", desc: "ଏହି ବିଭାଗରେ ଆପଣ ପୂରଣବାଚକ ସଂଖ୍ୟା ସହଜ ଉପାୟରେ ଶିଖିପାରିବେ । ବସ୍ତୁ କିମ୍ବା ବ୍ୟକ୍ତିବିଶେଷଙ୍କର କ୍ରମ ବା ସ୍ଥାନ ଚିହ୍ନଟ କରିବା ପାଇଁ ପୂରଣବାଚକ ସଂଖ୍ୟାକୁ ବ୍ୟବହାର କରନ୍ତୁ । ଯେପରି: ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ ଇତ୍ୟାଦି " },                   
+                    { title: "ଅଙ୍କନ ପ୍ୟାଡ", desc: "ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ ବ୍ୟବହାର କରନ୍ତୁ" },
+                     { title: "ବୁଦ୍ଧି ଖେଳ", desc: "ତର୍କ ପଜଲ୍: ତର୍କ ଶକ୍ତି ବଢ଼ାଇବା ପାଇଁ ଅସୀମିତ ପଜଲ୍ ଖେଳନ୍ତୁ । ସୁଡୋକୁ: ଏକାଗ୍ରତା ଓ ସମସ୍ୟା ସମାଧାନର ଦକ୍ଷତା ବଢ଼ାଇବା ପାଇଁ କ୍ଲାସିକ୍ ସୁଡୋକୁ ଖେଳନ୍ତୁ ।" },
+                    { title: "ଫଳ ତୁଳନା", desc: "ଏକ ମଜାଦାର ଖେଳ ଯାହା ଆପଣଙ୍କର ଦେଖିବା ଓ ତୁଳନା କରିବାର କ୍ଷମତାକୁ ବଢ଼ାଇବ ।" },
+                    { title: "ବହୁଭାଷୀ ସୁବିଧା", desc: "ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ ଯଥା: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ, ତେଲୁଗୁ, ଗୁଜୁରାତି, ବଙ୍ଗାଳୀ, ଆସମୀୟ, ମାଲାୟଲମ, ଓ ଉର୍ଦ୍ଦୁ" },
+                    { title: "କଣ ଏଥିରେ AD ଆସୁଛି କି? ", desc: "'ଗଣିତ ବିଜ୍ଞ' ବିଜ୍ଞାପନ-ମୁକ୍ତ ଅଟେ ଏବଂ ସର୍ବଦା ରହିବ । ଆମେ ମୂଳ ଆପ୍‌ରେ କୌଣସି ବିଜ୍ଞାପନ SDK କିମ୍ବା ଟ୍ରାକର୍ ସ୍ଥାପନ କରୁନାହୁଁ । ଯଦି ଆପଣ ଆଣ୍ଡ୍ରଏଡ୍ APK ଡାଉନଲୋଡ୍ କରନ୍ତି, ତେବେ ଆପ୍ ଇନଷ୍ଟଲ୍ ଏବଂ ଚଳାଇବା ପାଇଁ ଆପଣଙ୍କ ଡିଭାଇସ୍ ଆଣ୍ଡ୍ରଏଡ୍ ଦ୍ୱାରା ଆବଶ୍ୟକ ସର୍ବନିମ୍ନ ଅନୁମତି ମାଗିପାରେ । ଆମେ କୌଣସି ଅନାବଶ୍ୟକ ଅନୁମତି ମାଗୁନାହୁଁ ।" }
+                    
+                ]
+            },
+            en: {
+                appName: "Ganita Bingya",
+                heroTitle: "My Ganita Bingya",
+                heroDesc: "Turn your free time into a productive habit. Math is now easier and more fun than ever.",
+                downloadBtn: "Download APK",
+                totalDl: "Total Downloads",
+                featHeader: "Awesome Features",
+                featSub: "Everything your child needs to master mathematics",
+                indusImg: "https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-english.png",
+                features: [
+                    { title: "Productive Time", desc: "Convert your leisure time into a productive learning habit." },
+                    { title: "Four Operations", desc: "Practice Addition, Subtraction, Multiplication and Division effortlessly." },
+                    { title: "Tables (2-25)", desc: "Memorize multiplication tables from 2 to 25 in a simple format." },
+                    { title: "Numbers in Words", desc: "Learn to write numbers from 1 to 100 in words effectively." },
+                    { title: "Ordinal Numbers", desc: "In this section, you can learn Ordinal Numbers in an easy way. Use ordinal numbers to identify the order or position of objects or individuals. For example: First, Second, Third, etc." },
+                    { title: "Drawing Pad", desc: "No need for pen & paper! Use the digital slate for calculations." },
+                    { title: "Mind Games", desc: "Logic Puzzle: Play unlimited puzzles to boost your logic power. Sudoku: Play classic Sudoku to improve your concentration and problem-solving skills." },
+                    { title: "Fruit Comparison", desc: "A fun game that will enhance your observation and comparison abilities." },
+                    { title: "Multilingual", desc: "Available in 10 Indian languages: Odia,Sanskrit, English, Hindi,Telugu, Assamese,Bengali, Gujarati,Malayalam, and Urdu." },
+                    { title: "Does it contain ADs?", desc: "'Ganita Bigyan' (Math Science) is ad-free and always will be. We do not install any ad SDKs or trackers in the core app. If you download the Android APK, your device may request the minimum permissions required by Android to install and run the app. We do not request any unnecessary permissions." }
+                ]
+            }
+        };
 
-                if (openAction && validOpenActions.includes(openAction)) {
-                    const finalUrl = openAction === 'play' ? 'ganitabingya://open' : `ganitabingya://open?${openAction}`;
-                    window.location.href = finalUrl;
-                } else if (panikiaTable) {
-                    window.location.href = `ganitabingya://open?panikia=${panikiaTable}`;
-                }
-            };
-            handleDeepLink();
+        // --- 2. DUAL COLUMN IMAGE LOGIC ---
+        const col1 = document.getElementById('col-1');
+        const col2 = document.getElementById('col-2');
+        
+        const totalImages = 14;
+        let normalOrder = '';
+        let reverseOrder = '';
 
-            const translations = {};
-            const langButtons = { or: document.getElementById('lang-or'), en: document.getElementById('lang-en'), sa: document.getElementById('lang-sa') };
-            const changeLanguage = (lang) => {
-                localStorage.setItem('ganitaBingyaLang', lang);
-                document.documentElement.lang = lang;
-                document.querySelectorAll('[data-lang-key]').forEach(el => {
-                    const key = el.getAttribute('data-lang-key');
-                    if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
-                });
-                Object.values(langButtons).forEach(btn => btn.classList.remove('active'));
-                if(langButtons[lang]) langButtons[lang].classList.add('active');
-            };
-            Object.keys(langButtons).forEach(lang => { if(langButtons[lang]) langButtons[lang].addEventListener('click', () => changeLanguage(lang)); });
+        // Create arrays
+        for(let i=1; i<=totalImages; i++) {
+            const imgTag = `<img src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/${i}.png" alt="App Screen ${i}" loading="lazy">`;
+            normalOrder += imgTag;
+        }
+
+        for(let i=totalImages; i>=1; i--) {
+             const imgTag = `<img src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/${i}.png" alt="App Screen ${i}" loading="lazy">`;
+             reverseOrder += imgTag;
+        }
+
+        // Inject duplicated content for infinite loop
+        col1.innerHTML = normalOrder + normalOrder; // 1 -> 14, 1 -> 14
+        col2.innerHTML = reverseOrder + reverseOrder; // 14 -> 1, 14 -> 1
+
+        // --- 3. GITHUB API (LIFETIME DOWNLOADS) ---
+        async function fetchStats() {
+            const countEl = document.getElementById('dl-count');
+            const linkEl = document.getElementById('apk-download');
             
-            const savedLang = localStorage.getItem('ganitaBingyaLang') || 'or';
-            
-            const hamburger = document.getElementById('hamburger');
-            const mainNav = document.getElementById('main-nav');
-            hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mainNav.classList.toggle('active'); });
-            
-            document.addEventListener('click', function(event) {
-                const isClickInsideMenu = mainNav.contains(event.target);
-                const isClickOnHamburger = hamburger.contains(event.target);
-                if (mainNav.classList.contains('active') && !isClickInsideMenu && !isClickOnHamburger) {
-                    mainNav.classList.remove('active');
-                    hamburger.classList.remove('active');
+            try {
+                const res = await fetch('https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases');
+                const data = await res.json();
+                
+                if(Array.isArray(data)) {
+                    let lifetimeDownloads = 0;
+                    let latestApk = "#";
+                    
+                    data.forEach((release, index) => {
+                        release.assets.forEach(asset => {
+                            lifetimeDownloads += asset.download_count;
+                            if(index === 0 && asset.name.endsWith('.apk')) {
+                                latestApk = asset.browser_download_url;
+                            }
+                        });
+                    });
+
+                    countEl.innerText = lifetimeDownloads.toLocaleString();
+                    if(latestApk !== "#") linkEl.href = latestApk;
                 }
+            } catch(e) {
+                console.error("Github API Error", e);
+                countEl.innerText = "1000+";
+            }
+        }
+        fetchStats();
+
+        // --- 4. LANGUAGE SWITCHER ---
+        const btnOr = document.getElementById('btn-or');
+        const btnEn = document.getElementById('btn-en');
+        const indusBadge = document.getElementById('indus-badge');
+        const featuresGrid = document.getElementById('features-grid');
+
+        function updateContent(lang) {
+            const data = content[lang];
+            
+            document.getElementById('app-name').innerText = data.appName;
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const k = el.getAttribute('data-key');
+                if(data[k]) el.innerText = data[k];
             });
             
-            const tableInput = document.getElementById('table-number-input');
-            const openTableBtn = document.getElementById('open-table-btn');
-            const tableError = document.getElementById('table-error');
-            const updateTableLink = () => {
-                const num = parseInt(tableInput.value, 10);
-                const currentLang = document.documentElement.lang || 'or';
-                if (num >= 2 && num <= 25) {
-                    openTableBtn.href = `ganitabingya://open?panikia=${num}`;
-                    tableError.textContent = '';
-                } else {
-                    openTableBtn.href = '#';
-                    tableError.textContent = tableInput.value !== '' ? (translations[currentLang]?.tableError || translations.en.tableError) : '';
-                }
-            };
-            tableInput.addEventListener('input', updateTableLink);
-            updateTableLink();
-
-            translations.or = { siteTitle: "ଗଣିତ ବିଜ୍ଞ", navHome: "ହୋମ୍", navDownload: "ଡାଉନଲୋଡ୍", navIndus: "ଇଣ୍ଡସ୍ଆପ୍ ଷ୍ଟୋର୍", navPrivacy: "ଗୋପନୀୟତା ନୀତି", welcomeTitle: "ଗଣିତ ଶିଖିବା, ମଜା କରିବା!", welcomeSubtitle: "ଗଣିତ ବିଜ୍ଞ ଆପ୍ ଖୋଲିବାକୁ ନିମ୍ନରେ ଥିବା ବଟନ୍ ଗୁଡ଼ିକୁ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଶିକ୍ଷାର ଏକ ନୂତନ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ।", btnGame: "ଖେଳ", btnNumbers: "ସଂଖ୍ୟା", btnDrawing: "ଅଙ୍କନ ପ୍ୟାଡ୍", btnCalculator: "କାଲକୁଲେଟର", btnTablesList: "ପଣିକିଆ", tablesTitle: "ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ପଣିକିଆ ଖୋଲନ୍ତୁ", btnOpenTable: "ଖୋଲନ୍ତୁ", tableError: "ଦୟାକରି ୨ ରୁ ୨୫ ମଧ୍ୟରେ ଏକ ସଂଖ୍ୟା ଦିଅନ୍ତୁ।", footerText: "&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।" };
-            translations.en = { siteTitle: "Ganita Bingya", navHome: "Home", navDownload: "Download", navIndus: "IndusApp Store", navPrivacy: "Privacy Policy", welcomeTitle: "Let's Learn Math, Let's Have Fun!", welcomeSubtitle: "Click the buttons below to open features in the Ganita Bingya app and start a new journey of learning.", btnGame: "Game", btnNumbers: "Numbers", btnDrawing: "Drawing Pad", btnCalculator: "Calculator", btnTablesList: "Multiplication Tables", tablesTitle: "Open a Specific Table", btnOpenTable: "Open", tableError: "Please enter a number between 2 and 25.", footerText: "&copy; 2025 Ganita Bingya. All Rights Reserved." };
-            translations.sa = { siteTitle: "गणित विज्ञः", navHome: "गृहम्", navDownload: "अवरोपयतु", navIndus: "इण्डस्आप् आपणः", navPrivacy: "गोपनीयता नीतिः", welcomeTitle: "गणितं पठामः, आनन्दं कुर्मः!", welcomeSubtitle: "गणितविज्ञः-अनुप्रयोगं उद्घाटयितुं अधः प्रदत्तानि पिञ्जानि नुदन्तु तथा च शिक्षणस्य नूतनां यात्राम् आरभताम्।", btnGame: "क्रीडा", btnNumbers: "संख्याः", btnDrawing: "चित्रफलकम्", btnCalculator: "गणकयन्त्रम्", btnTablesList: "गुणनसारणी", tablesTitle: "विशिष्टां सारणीम् उद्घाटयतु", btnOpenTable: "उद्घाटयतु", tableError: "कृपया २ तः २५ मध्ये एकां संख्यां लिखन्तु।", footerText: "&copy; २०२५ गणित विज्ञः. सर्वे अधिकाराः सुरक्षिताः।" };
+            indusBadge.src = data.indusImg;
             
-            changeLanguage(savedLang); 
-        });
+            featuresGrid.innerHTML = data.features.map(f => `
+                <div class="card">
+                    <h3>${f.title}</h3>
+                    <p>${f.desc}</p>
+                </div>
+            `).join('');
+
+            document.documentElement.lang = lang;
+
+            if(lang === 'or') {
+                btnOr.classList.add('active');
+                btnEn.classList.remove('active');
+            } else {
+                btnEn.classList.add('active');
+                btnOr.classList.remove('active');
+            }
+        }
+
+        btnOr.addEventListener('click', () => updateContent('or'));
+        btnEn.addEventListener('click', () => updateContent('en'));
+
+        updateContent('or'); // Init
+
     </script>
+
+<script>
+    const faqList = [
+        { 
+            question: "ଗଣିତ ବିଜ୍ଞ ରେ ଗଣିତର କେଉଁ କେଉଁ ପ୍ରକ୍ରିୟା ଶିଖିହେବ?", 
+            answer: "ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଓ ସମୀକରଣ ଖୋଜିବା ଅଭ୍ୟାସ କରନ୍ତୁ ।" 
+        },
+        { 
+            question: "୨କ  ରୁ ୨୫କ ପଣିକିଆ କେଉଠି ମିଳିବ?", 
+            answer: "୨ ରୁ ୨୫ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ସହଜ ଉପାୟରେ ମନେରଖିବା ପାଇଁ (ଦୁଇ କେ ଦୁଇ, ଦୁଇ ଦୁଗୁଣେ ଚାରି) ଗଣିତ ବିଜ୍ଞ ଆପ୍ ଡାଉନଲୋଡ କରନ୍ତୁ ।" 
+        },
+        { 
+            question: "ସଂଖ୍ୟା ଲେଖିବା ଅଭ୍ୟାସ କରିହେବ କି?", 
+            answer: "୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ଲେଖିବା ଶିଖନ୍ତୁ ।" 
+        },
+        { 
+            question: "ପୂରଣବାଚକ ସଂଖ୍ୟା କ’ଣ?", 
+            answer: "ବସ୍ତୁ କିମ୍ବା ବ୍ୟକ୍ତିବିଶେଷଙ୍କର କ୍ରମ ବା ସ୍ଥାନ ଚିହ୍ନଟ କରିବା ପାଇଁ ପୂରଣବାଚକ ସଂଖ୍ୟାକୁ ବ୍ୟବହାର କରାଯାଏ । ଯେପରି: ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ ଇତ୍ୟାଦି ।" 
+        },
+        { 
+            question: "ଗଣିତ କଷିବା ପାଇଁ ଖାତା କଲମ ଦରକାର କି?", 
+            answer: "ନା, ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଗଣିତ ବିଜ୍ଞ ରେ ଥିବା ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ (ଅଙ୍କନ ପ୍ୟାଡ) ବ୍ୟବହାର କରନ୍ତୁ ।" 
+        },
+        { 
+            question: "ଗାଣିତିକ କାହାଣୀ ପରି କିଛି ଖେଳ ଅଛି କି?", 
+            answer: "ହଁ, ଗଣିତ ବିଜ୍ଞ ରେ ଗାଣିତିକ କାହାଣୀ ପ୍ରଶ୍ନ ଅଛି ।" 
+        },
+        { 
+            question: " 'ଫଳ ତୁଳନା' ଖେଳଟି କିପରି?", 
+            answer: "ଏହା ଏକ ମଜାଦାର ଖେଳ ଯାହା ଆପଣଙ୍କର ଦେଖିବା ଓ ତୁଳନା କରିବାର କ୍ଷମତାକୁ ବଢ଼ାଇବ ।" 
+        },
+        { 
+            question: "ଗଣିତ ବିଜ୍ଞ କେଉଁ କେଉଁ ଭାଷାରେ ଉପଲବ୍ଧ?", 
+            answer: "ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ, ତେଲୁଗୁ, ଗୁଜୁରାତି, ବଙ୍ଗାଳୀ, ଆସମୀୟ, ମାଲାୟଲମ, ଓ ଉର୍ଦ୍ଦୁ ।" 
+        },
+         { 
+            question: "ଗଣିତ ବିଜ୍ଞ ଆପ୍ କୁ କିଏ ତିଆରି କରିଛି?", 
+            answer: "ସନ୍ଦୀପ୍ ବିଶ୍ବାଳ ଜି ହେଉଛନ୍ତି ଗଣିତ ବିଜ୍ଞ ଆପ୍ ର ନିର୍ମାତା ।" 
+        },
+        { 
+            question: "ଗଣିତ ବିଜ୍ଞରେ ବିଜ୍ଞାପନ ଆସେ କି?", 
+            answer: "ନା, 'ଗଣିତ ବିଜ୍ଞ' ସମ୍ପୂର୍ଣ୍ଣ ବିଜ୍ଞାପନ-ମୁକ୍ତ ଓ ଆଜୀବନ ମାଗଣା ରହିବ ।" 
+        }
+    ];
+</script>
 </body>
 </html>

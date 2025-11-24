@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Metatags -->
+    <title>୧ ରୁ ୧୦୦ ଓଡ଼ିଆ ସଂଖ୍ୟା - Odia Numbers 1 to 100 | ଗଣିତ ବିଜ୍ଞ</title>
+    <meta name="description" content="Learn Odia numbers from 0 to 100 with digits and words. ଶୂନରୁ ଶହେ ପର୍ଯ୍ୟନ୍ତ ଓଡ଼ିଆ ସଂଖ୍ୟା ଏବଂ ଶବ୍ଦ ଶିଖନ୍ତୁ। Educational tool for learning Odia counting.">
+    <meta name="keywords" content="odia numbers, 1 to 100 in odia, odia sankhya, odia counting, ganita bingya, odia math, odia numbers in words">
+    <meta name="author" content="Sandeep Biswal G">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="୧ ରୁ ୧୦୦ ଓଡ଼ିଆ ସଂଖ୍ୟା - Odia Numbers 1 to 100">
+    <meta property="og:description" content="Read and learn Odia numbers from 0 to 100 easily.">
+    
+    <!-- Google Fonts: Noto Sans Oriya -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #222222;
+            --secondary-color: #666666;
+            --bg-color: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans Oriya', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--primary-color);
+            min-height: 100vh;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+
+        .material-icons-round {
+            font-size: 28px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* List Styles */
+        .number-list {
+            list-style: none;
+            background-color: #fff;
+            padding-bottom: 20px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 30px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .digit {
+            font-size: 24px;
+            font-weight: 700;
+            width: 80px; /* Fixed width to align words */
+            color: var(--primary-color);
+        }
+
+        .word {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <button class="back-btn" onclick="goBack()" aria-label="Go Back">
+            <span class="material-icons-round">arrow_back</span>
+        </button>
+        <h1>ସଂଖ୍ୟା</h1>
+    </header>
+
+    <!-- Number List Container -->
+    <ul class="number-list" id="listContainer">
+        <!-- Content will be injected via JavaScript -->
+    </ul>
+
+    <script>
+        // 1. The Data: Array of Odia words from 0 to 100
+        const odiaWords = [
+            "ଶୂନ", "ଏକ", "ଦୁଇ", "ତିନି", "ଚାରି", "ପାଞ୍ଚ", "ଛଅ", "ସାତ", "ଆଠ", "ନଅ",
+            "ଦଶ", "ଏଗାର", "ବାର", "ତେର", "ଚଉଦ", "ପନ୍ଦର", "ଷୋହଳ", "ସତର", "ଅଠର", "ଉଣେଇଶି",
+            "କୋଡ଼ିଏ", "ଏକୋଇଶି", "ବାଇଶି", "ତେଇଶି", "ଚବିଶି", "ପଚିଶି", "ଛବିଶି", "ସତେଇଶି", "ଅଠେଇଶି", "ଅଣତିରିଶି",
+            "ତିରିଶି", "ଏକତିରିଶି", "ବତିଶି", "ତେତିଶି", "ଚଉତିରିଶି", "ପଞ୍ଚତିରିଶି", "ଛତିଶି", "ସଇଁତିରିଶି", "ଅଠତିରିଶି", "ଅଣଚାଳିଶି",
+            "ଚାଳିଶି", "ଏକଚାଳିଶି", "ବୟାଳିଶି", "ତେୟାଳିଶି", "ଚଉରାଳିଶି", "ପଞ୍ଚଚାଳିଶି", "ଛୟାଳିଶି", "ସତଚାଳିଶି", "ଅଠଚାଳିଶି", "ଅଣଚାଶ",
+            "ପଚାଶ", "ଏକାବନ", "ବାଉନ", "ତେପନ", "ଚଉବନ", "ପଞ୍ଚାବନ", "ଛପନ", "ସତାବନ", "ଅଠାବନ", "ଅଣଷଠି",
+            "ଷାଠିଏ", "ଏକଷଠି", "ବାଷଠି", "ତେଷଠି", "ଚଉଷଠି", "ପଞ୍ଚଷଠି", "ଛଅଷଠି", "ସତଷଠି", "ଅଠଷଠି", "ଅଣସ୍ତରି",
+            "ସତୁରି", "ଏକସ୍ତରି", "ବାସ୍ତରି", "ତେସ୍ତରି", "ଚଉସ୍ତରି", "ପଞ୍ଚସ୍ତରି", "ଛଅସ୍ତରି", "ସତସ୍ତରି", "ଅଠସ୍ତରି", "ଅଣାଅଶୀ",
+            "ଅଶୀ", "ଏକାଅଶୀ", "ବୟାଅଶୀ", "ତେୟାଅଶୀ", "ଚଉରାଅଶୀ", "ପଞ୍ଚାଅଶୀ", "ଛୟାଅଶୀ", "ସତାଅଶୀ", "ଅଠାଅଶୀ", "ଅଣାନବେ",
+            "ନବେ", "ଏକାନବେ", "ବୟାନବେ", "ତେୟାନବେ", "ଚଉରାନବେ", "ପଞ୍ଚାନବେ", "ଛୟାନବେ", "ସତାନବେ", "ଅଠାନବେ", "ଅନେଶୋତ",
+            "ଶହେ"
+        ];
+
+        // 2. Function to convert English Digits (1, 2, 3) to Odia Digits (୧, ୨, ୩)
+        function toOdiaDigit(num) {
+            const digits = {
+                '0': '୦', '1': '୧', '2': '୨', '3': '୩', '4': '୪',
+                '5': '୫', '6': '୬', '7': '୭', '8': '୮', '9': '୯'
+            };
+            return num.toString().split('').map(d => digits[d]).join('');
+        }
+
+        // 3. Function to Generate the List
+        function generateList() {
+            const container = document.getElementById('listContainer');
+            let html = '';
+
+            for (let i = 0; i < odiaWords.length; i++) {
+                const odiaNum = toOdiaDigit(i);
+                const word = odiaWords[i];
+
+                html += `
+                    <li class="list-item">
+                        <span class="digit">${odiaNum}</span>
+                        <span class="word">${word}</span>
+                    </li>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // 4. Back Button Logic
+        function goBack() {
+            // Try to go back to the previous page
+            if (document.referrer) {
+                history.back();
+            } else {
+                // Fallback: Go to the index.html created in previous step
+                window.location.href = "index.html";
+            }
+        }
+
+        // Run the generator when the page loads
+        window.onload = generateList;
+
+    </script>
+</body>
+</html>

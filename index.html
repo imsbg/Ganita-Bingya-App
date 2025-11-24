@@ -6,6 +6,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBWHZY2V3B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RBWHZY2V3B');
+</script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta
@@ -16,11 +25,11 @@
     <title>Ganita Bingya - Play Online or Download the App</title>
     <meta
       name="description"
-      content="Ganita Bingya is a fun, interactive game to practice basic math in Odia. Play online on your desktop or download the free Android app. Turn your mindless scrolling into a productive brain workout!"
+      content="Ganita Bingya is a fun, interactive game to practice basic math in Odia, Hindi, Telugu and more 7 Indian languages. Download the free Android app. Turn your mindless scrolling into a productive brain workout!"
     />
     <meta
       name="keywords"
-      content="Odia math app, play math online, learn math in Odia, Ganita Bingya, ganita bingyan, math game, Android app, web game, educational game, Sandeep Biswal G, Jetpack Compose, productive scrolling"
+      content="Odia math app, play math online, learn math in Odia, Ganita Bingya, ganita bingyan, math game, Android app, web game, educational game, Sandeep Biswal G, Jetpack Compose, productive scrolling, Hindi Math App, Indian App, Odia Panikia, Purnabachaka Sankhya, Unit Convertor"
     />
     <meta name="author" content="Sandeep Biswal G" />
     <meta property="og:type" content="website" />
@@ -60,2440 +69,1936 @@
     <link
       rel="icon"
       type="image/png"
-      href="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png"
+      href="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png"
     />
     <link
       rel="shortcut icon"
       type="image/png"
-      href="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png"
+      href="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png"
     />
 
-    <!-- Favicon & Fonts -->
-    <link
-      rel="icon"
-      href="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png"
-    />
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Serif+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;500;700&family=Noto+Sans+Gujarati:wght@400;500;700&family=Noto+Sans+Telugu:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Anek+Odia:wght@500;700&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
-          --bg-color: #F8F7F2;
-          --text-color: #222222;
-          --brand-color: #8C9A7A;
-          --brand-dark: #5A664E;
-          --headline-font: 'Anek Odia', sans-serif;
-          --section-heading-font: 'Noto Serif Oriya', serif;
-          --body-font: 'Baloo Bhaina 2', sans-serif;
-          --odia-font: 'Noto Sans Oriya', sans-serif;
-          --default-font: 'Noto Sans', sans-serif;
+        --bg-color: #ffffff;
+        --dot-color: #e5e5e5;
+        --text-main: #000000;
+        --text-sub: #555555;
+        --accent-black: #000000;
+        --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.06);
+        --headline-font: "Anek Odia", sans-serif;
+        --body-font: "Baloo Bhaina 2", sans-serif;
+        --odia-font: "Noto Sans Oriya", sans-serif;
+        --default-font: "Noto Sans", sans-serif;
       }
-      html[lang="or"] body, html[lang="or"] .odia-font-element { font-family: var(--odia-font), var(--body-font); }
-      html[lang="en"] body { font-family: var(--default-font), sans-serif; }
-      html[lang="hi"] body { font-family: 'Noto Sans Devanagari', sans-serif; }
-      html[lang="sa"] body { font-family: 'Noto Sans Devanagari', sans-serif; }
-      html[lang="bn"] body { font-family: 'Noto Sans Bengali', sans-serif; }
-      html[lang="gu"] body { font-family: 'Noto Sans Gujarati', sans-serif; }
-      html[lang="te"] body { font-family: 'Noto Sans Telugu', sans-serif; }
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      html[lang="or"] body {
+        font-family: var(--odia-font), var(--body-font);
+      }
+      html[lang="en"] body {
+        font-family: var(--default-font), sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-          background-color: var(--bg-color);
-          color: var(--text-color);
-          line-height: 1.6;
-          overflow-x: hidden;
-      }
-      .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-
-      .curtain {
-          position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-          background-color: var(--bg-color); z-index: 200;
-          display: flex; flex-direction: column; justify-content: center; align-items: center;
-          transition: opacity 0.5s ease-out;
-      }
-      .curtain img { width: 150px; }
-      .curtain h2 { font-size: 2.5rem; color: var(--brand-dark); margin-top: 1rem; }
-      .curtain.hidden { opacity: 0; pointer-events: none; }
-
-      header {
-          position: sticky; top: 0; z-index: 100; padding: 1.5rem 0;
-          opacity: 0; transform: translateY(-100%);
-          transition: opacity 0.5s ease, transform 0.5s ease;
-          background: rgba(248, 247, 242, 0.7);
-          backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      }
-      header.visible { opacity: 1; transform: translateY(0); }
-      nav { display: flex; justify-content: space-between; align-items: center; }
-      .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--brand-dark); }
-      .nav-button {
-          background-color: var(--brand-dark); color: #fff; padding: 0.6rem 1.4rem;
-          border-radius: 50px; text-decoration: none; font-size: 0.9rem;
-          transition: background-color 0.3s ease; white-space: nowrap;
-      }
-      .nav-button:hover { background-color: #333; }
-
-      main { position: relative; }
-      .hero { min-height: 90vh; padding-top: 15vh; text-align: center; display: flex; align-items: center; justify-content: center; }
-      .hero-title {
-          font-family: var(--headline-font);
-          font-size: clamp(2.5rem, 8vw, 6rem);
-          font-weight: 700; line-height: 1.2;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      .mockup-sticky-parent {
-          position: sticky; top: 0; height: 100vh;
-          display: flex; align-items: center; justify-content: center;
-          overflow: hidden;
+      /* --- NAVIGATION --- */
+      .nav-wrapper {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
-      .mockup-wrapper {
-          position: relative; display: flex; align-items: center; justify-content: center;
-          width: 100%; height: 100%;
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
-      .mockup-content {
-          position: absolute; display: flex; align-items: center; justify-content: center;
-          opacity: 0;
-          will-change: transform, opacity;
-          transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+      .logo-text {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
       }
-      .hero-mockup-img {
-          width: 100%; display: block;
-          filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+      .logo-text img {
+        width: 32px;
+        border-radius: 6px;
       }
 
-      .mockup-container { position: relative; z-index: 2; transform: translateZ(0); }
-      .mockup-container.mobile-view { height: 200vh; }
-      .mobile-view .mockup-content { width: 85vw; max-width: 380px; }
-      .mobile-view .mockup-image { width: 100%; }
-
-      .mockup-container.desktop-view { height: 350vh; display: none; }
-      .desktop-view .desktop-mockup-image { width: 95%; position: relative; }
-      .desktop-view .desktop-mockup-image img { width: 100%; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-
-      #features { background-color: var(--bg-color); position: relative; z-index: 1; margin-top: -100vh; }
-
-      section { padding: 6rem 0; }
-      .section-title { font-family: var(--headline-font); font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 3rem; color: var(--brand-dark); }
-      .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-      .feature-card {
-          background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-          padding: 2rem; border-radius: 15px; text-align: center;
-          border: 1px solid rgba(255, 255, 255, 0.6); transition: transform 0.3s ease;
+      /* Desktop Menu */
+      .nav-links-desktop {
+        display: none;
+        gap: 25px;
+        align-items: center;
       }
-      .feature-card:hover { transform: translateY(-5px); }
-      .feature-card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--brand-dark); }
-      .feature-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-      #features .section-title, #features .feature-card {
-          opacity: 0; transform: translateY(40px);
-          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      .nav-link {
+        text-decoration: none;
+        color: #444;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+        white-space: nowrap;
       }
-      #features .section-title.is-visible, #features .feature-card.is-visible { opacity: 1; transform: translateY(0); }
-      #features .feature-card.is-visible:nth-of-type(1) { transition-delay: 0.1s; }
-      #features .feature-card.is-visible:nth-of-type(2) { transition-delay: 0.2s; }
-      #features .feature-card.is-visible:nth-of-type(3) { transition-delay: 0.3s; }
-      #features .feature-card.is-visible:nth-of-type(4) { transition-delay: 0.4s; }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-cta {
+        background: #000;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 50px;
+        transition: all 0.2s;
+      }
+      .nav-cta:hover {
+        transform: scale(1.05);
+        color: #fff;
+      }
 
-      /* --- FADE IN/OUT SCREENSHOTS SECTION --- */
-      #screenshots {
-          background-color: #EFECE6;
-          height: 400vh; /* Taller section = slower fade transition per scroll */
-          padding: 0;
-          position: relative;
-          z-index: 5;
+      /* Mobile Hamburger */
+      .mobile-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
       }
-      .screenshot-sticky-parent {
-          position: sticky;
-          top: 0;
-          height: 100vh;
-          width: 100%;
+      .mobile-toggle svg {
+        width: 28px;
+        height: 28px;
+        color: #000;
+      }
+
+      /* Mobile Menu Container */
+      .mobile-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        display: none;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
+      .mobile-link {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        text-decoration: none;
+        padding: 10px;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      @media (min-width: 960px) {
+        .nav-links-desktop {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-      }
-      .screenshot-card-fade {
-          position: absolute;
-          width: clamp(250px, 30vw, 380px);
-          opacity: 0;
-          transition: opacity 0.4s ease-in-out;
-          transform: scale(0.95); /* Start slightly smaller */
-      }
-      .screenshot-card-fade.is-active {
-          opacity: 1;
-          transform: scale(1);
-          transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-      }
-      .screenshot-card-fade img {
-          width: 100%; border-radius: 18px;
-          box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-          display: block;
+        }
+        .mobile-toggle {
+          display: none;
+        }
+        .mobile-menu {
+          display: none !important;
+        }
       }
 
-      #dynamic-island-title {
-          position: fixed; top: 20px; left: 50%;
-          background-color: rgba(34, 34, 34, 0.8);
-          backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-          color: white; padding: 0.5rem 1.5rem; border-radius: 50px;
-          z-index: 1002; opacity: 0;
-          transform: translate(-50%, -150%);
-          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-          font-size: 1rem;
-      }
-      #dynamic-island-title.show {
-          opacity: 1;
-          transform: translate(-50%, 0);
+      /* --- HERO SECTION --- */
+      .hero-wrapper {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-image: radial-gradient(
+          var(--dot-color) 1.5px,
+          transparent 1.5px
+        );
+        background-size: 24px 24px;
+        padding: 140px 20px 60px;
+        overflow: hidden;
       }
 
-      .download-section { background-color: var(--bg-color); text-align: center; }
-      .download-section p { max-width: 600px; margin: 1rem auto 2rem; }
+      .hero-center {
+        z-index: 10;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-logo-box {
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        animation: floatLogo 6s ease-in-out infinite;
+      }
+      .hero-logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 24px;
+      }
+      @keyframes floatLogo {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
 
-      .button-group {
-          display: flex; justify-content: center; align-items: center;
-          gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+      .hero-headline {
+        font-family: var(--headline-font);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -1px;
       }
-      .button-group a img { height: 60px; transition: transform 0.2s ease; }
-      .button-group a:hover img { transform: scale(1.05); }
-      .download-button, .open-app-button {
-          padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
-          font-size: 1.1rem; display: inline-flex; align-items: center;
-          justify-content: center; transition: all 0.3s ease; border: 2px solid transparent;
+      .hero-subhead {
+        font-size: 1.2rem;
+        color: var(--text-sub);
+        max-width: 600px;
+        margin-bottom: 2.5rem;
       }
-      .download-button { background-color: var(--brand-dark); color: #fff; }
-      .download-button:hover { background-color: #333; }
-      .open-app-button { background-color: transparent; color: var(--brand-dark); border: 2px solid var(--brand-dark); }
-      .open-app-button:hover { background-color: var(--brand-dark); color: #fff; }
-      .version-badge {
-          display: inline-block; background-color: rgba(255, 255, 255, 0.2); color: #fff;
-          padding: 0.2em 0.6em; border-radius: 6px; font-size: 0.8rem;
-          font-weight: 500; margin-left: 0.75rem;
-      }
-      #download-count-container {
-          margin-top: 1.5rem; font-size: 1rem; color: var(--brand-dark);
-          opacity: 0; transition: opacity 0.5s ease;
-      }
-      #download-count { font-weight: 700; font-size: 1.3rem; margin-right: 0.25rem; }
-      #whats-new { display: none; }
-      .release-notes-content {
-          background: #fff; padding: 2.5rem; border-radius: 16px; max-width: 800px;
-          margin: 0 auto; text-align: left; border: 1px solid rgba(0,0,0,0.08);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      }
-      .release-notes-content h3 { font-size: 1.5rem; color: var(--brand-dark); margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
-      .release-notes-content h3:first-child { margin-top: 0; }
 
-      footer { text-align: center; padding: 4rem 0; background-color: var(--bg-color); }
-      footer a { color: var(--brand-dark); text-decoration: none; }
+      /* Buttons */
+      .hero-cta-group {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-      /* START: FAQ Styles */
-      .faq-section {
-          background-color: #EFECE6;
-          padding: 6rem 0;
-          text-align: left;
+      .btn-base {
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
       }
-      .faq-item {
-          margin-bottom: 2rem;
-          padding-bottom: 2rem;
-          border-bottom: 1px solid rgba(0,0,0,0.1);
-      }
-      .faq-item:last-child {
-          border-bottom: none;
-          margin-bottom: 0;
-          padding-bottom: 0;
-      }
-      .faq-question {
-          font-family: var(--section-heading-font);
-          font-size: 1.4rem;
-          color: var(--brand-dark);
-          margin-bottom: 0.75rem;
-      }
-      .faq-answer p {
-          font-size: 1.1rem;
-          line-height: 1.7;
-          color: var(--text-color);
-      }
-      .faq-answer ul {
-          list-style: none;
-          padding-left: 0;
-          margin-top: 1rem;
-      }
-      .faq-answer li {
-          font-size: 1.1rem;
-          line-height: 1.7;
-          color: var(--text-color);
-          margin-bottom: 0.75rem;
-          padding-left: 1.5rem;
-          position: relative;
-      }
-      .faq-answer li::before {
-          content: '•';
-          position: absolute;
-          left: 0;
-          color: var(--brand-dark);
-          font-weight: bold;
-      }
-      .faq-answer a {
-          color: var(--brand-dark);
-          font-weight: 500;
-          text-decoration: underline;
-      }
-      /* END: FAQ Styles */
 
-      @media (max-width: 768px) {
-          .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-          .header-play-online-btn { display: none !important; }
+      /* Download Button */
+      .btn-primary {
+        background-color: #000;
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        background-color: #222;
+      }
+
+      /* Open App Button (No Long Press) */
+      .btn-outline {
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #000;
+        /* Disable Selection/Long Press */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .btn-outline:hover {
+        background-color: #f9f9f9;
+      }
+
+      /* Education Tools Button */
+      .btn-soft {
+        background-color: #f0f0f0;
+        color: #000;
+        border: 1px solid #ddd;
+      }
+      .btn-soft:hover {
+        background-color: #e5e5e5;
+      }
+
+      /* Indus Badge */
+      .indus-btn img {
+        height: 52px;
+        border-radius: 8px;
+        transition: transform 0.2s;
+        vertical-align: middle;
+      }
+      .indus-btn:hover img {
+        transform: scale(1.05);
+      }
+
+      /* --- FLOATING CARDS (Desktop) --- */
+      .float-item {
+        position: absolute;
+        background: #fff;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        display: none;
+        animation: floatCard 8s ease-in-out infinite;
+        z-index: 2;
+        max-width: 220px;
+        text-align: left;
       }
       @media (min-width: 1024px) {
-          .desktop-view { display: flex; }
-          .mobile-view { display: none; }
-          #features { margin-top: -250vh; }
+        .float-item {
+          display: block;
+        }
+        .pos-tl {
+          top: 18%;
+          left: 5%;
+          transform: rotate(-3deg);
+        }
+        .pos-tr {
+          top: 20%;
+          right: 5%;
+          transform: rotate(2deg);
+          animation-delay: 2s;
+        }
+        .pos-bl {
+          bottom: 15%;
+          left: 8%;
+          transform: rotate(1deg);
+          animation-delay: 1s;
+        }
+        .pos-br {
+          bottom: 10%;
+          right: 8%;
+          transform: rotate(-2deg);
+          animation-delay: 3s;
+        }
+        .sticky-note {
+          background-color: #fffab0;
+          border: none;
+          transform: rotate(-5deg);
+        }
+      }
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--rot));
+        }
+        50% {
+          transform: translateY(-15px) rotate(var(--rot));
+        }
+      }
+      .float-icon {
+        font-size: 2rem;
+        display: block;
+        filter: grayscale(100%);
+      }
+      .float-title {
+        font-weight: 700;
+        margin: 5px 0;
+        display: block;
+      }
+      .float-desc {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.3;
       }
 
-      #scroll-down-btn {
-          position: fixed; bottom: 30px; left: 50%;
-          transform: translateX(-50%); z-index: 210;
-          background-color: var(--brand-dark); color: #fff; padding: 0.8rem 1.6rem;
-          border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 1rem;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); opacity: 1;
-          transition: opacity 0.4s ease, transform 0.4s ease;
-          animation: bounce 2s infinite; white-space: nowrap;
-          font-family: var(--headline-font);
+      /* --- SECTIONS --- */
+      .section-wrapper {
+        padding: 80px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
       }
-      #scroll-down-btn:hover { background-color: #333; animation-play-state: paused; }
-      #scroll-down-btn.hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 20px); }
-
-      @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-          40% { transform: translate(-50%, -10px); }
-          60% { transform: translate(-50%, -5px); }
+      .section-heading {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        font-family: var(--headline-font);
+        font-weight: 800;
       }
 
-      .social-icons-fixed {
-          position: fixed; bottom: 25px; right: 25px;
-          z-index: 150; display: flex; flex-direction: column; gap: 15px;
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
       }
-      .social-icon {
-          display: flex; align-items: center; justify-content: center;
-          width: 48px; height: 48px; background-color: var(--brand-dark);
-          color: #fff; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-          transition: transform 0.3s ease, background-color 0.3s ease;
+      .feature-box {
+        background: #fff;
+        padding: 32px;
+        border-radius: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid #f0f0f0;
+        transition: transform 0.2s;
       }
-      .social-icon:hover { background-color: #333; transform: translateY(-4px) scale(1.05); }
-      .social-icon svg { width: 24px; height: 24px; }
+      .feature-box:hover {
+        transform: translateY(-5px);
+      }
 
-      #overlay {
-        display: none; position: fixed; inset: 0;
-        background: rgba(0, 0, 0, 0.5); z-index: 999;
+      .scroll-gallery {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 40px 10px;
+        scroll-snap-type: x mandatory;
       }
-      #bottomSheet {
-        position: fixed; bottom: 0; left: 0; width: 100%;
-        background: #efece6; border-top-left-radius: 28px; border-top-right-radius: 28px;
-        padding: 20px 16px; box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
-        animation: slideUp 0.25s ease; box-sizing: border-box;
+      .gallery-item {
+        flex: 0 0 280px;
+        scroll-snap-align: center;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        border: 4px solid #fff;
       }
-      .sheet-title { font-size: 18px; font-weight: 500; margin-bottom: 16px; color: #000; }
-      .app-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; flex-wrap: wrap; gap: 12px; }
-      .app-info { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 140px; }
-      .app-info img { width: 48px; height: 48px; border-radius: 12px; }
-      .app-name { font-size: 16px; color: #000; font-weight: 400; }
-      .md3-btn {
-        flex-shrink: 0; border: none; padding: 10px 18px; font-size: 14px;
-        font-weight: 500; border-radius: 20px; cursor: pointer;
-        transition: background 0.2s ease;
+      .gallery-item img {
+        width: 100%;
+        display: block;
       }
-      .filled-btn { background: #0a1557; color: white; }
-      .filled-btn:hover { background: #0e29c4; }
-      .outlined-btn { background: transparent; color: #0d1545; border: 1px solid #857910; }
-      .outlined-btn:hover { background: rgba(103, 80, 164, 0.08); }
-      @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-      /* START: Language Switcher Fixes */
-      .language-switcher {
-          position: fixed; top: 20px; right: 20px; z-index: 1001;
-          transition: transform 0.4s ease;
+      .faq-item {
+        background: #fafafa;
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 16px;
+        border: 1px solid #eee;
       }
-      .language-switcher.scrolled {
-          transform: translateY(70px);
+      .faq-q {
+        font-weight: 700;
+        margin-bottom: 10px;
       }
-      .language-button {
-          background-color: var(--brand-dark); color: white; border: none;
-          border-radius: 50%; width: 48px; height: 48px; cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s ease;
+      .faq-a a {
+        color: #000;
+        text-decoration: underline;
       }
-      .language-button:hover { transform: scale(1.1); }
-      .language-button svg { width: 24px; height: 24px; }
-      .language-menu {
-          position: absolute; right: 0; top: 55px;
-          background-color: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-          list-style: none; padding: 8px 0; margin: 0;
-          min-width: 160px;
-          max-height: 70vh; /* Make it scrollable on small screens */
-          overflow-y: auto;
-          /* Animation */
-          opacity: 0;
-          transform: scale(0.95) translateY(-10px);
-          transform-origin: top right;
-          pointer-events: none;
-          transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-      .language-menu.show {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-          pointer-events: auto;
-      }
-      .language-menu li {
-          padding: 10px 20px 10px 40px; /* Make space for checkmark */
-          position: relative;
-          cursor: pointer;
-          font-family: 'Noto Sans', sans-serif;
-          font-size: 14px;
-          white-space: nowrap; /* Prevent long text from wrapping */
-          transition: background-color 0.2s ease;
-      }
-      .language-menu li:hover { background-color: #f0f0f0; }
 
-      /* Style for the selected language item */
-      .language-menu li.selected-lang {
-          font-weight: 700;
-          color: var(--brand-dark);
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 60px 20px;
+        background: #fafafa;
+        border-top: 1px solid #eee;
+        color: #666;
       }
-      .language-menu li.selected-lang::before {
-          content: '✓';
-          position: absolute;
-          left: 18px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-weight: bold;
-          color: var(--brand-dark);
+      footer a {
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
       }
-       /* START: RTL support for specific languages */
-      .language-menu li[data-lang="ur"] {
-          /* Swap the padding to make space on the right */
-          padding: 10px 40px 10px 200px;
-      .language-menu li[data-lang="ur"].selected-lang::before {
-          /* Move the checkmark from the left to the right */
-          left: auto;
-          right: 18px;
+
+      /* Language Switcher */
+      .lang-fixed {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 999;
       }
-      /* END: RTL support for specific languages */
-      /* END: Language Switcher Fixes */
+      .lang-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .lang-menu {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 10px 0;
+        display: none;
+        min-width: 180px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .lang-menu.show {
+        display: block;
+      }
+      .lang-item {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .lang-item:hover {
+        background: #f5f5f5;
+        color: #000;
+      }
+      /* Tick mark style */
+      .lang-item.selected {
+        background: #f0f0f0;
+        font-weight: bold;
+      }
+      .lang-item.selected::after {
+        content: "✓";
+        margin-left: 10px;
+        color: #000;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
-    <div class="language-switcher" id="lang-switcher">
-      <button
-        class="language-button"
-        id="lang-btn"
-        aria-label="Choose language"
-      >
+    <!-- Language Switcher -->
+    <div class="lang-fixed">
+      <button class="lang-btn" id="lang-btn" aria-label="Change Language">
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
           stroke="currentColor"
+          stroke-width="2"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"
+            d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
           />
         </svg>
       </button>
-      <ul class="language-menu" id="lang-menu">
-        <li data-lang="or">ଓଡ଼ିଆ</li>
-        <li data-lang="en">English</li>
-        <li data-lang="sa">संस्कृतम्</li>
-        <li data-lang="hi">हिन्दी</li>
-        <li data-lang="te">తెలుగు</li>
-        <li data-lang="gu">ગુજરાતી</li>
-        <li data-lang="bn">বাংলা</li>
-        <li data-lang="as">অসমীয়া</li>
-        <li data-lang="ml">മലയാളം</li>
-        <li data-lang="ur" dir="rtl">اردو</li>
-        <!-- କେବଳ ୱେବସାଇଟ ରେ ଉପଲବ୍ଧ । ଗଣିତ ବିଜ୍ଞ ଆପ୍ କେବଳ ୧୦ ଟି ଭାଷାରେ ଉପଲବ୍ଧ । -->
-        <li data-lang="sat_Olck">ᱥᱟᱱᱛᱟᱲᱤ (coming soon)</li>
-        <li data-lang="pa">ਪੰਜਾਬੀ (coming soon)</li>
-        <li data-lang="mr">मराठी (coming soon)</li>
-        <li data-lang="ta">தமிழ் (coming soon)</li>
-        <li data-lang="kn">ಕನ್ನಡ (coming soon)</li>
-      </ul>
+      <div class="lang-menu" id="lang-menu">
+        <div class="lang-item" data-lang="or">ଓଡ଼ିଆ</div>
+        <div class="lang-item" data-lang="en">English</div>
+        <!-- Added all languages -->
+        <div class="lang-item" data-lang="sa">संस्कृतम्</div>
+        <div class="lang-item" data-lang="hi">हिन्दी</div>
+        <div class="lang-item" data-lang="te">తెలుగు</div>
+        <div class="lang-item" data-lang="gu">ગુજરાતી</div>
+        <div class="lang-item" data-lang="bn">বাংলা</div>
+        <div class="lang-item" data-lang="as">অসমীয়া</div>
+        <div class="lang-item" data-lang="ml">മലയാളം</div>
+        <div class="lang-item" data-lang="ur">اردو</div>
+        <div class="lang-item" data-lang="sat_Olck">ᱥᱟᱱᱛᱟᱲᱤ</div>
+        <div class="lang-item" data-lang="pa">ਪੰਜਾਬੀ</div>
+        <div class="lang-item" data-lang="mr">मराठी</div>
+        <div class="lang-item" data-lang="ta">தமிழ்</div>
+        <div class="lang-item" data-lang="kn">ಕನ್ನಡ</div>
+      </div>
     </div>
-    <div id="dynamic-island-title" data-translate="screenshots_title">
-      ଆପ୍‌ର କିଛି ଝଲକ
-    </div>
-    <div class="curtain" id="curtain">
-      <img
-        src="https://imsbg.github.io/Ganita-Bingya-App/images/logo.png"
-        alt="ଗଣିତ ବିଜ୍ଞ ଲୋଗୋ"
-      />
-      <h2 data-translate="curtain_title">ଗଣିତ ବିଜ୍ଞ</h2>
-    </div>
-    <header id="header">
-      <nav class="container">
-        <div class="nav-logo odia-font-element" data-translate="nav_logo">
-          ଗଣିତ ବିଜ୍ଞ
+
+    <!-- Header -->
+    <header class="nav-wrapper">
+      <div class="nav-inner">
+        <a href="#" class="logo-text">
+          <img
+            src="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png"
+            alt="Logo"
+          />
+          <span class="odia-font-element" data-translate="nav_logo"
+            >ଗଣିତ ବିଜ୍ଞ</span
+          >
+        </a>
+
+        <!-- Hamburger Toggle (Mobile) -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <!-- Links -->
+        <div class="nav-links-desktop">
+          <a
+            href="https://imsbg.github.io/Ganita-Bingya-App/sikhya/"
+            class="nav-link"
+            data-translate="nav_tools"
+            >ଶିକ୍ଷଣୀୟ ଉପକରଣ</a
+          >
+          <a href="#features" class="nav-link" data-translate="nav_features"
+            >Features</a
+          >
+          <a
+            href="https://imsbg.github.io/Ganita-Bingya-App/change-log"
+            class="nav-link"
+            data-translate="nav_changelog"
+            >Change Log</a
+          >
+          <a
+            href="https://imsbg.github.io/Ganita-Bingya-App/contributors"
+            class="nav-link"
+            data-translate="nav_contrib"
+            >Contributors</a
+          >
+          <a
+            href="#download"
+            class="nav-link nav-cta"
+            data-translate="nav_download"
+            >Download</a
+          >
         </div>
-        <a
-          href="#download"
-          id="header-download-btn"
-          class="nav-button os-android"
-          data-translate="nav_download"
-          >ଡାଉନଲୋଡ୍</a
-        >
-        <a
-          href="https://odiagames.netlify.app/math-wizard/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="nav-button os-other header-play-online-btn"
-          data-translate="nav_play_online"
-          >ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ</a
-        >
-      </nav>
+      </div>
     </header>
-    <main id="main-content">
-      <div class="hero">
-        <div class="container">
-          <h1 class="hero-title" id="hero-title" data-translate="hero_title">
-            ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ
-          </h1>
-        </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a
+        href="https://imsbg.github.io/Ganita-Bingya-App/sikhya/"
+        class="mobile-link"
+        data-translate="nav_tools"
+        >ଶିକ୍ଷଣୀୟ ଉପକରଣ</a
+      >
+      <a href="#features" class="mobile-link" data-translate="nav_features"
+        >Features</a
+      >
+      <a
+        href="https://imsbg.github.io/Ganita-Bingya-App/change-log"
+        class="mobile-link"
+        data-translate="nav_changelog"
+        >Change Log</a
+      >
+      <a
+        href="https://imsbg.github.io/Ganita-Bingya-App/contributors"
+        class="mobile-link"
+        data-translate="nav_contrib"
+        >Contributors</a
+      >
+      <a href="#faq" class="mobile-link">FAQ</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero-wrapper" id="hero">
+      <!-- Floating Cards -->
+      <div class="float-item pos-tl sticky-note" style="--rot: -3deg">
+        <span class="float-icon">ଏକ</span
+        ><span class="float-title" data-translate="feature1_title"
+          >ମଜାଦାର ଖେଳ</span
+        >
+        <p class="float-desc" data-translate="feature1_desc">
+          ଗଣିତ ଅଭ୍ୟାସ ଏକ ଖେଳ
+        </p>
       </div>
-      <div class="mockup-container mobile-view" id="mockup-container-mobile">
-        <div class="mockup-sticky-parent">
-          <div class="mockup-wrapper">
-            <div class="mockup-content" id="mobile-mockup-content">
-              <div class="mockup-image">
-                <img
-                  src="https://imsbg.github.io/Ganita-Bingya-App/images/eng/home.png"
-                  alt="Ganita Bingya App Screenshot"
-                  class="hero-mockup-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="float-item pos-tr" style="--rot: 2deg">
+        <span class="float-icon">AD</span
+        ><span class="float-title" data-translate="feature10_title"
+          >ବହୁଭାଷୀ</span
+        >
+        <p class="float-desc" data-translate="feature10_desc">
+          ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ
+        </p>
       </div>
-      <div class="mockup-container desktop-view" id="mockup-container-desktop">
-        <div class="mockup-sticky-parent">
-          <div class="mockup-wrapper">
-            <div class="mockup-content" id="desktop-mockup-content">
-              <div class="desktop-mockup-image">
-                <img
-                  src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/web.png"
-                  alt="Ganita Bingya Web Version Screenshot"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="float-item pos-bl" style="--rot: 1deg">
+        <span class="float-icon">✍️</span
+        ><span class="float-title" data-translate="feature7_title"
+          >ଅଙ୍କନ ପ୍ୟାଡ</span
+        >
+        <p class="float-desc" data-translate="feature7_desc">ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍</p>
+      </div>
+      <div class="float-item pos-br" style="--rot: -2deg">
+        <span class="float-icon">🔢</span
+        ><span class="float-title" data-translate="feature5_title">ପଣିକିଆ</span>
+        <p class="float-desc" data-translate="feature5_desc">
+          ୨କ ରୁ ୨୫କ ପର୍ଯ୍ୟନ୍ତ
+        </p>
       </div>
 
-      <section id="features">
-        <div class="container">
-          <h2 class="section-title" data-translate="features_title">
-            ଶିଖିବାର ନୂଆ ଉପାୟ
-          </h2>
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="icon">🎮</div>
-              <h3 data-translate="feature1_title">ମଜାଦାର ଖେଳ</h3>
-              <p data-translate="feature1_desc">
-                ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">💡</div>
-              <h3 data-translate="feature2_title">ଫଳପ୍ରଦ ସମୟ</h3>
-              <p data-translate="feature2_desc">
-                ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">💻📱</div>
-              <h3 data-translate="feature3_title">ସବୁ ଡିଭାଇସ୍‌ରେ</h3>
-              <p data-translate="feature3_desc">
-                ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">➕➖✖️➗</div>
-              <h3 data-translate="feature4_title">ଚାରୋଟି ପ୍ରକ୍ରିୟା</h3>
-              <p data-translate="feature4_desc">
-                ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ
-                ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">🔢</div>
-              <h3 data-translate="feature5_title">ପଣିକିଆ (୨କ ରୁ ୨୫କ)</h3>
-              <p data-translate="feature5_desc">
-                ୨କ ରୁ ୨୫କ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ଶିଖନ୍ତୁ ଓ ମନେରଖନ୍ତୁ। ପ୍ରତ୍ୟେକ ପଣକିଆ ଏକ
-                ସ୍ପଷ୍ଟ ଓ ସହଜ ଫର୍ମାଟରେ (ଯେପରିକି: ୨ × ୧ = ୨ କିମ୍ବା, ଦୁଇ କେ ଦୁଇ )
-                ଦିଆଯାଇଛି, ଯାହା ଶୀଘ୍ର ମନେ ରଖିବାରେ ସାହାଯ୍ୟ କରେ ।
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">✍️</div>
-              <h3 data-translate="feature6_title">ଅକ୍ଷରରେ ସଂଖ୍ୟା</h3>
-              <p data-translate="feature6_desc">
-                କେବଳ ସଂଖ୍ୟାରେ ସୀମିତ ରୁହନ୍ତୁ ନାହିଁ! ୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ
-                ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ଲେଖିବା ଶିଖନ୍ତୁ। ଏହା ଛୋଟ ପିଲା ଏବଂ ଭାଷା ଶିଖୁଥିବା
-                ଲୋକଙ୍କ ପାଇଁ ଏକ ଉତ୍ତମ ସୁବିଧା ।
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">✍️</div>
-              <h3 data-translate="feature7_title">ଅଙ୍କନ ପ୍ୟାଡ</h3>
-              <p data-translate="feature7_desc">
-                ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଆମର ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ ବ୍ୟବହାର କରି
-                ଅଭ୍ୟାସ କରନ୍ତୁ, ହିସାବ କରନ୍ତୁ କିମ୍ବା ସଂଖ୍ୟା ଲେଖି ଶିଖନ୍ତୁ।
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">🧩</div>
-              <h3 data-translate="feature8_title">ବୁଦ୍ଧି ଖେଳ</h3>
-              <p data-translate="feature8_desc">
-                ତର୍କ ପଜଲ୍: ତର୍କ ଶକ୍ତି ବଢ଼ାଇବା ପାଇଁ ଅସୀମିତ ପଜଲ୍ ଖେଳନ୍ତୁ । ସୁଡୋକୁ:
-                ଏକାଗ୍ରତା ଓ ସମସ୍ୟା ସମାଧାନର ଦକ୍ଷତା ବଢ଼ାଇବା ପାଇଁ କ୍ଲାସିକ୍ ସୁଡୋକୁ
-                ଖେଳନ୍ତୁ । ଫଳ ତୁଳନା: ଏକ ମଜାଦାର ଖେଳ ଯାହା ଆପଣଙ୍କର ଦେଖିବା ଓ ତୁଳନା
-                କରିବାର କ୍ଷମତାକୁ ବଢ଼ାଇବ ।
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">🧮</div>
-              <h3 data-translate="feature9_title">ସହଜ କ୍ୟାଲକୁଲେଟର୍</h3>
-              <p data-translate="feature9_desc">
-                ଶୀଘ୍ର ହିସାବ କରିବା ଏବଂ ଦୈନନ୍ଦିନ ବ୍ୟବହାର ପାଇଁ ଏକ ସରଳ ଓ ଉପଯୋଗୀ
-                କ୍ୟାଲକୁଲେଟର୍।
-              </p>
-            </div>
-            <div class="feature-card">
-              <div class="icon">🌍</div>
-              <h3 data-translate="feature10_title">ବହୁଭାଷୀ ସୁବିଧା</h3>
-              <p data-translate="feature10_desc">
-                ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ,
-                ତେଲୁଗୁ, ଆସାମୀ, ବଙ୍ଗଳା, ଗୁଜୁରାଟୀ, ମାଲାୟଲମ ଏବଂ ଉର୍ଦ୍ଦୁ ।
-              </p>
-            </div>
-          </div>
+      <div class="hero-center">
+        <div class="hero-logo-box">
+          <img
+            src="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png"
+            alt="App Icon"
+          />
         </div>
-      </section>
 
-      <section id="screenshots">
-        <div class="screenshot-sticky-parent">
-          <div class="screenshot-card-fade">
+        <h1 class="hero-headline" data-translate="hero_title">
+          ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ, କିନ୍ତୁ ବୁଦ୍ଧି ଲଗେଇ
+        </h1>
+        <p class="hero-subhead" data-translate="feature_descc">
+          ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ
+        </p>
+
+        <div class="hero-cta-group" id="download">
+          <!-- 1. Dynamic Download Button -->
+          <a href="#" id="dynamic-dl-btn" class="btn-base btn-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-translate="download_btn">Download App</span>
+            <span
+              id="version-tag"
+              style="font-size: 0.8em; opacity: 0.8; margin-left: 5px"
+              >...</span
+            >
+          </a>
+
+          <!-- 2. Open App Button (No Long Press) -->
+          <!-- Added inline JS to prevent context menu and selection -->
+          <a
+            href="ganitabingya://open"
+            class="btn-base btn-outline"
+            oncontextmenu="return false;"
+            style="
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              user-select: none;
+            "
+          >
+            <span data-translate="open_app_btn">Open App</span>
+          </a>
+
+          <!-- 3. Education Tools (Replaced Play Online) -->
+          <a
+            href="https://imsbg.github.io/Ganita-Bingya-App/sikhya/"
+            class="btn-base btn-soft"
+            data-translate="nav_tools"
+          >
+            ଶିକ୍ଷଣୀୟ ଉପକରଣ
+          </a>
+
+          <!-- 4. Indus Store -->
+          <a
+            href="https://indusapp.store/u2s75zsh"
+            class="indus-btn"
+            target="_blank"
+          >
             <img
-              alt="Screenshot 1"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/1.png"
-              loading="lazy"
+              src="https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-english.png"
+              alt="Indus Appstore"
             />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 2"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/2.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 3"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/3.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 4"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/4.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 5"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/5.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 6"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/6.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 7"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/7.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 8"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/8.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 9"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/9.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 10"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/10.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 11"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/11.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 12"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/12.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 13"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/13.png"
-              loading="lazy"
-            />
-          </div>
-          <div class="screenshot-card-fade">
-            <img
-              alt="Screenshot 14"
-              src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/14.png"
-              loading="lazy"
-            />
-          </div>
+          </a>
         </div>
-      </section>
 
-      <div class="post-scroll-content">
-        <section id="download" class="download-section">
-          <div class="container">
-            <h2 class="section-title" data-translate="download_title">
-              ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?
-            </h2>
-            <div class="os-android">
-              <p data-translate="download_desc_android">
-                "ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ
-                ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!
-              </p>
-              <div class="button-group">
-                <a
-                  href="https://ganitabingya.netlify.app/open"
-                  class="open-app-button"
-                  data-translate="open_app_btn"
-                  >ଆପ୍ ଖୋଲନ୍ତୁ</a
-                ><a
-                  href="https://github.com/imsbg/Ganita-Bingya-App/releases/download/v2.0.1/app-release.apk"
-                  id="main-download-btn"
-                  target="_blank"
-                  class="download-button"
-                  rel="noopener noreferrer"
-                  ><span data-translate="download_btn">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</span
-                  ><span class="version-badge" id="version-badge"
-                    >v2.0.1</span
-                  ></a
-                ><a href="https://indusapp.store/u2s75zsh"
-                  ><img
-                    alt="Get it on Indus Appstore"
-                    src="https://docstore.indusappstore.com/public/external/developerdashboard-static/badge-black-background-english.png"
-                /></a>
-              </div>
-              <div id="download-count-container">
-                <span id="download-count">୦୦</span>
-                <span data-translate="download_count_text"
-                  >ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି</span
-                >
-              </div>
-            </div>
-            <div class="os-other">
-              <p data-translate="download_desc_other">
-                କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ
-                କରନ୍ତୁ
-              </p>
-              <a
-                href="https://odiagames.netlify.app/math-wizard/"
-                target="_blank"
-                class="download-button"
-                rel="noopener noreferrer"
-                data-translate="play_online_btn"
-                >ପ୍ଲେ ଅନଲାଇନ୍</a
-              >
-            </div>
-          </div>
-        </section>
-        <section id="whats-new">
-          <div class="container">
-            <h2 class="section-title" data-translate="whats_new_title">
-              ନୂଆ କଣ ଅଛି?
-            </h2>
-            <div id="release-notes" class="release-notes-content">
-              <p data-translate="loading_updates">Loading latest updates...</p>
-            </div>
-          </div>
-        </section>
+        <div style="margin-top: 20px; font-size: 0.9rem; color: #888">
+          <span id="download-count">...</span>
+          <span data-translate="download_count_text">downloads</span>
+        </div>
       </div>
-    </main>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section-wrapper" id="gallery">
+      <h2 class="section-heading" data-translate="screenshots_title">
+        ଆପ୍‌ର କିଛି ଝଲକ
+      </h2>
+      <div class="scroll-gallery">
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/1.png"
+            alt="S1"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/2.png"
+            alt="S2"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/3.png"
+            alt="S3"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/4.png"
+            alt="S4"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/5.png"
+            alt="S5"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/7.png"
+            alt="S7"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/9.png"
+            alt="S9"
+            loading="lazy"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://imsbg.github.io/Ganita-Bingya-App/images/odia/10.png"
+            alt="S10"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES (All 10) -->
+    <section class="section-wrapper" id="features">
+      <h2 class="section-heading" data-translate="features_title">
+        ଶିଖିବାର ନୂଆ ଉପାୟ
+      </h2>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <div class="fb-icon">🔢</div>
+          <h3 class="fb-title" data-translate="feature1_title">ମଜାଦାର ଖେଳ</h3>
+          <p class="fb-desc" data-translate="feature1_desc">
+            ଗଣିତ ଅଭ୍ୟାସ ଏକ ଖେଳ
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">💡</div>
+          <h3 class="fb-title" data-translate="feature2_title">ଫଳପ୍ରଦ ସମୟ</h3>
+          <p class="fb-desc" data-translate="feature2_desc">ଉତ୍ପାଦକ ଅଭ୍ୟାସ</p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">➕</div>
+          <h3 class="fb-title" data-translate="feature3_title">
+            ସବୁ ଡିଭାଇସ୍‌ରେ
+          </h3>
+          <p class="fb-desc" data-translate="feature3_desc">
+            ମୋବାଇଲ୍ ଓ ଡେସ୍କଟପ୍
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">📝</div>
+          <h3 class="fb-title" data-translate="feature4_title">
+            ଚାରୋଟି ପ୍ରକ୍ରିୟା
+          </h3>
+          <p class="fb-desc" data-translate="feature4_desc">
+            ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ, ହରଣ
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">🔢</div>
+          <h3 class="fb-title" data-translate="feature5_title">ପଣିକିଆ</h3>
+          <p class="fb-desc" data-translate="feature5_desc">
+            ୨ ରୁ ୨୫ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ସହଜ ଉପାୟରେ ମନେରଖନ୍ତୁ (ଦୁଇ କେ ଦୁଇ, ଦୁଇ ଦୁଗୁଣେ
+            ଚାରି)
+          </p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">🧮</div>
+          <h3 class="fb-title" data-translate="feature6_title">
+            ଅକ୍ଷରରେ ସଂଖ୍ୟା
+          </h3>
+          <p class="fb-desc" data-translate="feature6_desc">୧ ରୁ ୧୦୦ ଲେଖନ୍ତୁ</p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">✍️</div>
+          <h3 class="fb-title" data-translate="feature7_title">ଅଙ୍କନ ପ୍ୟାଡ</h3>
+          <p class="fb-desc" data-translate="feature7_desc">ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍</p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">🧩</div>
+          <h3 class="fb-title" data-translate="feature8_title">ବୁଦ୍ଧି ଖେଳ</h3>
+          <p class="fb-desc" data-translate="feature8_desc">
+            ତର୍କ ପଜଲ୍, ସୁଡୋକୁ
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="fb-icon">🌍</div>
+          <h3 class="fb-title" data-translate="feature9_title">
+            ସହଜ କ୍ୟାଲକୁଲେଟର୍
+          </h3>
+          <p class="fb-desc" data-translate="feature9_desc">ଶୀଘ୍ର ହିସାବ ପାଇଁ</p>
+        </div>
+        <div class="feature-box">
+          <div class="fb-icon">AD</div>
+          <h3 class="fb-title" data-translate="feature10_title">
+            ସହଜ କ୍ୟାଲକୁଲେଟର୍
+          </h3>
+          <p class="fb-desc" data-translate="feature10_desc"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (All 10 Questions) -->
+    <section class="section-wrapper" id="faq">
+      <h2 class="section-heading">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <div class="faq-q">1. Is Ganita Bingya free to play?</div>
+          <div class="faq-a">
+            Yes, Ganita Bingya is completely free to play. There are no hidden
+            costs or in-app purchases.
+          </div>
+        </div>
+        <!-- Q2 -->
+        <div class="faq-item">
+          <div class="faq-q">2. Does Ganita Bingya have ads?</div>
+          <div class="faq-a">
+            No, Ganita Bingya is 100% ad-free. We are committed to providing a
+            focused learning experience.
+          </div>
+        </div>
+        <!-- Q3 -->
+        <div class="faq-item">
+          <div class="faq-q">3. Where can I download Ganita Bingya?</div>
+          <div class="faq-a">
+            You can download it from:
+            <br />•
+            <a
+              href="https://github.com/imsbg/Ganita-Bingya-App/releases"
+              target="_blank"
+              >GitHub Releases</a
+            >
+            <br />•
+            <a href="https://indusapp.store/u2s75zsh" target="_blank"
+              >Indus Appstore</a
+            >
+          </div>
+        </div>
+        <!-- Q4 -->
+        <div class="faq-item">
+          <div class="faq-q">4. What languages are supported?</div>
+          <div class="faq-a">
+            Currently supports: Odia, English, Hindi, Sanskrit, Telugu, Bengali,
+            Gujarati, Assamese, Malayalam, and Urdu.
+          </div>
+        </div>
+        <!-- Q5 -->
+        <div class="faq-item">
+          <div class="faq-q">5. Who created the app?</div>
+          <div class="faq-a">
+            Ganita Bingya is an open-source math game created and maintained by
+            Sandeep Biswal G.
+          </div>
+        </div>
+        <!-- Q6 -->
+        <div class="faq-item">
+          <div class="faq-q">6. Was AI involved in development?</div>
+          <div class="faq-a">
+            Yes, AI was used as a coding tool, while the concept, UI, and
+            features were designed by Sandeep Biswal G.
+          </div>
+        </div>
+        <!-- Q7 -->
+        <div class="faq-item">
+          <div class="faq-q">7. What are the key features?</div>
+          <div class="faq-a">
+            Core Math (Add, Sub, Mul, Div), Multiplication Tables (2-25),
+            Drawing Pad, Logic Puzzles, and Multilingual support.
+          </div>
+        </div>
+        <!-- Q8 -->
+        <div class="faq-item">
+          <div class="faq-q">8. Who is Sandeep Biswal G?</div>
+          <div class="faq-a">
+            He is a technologist from Odisha passionate about integrating the
+            Odia language into technology.
+          </div>
+        </div>
+        <!-- Q9 -->
+        <div class="faq-item">
+          <div class="faq-q">9. What is the launch story?</div>
+          <div class="faq-a">
+            Launched on Aug 15, 2025 (v1.7), originally developed to help
+            children sharpen math skills in their native language.
+          </div>
+        </div>
+        <!-- Q10 -->
+        <div class="faq-item">
+          <div class="faq-q">10. What is 'imsbg'?</div>
+          <div class="faq-a">
+            'imsbg' is the official GitHub username of the creator, Sandeep
+            Biswal G.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <!-- START: NEW FAQ SECTION -->
-      <section class="faq-section">
-        <div class="container">
-          <h2 class="section-title">Frequently Asked Questions</h2>
-          <div class="faq-item">
-            <h3 class="faq-question">1. Is Ganita Bingya free to play?</h3>
-            <div class="faq-answer">
-              <p>
-                Yes, Ganita Bingya is completely free to play. There are no
-                hidden costs or in-app purchases.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">2. Does Ganita Bingya have ads?</h3>
-            <div class="faq-answer">
-              <p>
-                No, Ganita Bingya is 100% ad-free. We are committed to providing
-                a focused and uninterrupted learning experience, and the game
-                will remain ad-free forever.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">3. Where can I download Ganita Bingya?</h3>
-            <div class="faq-answer">
-              <p>
-                You can download Ganita Bingya for free from our official
-                sources:
-              </p>
-              <ul>
-                <li>
-                  Official Website:
-                  <a
-                    href="https://imsbg.github.io/Ganita-Bingya-App/"
-                    target="_blank"
-                    rel="noopener"
-                    >https://imsbg.github.io/Ganita-Bingya-App/</a
-                  >
-                </li>
-                <li>
-                  GitHub Releases:
-                  <a
-                    href="https://github.com/imsbg/Ganita-Bingya-App/releases"
-                    target="_blank"
-                    rel="noopener"
-                    >https://github.com/imsbg/Ganita-Bingya-App/releases</a
-                  >
-                </li>
-                <li>
-                  Indus Appstore:
-                  <a
-                    href="https://www.indusappstore.com/apps/educational/ganita-bingya/com.sandeep.ganitabigyan"
-                    target="_blank"
-                    rel="noopener"
-                    >https://www.indusappstore.com/...</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">
-              4. What languages are supported in Ganita Bingya?
-            </h3>
-            <div class="faq-answer">
-              <p>
-                Ganita Bingya is a multilingual app. It currently supports Odia,
-                English, Hindi, Sanskrit, Telugu, Bengali, and Gujarati.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">5. Who created the Ganita Bingya app?</h3>
-            <div class="faq-answer">
-              <p>
-                Ganita Bingya is an open-source math game created and maintained
-                by Sandeep Biswal G. As an open-source project, its source code
-                is publicly available on GitHub.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">
-              6. Was AI involved in the development of Ganita Bingya?
-            </h3>
-            <div class="faq-answer">
-              <p>
-                Yes, AI was used as a key development tool. While the
-                programming code was generated by an AI, the core concept, user
-                interface (UI) design, game features, and guiding prompts were
-                all created by Sandeep Biswal G.
-              </p>
-            </div>
-          </div>
-          <!-- START: NEW FAQs ADDED HERE -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              7. What are the key features of the Ganita Bingya app?
-            </h3>
-            <div class="faq-answer">
-              <p>
-                Ganita Bingya is designed to make learning math and language
-                intuitive and fun. You can:
-              </p>
-              <ul>
-                <li>
-                  <strong>Practice Core Math:</strong> Sharpen your skills in
-                  addition, subtraction, multiplication, and division. You can
-                  customize the difficulty by choosing one, two, or three-digit
-                  numbers.
-                </li>
-                <li>
-                  <strong>Master Extended Multiplication Tables:</strong> Learn
-                  multiplication tables extensively, from 2 all the way to 25.
-                  Each table is presented in both numerals and written words,
-                  with support for your local language.
-                </li>
-                <li>
-                  <strong>Use the Interactive Drawing Pad:</strong> Practice
-                  writing numbers and characters in your own language on a
-                  digital canvas.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">8. Who is Sandeep Biswal G?</h3>
-            <div class="faq-answer">
-              <p>
-                Sandeep Biswal G is the passionate creator behind the Ganita
-                Bingya app. Hailing from Odisha, he is a technologist and
-                explorer with a deep love for both nature and digital
-                innovation.
-              </p>
-              <p>
-                A core part of his mission is to promote and integrate the Odia
-                language into the world of technology, making digital tools more
-                accessible for Odisha. You can follow his journey and
-                explorations on his social media channels:
-              </p>
-              <ul>
-                <li>
-                  YouTube:
-                  <a
-                    href="https://www.youtube.com/@SandeepBiswalG"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >https://www.youtube.com/@San...</a
-                  >
-                </li>
-                <li>
-                  Instagram:
-                  <a
-                    href="https://www.instagram.com/sandeepbiswalg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >https://www.instagram.com/san...</a
-                  >
-                </li>
-                <li>
-                  X (formerly Twitter):
-                  <a
-                    href="https://x.com/SandeepBiswalG"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >https://x.com/SandeepBiswalG</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">
-              9. What is the story behind Ganita Bingya's launch?
-            </h3>
-            <div class="faq-answer">
-              <p>
-                The story of Ganita Bingya begins with a clear mission: to
-                create a powerful educational tool for children to sharpen their
-                minds through math and calculation.
-              </p>
-              <p>
-                With this goal of building a high-quality app, the journey to
-                launch was a meticulous one. The official public launch of
-                Ganita Bingya was v1.7 on August 15, 2025.
-              </p>
-              <p>
-                The initial concept (v1.0) was developed on July 25, 2025, but
-                it, along with versions up to 1.6, served as internal test
-                builds. This extensive testing was crucial because Ganita Bingya
-                was proudly launched first and foremost in the Odia language.
-                Creator Sandeep Biswal G dedicated significant time to research
-                and manually integrate all the Odia text, ensuring the app was
-                an accurate and effective learning tool for its very first
-                users.
-              </p>
-              <p>
-                This commitment to accessible education continued, with version
-                5.0.0 later expanding support to include six additional Indian
-                languages.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <h3 class="faq-question">
-              10. What is 'imsbg' and what does it stand for?
-            </h3>
-            <div class="faq-answer">
-              <p>
-                'imsbg' is the official GitHub username of Sandeep Biswal G, the
-                creator of the Ganita Bingya app. You will often see this
-                username associated with the app's source code, development
-                updates, and other technical projects led by Sandeep.
-              </p>
-            </div>
-          </div>
-          <!-- END: NEW FAQs ADDED HERE -->
-        </div>
-      </section>
-      <!-- END: NEW FAQ SECTION -->
       <div class="container">
         <p data-translate="footer_text">
           &copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ.
-          <a
-            href="https://www.instagram.com/sandeepbiswalg"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a href="https://www.instagram.com/sandeepbiswalg" target="_blank"
             >ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a
           >
-          ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ
         </p>
       </div>
     </footer>
-    <a
-      href="#main-content"
-      id="scroll-down-btn"
-      aria-label="Scroll down to content"
-      ><span data-translate="scroll_down_btn">ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ</span>
-      &nbsp;↓</a
-    >
-    <div class="social-icons-fixed">
-      <a
-        href="https://github.com/imsbg/Ganita-Bingya-App"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-icon"
-        aria-label="View project on GitHub"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          role="img"
-          aria-hidden="true"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
-          ></path></svg></a
-      ><a
-        href="https://www.instagram.com/sandeepbiswalg"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-icon"
-        aria-label="Follow on Instagram"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          role="img"
-          aria-hidden="true"
-          fill="currentColor"
-        >
-          <path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-          ></path></svg
-      ></a>
-      <a
-        href="https://imsbg.github.io/Ganita-Bingya-App/donate"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-icon"
-        aria-label="Donate or support the project"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          role="img"
-          aria-hidden="true"
-          fill="currentColor"
-        >
-          <path
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-          /></svg
-      ></a>
-      <a
-        href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-icon"
-        aria-label="View Privacy Policy"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          role="img"
-          aria-hidden="true"
-          fill="currentColor"
-        >
-          <path
-            d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
-          /></svg
-      ></a>
-    </div>
-    <div id="overlay">
-      <div id="bottomSheet">
-        <div class="sheet-title" data-translate="popup_title">Open in app</div>
-        <div class="app-row">
-          <div class="app-info">
-            <img
-              src="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png"
-              alt="Ganita Bingya App Logo"
-            />
-            <div
-              class="app-name odia-font-element"
-              data-translate="popup_app_name"
-            >
-              ଗଣିତ ବିଜ୍ଞ
-            </div>
-          </div>
-          <button
-            class="md3-btn filled-btn"
-            onclick="openInApp()"
-            data-translate="popup_open_btn"
-          >
-            Open
-          </button>
-        </div>
-        <div class="app-row">
-          <div class="app-info">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg"
-              alt="Browser Icon"
-            />
-            <div class="app-name" data-translate="popup_browser_name">
-              Browser
-            </div>
-          </div>
-          <button
-            class="md3-btn outlined-btn"
-            onclick="closeSheet()"
-            data-translate="popup_continue_btn"
-          >
-            Continue
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- START: NEW JSON-LD SCRIPT FOR GOOGLE FAQ RICH RESULTS -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is Ganita Bingya free to play?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, Ganita Bingya is completely free to play. There are no hidden costs or in-app purchases."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Ganita Bingya have ads?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, Ganita Bingya is 100% ad-free. We are committed to providing a focused and uninterrupted learning experience, and the game will remain ad-free forever."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Where can I download Ganita Bingya?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You can download Ganita Bingya for free from our official sources:\nOfficial Website: https://imsbg.github.io/Ganita-Bingya-App/\nGitHub Releases: https://github.com/imsbg/Ganita-Bingya-App/releases\nIndus Appstore: https://www.indusappstore.com/apps/educational/ganita-bingya/com.sandeep.ganitabigyan"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What languages are supported in Ganita Bingya?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ganita Bingya is a multilingual app. It currently supports Odia, English, Hindi, Sanskrit, Telugu, Bengali, and Gujarati."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who created the Ganita Bingya app?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ganita Bingya is an open-source math game created and maintained by Sandeep Biswal G. As an open-source project, its source code is publicly available on GitHub."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Was AI involved in the development of Ganita Bingya?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, AI was used as a key development tool. While the programming code was generated by an AI, the core concept, user interface (UI) design, game features, and guiding prompts were all created by Sandeep Biswal G."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the key features of the Ganita Bingya app?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ganita Bingya is designed to make learning math and language intuitive and fun. You can:\n- Practice Core Math: Sharpen your skills in addition, subtraction, multiplication, and division. You can customize the difficulty by choosing one, two, or three-digit numbers.\n- Master Extended Multiplication Tables: Learn multiplication tables extensively, from 2 all the way to 25. Each table is presented in both numerals and written words, with support for your local language.\n- Use the Interactive Drawing Pad: Practice writing numbers and characters in your own language on a digital canvas."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who is Sandeep Biswal G?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sandeep Biswal G is the passionate creator behind the Ganita Bingya app. Hailing from Odisha, he is a technologist and explorer with a deep love for both nature and digital innovation.\nA core part of his mission is to promote and integrate the Odia language into the world of technology, making digital tools more accessible for Odisha. You can follow his journey and explorations on his social media channels:\n- YouTube: https://www.youtube.com/@SandeepBiswalG\n- Instagram: https://www.instagram.com/sandeepbiswalg\n- X (formerly Twitter): https://x.com/SandeepBiswalG"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the story behind Ganita Bingya's launch?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The story of Ganita Bingya begins with a clear mission: to create a powerful educational tool for children to sharpen their minds through math and calculation.\nWith this goal of building a high-quality app, the journey to launch was a meticulous one. The official public launch of Ganita Bingya was v1.7 on August 15, 2025.\nThe initial concept (v1.0) was developed on July 25, 2025, but it, along with versions up to 1.6, served as internal test builds. This extensive testing was crucial because Ganita Bingya was proudly launched first and foremost in the Odia language. Creator Sandeep Biswal G dedicated significant time to research and manually integrate all the Odia text, ensuring the app was an accurate and effective learning tool for its very first users.\nThis commitment to accessible education continued, with version 5.0.0 later expanding support to include six additional Indian languages."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is 'imsbg' and what does it stand for?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "'imsbg' is the official GitHub username of Sandeep Biswal G, the creator of the Ganita Bingya app. You will often see this username associated with the app's source code, development updates, and other technical projects led by Sandeep."
-            }
-          }
-        ]
-      }
-    </script>
-    <!-- END: NEW JSON-LD SCRIPT -->
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // 1. TRANSLATIONS (Populated Odia & English and others)
         const translations_data = {
           or: {
-            curtain_title: "ଗଣିତ ବିଜ୍ଞ",
             nav_logo: "ଗଣିତ ବିଜ୍ଞ",
             nav_download: "ଡାଉନଲୋଡ୍",
-            nav_play_online: "ଅନଲାଇନ୍ ଖେଳାନ୍ତୁ",
-            hero_title: "ଓଡ଼ିଶାରେ ତିଆରି, ଭାରତ ପାଇଁ",
+            nav_tools: "ଶିକ୍ଷଣୀୟ ଉପକରଣ",
+            nav_features: "ବୈଶିଷ୍ଟ୍ୟ",
+            nav_changelog: "ଚେଞ୍ଜ ଲଗ୍",
+            nav_contrib: "ଯୋଗଦାନକାରୀ",
+            hero_title: "ଗଣିତ ବିଜ୍ଞ",
+            download_btn: "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
+            open_app_btn: "ଆପ୍ ଖୋଲନ୍ତୁ",
+            download_count_text: "ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି",
             features_title: "ଶିଖିବାର ନୂଆ ଉପାୟ",
-            feature1_title: "ମଜାଦାର ଖେଳ",
-            feature1_desc: "ଗଣିତ ଅଭ୍ୟାସକୁ ଏକ ଖେଳ ପରି ମନୋରଞ୍ଜନ କରିଥାଏ",
-            feature2_title: "ଫଳପ୍ରଦ ସମୟ",
-            feature2_desc: "ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ",
-            feature3_title: "ସବୁ ଡିଭାଇସ୍‌ରେ",
-            feature3_desc:
-              "ଡେସ୍କଟପ୍‌ରେ ଅନଲାଇନ୍ ଖେଳନ୍ତୁ କିମ୍ବା ଆଣ୍ଡ୍ରଏଡ୍ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
-            feature4_title: "ଚାରୋଟି ପ୍ରକ୍ରିୟା",
+            screenshots_title: "ଆପ୍‌ର କିଛି ଝଲକ",
+            feature_descc: "ଆପଣଙ୍କ ଖାଲି ସମୟକୁ ଏକ ଉତ୍ପାଦକ ଅଭ୍ୟାସରେ ପରିଣତ କରନ୍ତୁ",
+            feature1_title: "ଅକ୍ଷରରେ ସଂଖ୍ୟା",
+            feature1_desc:
+              "୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ପଢିବା ଶିଖନ୍ତୁ",
+            feature2_title: "ପୂରଣବାଚକ ସଂଖ୍ୟା",
+            feature2_desc:
+              "ଏହି ବିଭାଗରେ ଆପଣ ପୂରଣବାଚକ ସଂଖ୍ୟା ସହଜ ଉପାୟରେ ଶିଖିପାରିବେ । ବସ୍ତୁ କିମ୍ବା ବ୍ୟକ୍ତିବିଶେଷଙ୍କର କ୍ରମ ବା ସ୍ଥାନ ଚିହ୍ନଟ କରିବା ପାଇଁ ପୂରଣବାଚକ ସଂଖ୍ୟାକୁ ବ୍ୟବହାର କରନ୍ତୁ । ଯେପରି: ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ ଇତ୍ୟାଦି",
+            feature3_title: "ଚାରୋଟି ପ୍ରକ୍ରିୟା",
+            feature3_desc: "ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ, ହରଣ",
+            feature4_title: "ଗଣନା ପ୍ରଣାଳୀ",
             feature4_desc:
-              "ଏକ,ଦୁଇ କିମ୍ବା ତିନି ଅଙ୍କ ବିଶିଷ୍ଟ ସଂଖ୍ୟା ସହିତ ମିଶାଣ, ଫେଡ଼ାଣ, ଗୁଣନ ଏବଂ ହରଣ ଅଭ୍ୟାସ କରନ୍ତୁ",
-            feature5_title: "ପଣିକିଆ (୨କ ରୁ ୨୫କ)",
+              "ଏକ, ଦଶ, ଶହ , ହଜାର ଓ ଲକ୍ଷ କେମିତି ଲେଖିବେ ଏବଂ ପଢିବେ ଶିଖନ୍ତୁ ।",
+            feature5_title: "ପଣିକିଆ",
             feature5_desc:
-              "୨କ ରୁ ୨୫କ ପର୍ଯ୍ୟନ୍ତ ପଣକିଆ ଶିଖନ୍ତୁ ଓ ମନେରଖନ୍ତୁ। ପ୍ରତ୍ୟେକ ପଣକିଆ ଏକ ସ୍ପଷ୍ଟ ଓ ସହଜ ଫର୍ମାଟରେ (ଯେପରିକି: ୨ × ୧ = ୨ କିମ୍ବା, ଦୁଇ କେ ଦୁଇ ) ଦିଆଯାଇଛି, ଯାହା ଶୀଘ୍ର ମନେ ରଖିବାରେ ସାହାଯ୍ୟ କରେ ।",
-
-            feature6_title: "ଅକ୍ଷରରେ ସଂଖ୍ୟା",
+              "୨ ରୁ ୨୫ ପର୍ଯ୍ୟନ୍ତ ପଣିକିଆ ସହଜ ଉପାୟରେ ମନେରଖନ୍ତୁ (ଦୁଇ କେ ଦୁଇ, ଦୁଇ ଦୁଗୁଣେ ଚାରି)",
+            feature6_title: "ଉପଯୋଗିତା",
             feature6_desc:
-              "କେବଳ ସଂଖ୍ୟାରେ ସୀମିତ ରୁହନ୍ତୁ ନାହିଁ! ୧ ରୁ ୧୦୦ ପର୍ଯ୍ୟନ୍ତ ସମସ୍ତ ସଂଖ୍ୟାକୁ ଅକ୍ଷରରେ ଲେଖିବା ଶିଖନ୍ତୁ। ଏହା ଛୋଟ ପିଲା ଏବଂ ଭାଷା ଶିଖୁଥିବା ଲୋକଙ୍କ ପାଇଁ ଏକ ଉତ୍ତମ ସୁବିଧା ।",
-
+              "କ୍ଯାଲକୁଲେଟର ହିସାବ ପାଇଁ, ଏକକ ରୂପାନ୍ତରଣ ଏବଂ ସଂଖ୍ୟା କୁ ଶବ୍ଦରେ ପରିବର୍ତ୍ତନ",
             feature7_title: "ଅଙ୍କନ ପ୍ୟାଡ",
             feature7_desc:
-              "ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଆମର ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ ବ୍ୟବହାର କରି ଅଭ୍ୟାସ କରନ୍ତୁ, ହିସାବ କରନ୍ତୁ କିମ୍ବା ସଂଖ୍ୟା ଲେଖି ଶିଖନ୍ତୁ।",
-
+              "ଖାତା ଓ କଲମର ଆବଶ୍ୟକତା ନାହିଁ! ଡିଜିଟାଲ୍ ସ୍ଲେଟ୍ ବ୍ୟବହାର କରନ୍ତୁ",
             feature8_title: "ବୁଦ୍ଧି ଖେଳ",
             feature8_desc:
-              "ତର୍କ ପଜଲ୍: ତର୍କ ଶକ୍ତି ବଢ଼ାଇବା ପାଇଁ ଅସୀମିତ ପଜଲ୍ ଖେଳନ୍ତୁ । ସୁଡୋକୁ: ଏକାଗ୍ରତା ଓ ସମସ୍ୟା ସମାଧାନର ଦକ୍ଷତା ବଢ଼ାଇବା ପାଇଁ କ୍ଲାସିକ୍ ସୁଡୋକୁ ଖେଳନ୍ତୁ । ଫଳ ତୁଳନା: ଏକ ମଜାଦାର ଖେଳ ଯାହା ଆପଣଙ୍କର ଦେଖିବା ଓ ତୁଳନା କରିବାର କ୍ଷମତାକୁ ବଢ଼ାଇବ ।",
-
-            feature9_title: "ସହଜ କ୍ୟାଲକୁଲେଟର୍",
+              "ତର୍କ ପଜଲ୍: ତର୍କ ଶକ୍ତି ବଢ଼ାଇବା ପାଇଁ ଅସୀମିତ ପଜଲ୍ ଖେଳନ୍ତୁ । ସୁଡୋକୁ: ଏକାଗ୍ରତା ଓ ସମସ୍ୟା ସମାଧାନର ଦକ୍ଷତା ବଢ଼ାଇବା ପାଇଁ କ୍ଲାସିକ୍ ସୁଡୋକୁ ଖେଳନ୍ତୁ ।",
+            feature10_title: "କଣ ଏଥିରେ AD ଆସୁଛି କି?",
+            feature10_desc: "'ଗଣିତ ବିଜ୍ଞ' ବିଜ୍ଞାପନ-ମୁକ୍ତ ଅଟେ ଏବଂ ସର୍ବଦା ରହିବ ।",
+            feature9_title: "ବହୁଭାଷୀ",
             feature9_desc:
-              "ଶୀଘ୍ର ହିସାବ କରିବା ଏବଂ ଦୈନନ୍ଦିନ ବ୍ୟବହାର ପାଇଁ ଏକ ସରଳ ଓ ଉପଯୋଗୀ କ୍ୟାଲକୁଲେଟର୍।",
-
-            feature10_title: "ବହୁଭାଷୀ ସୁବିଧା",
-            feature10_desc:
-              "ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ, ତେଲୁଗୁ, ଆସାମୀ, ବଙ୍ଗଳା, ଗୁଜୁରାଟୀ, ମାଲାୟଲମ ଏବଂ ଉର୍ଦ୍ଦୁ ।",
-            screenshots_title: "ଆପ୍‌ର କିଛି ଝଲକ",
-            download_title: "ଏବେ ଖେଳିବାକୁ ପ୍ରସ୍ତୁତ?",
-            download_desc_android:
-              '"ଗଣିତ ବିଜ୍ଞ" ଆପ୍‌କୁ ଆଜି ହିଁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଗଣିତ ସହିତ ଏକ ନୂଆ ଯାତ୍ରା ଆରମ୍ଭ କରନ୍ତୁ!',
-            open_app_btn: "ଆପ୍ ଖୋଲନ୍ତୁ",
-            download_btn: "ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
-            download_count_text: "ଜଣ ଡାଉନଲୋଡ୍ କରିଛନ୍ତି",
-            download_desc_other:
-              "କୌଣସି ଡାଉନଲୋଡ୍ ଆବଶ୍ୟକ ନାହିଁ! ବ୍ରାଉଜର୍‌ରେ ସିଧାସଳଖ ଖେଳିବା ଆରମ୍ଭ କରନ୍ତୁ",
-            play_online_btn: "ପ୍ଲେ ଅନଲାଇନ୍",
-            whats_new_title: "ନୂଆ କଣ ଅଛି?",
-            loading_updates: "ନୂତନ ଅପଡେଟ୍ ଲୋଡ୍ ହେଉଛି...",
+              "ଏହା ୧୦ଟି ଭାରତୀୟ ଭାଷାରେ ଉପଲବ୍ଧ ଯଥା: ଓଡ଼ିଆ, ସଂସ୍କୃତ, ଇଂରାଜୀ, ହିନ୍ଦୀ, ତେଲୁଗୁ, ଗୁଜୁରାତି, ବଙ୍ଗାଳୀ, ଆସମୀୟ, ମାଲାୟଲମ, ଓ ଉର୍ଦ୍ଦୁ",
             footer_text:
-              "&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a> ଙ୍କ ଦ୍ୱାରା ପ୍ରସ୍ତୁତ",
-            scroll_down_btn: "ତଳକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ",
-            popup_title: "ଆପ୍‌ରେ ଖୋଲନ୍ତୁ",
-            popup_app_name: "ଗଣିତ ବିଜ୍ଞ",
-            popup_open_btn: "ଖୋଲନ୍ତୁ",
-            popup_browser_name: "ବ୍ରାଉଜର୍",
-            popup_continue_btn: "ଜାରି ରଖନ୍ତୁ",
+              "&copy; ୨୦୨୫ ଗଣିତ ବିଜ୍ଞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>ସନ୍ଦୀପ୍ ବିଶ୍ୱାଳ ଜି</a>",
           },
           en: {
-            curtain_title: "Ganita Bingya",
             nav_logo: "Ganita Bingya",
             nav_download: "Download",
-            nav_play_online: "Play Online",
-            hero_title: "Made in Odisha, for India",
-            features_title: "A New Way to Learn",
-            feature1_title: "Fun Gameplay",
-            feature1_desc: "Makes practicing math as entertaining as a game.",
-            feature2_title: "Productive Time",
-            feature2_desc:
+            nav_tools: "Education Tools",
+            nav_features: "Features",
+            nav_changelog: "Change Log",
+            nav_contrib: "Contributors",
+            hero_title: "Ganita Bingya",
+            feature_descc:
               "Turn your idle time into a productive practice session.",
-            feature3_title: "On All Devices",
-            feature3_desc:
-              "Play online on your desktop or download the Android app.",
-            feature4_title: "Four Operations",
+            download_btn: "Download App",
+            open_app_btn: "Open App",
+            download_count_text: "downloads",
+            features_title: "A New Way to Learn",
+            screenshots_title: "App Glimpses",
+            feature1_title: "Numbers in Words",
+            feature1_desc: "Learn to read all numbers from 1 to 100 in words.",
+            feature2_title: "Ordinal Numbers",
+            feature2_desc:
+              "Learn ordinal numbers easily in this section. Use ordinal numbers to identify the order or position of objects or people. Example: First, Second, Third, etc.",
+            feature3_title: "Four Operations",
+            feature3_desc: "Addition, Subtraction, Multiplication, Division",
+            feature4_title: "Counting System",
             feature4_desc:
-              "Practice addition, subtraction, multiplication, and division with one, two, or three-digit numbers.",
-            feature5_title: "Multiplication Tables (2 to 25)",
+              "Learn how to write and read Units, Tens, Hundreds, Thousands, and Lakhs.",
+            feature5_title: "Multiplication Tables",
             feature5_desc:
-              "Learn and remember multiplication tables from 2 to 25. Each table is presented in a clear and easy format (e.g., 2 × 1 = 2 or, two ones are two), which helps in quick memorization.",
-
-            feature6_title: "Numbers in Words",
+              "Memorize multiplication tables from 2 to 25 easily (e.g., Two ones are two, Two twos are four).",
+            feature6_title: "Utilities",
             feature6_desc:
-              "Don't just stick to digits! Learn to write all numbers from 1 to 100 in words. This is an excellent feature for young children and language learners.",
-
+              "Calculator for calculations, Unit Converter, and Number to Word conversion.",
             feature7_title: "Drawing Pad",
             feature7_desc:
-              "No need for a notebook and pen! Use our digital slate to practice, calculate, or learn to write numbers.",
-
+              "No need for a notebook and pen! Use the digital slate.",
             feature8_title: "Brain Games",
             feature8_desc:
-              "Logic Puzzle: Play unlimited puzzles to enhance your reasoning skills. Sudoku: Play classic Sudoku to improve concentration and problem-solving skills. Fruit Comparison: A fun game that will enhance your observation and comparison abilities.",
-
-            feature9_title: "Simple Calculator",
+              "Logic Puzzles: Play unlimited puzzles to enhance logical reasoning. Sudoku: Play classic Sudoku to improve concentration and problem-solving skills.",
+            feature9_title: "Multilingual",
             feature9_desc:
-              "A simple and useful calculator for quick calculations and daily use.",
-
-            feature10_title: "Multilingual Support",
-            feature10_desc:
-              "Available in 10 Indian languages: Odia, Sanskrit, English, Hindi, Telugu, Assamese, Bengali, Gujarati, Malayalam, and Urdu.",
-
-            screenshots_title: "App Glimpses",
-            download_title: "Ready to Play Now?",
-            download_desc_android:
-              'Download the "Ganita Bingya" app today and start a new journey with math!',
-            open_app_btn: "Open App",
-            download_btn: "Download",
-            download_count_text: "downloads",
-            download_desc_other:
-              "No download required! Start playing directly in your browser.",
-            play_online_btn: "Play Online",
-            whats_new_title: "What's New?",
-            loading_updates: "Loading latest updates...",
+              "Available in 10 Indian languages: Odia, Sanskrit, English, Hindi, Telugu, Gujarati, Bengali, Assamese, Malayalam, and Urdu.",
+            feature10_title: "Does it contain Ads?",
+            feature10_desc: "'Ganita Bigyan' is ad-free and always will be.",
             footer_text:
-              "&copy; 2025 Ganita Bingya. Made by <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>Sandeep Biswal G</a>.",
-            scroll_down_btn: "Scroll Down",
-            popup_title: "Open in app",
-            popup_app_name: "Ganita Bingya",
-            popup_open_btn: "Open",
-            popup_browser_name: "Browser",
-            popup_continue_btn: "Continue",
+              "&copy; 2025 Ganita Bingya. By <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>Sandeep Biswal G</a>",
           },
           hi: {
-            curtain_title: "गणित बिज्ञ",
-            nav_logo: "गणित बिज्ञ",
+            nav_logo: "गणित विज्ञ",
             nav_download: "डाउनलोड",
-            nav_play_online: "ऑनलाइन खेलें",
-            hero_title: "ओडिशा में बना, भारत के लिए",
-            features_title: "सीखने का नया तरीका",
-            feature1_title: "मज़ेदार गेमप्ले",
-            feature1_desc: "गणित का अभ्यास एक खेल की तरह मनोरंजक बनाता है।",
-            feature2_title: "उपयोगी समय",
-            feature2_desc: "अपने खाली समय को एक उत्पादक अभ्यास सत्र में बदलें।",
-            feature3_title: "सभी डिवाइस पर",
-            feature3_desc:
-              "डेस्कटॉप पर ऑनलाइन खेलें या एंड्रॉइड ऐप डाउनलोड करें।",
-            feature4_title: "चार प्रक्रियाएं",
-            feature4_desc:
-              "एक, दो, या तीन अंकों की संख्याओं के साथ जोड़, घटाव, गुणा और भाग का अभ्यास करें।",
-              feature5_title: "पहाड़े (2 से 25 तक)",
-feature5_desc: "2 से 25 तक पहाड़े सीखें और याद करें। प्रत्येक पहाड़ा एक स्पष्ट और आसान प्रारूप में (जैसे: 2 × 1 = 2 या, दो एकम दो) प्रस्तुत किया गया है, जो जल्दी याद करने में मदद करता है।",
-
-feature6_title: "शब्दों में संख्याएँ",
-feature6_desc: "केवल अंकों तक सीमित न रहें! 1 से 100 तक की सभी संख्याओं को शब्दों में लिखना सीखें। यह छोटे बच्चों और भाषा सीखने वालों के लिए एक बेहतरीन सुविधा है।",
-
-feature7_title: "ड्राइंग पैड",
-feature7_desc: "कॉपी और पेन की कोई ज़रूरत नहीं! अभ्यास करने, गणना करने या संख्याएँ लिखना सीखने के लिए हमारे डिजिटल स्लेट का उपयोग करें।",
-
-feature8_title: "दिमागी खेल",
-feature8_desc: "तर्क पहेली: अपनी तर्क शक्ति को बढ़ाने के लिए असीमित पहेलियाँ खेलें। सुडोकू: एकाग्रता और समस्या-समाधान कौशल को बेहतर बनाने के लिए क्लासिक सुडोकू खेलें। फलों की तुलना: एक मजेदार खेल जो आपकी अवलोकन और तुलना करने की क्षमता को बढ़ाएगा।",
-
-feature9_title: "सरल कैलकुलेटर",
-feature9_desc: "त्वरित गणना और दैनिक उपयोग के लिए एक सरल और उपयोगी कैलकुलेटर।",
-
-feature10_title: "बहुभाषी समर्थन",
-feature10_desc: "यह 10 भारतीय भाषाओं में उपलब्ध है: ओड़िया, संस्कृत, अंग्रेजी, हिंदी, तेलुगु, असमिया, बंगाली, गुजराती, मलयालम और उर्दू।",
-            screenshots_title: "ऐप की झलकियाँ",
-            download_title: "अब खेलने के लिए तैयार हैं?",
-            download_desc_android:
-              '"गणित बिज्ञ" ऐप आज ही डाउनलोड करें और गणित के साथ एक नई यात्रा शुरू करें!',
+            nav_tools: "शिक्षा उपकरण",
+            nav_features: "विशेषताएँ",
+            nav_changelog: "बदलाव सूची",
+            nav_contrib: "योगदानकर्ता",
+            hero_title: "गणित विज्ञ",
+            feature_descc: "अपने खाली समय को एक उत्पादक अभ्यास सत्र में बदलें।",
+            download_btn: "ऐप डाउनलोड करें",
             open_app_btn: "ऐप खोलें",
-            download_btn: "डाउनलोड करें",
             download_count_text: "डाउनलोड",
-            download_desc_other:
-              "कोई डाउनलोड आवश्यक नहीं! सीधे अपने ब्राउज़र में खेलना शुरू करें।",
-            play_online_btn: "ऑनलाइन खेलें",
-            whats_new_title: "नया क्या है?",
-            loading_updates: "नवीनतम अपडेट लोड हो रहे हैं...",
+            features_title: "सीखने का एक नया तरीका",
+            screenshots_title: "ऐप की झलकियाँ",
+            feature1_title: "शब्दों में संख्या",
+            feature1_desc:
+              "१ से १०० तक की सभी संख्याओं को शब्दों में पढ़ना सीखें।",
+            feature2_title: "क्रमवाचक संख्या",
+            feature2_desc:
+              "इस खंड में आप क्रमवाचक संख्याएँ आसानी से सीख सकते हैं। वस्तुओं या व्यक्तियों के क्रम या स्थान की पहचान करने के लिए क्रमवाचक संख्याओं का उपयोग करें। जैसे: पहला, दूसरा, तीसरा आदि।",
+            feature3_title: "चार प्रक्रियाएं",
+            feature3_desc: "जोड़, घटाव, गुणा, भाग",
+            feature4_title: "गणना प्रणाली",
+            feature4_desc:
+              "इकाई, दहाई, सैकड़ा, हजार और लाख को लिखना और पढ़ना सीखें।",
+            feature5_title: "पहाड़ा",
+            feature5_desc:
+              "२ से २५ तक के पहाड़े आसान तरीके से याद करें (जैसे: दो एकम दो, दो दूनी चार)।",
+            feature6_title: "उपयोगिताएँ",
+            feature6_desc:
+              "हिसाब के लिए कैलकुलेटर, इकाई परिवर्तक और संख्या को शब्दों में बदलना।",
+            feature7_title: "ड्राइंग पैड",
+            feature7_desc:
+              "कॉपी और पेन की आवश्यकता नहीं! डिजिटल स्लेट का उपयोग करें।",
+            feature8_title: "दिमागी खेल",
+            feature8_desc:
+              "तर्क पहेलियाँ: तर्क शक्ति बढ़ाने के लिए असीमित पहेलियाँ खेलें। सुडोकू: एकाग्रता और समस्या सुलझाने के कौशल को बढ़ाने के लिए क्लासिक सुडोकू खेलें।",
+            feature9_title: "बहुभाषी",
+            feature9_desc:
+              "यह १० भारतीय भाषाओं में उपलब्ध है: ओड़िया, संस्कृत, अंग्रेजी, हिंदी, तेलुगु, गुजराती, बंगाली, असमिया, मलयालम और उर्दू।",
+            feature10_title: "क्या इसमें विज्ञापन (Ads) हैं?",
+            feature10_desc: "'गणित विज्ञ' विज्ञापन-मुक्त है और हमेशा रहेगा।",
             footer_text:
-              "&copy; २०२५ गणित बिज्ञ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>संदीप बिस्वाल जी</a> द्वारा निर्मित।",
-            scroll_down_btn: "नीचे स्क्रॉल करें",
-            popup_title: "ऐप में खोलें",
-            popup_app_name: "गणित बिज्ञ",
-            popup_open_btn: "खोलें",
-            popup_browser_name: "ब्राउज़र",
-            popup_continue_btn: "जारी रखें",
+              "© २०२५ गणित विज्ञ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>संदीप बिस्वाल जी</a> द्वारा",
           },
           sa: {
-            curtain_title: "गणितविज्ञः",
-            nav_logo: "गणितविज्ञः",
-            nav_download: "अवरोपयतु",
-            nav_play_online: "ऑनलाइन क्रीडतु",
-            hero_title: "ओडिशायां निर्मितम्, भारतार्थम्",
-            features_title: "शिक्षणस्य नूतनः मार्गः",
-            feature1_title: "मनोरञ्जकक्रीडा",
-            feature1_desc: "गणितस्य अभ्यासं क्रीडावत् मनोरञ्जकं करोति।",
-            feature2_title: "उत्पादकसमयः",
-            feature2_desc: "स्वस्य रिक्तकालं उत्पादके अभ्यासे परिवर्तयतु।",
-            feature3_title: "सर्वत्र उपकरणेषु",
-            feature3_desc:
-              "सङ्गणके ऑनलाइन क्रीडतु अथवा एंड्रॉयड-अनुप्रयोगम् अवरोपयतु।",
-            feature4_title: "चत्वारः प्रक्रियाः",
-            feature4_desc:
-              "एक, द्वि, त्रि-अङ्कानां सङ्ख्याभिः सह सङ्कलनं, व्यवकलनं, गुणनं, भाजनं च अभ्यस्यतु।",
-            feature5_title: "गुणनसारणी (२ तः २५ पर्यन्तम्)",
-feature5_desc: "२ तः २५ पर्यन्तं गुणनसारणीं पठन्तु स्मरन्तु च। प्रत्येकं सारणी स्पष्टे सरले च रूपे (यथा - २ × १ = २ अथवा, द्वे एके द्वे) प्रदत्ता अस्ति, यत् शीघ्रस्मरणे सहायकं भवति।",
-
-feature6_title: "अक्षरेषु संख्याः",
-feature6_desc: "केवलं सङ्ख्यासु एव मा सीमिताः भवन्तु! १ तः १०० पर्यन्तं सर्वाः सङ्ख्याः अक्षरेषु लेखितुं शिक्षन्तु। एतत् लघुबालानां भाषाशिक्षार्थिनां च कृते एका उत्तमा सुविधा अस्ति।",
-
-feature7_title: "अङ्कनपट्टम्",
-feature7_desc: "लेखनपुस्तिकायाः लेखन्याः च आवश्यकता नास्ति! अभ्यासं कर्तुं, गणनां कर्तुं, अथवा सङ्ख्यालेखनं शिक्षितुं अस्माकं डिजिटल-स्लेट् इत्यस्य उपयोगं कुर्वन्तु।",
-
-feature8_title: "बुद्धिक्रीडाः",
-feature8_desc: "तर्कप्रहेलिका: तर्कशक्तिं वर्धयितुम् असीमिताः प्रहेलिकाः क्रीडन्तु। सुडोकु: एकाग्रतां समस्यासमाधानकौशलं च वर्धयितुं क्लासिक् सुडोकु क्रीडन्तु। फलतुलना: एका मनोरञ्जकक्रीडा या भवतः अवलोकनस्य तुलनायाः च क्षमतां वर्धयिष्यति।",
-
-feature9_title: "सरलगणकयन्त्रम्",
-feature9_desc: "शीघ्रगणनायाः दैनन्दिनोपयोगस्य च कृते एकं सरलं उपयोगि च गणकयन्त्रम्।",
-
-feature10_title: "बहुभाषिक-सुविधा",
-feature10_desc: "एतत् १० भारतीयभाषासु उपलब्धम् अस्ति: ओडिया, संस्कृतम्, आङ्ग्लम्, हिन्दी, तेलुगु, असमिया, बङ्गला, गुजराती, मलयालम, उर्दू च।",
-            screenshots_title: "अनुप्रयोगस्य दर्शनानि",
-            download_title: "इदानीं क्रीडितुं सज्जः?",
-            download_desc_android:
-              '"गणितविज्ञः" अनुप्रयोगम् अद्यैव अवरोपयतु गणितस्य सह नूतनां यात्रां आरभताम्!',
+            nav_logo: "गणित विज्ञः",
+            nav_download: "अवतरणम्",
+            nav_tools: "शिक्षासाधनानि",
+            nav_features: "वैशिष्ट्यानि",
+            nav_changelog: "परिवर्तनसूची",
+            nav_contrib: "योगदानकर्तारः",
+            hero_title: "गणित विज्ञः",
+            feature_descc: "भवतः विरामकालं फलप्रदाभ्याससत्रे परिवर्तयतु।",
+            download_btn: "अनुप्रयोगम् अवतरतु",
             open_app_btn: "अनुप्रयोगम् उद्घाटयतु",
-            download_btn: "अवरोपयतु",
-            download_count_text: "अवरोपिताः",
-            download_desc_other:
-              "अवरोपणं अनावश्यकम्! साक्षात् स्वस्य ब्राउजरे क्रीडितुं आरभताम्।",
-            play_online_btn: "ऑनलाइन क्रीडतु",
-            whats_new_title: "किं नवीनम्?",
-            loading_updates: "नवीनतमाः सूचनाः आगच्छन्ति...",
-            footer_text:
-              "&copy; २०२५ गणितविज्ञः। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>सन्दीपबिस्वाल-महोदयेन</a> निर्मितम्।",
-            scroll_down_btn: "अधः सरकतु",
-            popup_title: "अनुप्रयोगे उद्घाटयतु",
-            popup_app_name: "गणितविज्ञः",
-            popup_open_btn: "उद्घाटयतु",
-            popup_browser_name: "ब्राउजर",
-            popup_continue_btn: "अनुवर्तताम्",
-          },
-          bn: {
-            curtain_title: "গণিত বিজ্ঞ",
-            nav_logo: "গণিত বিজ্ঞ",
-            nav_download: "ডাউনলোড",
-            nav_play_online: "অনলাইনে খেলুন",
-            hero_title: "ওড়িশায় তৈরি, ভারতের জন্য",
-            features_title: "শেখার নতুন উপায়",
-            feature1_title: "মজাদার গেমপ্লে",
-            feature1_desc: "গণিত অনুশীলনকে একটি খেলার মতো বিনোদনমূলক করে তোলে।",
-            feature2_title: "ফলপ্রসূ সময়",
+            download_count_text: "अवतरणानि",
+            features_title: "शिक्षणस्य नूतनः मार्गः",
+            screenshots_title: "अनुप्रयोगस्य दृश्यानि",
+            feature1_title: "अक्षरेषु सङ्ख्याः",
+            feature1_desc:
+              "१ तः १०० पर्यन्तं सर्वाः सङ्ख्याः शब्दैः पठितुं शिक्षन्ताम्।",
+            feature2_title: "पूरणवाचकसङ्ख्याः",
             feature2_desc:
-              "আপনার অবসর সময়কে একটি ઉત્પાદক অনুশীলন সেশনে পরিণত করুন।",
-            feature3_title: "সমস্ত ডিভাইসে",
-            feature3_desc:
-              "আপনার ডেস্কটপে অনলাইনে খেলুন বা অ্যান্ড্রয়েড অ্যাপ ডাউনলোড করুন।",
-            feature4_title: "চারটি প্রক্রিয়া",
+              "अस्मिन् विभागे भवान् पूरणवाचकसङ्ख्याः सरळतया ज्ञातुं शक्नोति। वस्तूनां व्यक्तीनां वा क्रमं स्थानं वा चिन्हांकितुं पूरणवाचकसङ्ख्यानाम् उपयोगं करोतु। यथा - प्रथमः, द्वितीयः, तृतीयः इत्यादयः।",
+            feature3_title: "चतस्रः प्रक्रियाः",
+            feature3_desc: "सङ्कलनम्, व्यवकलनम्, गुणनम्, विभाजनम्",
+            feature4_title: "गणनाप्रणाली",
             feature4_desc:
-              "এক, দুই, বা তিন-অঙ্কের সংখ্যা দিয়ে যোগ, বিয়োগ, গুণ এবং ভাগ অনুশীলন করুন।",
-              feature5_title: "নামতা (২ থেকে ২৫)",
-feature5_desc: "২ থেকে ২৫ পর্যন্ত নামতা শিখুন এবং মনে রাখুন। প্রতিটি নামতা একটি স্পষ্ট এবং সহজ বিন্যাসে (যেমন: ২ × ১ = ২ বা, দুই এক্কে দুই) দেওয়া আছে, যা দ্রুত মনে রাখতে সাহায্য করে।",
-
-feature6_title: "কথায় সংখ্যা",
-feature6_desc: "শুধু সংখ্যায় সীমাবদ্ধ থাকবেন না! ১ থেকে ১০০ পর্যন্ত সমস্ত সংখ্যা কথায় লিখতে শিখুন। এটি ছোট বাচ্চা এবং ভাষা শিক্ষার্থীদের জন্য একটি চমৎকার সুবিধা।",
-
-feature7_title: "অঙ্কন প্যাড",
-feature7_desc: "খাতা ও কলমের প্রয়োজন নেই! অনুশীলন করতে, হিসাব করতে বা সংখ্যা লেখা শিখতে আমাদের ডিজিটাল স্লেট ব্যবহার করুন।",
-
-feature8_title: "বুদ্ধির খেলা",
-feature8_desc: "লজিক পাজল: আপনার যুক্তি শক্তি বাড়াতে সীমাহীন পাজল খেলুন। সুডোকু: মনোযোগ এবং সমস্যা সমাধানের দক্ষতা বাড়াতে ক্লাসিক সুডোকু খেলুন। ফলের তুলনা: একটি মজার খেলা যা আপনার পর্যবেক্ষণ এবং তুলনা করার ক্ষমতা বাড়াবে।",
-
-feature9_title: "সহজ ক্যালকুলেটর",
-feature9_desc: "দ্রুত গণনা এবং দৈনন্দিন ব্যবহারের জন্য একটি সহজ এবং দরকারী ক্যালকুলেটর।",
-
-feature10_title: "বহুভাষিক সুবিধা",
-feature10_desc: "এটি ১০টি ভারতীয় ভাষায় উপলব্ধ: ওড়িয়া, সংস্কৃত, ইংরেজি, হিন্দি, তেলুগু, অসমীয়া, বাংলা, গুজরাটি, মালয়ালম এবং উর্দু।",
-            screenshots_title: "অ্যাপের ঝলক",
-            download_title: "এখন খেলতে প্রস্তুত?",
-            download_desc_android:
-              '"গণিত বিজ্ঞ" অ্যাপটি আজই ডাউনলোড করুন এবং গণিতের সাথে একটি নতুন যাত্রা শুরু করুন!',
-            open_app_btn: "অ্যাপ খুলুন",
-            download_btn: "ডাউনলোড করুন",
-            download_count_text: "ডাউনলোড",
-            download_desc_other:
-              "কোন ডাউনলোডের প্রয়োজন নেই! সরাসরি আপনার ব্রাউজারে খেলা শুরু করুন।",
-            play_online_btn: "অনলাইনে খেলুন",
-            whats_new_title: "নতুন কি আছে?",
-            loading_updates: "সর্বশেষ আপডেট লোড হচ্ছে...",
+              "एकम्, दश, शतम्, सहस्रम् तथा लक्षं लिखितुं पठितुं च शिक्षन्ताम्।",
+            feature5_title: "गुणनकोष्ठकम्",
+            feature5_desc:
+              "२ तः २५ पर्यन्तं गुणनकोष्ठकम् सरलरीत्या स्मरतु (यथा - द्वे एकं द्वे, द्वे द्वे चत्वारि)।",
+            feature6_title: "उपयोगिताः",
+            feature6_desc:
+              "गणनायै गणकयन्त्रम्, एकक-परिवर्तकः तथा सङ्ख्यानां शब्देषु परिवर्तनम्।",
+            feature7_title: "अङ्कनफलकम्",
+            feature7_desc:
+              "सञ्चिकायाः लेखन्याः च आवश्यकता नास्ति! डिझिटल-फलकस्य उपयोगं करोतु।",
+            feature8_title: "बौद्धिकक्रीडाः",
+            feature8_desc:
+              "तर्कप्रहेलिकाः - तर्कशक्तिं वर्धयितुं असीमित-प्रहेलिकाः क्रीडतु। सुडोकू - एकाग्रताम् तथा समस्या-समाधान-दक्षतां वर्धयितुं 'सुडोकू' क्रीडतु।",
+            feature9_title: "बहुभाषी",
+            feature9_desc:
+              "इदं १० भारतीयभाषासु उपलब्धम् अस्ति, यथा - ओडिया, संस्कृतम्, आङ्ग्लम्, हिन्दी, तेलुगु, गुजराती, बङ्गाली, असमिया, मल्याळम् तथा उर्दू।",
+            feature10_title: "किम् अत्र विज्ञापनानि सन्ति?",
+            feature10_desc:
+              "'गणितविज्ञ' विज्ञापनमुक्तम् अस्ति, सर्वदा च भविष्यति।",
             footer_text:
-              "&copy; ২০২৫ গণিত বিজ্ঞ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>সন্দীপ বিস্বাল জি</a> দ্বারা নির্মিত।",
-            scroll_down_btn: "নিচে স্ক্রল করুন",
-            popup_title: "অ্যাপে খুলুন",
-            popup_app_name: "গণিত বিজ্ঞ",
-            popup_open_btn: "খুলুন",
-            popup_browser_name: "ব্রাউজার",
-            popup_continue_btn: "চালিয়ে যান",
+              "© २०२५ गणितविज्ञ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>संदीप बिस्वाल वर्येण</a>",
           },
           te: {
-            curtain_title: "గణిత బిగ్యా",
-            nav_logo: "గణిత బిగ్యా",
+            nav_logo: "గణిత విజ్ఞ",
             nav_download: "డౌన్‌లోడ్",
-            nav_play_online: "ఆన్‌లైన్‌లో ఆడండి",
-            hero_title: "ఒడిశాలో తయారైంది, భారతదేశం కోసం",
-            features_title: "నేర్చుకోవడానికి ఒక కొత్త మార్గం",
-            feature1_title: "వినోదాత్మక గేమ్‌ప్లే",
-            feature1_desc: "గణిత అభ్యాసాన్ని ఆటలాగా వినోదాత్మకంగా చేస్తుంది.",
-            feature2_title: "ఉత్పాదక సమయం",
-            feature2_desc:
-              "మీ ఖాళీ సమయాన్ని ఉత్పాదక ప్రాక్టీస్ సెషన్‌గా మార్చండి.",
-            feature3_title: "అన్ని పరికరాల్లో",
-            feature3_desc:
-              "మీ డెస్క్‌టాప్‌లో ఆన్‌లైన్‌లో ఆడండి లేదా ఆండ్రాయిడ్ యాప్‌ను డౌన్‌లోడ్ చేయండి.",
-            feature4_title: "నాలుగు ఆపరేషన్లు",
-            feature4_desc:
-              "ఒక, రెండు, లేదా మూడు అంకెల సంఖ్యలతో కూడిక, తీసివేత, గుణకారం మరియు భాగాహారం ప్రాక్టీస్ చేయండి.",
-              feature5_title: "ఎక్కాలు (2 నుండి 25 వరకు)",
-feature5_desc: "2 నుండి 25 వరకు ఎక్కాలు నేర్చుకోండి మరియు గుర్తుంచుకోండి. ప్రతి ఎక్కం స్పష్టమైన మరియు సులభమైన ఫార్మాట్‌లో (ఉదా: 2 × 1 = 2 లేదా, రెండు ఒకట్ల రెండు) ఇవ్వబడింది, ఇది త్వరగా గుర్తుంచుకోవడానికి సహాయపడుతుంది.",
-
-feature6_title: "అక్షరాలలో సంఖ్యలు",
-feature6_desc: "కేవలం అంకెలకు పరిమితం కావద్దు! 1 నుండి 100 వరకు అన్ని సంఖ్యలను అక్షరాలలో వ్రాయడం నేర్చుకోండి. ఇది చిన్న పిల్లలకు మరియు భాష నేర్చుకునేవారికి ఒక అద్భుతమైన సౌకర్యం.",
-
-feature7_title: "డ్రాయింగ్ ప్యాడ్",
-feature7_desc: "పుస్తకం మరియు పెన్ను అవసరం లేదు! అభ్యాసం చేయడానికి, లెక్కించడానికి లేదా సంఖ్యలు వ్రాయడం నేర్చుకోవడానికి మా డిజిటల్ స్లేట్‌ను ఉపయోగించండి.",
-
-feature8_title: "మేధో క్రీడలు",
-feature8_desc: "లాజిక్ పజిల్: మీ తార్కిక నైపుణ్యాలను మెరుగుపరచడానికి అపరిమిత పజిల్స్ ఆడండి. సుడోకు: ఏకాగ్రత మరియు సమస్య పరిష్కార నైపుణ్యాలను మెరుగుపరచడానికి క్లాసిక్ సుడోకు ఆడండి. పండ్ల పోలిక: మీ పరిశీలన మరియు పోలిక సామర్థ్యాలను మెరుగుపరిచే ఒక సరదా ఆట.",
-
-feature9_title: "సులభమైన క్యాలిక్యులేటర్",
-feature9_desc: "త్వరిత లెక్కల కోసం మరియు రోజువారీ ఉపయోగం కోసం ఒక సరళమైన మరియు ఉపయోగకరమైన క్యాలిక్యులేటర్.",
-
-feature10_title: "బహుభాషా మద్దతు",
-feature10_desc: "ఇది 10 భారతీయ భాషలలో అందుబాటులో ఉంది: ఒడియా, సంస్కృతం, ఇంగ్లీష్, హిందీ, తెలుగు, అస్సామీ, బెంగాలీ, గుజరాతీ, మలయాళం మరియు ఉర్దూ.",
-            screenshots_title: "యాప్ సంగ్రహావలోకనం",
-            download_title: "ఇప్పుడు ఆడటానికి సిద్ధంగా ఉన్నారా?",
-            download_desc_android:
-              '"గణిత బిగ్యా" యాప్‌ను ఈరోజే డౌన్‌లోడ్ చేసుకోండి మరియు గణితంతో కొత్త ప్రయాణాన్ని ప్రారంభించండి!',
+            nav_tools: "విద్యా సాధనాలు",
+            nav_features: "విశేషాలు",
+            nav_changelog: "మార్పుల జాబితా",
+            nav_contrib: "సహకారులు",
+            hero_title: "గణిత విజ్ఞ",
+            feature_descc:
+              "మీ ఖాళీ సమయాన్ని ఉత్పాదక అభ్యాస సమయంగా మార్చుకోండి.",
+            download_btn: "యాప్ డౌన్‌లోడ్",
             open_app_btn: "యాప్ తెరవండి",
-            download_btn: "డౌన్‌లోడ్ చేయండి",
-            download_count_text: "డౌన్‌లోడ్‌లు",
-            download_desc_other:
-              "డౌన్‌లోడ్ అవసరం లేదు! నేరుగా మీ బ్రౌజర్‌లో ఆడటం ప్రారంభించండి.",
-            play_online_btn: "ఆన్‌లైన్‌లో ఆడండి",
-            whats_new_title: "కొత్తగా ఏమి ఉంది?",
-            loading_updates: "తాజా నవీకరణలు లోడ్ అవుతున్నాయి...",
-            footer_text:
-              "&copy; ౨౦౨౫ గణిత బిగ్యా. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>సందీప్ బిస్వాల్ జి</a> ద్వారా తయారు చేయబడింది.",
-            scroll_down_btn: "కిందికి స్క్రోల్ చేయండి",
-            popup_title: "యాప్‌లో తెరవండి",
-            popup_app_name: "గణిత బిగ్యా",
-            popup_open_btn: "తెరవండి",
-            popup_browser_name: "బ్రౌజర్",
-            popup_continue_btn: "కొనసాగించు",
-          },
-          as: {
-            curtain_title: "গণিত বিঞ্জ",
-            nav_logo: "গণিত বিঞ্জ",
-            nav_download: "ডাউনলোড কৰক",
-            nav_play_online: "অনলাইন খেলক",
-            hero_title: "ওড়িশাত নিৰ্মিত, ভাৰতৰ বাবে",
-            features_title: "শিকাৰ এক নতুন উপায়",
-            feature1_title: "মজাদাৰ গেমপ্লে",
-            feature1_desc: "গণিতৰ অনুশীলনক খেলৰ দৰেই মনোৰঞ্জক কৰি তোলে।",
-            feature2_title: "উৎপাদনশীল সময়",
-            feature2_desc:
-              "আপোনাৰ খালী সময়ক এক উৎপাদনশীল অনুশীলনলৈ ৰূপান্তৰিত কৰক।",
-            feature3_title: "সকলো ডিভাইচত",
-            feature3_desc:
-              "আপোনাৰ ডেস্কটপত অনলাইন খেলক বা এণ্ড্ৰইড এপটো ডাউনলোড কৰক।",
-            feature4_title: "চাৰিটা ক্ৰিয়া",
-            feature4_desc:
-              "এক, দুই বা তিনি-অংকৰ সংখ্যাৰ সৈতে যোগ, বিয়োগ, পূৰণ আৰু হৰণৰ অনুশীলন কৰক।",
-              feature5_title: "পূৰণ তালিকা (২ ৰ পৰা ২৫ লৈ)",
-feature5_desc: "২ ৰ পৰা ২৫ লৈকে পূৰণ তালিকা শিকক আৰু মনত ৰাখক। প্ৰতিখন তালিকা এখন স্পষ্ট আৰু সহজ ফৰ্মেটত (যেনে: ২ × ১ = ২ বা, দুই একোণ দুই) উপস্থাপন কৰা হৈছে, যি সোনকালে মনত ৰখাত সহায় কৰে।",
-
-feature6_title: "কথাত সংখ্যা",
-feature6_desc: "কেৱল সংখ্যাতেই সীমাবদ্ধ নাথাকিব! ১ ৰ পৰা ১০০ লৈকে সকলো সংখ্যা কথাত লিখিবলৈ শিকক। ই সৰু ল'ৰা-ছোৱালী আৰু ভাষা শিকাৰুসকলৰ বাবে এক উৎকৃষ্ট সুবিধা।",
-
-feature7_title: "অংকন পেড",
-feature7_desc: "বহী আৰু কলমৰ প্ৰয়োজন নাই! আমাৰ ডিজিটেল শ্লেট ব্যৱহাৰ কৰি অভ্যাস কৰক, গণনা কৰক বা সংখ্যা লিখিবলৈ শিকক।",
-
-feature8_title: "বুদ্ধিৰ খেল",
-feature8_desc: "তৰ্ক সাঁথৰ: আপোনাৰ তৰ্কশক্তি বৃদ্ধি কৰিবলৈ অসীমিত সাঁথৰ খেলক। চুডোকু: একাগ্ৰতা আৰু সমস্যা সমাধানৰ দক্ষতা উন্নত কৰিবলৈ ক্লাছিক চুডোকু খেলক। ফলৰ তুলনা: এক আমোদজনক খেল যি আপোনাৰ পৰ্যবেক্ষণ আৰু তুলনা কৰাৰ ক্ষমতা বৃদ্ধি কৰিব।",
-
-feature9_title: "সৰল কেলকুলেটৰ",
-feature9_desc: "দ্ৰুত গণনা আৰু দৈনন্দিন ব্যৱহাৰৰ বাবে এক সৰল আৰু উপযোগী কেলকুলেটৰ।",
-
-feature10_title: "বহুভাষিক সুবিধা",
-feature10_desc: "১০টা ভাৰতীয় ভাষাত উপলব্ধ: ওড়িয়া, সংস্কৃত, ইংৰাজী, হিন্দী, তেলেগু, অসমীয়া, বাংলা, গুজৰাটী, মালয়ালম আৰু উৰ্দু।",
-            screenshots_title: "এপৰ এক আভাস",
-            download_title: "এতিয়া খেলিবলৈ সাজুনে?",
-            download_desc_android:
-              'আজি "গণিত বিঞ্জা" এপটো ডাউনলোড কৰক আৰু গণিতৰ সৈতে এক নতুন যাত্ৰা আৰম্ভ কৰক!',
-            open_app_btn: "এপ খোলক",
-            download_btn: "ডাউনলোড কৰক",
-            download_count_text: "ডাউনলোড",
-            download_desc_other:
-              "ডাউনলোডৰ প্ৰয়োজন নাই! আপোনাৰ ব্ৰাউজাৰত পোনপটীয়াকৈ খেলা আৰম্ভ কৰক।",
-            play_online_btn: "অনলাইন খেলক",
-            whats_new_title: "নতুন কি আছে?",
-            loading_updates: "শেহতীয়া আপডেটসমূহ লোড হৈ আছে...",
-            footer_text:
-              "&copy; २०२৫ গণিত বিঞ্জা। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>সন্দীপ বিছৱাল জি</a>-ৰ দ্বাৰা নিৰ্মিত।",
-            scroll_down_btn: "তললৈ স্ক্ৰল কৰক",
-            popup_title: "এপত খোলক",
-            popup_app_name: "গণিত বিঞ্জা",
-            popup_open_btn: "খোলক",
-            popup_browser_name: "ব্ৰাউজাৰ",
-            popup_continue_btn: "আগবাঢ়ক",
-          },
-          ml: {
-            curtain_title: "ഗണിത ബിംഗ്യ",
-            nav_logo: "ഗണിത ബിംഗ്യ",
-            nav_download: "ഡൗൺലോഡ് ചെയ്യുക",
-            nav_play_online: "ഓൺലൈനായി കളിക്കുക",
-            hero_title: "ഒഡീഷയിൽ നിർമ്മിച്ചത്, ഇന്ത്യക്കായി",
-            features_title: "പഠിക്കാൻ ഒരു പുതിയ വഴി",
-            feature1_title: "രസകരമായ ഗെയിംപ്ലേ",
+            download_count_text: "డౌన్‌లోడ్లు",
+            features_title: "నేర్చుకోవడానికి ఒక కొత్త మార్గం",
+            screenshots_title: "యాప్ దృశ్యాలు",
+            feature1_title: "అక్షరాలలో సంఖ్యలు",
             feature1_desc:
-              "ഗണിതം പരിശീലിക്കുന്നത് ഒരു ഗെയിം പോലെ രസകരമാക്കുന്നു.",
-            feature2_title: "പ്രയോജനപ്രദമായ സമയം",
+              "1 నుండి 100 వరకు ఉన్న అన్ని సంఖ్యలను అక్షరాలలో చదవడం నేర్చుకోండి.",
+            feature2_title: "పూరణవాచక సంఖ్యలు",
             feature2_desc:
-              "നിങ്ങളുടെ ഒഴിവു സമയത്തെ പ്രയോജനപ്രദമായ ഒരു പരിശീലന സെഷനാക്കി മാറ്റുക.",
-            feature3_title: "എല്ലാ ഉപകരണങ്ങളിലും",
-            feature3_desc:
-              "നിങ്ങളുടെ ഡെസ്ക്ടോപ്പിൽ ഓൺലൈനായി കളിക്കുക അല്ലെങ്കിൽ ആൻഡ്രോയിഡ് ആപ്പ് ഡൗൺലോഡ് ചെയ്യുക.",
-            feature4_title: "നാല് ക്രിയകൾ",
+              "ఈ విభాగంలో మీరు పూరణవాచక సంఖ్యలను సులభంగా నేర్చుకోవచ్చు. వస్తువులు లేదా వ్యక్తుల క్రమాన్ని లేదా స్థానాన్ని గుర్తించడానికి వీటిని ఉపయోగిస్తారు. ఉదాహరణకు: మొదటి, రెండవ, మూడవ మొదలైనవి.",
+            feature3_title: "నాలుగు ప్రక్రియలు",
+            feature3_desc: "కూడిక, తీసివేత, గుణకారం, భాగహారం",
+            feature4_title: "గణన విధానం",
             feature4_desc:
-              "ഒന്ന്, രണ്ട്, അല്ലെങ്കിൽ മൂന്നക്ക സംഖ്യകൾ ഉപയോഗിച്ച് സങ്കലനം, വ്യവകലനം, ഗുണനം, ഹരണം എന്നിവ പരിശീലിക്കുക.",
-            screenshots_title: "ആപ്പ് കാഴ്ചകൾ",
-            feature5_title: "ഗുണനപ്പട്ടിക (2 മുതൽ 25 വരെ)",
-feature5_desc: "2 മുതൽ 25 വരെയുള്ള ഗുണനപ്പട്ടിക പഠിക്കുകയും ഓർമ്മിക്കുകയും ചെയ്യുക. ഓരോ പട്ടികയും വ്യക്തവും ലളിതവുമായ രൂപത്തിൽ (ഉദാ: 2 × 1 = 2 അല്ലെങ്കിൽ, ഈരൊന്ന് രണ്ട്) നൽകിയിരിക്കുന്നു, ഇത് വേഗത്തിൽ ഓർമ്മിക്കാൻ സഹായിക്കുന്നു.",
-
-feature6_title: "അക്ഷരങ്ങളിൽ സംഖ്യകൾ",
-feature6_desc: "അക്കങ്ങളിൽ മാത്രം ഒതുങ്ങരുത്! 1 മുതൽ 100 വരെയുള്ള എല്ലാ സംഖ്യകളും അക്ഷരത്തിൽ എഴുതാൻ പഠിക്കുക. ഇത് ചെറിയ കുട്ടികൾക്കും ഭാഷ പഠിക്കുന്നവർക്കും വളരെ നല്ലൊരു സൗകര്യമാണ്.",
-
-feature7_title: "ഡ്രോയിംഗ് പാഡ്",
-feature7_desc: "നോട്ട്ബുക്കിന്റെയും പേനയുടെയും ആവശ്യമില്ല! പരിശീലിക്കാനും കണക്കുകൂട്ടാനും അല്ലെങ്കിൽ സംഖ്യകൾ എഴുതാൻ പഠിക്കാനും ഞങ്ങളുടെ ഡിജിറ്റൽ സ്ലേറ്റ് ഉപയോഗിക്കുക.",
-
-feature8_title: "ബുദ്ധിയുടെ കളികൾ",
-feature8_desc: "ലോജിക് പസിൽ: നിങ്ങളുടെ യുക്തിപരമായ കഴിവുകൾ വർദ്ധിപ്പിക്കുന്നതിന് പരിധിയില്ലാത്ത പസിലുകൾ കളിക്കുക. സുഡോകു: ഏകാഗ്രതയും പ്രശ്‌നപരിഹാര കഴിവുകളും മെച്ചപ്പെടുത്തുന്നതിന് ക്ലാസിക് സുഡോകു കളിക്കുക. ഫല താരതമ്യം: നിങ്ങളുടെ നിരീക്ഷണ, താരതമ്യ കഴിവുകൾ വർദ്ധിപ്പിക്കുന്ന ഒരു രസകരമായ ഗെയിം.",
-
-feature9_title: "ലളിതമായ കാൽക്കുലേറ്റർ",
-feature9_desc: "വേഗത്തിലുള്ള കണക്കുകൂട്ടലുകൾക്കും ദൈനംദിന ഉപയോഗത്തിനുമുള്ള ലളിതവും ഉപയോഗപ്രദവുമായ ഒരു കാൽക്കുലേറ്റർ.",
-
-feature10_title: "ബഹുഭാഷാ പിന്തുണ",
-feature10_desc: "ഇത് 10 ഇന്ത്യൻ ഭാഷകളിൽ ലഭ്യമാണ്: ഒഡിയ, സംസ്കൃതം, ഇംഗ്ലീഷ്, ഹിന്ദി, തെലുങ്ക്, ആസാമീസ്, ബംഗാളി, ഗുജറാത്തി, മലയാളം, ഉറുദു.",
-            download_title: "ഇപ്പോൾ കളിക്കാൻ തയ്യാറാണോ?",
-            download_desc_android:
-              'ഇന്ന് തന്നെ "ഗണിത ബിംഗ്യ" ആപ്പ് ഡൗൺലോഡ് ചെയ്യൂ, ഗണിതവുമായി ഒരു പുതിയ യാത്ര ആരംഭിക്കൂ!',
-            open_app_btn: "ആപ്പ് തുറക്കുക",
-            download_btn: "ഡൗൺലോഡ് ചെയ്യുക",
-            download_count_text: "ഡൗൺലോഡുകൾ",
-            download_desc_other:
-              "ഡൗൺലോഡ് ആവശ്യമില്ല! നിങ്ങളുടെ ബ്രൗസറിൽ നേരിട്ട് കളിച്ചു തുടങ്ങൂ.",
-            play_online_btn: "ഓൺലൈനായി കളിക്കുക",
-            whats_new_title: "പുതിയതെന്തെല്ലാം?",
-            loading_updates: "പുതിയ അപ്‌ഡേറ്റുകൾ ലോഡ് ചെയ്യുന്നു...",
+              "ఒకట్లు, పదులు, వందలు, వేలు మరియు లక్షలను రాయడం మరియు చదవడం నేర్చుకోండి.",
+            feature5_title: "ఎక్కాలు",
+            feature5_desc:
+              "2 నుండి 25 వరకు ఎక్కాలను సులభంగా గుర్తుంచుకోండి (ఉదా: రెండు ఒకట్ల రెండు, రెండు రెంట్ల నాలుగు).",
+            feature6_title: "ఉపకరణాలు",
+            feature6_desc:
+              "లెక్కల కోసం కాలిక్యులేటర్, యూనిట్ కన్వర్టర్ మరియు సంఖ్యను అక్షరాల్లోకి మార్చడం.",
+            feature7_title: "డ్రాయింగ్ ప్యాడ్",
+            feature7_desc:
+              "పుస్తకం మరియు పెన్ను అవసరం లేదు! డిజిటల్ పలకను ఉపయోగించండి.",
+            feature8_title: "మేధోశక్తి ఆటలు",
+            feature8_desc:
+              "లాజిక్ పజిల్స్: తార్కిక శక్తిని పెంచడానికి అపరిమిత పజిల్స్ ఆడండి. సుడోకు: ఏకాగ్రత మరియు సమస్య పరిష్కార నైపుణ్యాలను పెంచడానికి క్లాసిక్ సుడోకు ఆడండి.",
+            feature9_title: "బహుభాషా",
+            feature9_desc:
+              "ఇది 10 భారతీయ భాషలలో అందుబాటులో ఉంది: ఒడియా, సంస్కృతం, ఇంగ్లీష్, హిందీ, తెలుగు, గుజరాతీ, బెంగాలీ, అస్సామీ, మలయాళం మరియు ఉర్దూ.",
+            feature10_title: "ఇందులో ప్రకటనలు (Ads) ఉన్నాయా?",
+            feature10_desc:
+              "'గణిత విజ్ఞ' ప్రకటన-రహితం మరియు ఎప్పటికీ అలాగే ఉంటుంది.",
             footer_text:
-              "&copy; 2025 ഗണിത ബിംഗ്യ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>സന്ദീപ് ബിസ്വാൾ ജി</a> നിർമ്മിച്ചത്.",
-            scroll_down_btn: "താഴേക്ക് സ്ക്രോൾ ചെയ്യുക",
-            popup_title: "ആപ്പിൽ തുറക്കുക",
-            popup_app_name: "ഗണിത ബിംഗ്യ",
-            popup_open_btn: "തുറക്കുക",
-            popup_browser_name: "ബ്രൗസർ",
-            popup_continue_btn: "തുടരുക",
-          },
-
-          sat_Olck: {
-            curtain_title: "ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ",
-            nav_logo: "ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ",
-            nav_download: "ᱟᱹᱛᱩᱨ ᱢᱮ",
-            nav_play_online: "ᱚᱱᱞᱟᱭᱤᱱ ᱮᱱᱮᱡᱽ ᱢᱮ",
-            hero_title: "ᱩᱰᱤᱥᱟ ᱨᱮ བᱮᱱᱟᱣ ᱟᱠᱟᱱ, ᱵᱷᱟᱨᱚᱛ ᱞᱟᱹᱜᱤᱛ",
-            features_title: "ᱪᱮᱫᱚᱜ ᱨᱮᱭᱟᱜ ᱱᱟᱣᱟ ᱦᱚᱨ",
-            feature1_title: "ᱨᱟᱹᱥᱠᱟᱹ ᱮᱱᱮᱡ",
-            feature1_desc: "ᱚᱝᱠᱚ ᱟᱹବᱷᱭᱟᱥ ᱫᱚ ᱮᱱᱮᱡ ᱞᱮᱠᱟ ᱜᱮ ᱨᱟᱹᱥᱠᱟᱹᱱ-ᱮ བᱮᱱᱟᱣᱟ᱾",
-            feature2_title: "ᱠᱟᱹᱢᱤ ᱨᱮᱭᱟᱜ ᱚᱠᱛᱚ",
-            feature2_desc:
-              "ᱟᱢᱟᱜ ᱟᱬᱮ ᱚᱠᱛᱚ ᱫᱚ ᱠᱟᱹᱢᱤ ᱨᱮᱭ𝐚ᱜ ᱟᱹବᱷᱭᱟᱥ ᱚᱠᱛᱚ ᱨᱮ ᱵᱚᱫᱚᱞ ᱢᱮ᱾",
-            feature3_title: "ᱡᱚᱛᱚ ᱰᱤଭᱟᱭᱤᱥ ᱨᱮ",
-            feature3_desc:
-              "ᱟᱢᱟᱜ ᱰᱮᱥᱠᱴᱚᱯ ᱨᱮ ᱚᱱᱞᱟᱭᱤᱱ ᱮᱱᱮᱡᱽ ᱢᱮ ᱥᱮ ᱮᱱᱰᱨᱚᱭᱤᱰ ᱮᱯ ᱟᱹᱛᱩᱨ ᱢᱮ᱾",
-            feature4_title: "ᱯᱩᱱᱭᱟᱹ ᱠᱟᱹᱢᱤ",
-            feature4_desc:
-              "ᱢᱤᱫ, ᱵᱟᱨ ᱥᱮ ᱯᱮ ᱚᱝᱠᱚ ᱟᱱ ᱥᱟᱝଖ୍ୟᱟ ᱥᱟᱶ ᱡᱚᱜ, ᱯᱷᱮᱰ, ᱜᱩᱱ ᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱭᱟᱜ ᱟᱹବᱷᱭᱟᱥ ᱢᱮ᱾",
-              feature5_title: "ᱯᱟᱬᱟᱦᱟ (᱒ ᱠᱷᱚᱱ ᱒᱕ ᱦᱟᱹᱵᱤᱡ)",
-feature5_desc: "᱒ ᱠᱷᱚᱱ ᱒᱕ ᱦᱟᱹᱵᱤᱡ ᱯᱟᱬᱟᱦᱟ ᱪᱮᱫᱚᱜ ᱢᱮ ᱟᱨ ᱫᱤᱥᱟᱹ ᱫᱚᱦᱚᱭ ᱢᱮ᱾ ᱡᱚᱛᱚ ᱯᱟᱬᱟᱦᱟ ᱢᱤᱫ ᱥᱟᱯᱷᱟ ᱟᱨ ᱥᱚᱦᱚᱡᱽ ᱯᱷᱚᱨᱢᱟᱴ ᱨᱮ (ᱡᱮᱞᱠᱟ: ᱒ × ᱑ = ᱒ ᱵᱟᱝᱠᱷᱟᱱ, ᱵᱟᱨ ᱮᱠᱟ ᱵᱟᱨ) ᱮᱢ ᱦᱩᱭ ᱟᱠᱟᱱᱟ, ᱡᱟᱦᱟᱸ ᱞᱚᱜᱚᱱ ᱫᱤᱥᱟᱹ ᱫᱚᱦᱚᱭ ᱨᱮ ᱜᱚᱲᱚᱭᱟ᱾",
-
-feature6_title: "ᱟᱲᱟᱝ ᱛᱮ ᱮᱞ",
-feature6_desc: "ᱠᱷᱟᱹᱞᱤ ᱮᱞ ᱨᱮ ᱟᱞᱚᱢ ᱛᱟᱦᱮᱸᱱᱟ! ᱑ ᱠᱷᱚᱱ ᱑᱐᱐ ᱦᱟᱹᱵᱤᱡ ᱡᱚᱛᱚ ᱮᱞ ᱟᱲᱟᱝ ᱛᱮ ᱚᱞ ᱪᱮᱫᱚᱜ ᱢᱮ᱾ ᱱᱚᱣᱟ ᱦᱩᱰᱤᱧ ᱜᱤᱫᱽᱨᱟᱹ ᱟᱨ ᱯᱟᱹᱨᱥᱤ ᱪᱮᱫᱚᱜ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱷᱟᱹᱜᱤ ᱥᱩᱵᱤᱫᱷᱟ ᱠᱟᱱᱟ᱾",
-
-feature7_title: "ᱚᱱᱚᱞ ᱯᱮᱰ",
-feature7_desc: "ᱠᱷᱟᱛᱟ ᱟᱨ ᱠᱚᱞᱚᱢ ᱨᱮᱭᱟᱜ ᱞᱟᱹᱠᱛᱤ ᱵᱟᱹᱱᱩᱜᱼᱟ! ᱟᱹᱵᱷᱭᱟᱥ, ᱦᱤᱥᱟᱹᱵᱽ ᱟᱨ ᱮᱞ ᱚᱞ ᱪᱮᱫᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱟᱞᱮᱭᱟᱜ ᱰᱤᱡᱤᱴᱟᱞ ᱥᱞᱮᱴ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾",
-
-feature8_title: "ᱵᱩᱫᱷᱤ ᱮᱱᱮᱡ",
-feature8_desc: "ᱛᱚᱨᱠᱚ ᱯᱚᱦᱮᱞᱤ: ᱛᱚᱨᱠᱚ ᱫᱟᱲᱮ ᱵᱟᱲᱦᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱟᱹᱰᱤ ᱜᱟᱱ ᱯᱚᱦᱮᱞᱤ ᱮᱱᱮᱡ ᱢᱮ᱾ ᱥᱩᱰᱚᱠᱩ: ᱮᱠᱟᱜᱽᱨᱚᱛᱟ ᱟᱨ ᱥᱚᱢᱚᱥᱭᱟ ᱥᱚᱢᱟᱫᱷᱟన్ ᱨᱮᱭᱟᱜ ᱫᱟᱲᱮ ᱵᱟᱲᱦᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱠᱞᱟᱥᱤᱠ ᱥᱩᱰᱚᱠᱩ ᱮᱱᱮᱡ ᱢᱮ᱾ ᱡᱚ ᱛᱩᱞᱩᱡ: ᱢᱤᱫ ᱨᱟᱹᱥᱠᱟᱹ ᱮᱱᱮᱡ ᱡᱟᱦᱟᱸ ᱟᱢᱟᱜ ᱧᱮᱞ ᱟᱨ ᱛᱩᱞᱩᱡ ᱨᱮᱭᱟᱜ ᱫᱟᱲᱮ ᱵᱟᱲᱦᱟᱣᱟ᱾",
-
-feature9_title: "ᱥᱚᱦᱚᱡᱽ ᱠᱮᱞᱠᱩᱞᱮᱴᱚᱨ",
-feature9_desc: "ᱞᱚᱜᱚᱱ ᱦᱤᱥᱟᱹᱵᱽ ᱟᱨ ᱫᱤᱱᱟᱹᱢ ᱵᱮᱵᱷᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱥᱚᱦᱚᱡᱽ ᱟᱨ ᱞᱟᱹᱠᱛᱤᱭᱟᱱ ᱠᱮᱞᱠᱩᱞᱮᱴᱚᱨ᱾",
-
-feature10_title: "ᱟᱭᱢᱟ ᱯᱟᱹᱨᱥᱤ ᱥᱩᱵᱤᱫᱷᱟ",
-feature10_desc: "ᱱᱚᱣᱟ ᱑᱐ ᱜᱚᱴᱟᱝ ᱥᱤᱧᱚᱛᱤᱭᱟᱹ ᱯᱟᱹᱨᱥᱤ ᱨᱮ ᱧᱟᱢᱚᱜᱼᱟ: ᱚᱲᱤᱭᱟ, ᱥᱟᱹᱥᱠᱨᱤᱛ, ᱤᱝᱞᱤᱥ, ᱦᱤᱱᱫᱤ, ᱛᱮᱞᱩᱜᱩ, ᱟᱥᱟᱢᱤ, ᱵᱟᱝᱞᱟ, ᱜᱩᱡᱽᱨᱟᱴᱤ, ᱢᱟᱞᱟᱭᱟᱞᱚᱢ ᱟᱨ ᱩᱨᱫᱩ᱾",
-            screenshots_title: "ᱮᱯ ᱨᱮᱭᱟᱜ ᱡᱷᱚᱞᱚᱠ",
-            download_title: "ᱱᱤᱛᱚᱜ ᱮᱱᱮᱡ ᱞᱟᱹᱜᱤᱛ ᱥᱟᱯᱲᱟᱣ ᱢᱮᱱᱟᱢᱟ?",
-            download_desc_android:
-              'ᱛᱮᱦେᱧ "ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ" ᱮᱯ ᱟᱹᱛᱩᱨ ᱢᱮ ᱟᱨ ᱚᱝᱠᱚ ᱥᱟᱶ ᱢᱤᱫ ᱱᱟᱣᱟ ᱰᱟᱦᱟᱨ ᱮᱛᱚᱦᱚᱵ ᱢᱮ!',
-            open_app_btn: "ᱮᱯ ᱡᱷᱤᱡᱽ ᱢᱮ",
-            download_btn: "ᱟᱹᱛᱩᱨ ᱢᱮ",
-            download_count_text: "ᱰᱟᱣᱩᱱᱞᱳᱰᱥ",
-            download_desc_other:
-              "ᱟᱹᱛᱩᱨ ᱨᱮᱭᱟᱜ ᱞᱟᱹᱠᱛᱤ ᱵᱟᱹᱱᱩᱜ-ᱟ! ᱟᱢᱟᱜ ᱵ୍ରᱟᱣᱡᱟᱹᱨ ᱨᱮ ᱥᱤᱫᱷᱟᱹ ᱮᱱᱮᱡ ᱮᱛᱚᱦᱚᱵ ᱢᱮ᱾",
-            play_online_btn: "ᱚᱱᱞᱟᱭᱤᱱ ᱮᱱᱮᱡᱽ ᱢᱮ",
-            whats_new_title: "ᱪᱮᱫ ᱱᱟᱣᱟ?",
-            loading_updates: "ᱮᱠᱟᱞ ᱱᱟᱣᱟ ᱟᱯᱰᱮᱴᱥ ᱞᱳᱰᱚᱜ ᱠᱟᱱᱟ...",
-            footer_text:
-              "&copy; ᱒᱐᱒᱕ ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>ᱥᱚᱱᱫᱤᱯ ᱵᱤᱥᱣᱟᱞ ᱡᱤ</a> ᱛᱮᱭᱟᱨ ᱟᱠᱟᱫᱟᱭ.",
-            scroll_down_btn: "ᱞᱟᱛᱟᱨ ᱥᱮᱫ ᱤᱥᱠᱨᱚᱞ ᱢᱮ",
-            popup_title: "ᱮᱯ ᱨᱮ ᱡᱷᱤᱡᱽ ᱢᱮ",
-            popup_app_name: "ᱜᱚᱬᱤᱛᱚ ᱵᱤᱝᱜᱭᱟ",
-            popup_open_btn: "ᱡᱷᱤᱡᱽ ᱢᱮ",
-            popup_browser_name: "ᱵ୍ରᱟᱣᱡᱟᱹᱨ",
-            popup_continue_btn: "ᱞᱟᱦᱟ ᱪᱟᱞᱟᱜ ᱢᱮ",
-          },
-          ur: {
-            curtain_title: "گنیت بنگیا",
-            nav_logo: "گنیت بنگیا",
-            nav_download: "ڈاؤن لوڈ",
-            nav_play_online: "آن لائن کھیلیں",
-            hero_title: "اوڈیشہ میں بنا، ہندوستان کے لیے",
-            features_title: "سیکھنے کا ایک نیا طریقہ",
-            feature1_title: "مزیدار گیم پلے",
-            feature1_desc: "ریاضی کی مشق کو گیم کی طرح دلچسپ بناتا ہے۔",
-            feature2_title: "کارآمد وقت",
-            feature2_desc:
-              "اپنے فارغ وقت کو ایک کارآمد مشقی سیشن میں تبدیل کریں۔",
-            feature3_title: "تمام ڈیوائسز پر",
-            feature3_desc:
-              "اپنے ڈیسک ٹاپ پر آن لائن کھیلیں یا اینڈرائیڈ ایپ ڈاؤن لوڈ کریں۔",
-            feature4_title: "چار بنیادی اعمال",
-            feature4_desc:
-              "ایک، دو، یا تین ہندسوں والے نمبروں کے ساتھ جمع، تفریق، ضرب، اور تقسیم کی مشق کریں۔",
-            feature5_title: "پہاڑے (۲ سے ۲۵ تک)",
-feature5_desc: "۲ سے ۲۵ تک کے پہاڑے سیکھیں اور یاد رکھیں۔ ہر پہاڑا ایک واضح اور آسان فارمیٹ میں (مثلاً: ۲ × ۱ = ۲ یا، دو ایکم دو) پیش کیا گیا ہے، جو جلد یاد کرنے میں مدد کرتا ہے۔",
-
-feature6_title: "لفظوں میں گنتی",
-feature6_desc: "صرف ہندسوں تک محدود نہ رہیں! ۱ سے ۱۰۰ تک کے تمام اعداد کو لفظوں میں لکھنا سیکھیں۔ یہ چھوٹے بچوں اور زبان سیکھنے والوں کے لیے ایک بہترین سہولت ہے۔",
-
-feature7_title: "ڈرائنگ پیڈ",
-feature7_desc: "کاپی اور قلم کی ضرورت نہیں! مشق کرنے، حساب کرنے یا اعداد لکھنا سیکھنے کے لیے ہماری ڈیجیٹل سلیٹ کا استعمال کریں۔",
-
-feature8_title: "ذہنی کھیل",
-feature8_desc: "منطقی پہیلی: اپنی استدلال کی مہارت کو بڑھانے کے لیے لامحدود پہیلیاں کھیلیں۔ سوڈوکو: ارتکاز اور مسئلہ حل کرنے کی مہارت کو بہتر بنانے کے لیے کلاسک سوڈوکو کھیلیں۔ پھلوں کا موازنہ: ایک تفریحی کھیل جو آپ کے مشاہدے اور موازنہ کرنے کی صلاحیتوں کو بڑھائے گا۔",
-
-feature9_title: "سادہ کیلکولیٹر",
-feature9_desc: "فوری حساب اور روزمرہ کے استعمال کے لیے ایک سادہ اور مفید کیلکولیٹر۔",
-
-feature10_title: "کثیر لسانی معاونت",
-feature10_desc: "یہ ۱۰ ہندوستانی زبانوں میں دستیاب ہے: اوڑیا، سنسکرت، انگریزی، ہندی، تیلگو، آسامی، بنگالی، گجراتی، ملیالم اور اردو۔",
-            screenshots_title: "ایپ کی جھلکیاں",
-            download_title: "ابھی کھیلنے کے لیے تیار ہیں؟",
-            download_desc_android:
-              'آج ہی "گنیتا بنگیا" ایپ ڈاؤن لوڈ کریں اور ریاضی کے ساتھ ایک نیا سفر شروع کریں!',
-            open_app_btn: "ایپ کھولیں",
-            download_btn: "ڈاؤن لوڈ",
-            download_count_text: "ڈاؤن لوڈز",
-            download_desc_other:
-              "ڈاؤن لوڈ کی ضرورت نہیں! براہ راست اپنے براؤزر میں کھیلنا شروع کریں۔",
-            play_online_btn: "آن لائن کھیلیں",
-            whats_new_title: "نیا کیا ہے؟",
-            loading_updates: "تازہ ترین اپڈیٹس لوڈ ہو رہی ہیں...",
-            footer_text:
-              "&copy; 2025 گنیتا بنگیا. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>سندیپ بسوال جی</a> کا بنایا ہوا۔",
-            scroll_down_btn: "نیچے سکرول کریں",
-            popup_title: "ایپ میں کھولیں",
-            popup_app_name: "گنیتا بنگیا",
-            popup_open_btn: "کھولیں",
-            popup_browser_name: "براؤزر",
-            popup_continue_btn: "جاری رکھیں",
+              "© 2025 గణిత విజ్ఞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>సందీప్ బిశ్వాల్ జి</a> ద్వారా",
           },
           gu: {
-            curtain_title: "ગણિત બિંગ્ય",
-            nav_logo: "ગણિત બિંગ્ય",
-            nav_download: "ડાઉનલોડ કરો",
-            nav_play_online: "ઓનલાઇન રમો",
-            hero_title: "ઓડિશામાં બનેલું, ભારત માટે",
-            features_title: "શીખવાની એક નવી રીત",
-            feature1_title: "મજેદાર ગેમપ્લે",
-            feature1_desc: "ગણિતનો અભ્યાસ એક રમત જેટલો મનોરંજક બનાવે છે.",
-            feature2_title: "ઉત્પાદક સમય",
-            feature2_desc:
-              "તમારા નવરાશના સમયને એક ઉત્પાદક અભ્યાસ સત્રમાં ફેરવો.",
-            feature3_title: "દરેક ડિવાઇસ પર",
-            feature3_desc:
-              "તમારા ડેસ્કટોપ પર ઓનલાઇન રમો અથવા એન્ડ્રોઇડ એપ ડાઉનલોડ કરો.",
-            feature4_title: "ચાર ક્રિયાઓ",
-            feature4_desc:
-              "એક, બે, કે ત્રણ-અંકની સંખ્યાઓ સાથે સરવાળો, બાદબાકી, ગુણાકાર અને ભાગાકારનો અભ્યાસ કરો.",
-              feature5_title: "ઘડિયા (૨ થી ૨૫)",
-feature5_desc: "૨ થી ૨૫ સુધીના ઘડિયા શીખો અને યાદ રાખો. દરેક ઘડિયો સ્પષ્ટ અને સરળ ફોર્મેટમાં (જેમ કે: ૨ × ૧ = ૨ અથવા, બે એકા બે) રજૂ કરવામાં આવ્યો છે, જે ઝડપથી યાદ રાખવામાં મદદ કરે છે.",
-
-feature6_title: "શબ્દોમાં સંખ્યા",
-feature6_desc: "માત્ર અંકો સુધી સીમિત ન રહો! ૧ થી ૧૦૦ સુધીની તમામ સંખ્યાઓને શબ્દોમાં લખતા શીખો. આ નાના બાળકો અને ભાષા શીખનારાઓ માટે એક ઉત્તમ સુવિધા છે.",
-
-feature7_title: "ડ્રોઈંગ પેડ",
-feature7_desc: "નોટબુક અને પેનની જરૂર નથી! અભ્યાસ કરવા, ગણતરી કરવા, અથવા સંખ્યા લખતા શીખવા માટે અમારી ડિજિટલ સ્લેટનો ઉપયોગ કરો.",
-
-feature8_title: "બુદ્ધિની રમતો",
-feature8_desc: "તર્ક કોયડો: તમારી તર્ક શક્તિ વધારવા માટે અમર્યાદિત કોયડા રમો. સુડોકુ: એકાગ્રતા અને સમસ્યા ઉકેલવાની કુશળતા સુધારવા માટે ક્લાસિક સુડોકુ રમો. ફળોની સરખામણી: એક મનોરંજક રમત જે તમારી અવલોકન અને સરખામણી કરવાની ક્ષમતાને વધારશે.",
-
-feature9_title: "સરળ કેલ્ક્યુલેટર",
-feature9_desc: "ઝડપી ગણતરીઓ અને દૈનિક ઉપયોગ માટે એક સરળ અને ઉપયોગી કેલ્ક્યુલેટર.",
-
-feature10_title: "બહુભાષી સુવિધા",
-feature10_desc: "૧૦ ભારતીય ભાષાઓમાં ઉપલબ્ધ: ઓડિયા, સંસ્કૃત, અંગ્રેજી, હિન્દી, તેલુગુ, આસામી, બંગાળી, ગુજરાતી, મલયાલમ અને ઉર્દૂ.",
-            screenshots_title: "એપની ઝલક",
-            download_title: "હવે રમવા માટે તૈયાર છો?",
-            download_desc_android:
-              'આજે જ "ગણિત બિંગ્ય" એપ ડાઉનલોડ કરો અને ગણિત સાથે એક નવી સફર શરૂ કરો!',
+            nav_logo: "ગણિત વિજ્ઞ",
+            nav_download: "ડાઉનલોડ",
+            nav_tools: "શિક્ષણ સાધનો",
+            nav_features: "વિશેષતાઓ",
+            nav_changelog: "ફેરફાર યાદી",
+            nav_contrib: "યોગદાનકર્તા",
+            hero_title: "ગણિત વિજ્ઞ",
+            feature_descc: "તમારા ખાલી સમયને ફળદાયી અભ્યાસ સત્રમાં ફેરવો.",
+            download_btn: "એપ ડાઉનલોડ કરો",
             open_app_btn: "એપ ખોલો",
-            download_btn: "ડાઉનલોડ કરો",
             download_count_text: "ડાઉનલોડ્સ",
-            download_desc_other:
-              "ડાઉનલોડની જરૂર નથી! સીધા તમારા બ્રાઉઝરમાં રમવાનું શરૂ કરો.",
-            play_online_btn: "ઓનલાઇન રમો",
-            whats_new_title: "નવું શું છે?",
-            loading_updates: "નવીનતમ અપડેટ્સ લોડ થઈ રહી છે...",
+            features_title: "શીખવાની એક નવી રીત",
+            screenshots_title: "એપની ઝલક",
+            feature1_title: "શબ્દોમાં સંખ્યા",
+            feature1_desc:
+              "૧ થી ૧૦૦ સુધીની તમામ સંખ્યાઓને શબ્દોમાં વાંચતા શીખો.",
+            feature2_title: "ક્રમવાચક સંખ્યા",
+            feature2_desc:
+              "આ વિભાગમાં તમે ક્રમવાચક સંખ્યાઓ સરળતાથી શીખી શકો છો. વસ્તુઓ અથવા વ્યક્તિઓના ક્રમ અથવા સ્થાનને ઓળખવા માટે ક્રમવાચક સંખ્યાઓનો ઉપયોગ કરો. જેમ કે: પ્રથમ, દ્વિતીય, તૃતીય વગેરે.",
+            feature3_title: "ચાર પ્રક્રિયાઓ",
+            feature3_desc: "સરવાળો, બાદબાકી, ગુણાકાર, ભાગાકાર",
+            feature4_title: "ગણતરી પદ્ધતિ",
+            feature4_desc: "એકમ, દશક, સો, હજાર અને લાખ લખતા અને વાંચતા શીખો.",
+            feature5_title: "ઘડિયા",
+            feature5_desc:
+              "૨ થી ૨૫ સુધીના ઘડિયા સરળ રીતે યાદ રાખો (જેમ કે: બે એકા બે, બે દુ ચાર).",
+            feature6_title: "ઉપયોગિતાઓ",
+            feature6_desc:
+              "ગણતરી માટે કેલ્ક્યુલેટર, એકમ રૂપાંતર અને સંખ્યાને શબ્દોમાં બદલવું.",
+            feature7_title: "ડ્રોઈંગ પેડ",
+            feature7_desc:
+              "નોટબુક અને પેનની જરૂર નથી! ડિજિટલ સ્લેટનો ઉપયોગ કરો.",
+            feature8_title: "મગજની રમતો",
+            feature8_desc:
+              "તર્ક કોયડાઓ: તર્ક શક્તિ વધારવા માટે અમર્યાદિત કોયડાઓ રમો. સુડોકુ: એકાગ્રતા અને સમસ્યા ઉકેલવાની કુશળતા વધારવા માટે ક્લાસિક સુડોકુ રમો.",
+            feature9_title: "બહુભાષી",
+            feature9_desc:
+              "આ ૧૦ ભારતીય ભાષાઓમાં ઉપલબ્ધ છે: ઓડિયા, સંસ્કૃત, અંગ્રેજી, હિન્દી, તેલુગુ, ગુજરાતી, બંગાળી, આસામી, મલયાલમ અને ઉર્દૂ.",
+            feature10_title: "શું તેમાં જાહેરાતો (Ads) છે?",
+            feature10_desc: "'ગણિત વિજ્ઞ' જાહેરાત-મુક્ત છે અને હંમેશા રહેશે.",
             footer_text:
-              "&copy; ૨૦૨૫ ગણિત બિંગ્ય. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>સંદીપ બિસ્વાલ જી</a> દ્વારા નિર્મિત.",
-            scroll_down_btn: "નીચે સ્ક્રોલ કરો",
-            popup_title: "એપમાં ખોલો",
-            popup_app_name: "ગણિત બિંગ્ય",
-            popup_open_btn: "ખોલો",
-            popup_browser_name: "બ્રાઉઝર",
-            popup_continue_btn: "આગળ વધો",
+              "© ૨૦૨૫ ગણિત વિજ્ઞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>સંદીપ બિસ્વાલ જી</a> દ્વારા",
+          },
+          bn: {
+            nav_logo: "গণিত বিজ্ঞ",
+            nav_download: "ডাউনলোড",
+            nav_tools: "শিক্ষামূলক টুলস",
+            nav_features: "বৈশিষ্ট্য",
+            nav_changelog: "পরিবর্তন তালিকা",
+            nav_contrib: "অবদানকারী",
+            hero_title: "গণিত বিজ্ঞ",
+            feature_descc:
+              "আপনার অবসর সময়কে একটি ফলপ্রসূ অনুশীলন সেশনে পরিণত করুন।",
+            download_btn: "অ্যাপ ডাউনলোড করুন",
+            open_app_btn: "অ্যাপ খুলুন",
+            download_count_text: "ডাউনলোড",
+            features_title: "শেখার একটি নতুন উপায়",
+            screenshots_title: "অ্যাপের একঝলক",
+            feature1_title: "কথায় সংখ্যা",
+            feature1_desc: "১ থেকে ১০০ পর্যন্ত সমস্ত সংখ্যা কথায় পড়তে শিখুন।",
+            feature2_title: "পূরণবাচক সংখ্যা",
+            feature2_desc:
+              "এই বিভাগে আপনি সহজেই পূরণবাচক সংখ্যা শিখতে পারবেন। বস্তু বা ব্যক্তির ক্রম বা অবস্থান চিহ্নিত করতে পূরণবাচক সংখ্যা ব্যবহার করুন। যেমন: প্রথম, দ্বিতীয়, তৃতীয় ইত্যাদি।",
+            feature3_title: "চারটি প্রক্রিয়া",
+            feature3_desc: "যোগ, বিয়োগ, গুণ, ভাগ",
+            feature4_title: "গণনা পদ্ধতি",
+            feature4_desc: "একক, দশক, শতক, হাজার এবং লক্ষ লিখতে ও পড়তে শিখুন।",
+            feature5_title: "নামতা",
+            feature5_desc:
+              "২ থেকে ২৫ পর্যন্ত নামতা সহজ উপায়ে মনে রাখুন (যেমন: দুই একে দুই, দুই দুগুনে চার)।",
+            feature6_title: "ইউটিলিটি",
+            feature6_desc:
+              "হিসাবের জন্য ক্যালকুলেটর, একক রূপান্তরকারী এবং সংখ্যাকে শব্দে পরিবর্তন।",
+            feature7_title: "ড্রয়িং প্যাড",
+            feature7_desc:
+              "খাতা ও কলমের প্রয়োজন নেই! ডিজিটাল স্লেট ব্যবহার করুন।",
+            feature8_title: "বুদ্ধির খেলা",
+            feature8_desc:
+              "লজিক পাজল: যুক্তি শক্তি বাড়াতে অগণিত পাজল খেলুন। সুডোকু: মনোযোগ ও সমস্যা সমাধানের দক্ষতা বাড়াতে ক্লাসিক সুডোকু খেলুন।",
+            feature9_title: "বহুভাষী",
+            feature9_desc:
+              "এটি ১০টি ভারতীয় ভাষায় উপলব্ধ: ওড়িয়া, সংস্কৃত, ইংরেজি, হিন্দি, তেলেগু, গুজরাটি, বাংলা, অসমীয়া, মালায়ালম এবং উর্দু।",
+            feature10_title: "এতে কি বিজ্ঞাপন (Ads) আছে?",
+            feature10_desc: "'গণিত বিজ্ঞ' বিজ্ঞাপন-মুক্ত এবং সর্বদা তাই থাকবে।",
+            footer_text:
+              "© ২০২৫ গণিত বিজ্ঞ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>সন্দীপ বিসওয়াল জি</a> দ্বারা",
+          },
+          as: {
+            nnav_logo: "গণিত বিজ্ঞ",
+            nav_download: "ডাউনলোড",
+            nav_tools: "শিক্ষা সঁজুলি",
+            nav_features: "বৈশিষ্ট্যসমূহ",
+            nav_changelog: "পৰিৱৰ্তনৰ তালিকা",
+            nav_contrib: "অৱদানকাৰী",
+            hero_title: "গণিত বিজ্ঞ",
+            feature_descc:
+              "আপোনাৰ আজৰি সময়খিনি এক উৎপাদনশীল অনুশীলনলৈ ৰূপান্তৰ কৰক।",
+            download_btn: "এপটো ডাউনলোড কৰক",
+            open_app_btn: "এপটো খোলক",
+            download_count_text: "ডাউনলোড",
+            features_title: "শিকাৰ এক নতুন উপায়",
+            screenshots_title: "এপৰ কিছু আভাস",
+            feature1_title: "আখৰত সংখ্যা",
+            feature1_desc: "১ ৰ পৰা ১০০ লৈ সকলো সংখ্যা আখৰত পঢ়িবলৈ শিকক।",
+            feature2_title: "পূৰণবাচক সংখ্যা",
+            feature2_desc:
+              "এই শিতানত আপুনি পূৰণবাচক সংখ্যাসমূহ সহজতে শিকিব পাৰিব। বস্তু বা ব্যক্তিৰ ক্ৰম বা স্থান চিনাক্ত কৰিবলৈ পূৰণবাচক সংখ্যা ব্যৱহাৰ কৰক। যেনে: প্ৰথম, দ্বিতীয়, তৃতীয় ইত্যাদি।",
+            feature3_title: "চাৰিটি প্ৰক্ৰিয়া",
+            feature3_desc: "যোগ, বিয়োগ, পূৰণ, হৰণ",
+            feature4_title: "গণনা প্ৰণালী",
+            feature4_desc:
+              "একক, দহক, শতক, হাজাৰ আৰু লাখ কেনেকৈ লিখে আৰু পঢ়ে শিকক।",
+            feature5_title: "নেওঁতা",
+            feature5_desc:
+              "২ ৰ পৰা ২৫ লৈ নেওঁতা সহজ উপায়েৰে মনত ৰাখক (যেনে: দুই এগুণ দুই, দুই দুগুণ চাৰি)।",
+            feature6_title: "ব্যৱহাৰিক সঁজুলি",
+            feature6_desc:
+              "হিচাপৰ বাবে কেলকুলেটৰ, একক ৰূপান্তৰকাৰী আৰু সংখ্যাৰ পৰা শব্দলৈ পৰিৱৰ্তন।",
+            feature7_title: "অংকন পেড",
+            feature7_desc:
+              "বহী আৰু কলমৰ প্ৰয়োজন নাই! ডিজিটেল স্লেট ব্যৱহাৰ কৰক।",
+            feature8_title: "বুদ্ধিৰ খেল",
+            feature8_desc:
+              "তৰ্ক সাঁথৰ: তৰ্ক শক্তি বঢ়াবলৈ অসীমিত সাঁথৰ খেলক। সুডোকু: একাগ্ৰতা আৰু সমস্যা সমাধানৰ দক্ষতা বঢ়াবলৈ ক্লাছিক সুডোকু খেলক।",
+            feature9_title: "বহুভাষী",
+            feature9_desc:
+              "এইটো ১০টা ভাৰতীয় ভাষাত উপলব্ধ: ওড়িয়া, সংস্কৃত, ইংৰাজী, হিন্দী, তেলেগু, গুজৰাটী, বাংলা, অসমীয়া, মালায়ালম আৰু উৰ্দু।",
+            feature10_title: "ইয়াত বিজ্ঞাপন (Ads) আছে নেকি?",
+            feature10_desc: "'গণিত বিজ্ঞ' বিজ্ঞাপন-মুক্ত আৰু সদায় থাকিব।",
+            footer_text:
+              "© ২০২৫ গণিত বিজ্ঞ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>সন্দীপ বিশ্বাল জি</a> ৰ দ্বাৰা",
+          },
+          ml: {
+            nav_logo: "ഗണിത വിജ്ഞ",
+            nav_download: "ഡൗൺലോഡ്",
+            nav_tools: "പഠന സഹായികൾ",
+            nav_features: "സവിശേഷതകൾ",
+            nav_changelog: "ചേഞ്ച് ലോഗ്",
+            nav_contrib: "പങ്കാളികൾ",
+            hero_title: "ഗണിത വിജ്ഞ",
+            feature_descc:
+              "നിങ്ങളുടെ ഒഴിവുസമയം ക്രിയാത്മകമായ പരിശീലനത്തിനായി വിനിയോഗിക്കൂ.",
+            download_btn: "ആപ്പ് ഡൗൺലോഡ് ചെയ്യൂ",
+            open_app_btn: "ആപ്പ് തുറക്കൂ",
+            download_count_text: "ഡൗൺലോഡുകൾ",
+            features_title: "പഠിക്കാൻ ഒരു പുതിയ വഴി",
+            screenshots_title: "ആപ്പിന്റെ ദൃശ്യങ്ങൾ",
+            feature1_title: "സംഖ്യകൾ അക്ഷരത്തിൽ",
+            feature1_desc:
+              "1 മുതൽ 100 വരെയുള്ള എല്ലാ സംഖ്യകളും അക്ഷരത്തിൽ വായിക്കാൻ പഠിക്കൂ.",
+            feature2_title: "ക്രമസംഖ്യകൾ",
+            feature2_desc:
+              "ഈ വിഭാഗത്തിൽ നിങ്ങൾക്ക് ക്രമസംഖ്യകൾ എളുപ്പത്തിൽ പഠിക്കാം. വസ്തുക്കളുടെയോ വ്യക്തികളുടെയോ ക്രമം അല്ലെങ്കിൽ സ്ഥാനം തിരിച്ചറിയാൻ ക്രമസംഖ്യകൾ ഉപയോഗിക്കുന്നു. ഉദാഹരണത്തിന്: ഒന്നാമത്, രണ്ടാമത്, മൂന്നാമത് തുടങ്ങിയവ.",
+            feature3_title: "നാല് ഗണിതക്രിയകൾ",
+            feature3_desc: "സങ്കലനം, വ്യവകലനം, ഗുണനം, ഹരണം",
+            feature4_title: "എണ്ണൽ രീതി",
+            feature4_desc:
+              "ഒറ്റ, പത്ത്, നൂറ്, ആയിരം, ലക്ഷം എന്നിവ എഴുതാനും വായിക്കാനും പഠിക്കൂ.",
+            feature5_title: "ഗുണനപ്പട്ടിക",
+            feature5_desc:
+              "2 മുതൽ 25 വരെയുള്ള ഗുണനപ്പട്ടിക എളുപ്പത്തിൽ ഓർമ്മിക്കാം (ഉദാഹരണത്തിന്: ഒരോ രണ്ട് രണ്ട്, ഈരണ്ട് നാല്).",
+            feature6_title: "ഉപയുക്തമായ ടൂളുകൾ",
+            feature6_desc:
+              "കണക്കുകൂട്ടലുകൾക്കായി കാൽക്കുലേറ്റർ, യൂണിറ്റ് കൺവെർട്ടർ, സംഖ്യകളെ വാക്കുകളാക്കി മാറ്റാനുള്ള സംവിധാനം.",
+            feature7_title: "ഡ്രോയിംഗ് പാഡ്",
+            feature7_desc:
+              "പേനയും പുസ്തകവും ആവശ്യമില്ല! ഡിജിറ്റൽ സ്ലേറ്റ് ഉപയോഗിക്കൂ.",
+            feature8_title: "ബുദ്ധിപരമായ കളികൾ",
+            feature8_desc:
+              "ലോജിക് പസിലുകൾ: യുക്തിചിന്ത വളർത്താൻ അനന്തമായ പസിലുകൾ കളിക്കൂ. സുഡോകു: ഏകാഗ്രതയും പ്രശ്നപരിഹാര ശേഷിയും വർദ്ധിപ്പിക്കാൻ ക്ലാസിക് സുഡോകു കളിക്കൂ.",
+            feature9_title: "ബഹുഭാഷാ സൗകര്യം",
+            feature9_desc:
+              "ഒഡിയ, സംസ്കൃതം, ഇംഗ്ലീഷ്, ഹിന്ദി, തെലുങ്ക്, ഗുജറാത്തി, ബംഗാളി, ആസാമീസ്, മലയാളം, ഉറുദു എന്നിങ്ങനെ 10 ഇന്ത്യൻ ഭാഷകളിൽ ഇത് ലഭ്യമാണ്.",
+            feature10_title: "ഇതിൽ പരസ്യങ്ങൾ (Ads) ഉണ്ടോ?",
+            feature10_desc:
+              "'ഗണിത വിജ്ഞ' പൂർണ്ണമായും പരസ്യരഹിതമാണ്, എല്ലായ്പ്പോഴും അങ്ങനെയായിരിക്കും.",
+            footer_text:
+              "© 2025 ഗണിത വിജ്ഞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>സന്ദീപ് ബിസ്വാൾ ജി</a> തയ്യാറാക്കിയത്",
+          },
+          ur: {
+            nav_logo: "گنت وگیہ",
+            nav_download: "ڈاؤنلوڈ",
+            nav_tools: "تعلیمی ٹولز",
+            nav_features: "خصوصیات",
+            nav_changelog: "تبدیلیوں کی فہرست",
+            nav_contrib: "معاونین",
+            hero_title: "گنت وگیہ",
+            feature_descc:
+              "اپنے فارغ وقت کو ایک کارآمد مشق کے سیشن میں تبدیل کریں۔",
+            download_btn: "ایپ ڈاؤنلوڈ کریں",
+            open_app_btn: "ایپ کھولیں",
+            download_count_text: "ڈاؤنلوڈز",
+            features_title: "سیکھنے کا ایک نیا انداز",
+            screenshots_title: "ایپ کی جھلکیاں",
+            feature1_title: "الفاظ میں اعداد",
+            feature1_desc:
+              "۱ سے ۱۰۰ تک کے تمام اعداد کو الفاظ میں پڑھنا سیکھیں۔",
+            feature2_title: "ترتیبی اعداد",
+            feature2_desc:
+              "اس حصے میں آپ ترتیبی اعداد (Ordinal Numbers) آسانی سے سیکھ سکتے ہیں۔ اشیاء یا افراد کی ترتیب یا مقام کی نشاندہی کے لیے ترتیبی اعداد کا استعمال کریں۔ جیسے: پہلا، دوسرا، تیسرا وغیرہ۔",
+            feature3_title: "چار بنیادی عمل",
+            feature3_desc: "جمع، تفریق، ضرب، تقسیم",
+            feature4_title: "گنتی کا نظام",
+            feature4_desc:
+              "اکائی، دہائی، سیکڑا، ہزار اور لاکھ لکھنا اور پڑھنا سیکھیں۔",
+            feature5_title: "پہاڑے",
+            feature5_desc:
+              "۲ سے ۲۵ تک کے پہاڑے آسان طریقے سے یاد کریں (جیسے: دو ایکم دو، دو دونی چار)۔",
+            feature6_title: "سہولیات",
+            feature6_desc:
+              "حساب کے لیے کیلکولیٹر، یونٹ کنورٹر اور اعداد کو الفاظ میں تبدیل کرنا۔",
+            feature7_title: "ڈرائنگ پیڈ",
+            feature7_desc:
+              "کاپی اور قلم کی ضرورت نہیں! ڈیجیٹل سلیٹ کا استعمال کریں۔",
+            feature8_title: "دماغی کھیل",
+            feature8_desc:
+              "منطقی پہیلیاں: منطقی صلاحیت بڑھانے کے لیے لامحدود پہیلیاں کھیلیں۔ سڈوکو: ارتکاز اور مسئلہ حل کرنے کی مہارت بڑھانے کے لیے کلاسک سڈوکو کھیلیں۔",
+            feature9_title: "کثیر لسانی",
+            feature9_desc:
+              "یہ ۱۰ ہندوستانی زبانوں میں دستیاب ہے: اوڑیا، سنسکرت، انگریزی، ہندی، تیلگو، گجراتی، بنگالی، آسامی، ملیالم اور اردو۔",
+            feature10_title: "کیا اس میں اشتہارات (Ads) ہیں؟",
+            feature10_desc: "'گنت وگیہ' اشتہارات سے پاک ہے اور ہمیشہ رہے گا۔",
+            footer_text:
+              "© ۲۰۲۵ گنت وگیہ۔ <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>سندیپ بسوال جی</a> کی طرف سے",
+          },
+          sat_Olck: {
+            nav_logo: "ᱜᱚᱱᱤᱛ ᱵᱤᱜᱽᱭᱟᱱ",
+            nav_download: "ᱰᱟᱩᱱᱞᱚᱰ",
+            nav_tools: "ᱥᱮᱪᱮᱫ ᱥᱟᱯᱟᱵ",
+            nav_features: "ᱜᱩᱱ ᱠᱚ",
+            nav_changelog: "ᱵᱚᱫᱚᱞ ᱛᱟᱹᱞᱠᱟᱹ",
+            nav_contrib: "ᱜᱚᱲᱚ ᱮᱢᱚᱜ ᱠᱚ",
+            hero_title: "ᱜᱚᱱᱤᱛ ᱵᱤᱜᱽᱭᱟᱱ",
+            feature_descc: "ᱟᱢᱟᱜ ᱟᱞᱥᱟ ᱚᱠᱛᱚ ᱫᱚ ᱢᱤᱫ ᱠᱟᱹᱢᱤᱭᱟᱱ ᱚᱠᱛᱚ ᱨᱮ ᱵᱚᱫᱚᱞ ᱢᱮ ᱾",
+            download_btn: "ᱮᱯ ᱰᱟᱩᱱᱞᱚᱰ",
+            open_app_btn: "ᱮᱯ ᱡᱷᱤᱡ ᱢᱮ",
+            download_count_text: "ᱰᱟᱩᱱᱞᱚᱰ",
+            features_title: "ᱪᱮᱫᱚᱜ ᱨᱮᱭᱟᱜ ᱢᱤᱫ ᱱᱟᱣᱟ ᱦᱚᱨ",
+            screenshots_title: "ᱮᱯ ᱨᱮᱭᱟᱜ ᱡᱷᱚᱞᱚᱠ",
+            feature1_title: "ᱟᱹᱲᱟᱹ ᱛᱮ ᱮᱞ",
+            feature1_desc: "᱑ ᱠᱷᱚᱱ ᱑᱐᱐ ᱦᱟᱹᱵᱤᱡ ᱡᱚᱛᱚ ᱮᱞ ᱟᱹᱲᱟᱹ ᱛᱮ ᱯᱟᱲᱦᱟᱣ ᱪᱮᱫ ᱢᱮ ᱾",
+            feature2_title: "ᱛᱷᱟᱨ ᱮᱞ",
+            feature2_desc:
+              "ᱱᱚᱣᱟ ᱦᱟᱹᱴᱤᱧ ᱨᱮ ᱟᱢ ᱛᱷᱟᱨ ᱮᱞ ᱟᱹᱰᱤ ᱟᱞᱜᱟ ᱛᱮᱢ ᱪᱮᱫ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱡᱤᱱᱤᱥ ᱥᱮ ᱦᱚᱲ ᱠᱚᱣᱟᱜ ᱴᱷᱟᱶ ᱵᱟᱰᱟᱭ ᱞᱟᱹᱜᱤᱫ ᱛᱷᱟᱨ ᱮᱞ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ ᱾ ᱡᱮᱞᱮᱠᱟ: ᱯᱩᱭᱞᱩ, ᱫᱚᱥᱟᱨ, ᱛᱮᱥᱟᱨ ᱮᱢᱟᱱ ᱾",
+            feature3_title: "ᱯᱩᱱᱭᱟᱹ ᱠᱟᱹᱢᱤᱦᱚᱨᱟ",
+            feature3_desc: "ᱢᱮᱥᱟ, ᱵᱷᱮᱜᱟᱨ, ᱜᱟᱵᱟᱱ, ᱦᱟᱴᱟᱬ",
+            feature4_title: "ᱞᱮᱠᱷᱟ ᱦᱚᱨᱟ",
+            feature4_desc: "ᱢᱤᱫ, ᱜᱮᱞ, ᱥᱟᱭ, ᱦᱟᱡᱟᱨ ᱟᱨ ᱞᱟᱠᱷ ᱚᱞ ᱟᱨ ᱯᱟᱲᱦᱟᱣ ᱪᱮᱫ ᱢᱮ ᱾",
+            feature5_title: "ᱠᱷᱚᱱᱫᱟ",
+            feature5_desc:
+              "᱒ ᱠᱷᱚᱱ ᱒᱕ ᱦᱟᱹᱵᱤᱡ ᱠᱷᱚᱱᱫᱟ ᱟᱞᱜᱟ ᱛᱮ ᱫᱤᱥᱟᱹ ᱫᱚᱦᱚᱭ ᱢᱮ (ᱡᱮᱞᱮᱠᱟ: ᱵᱟᱨ ᱮᱠᱟ ᱵᱟᱨ, ᱵᱟᱨ ᱫᱩᱱᱮ ᱯᱩᱱ) ᱾",
+            feature6_title: "ᱫᱚᱨᱠᱟᱨᱤᱭᱟᱜ ᱠᱚ",
+            feature6_desc:
+              "ᱦᱤᱥᱟᱹᱵᱽ ᱞᱟᱹᱜᱤᱫ ᱠᱮᱞᱠᱩᱞᱮᱴᱚᱨ, ᱢᱚᱠᱟ ᱵᱚᱫᱚᱞ ᱟᱨ ᱮᱞ ᱠᱷᱚᱱ ᱟᱹᱲᱟᱹ ᱛᱮ ᱵᱚᱫᱚᱞ ᱾",
+            feature7_title: "ᱪᱤᱛᱟᱹᱨ ᱚᱞ ᱯᱮᱰ",
+            feature7_desc:
+              "ᱠᱷᱟᱛᱟ ᱟᱨ ᱠᱚᱞᱚᱢ ᱨᱮᱭᱟᱜ ᱫᱚᱨᱠᱟᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ! ᱰᱤᱡᱤᱴᱟᱞ ᱥᱞᱮᱴ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾",
+            feature8_title: "ᱵᱩᱫᱷᱤ ᱠᱷᱮᱞ",
+            feature8_desc:
+              "ᱛᱚᱨᱠᱚ ᱠᱩᱠᱞᱤ: ᱛᱚᱨᱠᱚ ᱫᱟᱲᱮ ᱵᱟᱲᱦᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱠᱷᱮᱞ ᱢᱮ ᱾ ᱥᱩᱰᱚᱠᱩ: ᱢᱚᱱᱮ ᱞᱟᱜᱟᱣ ᱟᱨ ᱮᱴᱠᱮᱴᱚᱬᱮ ᱥᱚᱞᱦᱮ ᱫᱟᱲᱮ ᱵᱟᱲᱦᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱥᱩᱰᱚᱠᱩ ᱠᱷᱮᱞ ᱢᱮ ᱾",
+            feature9_title: "ᱟᱭᱢᱟ ᱯᱟᱹᱨᱥᱤ",
+            feature9_desc:
+              "ᱱᱚᱣᱟ ᱫᱚ ᱑᱐ ᱜᱚᱴᱟᱝ ᱥᱤᱧᱚᱛᱤᱭᱟᱹ ᱯᱟᱹᱨᱥᱤ ᱛᱮ ᱢᱮᱱᱟᱜᱼᱟ: ᱳᱰᱤᱭᱟ, ᱥᱚᱸᱥᱠᱨᱤᱛ, ᱤᱝᱨᱟᱡᱤ, ᱦᱤᱱᱫᱤ, ᱛᱮᱞᱩᱜᱩ, ᱜᱩᱡᱽᱨᱟᱛᱤ, ᱵᱟᱝᱞᱟ, ᱟᱥᱟᱢᱤᱥ, ᱢᱟᱞᱟᱭᱟᱞᱚᱢ ᱟᱨ ᱩᱨᱫᱩ ᱾",
+            feature10_title: "ᱪᱮᱫ ᱱᱚᱣᱟ ᱨᱮ ᱵᱤᱡᱽᱧᱟᱯᱚᱱ ᱢᱮᱱᱟᱜᱼᱟ?",
+            feature10_desc:
+              "'ᱜᱚᱱᱤᱛ ᱵᱤᱜᱽᱭᱟᱱ' ᱫᱚ ᱵᱤᱡᱽᱧᱟᱯᱚᱱ ᱢᱩᱠᱛᱚ ᱜᱮᱭᱟ ᱟᱨ ᱡᱟᱭᱡᱩᱜᱽ ᱛᱟᱦᱮᱸᱱᱟ ᱾",
+            footer_text:
+              "© ᱒᱐᱒᱕ ᱜᱚᱱᱤᱛ ᱵᱤᱜᱽᱭᱟᱱ ᱾ <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>ᱥᱚᱱᱫᱤᱯ ᱵᱤᱥᱣᱟᱞ ᱡᱤ</a> ᱫᱟᱨᱟᱭ ᱛᱮ",
           },
           pa: {
-            curtain_title: "ਗਣਿਤ ਬਿੰਗਿਆ",
-            nav_logo: "ਗਣਿਤ ਬਿੰਗਿਆ",
-            nav_download: "ਡਾਊਨਲੋਡ ਕਰੋ",
-            nav_play_online: "ਆਨਲਾਈਨ ਖੇਡੋ",
-            hero_title: "ਓਡੀਸ਼ਾ ਵਿੱਚ ਬਣਿਆ, ਭਾਰਤ ਲਈ",
-            features_title: "ਸਿੱਖਣ ਦਾ ਇੱਕ ਨਵਾਂ ਤਰੀਕਾ",
-            feature1_title: "ਮਜ਼ੇਦਾਰ ਗੇਮਪਲੇ",
-            feature1_desc: "ਗਣਿਤ ਦੇ ਅਭਿਆਸ ਨੂੰ ਇੱਕ ਖੇਡ ਵਾਂਗ ਮਨੋਰੰਜਕ ਬਣਾਉਂਦਾ ਹੈ।",
-            feature2_title: "ਉਪਯੋਗੀ ਸਮਾਂ",
-            feature2_desc:
-              "ਆਪਣੇ ਵਿਹਲੇ ਸਮੇਂ ਨੂੰ ਇੱਕ ਲਾਭਕਾਰੀ ਅਭਿਆસ ਸੈਸ਼ਨ ਵਿੱਚ ਬਦਲੋ।",
-            feature3_title: "ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ 'ਤੇ",
-            feature3_desc:
-              "ਆਪਣੇ ਡੈਸਕਟਾਪ 'ਤੇ ਆਨਲਾਈਨ ਖੇਡੋ ਜਾਂ ਐਂਡਰੌਇਡ ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ।",
-            feature4_title: "ਚਾਰ ਕਿਰਿਆਵਾਂ",
-            feature4_desc:
-              "ਇੱਕ, ਦੋ, ਜਾਂ ਤਿੰਨ-ਅੰਕਾਂ ਵਾਲੀਆਂ ਸੰਖਿਆਵਾਂ ਨਾਲ ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ, ਅਤੇ ਭਾਗ ਦਾ ਅਭਿਆસ ਕਰੋ।",
-              feature5_title: "ਪਹਾੜੇ (2 ਤੋਂ 25)",
-feature5_desc: "2 ਤੋਂ 25 ਤੱਕ ਪਹਾੜੇ ਸਿੱਖੋ ਅਤੇ ਯਾਦ ਰੱਖੋ। ਹਰ ਪਹਾੜਾ ਇੱਕ ਸਪਸ਼ਟ ਅਤੇ ਆਸਾਨ ਫਾਰਮੈਟ ਵਿੱਚ (ਜਿਵੇਂ ਕਿ: 2 × 1 = 2 ਜਾਂ, ਦੋ ਏਕਮ ਦੋ) ਪੇਸ਼ ਕੀਤਾ ਗਿਆ ਹੈ, ਜੋ ਜਲਦੀ ਯਾਦ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ।",
-
-feature6_title: "ਸ਼ਬਦਾਂ ਵਿੱਚ ਸੰਖਿਆਵਾਂ",
-feature6_desc: "ਸਿਰਫ਼ ਅੰਕਾਂ ਤੱਕ ਹੀ ਸੀਮਤ ਨਾ ਰਹੋ! 1 ਤੋਂ 100 ਤੱਕ ਸਾਰੀਆਂ ਸੰਖਿਆਵਾਂ ਨੂੰ ਸ਼ਬਦਾਂ ਵਿੱਚ ਲਿਖਣਾ ਸਿੱਖੋ। ਇਹ ਛੋਟੇ ਬੱਚਿਆਂ ਅਤੇ ਭਾਸ਼ਾ ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਇੱਕ ਵਧੀਆ ਵਿਸ਼ੇਸ਼ਤਾ ਹੈ।",
-
-feature7_title: "ਡਰਾਇੰਗ ਪੈਡ",
-feature7_desc: "ਕਾਪੀ ਅਤੇ ਕਲਮ ਦੀ ਕੋਈ ਲੋੜ ਨਹੀਂ! ਅਭਿਆਸ ਕਰਨ, ਗਣਨਾ ਕਰਨ ਜਾਂ ਸੰਖਿਆਵਾਂ ਲਿਖਣਾ ਸਿੱਖਣ ਲਈ ਸਾਡੀ ਡਿਜੀਟਲ ਸਲੇਟ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
-
-feature8_title: "ਦਿਮਾਗੀ ਖੇਡਾਂ",
-feature8_desc: "ਤਰਕ ਪਹੇਲੀ: ਆਪਣੇ ਤਰਕ ਦੇ ਹੁਨਰ ਨੂੰ ਵਧਾਉਣ ਲਈ ਬੇਅੰਤ ਪਹੇਲੀਆਂ ਖੇਡੋ। ਸੁਡੋਕੁ: ਇਕਾਗਰਤਾ ਅਤੇ ਸਮੱਸਿਆ-ਹੱਲ ਕਰਨ ਦੇ ਹੁਨਰ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਕਲਾਸਿਕ ਸੁਡੋਕੁ ਖੇਡੋ। ਫਲਾਂ ਦੀ ਤੁਲਨਾ: ਇੱਕ ਮਜ਼ੇਦਾਰ ਖੇਡ ਜੋ ਤੁਹਾਡੀ ਨਿਰੀਖਣ ਅਤੇ ਤੁਲਨਾ ਕਰਨ ਦੀਆਂ ਯੋਗਤਾਵਾਂ ਨੂੰ ਵਧਾਏਗੀ।",
-
-feature9_title: "ਸਧਾਰਨ ਕੈਲਕੁਲੇਟਰ",
-feature9_desc: "ਤੇਜ਼ ਗਣਨਾਵਾਂ ਅਤੇ ਰੋਜ਼ਾਨਾ ਵਰਤੋਂ ਲਈ ਇੱਕ ਸਧਾਰਨ ਅਤੇ ਉਪਯੋਗੀ ਕੈਲਕੁਲੇਟਰ।",
-
-feature10_title: "ਬਹੁ-ਭਾਸ਼ਾਈ ਸਹਾਇਤਾ",
-feature10_desc: "10 ਭਾਰਤੀ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਉਪਲਬਧ ਹੈ: ਓਡੀਆ, ਸੰਸਕ੍ਰਿਤ, ਅੰਗਰੇਜ਼ੀ, ਹਿੰਦੀ, ਤੇਲਗੂ, ਅਸਾਮੀ, ਬੰਗਾਲੀ, ਗੁਜਰਾਤੀ, ਮਲਿਆਲਮ, ਅਤੇ ਉਰਦੂ।",
-            screenshots_title: "ਐਪ ਦੀਆਂ ਝਲਕੀਆਂ",
-            download_title: "ਹੁਣ ਖେਡਣ ਲਈ ਤਿਆਰ ਹੋ?",
-            download_desc_android:
-              'ਅੱਜ ਹੀ "ਗਣਿਤ ਬਿੰਗਿਆ" ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਗਣਿਤ ਨਾਲ ਇੱਕ ਨਵਾਂ ਸਫ਼ਰ ਸ਼ੁਰੂ ਕਰੋ!',
+            nav_logo: "ਗਣਿਤ ਵਿਗ੍ਯ",
+            nav_download: "ਡਾਊਨਲੋਡ",
+            nav_tools: "ਸਿੱਖਿਆ ਟੂਲ",
+            nav_features: "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
+            nav_changelog: "ਤਬਦੀਲੀ ਸੂਚੀ",
+            nav_contrib: "ਯੋਗਦਾਨ ਪਾਉਣ ਵਾਲੇ",
+            hero_title: "ਗਣਿਤ ਵਿਗ੍ਯ",
+            feature_descc:
+              "ਆਪਣੇ ਵਿਹਲੇ ਸਮੇਂ ਨੂੰ ਇੱਕ ਲਾਭਦਾਇਕ ਅਭਿਆਸ ਸੈਸ਼ਨ ਵਿੱਚ ਬਦਲੋ।",
+            download_btn: "ਐਪ ਡਾਊਨਲੋਡ ਕਰੋ",
             open_app_btn: "ਐਪ ਖੋਲ੍ਹੋ",
-            download_btn: "ਡਾਊਨਲੋਡ ਕਰੋ",
             download_count_text: "ਡਾਊਨਲੋਡ",
-            download_desc_other:
-              "ਡਾਊਨਲੋਡ ਦੀ ਲੋੜ ਨਹੀਂ! ਸਿੱਧਾ ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਖੇਡਣਾ ਸ਼ੁਰੂ ਕਰੋ।",
-            play_online_btn: "ਆਨਲਾਈਨ ਖੇਡੋ",
-            whats_new_title: "ਨਵਾਂ ਕੀ ਹੈ?",
-            loading_updates: "ਨਵੀਨਤਮ ਅੱਪਡੇਟ ਲੋਡ ਹੋ ਰਹੇ ਹਨ...",
-            footer_text:
-              "&copy; ੨੦੨੫ ਗਣਿਤ ਬਿੰਗਿਆ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>ਸੰਦੀਪ ਬਿਸਵਾਲ ਜੀ</a> ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ।",
-            scroll_down_btn: "ਹੇਠਾਂ ਸਕ੍ਰੌਲ ਕਰੋ",
-            popup_title: "ਐਪ ਵਿੱਚ ਖੋਲ੍ਹੋ",
-            popup_app_name: "ਗਣਿਤ ਬਿੰਗਿਆ",
-            popup_open_btn: "ਖੋਲ੍ਹੋ",
-            popup_browser_name: "ਬ੍ਰਾਊਜ਼ਰ",
-            popup_continue_btn: "ਜਾਰੀ ਰੱਖੋ",
-          },
-          ta: {
-            curtain_title: "கணித பிங்க்யா",
-            nav_logo: "கணித பிங்க்யா",
-            nav_download: "பதிவிறக்கம்",
-            nav_play_online: "ஆன்லைனில் விளையாடு",
-            hero_title: "ஒடிசாவில் தயாரிக்கப்பட்டது, இந்தியாவிற்காக",
-            features_title: "கற்க ஒரு புதிய வழி",
-            feature1_title: "வேடிக்கையான விளையாட்டு",
+            features_title: "ਸਿੱਖਣ ਦਾ ਇੱਕ ਨਵਾਂ ਤਰੀਕਾ",
+            screenshots_title: "ਐਪ ਦੀਆਂ ਝਲਕੀਆਂ",
+            feature1_title: "ਸ਼ਬਦਾਂ ਵਿੱਚ ਸੰਖਿਆ",
             feature1_desc:
-              "கணிதப் பயிற்சி செய்வதை ஒரு விளையாட்டைப் போல சுவாரஸ்யமாக்குகிறது.",
-            feature2_title: "பயனுள்ள நேரம்",
+              "੧ ਤੋਂ ੧੦੦ ਤੱਕ ਦੀਆਂ ਸਾਰੀਆਂ ਸੰਖਿਆਵਾਂ ਨੂੰ ਸ਼ਬਦਾਂ ਵਿੱਚ ਪੜ੍ਹਨਾ ਸਿੱਖੋ।",
+            feature2_title: "ਕ੍ਰਮਵਾਚਕ ਸੰਖਿਆ",
             feature2_desc:
-              "உங்கள் ஓய்வு நேரத்தை ஒரு பயனுள்ள பயிற்சி நேரமாக மாற்றுங்கள்.",
-            feature3_title: "அனைத்து சாதனങ്ങളിലും",
-            feature3_desc:
-              "உங்கள் டெஸ்க்டாப்பில் ஆன்லைனில் விளையாடுங்கள் அல்லது ஆண்ட்ராய்டு செயலியை பதிவிறக்கம் செய்யுங்கள்.",
-            feature4_title: "நான்கு செயல்பாடுகள்",
+              "ਇਸ ਭਾਗ ਵਿੱਚ ਤੁਸੀਂ ਕ੍ਰਮਵਾਚਕ ਸੰਖਿਆਵਾਂ ਆਸਾਨੀ ਨਾਲ ਸਿੱਖ ਸਕਦੇ ਹੋ। ਵਸਤੂਆਂ ਜਾਂ ਵਿਅਕਤੀਆਂ ਦੇ ਕ੍ਰਮ ਜਾਂ ਸਥਾਨ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਕ੍ਰਮਵਾਚਕ ਸੰਖਿਆਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ। ਜਿਵੇਂ: ਪਹਿਲਾ, ਦੂਜਾ, ਤੀਜਾ ਆਦਿ।",
+            feature3_title: "ਚਾਰ ਪ੍ਰਕਿਰਿਆਵਾਂ",
+            feature3_desc: "ਜੋੜ, ਘਟਾਓ, ਗੁਣਾ, ਭਾਗ",
+            feature4_title: "ਗਿਣਤੀ ਪ੍ਰਣਾਲੀ",
             feature4_desc:
-              "ஒன்று, இரண்டு அல்லது மூன்று இலக்க எண்களுடன் கூட்டல், கழித்தல், பெருக்கல் மற்றும் வகுத்தல் பயிற்சி செய்யுங்கள்.",
-            feature5_title: "பெருக்கல் அட்டவணைகள் (2 முதல் 25 வரை)",
-feature5_desc: "2 முதல் 25 வரையிலான பெருக்கல் அட்டவணைகளைக் கற்று நினைவில் கொள்ளுங்கள். ஒவ்வொரு அட்டவணையும் தெளிவான மற்றும் எளிதான வடிவத்தில் (எ.கா: 2 × 1 = 2 அல்லது, ஈர் ஒன்று இரண்டு) வழங்கப்பட்டுள்ளது, இது விரைவாக மனப்பாடம் செய்ய உதவுகிறது.",
-
-feature6_title: "எழுத்துக்களில் எண்கள்",
-feature6_desc: "இலக்கங்களுடன் மட்டும் நின்றுவிடாதீர்கள்! 1 முதல் 100 வரையிலான அனைத்து எண்களையும் எழுத்துக்களில் எழுதக் கற்றுக்கொள்ளுங்கள். இது சிறு குழந்தைகள் மற்றும் மொழி கற்பவர்களுக்கு ஒரு சிறந்த அம்சமாகும்.",
-
-feature7_title: "வரைபலகை",
-feature7_desc: "நோட்டு மற்றும் பேனா தேவையில்லை! பயிற்சி செய்ய, கணக்கிட, அல்லது எண்களை எழுதக் கற்றுக்கொள்ள எங்கள் டிஜிட்டல் வரைபலகையைப் பயன்படுத்துங்கள்.",
-
-feature8_title: "மூளை விளையாட்டுகள்",
-feature8_desc: "தர்க்கப் புதிர்: உங்கள் பகுத்தறியும் திறனை மேம்படுத்த வரம்பற்ற புதிர்களை விளையாடுங்கள். சுடோகு: கவனக்குவிப்பு மற்றும் சிக்கல் தீர்க்கும் திறன்களை மேம்படுத்த கிளாசிக் சுடோகு விளையாடுங்கள். பழ ஒப்பீடு: உங்கள் கவனிப்பு மற்றும் ஒப்பீட்டுத் திறன்களை மேம்படுத்தும் ஒரு வேடிக்கையான விளையாட்டு.",
-
-feature9_title: "எளிய கால்குலேட்டர்",
-feature9_desc: "விரைவான கணக்கீடுகள் மற்றும் தினசரி பயன்பாட்டிற்கான ஒரு எளிய மற்றும் பயனுள்ள கால்குலேட்டர்.",
-
-feature10_title: "பன்மொழி ஆதரவு",
-feature10_desc: "இது 10 இந்திய மொழிகளில் கிடைக்கிறது: ஒடியா, சமஸ்கிருதம், ஆங்கிலம், இந்தி, தெலுங்கு, அசாமி, பெங்காலி, குஜராத்தி, மலையாளம் மற்றும் உருது.",
-              screenshots_title: "செயலி காட்சிகள்",
-            download_title: "இப்போது விளையாடத் தயாரா?",
-            download_desc_android:
-              'இன்றே "கணித பிங்க்யா" செயலியைப் பதிவிறக்கம் செய்து, கணிதத்துடன் ஒரு പുതിയ பயணத்தைத் தொடங்குங்கள்!',
-            open_app_btn: "செயலியைத் திற",
-            download_btn: "பதிவிறக்கம்",
-            download_count_text: "பதிவிறக்கங்கள்",
-            download_desc_other:
-              "பதிவிறக்கம் தேவையில்லை! உங்கள் உலாவியில் நேரடியாக விளையாடத் தொடங்குங்கள்.",
-            play_online_btn: "ஆன்லைனில் விளையாடு",
-            whats_new_title: "புதிதாக என்ன?",
-            loading_updates: "சமீபத்திய புதுப்பிப்புகளை ஏற்றுகிறது...",
+              "ਇਕਾਈ, ਦਹਾਈ, ਸੈਂਕੜਾ, ਹਜ਼ਾਰ ਅਤੇ ਲੱਖ ਨੂੰ ਲਿਖਣਾ ਅਤੇ ਪੜ੍ਹਨਾ ਸਿੱਖੋ।",
+            feature5_title: "ਪਹਾੜੇ",
+            feature5_desc:
+              "੨ ਤੋਂ ੨੫ ਤੱਕ ਦੇ ਪਹਾੜੇ ਆਸਾਨ ਤਰੀਕੇ ਨਾਲ ਯਾਦ ਰੱਖੋ (ਜਿਵੇਂ: ਦੋ ਏਕਮ ਦੋ, ਦੋ ਦੂਣੀ ਚਾਰ)।",
+            feature6_title: "ਸਹੂਲਤਾਂ",
+            feature6_desc:
+              "ਹਿਸਾਬ ਲਈ ਕੈਲਕੁਲੇਟਰ, ਇਕਾਈ ਬਦਲਣ ਵਾਲਾ ਅਤੇ ਸੰਖਿਆ ਨੂੰ ਸ਼ਬਦਾਂ ਵਿੱਚ ਬਦਲਣਾ।",
+            feature7_title: "ਡਰਾਇੰਗ ਪੈਡ",
+            feature7_desc:
+              "ਕਾਪੀ ਅਤੇ ਪੈੱਨ ਦੀ ਲੋੜ ਨਹੀਂ! ਡਿਜੀਟਲ ਸਲੇਟ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+            feature8_title: "ਦਿਮਾਗੀ ਖੇਡਾਂ",
+            feature8_desc:
+              "ਤਰਕ ਪਹੇਲੀਆਂ: ਤਰਕ ਸ਼ਕਤੀ ਵਧਾਉਣ ਲਈ ਅਣਗਿਣਤ ਪਹੇਲੀਆਂ ਖੇਡੋ। ਸੁਡੋਕੁ: ਇਕਾਗਰਤਾ ਅਤੇ ਸਮੱਸਿਆ ਹੱਲ ਕਰਨ ਦੇ ਹੁਨਰ ਨੂੰ ਵਧਾਉਣ ਲਈ ਕਲਾਸਿਕ ਸੁਡੋਕੁ ਖੇਡੋ।",
+            feature9_title: "ਬਹੁਭਾਸ਼ਾਈ",
+            feature9_desc:
+              "ਇਹ ੧੦ ਭਾਰਤੀ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਉਪਲਬਧ ਹੈ: ਉੜੀਆ, ਸੰਸਕ੍ਰਿਤ, ਅੰਗਰੇਜ਼ੀ, ਹਿੰਦੀ, ਤੇਲਗੂ, ਗੁਜਰਾਤੀ, ਬੰਗਾਲੀ, ਅਸਾਮੀ, ਮਲਿਆਲਮ ਅਤੇ ਉਰਦੂ।",
+            feature10_title: "ਕੀ ਇਸ ਵਿੱਚ ਇਸ਼ਤਿਹਾਰ (Ads) ਹਨ?",
+            feature10_desc: "'ਗਣਿਤ ਵਿਗ੍ਯ' ਇਸ਼ਤਿਹਾਰ-ਮੁਕਤ ਹੈ ਅਤੇ ਹਮੇਸ਼ਾ ਰਹੇਗਾ।",
             footer_text:
-              "&copy; 2025 கணித பிங்க்யா. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>சந்தீப் பிஸ்வால் ஜி</a> அவர்களால் உருவாக்கப்பட்டது.",
-            scroll_down_btn: "கீழே உருட்டவும்",
-            popup_title: "செயலியில் திறக்கவும்",
-            popup_app_name: "கணித பிங்க்யா",
-            popup_open_btn: "திற",
-            popup_browser_name: "உலாவி",
-            popup_continue_btn: "தொடரவும்",
-          },
-          kn: {
-            curtain_title: "ಗಣಿತ ಬಿಂಗ್ಯ",
-            nav_logo: "ಗಣಿತ ಬಿಂಗ್ಯ",
-            nav_download: "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
-            nav_play_online: "ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಆಡಿ",
-            hero_title: "ಒಡಿಶಾದಲ್ಲಿ ತಯಾರಿಸಿದ್ದು, ಭಾರತಕ್ಕಾಗಿ",
-            features_title: "ಕಲಿಯಲು ಒಂದು ಹೊಸ ದಾರಿ",
-            feature1_title: "ಮೋಜಿನ ಆಟ",
-            feature1_desc: "ಗಣಿತದ ಅಭ್ಯಾಸವನ್ನು ಆಟದಷ್ಟೇ ಮನರಂಜನೀಯವಾಗಿಸುತ್ತದೆ.",
-            feature2_title: "ಉತ್ಪಾದಕ ಸಮಯ",
-            feature2_desc:
-              "ನಿಮ್ಮ ಬಿಡುವಿನ ಸಮಯವನ್ನು ಉತ್ಪಾದಕ ಅಭ್ಯಾಸದ ಅವಧಿಯನ್ನಾಗಿ ಪರಿವರ್ತಿಸಿ.",
-            feature3_title: "ಎಲ್ಲಾ ಸಾಧನಗಳಲ್ಲಿ",
-            feature3_desc:
-              "ನಿಮ್ಮ ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಆಡಿ ಅಥವಾ ಆಂಡ್ರಾಯ್ಡ್ ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.",
-            feature4_title: "ನಾಲ್ಕು ಕ್ರಿಯೆಗಳು",
-            feature4_desc:
-              "ಒಂದು, ಎರಡು, ಅಥವಾ ಮೂರು-ಅಂಕಿಯ ಸಂಖ್ಯೆಗಳೊಂದಿಗೆ ಸಂಕಲನ, ವ್ಯವಕಲನ, ಗುಣಾಕಾರ ಮತ್ತು ಭಾಗಾಕಾರವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ.",
-            screenshots_title: "ಆ್ಯಪ್ ನೋಟಗಳು",
-            download_title: "ಈಗ ಆಡಲು ಸಿದ್ಧರಿದ್ದೀರಾ?",
-            download_desc_android:
-              'ಇಂದೇ "ಗಣಿತ ಬಿಂಗ್ಯ" ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಗಣಿತದೊಂದಿಗೆ ಹೊಸ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ!',
-            open_app_btn: "ಆ್ಯಪ್ ತೆರೆಯಿರಿ",
-            download_btn: "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
-            download_count_text: "ಡೌನ್‌ಲೋಡ್‌ಗಳು",
-            download_desc_other:
-              "ಡೌನ್‌ಲೋಡ್ ಅಗತ್ಯವಿಲ್ಲ! ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಆಡಲು ಪ್ರಾರಂಭಿಸಿ.",
-            play_online_btn: "ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಆಡಿ",
-            whats_new_title: "ಹೊಸದೇನಿದೆ?",
-            loading_updates: "ಇತ್ತೀಚಿನ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
-            footer_text:
-              "&copy; 2025 ಗಣಿತ ಬಿಂಗ್ಯ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>ಸಂದೀಪ್ ಬಿಸ್ವಾಲ್ ಜಿ</a> ಅವರಿಂದ ತಯಾರಿಸಲ್ಪಟ್ಟಿದೆ.",
-            scroll_down_btn: "ಕೆಳಗೆ ಸ್ಕ్రాಲ್ ಮಾಡಿ",
-            popup_title: "ಆ್ಯಪ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ",
-            popup_app_name: "ಗಣಿತ ಬಿಂಗ್ಯ",
-            popup_open_btn: "ತೆರೆಯಿರಿ",
-            popup_browser_name: "ಬ್ರೌಸರ್",
-            popup_continue_btn: "ಮುಂದುವರಿಸಿ",
+              "© ੨੦੨੫ ਗਣਿਤ ਵਿਗਿਆ। <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>ਸੰਦੀਪ ਬਿਸਵਾਲ ਜੀ</a> ਦੁਆਰਾ",
           },
           mr: {
-            curtain_title: "गणित बिंग्य",
-            nav_logo: "गणित बिंग्य",
-            nav_download: "डाउनलोड करा",
-            nav_play_online: "ऑनलाइन खेळा",
-            hero_title: "ओडिशामध्ये निर्मित, भारतासाठी",
-            features_title: "शिकण्याची एक नवीन पद्धत",
-            feature1_title: "मजेदार गेमप्ले",
-            feature1_desc: "गणिताचा सराव खेळाप्रमाणेच मनोरंजक बनवतो.",
-            feature2_title: "उत्पादक वेळ",
-            feature2_desc: "तुमचा रिकामा वेळ एका उत्पादक सराव सत्रात बदला.",
-            feature3_title: "सर्व डिव्हाइसेसवर",
-            feature3_desc:
-              "तुमच्या डेस्कटॉपवर ऑनलाइन खेळा किंवा अँड्रॉइड ॲप डाउनलोड करा.",
-            feature4_title: "चार क्रिया",
-            feature4_desc:
-              "एक, दोन किंवा तीन-अंकी संख्यांसह बेरीज, वजाबाकी, गुणाकार आणि भागाकाराचा सराव करा.",
-              feature5_title: "पाढे (२ ते २५)",
-feature5_desc: "२ ते २५ पर्यंतचे पाढे शिका आणि लक्षात ठेवा. प्रत्येक पाढा स्पष्ट आणि सोप्या स्वरूपात (उदा. २ × १ = २ किंवा, बे एके बे) दिला आहे, जे लवकर लक्षात ठेवण्यास मदत करते.",
-
-feature6_title: "अक्षरी अंक",
-feature6_desc: "फक्त अंकांपुरते मर्यादित राहू नका! १ ते १०० पर्यंतचे सर्व अंक अक्षरात लिहायला शिका. ही लहान मुलांसाठी आणि भाषा शिकणाऱ्यांसाठी एक उत्तम सुविधा आहे.",
-
-feature7_title: "ड्रॉइंग पॅड",
-feature7_desc: "वही आणि पेनची गरज नाही! सराव करण्यासाठी, गणना करण्यासाठी किंवा अंक लिहायला शिकण्यासाठी आमच्या डिजिटल पाटीचा वापर करा.",
-
-feature8_title: "बौद्धिक खेळ",
-feature8_desc: "तर्क कोडे: तुमची तर्कशक्ती वाढवण्यासाठी अमर्याद कोडी खेळा. सुडोकू: एकाग्रता आणि समस्या निराकरण कौशल्ये सुधारण्यासाठी क्लासिक सुडोकू खेळा. फळांची तुलना: एक मजेदार खेळ जो तुमची निरीक्षण आणि तुलना करण्याची क्षमता वाढवेल.",
-
-feature9_title: "सोपे कॅल्क्युलेटर",
-feature9_desc: "जलद गणनेसाठी आणि दैनंदिन वापरासाठी एक सोपे आणि उपयुक्त कॅल्क्युलेटर.",
-
-feature10_title: "बहुभाषिक समर्थन",
-feature10_desc: "हे १० भारतीय भाषांमध्ये उपलब्ध आहे: ओडिया, संस्कृत, इंग्रजी, हिंदी, तेलुगु, आसामी, बंगाली, गुजराती, मल्याळम आणि उर्दू.",
-            screenshots_title: "ॲपची झलक",
-            download_title: "आता खेळायला तयार आहात का?",
-            download_desc_android:
-              'आजच "गणित बिंग्य" ॲप डाउनलोड करा आणि गणितासोबत एक नवीन प्रवास सुरू करा!',
+            nav_logo: "गणित विज्ञ",
+            nav_download: "डाउनलोड",
+            nav_tools: "शैक्षणिक साधने",
+            nav_features: "वैशिष्ट्ये",
+            nav_changelog: "बदलांची यादी",
+            nav_contrib: "योगदानकर्ते",
+            hero_title: "गणित विज्ञ",
+            feature_descc:
+              "तुमच्या मोकळ्या वेळेचे रूपांतर उत्पादक सराव सत्रात करा.",
+            download_btn: "ॲप डाउनलोड करा",
             open_app_btn: "ॲप उघडा",
-            download_btn: "डाउनलोड करा",
             download_count_text: "डाउनलोड्स",
-            download_desc_other:
-              "डाउनलोडची आवश्यकता नाही! थेट तुमच्या ब्राउझरमध्ये खेळायला सुरुवात करा.",
-            play_online_btn: "ऑनलाइन खेळा",
-            whats_new_title: "नवीन काय आहे?",
-            loading_updates: "नवीनतम अपडेट्स लोड होत आहेत...",
+            features_title: "शिकण्याची एक नवीन पद्धत",
+            screenshots_title: "ॲपची झलक",
+            feature1_title: "अक्षरी संख्या",
+            feature1_desc:
+              "१ ते १०० पर्यंतच्या सर्व संख्या अक्षरात वाचायला शिका.",
+            feature2_title: "क्रमवाचक संख्या",
+            feature2_desc:
+              "या विभागात तुम्ही क्रमवाचक संख्या सहजपणे शिकू शकता. वस्तू किंवा व्यक्तींचा क्रम किंवा स्थान ओळखण्यासाठी क्रमवाचक संख्यांचा वापर करा. उदाहरणार्थ: पहिला, दुसरा, तिसरा इत्यादी.",
+            feature3_title: "चार गणिती क्रिया",
+            feature3_desc: "बेरीज, वजाबाकी, गुणाकार, भागाकार",
+            feature4_title: "गणना पद्धती",
+            feature4_desc:
+              "एकक, दशक, शतक, हजार आणि लाख लिहायला आणि वाचायला शिका.",
+            feature5_title: "पाढे",
+            feature5_desc:
+              "२ ते २५ पर्यंतचे पाढे सोप्या पद्धतीने लक्षात ठेवा (उदा: बे एके बे, बे दुणे चार).",
+            feature6_title: "उपयुक्त साधने",
+            feature6_desc:
+              "हिशोबासाठी कॅल्क्युलेटर, एकक रूपांतरण आणि संख्यांचे शब्दांत रूपांतर.",
+            feature7_title: "ड्रॉइंग पॅड",
+            feature7_desc: "वही आणि पेनची गरज नाही! डिजिटल पाटीचा वापर करा.",
+            feature8_title: "बौद्धिक खेळ",
+            feature8_desc:
+              "तर्क कोडी: तर्कशक्ती वाढवण्यासाठी अमर्यादित कोडी खेळा. सुडोकू: एकाग्रता आणि समस्या सोडवण्याचे कौशल्य वाढवण्यासाठी क्लासिक सुडोकू खेळा.",
+            feature9_title: "बहुभाषिक",
+            feature9_desc:
+              "हे १० भारतीय भाषांमध्ये उपलब्ध आहे: ओडिया, संस्कृत, इंग्रजी, हिंदी, तेलुगु, गुजराती, बंगाली, आसामी, मल्याळम आणि उर्दू.",
+            feature10_title: "यात जाहिराती (Ads) आहेत का?",
+            feature10_desc: "'गणित विज्ञ' जाहिरात-मुक्त आहे आणि नेहमीच राहील.",
             footer_text:
-              "&copy; २०२५ गणित बिंग्य. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank' rel='noopener noreferrer'>संदीप बिस्वाल जी</a> यांनी बनवले.",
-            scroll_down_btn: "खाली स्क्रोल करा",
-            popup_title: "ॲपमध्ये उघडा",
-            popup_app_name: "गणित बिंग्य",
-            popup_open_btn: "उघडा",
-            popup_browser_name: "ब्राउझर",
-            popup_continue_btn: "पुढे जा",
+              "© २०२५ गणित विज्ञ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>संदीप बिस्वाल जी</a> द्वारे",
+          },
+          ta: {
+            nav_logo: "கணித நிபுணர்",
+            nav_download: "பதிவிறக்கம்",
+            nav_tools: "கல்வி கருவிகள்",
+            nav_features: "சிறப்பம்சங்கள்",
+            nav_changelog: "மாற்ற விபரம்",
+            nav_contrib: "பங்களிப்பாளர்கள்",
+            hero_title: "கணித நிபுணர்",
+            feature_descc:
+              "உங்கள் ஓய்வு நேரத்தை பயனுள்ள பயிற்சி நேரமாக மாற்றுங்கள்.",
+            download_btn: "செயலியை பதிவிறக்கவும்",
+            open_app_btn: "செயலியைத் திறக்கவும்",
+            download_count_text: "பதிவிறக்கங்கள்",
+            features_title: "கற்பதற்கான ஒரு புதிய வழி",
+            screenshots_title: "செயலியின் காட்சிகள்",
+            feature1_title: "எழுத்துக்களில் எண்கள்",
+            feature1_desc:
+              "1 முதல் 100 வரையிலான அனைத்து எண்களையும் எழுத்துக்களில் படிக்கக் கற்றுக்கொள்ளுங்கள்.",
+            feature2_title: "வரிசை எண்கள்",
+            feature2_desc:
+              "இந்தப் பிரிவில் நீங்கள் வரிசை எண்களை எளிதாகக் கற்றுக்கொள்ளலாம். பொருட்கள் அல்லது நபர்களின் வரிசை அல்லது இடத்தைக் குறிக்க வரிசை எண்களைப் பயன்படுத்தவும். உதாரணமாக: முதல், இரண்டாவது, மூன்றாவது போன்றவை.",
+            feature3_title: "நான்கு அடிப்படைச் செயல்பாடுகள்",
+            feature3_desc: "கூட்டல், கழித்தல், பெருக்கல், வகுத்தல்",
+            feature4_title: "எண்ணும் முறை",
+            feature4_desc:
+              "ஒன்று, பத்து, நூறு, ஆயிரம் மற்றும் லட்சம் ஆகியவற்றை எழுதவும் படிக்கவும் கற்றுக்கொள்ளுங்கள்.",
+            feature5_title: "பெருக்கல் வாய்ப்பாடு",
+            feature5_desc:
+              "2 முதல் 25 வரையிலான பெருக்கல் வாய்ப்பாடுகளை எளிதாக நினைவில் கொள்ளுங்கள் (எ.கா: ஓர் ரெண்டு ரெண்டு, ஈ ரெண்டு நான்கு).",
+            feature6_title: "பயன்பாடுகள்",
+            feature6_desc:
+              "கணக்கீடுகளுக்கான கால்குலேட்டர், அலகு மாற்றி மற்றும் எண்களை வார்த்தைகளாக மாற்றுதல்.",
+            feature7_title: "வரைபலகை",
+            feature7_desc:
+              "நோட்டு மற்றும் பேனா தேவையில்லை! டிஜிட்டல் பலகையைப் பயன்படுத்தவும்.",
+            feature8_title: "மூளைப் பயிற்சி விளையாட்டுகள்",
+            feature8_desc:
+              "லாஜிக் புதிர்கள்: பகுத்தறியும் திறனை அதிகரிக்க வரம்பற்ற புதிர்களை விளையாடுங்கள். சுடோகு: கவனக்குவிப்பு மற்றும் சிக்கல் தீர்க்கும் திறன்களை மேம்படுத்த கிளாசிக் சுடோகு விளையாடுங்கள்.",
+            feature9_title: "பன்மொழி",
+            feature9_desc:
+              "இது 10 இந்திய மொழிகளில் கிடைக்கிறது: ஒடியா, சமஸ்கிருதம், ஆங்கிலம், இந்தி, தெலுங்கு, குஜராத்தி, பெங்காலி, அஸ்ஸாமி, மலையாளம் மற்றும் உருது.",
+            feature10_title: "இதில் விளம்பரங்கள் (Ads) உள்ளதா?",
+            feature10_desc:
+              "'கணித நிபுணர்' விளம்பரங்கள் இல்லாதது மற்றும் எப்போதும் அப்படியே இருக்கும்.",
+            footer_text:
+              "© 2025 கணித நிபுணர். உருவாக்கியவர் <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>சந்தீப் பிஸ்வால் ஜி</a>",
+          },
+          kn: {
+            nav_logo: "ಗಣಿತ ವಿಜ್ಞ",
+            nav_download: "ಡೌನ್‌ಲೋಡ್",
+            nav_tools: "ಶೈಕ್ಷಣಿಕ ಪರಿಕರಗಳು",
+            nav_features: "ವೈಶಿಷ್ಟ್ಯಗಳು",
+            nav_changelog: "ಬದಲಾವಣೆ ಪಟ್ಟಿ",
+            nav_contrib: "ಕೊಡುಗೆದಾರರು",
+            hero_title: "ಗಣಿತ ವಿಜ್ಞ",
+            feature_descc:
+              "ನಿಮ್ಮ ಬಿಡುವಿನ ಸಮಯವನ್ನು ಉತ್ಪಾದಕ ಅಭ್ಯಾಸದ ಸಮಯವನ್ನಾಗಿ ಪರಿವರ್ತಿಸಿ.",
+            download_btn: "ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+            open_app_btn: "ಆ್ಯಪ್ ತೆರೆಯಿರಿ",
+            download_count_text: "ಡೌನ್‌ಲೋಡ್‌ಗಳು",
+            features_title: "ಕಲಿಯಲು ಒಂದು ಹೊಸ ಮಾರ್ಗ",
+            screenshots_title: "ಆ್ಯಪ್‌ನ ಕಿರುನೋಟ",
+            feature1_title: "ಅಕ್ಷರಗಳಲ್ಲಿ ಸಂಖ್ಯೆಗಳು",
+            feature1_desc:
+              "೧ ರಿಂದ ೧೦೦ ರವರೆಗಿನ ಎಲ್ಲಾ ಸಂಖ್ಯೆಗಳನ್ನು ಅಕ್ಷರಗಳಲ್ಲಿ ಓದಲು ಕಲಿಯಿರಿ.",
+            feature2_title: "ಕ್ರಮವಾಚಕ ಸಂಖ್ಯೆಗಳು",
+            feature2_desc:
+              "ಈ ವಿಭಾಗದಲ್ಲಿ ನೀವು ಕ್ರಮವಾಚಕ ಸಂಖ್ಯೆಗಳನ್ನು ಸುಲಭವಾಗಿ ಕಲಿಯಬಹುದು. ವಸ್ತುಗಳು ಅಥವಾ ವ್ಯಕ್ತಿಗಳ ಕ್ರಮ ಅಥವಾ ಸ್ಥಾನವನ್ನು ಗುರುತಿಸಲು ಕ್ರಮವಾಚಕ ಸಂಖ್ಯೆಗಳನ್ನು ಬಳಸಿ. ಉದಾಹರಣೆಗೆ: ಮೊದಲನೇ, ಎರಡನೇ, ಮೂರನೇ ಇತ್ಯಾದಿ.",
+            feature3_title: "ನಾಲ್ಕು ಕ್ರಿಯೆಗಳು",
+            feature3_desc: "ಸಂಕಲನ, ವ್ಯವಕಲನ, ಗುಣಾಕಾರ, ಭಾಗಾಕಾರ",
+            feature4_title: "ಎಣಿಕೆ ಪದ್ಧತಿ",
+            feature4_desc:
+              "ಬಿಡಿ, ಹತ್ತು, ನೂರು, ಸಾವಿರ ಮತ್ತು ಲಕ್ಷಗಳನ್ನು ಬರೆಯಲು ಮತ್ತು ಓದಲು ಕಲಿಯಿರಿ.",
+            feature5_title: "ಮಗ್ಗಿಗಳು",
+            feature5_desc:
+              "೨ ರಿಂದ ೨೫ ರವರೆಗಿನ ಮಗ್ಗಿಗಳನ್ನು ಸುಲಭವಾಗಿ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಿ (ಉದಾಹರಣೆಗೆ: ಎರಡ ಒಂದ್ಲ ಎರಡು, ಎರಡ ಎರಡ್ಲ ನಾಲ್ಕು).",
+            feature6_title: "ಉಪಯುಕ್ತತೆಗಳು",
+            feature6_desc:
+              "ಲೆಕ್ಕಾಚಾರಕ್ಕಾಗಿ ಕ್ಯಾಲ್ಕುಲೇಟರ್, ಏಕಮಾನ ಪರಿವರ್ತಕ ಮತ್ತು ಸಂಖ್ಯೆಯನ್ನು ಅಕ್ಷರಗಳಿಗೆ ಬದಲಾಯಿಸುವುದು.",
+            feature7_title: "ಡ್ರಾಯಿಂಗ್ ಪ್ಯಾಡ್",
+            feature7_desc:
+              "ಪುಸ್ತಕ ಮತ್ತು ಪೆನ್‌ನ ಅಗತ್ಯವಿಲ್ಲ! ಡಿಜಿಟಲ್ ಸ್ಲೇಟ್ ಅನ್ನು ಬಳಸಿ.",
+            feature8_title: "ಮೆದುಳಿನ ಆಟಗಳು",
+            feature8_desc:
+              "ತರ್ಕ ಪಜಲ್‌ಗಳು: ತಾರ್ಕಿಕ ಶಕ್ತಿಯನ್ನು ಹೆಚ್ಚಿಸಲು ಅನಿಯಮಿತ ಪಜಲ್‌ಗಳನ್ನು ಆಡಿ. ಸುಡೋಕು: ಏಕಾಗ್ರತೆ ಮತ್ತು ಸಮಸ್ಯೆ ಪರಿಹರಿಸುವ ಕೌಶಲ್ಯವನ್ನು ಹೆಚ್ಚಿಸಲು ಕ್ಲಾಸಿಕ್ ಸುಡೋಕು ಆಡಿ.",
+            feature9_title: "ಬಹುಭಾಷಾ",
+            feature9_desc:
+              "ಇದು ೧೦ ಭಾರತೀಯ ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯವಿದೆ: ಒಡಿಯಾ, ಸಂಸ್ಕೃತ, ಇಂಗ್ಲಿಷ್, ಹಿಂದಿ, ತೆಲುಗು, ಗುಜರಾತಿ, ಬೆಂಗಾಲಿ, ಅಸ್ಸಾಮಿ, ಮಲಯಾಳಂ ಮತ್ತು ಉರ್ದು.",
+            feature10_title: "ಇದರಲ್ಲಿ ಜಾಹೀರಾತುಗಳು (Ads) ಇವೆಯೇ?",
+            feature10_desc:
+              "'ಗಣಿತ ವಿಜ್ಞ' ಜಾಹೀರಾತು-ಮುಕ್ತವಾಗಿದೆ ಮತ್ತು ಯಾವಾಗಲೂ ಇರುತ್ತದೆ.",
+            footer_text:
+              "© ೨೦೨೫ ಗಣಿತ ವಿಜ್ಞ. <a href='https://www.instagram.com/sandeepbiswalg' target='_blank'>ಸಂದೀಪ್ ಬಿಸ್ವಾಲ್ ಜಿ</a> ಅವರಿಂದ",
           },
         };
-        const langMenu = document.getElementById("lang-menu");
+
+        // 2. LANGUAGE HANDLER
         const langBtn = document.getElementById("lang-btn");
+        const langMenu = document.getElementById("lang-menu");
 
-        // --- MODIFIED: Function to set language and update visual indicator ---
         const setLanguage = (lang) => {
-          // Set the lang attribute on the HTML element
+          // Update Translations
           document.documentElement.lang = lang;
-          const translation = translations_data[lang];
+          const data = translations_data[lang];
+          if (data && Object.keys(data).length > 0) {
+            document.querySelectorAll("[data-translate]").forEach((el) => {
+              const key = el.dataset.translate;
+              if (data[key]) el.innerHTML = data[key];
+            });
+          }
 
-          // Update all elements with data-translate attribute
-          document.querySelectorAll("[data-translate]").forEach((el) => {
-            const key = el.dataset.translate;
-            if (translation && translation[key]) {
-              // Check if translation exists for the lang
-              el.innerHTML = translation[key];
-            }
-          });
-
-          // Save preference to local storage
+          // Store choice
           localStorage.setItem("language", lang);
 
-          // --- START: NEW code for visual indicator ---
-          // 1. Remove 'selected-lang' class from any currently selected item
-          const currentSelected = langMenu.querySelector(".selected-lang");
-          if (currentSelected) {
-            currentSelected.classList.remove("selected-lang");
-          }
-
-          // 2. Add 'selected-lang' class to the newly clicked item
-          const newSelected = langMenu.querySelector(`li[data-lang="${lang}"]`);
-          if (newSelected) {
-            newSelected.classList.add("selected-lang");
-          }
-          // --- END: NEW code for visual indicator ---
-
-          // Hide the menu after selection
-          langMenu.classList.remove("show");
-        };
-
-        langMenu.addEventListener("click", (e) => {
-          if (e.target.tagName === "LI" && e.target.dataset.lang) {
-            setLanguage(e.target.dataset.lang);
-          }
-        });
-
-        langBtn.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent the document click listener from firing
-          langMenu.classList.toggle("show");
-        });
-
-        // Close the dropdown if user clicks outside of it
-        document.addEventListener("click", (e) => {
-          if (!langMenu.contains(e.target) && !langBtn.contains(e.target)) {
-            langMenu.classList.remove("show");
-          }
-        });
-
-        // Load saved language or default to 'or'
-        const savedLang = localStorage.getItem("language") || "or";
-        setLanguage(savedLang);
-
-        // --- PART 1: UI ANIMATIONS ---
-        const curtain = document.getElementById("curtain");
-        const header = document.getElementById("header");
-        const heroTitle = document.getElementById("hero-title");
-        const scrollDownBtn = document.getElementById("scroll-down-btn");
-        let animationStartScrollPosition = 0;
-
-        const langSwitcher = document.getElementById("lang-switcher");
-        const screenshotsSection = document.getElementById("screenshots");
-        const screenshotCards = document.querySelectorAll(
-          ".screenshot-card-fade"
-        );
-        const dynamicIsland = document.getElementById("dynamic-island-title");
-
-        function calculateAnimationStart() {
-          const headerHeight = header.offsetHeight;
-          const heroTitleRect = heroTitle.getBoundingClientRect();
-          animationStartScrollPosition =
-            window.scrollY + heroTitleRect.bottom - headerHeight;
-        }
-
-        function handleCurtainAndHeader() {
-          const scrollY = window.scrollY;
-          if (scrollY > 50) {
-            curtain.classList.add("hidden");
-            if (scrollDownBtn) scrollDownBtn.classList.add("hidden");
-          } else {
-            curtain.classList.remove("hidden");
-            if (scrollDownBtn) scrollDownBtn.classList.remove("hidden");
-          }
-          if (scrollY > 100) {
-            header.classList.add("visible");
-            langSwitcher.classList.add("scrolled"); // Move lang button down
-          } else {
-            header.classList.remove("visible");
-            langSwitcher.classList.remove("scrolled"); // Move lang button up
-          }
-        }
-
-        function handleMockupAnimation() {
-          if (window.innerWidth >= 1024) return;
-          const scrollY = window.scrollY;
-          const activeMockupContainer = document.getElementById(
-            "mockup-container-mobile"
-          );
-          const activeMockupContent = document.getElementById(
-            "mobile-mockup-content"
-          );
-          if (!activeMockupContainer || !activeMockupContent) return;
-
-          if (scrollY < animationStartScrollPosition) {
-            activeMockupContent.style.opacity = "0";
-            activeMockupContent.style.transform = `scale(0.85)`;
-            return;
-          }
-          const animationDuration =
-            activeMockupContainer.offsetHeight - window.innerHeight;
-          const progress = Math.max(
-            0,
-            Math.min(
-              1,
-              (scrollY - animationStartScrollPosition) / animationDuration
-            )
-          );
-          let scale,
-            opacity = 1,
-            translateY = 0;
-          if (progress < 0.5) {
-            const p = progress / 0.5;
-            scale = 0.85 + p * 0.2;
-            opacity = 1;
-          } else {
-            const p = (progress - 0.5) / 0.5;
-            scale = 1.05;
-            translateY = -p * 100;
-            opacity = 1 - p;
-          }
-          activeMockupContent.style.transform = `scale(${scale}) translateY(${translateY}vh)`;
-          activeMockupContent.style.opacity = opacity;
-        }
-
-        function handleScreenshotFade() {
-          if (!screenshotsSection || screenshotCards.length === 0) return;
-
-          const sectionRect = screenshotsSection.getBoundingClientRect();
-          const scrollableHeight =
-            screenshotsSection.offsetHeight - window.innerHeight;
-
-          if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
-            const progress = Math.max(
-              0,
-              Math.min(1, -sectionRect.top / scrollableHeight)
-            );
-            const activeIndex = Math.min(
-              screenshotCards.length - 1,
-              Math.floor(progress * screenshotCards.length)
-            );
-
-            screenshotCards.forEach((card, index) => {
-              if (index === activeIndex) {
-                card.classList.add("is-active");
-              } else {
-                card.classList.remove("is-active");
-              }
-            });
-          }
-
-          if (
-            sectionRect.top < window.innerHeight * 0.8 &&
-            sectionRect.bottom > window.innerHeight * 0.2
-          ) {
-            dynamicIsland.classList.add("show");
-          } else {
-            dynamicIsland.classList.remove("show");
-          }
-        }
-
-        let ticking = false;
-        function onScroll() {
-          if (!ticking) {
-            ticking = true;
-            window.requestAnimationFrame(() => {
-              handleCurtainAndHeader();
-              handleMockupAnimation();
-              handleScreenshotFade();
-              ticking = false;
-            });
-          }
-        }
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", () => {
-          calculateAnimationStart();
-          handleMockupAnimation();
-        });
-
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.3,
-        };
-        const observerCallback = (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
+          // Update Tick Mark UI
+          document.querySelectorAll(".lang-item").forEach((item) => {
+            if (item.dataset.lang === lang) {
+              item.classList.add("selected");
             } else {
-              entry.target.classList.remove("is-visible");
+              item.classList.remove("selected");
             }
           });
         };
-        const animationObserver = new IntersectionObserver(
-          observerCallback,
-          observerOptions
-        );
-        document
-          .querySelectorAll("#features .feature-card")
-          .forEach((el) => animationObserver.observe(el));
-        setTimeout(() => {
-          calculateAnimationStart();
-          handleCurtainAndHeader();
-          handleMockupAnimation();
-        }, 100);
 
-        // --- PART 2: OS DETECTION ---
-        const userAgent = navigator.userAgent;
-        const isAndroid = /Android/i.test(userAgent);
-        if (isAndroid) {
-          document
-            .querySelectorAll(".os-android")
-            .forEach((el) => (el.style.display = "block"));
-        } else {
-          document
-            .querySelectorAll(".os-other")
-            .forEach((el) => (el.style.display = "block"));
-        }
-        if (window.innerWidth >= 1024) {
-          document
-            .querySelectorAll(".desktop-view")
-            .forEach((el) => (el.style.display = "flex"));
-          document
-            .querySelectorAll(".mobile-view")
-            .forEach((el) => (el.style.display = "none"));
-        }
+        langBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          langMenu.classList.toggle("show");
+        });
+        document.addEventListener("click", (e) => {
+          if (!langMenu.contains(e.target)) langMenu.classList.remove("show");
+        });
+        langMenu.addEventListener("click", (e) => {
+          if (e.target.classList.contains("lang-item"))
+            setLanguage(e.target.dataset.lang);
+        });
 
-        // --- PART 3: GITHUB API & POPUP --- (UNCHANGED)
-        const REPO_URL =
-          "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases";
-        function formatReleaseNotes(text) {
-          return text
-            .replace(/### (.*)/g, "<h3>$1</h3>")
-            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-            .replace(/`([^`]+)`/g, "<code>$1</code>")
-            .replace(/\* (.*)/g, "<li>$1</li>")
-            .replace(/(\r\n|\n|\r)/gm, "<br>")
-            .replace(/(<br>){2,}/g, "<br><br>");
-        }
-        async function fetchLatestRelease() {
-          try {
-            const response = await fetch(`${REPO_URL}/latest`);
-            if (!response.ok)
-              throw new Error(`GitHub API error: ${response.status}`);
-            const latestRelease = await response.json();
-            const version = latestRelease.tag_name;
-            const releaseNotes = latestRelease.body;
-            const apkAsset = latestRelease.assets.find((asset) =>
-              asset.name.endsWith(".apk")
-            );
-            const apkUrl = apkAsset ? apkAsset.browser_download_url : "#";
-            document.getElementById("version-badge").textContent = version;
-            document.getElementById("main-download-btn").href = apkUrl;
-            if (isAndroid) {
-              const headerBtn = document.getElementById("header-download-btn");
-              headerBtn.href = apkUrl;
-              headerBtn.setAttribute(
-                "download",
-                `Ganita-Bingya-${version}.apk`
-              );
-            }
-            const whatsNewSection = document.getElementById("whats-new");
-            const releaseNotesContainer =
-              document.getElementById("release-notes");
-            if (releaseNotes) {
-              releaseNotesContainer.innerHTML =
-                formatReleaseNotes(releaseNotes);
-              whatsNewSection.style.display = "block";
-            }
-          } catch (error) {
-            console.error("Failed to fetch latest release:", error);
+        // 2a. CHECK URL PARAMETERS (?od, ?en, etc)
+        const urlParams = new URLSearchParams(window.location.search);
+        let initialLang = localStorage.getItem("language") || "or";
+
+        // Map short codes if necessary, or just check keys
+        // Validating keys against our dictionary
+        const allLangs = Object.keys(translations_data);
+
+        // Check if any lang key is present as a parameter (e.g., ?en or ?od)
+        // If query is ?od=something or just ?od
+        for (let l of allLangs) {
+          // Special mapping for 'or' if url uses 'od'
+          if (l === "or" && urlParams.has("od")) {
+            initialLang = "or";
+            break;
+          }
+          if (urlParams.has(l)) {
+            initialLang = l;
+            break;
           }
         }
-        async function fetchTotalDownloads() {
-          const countElement = document.getElementById("download-count");
-          const countContainer = document.getElementById(
-            "download-count-container"
+
+        setLanguage(initialLang);
+
+        // 3. MOBILE MENU TOGGLE
+        const mobileToggle = document.getElementById("mobile-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+        });
+        // Close mobile menu when clicking a link
+        document.querySelectorAll(".mobile-link").forEach((link) => {
+          link.addEventListener("click", () =>
+            mobileMenu.classList.remove("active")
           );
-          if (!countElement || !countContainer) return;
+        });
+
+        // 4. GITHUB API: AUTO-FETCH LATEST APK
+        async function fetchGitHubData() {
           try {
-            const response = await fetch(REPO_URL);
-            if (!response.ok)
-              throw new Error(`GitHub API error: ${response.status}`);
-            const releases = await response.json();
-            let totalDownloads = 0;
-            releases.forEach((release) => {
-              release.assets.forEach((asset) => {
-                if (asset.name.endsWith(".apk"))
-                  totalDownloads += asset.download_count;
-              });
-            });
-            if (totalDownloads > 0) {
-              countElement.innerText = new Intl.NumberFormat().format(
-                totalDownloads
-              );
-              countContainer.style.opacity = "1";
+            // Fetch Latest Release specifically
+            const resLatest = await fetch(
+              "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases/latest"
+            );
+            const latestData = await resLatest.json();
+
+            // Find APK asset
+            const apkAsset = latestData.assets.find((a) =>
+              a.name.endsWith(".apk")
+            );
+
+            // Update Button
+            const dlBtn = document.getElementById("dynamic-dl-btn");
+            const versionTag = document.getElementById("version-tag");
+
+            if (apkAsset) {
+              dlBtn.href = apkAsset.browser_download_url;
+              versionTag.innerText = latestData.tag_name;
             } else {
-              countContainer.style.display = "none";
+              // Fallback to releases page if no apk found in latest
+              dlBtn.href =
+                "https://github.com/imsbg/Ganita-Bingya-App/releases";
             }
-          } catch (error) {
-            console.error("Failed to fetch download count:", error);
-            countContainer.style.display = "none";
+
+            // Fetch Download Counts (All releases)
+            const resAll = await fetch(
+              "https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases"
+            );
+            const allReleases = await resAll.json();
+            let total = 0;
+            allReleases.forEach((r) =>
+              r.assets.forEach((a) => {
+                if (a.name.endsWith(".apk")) total += a.download_count;
+              })
+            );
+            if (total > 0)
+              document.getElementById("download-count").innerText =
+                new Intl.NumberFormat().format(total);
+          } catch (e) {
+            console.error("GitHub API Error", e);
+            // Fallback
+            document.getElementById("dynamic-dl-btn").href =
+              "https://github.com/imsbg/Ganita-Bingya-App/releases";
           }
         }
-        fetchLatestRelease();
-        fetchTotalDownloads();
-        const overlay = document.getElementById("overlay");
-        const bottomSheet = document.getElementById("bottomSheet");
-        const STORAGE_KEY = "ganitaBingyaPopupDismissTime";
-        const HIDE_DURATION = 1 * 60 * 60 * 1000;
-        window.showSheet = function () {
-          if (isAndroid) {
-            const lastDismiss = localStorage.getItem(STORAGE_KEY);
-            const now = Date.now();
-            if (!lastDismiss || now - lastDismiss > HIDE_DURATION) {
-              if (overlay) overlay.style.display = "block";
-            }
-          }
-        };
-        window.closeSheet = function () {
-          if (overlay) {
-            overlay.style.display = "none";
-            localStorage.setItem(STORAGE_KEY, Date.now());
-          }
-        };
-        window.openInApp = function () {
-          localStorage.setItem(STORAGE_KEY, Date.now());
-          window.location.href = "https://ganitabingya.netlify.app/open";
-        };
-        if (overlay && bottomSheet) {
-          overlay.addEventListener("click", closeSheet);
-          bottomSheet.addEventListener("click", (e) => e.stopPropagation());
-        }
-        setTimeout(showSheet, 2500);
+        fetchGitHubData();
       });
     </script>
+          <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Ganita Bingya free to play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Ganita Bingya is completely free to play. There are no hidden costs or in-app purchases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Ganita Bingya have ads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Ganita Bingya is 100% ad-free. We are committed to providing a focused and uninterrupted learning experience, and the game will remain ad-free forever."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I download Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download Ganita Bingya for free from our official sources:\nOfficial Website: https://imsbg.github.io/Ganita-Bingya-App/\nGitHub Releases: https://github.com/imsbg/Ganita-Bingya-App/releases\nIndus Appstore: https://www.indusappstore.com/apps/educational/ganita-bingya/com.sandeep.ganitabigyan"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What languages are supported in Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ganita Bingya is a multilingual app. It currently supports Odia, English, Hindi, Sanskrit, Telugu, Bengali, Gujarati, Assamese, Malayalam, and Urdu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who created the Ganita Bingya app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ganita Bingya is an open-source math game created and maintained by Sandeep Biswal G. As an open-source project, its source code is publicly available on GitHub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was AI involved in the development of Ganita Bingya?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, AI was used as a key development tool. While the programming code was generated by an AI, the core concept, user interface (UI) design, game features, and guiding prompts were all created by Sandeep Biswal G."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the key features of the Ganita Bingya app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ganita Bingya is designed to make learning math and language intuitive and fun. You can:\n- Practice Core Math: Sharpen your skills in addition, subtraction, multiplication, and division. You can customize the difficulty by choosing one, two, or three-digit numbers.\n- Master Extended Multiplication Tables: Learn multiplication tables extensively, from 2 all the way to 25. Each table is presented in both numerals and written words, with support for your local language.\n- Use the Interactive Drawing Pad: Practice writing numbers and characters in your own language on a digital canvas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is Sandeep Biswal G?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sandeep Biswal G is the passionate creator behind the Ganita Bingya app. Hailing from Odisha, he is a technologist and explorer with a deep love for both nature and digital innovation.\nA core part of his mission is to promote and integrate the Odia language into the world of technology, making digital tools more accessible for Odisha. You can follow his journey and explorations on his social media channels:\n- YouTube: https://www.youtube.com/@SandeepBiswalG\n- Instagram: https://www.instagram.com/sandeepbiswalg\n- X (formerly Twitter): https://x.com/SandeepBiswalG"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the story behind Ganita Bingya's launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The story of Ganita Bingya begins with a clear mission: to create a powerful educational tool for children to sharpen their minds through math and calculation.\nWith this goal of building a high-quality app, the journey to launch was a meticulous one. The official public launch of Ganita Bingya was v1.7 on August 15, 2025.\nThe initial concept (v1.0) was developed on July 25, 2025, but it, along with versions up to 1.6, served as internal test builds. This extensive testing was crucial because Ganita Bingya was proudly launched first and foremost in the Odia language. Creator Sandeep Biswal G dedicated significant time to research and manually integrate all the Odia text, ensuring the app was an accurate and effective learning tool for its very first users.\nThis commitment to accessible education continued, with version 5.0.0 later expanding support to include six additional Indian languages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is 'imsbg' and what does it stand for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "'imsbg' is the official GitHub username of Sandeep Biswal G, the creator of the Ganita Bingya app. You will often see this username associated with the app's source code, development updates, and other technical projects led by Sandeep."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- END: NEW JSON-LD SCRIPT -->
   </body>
 </html>
