@@ -1,4 +1,3 @@
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/NavGraph.kt
 
 package com.sandeep.ganitabigyan
@@ -6,10 +5,14 @@ package com.sandeep.ganitabigyan
 import android.app.Activity
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -58,6 +61,8 @@ object AppDestinations {
     const val ABOUT_ROUTE = "about"
     const val SCORE_HISTORY_ROUTE = "score_history"
     const val SETTINGS_ROUTE = "settings"
+    const val LANGUAGE_SELECTION_ROUTE = "language_selection"
+    const val THEME_SELECTION_ROUTE = "theme_selection"
     const val CALCULATOR_ROUTE = "calculator"
     const val PANIKIA_LIST_ROUTE = "panikia_list"
     const val PANIKIA_DETAIL_ROUTE = "panikia_detail/{tableNumber}?view={viewType}"
@@ -72,37 +77,272 @@ object AppDestinations {
     const val FTMN_GAME_ROUTE = "ftmn_game"
     const val SLIDING_BLOCK_PUZZLE_ROUTE = "sliding_block_puzzle"
     const val WORD_PROBLEM_GAME_ROUTE = "word_problem_game"
+    const val ORDINALS_ROUTE = "ordinals"
+    const val GANANA_ROUTE = "ganana"
+    const val UTILITY_CATEGORY_ROUTE = "utility_category"
+    const val UNIT_CONVERTER_ROUTE = "unit_converter"
+    const val NUMBER_TO_TEXT_ROUTE = "number_to_text"
+    const val ROMAN_ROUTE = "roman_screen"
 }
+
+// A reusable object for our screen slide animations
+object ScreenTransitions {
+    private const val DURATION = 350 // Animation speed in milliseconds
+
+    val enter: EnterTransition = slideInHorizontally(
+        initialOffsetX = { it },
+        animationSpec = tween(DURATION)
+    ) + fadeIn(animationSpec = tween(DURATION))
+
+    val exit: ExitTransition = slideOutHorizontally(
+        targetOffsetX = { -it / 4 },
+        animationSpec = tween(DURATION)
+    ) + fadeOut(animationSpec = tween(DURATION))
+
+    val popEnter: EnterTransition = slideInHorizontally(
+        initialOffsetX = { -it / 4 },
+        animationSpec = tween(DURATION)
+    ) + fadeIn(animationSpec = tween(DURATION))
+
+    val popExit: ExitTransition = slideOutHorizontally(
+        targetOffsetX = { it },
+        animationSpec = tween(DURATION)
+    ) + fadeOut(animationSpec = tween(DURATION))
+}
+
 
 @Composable
 fun NavGraph(gameViewModel: GameViewModel, modifier: Modifier = Modifier, navController: NavHostController = rememberNavController()) {
     NavHost(navController = navController, startDestination = AppDestinations.SPLASH_ROUTE, modifier = modifier) {
+        // Screens without custom transitions (Splash, Welcome)
         composable(AppDestinations.SPLASH_ROUTE) { SplashScreen(navController = navController) }
-        composable(AppDestinations.WELCOME_ROUTE) { WelcomeScreen(onStartClick = { navController.navigate(AppDestinations.HOME_ROUTE) { popUpTo(AppDestinations.WELCOME_ROUTE) { inclusive = true } } }) }
-        composable(route = AppDestinations.HOME_ROUTE) { HomeScreen(navController = navController) }
-        composable(route = AppDestinations.GAME_ROUTE) { GameScreen(viewModel = gameViewModel, onNavigateBack = { navController.popBackStack() }, onNavigateToScore = { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) }) }
-        composable(route = AppDestinations.VISUAL_GAME_ROUTE) { VisualGameScreen(navController = navController) }
-        composable(route = AppDestinations.LOGIC_GAME_ROUTE) { LogicGameScreen(navController = navController) }
-        composable(route = AppDestinations.SCORE_HISTORY_ROUTE) { ScoreHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.SETTINGS_ROUTE) { SettingsScreen(navController = navController) }
-        composable(route = AppDestinations.ABOUT_ROUTE) { AboutScreen(navController = navController, onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.CHANGELOG_ROUTE) { ChangelogScreen(onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.CALCULATOR_ROUTE) { CalculatorScreen(onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.PANIKIA_LIST_ROUTE) { PanikiaListScreen(onTableClick = { tableNumber -> navController.navigate("panikia_detail/$tableNumber") }, onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.PANIKIA_DETAIL_ROUTE, arguments = listOf(navArgument("tableNumber") { type = NavType.IntType }, navArgument("viewType") { type = NavType.StringType; nullable = true; defaultValue = "number" })) { backStackEntry -> val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 2; val viewType = backStackEntry.arguments?.getString("viewType"); PanikiaDetailScreen(tableNumber = tableNumber, initialView = viewType, onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.NUMBERS_ROUTE) { NumberScreen(onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.DRAWING_ROUTE) { DrawingScreen(onNavigateBack = { navController.popBackStack() }, onNavigateToHistory = { navController.navigate(AppDestinations.DRAWING_HISTORY_ROUTE) }) }
-        composable(route = AppDestinations.DRAWING_HISTORY_ROUTE) { DrawingHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
-        composable(route = AppDestinations.GAMES_CATEGORY_ROUTE) { GamesCategoryScreen(navController = navController) }
-        composable(route = AppDestinations.LEARNING_CATEGORY_ROUTE) { LearningCategoryScreen(navController = navController) }
-        composable(route = AppDestinations.SUDOKU_ROUTE) { SudokuScreen(navController = navController) }
-        composable(route = AppDestinations.FTMN_GAME_ROUTE) { FTMNScreen(navController = navController) }
-        composable(route = AppDestinations.SLIDING_BLOCK_PUZZLE_ROUTE) { SlidingBlockPuzzleScreen(navController = navController) }
-        composable(route = AppDestinations.WORD_PROBLEM_GAME_ROUTE) { WordProblemScreen(navController = navController) }
+        composable(AppDestinations.WELCOME_ROUTE) {
+            WelcomeScreen(onStartClick = {
+                navController.navigate(
+                    AppDestinations.HOME_ROUTE
+                ) { popUpTo(AppDestinations.WELCOME_ROUTE) { inclusive = true } }
+            })
+        }
+
+        // Home screen with a simple fade, since its internal animation is the main effect
+        composable(
+            route = AppDestinations.HOME_ROUTE,
+            enterTransition = { fadeIn(animationSpec = tween(300)) },
+            exitTransition = { fadeOut(animationSpec = tween(300)) }
+        ) { HomeScreen(navController = navController) }
+
+        // All other screens get the new slide transition
+        val transitions = ScreenTransitions
+
+        composable(
+            route = AppDestinations.GAME_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) {
+            GameScreen(
+                viewModel = gameViewModel,
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToScore = { navController.navigate(AppDestinations.SCORE_HISTORY_ROUTE) })
+        }
+        composable(
+            route = AppDestinations.VISUAL_GAME_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { VisualGameScreen(navController = navController) }
+        composable(
+            route = AppDestinations.LOGIC_GAME_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { LogicGameScreen(navController = navController) }
+        composable(
+            route = AppDestinations.SCORE_HISTORY_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { ScoreHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
+        composable(
+            route = AppDestinations.SETTINGS_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { SettingsScreen(navController = navController) }
+
+        composable(
+            route = AppDestinations.LANGUAGE_SELECTION_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { LanguageSelectionScreen(navController = navController) }
+        composable(
+            route = AppDestinations.THEME_SELECTION_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { ThemeSelectionScreen(navController = navController) }
+        composable(
+            route = AppDestinations.ABOUT_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) {
+            AboutScreen(
+                navController = navController,
+                onNavigateBack = { navController.popBackStack() })
+        }
+        composable(
+            route = AppDestinations.CHANGELOG_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { ChangelogScreen(onNavigateBack = { navController.popBackStack() }) }
+        composable(
+            route = AppDestinations.CALCULATOR_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { CalculatorScreen(onNavigateBack = { navController.popBackStack() }) }
+        composable(
+            route = AppDestinations.PANIKIA_LIST_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) {
+            PanikiaListScreen(
+                onTableClick = { tableNumber -> navController.navigate("panikia_detail/$tableNumber") },
+                onNavigateBack = { navController.popBackStack() })
+        }
+        composable(
+            route = AppDestinations.PANIKIA_DETAIL_ROUTE,
+            arguments = listOf(
+                navArgument("tableNumber") { type = NavType.IntType },
+                navArgument("viewType") {
+                    type = NavType.StringType; nullable = true; defaultValue = "number"
+                }),
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 2;
+            val viewType = backStackEntry.arguments?.getString("viewType"); PanikiaDetailScreen(
+            tableNumber = tableNumber,
+            initialView = viewType,
+            onNavigateBack = { navController.popBackStack() })
+        }
+        composable(
+            route = AppDestinations.NUMBERS_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { NumberScreen(onNavigateBack = { navController.popBackStack() }) }
+        composable(
+            route = AppDestinations.DRAWING_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) {
+            DrawingScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToHistory = { navController.navigate(AppDestinations.DRAWING_HISTORY_ROUTE) })
+        }
+        composable(
+            route = AppDestinations.DRAWING_HISTORY_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { DrawingHistoryScreen(onNavigateBack = { navController.popBackStack() }) }
+        composable(
+            route = AppDestinations.GAMES_CATEGORY_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { GamesCategoryScreen(navController = navController) }
+        composable(
+            route = AppDestinations.LEARNING_CATEGORY_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { LearningCategoryScreen(navController = navController) }
+        composable(
+            route = AppDestinations.SUDOKU_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { SudokuScreen(navController = navController) }
+        composable(
+            route = AppDestinations.FTMN_GAME_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { FTMNScreen(navController = navController) }
+        composable(
+            route = AppDestinations.SLIDING_BLOCK_PUZZLE_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { SlidingBlockPuzzleScreen(navController = navController) }
+        composable(
+            route = AppDestinations.WORD_PROBLEM_GAME_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { WordProblemScreen(navController = navController) }
+        composable(
+            AppDestinations.ORDINALS_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { OrdinalsScreen(navController = navController) }
+        composable(
+            AppDestinations.GANANA_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { GananaScreen(navController = navController) }
+        composable(
+            route = AppDestinations.UNIT_CONVERTER_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { UnitConverterScreen(navController = navController) }
+        // --- THIS IS THE NEW SCREEN YOU ARE ADDING ---
+        composable(
+            route = AppDestinations.UTILITY_CATEGORY_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }) { UtilityCategoryScreen(navController = navController) }
+// Number to Text Screen with Animations
+        composable(
+            route = AppDestinations.NUMBER_TO_TEXT_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }
+        ) {
+            NumberToTextScreen(
+                onNavigateBack = { navController.navigateUp() }
+            )
+        }
+
+        // Roman Numbers Screen with Animations
+        composable(
+            route = AppDestinations.ROMAN_ROUTE,
+            enterTransition = { transitions.enter },
+            exitTransition = { transitions.exit },
+            popEnterTransition = { transitions.popEnter },
+            popExitTransition = { transitions.popExit }
+        ) {
+            RomanNumbersScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
     }
 }
 
-
+// SplashScreen and other functions remain unchanged
 @Composable
 fun SplashScreen(navController: NavHostController) {
     var currentText by remember { mutableStateOf("") }
@@ -117,13 +357,10 @@ fun SplashScreen(navController: NavHostController) {
     var isFooterVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        // <<< 2. ADD THIS LINE TO RUN THE UPDATE CHECK >>>
         VersionManager.handleUpdate(context)
-
         launch { assetManager.checkForUpdates() }
         splashConfig = assetManager.getSplashConfig()
         startAnimation = true
-
         delay(200); currentText = splashConfig?.splashText1 ?: ""
         isFooterVisible = true
         delay(1500); currentText = splashConfig?.splashText2 ?: ""
@@ -134,7 +371,6 @@ fun SplashScreen(navController: NavHostController) {
         isFooterVisible = false
         currentText = ""
         delay(300)
-
         val intent = (context as? Activity)?.intent
         if (intent?.hasExtra(WIDGET_DESTINATION_KEY) == true) {
             val destinationRoute = intent.getStringExtra(WIDGET_DESTINATION_KEY)
@@ -149,7 +385,6 @@ fun SplashScreen(navController: NavHostController) {
         val destination = if (hasCompletedWelcome) AppDestinations.HOME_ROUTE else AppDestinations.WELCOME_ROUTE
         navController.navigate(destination) { popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true } }
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -167,7 +402,6 @@ fun SplashScreen(navController: NavHostController) {
                 )
             }
         }
-
         Column(
             modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -176,9 +410,8 @@ fun SplashScreen(navController: NavHostController) {
             val logoModel = if (!logoPath.isNullOrBlank() && File(logoPath).exists()) {
                 File(logoPath)
             } else {
-                R.drawable.logo
+                R.drawable.logo_splash
             }
-
             AsyncImage(
                 model = logoModel,
                 contentDescription = appLogoDesc,
@@ -200,7 +433,6 @@ fun SplashScreen(navController: NavHostController) {
                 )
             }
         }
-
         AnimatedVisibility(
             visible = isFooterVisible,
             modifier = Modifier.align(Alignment.BottomCenter),
@@ -225,7 +457,6 @@ fun SplashScreen(navController: NavHostController) {
         }
     }
 }
-
 
 private fun convertWordToNumber(word: String?): Int? {
     return when (word?.lowercase()) { "one" -> 1; "two" -> 2; "three" -> 3; "four" -> 4; "five" -> 5; "six" -> 6; "seven" -> 7; "eight" -> 8; "nine" -> 9; "ten" -> 10; else -> null }

@@ -1,10 +1,10 @@
 <resources>
     <!-- App Name -->
-    <string name="app_name">గణిత బిగ్య</string>
+    <string name="app_name">గణిత విజ్ఞ</string>
 
     <!-- Splash Screen -->
     <string name="splash_text_1">జై జగన్నాథ్</string>
-    <string name="splash_text_2">గణిత బిగ్యకు స్వాగతం</string>
+    <string name="splash_text_2">గణిత విజ్ఞకు స్వాగతం</string>
 
     <!-- Universal -->
     <string name="back_button_description">వెనుకకు</string>
@@ -12,7 +12,7 @@
     <string name="app_logo_description">యాప్ లోగో</string>
 
     <!-- Home Screen -->
-    <string name="home_title">గణిత బిగ్య</string>
+    <string name="home_title">గణిత విజ్ఞ</string>
     <string name="settings_button_description">సెట్టింగులు</string>
     <string name="menu_start_game">ఆట ప్రారంభించండి</string>
     <string name="menu_start_game_desc">౫+౪, ౪-౨</string>
@@ -26,7 +26,7 @@
     <string name="menu_calculator">కాలిక్యులేటర్</string>
 
     <!-- Game Screen & ViewModel -->
-    <string name="game_title">గణిత బిగ్య</string>
+    <string name="game_title">గణిత విజ్ఞ</string>
     <string name="game_settings_button_text">రకం: %1$s | స్థాయి: %2$s</string>
     <string name="game_go_to_current_question">ప్రస్తుత ప్రశ్నకు వెళ్ళండి</string>
     <string name="game_auto_scroll">ఆటో స్క్రోల్</string>
@@ -173,7 +173,7 @@
     <string name="support_report_bug_desc">ఏవైనా సమస్యలు ఉన్నాయా? మాకు తెలియజేయండి</string>
     <string name="support_share">షేర్ చేయండి</string>
     <string name="support_share_desc">ఈ యాప్‌ను మీ స్నేహితులు మరియు కుటుంబ సభ్యులతో షేర్ చేయండి</string>
-    <string name="share_message">గణిత బిగ్యను డౌన్‌లోడ్ చేసి ఆడండి: https://imsbg.github.io/Ganita-Bingya-App/</string>
+    <string name="share_message">గణిత విజ్ఞను డౌన్‌లోడ్ చేసి ఆడండి: https://imsbg.github.io/Ganita-Bingya-App/</string>
     <string name="social">సోషల్</string>
     <string name="social_website">వెబ్‌సైట్</string>
     <string name="social_website_desc">మా వెబ్‌సైట్‌ను సందర్శించండి</string>
@@ -195,7 +195,7 @@
     <string name="other_language_desc">యాప్ భాషను మార్చండి</string>
     <string name="language_dialog_title">భాషను ఎంచుకోండి</string>
     <string name="made_with_love">భారతదేశంలో ❤️ తో తయారు చేయబడింది</string>
-    <string name="download_notification_title">గణిత బిగ్య v%1$s డౌన్‌లోడ్ అవుతోంది</string>
+    <string name="download_notification_title">గణిత విజ్ఞ v%1$s డౌన్‌లోడ్ అవుతోంది</string>
     <string name="download_notification_description">కొత్త అప్‌డేట్ డౌన్‌లోడ్ అవుతోంది...</string>
     <string name="download_started">డౌన్‌లోడ్ ప్రారంభమవుతోంది...</string>
     <string name="download_failed">డౌన్‌లోడ్ విఫలమైంది: %1$s</string>
@@ -205,12 +205,12 @@
     <string name="later_button">తర్వాత</string>
     <string name="permission_request_toast">దయచేసి ఈ మూలం నుండి యాప్ ఇన్‌స్టాలేషన్‌ను అనుమతించండి.</string>
     <string name="up_to_date_title">యాప్ అప్‌డేట్‌గా ఉంది</string>
-    <string name="up_to_date_message">మీరు గణిత బిగ్య యొక్క తాజా వెర్షన్‌ను ఉపయోగిస్తున్నారు.</string>
+    <string name="up_to_date_message">మీరు గణిత విజ్ఞ యొక్క తాజా వెర్షన్‌ను ఉపయోగిస్తున్నారు.</string>
     <string name="error_title">లోపం</string>
     <string name="error_check_connection">అప్‌డేట్‌ల కోసం తనిఖీ చేయలేకపోయాము, దయచేసి మీ ఇంటర్నెట్ కనెక్షన్‌ని తనిఖీ చేయండి</string>
 
     <!-- Crash Handler -->
-    <string name="crash_screen_app_name">గణిత బిగ్య</string>
+    <string name="crash_screen_app_name">గణిత విజ్ఞ</string>
     <string name="crash_screen_oops_title">అయ్యో, ఏదో తప్పు జరిగింది</string>
     <string name="crash_screen_oops_message">యాప్ క్రాష్ అయ్యింది. మీరు ఈ లోప నివేదికను డెవలపర్‌కు పంపవచ్చు.</string>
     <string name="crash_screen_copy_report">నివేదికను కాపీ చేయండి</string>
@@ -225,7 +225,7 @@
     <!-- Math Reminder -->
     <string name="reminder_channel_name">GB గణిత రిమైండర్లు</string>
     <string name="reminder_channel_description">రోజువారీ నోటిఫికేషన్ సేవ</string>
-    <string name="reminder_notification_title">గణిత బిగ్య</string>
+    <string name="reminder_notification_title">గణిత విజ్ఞ</string>
     <string name="reminder_notification_text">మీరు ఈ రోజు గణితం చదవబోతున్నారా? నేను వేచి ఉన్నాను</string>
 
     <!-- SettingsScreen.kt -->
@@ -392,7 +392,7 @@
     <string name="settings_sound_title">సౌండ్ ఎఫెక్ట్స్</string>
     <string name="settings_sound_description">సరైన సమాధానం కోసం ధ్వని</string>
 
-    <string name="widget_description">గణిత బిగ్య యాప్‌ను త్వరగా తెరవండి</string>
+    <string name="widget_description">గణిత విజ్ఞ యాప్‌ను త్వరగా తెరవండి</string>
     <string name="widget_start_game">ఆట</string>
     <string name="widget_panikia">ఎక్కాలు</string>
     <string name="widget_numbers">సంఖ్యలు</string>
@@ -650,4 +650,221 @@
     <string name="all_languages">అన్ని భాషలు</string>
     <string name="save_settings">తదుపరి</string>
 
+    <string name="lreorder_description">అంశాలను పునఃక్రమబద్ధీకరించండి</string>
+    <string name="lsave_order_description">క్రమాన్ని సేవ్ చేయండి</string>
+    <string name="lreset_order_description">డిఫాల్ట్ క్రమానికి రీసెట్ చేయండి</string>
+    <string name="lmove_up_description">అంశాన్ని పైకి తరలించండి</string>
+    <string name="lmove_down_description">అంశాన్ని క్రిందికి తరలించండి</string>
+
+    <!-- Add this string for the history language mismatch -->
+    <string name="history_language_mismatch">ఈ ప్రశ్నను చూడటానికి దయచేసి %s భాషకు మార్చండి.</string>
+    <string name="history_your_answer_label">మీ సమాధానం: %s</string>
+    <string name="history_correct_answer_label">సరైన సమాధానం: %s</string>
+    <string name="history_result_label">ఫలితం: %s</string>
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">క్రమ సంఖ్యలు</string>
+    <string name="ordinals_screen_title">క్రమ సంఖ్యలు</string>
+    <string name="header_number">సంఖ్య</string>
+    <string name="header_word">పదం</string>
+    <string name="header_symbol">చిహ్నం</string>
+
+    <!-- Telugu Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>౧</item><item>౨</item><item>౩</item><item>౪</item><item>౫</item><item>౬</item><item>౭</item><item>౮</item><item>౯</item><item>౧౦</item><item>౧౧</item><item>౧౨</item><item>౧౩</item><item>౧౪</item><item>౧౫</item><item>౧౬</item><item>౧౭</item><item>౧౮</item><item>౧౯</item><item>౨౦</item><item>౨౧</item><item>౨౨</item><item>౨౩</item><item>౨౪</item><item>౨౫</item><item>౨౬</item><item>౨౭</item><item>౨౮</item><item>౨౯</item><item>౩౦</item><item>౩౧</item><item>౩౨</item><item>౩౩</item><item>౩౪</item><item>౩౫</item><item>౩౬</item><item>౩౭</item><item>౩౮</item><item>౩౯</item><item>౪౦</item><item>౪౧</item><item>౪౨</item><item>౪౩</item><item>౪౪</item><item>౪౫</item><item>౪౬</item><item>౪౭</item><item>౪౮</item><item>౪౯</item><item>౫౦</item><item>౫౧</item><item>౫౨</item><item>౫౩</item><item>౫౪</item><item>౫౫</item><item>౫౬</item><item>౫౭</item><item>౫౮</item><item>౫౯</item><item>౬౦</item><item>౬౧</item><item>౬౨</item><item>౬౩</item><item>౬౪</item><item>౬౫</item><item>౬౬</item><item>౬౭</item><item>౬౮</item><item>౬౯</item><item>౭౦</item><item>౭౧</item><item>౭౨</item><item>౭౩</item><item>౭౪</item><item>౭౫</item><item>౭౬</item><item>౭౭</item><item>౭౮</item><item>౭౯</item><item>౮౦</item><item>౮౧</item><item>౮౨</item><item>౮౩</item><item>౮౪</item><item>౮౫</item><item>౮౬</item><item>౮౭</item><item>౮౮</item><item>౮౯</item><item>౯౦</item><item>౯౧</item><item>౯౨</item><item>౯౩</item><item>౯౪</item><item>౯౫</item><item>౯౬</item><item>౯౭</item><item>౯౮</item><item>౯౯</item><item>౧౦౦</item><item>౨౦౦</item>
+        <item>౩౦౦</item>
+        <item>౪౦౦</item>
+        <item>౫౦౦</item>
+        <item>౬౦౦</item>
+        <item>౭౦౦</item>
+        <item>౮౦౦</item>
+        <item>౯౦౦</item>
+        <item>౧౦౦౦</item>
+        <item>౧౦౦౦౦౦</item>
+        <item>౧౦౦౦౦౦౦౦</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>మొదటి</item><item>రెండవ</item><item>మూడవ</item><item>నాల్గవ</item><item>ఐదవ</item><item>ఆరవ</item><item>ఏడవ</item><item>ఎనిమిదవ</item><item>తొమ్మిదవ</item><item>పదవ</item><item>పదకొండవ</item><item>పన్నెండవ</item><item>పదమూడవ</item><item>పద్నాల్గవ</item><item>పదిహేనవ</item><item>పదహారవ</item><item>పదిహేడవ</item><item>పద్దెనిమిదవ</item><item>పంతొమ్మిదవ</item><item>ఇరవయ్యవ</item><item>ఇరవై ఒకటవ</item><item>ఇరవై రెండవ</item><item>ఇరవై మూడవ</item><item>ఇరవై నాల్గవ</item><item>ఇరవై ఐదవ</item><item>ఇరవై ఆరవ</item><item>ఇరవై ఏడవ</item><item>ఇరవై ఎనిమిదవ</item><item>ఇరవై తొమ్మిదవ</item><item>ముప్పైవ</item><item>ముప్పై ఒకటవ</item><item>ముప్పై రెండవ</item><item>ముప్పై మూడవ</item><item>ముప్పై నాల్గవ</item><item>ముప్పై ఐదవ</item><item>ముప్పై ఆరవ</item><item>ముప్పై ఏడవ</item><item>ముప్పై ఎనిమిదవ</item><item>ముప్పై తొమ్మిదవ</item><item>నలభైవ</item><item>నలభై ఒకటవ</item><item>నలభై రెండవ</item><item>నలభై మూడవ</item><item>నలభై నాల్గవ</item><item>నలభై ఐదవ</item><item>నలభై ఆరవ</item><item>నలభై ఏడవ</item><item>నలభై ఎనిమిదవ</item><item>నలభై తొమ్మిదవ</item><item>యాభైవ</item><item>యాభై ఒకటవ</item><item>యాభై రెండవ</item><item>యాభై మూడవ</item><item>యాభై నాల్గవ</item><item>యాభై ఐదవ</item><item>యాభై ఆరవ</item><item>యాభై ఏడవ</item><item>యాభై ఎనిమిదవ</item><item>యాభై తొమ్మిదవ</item><item>అరవైవ</item><item>అరవై ఒకటవ</item><item>అరవై రెండవ</item><item>అరవై మూడవ</item><item>అరవై నాల్గవ</item><item>అరవై ఐదవ</item><item>అరవై ఆరవ</item><item>అరవై ఏడవ</item><item>అరవై ఎనిమిదవ</item><item>అరవై తొమ్మిదవ</item><item>డెబ్బైవ</item><item>డెబ్బై ఒకటవ</item><item>డెబ్బై రెండవ</item><item>డెబ్బై మూడవ</item><item>డెబ్బై నాల్గవ</item><item>డెబ్బై ఐదవ</item><item>డెబ్బై ఆరవ</item><item>డెబ్బై ఏడవ</item><item>డెబ్బై ఎనిమిదవ</item><item>డెబ్బై తొమ్మిదవ</item><item>ఎనభైవ</item><item>ఎనభై ఒకటవ</item><item>ఎనభై రెండవ</item><item>ఎనభై మూడవ</item><item>ఎనభై నాల్గవ</item><item>ఎనభై ఐదవ</item><item>ఎనభై ఆరవ</item><item>ఎనభై ఏడవ</item><item>ఎనభై ఎనిమిదవ</item><item>ఎనభై తొమ్మిదవ</item><item>తొంభైవ</item><item>తొంభై ఒకటవ</item><item>తొంభై రెండవ</item><item>తొంభై మూడవ</item><item>తొంభై నాల్గవ</item><item>తొంభై ఐదవ</item><item>తొంభై ఆరవ</item><item>తొంభై ఏడవ</item><item>తొంభై ఎనిమిదవ</item><item>తొంభై తొమ్మిదవ</item><item>వందవ</item>
+        <item>రెండు వందలవ</item>
+        <item>మూడు వందలవ</item>
+        <item>నాలుగు వందలవ</item>
+        <item>ఐదు వందలవ</item>
+        <item>ఆరు వందలవ</item>
+        <item>ఏడు వందలవ</item>
+        <item>ఎనిమిది వందలవ</item>
+        <item>తొమ్మిది వందలవ</item>
+        <item>వెయ్యవ</item>
+        <item>లక్షవ</item>
+        <item>కోటివ</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>౧వ</item><item>౨వ</item><item>౩వ</item><item>౪వ</item><item>౫వ</item><item>౬వ</item><item>౭వ</item><item>౮వ</item><item>౯వ</item><item>౧౦వ</item><item>౧౧వ</item><item>౧౨వ</item><item>౧౩వ</item><item>౧౪వ</item><item>౧౫వ</item><item>౧౬వ</item><item>౧౭వ</item><item>౧౮వ</item><item>౧౯వ</item><item>౨౦వ</item><item>౨౧వ</item><item>౨౨వ</item><item>౨౩వ</item><item>౨౪వ</item><item>౨౫వ</item><item>౨౬వ</item><item>౨౭వ</item><item>౨౮వ</item><item>౨౯వ</item><item>౩౦వ</item><item>౩౧వ</item><item>౩౨వ</item><item>౩౩వ</item><item>౩౪వ</item><item>౩౫వ</item><item>౩౬వ</item><item>౩౭వ</item><item>౩౮వ</item><item>౩౯వ</item><item>౪౦వ</item><item>౪౧వ</item><item>౪౨వ</item><item>౪౩వ</item><item>౪౪వ</item><item>౪౫వ</item><item>౪౬వ</item><item>౪౭వ</item><item>౪౮వ</item><item>౪౯వ</item><item>౫౦వ</item><item>౫౧వ</item><item>౫౨వ</item><item>౫౩వ</item><item>౫౪వ</item><item>౫౫వ</item><item>౫౬వ</item><item>౫౭వ</item><item>౫౮వ</item><item>౫౯వ</item><item>౬౦వ</item><item>౬౧వ</item><item>౬౨వ</item><item>౬౩వ</item><item>౬౪వ</item><item>౬౫వ</item><item>౬౬వ</item><item>౬౭వ</item><item>౬౮వ</item><item>౬౯వ</item><item>౭౦వ</item><item>౭౧వ</item><item>౭౨వ</item><item>౭౩వ</item><item>౭౪వ</item><item>౭౫వ</item><item>౭౬వ</item><item>౭౭వ</item><item>౭౮వ</item><item>౭౯వ</item><item>౮౦వ</item><item>౮౧వ</item><item>౮౨వ</item><item>౮౩వ</item><item>౮౪వ</item><item>౮౫వ</item><item>౮౬వ</item><item>౮౭వ</item><item>౮౮వ</item><item>౮౯వ</item><item>౯౦వ</item><item>౯౧వ</item><item>౯౨వ</item><item>౯౩వ</item><item>౯౪వ</item><item>౯౫వ</item><item>౯౬వ</item><item>౯౭వ</item><item>౯౮వ</item><item>౯౯వ</item><item>౧౦౦వ</item>
+        <item>౨౦౦వ</item>
+        <item>౩౦౦వ</item>
+        <item>౪౦౦వ</item>
+        <item>౫౦౦వ</item>
+        <item>౬౦౦వ</item>
+        <item>౭౦౦వ</item>
+        <item>౮౦౦వ</item>
+        <item>౯౦౦వ</item>
+        <item>౧౦౦౦వ</item>
+        <item>౧౦౦౦౦౦వ</item>
+        <item>౧౦౦౦౦౦౦౦వ</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">గణన వ్యవస్థలు</string>
+    <string name="ganana_screen_title">గణన వ్యవస్థలు</string>
+    <string name="header_name">పేరు</string>
+
+    <string-array name="ganana_numbers">
+        <item>౧</item>
+        <item>౧౦</item>
+        <item>౧౦౦</item>
+        <item>౧,౦౦౦</item>
+        <item>౧౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+        <item>౧,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦,౦౦౦</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>ఒకటి</item>
+        <item>పది</item>
+        <item>వంద</item>
+        <item>వెయ్యి</item>
+        <item>పది వేలు</item>
+        <item>లక్ష</item>
+        <item>పది లక్షలు</item>
+        <item>కోటి</item>
+        <item>పది కోట్లు</item>
+        <item>అరబ్</item>
+        <item>పది అరబ్లు (ఖరబ్)</item>
+        <item>ఖరబ్</item>
+        <item>పది ఖరబ్లు (నీల్)</item>
+        <item>నీల్</item>
+        <item>పది నీల్లు (పద్మ)</item>
+        <item>పద్మ</item>
+        <item>పది పద్మలు (శంఖు)</item>
+        <item>శంఖు</item>
+    </string-array>
+
+    <string name="welcome_subtitle">నమస్కారం</string>
+    <string name="preferred_languages">సిఫార్సు చేయబడినవి</string>
+    <string name="other_languages">అన్ని భాషలు</string>
+    <string name="selected">ఎంచుకోబడింది</string>
+    <string name="language_restart_dynamic_message">ఇది యాప్ భాషను %1$s నుండి %2$sకి మారుస్తుంది</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">ప్రమాణాల మార్పిడి</string>
+    <string name="unit_converter_select_category">ప్రారంభించడానికి ఒక వర్గాన్ని ఎంచుకోండి</string>
+    <string name="unit_converter_from">నుండి</string>
+    <string name="unit_converter_to">కు</string>
+    <string name="unit_converter_enter_value">విలువను నమోదు చేయండి</string>
+    <string name="unit_converter_swap_description">యూనిట్‌లను మార్చండి</string>
+
+    <!-- Categories -->
+    <string name="category_length">పొడవు</string>
+    <string name="category_weight">బరువు</string>
+    <string name="category_capacity">సామర్థ్యం</string>
+    <string name="category_temperature">ఉష్ణోగ్రత</string>
+    <string name="category_time">సమయం</string>
+    <string name="category_storage">స్టోరేజ్</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">మిల్లీమీటర్</string>
+    <string name="unit_centimetre">సెంటీమీటర్</string>
+    <string name="unit_metre">మీటర్</string>
+    <string name="unit_kilometre">కిలోమీటర్</string>
+    <string name="unit_inch">అంగుళం</string>
+    <string name="unit_foot">అడుగు</string>
+    <string name="unit_yard">గజం</string>
+    <string name="unit_mile">మైలు</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">మిల్లీగ్రాము</string>
+    <string name="unit_gram">గ్రాము</string>
+    <string name="unit_kilogram">కిలోగ్రాము</string>
+    <string name="unit_quintal">క్వింటాల్</string>
+    <string name="unit_tonne">టన్ను</string>
+    <string name="unit_pound">పౌండ్</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">మిల్లీలీటర్</string>
+    <string name="unit_litre">లీటర్</string>
+    <string name="unit_kilolitre">కిలోలీటర్</string>
+    <string name="unit_cubic_centimetre">ఘనపు సెంటీమీటర్</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">సెల్సియస్</string>
+    <string name="unit_fahrenheit">ఫారెన్‌హీట్</string>
+    <string name="unit_kelvin">కెల్విన్</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">సెకను</string>
+    <string name="unit_minute">నిమిషం</string>
+    <string name="unit_hour">గంట</string>
+    <string name="unit_day">రోజు</string>
+    <string name="unit_week">వారం</string>
+    <string name="unit_month">నెల</string>
+    <string name="unit_year">సంవత్సరం</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">బిట్</string>
+    <string name="unit_kilobit">కిలోబిట్</string>
+    <string name="unit_megabit">మెగాబిట్</string>
+    <string name="unit_gigabit">గిగాబిట్</string>
+    <string name="unit_terabit">టెరాబిట్</string>
+    <string name="unit_petabit">పెటాబిట్</string>
+    <string name="unit_exabit">ఎక్సాబిట్</string>
+    <string name="unit_byte">బైట్</string>
+    <string name="unit_kilobyte">కిలోబైట్</string>
+    <string name="unit_megabyte">మెగాబైట్</string>
+    <string name="unit_gigabyte">గిగాబైట్</string>
+    <string name="unit_terabyte">టెరాబైట్</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">నూట యాభై</string>
+    <string name="word_250_special">రెండు వందల యాభై</string>
+    <string name="word_1500_special">వెయ్యి ఐదు వందలు</string>
+    <string name="word_thousand">వెయ్యి</string>
+    <string name="word_lakh">లక్ష</string>
+    <string name="word_crore">కోటి</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">సంఖ్య నుండి అక్షరాలకు</string>
+    <string name="ntt_enter_number">సంఖ్యను నమోదు చేయండి</string>
+    <string name="ntt_convert_button">మార్చు</string>
+    <string name="ntt_result_english">ఇంగ్లీష్:</string>
+    <string name="ntt_result_odia">ఒడియా:</string>
+
+    <string name="word_rupees">రూపాయలు</string>
+    <string name="word_only">మాత్రమే</string>
+    <string name="btn_copy">కాపీ</string>
+    <string name="msg_copied">టెక్స్ట్ క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది</string>
+    <string name="lbl_bank_format">చెక్ / బ్యాంక్ ఫార్మాట్</string>
+    <string name="btn_screenshot_mode">స్క్రీన్‌షాట్ మోడ్</string>
+    <string name="msg_exit_screenshot">నిష్క్రమించడానికి ఎక్కడైనా నొక్కండి</string>
+    <string name="menu_roman_numbers">రోమన్ సంఖ్యలు</string>
+    <string name="roman_screen_title">రోమన్ సంఖ్యలు</string>
+    <string name="col_number">సంఖ్య</string>
+    <string name="col_roman">రోమన్</string>
+    <string name="btn_load_more">తరువాతి 100 సంఖ్యలను లోడ్ చేయి</string>
+    <string name="msg_list_complete">మీరు 1000కి చేరుకున్నారు!</string>
+    <string name="action_search">శోధించు</string>
+    <string name="search_hint">సంఖ్యను నమోదు చేయండి (ఉదా. 50)</string>
+    <string name="search_no_result">చెల్లని సంఖ్య లేదా చాలా పెద్దది</string>
+    <string name="action_close_search">శోధనను మూసివేయి</string>
+    <string name="search_result_label">ఫలితం:</string>
+    <string name="view_all_contributors">కంట్రిబ్యూటర్లందరినీ చూడండి</string>
+    <string name="contributors_msg">ఈ యాప్‌ను రూపొందించడంలో సహాయపడిన వారికి ధన్యవాదాలు</string>
 </resources>

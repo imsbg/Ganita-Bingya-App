@@ -4,7 +4,7 @@
     <background android:drawable="@drawable/ic_launcher_background" />
 
     <!-- 2. The regular, full-color logo you made -->
-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
 
     <!-- 3. The special monochrome version for theming -->
     <monochrome android:drawable="@drawable/ic_launcher_monochrome" />

@@ -649,4 +649,217 @@
     <string name="all_languages">সমস্ত ভাষা</string>
     <string name="save_settings">পরবর্তী</string>
 
+    <string name="history_language_mismatch">এই প্রশ্নটি দেখতে অনুগ্রহ করে %s ভাষায় পরিবর্তন করুন।</string>
+    <string name="history_your_answer_label">আপনার উত্তর: %s</string>
+    <string name="history_correct_answer_label">সঠিক উত্তর: %s</string>
+    <string name="history_result_label">ফলাফল: %s</string>
+
+    <string name="lreorder_description">আইটেমগুলি পুনর্বিন্যাস করুন</string>
+    <string name="lsave_order_description">ক্রম সংরক্ষণ করুন</string>
+    <string name="lreset_order_description">ডিফল্ট ক্রমে রিসেট করুন</string>
+    <string name="lmove_up_description">আইটেম উপরে তুলুন</string>
+    <string name="lmove_down_description">আইটেম নিচে নামান</string>
+
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">ক্রমবাচক সংখ্যা</string>
+    <string name="ordinals_screen_title">ক্রমবাচক সংখ্যা</string>
+    <string name="header_number">সংখ্যা</string>
+    <string name="header_word">শব্দ</string>
+    <string name="header_symbol">প্রতীক</string>
+
+    <!-- Bengali Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>১</item><item>২</item><item>৩</item><item>৪</item><item>৫</item><item>৬</item><item>৭</item><item>৮</item><item>৯</item><item>১০</item><item>১১</item><item>১২</item><item>১৩</item><item>১৪</item><item>১৫</item><item>১৬</item><item>১৭</item><item>১৮</item><item>১৯</item><item>২০</item><item>২১</item><item>২২</item><item>২৩</item><item>২৪</item><item>২৫</item><item>২৬</item><item>২৭</item><item>২৮</item><item>২৯</item><item>৩০</item><item>৩১</item><item>৩২</item><item>৩৩</item><item>৩৪</item><item>৩৫</item><item>৩৬</item><item>৩৭</item><item>৩৮</item><item>৩৯</item><item>৪০</item><item>৪১</item><item>৪২</item><item>৪৩</item><item>৪৪</item><item>৪৫</item><item>৪৬</item><item>৪৭</item><item>৪৮</item><item>৪৯</item><item>৫০</item><item>৫১</item><item>৫২</item><item>৫৩</item><item>৫৪</item><item>৫৫</item><item>৫৬</item><item>৫৭</item><item>৫৮</item><item>৫৯</item><item>৬০</item><item>৬১</item><item>৬২</item><item>৬৩</item><item>৬৪</item><item>৬৫</item><item>৬৬</item><item>৬৭</item><item>৬৮</item><item>৬৯</item><item>৭০</item><item>৭১</item><item>৭২</item><item>৭৩</item><item>৭৪</item><item>৭৫</item><item>৭৬</item><item>৭৭</item><item>৭৮</item><item>৭৯</item><item>৮০</item><item>৮১</item><item>৮২</item><item>৮৩</item><item>৮৪</item><item>৮৫</item><item>৮৬</item><item>৮৭</item><item>৮৮</item><item>৮৯</item><item>৯০</item><item>৯১</item><item>৯২</item><item>৯৩</item><item>৯৪</item><item>৯৫</item><item>৯৬</item><item>৯৭</item><item>৯৮</item><item>৯৯</item><item>১০০</item><item>২০০</item>
+        <item>৩০০</item>
+        <item>৪০০</item>
+        <item>৫০০</item>
+        <item>৬০০</item>
+        <item>৭০০</item>
+        <item>৮০০</item>
+        <item>৯০০</item>
+        <item>১০০০</item>
+        <item>১০০০০০</item>
+        <item>১০০০০০০০</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>প্রথম</item><item>দ্বিতীয়</item><item>তৃতীয়</item><item>চতুর্থ</item><item>পঞ্চম</item><item>ষষ্ঠ</item><item>সপ্তম</item><item>অষ্টম</item><item>নবম</item><item>দশম</item><item>একাদশ</item><item>দ্বাদশ</item><item>ত্রয়োদশ</item><item>চতুর্দশ</item><item>পঞ্চদশ</item><item>ষোড়শ</item><item>সপ্তদশ</item><item>অষ্টাদশ</item><item>ঊনবিংশ</item><item>বিংশ</item><item>একবিংশ</item><item>দ্বাবিংশ</item><item>ত্রয়োবিংশ</item><item>চতুর্বিংশ</item><item>পঞ্চবিংশ</item><item>ষট্‌বিংশ</item><item>সপ্তবিংশ</item><item>অষ্টাবিংশ</item><item>ঊনত্রিংশ</item><item>ত্রিংশ</item><item>একত্রিংশ</item><item>দ্বাত্রিংশ</item><item>ত্রয়োত্রিংশ</item><item>চৌত্রিংশ</item><item>পঞ্চত্রিংশ</item><item>ষট্‌ত্রিংশ</item><item>সপ্তত্রিংশ</item><item>অষ্টাত্রিংশ</item><item>ঊনচত্বারিংশ</item><item>চত্বারিংশ</item><item>একচত্বারিংশ</item><item>দ্বিচত্বারিংশ</item><item>ত্রিচত্বারিংশ</item><item>চতুশ্চত্বারিংশ</item><item>পঞ্চচত্বারিংশ</item><item>ষট্‌চত্বারিংশ</item><item>সপ্তচত্বারিংশ</item><item>অষ্টচত্বারিংশ</item><item>ঊনপঞ্চাশত্তম</item><item>পঞ্চাশত্তম</item><item>একপঞ্চাশত্তম</item><item>দ্বিপঞ্চাশত্তম</item><item>ত্রিপঞ্চাশত্তম</item><item>চতুঃপঞ্চাশত্তম</item><item>পঞ্চপঞ্চাশত্তম</item><item>ষট্‌পঞ্চাশত্তম</item><item>সপ্তপঞ্চাশত্তম</item><item>অষ্টপঞ্চাশত্তম</item><item>ঊনষষ্টিতম</item><item>ষষ্টিতম</item><item>একষষ্টিতম</item><item>দ্বিষষ্টিতম</item><item>ত্রিষষ্টিতম</item><item>চতুঃষষ্টিতম</item><item>পঞ্চষষ্টিতম</item><item>ষট্‌ষষ্টিতম</item><item>সপ্তষষ্টিতম</item><item>অষ্টষষ্টিতম</item><item>ঊনসপ্ততিতম</item><item>সপ্ততিতম</item><item>একসপ্ততিতম</item><item>দ্বিসপ্ততিতম</item><item>ত্রিসপ্ততিতম</item><item>চতুঃসপ্ততিতম</item><item>পঞ্চসপ্ততিতম</item><item>ষট্‌সপ্ততিতম</item><item>সপ্তসপ্ততিতম</item><item>অষ্টসপ্ততিতম</item><item>ঊনাশীতিতম</item><item>অশীতিতম</item><item>একাশীতিতম</item><item>দ্ব্যশীতিতম</item><item>ত্র্যশীতিতম</item><item>চতুরশীতিতম</item><item>পঞ্চাশীতিতম</item><item>ষড়শীতিতম</item><item>সপ্তাশীতিতম</item><item>অষ্টাশীতিতম</item><item>ঊননব্বইতম</item><item>নব্বইতম</item><item>একানব্বইতম</item><item>বিরানব্বইতম</item><item>তিরানব্বইতম</item><item>চুরানব্বইতম</item><item>পঁচানব্বইতম</item><item>ছিয়ানব্বইতম</item><item>সাতানব্বইতম</item><item>আটানব্বইতম</item><item>নিরানব্বইতম</item><item>শততম</item>
+        <item>দ্বিশততম</item>
+        <item>ত্রিশততম</item>
+        <item>চতুঃশততম</item>
+        <item>পঞ্চশততম</item>
+        <item>ষট্‌শততম</item>
+        <item>সপ্তশততম</item>
+        <item>অষ্টশততম</item>
+        <item>নবশততম</item>
+        <item>সহস্রতম</item>
+        <item>লক্ষতম</item>
+        <item>কোটিতম</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>১ম</item><item>২য়</item><item>৩য়</item><item>৪র্থ</item><item>৫ম</item><item>৬ষ্ঠ</item><item>৭ম</item><item>৮ম</item><item>৯ম</item><item>১০ম</item><item>১১শ</item><item>১২শ</item><item>১৩শ</item><item>১৪শ</item><item>১৫শ</item><item>১৬শ</item><item>১৭শ</item><item>১৮শ</item><item>১৯শ</item><item>২০শ</item><item>২১শ</item><item>২২শ</item><item>২৩শ</item><item>২৪শ</item><item>২৫শ</item><item>২৬শ</item><item>২৭শ</item><item>২৮শ</item><item>২৯শ</item><item>৩০শ</item><item>৩১শ</item><item>৩২শ</item><item>৩৩শ</item><item>৩৪শ</item><item>৩৫শ</item><item>৩৬শ</item><item>৩৭শ</item><item>৩৮শ</item><item>৩৯শ</item><item>৪০শ</item><item>৪১শ</item><item>৪২শ</item><item>৪৩শ</item><item>৪৪শ</item><item>৪৫শ</item><item>৪৬শ</item><item>৪৭শ</item><item>৪৮শ</item><item>৪৯তম</item><item>৫০তম</item><item>৫১তম</item><item>৫২তম</item><item>৫৩তম</item><item>৫৪তম</item><item>৫৫তম</item><item>৫৬তম</item><item>৫৭তম</item><item>৫৮তম</item><item>৫৯তম</item><item>৬০তম</item><item>৬১তম</item><item>৬২তম</item><item>৬৩তম</item><item>৬৪তম</item><item>৬৫তম</item><item>৬৬তম</item><item>৬৭তম</item><item>৬৮তম</item><item>৬৯তম</item><item>৭০তম</item><item>৭১তম</item><item>৭২তম</item><item>৭৩তম</item><item>৭৪তম</item><item>৭৫তম</item><item>৭৬তম</item><item>৭৭তম</item><item>৭৮তম</item><item>৭৯তম</item><item>৮০তম</item><item>৮১তম</item><item>৮২তম</item><item>৮৩তম</item><item>৮৪তম</item><item>৮৫তম</item><item>৮৬তম</item><item>৮৭তম</item><item>৮৮তম</item><item>৮৯তম</item><item>৯০তম</item><item>৯১তম</item><item>৯২তম</item><item>৯৩তম</item><item>৯৪তম</item><item>৯৫তম</item><item>৯৬তম</item><item>৯৭তম</item><item>৯৮তম</item><item>৯৯তম</item><item>১০০তম</item>
+        <item>২০০তম</item>
+        <item>৩০০তম</item>
+        <item>৪০০তম</item>
+        <item>৫০০তম</item>
+        <item>৬০০তম</item>
+        <item>৭০০তম</item>
+        <item>৮০০তম</item>
+        <item>৯০০তম</item>
+        <item>১০০০তম</item>
+        <item>১০০০০০তম</item>
+        <item>১০০০০০০০তম</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">গণনা পদ্ধতি</string>
+    <string name="ganana_screen_title">গণনা পদ্ধতি</string>
+    <string name="header_name">নাম</string>
+
+    <string-array name="ganana_numbers">
+        <item>১</item>
+        <item>১০</item>
+        <item>১০০</item>
+        <item>১,০০০</item>
+        <item>১০,০০০</item>
+        <item>১,০০,০০০</item>
+        <item>১০,০০,০০০</item>
+        <item>১,০০,০০,০০০</item>
+        <item>১০,০০,০০,০০০</item>
+        <item>১,০০,০০,০০,০০০</item>
+        <item>১০,০০,০০,০০,০০০</item>
+        <item>১,০০,০০,০০,০০,০০০</item>
+        <item>১০,০০,০০,০০,০০,০০০</item>
+        <item>১,০০,০০,০০,০০,০০,০০০</item>
+        <item>১০,০০,০০,০০,০০,০০,০০০</item>
+        <item>১,০০,০০,০০,০০,০০,০০,০০০</item>
+        <item>১০,০০,০০,০০,০০,০০,০০,০০০</item>
+        <item>১,০০,০০,০০,০০,০০,০০,০০,০০০</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>এক</item>
+        <item>দশ</item>
+        <item>শত</item>
+        <item>সহস্র</item>
+        <item>অযুত</item>
+        <item>লক্ষ</item>
+        <item>নিযুত</item>
+        <item>কোটি</item>
+        <item>অর্বুদ</item>
+        <item>বৃন্দ</item>
+        <item>খর্ব</item>
+        <item>নিখর্ব</item>
+        <item>শঙ্খ</item>
+        <item>পদ্ম</item>
+        <item>সাগর</item>
+        <item>অন্ত্য</item>
+        <item>মধ্য</item>
+        <item>পরার্ধ</item>
+    </string-array>
+
+    <string name="welcome_subtitle">নমস্কার</string>
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">একক রূপান্তরকারী</string>
+    <string name="unit_converter_select_category">শুরু করতে একটি বিভাগ নির্বাচন করুন</string>
+    <string name="unit_converter_from">থেকে</string>
+    <string name="unit_converter_to">তে</string>
+    <string name="unit_converter_enter_value">মান লিখুন</string>
+    <string name="unit_converter_swap_description">ইউনিট অদলবদল করুন</string>
+
+    <!-- Categories -->
+    <string name="category_length">দৈর্ঘ্য</string>
+    <string name="category_weight">ওজন</string>
+    <string name="category_capacity">ধারণক্ষমতা</string>
+    <string name="category_temperature">তাপমাত্রা</string>
+    <string name="category_time">সময়</string>
+    <string name="category_storage">স্টোরেজ</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">মিলিমিটার</string>
+    <string name="unit_centimetre">সেন্টিমিটার</string>
+    <string name="unit_metre">মিটার</string>
+    <string name="unit_kilometre">কিলোমিটার</string>
+    <string name="unit_inch">ইঞ্চি</string>
+    <string name="unit_foot">ফুট</string>
+    <string name="unit_yard">গজ</string>
+    <string name="unit_mile">মাইল</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">মিলিগ্রাম</string>
+    <string name="unit_gram">গ্রাম</string>
+    <string name="unit_kilogram">কিলোগ্রাম</string>
+    <string name="unit_quintal">কুইন্টাল</string>
+    <string name="unit_tonne">টন</string>
+    <string name="unit_pound">পাউন্ড</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">মিলিলিটার</string>
+    <string name="unit_litre">লিটার</string>
+    <string name="unit_kilolitre">কিলোলিটার</string>
+    <string name="unit_cubic_centimetre">ঘন সেন্টিমিটার</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">সেলসিয়াস</string>
+    <string name="unit_fahrenheit">ফারেনহাইট</string>
+    <string name="unit_kelvin">কেলভিন</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">সেকেন্ড</string>
+    <string name="unit_minute">মিনিট</string>
+    <string name="unit_hour">ঘণ্টা</string>
+    <string name="unit_day">দিন</string>
+    <string name="unit_week">সপ্তাহ</string>
+    <string name="unit_month">মাস</string>
+    <string name="unit_year">বছর</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">বিট</string>
+    <string name="unit_kilobit">কিলোবিট</string>
+    <string name="unit_megabit">মেগাবিট</string>
+    <string name="unit_gigabit">গিগাবিট</string>
+    <string name="unit_terabit">টেরাবিট</string>
+    <string name="unit_petabit">পেটাবিট</string>
+    <string name="unit_exabit">এক্সাবিট</string>
+    <string name="unit_byte">বাইট</string>
+    <string name="unit_kilobyte">কিলোবাইট</string>
+    <string name="unit_megabyte">মেগাবাইট</string>
+    <string name="unit_gigabyte">গিগাবাইট</string>
+    <string name="unit_terabyte">টেরাবাইট</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">একশত পঞ্চাশ</string>
+    <string name="word_250_special">দুইশত পঞ্চাশ</string>
+    <string name="word_1500_special">এক হাজার পাঁচশত</string>
+    <string name="word_thousand">হাজার</string>
+    <string name="word_lakh">লক্ষ</string>
+    <string name="word_crore">কোটি</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">সংখ্যা কথায় রূপান্তর</string>
+    <string name="ntt_enter_number">সংখ্যাটি লিখুন</string>
+    <string name="ntt_convert_button">রূপান্তর করুন</string>
+    <string name="ntt_result_english">ইংরেজি:</string>
+    <string name="ntt_result_odia">ওড়িয়া:</string>
+
+    <string name="word_rupees">টাকা</string>
+    <string name="word_only">মাত্র</string>
+    <string name="btn_copy">কপি</string>
+    <string name="msg_copied">টেক্সট ক্লিপবোর্ডে কপি করা হয়েছে</string>
+    <string name="lbl_bank_format">চেক / ব্যাংক ফরম্যাট</string>
+    <string name="btn_screenshot_mode">স্ক্রিনশট মোড</string>
+    <string name="msg_exit_screenshot">বের হতে যেকোনো জায়গায় ট্যাপ করুন</string>
+    <string name="menu_roman_numbers">রোমান সংখ্যা</string>
+    <string name="roman_screen_title">রোমান সংখ্যা</string>
+    <string name="col_number">সংখ্যা</string>
+    <string name="col_roman">রোমান</string>
+    <string name="btn_load_more">পরবর্তী ১০০টি সংখ্যা লোড করুন</string>
+    <string name="msg_list_complete">আপনি ১০০০ এ পৌঁছেছেন!</string>
+    <string name="action_search">অনুসন্ধান</string>
+    <string name="search_hint">সংখ্যা লিখুন (যেমন ৫০)</string>
+    <string name="search_no_result">সংখ্যাটি সঠিক নয় অথবা খুব বড়</string>
+    <string name="action_close_search">অনুসন্ধান বন্ধ করুন</string>
+    <string name="search_result_label">ফলাফল:</string>
+    <string name="view_all_contributors">সকল অবদানকারীদের দেখুন</string>
+    <string name="contributors_msg">এই অ্যাপটি তৈরি করতে যারা সাহায্য করেছেন তাদের ধন্যবাদ</string>
+
 </resources>

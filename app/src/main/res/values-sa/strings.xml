@@ -648,5 +648,221 @@
     <string name="recommended_language">अनुशंसिता भाषा</string>
     <string name="all_languages">सर्वाः भाषाः</string>
     <string name="save_settings">अग्रिमम्</string>
+    <string name="history_language_mismatch">एनं प्रश्नं द्रष्टुं कृपया %s भाषां परिवर्तयन्तु।</string>
+    <string name="history_your_answer_label">भवतः उत्तरम्: %s</string>
+    <string name="history_correct_answer_label">सम्यक् उत्तरम्: %s</string>
+    <string name="history_result_label">परिणामः: %s</string>
+
+    <string name="lreorder_description">वस्तूनि पुनर्व्यवस्थापयन्तु</string>
+    <string name="lsave_order_description">क्रमं रक्षन्तु</string>
+    <string name="lreset_order_description">पूर्वनिर्धारितक्रमे पुनर्स्थापयन्तु</string>
+    <string name="lmove_up_description">वस्तु ऊर्ध्वं चालयन्तु</string>
+    <string name="lmove_down_description">वस्तु अधः चालयन्तु</string>
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">क्रमवाचकसंख्याः</string>
+    <string name="ordinals_screen_title">क्रमवाचकसंख्याः</string>
+    <string name="header_number">संख्या</string>
+    <string name="header_word">शब्दः</string>
+    <string name="header_symbol">प्रतीकम्</string>
+
+    <!-- Sanskrit Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>१</item><item>२</item><item>३</item><item>४</item><item>५</item><item>६</item><item>७</item><item>८</item><item>९</item><item>१०</item><item>११</item><item>१२</item><item>१३</item><item>१४</item><item>१५</item><item>१6</item><item>१७</item><item>१८</item><item>१९</item><item>२०</item><item>२१</item><item>२२</item><item>२३</item><item>२४</item><item>२५</item><item>२६</item><item>२७</item><item>२८</item><item>२९</item><item>३०</item><item>३१</item><item>३२</item><item>३३</item><item>३४</item><item>३५</item><item>३६</item><item>३७</item><item>३८</item><item>३९</item><item>४०</item><item>४१</item><item>४२</item><item>४३</item><item>४४</item><item>४५</item><item>४६</item><item>४७</item><item>४८</item><item>४९</item><item>५०</item><item>५१</item><item>५२</item><item>५३</item><item>५४</item><item>५५</item><item>५६</item><item>५७</item><item>५८</item><item>५९</item><item>६०</item><item>६१</item><item>६२</item><item>६३</item><item>६४</item><item>६५</item><item>६६</item><item>६७</item><item>६८</item><item>६९</item><item>७०</item><item>७१</item><item>७२</item><item>७३</item><item>७४</item><item>७५</item><item>७६</item><item>७७</item><item>७८</item><item>७९</item><item>८०</item><item>८१</item><item>८२</item><item>८३</item><item>८४</item><item>८५</item><item>८६</item><item>८७</item><item>८८</item><item>८९</item><item>९०</item><item>९१</item><item>९२</item><item>९३</item><item>९४</item><item>९५</item><item>९६</item><item>९७</item><item>९८</item><item>९९</item><item>१००</item><item>२००</item>
+        <item>३००</item>
+        <item>४००</item>
+        <item>५००</item>
+        <item>६००</item>
+        <item>७००</item>
+        <item>८००</item>
+        <item>९००</item>
+        <item>१०००</item>
+        <item>१०००००</item>
+        <item>१०००००००</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>प्रथमः</item><item>द्वितीयः</item><item>तृतीयः</item><item>चतुर्थः</item><item>पञ्चमः</item><item>षष्ठः</item><item>सप्तमः</item><item>अष्टमः</item><item>नवमः</item><item>दशमः</item><item>एकादशः</item><item>द्वादशः</item><item>त्रयोदशः</item><item>चतुर्दशः</item><item>पञ्चदशः</item><item>षोडशः</item><item>सप्तदशः</item><item>अष्टादशः</item><item>नवदशः</item><item>विंशतितमः</item><item>एकविंशतितमः</item><item>द्वाविंशतितमः</item><item>त्रयोविंशतितमः</item><item>चतुर्विंशतितमः</item><item>पञ्चविंशतितमः</item><item>षड्विंशतितमः</item><item>सप्तविंशतितमः</item><item>अष्टाविंशतितमः</item><item>नवविंशतितमः</item><item>त्रिंशत्तमः</item><item>एकत्रिंशत्तमः</item><item>द्वात्रिंशत्तमः</item><item>त्रयस्त्रिंशत्तमः</item><item>चतुस्त्रिंशत्तमः</item><item>पञ्चत्रिंशत्तमः</item><item>षट्त्रिंशत्तमः</item><item>सप्तत्रिंशत्तमः</item><item>अष्टात्रिंशत्तमः</item><item>नवत्रिंशत्तमः</item><item>चत्वारिंशत्तमः</item><item>एकचत्वारिंशत्तमः</item><item>द्विचत्वारिंशत्तमः</item><item>त्रिचत्वारिंशत्तमः</item><item>चतुश्चत्वारिंशत्तमः</item><item>पञ्चचत्वारिंशत्तमः</item><item>षट्चत्वारिंशत्तमः</item><item>सप्तचत्वारिंशत्तमः</item><item>अष्टचत्वारिंशत्तमः</item><item>नवचत्वारिंशत्तमः</item><item>पञ्चाशत्तमः</item><item>एकपञ्चाशत्तमः</item><item>द्विपञ्चाशत्तमः</item><item>त्रिपञ्चाशत्तमः</item><item>चतुःपञ्चाशत्तमः</item><item>पञ्चपञ्चाशत्तमः</item><item>षट्पञ्चाशत्तमः</item><item>सप्तपञ्चाशत्तमः</item><item>अष्टपञ्चाशत्तमः</item><item>नवपञ्चाशत्तमः</item><item>षष्टितमः</item><item>एकषष्टितमः</item><item>द्विषष्टितमः</item><item>त्रिषष्टितमः</item><item>चतुःषष्टितमः</item><item>पञ्चषष्टितमः</item><item>षट्षष्टितमः</item><item>सप्तषष्टितमः</item><item>अष्टषष्टितमः</item><item>नवषष्टितमः</item><item>सप्ततितमः</item><item>एकसप्ततितमः</item><item>द्विसप्ततितमः</item><item>त्रिसप्ततितमः</item><item>चतुःसप्ततितमः</item><item>पञ्चसप्ततितमः</item><item>षट्सप्ततितमः</item><item>सप्तसप्ततितमः</item><item>अष्टसप्ततितमः</item><item>नवसप्ततितमः</item><item>अशीतितमः</item><item>एकाशीतितमः</item><item>द्व्यशीतितमः</item><item>त्र्यशीतितमः</item><item>चतुरशीतितमः</item><item>पञ्चाशीतितमः</item><item>षडशीतितमः</item><item>सप्ताशीतितमः</item><item>अष्टाशीतितमः</item><item>नवाशीतितमः</item><item>नवतितमः</item><item>एकनवतितमः</item><item>द्विनवतितमः</item><item>त्रिनवतितमः</item><item>चतुर्नवतितमः</item><item>पञ्चनवतितमः</item><item>षण्णवतितमः</item><item>सप्तनवतितमः</item><item>अष्टनवतितमः</item><item>नवनवतितमः</item><item>शततमः</item>
+        <item>द्विशततमः</item>
+        <item>त्रिशततमः</item>
+        <item>चतुःशततमः</item>
+        <item>पञ्चशततमः</item>
+        <item>षट्शततमः</item>
+        <item>सप्तशततमः</item>
+        <item>अष्टशततमः</item>
+        <item>नवशततमः</item>
+        <item>सहस्रतमः</item>
+        <item>लक्षतमः</item>
+        <item>कोटितमः</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>१.</item><item>२.</item><item>३.</item><item>४.</item><item>५.</item><item>६.</item><item>७.</item><item>८.</item><item>९.</item><item>१०.</item><item>११.</item><item>१२.</item><item>१३.</item><item>१४.</item><item>१५.</item><item>१६.</item><item>१७.</item><item>१८.</item><item>१९.</item><item>२०.</item><item>२१.</item><item>२२.</item><item>२३.</item><item>२४.</item><item>२५.</item><item>२६.</item><item>२७.</item><item>२८.</item><item>२९.</item><item>३०.</item><item>३१.</item><item>३२.</item><item>३३.</item><item>३४.</item><item>३५.</item><item>३६.</item><item>३७.</item><item>३८.</item><item>३९.</item><item>४०.</item><item>४१.</item><item>४२.</item><item>४३.</item><item>४४.</item><item>४५.</item><item>४६.</item><item>४७.</item><item>४८.</item><item>४९.</item><item>५०.</item><item>५१.</item><item>५२.</item><item>५३.</item><item>५४.</item><item>५५.</item><item>५६.</item><item>५७.</item><item>५८.</item><item>५९.</item><item>६०.</item><item>६१.</item><item>६२.</item><item>६३.</item><item>६४.</item><item>६५.</item><item>६६.</item><item>६७.</item><item>६८.</item><item>६९.</item><item>७०.</item><item>७१.</item><item>७२.</item><item>७३.</item><item>७४.</item><item>७५.</item><item>७६.</item><item>७७.</item><item>७८.</item><item>७९.</item><item>८०.</item><item>८१.</item><item>८२.</item><item>८३.</item><item>८४.</item><item>८५.</item><item>८६.</item><item>८७.</item><item>८८.</item><item>८९.</item><item>९०.</item><item>९१.</item><item>९२.</item><item>९३.</item><item>९४.</item><item>९५.</item><item>९६.</item><item>९७.</item><item>९८.</item><item>९९.</item><item>१००.</item>
+        <item>२००.</item>
+        <item>३००.</item>
+        <item>४००.</item>
+        <item>५००.</item>
+        <item>६००.</item>
+        <item>७००.</item>
+        <item>८००.</item>
+        <item>९००.</item>
+        <item>१०००.</item>
+        <item>१०००००.</item>
+        <item>१०००००००.</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">गणनाप्रणाल्यः</string>
+    <string name="ganana_screen_title">गणनाप्रणाल्यः</string>
+    <string name="header_name">नाम</string>
+
+    <string-array name="ganana_numbers">
+        <item>१</item>
+        <item>१०</item>
+        <item>१००</item>
+        <item>१,०००</item>
+        <item>१०,०००</item>
+        <item>१,००,०००</item>
+        <item>१०,००,०००</item>
+        <item>१,००,००,०००</item>
+        <item>१०,००,००,०००</item>
+        <item>१,००,००,००,०००</item>
+        <item>१०,००,००,००,०००</item>
+        <item>१,००,००,००,००,०००</item>
+        <item>१०,००,००,००,००,०००</item>
+        <item>१,००,००,००,००,००,०००</item>
+        <item>१०,००,००,००,००,००,०००</item>
+        <item>१,००,००,००,००,००,००,०००</item>
+        <item>१०,००,००,००,००,००,००,०००</item>
+        <item>१,००,००,००,००,००,००,००,०००</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>एकम्</item>
+        <item>दश</item>
+        <item>शतम्</item>
+        <item>सहस्रम्</item>
+        <item>अयुतम्</item>
+        <item>लक्षम्</item>
+        <item>प्रयुतम्</item>
+        <item>कोटिः</item>
+        <item>अर्बुदम्</item>
+        <item>अब्जम्</item>
+        <item>खर्वम्</item>
+        <item>निखर्वम्</item>
+        <item>महापद्मम्</item>
+        <item>शङ्कुः</item>
+        <item>जलधिः</item>
+        <item>अन्त्यम्</item>
+        <item>मध्यम्</item>
+        <item>परार्धम्</item>
+    </string-array>
+
+    <string name="welcome_subtitle">नमस्कारः</string>
+    <string name="preferred_languages">अनुशंसिताः</string>
+    <string name="other_languages">सर्वाः भाषाः</string>
+    <string name="selected">चयनितम्</string>
+    <string name="language_restart_dynamic_message">एतत् अनुप्रयोगस्य भाषां %1$s तः %2$s प्रति परिवर्तयिष्यति</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">मात्रक-परिवर्तकम्</string>
+    <string name="unit_converter_select_category">आरम्भाय वर्गं चिनोतु</string>
+    <string name="unit_converter_from">इतः</string>
+    <string name="unit_converter_to">प्रति</string>
+    <string name="unit_converter_enter_value">मानं निविशतु</string>
+    <string name="unit_converter_swap_description">मात्रक-विनिमयः</string>
+
+    <!-- Categories -->
+    <string name="category_length">दैर्घ्यम्</string>
+    <string name="category_weight">भारः</string>
+    <string name="category_capacity">धारिता</string>
+    <string name="category_temperature">तापमानम्</string>
+    <string name="category_time">समयः</string>
+    <string name="category_storage">सङ्ग्रहः</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">मिलीमीटर</string>
+    <string name="unit_centimetre">सेन्टीमीटर</string>
+    <string name="unit_metre">मीटर</string>
+    <string name="unit_kilometre">किलोमीटर</string>
+    <string name="unit_inch">इञ्च</string>
+    <string name="unit_foot">फुट</string>
+    <string name="unit_yard">यार्ड</string>
+    <string name="unit_mile">मील</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">मिलीग्राम</string>
+    <string name="unit_gram">ग्राम</string>
+    <string name="unit_kilogram">किलोग्राम</string>
+    <string name="unit_quintal">क्विण्टल</string>
+    <string name="unit_tonne">टन</string>
+    <string name="unit_pound">पाउण्ड</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">मिलीलीटर</string>
+    <string name="unit_litre">लीटर</string>
+    <string name="unit_kilolitre">किलोलीटर</string>
+    <string name="unit_cubic_centimetre">घन-सेन्टीमीटर</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">सेल्सियस</string>
+    <string name="unit_fahrenheit">फारेनहाइट</string>
+    <string name="unit_kelvin">केल्विन</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">सेकण्ड</string>
+    <string name="unit_minute">मिनिट</string>
+    <string name="unit_hour">घण्टा</string>
+    <string name="unit_day">दिवसः</string>
+    <string name="unit_week">सप्ताहः</string>
+    <string name="unit_month">मासः</string>
+    <string name="unit_year">वर्षम्</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">बिट</string>
+    <string name="unit_kilobit">किलोबिट</string>
+    <string name="unit_megabit">मेगाबिट</string>
+    <string name="unit_gigabit">गीगाबिट</string>
+    <string name="unit_terabit">टेराबिट</string>
+    <string name="unit_petabit">पेटाबिट</string>
+    <string name="unit_exabit">एक्साबिट</string>
+    <string name="unit_byte">बाइट</string>
+    <string name="unit_kilobyte">किलोबाइट</string>
+    <string name="unit_megabyte">मेगाबाइट</string>
+    <string name="unit_gigabyte">गीगाबाइट</string>
+    <string name="unit_terabyte">टेराबाइट</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">एकशतम् पञ्चाशत्</string>
+    <string name="word_250_special">द्विशतम् पञ्चाशत्</string>
+    <string name="word_1500_special">एकसहस्रम् पञ्चशतम्</string>
+    <string name="word_thousand">सहस्रम्</string>
+    <string name="word_lakh">लक्षम्</string>
+    <string name="word_crore">कोटिः</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">सङ्ख्यातः शब्दः</string>
+    <string name="ntt_enter_number">सङ्ख्यां निविशतु</string>
+    <string name="ntt_convert_button">परिवर्तयतु</string>
+    <string name="ntt_result_english">आङ्ग्लभाषा:</string>
+    <string name="ntt_result_odia">ओडिया:</string>
+
+    <string name="word_rupees">रूप्यकाणि</string>
+    <string name="word_only">मात्रम्</string>
+    <string name="btn_copy">प्रतिलिपिः</string>
+    <string name="msg_copied">पाठस्य प्रतिलिपिः कृता</string>
+    <string name="lbl_bank_format">धनादेशः / वित्तकोश-प्रारूपम्</string>
+    <string name="btn_screenshot_mode">पटलचित्र-अवस्था</string>
+    <string name="msg_exit_screenshot">निर्गमाय कुत्रापि स्पृशतु</string>
+    <string name="menu_roman_numbers">रोमन-सङ्ख्याः</string>
+    <string name="roman_screen_title">रोमन-सङ्ख्याः</string>
+    <string name="col_number">सङ्ख्या</string>
+    <string name="col_roman">रोमन</string>
+    <string name="btn_load_more">अग्रिमाः १०० सङ्ख्याः दर्शयतु</string>
+    <string name="msg_list_complete">भवान् १००० प्राप्तवान्!</string>
+    <string name="action_search">अन्वेषणम्</string>
+    <string name="search_hint">सङ्ख्यां लिखतु (उदा. ५०)</string>
+    <string name="search_no_result">अमान्या सङ्ख्या अथवा अतिबृहत्</string>
+    <string name="action_close_search">अन्वेषणं समापयतु</string>
+    <string name="search_result_label">परिणामः:</string>
+    <string name="view_all_contributors">सर्वान् योगदातॄन् पश्यतु</string>
+    <string name="contributors_msg">एतस्य अनुप्रयोगस्य निर्माणे साहाय्यं कृतवद्भ्यः धन्यवादाः</string>
 
 </resources>

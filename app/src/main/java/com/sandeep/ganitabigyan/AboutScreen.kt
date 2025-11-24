@@ -3,13 +3,17 @@
 package com.sandeep.ganitabigyan
 
 import android.app.DownloadManager
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.Settings
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -33,13 +37,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider // Ensure you have androidx.core configured if using FileProvider logic, though we use DownloadManager logic here
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.io.File
 import java.net.URL
 
 // <<< FIX: The UpdateCheckResult sealed class is REMOVED from this file >>>
@@ -53,8 +62,67 @@ fun AboutScreen(navController: NavController, onNavigateBack: () -> Unit) {
     val context = LocalContext.current
     val currentVersionName = try { context.packageManager.getPackageInfo(context.packageName, 0).versionName } catch (e: Exception) { "1.0" }
     val scope = rememberCoroutineScope()
+
     var showUpdateDialog by remember { mutableStateOf(false) }
     var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
+
+    // --- New State for Download Progress ---
+    var downloadId by remember { mutableLongStateOf(-1L) }
+    var downloadProgress by remember { mutableFloatStateOf(0f) }
+    var isDownloading by remember { mutableStateOf(false) }
+    var isDownloadFinished by remember { mutableStateOf(false) }
+    var downloadedUri by remember { mutableStateOf<Uri?>(null) }
+
+    // Logic to handle links using Chrome Custom Tabs
+    val onLinkClick: (String) -> Unit = { url ->
+        if (url.contains("imsbg.github.io/Ganita-Bingya-App")) {
+            openInCustomTab(context, url)
+        } else {
+            openUrl(context, url)
+        }
+    }
+
+    // Polling logic to track download progress
+    LaunchedEffect(downloadId, isDownloading) {
+        if (downloadId != -1L && isDownloading) {
+            val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            while (isActive && isDownloading) {
+                val query = DownloadManager.Query().setFilterById(downloadId)
+                val cursor = downloadManager.query(query)
+                if (cursor != null && cursor.moveToFirst()) {
+                    val bytesDownloadedIndex = cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)
+                    val totalBytesIndex = cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)
+                    val statusIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
+
+                    if (bytesDownloadedIndex != -1 && totalBytesIndex != -1 && statusIndex != -1) {
+                        val bytesDownloaded = cursor.getLong(bytesDownloadedIndex)
+                        val totalBytes = cursor.getLong(totalBytesIndex)
+                        val status = cursor.getInt(statusIndex)
+
+                        if (totalBytes > 0) {
+                            downloadProgress = bytesDownloaded.toFloat() / totalBytes.toFloat()
+                        }
+
+                        if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                            isDownloading = false
+                            isDownloadFinished = true
+                            downloadProgress = 1f
+                            // Get the local URI for installation
+                            val uriIndex = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)
+                            val uriString = cursor.getString(uriIndex)
+                            downloadedUri = Uri.parse(uriString)
+                        } else if (status == DownloadManager.STATUS_FAILED) {
+                            isDownloading = false
+                            downloadId = -1L // Reset
+                            Toast.makeText(context, "ଅସଫଳ | Download Failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                cursor?.close()
+                delay(500) // Update every 0.5 seconds
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -66,7 +134,7 @@ fun AboutScreen(navController: NavController, onNavigateBack: () -> Unit) {
         }
     ) { padding ->
         LazyColumn(modifier = Modifier.fillMaxSize().padding(padding), contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            item { ContributorsCard() }
+            item { ContributorsCard(onLinkClick = onLinkClick) }
             item { SupportCard() }
             item { SocialCard() }
             item { OtherCard(
@@ -78,7 +146,40 @@ fun AboutScreen(navController: NavController, onNavigateBack: () -> Unit) {
         }
     }
 
-    if (showUpdateDialog) { UpdateDialog(updateResult = updateResult, currentVersionName = currentVersionName, onDismiss = { showUpdateDialog = false }) }
+    if (showUpdateDialog) {
+        UpdateDialog(
+            updateResult = updateResult,
+            currentVersionName = currentVersionName,
+            isDownloading = isDownloading,
+            downloadProgress = downloadProgress,
+            isDownloadFinished = isDownloadFinished,
+            onDismiss = {
+                showUpdateDialog = false
+                // Reset states on dismiss if needed
+                if(isDownloadFinished) {
+                    isDownloadFinished = false
+                    downloadProgress = 0f
+                    downloadId = -1L
+                }
+            },
+            onStartDownload = { url, version ->
+                if (canInstallUnknownApps(context)) {
+                    downloadId = startUpdateDownload(context, url, version)
+                    isDownloading = true
+                    isDownloadFinished = false
+                    downloadProgress = 0f
+                } else {
+                    Toast.makeText(context, R.string.permission_request_toast, Toast.LENGTH_LONG).show()
+                    requestInstallPermission(context)
+                }
+            },
+            onInstall = {
+                if (downloadId != -1L) {
+                    installApk(context, downloadId)
+                }
+            }
+        )
+    }
 }
 
 
@@ -105,7 +206,7 @@ private fun AboutCard(title: String, content: @Composable ColumnScope.() -> Unit
 }
 
 @Composable
-private fun ContributorsCard() {
+private fun ContributorsCard(onLinkClick: (String) -> Unit) {
     val contributors = emptyList<Contributor>()
     var isExpanded by remember { mutableStateOf(false) }
 
@@ -116,6 +217,40 @@ private fun ContributorsCard() {
             imageResId = R.drawable.sandeep_biswal,
             profileUrl = "https://www.instagram.com/sandeepbiswalg/"
         ))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onLinkClick("https://imsbg.github.io/Ganita-Bingya-App/contributors") }
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // --- UPDATED: Replaced Text 'A' with Logo Image ---
+            Image(
+                painter = painterResource(id = R.drawable.logo), // Make sure logo.png is in drawable folder
+                contentDescription = stringResource(R.string.view_all_contributors),
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape), // This makes the logo round
+                contentScale = ContentScale.Crop // Ensures the logo fills the circle
+            )
+            // -------------------------------------------------
+
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(
+                    text = stringResource(R.string.view_all_contributors),
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = stringResource(R.string.contributors_msg),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+
         AnimatedVisibility(visible = isExpanded) {
             Column { contributors.forEach { ContributorRow(it) } }
         }
@@ -127,6 +262,18 @@ private fun ContributorsCard() {
     }
 }
 
+// --- HELPER: Chrome Custom Tabs ---
+private fun openInCustomTab(context: Context, url: String) {
+    try {
+        val builder = CustomTabsIntent.Builder()
+        builder.setShowTitle(true)
+        builder.setUrlBarHidingEnabled(true)
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(context, Uri.parse(url))
+    } catch (e: Exception) {
+        openUrl(context, url)
+    }
+}
 
 @Composable private fun SupportCard() { val context = LocalContext.current; AboutCard(title = stringResource(R.string.support_development)) { InfoRow(painterResource(id = R.drawable.ic_github), stringResource(R.string.support_github), stringResource(R.string.support_github_desc)) { openUrl(context, "https://github.com/imsbg/Ganita-Bingya-App") }; InfoRow(Icons.Default.Translate, stringResource(R.string.support_translate), stringResource(R.string.support_translate_desc)) { openUrl(context, "https://crowdin.com/project/ganita-bingya") }; InfoRow(Icons.Default.VolunteerActivism, stringResource(R.string.support_donate), stringResource(R.string.support_donate_desc)) { openUrl(context, "https://imsbg.github.io/Ganita-Bingya-App/donate") }; InfoRow(Icons.Default.BugReport, stringResource(R.string.support_report_bug), stringResource(R.string.support_report_bug_desc)) { openUrl(context, "https://github.com/imsbg/ganita-bingya-app/issues") }; InfoRow(Icons.Default.Share, stringResource(R.string.support_share), stringResource(R.string.support_share_desc)) { val shareText = context.getString(R.string.share_message); val intent = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, shareText) }; context.startActivity(Intent.createChooser(intent, null)) } } }
 @Composable private fun SocialCard() { val context = LocalContext.current; AboutCard(title = stringResource(R.string.social)) { InfoRow(Icons.Default.Language, stringResource(R.string.social_website), stringResource(R.string.social_website_desc)) { openUrl(context, "https://imsbg.github.io/Ganita-Bingya-App/") }; InfoRow(painterResource(id = R.drawable.ic_instagram), stringResource(R.string.social_instagram), stringResource(R.string.social_instagram_desc)) { openUrl(context, "https://www.instagram.com/sandeepbiswalg/") }; InfoRow(painterResource(id = R.drawable.ic_twitter_x), stringResource(R.string.social_twitter), stringResource(R.string.social_twitter_desc)) { openUrl(context, "https://x.com/SandeepBiswalG") }; InfoRow(Icons.Default.Send, stringResource(R.string.social_telegram), stringResource(R.string.social_telegram_desc)) { openUrl(context, "https://t.me/sbgapps") } } }
@@ -136,9 +283,123 @@ private fun ContributorsCard() {
 @Composable private fun ContributorRow(contributor: Contributor) { val context = LocalContext.current; Row(modifier = Modifier.fillMaxWidth().clickable { openUrl(context, contributor.profileUrl) }.padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) { Image(painter = painterResource(id = contributor.imageResId), contentDescription = contributor.name, modifier = Modifier.size(48.dp).clip(CircleShape), contentScale = ContentScale.Crop); Spacer(modifier = Modifier.width(16.dp)); Column { Text(text = contributor.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold); Text(text = contributor.role, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) } } }
 @Composable private fun OtherCard(versionName: String, onCheckForUpdate: () -> Unit, onShowChangelog: () -> Unit) { AboutCard(title = stringResource(R.string.other)) { InfoRow(Icons.Default.History, stringResource(R.string.other_changelog), stringResource(R.string.other_changelog_desc), onShowChangelog); InfoRow(Icons.Default.SystemUpdate, stringResource(R.string.other_check_for_updates), "v$versionName", onCheckForUpdate) } }
 @Composable private fun Footer() { Box(modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp), contentAlignment = Alignment.Center) { Text(text = stringResource(R.string.made_with_love), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) } }
-@Composable fun UpdateDialog(updateResult: UpdateCheckResult?, currentVersionName: String, onDismiss: () -> Unit) { val context = LocalContext.current; when (updateResult) { is UpdateCheckResult.UpdateAvailable -> { AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.update_available_title)) }, text = { Text(stringResource(R.string.update_available_message, updateResult.latestVersion, currentVersionName)) }, confirmButton = { TextButton(onClick = { if (canInstallUnknownApps(context)) { startUpdateDownload(context, updateResult.downloadUrl, updateResult.latestVersion) } else { Toast.makeText(context, R.string.permission_request_toast, Toast.LENGTH_LONG).show(); requestInstallPermission(context) }; onDismiss() }) { Text(stringResource(R.string.download_button)) } }, dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.later_button)) } }) }; UpdateCheckResult.UpToDate -> { AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.up_to_date_title)) }, text = { Text(stringResource(R.string.up_to_date_message)) }, confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.ok_button)) } }) }; UpdateCheckResult.Error -> { AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.error_title)) }, text = { Text(stringResource(R.string.error_check_connection)) }, confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.ok_button)) } }) }; null -> {} } }
+
+// --- UPDATED: Update Dialog with Progress ---
+@Composable
+fun UpdateDialog(
+    updateResult: UpdateCheckResult?,
+    currentVersionName: String,
+    isDownloading: Boolean,
+    downloadProgress: Float,
+    isDownloadFinished: Boolean,
+    onDismiss: () -> Unit,
+    onStartDownload: (String, String) -> Unit,
+    onInstall: () -> Unit
+) {
+    when (updateResult) {
+        is UpdateCheckResult.UpdateAvailable -> {
+            AlertDialog(
+                onDismissRequest = onDismiss,
+                title = { Text(if (isDownloadFinished) "Download Complete" else stringResource(R.string.update_available_title)) },
+                text = {
+                    Column {
+                        if (!isDownloading && !isDownloadFinished) {
+                            Text(stringResource(R.string.update_available_message, updateResult.latestVersion, currentVersionName))
+                        } else if (isDownloading) {
+                            Text(text = "Downloading update... ${(downloadProgress * 100).toInt()}%", modifier = Modifier.padding(bottom = 8.dp))
+                            LinearProgressIndicator(
+                                progress = { downloadProgress },
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                        } else if (isDownloadFinished) {
+                            Text("The update is ready to install. Click Install to proceed.")
+                        }
+                    }
+                },
+                confirmButton = {
+                    if (isDownloadFinished) {
+                        Button(onClick = onInstall) {
+                            Text("Install")
+                        }
+                    } else if (isDownloading) {
+                        // Show nothing or a disabled button
+                        TextButton(onClick = {}, enabled = false) { Text("Downloading...") }
+                    } else {
+                        TextButton(onClick = { onStartDownload(updateResult.downloadUrl, updateResult.latestVersion) }) {
+                            Text(stringResource(R.string.download_button))
+                        }
+                    }
+                },
+                dismissButton = {
+                    if (!isDownloading) {
+                        TextButton(onClick = onDismiss) {
+                            Text(stringResource(R.string.later_button))
+                        }
+                    }
+                }
+            )
+        }
+        UpdateCheckResult.UpToDate -> {
+            AlertDialog(
+                onDismissRequest = onDismiss,
+                title = { Text(stringResource(R.string.up_to_date_title)) },
+                text = { Text(stringResource(R.string.up_to_date_message)) },
+                confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.ok_button)) } }
+            )
+        }
+        UpdateCheckResult.Error -> {
+            AlertDialog(
+                onDismissRequest = onDismiss,
+                title = { Text(stringResource(R.string.error_title)) },
+                text = { Text(stringResource(R.string.error_check_connection)) },
+                confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.ok_button)) } }
+            )
+        }
+        null -> {}
+    }
+}
+
 private fun openUrl(context: Context, url: String) { val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)); context.startActivity(intent) }
 private fun checkForUpdates(scope: CoroutineScope, currentVersionName: String, onResult: (UpdateCheckResult) -> Unit) { scope.launch(Dispatchers.IO) { val result = try { val url = URL("https://api.github.com/repos/imsbg/Ganita-Bingya-App/releases/latest"); val connection = url.openConnection() as java.net.HttpURLConnection; val response = connection.inputStream.bufferedReader().readText(); val json = JSONObject(response); val latestVersion = json.getString("tag_name").removePrefix("v"); var apkUrl = ""; val assets = json.getJSONArray("assets"); if (assets.length() > 0) { apkUrl = assets.getJSONObject(0).getString("browser_download_url") }; if (latestVersion > currentVersionName && apkUrl.isNotEmpty()) { UpdateCheckResult.UpdateAvailable(latestVersion, apkUrl) } else { UpdateCheckResult.UpToDate } } catch (e: Exception) { UpdateCheckResult.Error }; withContext(Dispatchers.Main) { onResult(result) } } }
 private fun canInstallUnknownApps(context: Context): Boolean { return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) context.packageManager.canRequestPackageInstalls() else true }
 private fun requestInstallPermission(context: Context) { if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply { data = Uri.parse("package:${context.packageName}") }; context.startActivity(intent) } }
-private fun startUpdateDownload(context: Context, url: String, versionName: String) { try { val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager; val request = DownloadManager.Request(Uri.parse(url)).setTitle(context.getString(R.string.download_notification_title, versionName)).setDescription(context.getString(R.string.download_notification_description)).setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED).setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Ganita-Bigyan-v$versionName.apk").setMimeType("application/vnd.android.package-archive"); downloadManager.enqueue(request); Toast.makeText(context, R.string.download_started, Toast.LENGTH_SHORT).show() } catch (e: Exception) { Toast.makeText(context, context.getString(R.string.download_failed, e.message), Toast.LENGTH_LONG).show() } }
+
+// --- MODIFIED: Returns ID to track progress ---
+private fun startUpdateDownload(context: Context, url: String, versionName: String): Long {
+    try {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val request = DownloadManager.Request(Uri.parse(url))
+            .setTitle(context.getString(R.string.download_notification_title, versionName))
+            .setDescription(context.getString(R.string.download_notification_description))
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE) // Show icon, but let app handle main UI
+            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Ganita-Bigyan-v$versionName.apk")
+            .setMimeType("application/vnd.android.package-archive")
+
+        val id = downloadManager.enqueue(request)
+        Toast.makeText(context, R.string.download_started, Toast.LENGTH_SHORT).show()
+        return id
+    } catch (e: Exception) {
+        Toast.makeText(context, context.getString(R.string.download_failed, e.message), Toast.LENGTH_LONG).show()
+        return -1L
+    }
+}
+
+// --- NEW: Install APK Logic ---
+private fun installApk(context: Context, downloadId: Long) {
+    try {
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val uri = downloadManager.getUriForDownloadedFile(downloadId)
+
+        if (uri != null) {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(uri, "application/vnd.android.package-archive")
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION
+            }
+            context.startActivity(intent)
+        } else {
+            Toast.makeText(context, "Install failed: File not found", Toast.LENGTH_SHORT).show()
+        }
+    } catch (e: Exception) {
+        Toast.makeText(context, "Install failed: ${e.message}", Toast.LENGTH_LONG).show()
+    }
+}

@@ -1,4 +1,4 @@
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
+// FILE: app/src/main/java/com/sandeep/ganitabigyan/GamesCategoryScreen.kt
 
 package com.sandeep.ganitabigyan
 

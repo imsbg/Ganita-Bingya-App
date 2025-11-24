@@ -665,4 +665,220 @@
     <string name="all_languages">All languages</string>
     <string name="save_settings">Next</string>
 
+    <string name="lreorder_description">Reorder items</string>
+    <string name="lsave_order_description">Save order</string>
+    <string name="lreset_order_description">Reset to default order</string>
+    <string name="lmove_up_description">Move item up</string>
+    <string name="lmove_down_description">Move item down</string>
+
+    <!-- Add this string for the history language mismatch -->
+    <string name="history_language_mismatch">Please change to %s language to see this question.</string>
+    <string name="history_your_answer_label">Your answer: %s</string>
+    <string name="history_correct_answer_label">Correct answer: %s</string>
+    <string name="history_result_label">Result: %s</string>
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">Ordinal Numbers</string>
+    <string name="ordinals_screen_title">Ordinal Numbers</string>
+    <string name="header_number">Number</string>
+    <string name="header_word">Word</string>
+    <string name="header_symbol">Symbol</string>
+
+    <!-- English Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>1</item><item>2</item><item>3</item><item>4</item><item>5</item><item>6</item><item>7</item><item>8</item><item>9</item><item>10</item><item>11</item><item>12</item><item>13</item><item>14</item><item>15</item><item>16</item><item>17</item><item>18</item><item>19</item><item>20</item><item>21</item><item>22</item><item>23</item><item>24</item><item>25</item><item>26</item><item>27</item><item>28</item><item>29</item><item>30</item><item>31</item><item>32</item><item>33</item><item>34</item><item>35</item><item>36</item><item>37</item><item>38</item><item>39</item><item>40</item><item>41</item><item>42</item><item>43</item><item>44</item><item>45</item><item>46</item><item>47</item><item>48</item><item>49</item><item>50</item><item>51</item><item>52</item><item>53</item><item>54</item><item>55</item><item>56</item><item>57</item><item>58</item><item>59</item><item>60</item><item>61</item><item>62</item><item>63</item><item>64</item><item>65</item><item>66</item><item>67</item><item>68</item><item>69</item><item>70</item><item>71</item><item>72</item><item>73</item><item>74</item><item>75</item><item>76</item><item>77</item><item>78</item><item>79</item><item>80</item><item>81</item><item>82</item><item>83</item><item>84</item><item>85</item><item>86</item><item>87</item><item>88</item><item>89</item><item>90</item><item>91</item><item>92</item><item>93</item><item>94</item><item>95</item><item>96</item><item>97</item><item>98</item><item>99</item><item>100</item> <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>100000</item>
+        <item>10000000</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>First</item><item>Second</item><item>Third</item><item>Fourth</item><item>Fifth</item><item>Sixth</item><item>Seventh</item><item>Eighth</item><item>Ninth</item><item>Tenth</item><item>Eleventh</item><item>Twelfth</item><item>Thirteenth</item><item>Fourteenth</item><item>Fifteenth</item><item>Sixteenth</item><item>Seventeenth</item><item>Eighteenth</item><item>Nineteenth</item><item>Twentieth</item><item>Twenty-first</item><item>Twenty-second</item><item>Twenty-third</item><item>Twenty-fourth</item><item>Twenty-fifth</item><item>Twenty-sixth</item><item>Twenty-seventh</item><item>Twenty-eighth</item><item>Twenty-ninth</item><item>Thirtieth</item><item>Thirty-first</item><item>Thirty-second</item><item>Thirty-third</item><item>Thirty-fourth</item><item>Thirty-fifth</item><item>Thirty-sixth</item><item>Thirty-seventh</item><item>Thirty-eighth</item><item>Thirty-ninth</item><item>Fortieth</item><item>Forty-first</item><item>Forty-second</item><item>Forty-third</item><item>Forty-fourth</item><item>Forty-fifth</item><item>Forty-sixth</item><item>Forty-seventh</item><item>Forty-eighth</item><item>Forty-ninth</item><item>Fiftieth</item><item>Fifty-first</item><item>Fifty-second</item><item>Fifty-third</item><item>Fifty-fourth</item><item>Fifty-fifth</item><item>Fifty-sixth</item><item>Fifty-seventh</item><item>Fifty-eighth</item><item>Fifty-ninth</item><item>Sixtieth</item><item>Sixty-first</item><item>Sixty-second</item><item>Sixty-third</item><item>Sixty-fourth</item><item>Sixty-fifth</item><item>Sixty-sixth</item><item>Sixty-seventh</item><item>Sixty-eighth</item><item>Sixty-ninth</item><item>Seventieth</item><item>Seventy-first</item><item>Seventy-second</item><item>Seventy-third</item><item>Seventy-fourth</item><item>Seventy-fifth</item><item>Seventy-sixth</item><item>Seventy-seventh</item><item>Seventy-eighth</item><item>Seventy-ninth</item><item>Eightieth</item><item>Eighty-first</item><item>Eighty-second</item><item>Eighty-third</item><item>Eighty-fourth</item><item>Eighty-fifth</item><item>Eighty-sixth</item><item>Eighty-seventh</item><item>Eighty-eighth</item><item>Eighty-ninth</item><item>Ninetieth</item><item>Ninety-first</item><item>Ninety-second</item><item>Ninety-third</item><item>Ninety-fourth</item><item>Ninety-fifth</item><item>Ninety-sixth</item><item>Ninety-seventh</item><item>Ninety-eighth</item><item>Ninety-ninth</item><item>One Hundredth</item>
+        <item>Two Hundredth</item>
+        <item>Three Hundredth</item>
+        <item>Four Hundredth</item>
+        <item>Five Hundredth</item>
+        <item>Six Hundredth</item>
+        <item>Seven Hundredth</item>
+        <item>Eight Hundredth</item>
+        <item>Nine Hundredth</item>
+        <item>Thousandth</item>
+        <item>Lakhth</item>
+        <item>Croreth</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>1st</item><item>2nd</item><item>3rd</item><item>4th</item><item>5th</item><item>6th</item><item>7th</item><item>8th</item><item>9th</item><item>10th</item><item>11th</item><item>12th</item><item>13th</item><item>14th</item><item>15th</item><item>16th</item><item>17th</item><item>18th</item><item>19th</item><item>20th</item><item>21st</item><item>22nd</item><item>23rd</item><item>24th</item><item>25th</item><item>26th</item><item>27th</item><item>28th</item><item>29th</item><item>30th</item><item>31st</item><item>32nd</item><item>33rd</item><item>34th</item><item>35th</item><item>36th</item><item>37th</item><item>38th</item><item>39th</item><item>40th</item><item>41st</item><item>42nd</item><item>43rd</item><item>44th</item><item>45th</item><item>46th</item><item>47th</item><item>48th</item><item>49th</item><item>50th</item><item>51st</item><item>52nd</item><item>53rd</item><item>54th</item><item>55th</item><item>56th</item><item>57th</item><item>58th</item><item>59th</item><item>60th</item><item>61st</item><item>62nd</item><item>63rd</item><item>64th</item><item>65th</item><item>66th</item><item>67th</item><item>68th</item><item>69th</item><item>70th</item><item>71st</item><item>72nd</item><item>73rd</item><item>74th</item><item>75th</item><item>76th</item><item>77th</item><item>78th</item><item>79th</item><item>80th</item><item>81st</item><item>82nd</item><item>83rd</item><item>84th</item><item>85th</item><item>86th</item><item>87th</item><item>88th</item><item>89th</item><item>90th</item><item>91st</item><item>92nd</item><item>93rd</item><item>94th</item><item>95th</item><item>96th</item><item>97th</item><item>98th</item><item>99th</item><item>100th</item>
+        <item>200th</item>
+        <item>300th</item>
+        <item>400th</item>
+        <item>500th</item>
+        <item>600th</item>
+        <item>700th</item>
+        <item>800th</item>
+        <item>900th</item>
+        <item>1000th</item>
+        <item>100000th</item>
+        <item>10000000th</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">Counting Systems</string>
+    <string name="ganana_screen_title">Counting Systems</string>
+    <string name="header_name">Name</string>
+
+    <string-array name="ganana_numbers">
+        <item>1</item>
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10000000</item>
+        <item>100000000</item>
+        <item>1000000000</item>
+        <item>10000000000</item>
+        <item>100000000000</item>
+        <item>1000000000000</item>
+        <item>10000000000000</item>
+        <item>100000000000000</item>
+        <item>1000000000000000</item>
+        <item>10000000000000000</item>
+        <item>100000000000000000</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>One</item>
+        <item>Ten</item>
+        <item>Hundred</item>
+        <item>Thousand</item>
+        <item>Ten Thousand</item>
+        <item>Hundred Thousand</item>
+        <item>Million</item>
+        <item>Ten Million</item>
+        <item>Hundred Million</item>
+        <item>Billion</item>
+        <item>Ten Billion</item>
+        <item>Hundred Billion</item>
+        <item>Trillion</item>
+        <item>Ten Trillion</item>
+        <item>Hundred Trillion</item>
+        <item>Quadrillion</item>
+        <item>Ten Quadrillion</item>
+        <item>Hundred Quadrillion</item>
+    </string-array>
+    <string name="welcome_subtitle">Namaste Bharat</string>
+    <string name="preferred_languages">Recommended</string>
+    <string name="other_languages">All Languages</string>
+    <string name="selected">Selected</string>
+    <string name="language_restart_dynamic_message">This will change the app\'s language from %1$s to %2$s</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">Unit Converter</string>
+    <string name="unit_converter_select_category">Select a Category to Start</string>
+    <string name="unit_converter_from">From</string>
+    <string name="unit_converter_to">To</string>
+    <string name="unit_converter_enter_value">Enter Value</string>
+    <string name="unit_converter_swap_description">Swap Units</string>
+
+    <!-- Categories -->
+    <string name="category_length">Length</string>
+    <string name="category_weight">Weight</string>
+    <string name="category_capacity">Capacity</string>
+    <string name="category_temperature">Temperature</string>
+    <string name="category_time">Time</string>
+    <string name="category_storage">Storage</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">Millimetre</string>
+    <string name="unit_centimetre">Centimetre</string>
+    <string name="unit_metre">Metre</string>
+    <string name="unit_kilometre">Kilometre</string>
+    <string name="unit_inch">Inch</string>
+    <string name="unit_foot">Foot</string>
+    <string name="unit_yard">Yard</string>
+    <string name="unit_mile">Mile</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">Milligram</string>
+    <string name="unit_gram">Gram</string>
+    <string name="unit_kilogram">Kilogram</string>
+    <string name="unit_quintal">Quintal</string>
+    <string name="unit_tonne">Tonne</string>
+    <string name="unit_pound">Pound</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">Millilitre</string>
+    <string name="unit_litre">Litre</string>
+    <string name="unit_kilolitre">Kilolitre</string>
+    <string name="unit_cubic_centimetre">Cubic Centimetre</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">Celsius</string>
+    <string name="unit_fahrenheit">Fahrenheit</string>
+    <string name="unit_kelvin">Kelvin</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">Second</string>
+    <string name="unit_minute">Minute</string>
+    <string name="unit_hour">Hour</string>
+    <string name="unit_day">Day</string>
+    <string name="unit_week">Week</string>
+    <string name="unit_month">Month</string>
+    <string name="unit_year">Year</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">Bit</string>
+    <string name="unit_kilobit">Kilobit</string>
+    <string name="unit_megabit">Megabit</string>
+    <string name="unit_gigabit">Gigabit</string>
+    <string name="unit_terabit">Terabit</string>
+    <string name="unit_petabit">Petabit</string>
+    <string name="unit_exabit">Exabit</string>
+    <string name="unit_byte">Byte</string>
+    <string name="unit_kilobyte">Kilobyte</string>
+    <string name="unit_megabyte">Megabyte</string>
+    <string name="unit_gigabyte">Gigabyte</string>
+    <string name="unit_terabyte">Terabyte</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">One Hundred Fifty</string>
+    <string name="word_250_special">Two Hundred Fifty</string>
+    <string name="word_1500_special">One Thousand Five Hundred</string>
+    <string name="word_thousand">Thousand</string>
+    <string name="word_lakh">Lakh</string>
+    <string name="word_crore">Crore</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">Number to Text</string>
+    <string name="ntt_enter_number">Enter Number</string>
+    <string name="ntt_convert_button">Convert</string>
+    <string name="ntt_result_english">English:</string>
+    <string name="ntt_result_odia">Odia:</string>
+
+    <string name="word_rupees">Rupees</string>
+    <string name="word_only">Only</string>
+    <string name="btn_copy">Copy</string>
+    <string name="msg_copied">Text copied to clipboard</string>
+    <string name="lbl_bank_format">Cheque / Bank Format</string>
+    <string name="btn_screenshot_mode">Screenshot Mode</string>
+    <string name="msg_exit_screenshot">Tap anywhere to exit</string>
+    <string name="menu_roman_numbers">Roman Numerals</string>
+    <string name="roman_screen_title">Roman Numerals</string>
+    <string name="col_number">Number</string>
+    <string name="col_roman">Roman</string>
+    <string name="btn_load_more">Load next 100 numbers</string>
+    <string name="msg_list_complete">You have reached 1000!</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Enter number (e.g. 50 or ୫୦)</string>
+    <string name="search_no_result">Number not valid or too large (Max 1000)</string>
+    <string name="action_close_search">Close Search</string>
+    <string name="search_result_label">Result:</string>
+    <string name="view_all_contributors">View All Contributors</string>
+    <string name="contributors_msg">Thanks to those who helped build this app</string>
 </resources>

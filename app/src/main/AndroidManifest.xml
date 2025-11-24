@@ -20,6 +20,7 @@
         android:theme="@style/Theme.GanitaBigyan"
         tools:targetApi="31">
 
+
         <!-- THIS WHOLE <service> BLOCK IS NEW FOR FIREBASE -->
         <service
             android:name=".utils.MyFirebaseMessagingService"

@@ -1,7 +1,7 @@
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
+// ସୁରକ୍ଷା ମୁଟାବକ ଡାଟା ସଫା କରିବା ପାଇଁ ବ୍ୟବହାର
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/VersionManager.kt
 
-package com.sandeep.ganitabigyan // <<< The package name is now correct for its location
+package com.sandeep.ganitabigyan // ଗଣିତ ବିଜ୍ଞ
 
 import android.content.Context
 import android.os.Environment
@@ -13,7 +13,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 import java.io.File
 
-// This import is no longer needed because the files are in the same package.
 // The compiler will find BuildConfig automatically.
 
 private val Context.versionDataStore: DataStore<Preferences> by preferencesDataStore(name = "app_version")

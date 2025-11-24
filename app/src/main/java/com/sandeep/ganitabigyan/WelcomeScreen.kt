@@ -5,6 +5,9 @@ package com.sandeep.ganitabigyan
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,7 +16,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.outlined.Translate
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -21,13 +26,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import java.util.Locale
+
+// --- Data Classes and Helper Functions (Largely Unchanged) ---
 
 private data class LanguageOption(val code: String, val name: String)
 
@@ -42,35 +49,38 @@ private fun localizedString(localeCode: String, stringResId: Int): String {
     }
 }
 
+// --- New Theming Object for a Cohesive Look ---
+
+private object WelcomeScreenColors {
+    val background = Color(0xFFF8F9FC)
+    val textPrimary = Color(0xFF1D232E)
+    val textSecondary = Color(0xFF6E7B8B)
+    val accent = Color(0xFF4A80F0)
+    val accentContent = Color.White
+    val cardBackground = Color.White
+    val cardSelectedBackground = Color(0xFFEAF2FF)
+    val cardBorder = Color(0xFFE4E9F1)
+}
+
+// --- Main Welcome Screen Composable (Redesigned) ---
+
 @Composable
 fun WelcomeScreen(
-    onStartClick: () -> Unit,
+    onStartClick: () -> Unit, // Note: This parameter is kept but the internal logic uses a restart flow.
     settingsViewModel: SettingsViewModel = viewModel()
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var isLoading by remember { mutableStateOf(false) }
 
-    val backgroundColor = Color(0xFFEAF2F8)
-    val cardColor = Color.White
-    val primaryColor = Color(0xFF3498DB)
-    val buttonColor = Color(0xFF1A5276)
-    val textColor = Color(0xFF2C3E50)
-
+    // --- Language Data Logic (Unchanged) ---
     val allLanguageOptions = remember {
-        // <<< THIS LIST IS NOW MANUALLY SORTED for predictable, correct alphabetical order >>>
         listOf(
-            "or" to R.string.language_odia,       // ଓଡ଼ିଆ
-            "sa" to R.string.language_sanskrit,   // संस्कृतम्
-            "en" to R.string.language_english,
-            "hi" to R.string.language_hindi,      // हिन्दी
-            "as" to R.string.language_assamese,   // ଅସମୀୟା
-            "gu" to R.string.language_gujarati,   // ગુજરાતી
-            "te" to R.string.language_telugu,     // తెలుగు
-            "bn" to R.string.language_bengali,    // বাংলা
-            "ml" to R.string.language_malayalam,  // മലയാളം
-            "ur" to R.string.language_urdu       // اردو
-
+            "or" to R.string.language_odia, "sa" to R.string.language_sanskrit,
+            "en" to R.string.language_english, "hi" to R.string.language_hindi,
+            "as" to R.string.language_assamese, "gu" to R.string.language_gujarati,
+            "te" to R.string.language_telugu, "bn" to R.string.language_bengali,
+            "ml" to R.string.language_malayalam, "ur" to R.string.language_urdu
         ).map { (code, nameResId) ->
             val config = Configuration()
             config.setLocale(Locale(code))
@@ -80,7 +90,7 @@ fun WelcomeScreen(
     }
 
     val (selectedLanguage, setSelectedLanguage) = remember {
-        mutableStateOf(allLanguageOptions.find { it.code == "en" } ?: allLanguageOptions.first())
+        mutableStateOf(allLanguageOptions.find { it.code == "or" } ?: allLanguageOptions.first())
     }
 
     val recommendedLanguages = remember(allLanguageOptions) {
@@ -89,6 +99,7 @@ fun WelcomeScreen(
         listOfNotNull(odia, english)
     }
 
+    // --- App Restart Logic (Unchanged) ---
     fun changeLanguageAndRestart(language: LanguageOption) {
         if (isLoading) return
         scope.launch {
@@ -103,145 +114,164 @@ fun WelcomeScreen(
         }
     }
 
+    // --- UI Structure ---
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = backgroundColor
+        color = WelcomeScreenColors.background
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .systemBarsPadding()
+                .padding(24.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // Use the new "Choose a language" string for the header
-                Text(
-                    text = localizedString(selectedLanguage.code, R.string.choose_a_language),
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = textColor
-                )
-            }
-
-            LazyColumn(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 24.dp)
-            ) {
-                item {
-                    Text(
-                        text = localizedString(selectedLanguage.code, R.string.recommended_language),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor,
-                        modifier = Modifier.padding(bottom = 8.dp)
-                    )
-                }
-                items(recommendedLanguages) { language ->
-                    LanguageRow(
-                        language = language,
-                        isSelected = selectedLanguage.code == language.code,
-                        onSelect = { setSelectedLanguage(language) },
-                        colors = LanguageRowColors(
-                            card = cardColor,
-                            highlightedCard = primaryColor,
-                            text = textColor,
-                            highlightedText = Color.White,
-                            iconBg = backgroundColor,
-                            highlightedIconBg = Color.White,
-                            iconTint = primaryColor,
-                            highlightedIconTint = primaryColor
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
-                }
-
-                item { Spacer(modifier = Modifier.height(24.dp)) }
-
-                item {
-                    Text(
-                        text = localizedString(selectedLanguage.code, R.string.all_languages),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = textColor,
-                        modifier = Modifier.padding(bottom = 8.dp)
-                    )
-                }
-                // The list is now taken directly from the manually sorted 'allLanguageOptions'
-                items(allLanguageOptions) { language ->
-                    LanguageRow(
-                        language = language,
-                        isSelected = selectedLanguage.code == language.code,
-                        onSelect = { setSelectedLanguage(language) },
-                        colors = LanguageRowColors(
-                            card = cardColor,
-                            highlightedCard = primaryColor,
-                            text = textColor,
-                            highlightedText = Color.White,
-                            iconBg = backgroundColor,
-                            highlightedIconBg = Color.White,
-                            iconTint = primaryColor,
-                            highlightedIconTint = primaryColor
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
-                }
-            }
-
-            Button(
-                onClick = { changeLanguageAndRestart(selectedLanguage) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 20.dp)
-                    .height(56.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
-                enabled = !isLoading
-            ) {
-                // Use the new "Next" string for the button
-                Text(
-                    text = localizedString(selectedLanguage.code, R.string.button_next),
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Icon(
-                    imageVector = Icons.Default.Check,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-            }
+            ScreenHeader(selectedLanguageCode = selectedLanguage.code)
+            LanguageList(
+                modifier = Modifier.weight(1f),
+                selectedLanguage = selectedLanguage,
+                recommendedLanguages = recommendedLanguages,
+                allLanguages = allLanguageOptions,
+                onLanguageSelected = { setSelectedLanguage(it) }
+            )
+            ContinueButton(
+                isLoading = isLoading,
+                selectedLanguageCode = selectedLanguage.code,
+                onClick = { changeLanguageAndRestart(selectedLanguage) }
+            )
         }
     }
 }
 
-private data class LanguageRowColors(
-    val card: Color,
-    val text: Color,
-    val iconBg: Color,
-    val iconTint: Color,
-    val highlightedCard: Color,
-    val highlightedText: Color,
-    val highlightedIconBg: Color,
-    val highlightedIconTint: Color,
-)
+// --- Reusable UI Components for a Cleaner Structure ---
+
+@Composable
+private fun ScreenHeader(selectedLanguageCode: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(
+            imageVector = Icons.Outlined.Translate,
+            contentDescription = null,
+            tint = WelcomeScreenColors.accent,
+            modifier = Modifier.size(48.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = localizedString(selectedLanguageCode, R.string.choose_a_language),
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Bold,
+            color = WelcomeScreenColors.textPrimary
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = localizedString(selectedLanguageCode, R.string.welcome_subtitle), // Assumes new string R.string.welcome_subtitle exists
+            style = MaterialTheme.typography.bodyMedium,
+            color = WelcomeScreenColors.textSecondary,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+@Composable
+private fun LanguageList(
+    modifier: Modifier = Modifier,
+    selectedLanguage: LanguageOption,
+    recommendedLanguages: List<LanguageOption>,
+    allLanguages: List<LanguageOption>,
+    onLanguageSelected: (LanguageOption) -> Unit
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(vertical = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item {
+            SectionTitle(localizedString(selectedLanguage.code, R.string.recommended_language))
+        }
+        items(recommendedLanguages) { language ->
+            LanguageRow(
+                language = language,
+                isSelected = selectedLanguage.code == language.code,
+                onSelect = { onLanguageSelected(language) }
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            SectionTitle(localizedString(selectedLanguage.code, R.string.all_languages))
+        }
+        items(allLanguages) { language ->
+            LanguageRow(
+                language = language,
+                isSelected = selectedLanguage.code == language.code,
+                onSelect = { onLanguageSelected(language) }
+            )
+        }
+    }
+}
+
+@Composable
+private fun SectionTitle(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleSmall,
+        fontWeight = FontWeight.Bold,
+        color = WelcomeScreenColors.textSecondary,
+        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
+    )
+}
+
+@Composable
+private fun ContinueButton(
+    isLoading: Boolean,
+    selectedLanguageCode: String,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = WelcomeScreenColors.accent),
+        enabled = !isLoading
+    ) {
+        Text(
+            text = localizedString(selectedLanguageCode, R.string.button_next), // Using "button_next" from original
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Icon(
+            imageVector = Icons.Default.ArrowForward,
+            contentDescription = null,
+            tint = Color.White
+        )
+    }
+}
 
 @Composable
 private fun LanguageRow(
     language: LanguageOption,
     isSelected: Boolean,
-    onSelect: () -> Unit,
-    colors: LanguageRowColors
+    onSelect: () -> Unit
 ) {
-    val cardColor = if (isSelected) colors.highlightedCard else colors.card
-    val textColor = if (isSelected) colors.highlightedText else colors.text
-    val iconBgColor = if (isSelected) colors.highlightedIconBg else colors.iconBg
-    val iconTintColor = if (isSelected) colors.highlightedIconTint else colors.iconTint
+    val animSpec = tween<Color>(durationMillis = 300)
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isSelected) WelcomeScreenColors.cardSelectedBackground else WelcomeScreenColors.cardBackground,
+        animationSpec = animSpec
+    )
+    val textColor by animateColorAsState(
+        targetValue = if (isSelected) WelcomeScreenColors.accent else WelcomeScreenColors.textPrimary,
+        animationSpec = animSpec
+    )
+    val borderColor by animateColorAsState(
+        targetValue = if (isSelected) WelcomeScreenColors.accent else WelcomeScreenColors.cardBorder,
+        animationSpec = animSpec
+    )
 
     Card(
         modifier = Modifier
@@ -249,28 +279,15 @@ private fun LanguageRow(
             .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onSelect),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = cardColor),
+        colors = CardDefaults.cardColors(containerColor = backgroundColor),
+        border = BorderStroke(1.5.dp, borderColor),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .background(iconBgColor),
-                contentAlignment = Alignment.Center
-            ) {
-                val firstLetter = language.name.take(1)
-                Text(
-                    text = firstLetter,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = iconTintColor
-                )
-            }
+            LanguageInitial(language = language, isSelected = isSelected)
             Spacer(modifier = Modifier.width(16.dp))
             Text(
                 text = language.name,
@@ -280,14 +297,42 @@ private fun LanguageRow(
                 fontWeight = FontWeight.Medium,
                 color = textColor
             )
-            RadioButton(
-                selected = isSelected,
-                onClick = onSelect,
-                colors = RadioButtonDefaults.colors(
-                    selectedColor = if (isSelected) Color.White else colors.highlightedCard,
-                    unselectedColor = textColor.copy(alpha = 0.6f)
+            if (isSelected) {
+                Icon(
+                    imageVector = Icons.Filled.CheckCircle,
+                    contentDescription = "Selected",
+                    tint = WelcomeScreenColors.accent,
+                    modifier = Modifier.size(24.dp)
                 )
-            )
+            }
         }
+    }
+}
+
+@Composable
+private fun LanguageInitial(language: LanguageOption, isSelected: Boolean) {
+    val animSpec = tween<Color>(durationMillis = 300)
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isSelected) WelcomeScreenColors.accent else WelcomeScreenColors.cardSelectedBackground,
+        animationSpec = animSpec
+    )
+    val contentColor by animateColorAsState(
+        targetValue = if (isSelected) WelcomeScreenColors.accentContent else WelcomeScreenColors.accent,
+        animationSpec = animSpec
+    )
+
+    Box(
+        modifier = Modifier
+            .size(40.dp)
+            .clip(CircleShape)
+            .background(backgroundColor),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = language.name.take(1),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = contentColor
+        )
     }
 }

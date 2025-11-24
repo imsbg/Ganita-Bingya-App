@@ -1,4 +1,3 @@
-// PASTE THIS ENTIRE, NEW CODE INTO YOUR FILE
 // FILE: app/src/main/java/com/sandeep/ganitabigyan/GameScreen.kt
 
 package com.sandeep.ganitabigyan
@@ -8,9 +7,11 @@ import android.media.MediaPlayer
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -21,16 +22,23 @@ import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.SwapVert
+import androidx.compose.material.icons.automirrored.filled.Redo
+import androidx.compose.material.icons.automirrored.filled.Undo
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
@@ -38,6 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sandeep.ganitabigyan.utils.toLocaleNumerals
 import kotlinx.coroutines.delay
@@ -57,6 +66,8 @@ fun GameScreen(viewModel: GameViewModel, onNavigateBack: () -> Unit, onNavigateT
     val context = LocalContext.current // <<< We will pass this context to the ViewModel
     var showSettingsDialog by remember { mutableStateOf(false) }
     var showSolutionDialog by remember { mutableStateOf(false) }
+    // ADDED: State to control the visibility of the digital slate
+    var showSlate by remember { mutableStateOf(false) }
     val currentQuestion = gameState.questions.getOrNull(pagerState.currentPage)
     val isViewingPreviousQuestion by remember { derivedStateOf { gameState.questions.isNotEmpty() && gameState.currentQuestionIndex < pagerState.currentPage } }
 
@@ -71,28 +82,51 @@ fun GameScreen(viewModel: GameViewModel, onNavigateBack: () -> Unit, onNavigateT
 
     Box(modifier = Modifier.fillMaxSize()) {
         if (gameState.isLoading) { CircularProgressIndicator(modifier = Modifier.align(Alignment.Center)) } else {
-            Scaffold(topBar = { GameTopBar(gameState = gameState, onNavigateBack = onNavigateBack, onStopChallengeClick = { viewModel.stopTimedChallenge(context) }, onScoreClick = onNavigateToScore) }) { padding ->
-                Box(modifier = Modifier.fillMaxSize().background(gradient)) {
-                    Column(modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Scaffold(
+                topBar = { GameTopBar(gameState = gameState, onNavigateBack = onNavigateBack, onStopChallengeClick = { viewModel.stopTimedChallenge(context) }, onScoreClick = onNavigateToScore) },
+                // ADDED: Floating Action Button to open the slate
+                floatingActionButton = {
+                    FloatingActionButton(onClick = { showSlate = true }) {
+                        Icon(Icons.Default.Edit, contentDescription = stringResource(id = R.string.drawing_slate))
+                    }
+                }
+            ) { padding ->
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(gradient)) {
+                    Column(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         val typeDisplay = getDisplayNameForKey(key = gameState.selectedTypeKey, context = context)
                         val levelDisplay = getDisplayNameForKey(key = gameState.selectedLevelKey, context = context)
-                        OutlinedButton(onClick = { if (!gameState.isTimedChallenge) showSettingsDialog = true }, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp), enabled = !gameState.isTimedChallenge) { Text(stringResource(R.string.game_settings_button_text, typeDisplay, levelDisplay)) }
+                        OutlinedButton(onClick = { if (!gameState.isTimedChallenge) showSettingsDialog = true }, modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp), enabled = !gameState.isTimedChallenge) { Text(stringResource(R.string.game_settings_button_text, typeDisplay, levelDisplay)) }
                         VerticalPager(state = pagerState, modifier = Modifier.weight(1f), userScrollEnabled = !gameState.isTimedChallenge, beyondBoundsPageCount = 3) { pageIndex ->
                             val question = gameState.questions.getOrNull(pageIndex)
                             if (question != null) { key(question.questionText, question.isAnswered, question.userAnswer) { QuestionCard(question = question, onAnswer = { answer -> viewModel.onAnswerSelected(answer, context) }) } } // Pass context
                         }
-                        if (isViewingPreviousQuestion) { Button(onClick = { coroutineScope.launch { pagerState.animateScrollToPage(gameState.currentQuestionIndex) } }, modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),) { Text(stringResource(R.string.game_go_to_current_question)) } } else {
-                            Row(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                        if (isViewingPreviousQuestion) { Button(onClick = { coroutineScope.launch { pagerState.animateScrollToPage(gameState.currentQuestionIndex) } }, modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 8.dp),) { Text(stringResource(R.string.game_go_to_current_question)) } } else {
+                            Row(modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                                 Icon(Icons.Default.SwapVert, contentDescription = stringResource(R.string.game_auto_scroll_icon_desc)); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.game_auto_scroll)); Spacer(Modifier.width(16.dp)); Switch(checked = gameState.isAutoScrollEnabled, onCheckedChange = { viewModel.toggleAutoScroll(it) })
                             }
                             val findEquationGameTypeKey = "game_type_find_equation"
                             if (gameState.selectedTypeKey != findEquationGameTypeKey) {
-                                Button(onClick = { showSolutionDialog = true }, modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp), colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)) { Text(stringResource(R.string.game_show_solution), color = Color.White) }
+                                Button(onClick = { showSolutionDialog = true }, modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 8.dp), colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)) { Text(stringResource(R.string.game_show_solution), color = Color.White) }
                             }
                         }
                         MotivationalFooter()
                     }
-                    FeedbackBanner(message = gameState.feedbackMessage, modifier = Modifier.align(Alignment.TopCenter).padding(padding))
+                    FeedbackBanner(message = gameState.feedbackMessage, modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(padding))
                 }
             }
         }
@@ -104,6 +138,13 @@ fun GameScreen(viewModel: GameViewModel, onNavigateBack: () -> Unit, onNavigateT
             viewModel.onAnswerSelected(currentQuestion.userAnswer ?: context.getString(R.string.qna_log_skipped_hint), context) // Pass context
         }
         SolutionDialog(solution = currentQuestion.solution?.toLocaleNumerals(context) ?: "", onDismiss = { showSolutionDialog = false })
+    }
+    // ADDED: Conditionally display the DigitalSlate and pass the question text
+    if (showSlate) {
+        DigitalSlate(
+            question = currentQuestion?.questionText,
+            onDismiss = { showSlate = false }
+        )
     }
 }
 
@@ -122,3 +163,137 @@ private fun playSound(context: Context, soundResId: Int) { val mediaPlayer = Med
 @Composable fun ChallengeSummaryDialog(score: Int, wrong: Int, onPlayAgain: () -> Unit, onExit: () -> Unit) { val context = LocalContext.current; Dialog(onDismissRequest = {}) { Card(modifier = Modifier.wrapContentHeight(), shape = RoundedCornerShape(16.dp)) { Column(modifier = Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) { Text(stringResource(R.string.game_summary_dialog_title), style = MaterialTheme.typography.headlineSmall); Text(stringResource(R.string.game_summary_dialog_your_score), style = MaterialTheme.typography.titleLarge); Text(stringResource(R.string.game_top_bar_score_info, score.toLocaleNumerals(context), wrong.toLocaleNumerals(context)), style = MaterialTheme.typography.titleMedium); Spacer(modifier = Modifier.height(16.dp)); Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) { Button(onClick = onPlayAgain, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.game_summary_dialog_play_again)) }; OutlinedButton(onClick = onExit, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.game_summary_dialog_stop_challenge)) } } } } } }
 @Composable fun SolutionDialog(solution: String, onDismiss: () -> Unit) { AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.game_solution_dialog_title)) }, text = { Text(solution, style = MaterialTheme.typography.headlineMedium) }, confirmButton = { Button(onClick = onDismiss) { Text(stringResource(R.string.game_solution_dialog_close)) } }) }
 @Composable fun FeedbackBanner(message: String?, modifier: Modifier = Modifier) { AnimatedVisibility(visible = message != null, enter = slideInVertically { -it - 50 } + fadeIn(), exit = slideOutVertically { -it - 50 } + fadeOut(), modifier = modifier.padding(top = 16.dp)) { Card(shape = RoundedCornerShape(12.dp), modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).shadow(4.dp, RoundedCornerShape(12.dp)), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) { Text(text = message ?: "", modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp), color = MaterialTheme.colorScheme.onSecondaryContainer, textAlign = TextAlign.Center) } } }
+
+// ADDED: The new DigitalSlate composable at the end of the file
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DigitalSlate(question: String?, onDismiss: () -> Unit) {
+    val completedPaths = remember { mutableStateListOf<Path>() }
+    val undonePaths = remember { mutableStateListOf<Path>() }
+    var currentPathPoints by remember { mutableStateOf<List<Offset>>(emptyList()) }
+
+    val drawColor = MaterialTheme.colorScheme.onSurface
+    val slateBackgroundColor = MaterialTheme.colorScheme.surface
+    val context = LocalContext.current
+
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(stringResource(id = R.string.drawing_slate)) },
+                    navigationIcon = {
+                        IconButton(onClick = onDismiss) {
+                            Icon(Icons.Default.Close, contentDescription = "Close Slate")
+                        }
+                    },
+                    actions = {
+                        IconButton(
+                            onClick = {
+                                if (completedPaths.isNotEmpty()) {
+                                    undonePaths.add(completedPaths.removeLast())
+                                }
+                            },
+                            enabled = completedPaths.isNotEmpty()
+                        ) {
+                            Icon(Icons.AutoMirrored.Filled.Undo, contentDescription = "Undo")
+                        }
+                        IconButton(
+                            onClick = {
+                                if (undonePaths.isNotEmpty()) {
+                                    completedPaths.add(undonePaths.removeLast())
+                                }
+                            },
+                            enabled = undonePaths.isNotEmpty()
+                        ) {
+                            Icon(Icons.AutoMirrored.Filled.Redo, contentDescription = "Redo")
+                        }
+                        IconButton(
+                            onClick = {
+                                completedPaths.clear()
+                                undonePaths.clear()
+                            },
+                            enabled = completedPaths.isNotEmpty()
+                        ) {
+                            Icon(Icons.Default.DeleteOutline, contentDescription = "Clear All")
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                )
+            }
+        ) { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = (question ?: stringResource(R.string.no_question_loaded)).toLocaleNumerals(context),
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+                HorizontalDivider(thickness = 1.dp, color = MaterialTheme.colorScheme.outlineVariant)
+
+                Canvas(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(slateBackgroundColor)
+                        .pointerInput(Unit) {
+                            detectDragGestures(
+                                onDragStart = { offset ->
+                                    undonePaths.clear()
+                                    currentPathPoints = listOf(offset)
+                                },
+                                onDrag = { change, _ ->
+                                    change.consume()
+                                    currentPathPoints = currentPathPoints + change.position
+                                },
+                                onDragEnd = {
+                                    if (currentPathPoints.size > 1) {
+                                        val path = Path().apply {
+                                            moveTo(currentPathPoints.first().x, currentPathPoints.first().y)
+                                            currentPathPoints.drop(1).forEach { lineTo(it.x, it.y) }
+                                        }
+                                        completedPaths.add(path)
+                                    }
+                                    currentPathPoints = emptyList()
+                                }
+                            )
+                        }
+                ) {
+                    completedPaths.forEach { path ->
+                        drawPath(
+                            path = path,
+                            color = drawColor,
+                            style = Stroke(width = 8f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+                        )
+                    }
+
+                    if (currentPathPoints.size > 1) {
+                        val currentDrawPath = Path().apply {
+                            moveTo(currentPathPoints.first().x, currentPathPoints.first().y)
+                            currentPathPoints.drop(1).forEach { lineTo(it.x, it.y) }
+                        }
+                        drawPath(
+                            path = currentDrawPath,
+                            color = drawColor,
+                            style = Stroke(width = 8f, cap = StrokeCap.Round, join = StrokeJoin.Round)
+                        )
+                    }
+                }
+            }
+        }
+    }
+}

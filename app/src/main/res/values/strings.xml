@@ -191,7 +191,7 @@
     <string name="other_version">ସଂସ୍କରଣ</string>
     <string name="changelog_dialog_title">ନୂଆ କ\'ଣ ଅଛି</string>
     <string name="changelog_loading">ପରିବର୍ତ୍ତନ ଲଗ୍ ଲୋଡ୍ ହେଉଛି...</string>
-    <string name="changelog_error">ପରିବର୍ତ୍ତନ ଲଗ୍ ଲୋଡ୍ କରିବାରେ ଅସମର୍ଥ। ଦୟାକରି ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ।</string>
+    <string name="changelog_error">ପରିବର୍ତ୍ତନ ଲଗ୍ ଲୋଡ୍ କରିବାରେ ଅସମର୍ଥ । ଦୟାକରି ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ।</string>
     <string name="other_language">ଭାଷା</string>
     <string name="other_language_desc">ଆପ୍ ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
     <string name="language_dialog_title">ଭାଷା ବାଛନ୍ତୁ</string>
@@ -201,10 +201,10 @@
     <string name="download_started">ଡାଉନଲୋଡ୍ ଆରମ୍ଭ ହେଉଛି...</string>
     <string name="download_failed">ଡାଉନଲୋଡ୍ ବିଫଳ ହେଲା: %1$s</string>
     <string name="update_available_title">ନୂଆ ଅପଡେଟ୍ ଉପଲବ୍ଧ</string>
-    <string name="update_available_message">ଏକ ନୂଆ ସଂସ୍କରଣ (v%1$s) ଉପଲବ୍ଧ ଅଛି। ଆପଣ ବର୍ତ୍ତମାନ (v%2$s) ବ୍ୟବହାର କରୁଛନ୍ତି।</string>
+    <string name="update_available_message">ଏକ ନୂଆ ସଂସ୍କରଣ (v%1$s) ଉପଲବ୍ଧ ଅଛି। ଆପଣ ବର୍ତମାନ (v%2$s) ବ୍ୟବହାର କରୁଛନ୍ତି।</string>
     <string name="download_button">ଡାଉନଲୋଡ୍ କରନ୍ତୁ</string>
     <string name="later_button">ପରେ କେବେ</string>
-    <string name="permission_request_toast">ଏହି ସ୍ରୋତରୁ ଆପ୍ ଇନଷ୍ଟଲ୍ କରିବାକୁ ଦୟାକରି ଅନୁମତି ଦିଅନ୍ତୁ।</string>
+    <string name="permission_request_toast">ଏହି ସ୍ରୋତରୁ ଆପ୍ ଇନଷ୍ଟଲ୍ କରିବାକୁ ଦୟାକରି ଅନୁମତି ଦିଅନ୍ତୁ ।</string>
     <string name="up_to_date_title">ଆପ୍ ଅପ-ଟୁ-ଡେଟ୍ ଅଛି</string>
     <string name="up_to_date_message">ଆପଣ ଗଣିତ ବିଜ୍ଞର ସର୍ବଶେଷ ସଂସ୍କରଣ ବ୍ୟବହାର କରୁଛନ୍ତି ।</string>
     <string name="error_title">ତ୍ରୁଟି</string>
@@ -213,7 +213,7 @@
     <!-- Crash Handler -->
     <string name="crash_screen_app_name">ଗଣିତ ବିଜ୍ଞ</string>
     <string name="crash_screen_oops_title">ଏକ ଅସୁବିଧା ଦେଖାଦେଇଛି</string>
-    <string name="crash_screen_oops_message">ଆପ୍ କ୍ରାଶ୍ ହୋଇଯାଇଛି। ଆପଣ ଏହି ତ୍ରୁଟି ରିପୋର୍ଟକୁ ଡେଭଲପର୍‌ଙ୍କୁ ପଠାଇପାରିବେ।</string>
+    <string name="crash_screen_oops_message">ଆପ୍ କ୍ରାଶ୍ ହୋଇଯାଇଛି । ଆପଣ ଏହି ତ୍ରୁଟି ରିପୋର୍ଟକୁ ଡେଭଲପର୍‌ଙ୍କୁ ପଠାଇପାରିବେ। </string>
     <string name="crash_screen_copy_report">ରିପୋର୍ଟ କପି କରନ୍ତୁ</string>
     <string name="crash_screen_close_app">ଆପ୍ ବନ୍ଦ କରନ୍ତୁ</string>
     <string name="crash_report_copied">Crash report copied to clipboard.</string>
@@ -424,12 +424,13 @@
     <string name="language_restart_dialog_title">ପୁନଃ ଆରମ୍ଭ କରନ୍ତୁ</string>
     <string name="language_restart_dialog_message">ଭାଷା ପରିବର୍ତ୍ତନକୁ ଲାଗୁ କରିବା ପାଇଁ ଆପ୍‌କୁ ପୁଣିଥରେ ଆରମ୍ଭ କରିବା ଆବଶ୍ୟକ।</string>
     <string name="dialog_restart">ପୁନଃ ଆରମ୍ଭ</string>
+    <string name="dialog_save_button_text">Save</string>
 
     <string name="social_github">ଗିଟହବ୍</string>
     <string name="social_github_desc">ଆମର ସୋର୍ସ କୋଡ୍ ଦେଖନ୍ତୁ</string>
     <string name="dialog_close">ବନ୍ଦ କରନ୍ତୁ</string>
     <string name="changelog_header_title">ପରିଚାଳକ/ଯୋଗଦାନକାରୀ ଖୋଜୁଛୁ</string>
-    <string name="changelog_header_description">ଆମେ ବର୍ତ୍ତମାନ ଆମ ପ୍ରୋଜେକ୍ଟକୁ ବିକଶିତ ଏବଂ ଉନ୍ନତ କରିବାରେ ସାହାଯ୍ୟ କରିବା ପାଇଁ ପରିଚାଳକ/ଯୋଗଦାନକାରୀ ଖୋଜୁଛୁ। ଯଦି ଆପଣ ଆପଣଙ୍କର ଦକ୍ଷତା ଏବଂ ଅଭିଜ୍ଞତା ଯୋଗଦାନ କରିବାକୁ ଚାହାଁନ୍ତି, ତେବେ ଆପଣ ଆମର GitHub କୁ ଏଠାରେ ପରିଦର୍ଶନ କରିପାରିବେ, ପୁଲ୍ ଅନୁରୋଧ ସ୍ୱାଗତଯୋଗ୍ୟ। ଏହି ଆପ୍ କୋଟଲିନ୍ ଉପରେ ଅଧିକ ନିର୍ଭର କରେ।</string>
+    <string name="changelog_header_description">ଆମେ ବର୍ତ୍ତମାନ ଆମ ପ୍ରୋଜେକ୍ଟକୁ ବିକଶିତ ଏବଂ ଉନ୍ନତ କରିବାରେ ସାହାଯ୍ୟ କରିବା ପାଇଁ ପରିଚାଳକ/ଯୋଗଦାନକାରୀ ଖୋଜୁଛୁ । ଯଦି ଆପଣ ଆପଣଙ୍କର ଦକ୍ଷତା ଏବଂ ଅଭିଜ୍ଞତା ଯୋଗଦାନ କରିବାକୁ ଚାହାଁନ୍ତି, ତେବେ ଆପଣ ଆମର ଗିଟ୍ ହବ୍ କୁ ଏଠାରେ ପରିଦର୍ଶନ କରିପାରିବେ, ପୁଲ୍ ଅନୁରୋଧ ସ୍ୱାଗତଯୋଗ୍ୟ । ଏହି ଆପ୍ କୋଟଲିନ୍ ଉପରେ ଅଧିକ ନିର୍ଭର କରେ ।</string>
     <string name="changelog_fixed_title">ସମାଧାନ କରାଯାଇଛି</string>
 
     <string name="settings_sound_title">ଧ୍ୱନି ପ୍ରଭାବ</string>
@@ -649,7 +650,7 @@
     <string name="s_add_children">ମୋଟ ପିଲା = {1} + {2} = {ans} ଜଣ ।</string>
 
     <!-- Subtraction Templates -->
-    <string name="q_sub_flowers">ଗୋଟିଏ ବଗିଚାରେ {1} ଟି ଫୁଲ ଫୁଟିଥିଲା । ସେଥିରୁ {2} ଟି ଫୁଲ ଛିଣ୍ଡି ଗଲା। ତେବେ ବର୍ତ୍ତମାନ କେତେଟି ଫୁଲ ବାକି ଅଛି?</string>
+    <string name="q_sub_flowers">ଗୋଟିଏ ବଗିଚାରେ {1} ଟି ଫୁଲ ଫୁଟିଥିଲା । ସେଥିରୁ {2} ଟି ଫୁଲ ଛିଣ୍ଡି ଗଲା। ତେବେ ବର୍ତମାନ କେତେଟି ଫୁଲ ବାକି ଅଛି?</string>
     <string name="s_sub_flowers">ବାକି ଫୁଲ = {1} - {2} = {ans} ଟି ।</string>
     <string name="q_sub_pencils">ରମା ପାଖରେ {1} ଟି ପେନସିଲ୍ ଥିଲା । ସେ {2} ଟି ପେନସିଲ୍ ତା\' ସାଙ୍ଗକୁ ଦେଇଦେଲା । ତାହେଲେ ତା\' ପାଖରେ ଆଉ କେତେଟି ପେନସିଲ୍ ରହିଲା?</string>
     <string name="s_sub_pencils">ବାକି ପେନସିଲ୍ = {1} - {2} = {ans} ଟି ।</string>
@@ -713,4 +714,225 @@
     <string name="all_languages">ସମସ୍ତ ଭାଷା</string>
     <string name="save_settings">ପରବର୍ତ୍ତୀ</string>
 
+    <string name="lreorder_description">କ୍ରମ ପରିବର୍ତ୍ତନ କରନ୍ତୁ</string>
+    <string name="lsave_order_description">କ୍ରମ ସଂରକ୍ଷଣ କରନ୍ତୁ</string>
+    <string name="lreset_order_description">ଡିଫଲ୍ଟ କ୍ରମକୁ ଫେରନ୍ତୁ</string>
+    <string name="lmove_up_description">ଆଇଟମ୍ ଉପରକୁ ନିଅନ୍ତୁ</string>
+    <string name="lmove_down_description">ଆଇଟମ୍ ତଳକୁ ନିଅନ୍ତୁ</string>
+
+    <!-- Add this string for the history language mismatch -->
+    <string name="history_language_mismatch">ଏହି ପ୍ରଶ୍ନ ଦେଖିବା ପାଇଁ ଦୟାକରି %s ଭାଷାକୁ ପରିବର୍ତ୍ତନ କରନ୍ତୁ ।</string>
+    <string name="history_your_answer_label">ତୁମର ଉତ୍ତର: %s</string>
+    <string name="history_correct_answer_label">ସଠିକ୍ ଉତ୍ତର: %s</string>
+    <string name="history_result_label">ଫଳାଫଳ: %s</string>
+    <string name="drawing_slate">ଅଙ୍କନ ପ୍ୟାଡ୍</string>
+    <string name="no_question_loaded">ପ୍ରଶ୍ନ ଲୋଡ ହୋଇପାରିଲା ନାହିଁ</string>
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">ପୂରଣବାଚକ ସଂଖ୍ୟା</string>
+    <string name="ordinals_screen_title">ପୂରଣବାଚକ ସଂଖ୍ୟା</string>
+    <string name="header_number">ସଂଖ୍ୟା</string>
+    <string name="header_word">ଶବ୍ଦ</string>
+    <string name="header_symbol">ଚିହ୍ନ</string>
+
+    <!-- Odia Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>୧</item><item>୨</item><item>୩</item><item>୪</item><item>୫</item><item>୬</item><item>୭</item><item>୮</item><item>୯</item><item>୧୦</item><item>୧୧</item><item>୧୨</item><item>୧୩</item><item>୧୪</item><item>୧୫</item><item>୧୬</item><item>୧୭</item><item>୧୮</item><item>୧୯</item><item>୨୦</item><item>୨୧</item><item>୨୨</item><item>୨୩</item><item>୨୪</item><item>୨୫</item><item>୨୬</item><item>୨୭</item><item>୨୮</item><item>୨୯</item><item>୩୦</item><item>୩୧</item><item>୩୨</item><item>୩୩</item><item>୩୪</item><item>୩୫</item><item>୩୬</item><item>୩୭</item><item>୩୮</item><item>୩୯</item><item>୪୦</item><item>୪୧</item><item>୪୨</item><item>୪୩</item><item>୪୪</item><item>୪୫</item><item>୪୬</item><item>୪୭</item><item>୪୮</item><item>୪୯</item><item>୫୦</item><item>୫୧</item><item>୫୨</item><item>୫୩</item><item>୫୪</item><item>୫୫</item><item>୫୬</item><item>୫୭</item><item>୫୮</item><item>୫୯</item><item>୬୦</item><item>୬୧</item><item>୬୨</item><item>୬୩</item><item>୬୪</item><item>୬୫</item><item>୬୬</item><item>୬୭</item><item>୬୮</item><item>୬୯</item><item>୭୦</item><item>୭୧</item><item>୭୨</item><item>୭୩</item><item>୭୪</item><item>୭୫</item><item>୭୬</item><item>୭୭</item><item>୭୮</item><item>୭୯</item><item>୮୦</item><item>୮୧</item><item>୮୨</item><item>୮୩</item><item>୮୪</item><item>୮୫</item><item>୮୬</item><item>୮୭</item><item>୮୮</item><item>୮୯</item><item>୯୦</item><item>୯୧</item><item>୯୨</item><item>୯୩</item><item>୯୪</item><item>୯୫</item><item>୯୬</item><item>୯୭</item><item>୯୮</item><item>୯୯</item><item>୧୦୦</item>
+        <item>୨୦୦</item>
+        <item>୩୦୦</item>
+        <item>୪୦୦</item>
+        <item>୫୦୦</item>
+        <item>୬୦୦</item>
+        <item>୭୦୦</item>
+        <item>୮୦୦</item>
+        <item>୯୦୦</item>
+        <item>୧୦୦୦</item>
+        <item>୧୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>ପ୍ରଥମ</item><item>ଦ୍ୱିତୀୟ</item><item>ତୃତୀୟ</item><item>ଚତୁର୍ଥ</item><item>ପଞ୍ଚମ</item><item>ଷଷ୍ଠ</item><item>ସପ୍ତମ</item><item>ଅଷ୍ଟମ</item><item>ନବମ</item><item>ଦଶମ</item><item>ଏକାଦଶ</item><item>ଦ୍ୱାଦଶ</item><item>ତ୍ରୟୋଦଶ</item><item>ଚତୁର୍ଦ୍ଦଶ</item><item>ପଞ୍ଚଦଶ</item><item>ଷୋଡ଼ଶ</item><item>ସପ୍ତଦଶ</item><item>ଅଷ୍ଟାଦଶ</item><item>ଊନବିଂଶ</item><item>ବିଂଶ</item><item>ଏକବିଂଶ</item><item>ଦ୍ୱାବିଂଶ</item><item>ତ୍ରୟୋବିଂଶ</item><item>ଚତୁବିଂଶ</item><item>ପଞ୍ଚବିଂଶ</item><item>ଷଡବିଂଶ</item><item>ସପ୍ତବିଂଶ</item><item>ଅଷ୍ଟବିଂଶ</item><item>ଊନତ୍ରିଂଶ</item><item>ତ୍ରିଂଶ</item><item>ଏକତ୍ରିଂଶ</item><item>ଦ୍ୱାତ୍ରିଂଶ</item><item>ତ୍ରୟତ୍ରିଂଶ</item><item>ଚତୁତ୍ରିଂଶ</item><item>ପଞ୍ଚତ୍ରିଂଶ</item><item>ଷଟ୍ ତ୍ରିଂଶ</item><item>ସପ୍ତତ୍ରିଂଶ</item><item>ଅଷ୍ଟତ୍ରିଂଶ</item><item>ଊନଚତ୍ୱାରିଂଶ</item><item>ଚତ୍ୱାରିଂଶ</item><item>ଏକଚତ୍ୱାରିଂଶ</item><item>ଦ୍ୱିଚତ୍ୱାରିଂଶ</item><item>ତ୍ରିଚତ୍ୱାରିଂଶ</item><item>ଚତୁଃଚତ୍ୱାରିଂଶ</item><item>ପଞ୍ଚଚତ୍ୱାରିଂଶ</item><item>ଷଟ୍ ଚତ୍ୱାରିଂଶ</item><item>ସପ୍ତଚତ୍ୱାରିଂଶ</item><item>ଅଷ୍ଟଚତ୍ୱାରିଂଶ</item><item>ଊନପଞ୍ଚାଶତ୍</item><item>ପଞ୍ଚାଶତ୍</item><item>ଏକପଞ୍ଚାଶତ୍</item><item>ଦ୍ୱିପଞ୍ଚାଶତ୍</item><item>ତ୍ରିପଞ୍ଚାଶତ୍</item><item>ଚତୁପଞ୍ଚାଶତ୍</item><item>ପଞ୍ଚପଞ୍ଚାଶତ୍</item><item>ଷଡପଞ୍ଚାଶତ୍</item><item>ସପ୍ତପଞ୍ଚାଶତ୍</item><item>ଅଷ୍ଟପଞ୍ଚାଶତ୍</item><item>ଊନଷଷ୍ଠୀତମ</item><item>ଷଷ୍ଠୀତମ</item><item>ଏକଷଷ୍ଠୀତମ</item><item>ଦ୍ୱିଷଷ୍ଠୀତମ</item><item>ତ୍ରିଷଷ୍ଠୀତମ</item><item>ଚତୁଷଷ୍ଠୀତମ</item><item>ପଞ୍ଚଷଷ୍ଠୀତମ</item><item>ଷଟ୍ ଷଷ୍ଠୀତମ</item><item>ସପ୍ତଷଷ୍ଠୀତମ</item><item>ଅଷ୍ଟଷଷ୍ଠୀତମ</item><item>ଊନସପ୍ତତିତମ</item><item>ସପ୍ତତିତମ</item><item>ଏକସପ୍ତତିତମ</item><item>ଦ୍ୱିସପ୍ତତିତମ</item><item>ତ୍ରିସପ୍ତତିତମ</item><item>ଚତୁସପ୍ତତିତମ</item><item>ପଞ୍ଚସପ୍ତତିତମ</item><item>ଷଟ୍ ସପ୍ତତିତମ</item><item>ସତସପ୍ତତିତମ</item><item>ଅଷ୍ଟସପ୍ତତିତମ</item><item>ଊନଶୀତିତମ</item><item>ଅଶୀତିତମ</item><item>ଏକାଶୀତିତମ</item><item>ଦ୍ଵାଶୀତିତମ</item><item>ତ୍ରିଶୀତିତମ</item><item>ଚତୁଶୀତିତମ</item><item>ପଞ୍ଚଶୀତିତମ</item><item>ଷଟ୍ ଶୀତିତମ</item><item>ସପ୍ତଶୀତିତମ</item><item>ଅଷ୍ଟଶୀତିତମ</item><item>ଊନନବତିତମ</item><item>ନବତିତମ</item><item>ଏକନବତିତମ</item><item>ଦ୍ୱିନବତିତମ</item><item>ତ୍ରିନବତିତମ</item><item>ଚତୁନବତିତମ</item><item>ପଞ୍ଚନବତିତମ</item><item>ଷଟ୍ ନବତିତମ</item><item>ସପ୍ତନବତିତମ</item><item>ଅଷ୍ଟନବତିତମ</item><item>ନବନବତିତମ</item><item>ଶତତମ</item>
+        <item>ଦ୍ୱିଶତତମ</item>
+        <item>ତ୍ରିଶତତମ</item>
+        <item>ଚତୁଶତତମ</item>
+        <item>ପଞ୍ଚଶତତମ</item>
+        <item>ଷଟ୍ ତତମ</item>
+        <item>ସପ୍ତଶତତମ</item>
+        <item>ଅଷ୍ଟଶତତମ</item>
+        <item>ନବଶତତମ</item>
+        <item>ସହସ୍ରତମ</item>
+        <item>ଲକ୍ଷତମ</item>
+        <item>କୋଟିତମ</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>୧ମ</item><item>୨ୟ</item><item>୩ୟ</item><item>୪ର୍ଥ</item><item>୫ମ</item><item>୬ଷ୍ଠ</item><item>୭ମ</item><item>୮ମ</item><item>୯ମ</item><item>୧୦ମ</item><item>୧୧ଶ</item><item>୧୨ଶ</item><item>୧୩ଶ</item><item>୧୪ଶ</item><item>୧୫ଶ</item><item>୧୬ଶ</item><item>୧୭ଶ</item><item>୧୮ଶ</item><item>୧୯ଶ</item><item>୨୦ଶ</item><item>୨୧ଶ</item><item>୨୨ଶ</item><item>୨୩ଶ</item><item>୨୪ଶ</item><item>୨୫ଶ</item><item>୨୬ଶ</item><item>୨୭ଶ</item><item>୨୮ଶ</item><item>୨୯ଶ</item><item>୩୦ଶ</item><item>୩୧ଶ</item><item>୩୨ଶ</item><item>୩୩ଶ</item><item>୩୪ଶ</item><item>୩୫ଶ</item><item>୩୬ଶ</item><item>୩୭ଶ</item><item>୩୮ଶ</item><item>୩୯ଶ</item><item>୪୦ଶ</item><item>୪୧ଶ</item><item>୪୨ଶ</item><item>୪୩ଶ</item><item>୪୪ଶ</item><item>୪୫ଶ</item><item>୪୬ଶ</item><item>୪୭ଶ</item><item>୪୮ଶ</item><item>୪୯ଶ</item><item>୫୦ମ</item><item>୫୧ମ</item><item>୫୨ମ</item><item>୫୩ମ</item><item>୫୪ମ</item><item>୫୫ମ</item><item>୫୬ମ</item><item>୫୭ମ</item><item>୫୮ମ</item><item>୫୯ମ</item><item>୬୦ମ</item><item>୬୧ମ</item><item>୬୨ମ</item><item>୬୩ମ</item><item>୬୪ମ</item><item>୬୫ମ</item><item>୬୬ମ</item><item>୬୭ମ</item><item>୬୮ମ</item><item>୬୯ମ</item><item>୭୦ମ</item><item>୭୧ମ</item><item>୭୨ମ</item><item>୭୩ମ</item><item>୭୪ମ</item><item>୭୫ମ</item><item>୭୬ମ</item><item>୭୭ମ</item><item>୭୮ମ</item><item>୭୯ମ</item><item>୮୦ମ</item><item>୮୧ମ</item><item>୮୨ମ</item><item>୮୩ମ</item><item>୮୪ମ</item><item>୮୫ମ</item><item>୮୬ମ</item><item>୮୭ମ</item><item>୮୮ମ</item><item>୮୯ମ</item><item>୯୦ମ</item><item>୯୧ମ</item><item>୯୨ମ</item><item>୯୩ମ</item><item>୯୪ମ</item><item>୯୫ମ</item><item>୯୬ମ</item><item>୯୭ମ</item><item>୯୮ମ</item><item>୯୯ମ</item><item>୧୦୦ମ</item>
+        <item>୨୦୦ମ</item>
+        <item>୩୦୦ମ</item>
+        <item>୪୦୦ମ</item>
+        <item>୫୦୦ମ</item>
+        <item>୬୦୦ମ</item>
+        <item>୭୦୦ମ</item>
+        <item>୮୦୦ମ</item>
+        <item>୯୦୦ମ</item>
+        <item>୧୦୦୦ତମ</item>
+        <item>୧୦୦୦୦୦ତମ</item>
+        <item>୧୦୦୦୦୦୦୦ତମ</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">ଗଣନା ପ୍ରଣାଳୀ</string>
+    <string name="ganana_screen_title">ଗଣନା ପ୍ରଣାଳୀ</string>
+    <string name="header_name">ନାମ</string>
+
+    <string-array name="ganana_numbers">
+        <item>୧</item>
+        <item>୧୦</item>
+        <item>୧୦୦</item>
+        <item>୧୦୦୦</item>
+        <item>୧୦୦୦୦</item>
+        <item>୧୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦</item>
+        <item>୧୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦୦</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>ଏକ</item>
+        <item>ଦଶ</item>
+        <item>ଶହ</item>
+        <item>ହଜାର</item>
+        <item>ଅୟୁତ</item>
+        <item>ଲକ୍ଷ</item>
+        <item>ନିୟୁତ</item>
+        <item>କୋଟି</item>
+        <item>ଅର୍ବୁଦ</item>
+        <item>ବୃନ୍ଦ</item>
+        <item>ଖର୍ବ</item>
+        <item>ନିଖର୍ବ</item>
+        <item>ଶଙ୍ଖ</item>
+        <item>ପଦ୍ମ</item>
+        <item>ସାଗର</item>
+        <item>ଅନ୍ତ୍ୟ</item>
+        <item>ମଧ୍ୟ</item>
+        <item>ପରାର୍ଦ୍ଧ</item>
+    </string-array>
+
+    <string name="welcome_subtitle">ନମସ୍କାର, ଜୟ ଜଗନ୍ନାଥ</string>
+    <string name="preferred_languages">ସୁପାରିଶ କରାଯାଇଛି</string>
+    <string name="other_languages">ସମସ୍ତ ଭାଷା</string>
+    <string name="selected">ଚୟନ କରାଯାଇଛି</string>
+    <string name="language_restart_dynamic_message">ଏହା ଆପର ଭାଷାକୁ %1$s ରୁ %2$s କୁ ପରିବର୍ତ୍ତନ କରିବ</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">ଏକକ ରୂପାନ୍ତରଣ</string>
+    <string name="unit_converter_select_category">ଆରମ୍ଭ କରିବାକୁ ଏକ ଶ୍ରେଣୀ ବାଛନ୍ତୁ</string>
+    <string name="unit_converter_from">ଏଠାରୁ</string>
+    <string name="unit_converter_to">ଏହାକୁ</string>
+    <string name="unit_converter_enter_value">ମୂଲ୍ୟ ଦିଅନ୍ତୁ</string>
+    <string name="unit_converter_swap_description">ଏକକ ଅଦଳବଦଳ କରନ୍ତୁ</string>
+
+    <!-- Categories -->
+    <string name="category_length">ଲମ୍ବ</string>
+    <string name="category_weight">ଓଜନ</string>
+    <string name="category_capacity">ଧାରଣ କ୍ଷମତା</string>
+    <string name="category_temperature">ତାପମାତ୍ରା</string>
+    <string name="category_time">ସମୟ</string>
+    <string name="category_storage">ଷ୍ଟୋରେଜ୍</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">ମିଲିମିଟର</string>
+    <string name="unit_centimetre">ସେଣ୍ଟିମିଟର</string>
+    <string name="unit_metre">ମିଟର</string>
+    <string name="unit_kilometre">କିଲୋମିଟର</string>
+    <string name="unit_inch">ଇଞ୍ଚ</string>
+    <string name="unit_foot">ଫୁଟ</string>
+    <string name="unit_yard">ଗଜ</string>
+    <string name="unit_mile">ମାଇଲ</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">ମିଲିଗ୍ରାମ</string>
+    <string name="unit_gram">ଗ୍ରାମ</string>
+    <string name="unit_kilogram">କିଲୋଗ୍ରାମ</string>
+    <string name="unit_quintal">କ୍ୱିଣ୍ଟାଲ</string>
+    <string name="unit_tonne">ଟନ୍</string>
+    <string name="unit_pound">ପାଉଣ୍ଡ</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">ମିଲିଲିଟର</string>
+    <string name="unit_litre">ଲିଟର</string>
+    <string name="unit_kilolitre">କିଲୋଲିଟର</string>
+    <string name="unit_cubic_centimetre">ଘନ ସେଣ୍ଟିମିଟର</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">ସେଲସିୟସ</string>
+    <string name="unit_fahrenheit">ଫାରେନହାଇଟ୍</string>
+    <string name="unit_kelvin">କେଲଭିନ</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">ସେକେଣ୍ଡ</string>
+    <string name="unit_minute">ମିନିଟ୍</string>
+    <string name="unit_hour">ଘଣ୍ଟା</string>
+    <string name="unit_day">ଦିନ</string>
+    <string name="unit_week">ସପ୍ତାହ</string>
+    <string name="unit_month">ମାସ</string>
+    <string name="unit_year">ବର୍ଷ</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">ବିଟ୍</string>
+    <string name="unit_kilobit">କିଲୋବିଟ୍</string>
+    <string name="unit_megabit">ମେଗାବିଟ୍</string>
+    <string name="unit_gigabit">ଗିଗାବିଟ୍</string>
+    <string name="unit_terabit">ଟେରାବିଟ୍</string>
+    <string name="unit_petabit">ପେଟାବିଟ୍</string>
+    <string name="unit_exabit">ଏକ୍ସାବିଟ୍</string>
+    <string name="unit_byte">ବାଇଟ୍</string>
+    <string name="unit_kilobyte">କିଲୋବାଇଟ୍</string>
+    <string name="unit_megabyte">ମେଗାବାଇଟ୍</string>
+    <string name="unit_gigabyte">ଗିଗାବାଇଟ୍</string>
+    <string name="unit_terabyte">ଟେରାବାଇଟ୍</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">ଶହେ ପଚାଶ / ଦେଢ଼ ଶହ</string>
+    <string name="word_250_special">ଦୁଇ ଶହ ପଚାଶ / ଅଢ଼େଇ ଶହ</string>
+    <string name="word_1500_special">ଏକ ହଜାର ପାଞ୍ଚ ଶହ / ପନ୍ଦର ଶହ</string>
+    <string name="word_thousand">ହଜାର</string>
+    <string name="word_lakh">ଲକ୍ଷ</string>
+
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">ସଂଖ୍ୟାରୁ ଶବ୍ଦ</string>
+    <string name="ntt_enter_number">ଏଠାରେ ସଂଖ୍ୟା ଲେଖନ୍ତୁ</string>
+    <string name="ntt_convert_button">ରୂପାନ୍ତର କରନ୍ତୁ</string>
+    <string name="ntt_result_english">ଇଂରାଜୀ:</string>
+    <string name="ntt_result_odia">ଓଡ଼ିଆ:</string>
+    <string name="word_crore">କୋଟି</string>
+
+    <string name="word_rupees">ଟଙ୍କା</string>
+    <string name="word_only">ମାତ୍ର</string>
+    <string name="btn_copy">କପି କରନ୍ତୁ</string>
+    <string name="msg_copied">କପି ହୋଇଗଲା</string>
+    <string name="lbl_bank_format">ବ୍ୟାଙ୍କ / ଚେକ୍ ଫର୍ମାଟ୍</string>
+    <string name="btn_screenshot_mode">ସ୍କ୍ରିନସଟ୍ ମୋଡ୍</string>
+    <string name="msg_exit_screenshot">ବାହାରିବା ପାଇଁ ଯେକୌଣସି ସ୍ଥାନରେ କ୍ଲିକ୍ କରନ୍ତୁ</string>
+    <string name="menu_roman_numbers">ରୋମାନ୍ ସଂଖ୍ୟା</string>
+    <string name="roman_screen_title">ରୋମାନ୍ ସଂଖ୍ୟା</string>
+    <string name="col_number">ସଂଖ୍ୟା</string>
+    <string name="col_roman">ରୋମାନ୍</string>
+    <string name="btn_load_more">ପରବର୍ତ୍ତୀ ୧୦୦ ସଂଖ୍ୟା ଦେଖାନ୍ତୁ</string>
+    <string name="msg_list_complete">ଆଉ ଆଗକୁ ଲେଖାଯାଇ ନାହିଁ!</string>
+    <string name="action_search">ଖୋଜନ୍ତୁ</string>
+    <string name="search_hint">ସଂଖ୍ୟା ଲେଖନ୍ତୁ (ଯଥା: ୫୦)</string>
+    <string name="search_no_result">ସଂଖ୍ୟାଟି ବୈଧ ନୁହେଁ (ସର୍ବାଧିକ ୧୦୦୦)</string>
+    <string name="action_close_search">ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="search_result_label">ଫଳାଫଳ:</string>
+    <string name="view_all_contributors">ସମସ୍ତ ଯୋଗଦାନକାରୀଙ୍କୁ ଦେଖନ୍ତୁ</string>
+    <string name="contributors_msg">ଯେଉଁମାନେ ଏହି ଆପ୍ ତିଆରି କରିବାରେ ସାହାଯ୍ୟ କରିଛନ୍ତି, ସେମାନଙ୍କୁ ଧନ୍ୟବାଦ</string>
 </resources>

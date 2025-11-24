@@ -22,8 +22,8 @@ android {
         applicationId = "com.sandeep.ganitabigyan"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1000
-        versionName = "10.0.0"
+        versionCode = 1100
+        versionName = "11.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -84,7 +84,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1") // For the splash screen API
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3") // Ensure you have the latest ViewModel Compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.3") // Ensure you have the latest runtime Compose
-
+    implementation("androidx.browser:browser:1.8.0")
 
     // --- THESE 3 LINES ARE ADDED FOR FIREBASE PUSH NOTIFICATIONS ---
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))

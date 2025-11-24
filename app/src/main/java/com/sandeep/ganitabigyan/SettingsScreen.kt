@@ -5,8 +5,14 @@ package com.sandeep.ganitabigyan
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -27,16 +33,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection // <<< NEW IMPORT
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign // <<< NEW IMPORT
-import androidx.compose.ui.unit.LayoutDirection // <<< NEW IMPORT
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -45,16 +52,23 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
+// Data class to hold language information for the new UI
+private data class LanguageInfo(
+    val code: String,
+    val nativeName: String,
+    val englishName: String
+)
+
+//===================================================================
+// 1. SETTINGS SCREEN (Corrected)
+//===================================================================
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     navController: NavController,
     settingsViewModel: SettingsViewModel = viewModel()
 ) {
-    // ... The top part of this file is completely unchanged ...
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
-    val activity = (LocalContext.current as? Activity)
     val themePreference by settingsViewModel.themePreference.collectAsStateWithLifecycle()
     val isVibrationEnabled by settingsViewModel.isVibrationEnabled.collectAsStateWithLifecycle()
     val isSoundEnabled by settingsViewModel.isSoundEnabled.collectAsStateWithLifecycle()
@@ -62,13 +76,10 @@ fun SettingsScreen(
     val eveningTime by settingsViewModel.eveningReminderTime.collectAsStateWithLifecycle()
     val currentLanguageCode by settingsViewModel.language.collectAsStateWithLifecycle()
     val areRemindersEnabled by settingsViewModel.areRemindersEnabled.collectAsStateWithLifecycle()
-    var showLanguageDialog by remember { mutableStateOf(false) }
-    var showRestartDialog by remember { mutableStateOf(false) }
-    var languageToRestart by remember { mutableStateOf<String?>(null) }
+
+    // *** FIX: Corrected mutableStateOf ***
     var showMorningTimePicker by remember { mutableStateOf(false) }
     var showEveningTimePicker by remember { mutableStateOf(false) }
-    var showThemeDialog by remember { mutableStateOf(false) }
-    var showColorPickerDialog by remember { mutableStateOf(false) }
     val timePickerStateMorning = rememberTimePickerState(initialHour = morningTime.split(":")[0].toInt(), initialMinute = morningTime.split(":")[1].toInt(), is24Hour = false)
     val timePickerStateEvening = rememberTimePickerState(initialHour = eveningTime.split(":")[0].toInt(), initialMinute = eveningTime.split(":")[1].toInt(), is24Hour = false)
 
@@ -82,10 +93,11 @@ fun SettingsScreen(
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())) {
             SettingsCategory(title = stringResource(R.string.settings_category_appearance))
-            SettingsClickableItem(title = stringResource(id = R.string.settings_theme_title), description = getCurrentThemeName(theme = themePreference), icon = Icons.Default.Brightness4, onClick = { showThemeDialog = true })
+            // *** FIX: Corrected function call to getCurrentThemeName ***
+            SettingsClickableItem(title = stringResource(id = R.string.settings_theme_title), description = getCurrentThemeName(theme = themePreference), icon = Icons.Default.Brightness4, onClick = { navController.navigate(AppDestinations.THEME_SELECTION_ROUTE) })
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             SettingsCategory(title = stringResource(R.string.settings_category_general))
-            SettingsClickableItem(title = stringResource(id = R.string.settings_language_title), description = getCurrentLanguageName(code = currentLanguageCode), icon = Icons.Default.Language, onClick = { showLanguageDialog = true })
+            SettingsClickableItem(title = stringResource(id = R.string.settings_language_title), description = stringResource(id = getLanguageStringId(code = currentLanguageCode)), icon = Icons.Default.Language, onClick = { navController.navigate(AppDestinations.LANGUAGE_SELECTION_ROUTE) })
             SettingsSwitchItem(title = stringResource(R.string.settings_sound_title), description = stringResource(R.string.settings_sound_description), icon = Icons.Default.VolumeUp, checked = isSoundEnabled, onCheckedChange = { settingsViewModel.setSoundEnabled(it) })
             SettingsSwitchItem(title = stringResource(R.string.settings_vibration_title), description = stringResource(R.string.settings_vibration_description), icon = Icons.Default.Vibration, checked = isVibrationEnabled, onCheckedChange = { settingsViewModel.setVibrationEnabled(it) })
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
@@ -103,18 +115,6 @@ fun SettingsScreen(
         }
     }
 
-    if (showThemeDialog) {
-        ThemeSelectionDialog(currentTheme = themePreference, onDismiss = { showThemeDialog = false }, onThemeSelected = { theme -> settingsViewModel.setThemePreference(theme); showThemeDialog = false; if (theme == AppTheme.CUSTOM) { showColorPickerDialog = true } })
-    }
-    if (showColorPickerDialog) {
-        ColorPickerDialog(onDismiss = { showColorPickerDialog = false }, onColorSelected = { color -> val hexColor = String.format("#%06X", (0xFFFFFF and color.toArgb())); settingsViewModel.setCustomThemeColor(hexColor); showColorPickerDialog = false })
-    }
-    if (showLanguageDialog) {
-        LanguageSelectionDialog(currentLanguageCode = currentLanguageCode, onDismiss = { showLanguageDialog = false }, onLanguageSelected = { code -> showLanguageDialog = false; languageToRestart = code; showRestartDialog = true })
-    }
-    if (showRestartDialog) {
-        RestartConfirmationDialog(onDismiss = { showRestartDialog = false }, onConfirm = { showRestartDialog = false; languageToRestart?.let { langCode -> scope.launch { settingsViewModel.saveLanguage(langCode); val intent = Intent(context, MainActivity::class.java); intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK); context.startActivity(intent); activity?.finish() } } })
-    }
     if (showMorningTimePicker) {
         TimePickerDialog(onDismiss = { showMorningTimePicker = false }, onConfirm = { val newTime = String.format("%02d:%02d", timePickerStateMorning.hour, timePickerStateMorning.minute); settingsViewModel.setMorningReminderTime(newTime); showMorningTimePicker = false; Toast.makeText(context, context.getString(R.string.toast_morning_reminder_set), Toast.LENGTH_SHORT).show() }, state = timePickerStateMorning)
     }
@@ -123,108 +123,369 @@ fun SettingsScreen(
     }
 }
 
+//===================================================================
+// 2. LANGUAGE SELECTION SCREEN (Corrected)
+//===================================================================
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ThemeSelectionDialog(currentTheme: String, onDismiss: () -> Unit, onThemeSelected: (String) -> Unit) {
-    // ... This function is unchanged ...
-    val themes = remember { listOf(AppTheme.SYSTEM to R.string.theme_option_system, AppTheme.LIGHT to R.string.theme_option_light, AppTheme.DARK to R.string.theme_option_dark, AppTheme.AMOLED to R.string.theme_option_amoled, AppTheme.CUSTOM to R.string.theme_option_custom,) }; AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(id = R.string.theme_dialog_title)) }, text = { Column { themes.forEach { (theme, stringId) -> Row(modifier = Modifier.fillMaxWidth().clickable { onThemeSelected(theme) }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) { RadioButton(selected = currentTheme == theme, onClick = { onThemeSelected(theme) }); Spacer(modifier = Modifier.width(8.dp)); Text(stringResource(id = stringId)) } } } }, confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } })
-}
-
-@Composable
-private fun ColorPickerDialog(onDismiss: () -> Unit, onColorSelected: (Color) -> Unit) {
-    // ... This function is unchanged ...
-    val colors = remember { listOf(Color(0xFF6750A4), Color(0xFFE91E63), Color(0xFF4CAF50), Color(0xFF03A9F4), Color(0xFFFF9800), Color(0xFF009688), Color(0xFF795548), Color(0xFFF44336)) }; AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(id = R.string.custom_color_dialog_title)) }, text = { LazyVerticalGrid(columns = GridCells.Fixed(4), contentPadding = PaddingValues(top = 16.dp)) { items(colors) { color -> Box(modifier = Modifier.padding(8.dp).size(48.dp).clip(CircleShape).background(color).clickable { onColorSelected(color) }.border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)) } } }, confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } })
-}
-
-
-@Composable
-private fun LanguageSelectionDialog(
-    currentLanguageCode: String,
-    onDismiss: () -> Unit,
-    onLanguageSelected: (String) -> Unit
+fun LanguageSelectionScreen(
+    navController: NavController,
+    settingsViewModel: SettingsViewModel = viewModel()
 ) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val activity = (LocalContext.current as? Activity)
+    val currentLanguageCode by settingsViewModel.language.collectAsStateWithLifecycle()
+    // *** FIX: Corrected mutableStateOf ***
+    var showRestartDialog by remember { mutableStateOf(false) }
+    var languageToRestart by remember { mutableStateOf<String?>(null) }
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+
     val languages = remember {
         listOf(
-            "system" to R.string.language_system_default,
-            "or" to R.string.language_odia,
-            "en" to R.string.language_english,
-            "sa" to R.string.language_sanskrit,
-            "hi" to R.string.language_hindi,
-            "te" to R.string.language_telugu,
-            "bn" to R.string.language_bengali,
-            "gu" to R.string.language_gujarati,
-            "as" to R.string.language_assamese,
-            "ml" to R.string.language_malayalam,
-            "ur" to R.string.language_urdu
+            LanguageInfo("or", "ଓଡ଼ିଆ", "Odia"),
+            LanguageInfo("en", "English", ""),
+            LanguageInfo("system", "System Default", ""),
+            LanguageInfo("sa", "संस्कृतम्", "Sanskrit"),
+            LanguageInfo("hi", "हिन्दी", "Hindi"),
+            LanguageInfo("te", "తెలుగు", "Telugu"),
+            LanguageInfo("bn", "বাংলা", "Bengali"),
+            LanguageInfo("gu", "ગુજરાતી", "Gujarati"),
+            LanguageInfo("as", "অসমীয়া", "Assamese"),
+            LanguageInfo("ml", "മലയാളം", "Malayalam"),
+            LanguageInfo("ur", "اردو", "Urdu")
         )
     }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(id = R.string.language_dialog_title)) },
-        text = {
-            Column {
-                Text(
-                    text = stringResource(R.string.language_dialog_description),
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
-                LazyColumn {
-                    items(languages) { (code, stringId) ->
-                        val isSelected = currentLanguageCode == code
-                        val color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
-                        // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-                        // vvv THIS IS THE FIX: Special handling for RTL languages like Urdu vvv
-                        // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-                        if (code == "ur") {
-                            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                                Text(
-                                    text = stringResource(id = stringId),
-                                    color = color,
-                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable { if (code != currentLanguageCode) onLanguageSelected(code) else onDismiss() }
-                                        .padding(vertical = 12.dp),
-                                    textAlign = TextAlign.Start // In RTL, Start means Right
-                                )
-                            }
-                        } else {
-                            // This is the normal LTR text for all other languages
-                            Text(
-                                text = stringResource(id = stringId),
-                                color = color,
-                                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { if (code != currentLanguageCode) onLanguageSelected(code) else onDismiss() }
-                                    .padding(vertical = 12.dp),
-                                textAlign = TextAlign.Start // In LTR, Start means Left
-                            )
+    Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            LargeTopAppBar(
+                title = { Text(stringResource(R.string.settings_language_title)) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_back_button_desc))
+                    }
+                },
+                scrollBehavior = scrollBehavior
+            )
+        }
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            items(languages) { language ->
+                LanguageRow(
+                    language = language,
+                    isSelected = currentLanguageCode == language.code,
+                    onClick = {
+                        if (currentLanguageCode != language.code) {
+                            languageToRestart = language.code
+                            showRestartDialog = true
                         }
-                        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                        // ^^^ END OF THE FIX ^^^
-                        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    }
+                )
+                HorizontalDivider(thickness = 0.5.dp, color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+            }
+        }
+    }
+
+    if (showRestartDialog) {
+        languageToRestart?.let { newLangCode ->
+            WithLocale(languageCode = newLangCode) {
+                RestartBottomSheet(
+                    currentLanguageName = getCurrentLanguageName(code = currentLanguageCode, isEnglishName = false),
+                    newLanguageName = getCurrentLanguageName(code = newLangCode, isEnglishName = false),
+                    onDismiss = { showRestartDialog = false },
+                    onConfirm = {
+                        showRestartDialog = false
+                        scope.launch {
+                            settingsViewModel.saveLanguage(newLangCode)
+                            val intent = Intent(context, MainActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            context.startActivity(intent)
+                            activity?.finish()
+                        }
+                    }
+                )
+            }
+        }
+    }
+}
+
+//===================================================================
+// 3. THEME SELECTION SCREEN
+//===================================================================
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ThemeSelectionScreen(
+    navController: NavController,
+    settingsViewModel: SettingsViewModel = viewModel()
+) {
+    val currentTheme by settingsViewModel.themePreference.collectAsStateWithLifecycle()
+    val customColorHex by settingsViewModel.customThemeColor.collectAsStateWithLifecycle()
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+
+    val customColors = remember {
+        listOf(
+            Color(0xFF6750A4), Color(0xFFE91E63), Color(0xFF009688), Color(0xFFF44336),
+            Color(0xFF4CAF50), Color(0xFF03A9F4), Color(0xFFFF9800), Color(0xFF795548),
+            Color(0xFF3F51B5), Color(0xFF9C27B0), Color(0xFF00BCD4), Color(0xFF8BC34A)
+        )
+    }
+
+    Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            LargeTopAppBar(
+                title = { Text(stringResource(R.string.settings_theme_title)) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_back_button_desc))
+                    }
+                },
+                scrollBehavior = scrollBehavior
+            )
+        }
+    ) { padding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
+            contentPadding = PaddingValues(vertical = 8.dp)
+        ) {
+            item {
+                ThemeItem(
+                    title = stringResource(R.string.theme_option_system),
+                    isSelected = currentTheme == AppTheme.SYSTEM,
+                    onClick = { settingsViewModel.setThemePreference(AppTheme.SYSTEM) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(
+                                brush = Brush.horizontalGradient(
+                                    colors = listOf(Color.White, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
+                                )
+                            )
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+            item {
+                ThemeItem(
+                    title = stringResource(R.string.theme_option_light),
+                    isSelected = currentTheme == AppTheme.LIGHT,
+                    onClick = { settingsViewModel.setThemePreference(AppTheme.LIGHT) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(Color.White)
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+            item {
+                ThemeItem(
+                    title = stringResource(R.string.theme_option_dark),
+                    isSelected = currentTheme == AppTheme.DARK,
+                    onClick = { settingsViewModel.setThemePreference(AppTheme.DARK) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFF202124))
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+            item {
+                ThemeItem(
+                    title = stringResource(R.string.theme_option_amoled),
+                    isSelected = currentTheme == AppTheme.AMOLED,
+                    onClick = { settingsViewModel.setThemePreference(AppTheme.AMOLED) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(Color.Black)
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+            item {
+                ThemeItem(
+                    title = stringResource(R.string.theme_option_custom),
+                    isSelected = currentTheme == AppTheme.CUSTOM,
+                    onClick = { settingsViewModel.setThemePreference(AppTheme.CUSTOM) }
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape)
+                            .background(Color(android.graphics.Color.parseColor(customColorHex)))
+                            .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                    )
+                }
+            }
+
+            // The animated color grid
+            item {
+                AnimatedVisibility(
+                    visible = currentTheme == AppTheme.CUSTOM,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    LazyVerticalGrid(
+                        columns = GridCells.Adaptive(minSize = 56.dp),
+                        contentPadding = PaddingValues(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.heightIn(max = 200.dp) // prevent it from being too tall
+                    ) {
+                        items(customColors) { color ->
+                            val colorHex = String.format("#%06X", (0xFFFFFF and color.toArgb()))
+                            val isSelected = colorHex == customColorHex
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier = Modifier
+                                    .size(48.dp)
+                                    .clip(CircleShape)
+                                    .background(color)
+                                    .border(2.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f), CircleShape)
+                                    .clickable { settingsViewModel.setCustomThemeColor(colorHex) }
+                            ) {
+                                if (isSelected) {
+                                    Icon(Icons.Default.Check, contentDescription = "Selected", tint = Color.White)
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+    }
+}
+
+//===================================================================
+// 4. HELPER COMPOSABLES
+//===================================================================
+
+@Composable
+private fun ThemeItem(
+    title: String,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+    preview: @Composable () -> Unit
+) {
+    ListItem(
+        modifier = Modifier.clickable(onClick = onClick),
+        headlineContent = { Text(title) },
+        leadingContent = { preview() },
+        trailingContent = {
+            RadioButton(selected = isSelected, onClick = null)
         },
-        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }
+        colors = ListItemDefaults.colors(containerColor = Color.Transparent)
     )
 }
 
-// ... The rest of the file is completely unchanged ...
 @Composable
-private fun RestartConfirmationDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
-    AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.language_restart_dialog_title)) }, text = { Text(stringResource(R.string.language_restart_dialog_message)) }, dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }, confirmButton = { Button(onClick = onConfirm) { Text(stringResource(R.string.dialog_restart)) } })
+fun WithLocale(
+    languageCode: String,
+    content: @Composable () -> Unit
+) {
+    val locale = if (languageCode == "system") {
+        ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0] ?: Locale.getDefault()
+    } else {
+        Locale(languageCode)
+    }
+
+    val context = LocalContext.current
+    val localizedContext = remember(context, locale) {
+        val configuration = Configuration(context.resources.configuration)
+        configuration.setLocale(locale)
+        context.createConfigurationContext(configuration)
+    }
+
+    CompositionLocalProvider(LocalContext provides localizedContext) {
+        content()
+    }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun RestartBottomSheet(
+    currentLanguageName: String,
+    newLanguageName: String,
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, end = 24.dp, top = 8.dp, bottom = 40.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = stringResource(R.string.language_restart_dialog_title), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = stringResource(R.string.language_restart_dynamic_message, currentLanguageName, newLanguageName), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(modifier = Modifier.height(24.dp))
+            Button(onClick = onConfirm, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)) {
+                Text(stringResource(R.string.dialog_restart))
+            }
+            TextButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.dialog_cancel))
+            }
+        }
+    }
+}
+
+@Composable
+private fun LanguageRow(language: LanguageInfo, isSelected: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 24.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(text = language.nativeName, style = MaterialTheme.typography.bodyLarge)
+            Text(text = language.englishName, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        Spacer(Modifier.width(16.dp))
+        RadioButton(selected = isSelected, onClick = null)
+    }
+}
+
 @Composable
 private fun getCurrentThemeName(theme: String): String {
     return when (theme) { AppTheme.LIGHT -> stringResource(R.string.theme_option_light); AppTheme.DARK -> stringResource(R.string.theme_option_dark); AppTheme.AMOLED -> stringResource(R.string.theme_option_amoled); AppTheme.CUSTOM -> stringResource(R.string.theme_option_custom); else -> stringResource(R.string.theme_option_system) }
 }
+
 @Composable
-private fun getCurrentLanguageName(code: String): String {
-    return when (code) { "system" -> stringResource(R.string.language_system_default); "en" -> stringResource(R.string.language_english); "or" -> stringResource(R.string.language_odia); "sa" -> stringResource(R.string.language_sanskrit); "hi" -> stringResource(R.string.language_hindi); "te" -> stringResource(R.string.language_telugu); "bn" -> stringResource(R.string.language_bengali); "gu" -> stringResource(R.string.language_gujarati); "as" -> stringResource(R.string.language_assamese); "ml" -> stringResource(R.string.language_malayalam); "ur" -> stringResource(R.string.language_urdu); else -> stringResource(R.string.language_system_default) }
+private fun getCurrentLanguageName(code: String, isEnglishName: Boolean = false): String {
+    return if (isEnglishName) {
+        when (code) {
+            "system" -> "System Default"; "en" -> "English"; "or" -> "Odia"; "sa" -> "Sanskrit"; "hi" -> "Hindi"; "te" -> "Telugu"; "bn" -> "Bengali"; "gu" -> "Gujarati"; "as" -> "Assamese"; "ml" -> "Malayalam"; "ur" -> "Urdu"; else -> "System Default"
+        }
+    } else {
+        when (code) {
+            "system" -> stringResource(R.string.language_system_default); "en" -> "English"; "or" -> "ଓଡ଼ିଆ"; "sa" -> "संस्कृतम्"; "hi" -> "हिन्दी"; "te" -> "తెలుగు"; "bn" -> "বাংলা"; "gu" -> "ગુજરાતી"; "as" -> "অসমীয়া"; "ml" -> "മലയാളം"; "ur" -> "اردو"; else -> stringResource(R.string.language_system_default)
+        }
+    }
 }
+
 private fun formatTime(time24h: String, context: Context): String {
     return try { val sdf24h = SimpleDateFormat("HH:mm", Locale.US); val sdf12h = SimpleDateFormat("hh:mm a", Locale.US); val date = sdf24h.parse(time24h); val formattedTime = sdf12h.format(date!!); formattedTime.toLocaleNumerals(context) } catch (e: Exception) { time24h }
 }
@@ -244,4 +505,19 @@ private fun SettingsClickableItem(title: String, description: String, icon: Imag
 @Composable
 private fun TimePickerDialog(onDismiss: () -> Unit, onConfirm: () -> Unit, state: TimePickerState) {
     AlertDialog(onDismissRequest = onDismiss, confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(R.string.dialog_ok)) } }, dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }, text = { TimePicker(state = state) })
+}
+private fun getLanguageStringId(code: String): Int {
+    return when (code) {
+        "or" -> R.string.language_odia
+        "en" -> R.string.language_english
+        "sa" -> R.string.language_sanskrit
+        "hi" -> R.string.language_hindi
+        "te" -> R.string.language_telugu
+        "bn" -> R.string.language_bengali
+        "gu" -> R.string.language_gujarati
+        "as" -> R.string.language_assamese
+        "ml" -> R.string.language_malayalam
+        "ur" -> R.string.language_urdu
+        else -> R.string.language_system_default
+    }
 }

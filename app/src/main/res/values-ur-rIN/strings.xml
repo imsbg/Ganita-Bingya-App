@@ -649,4 +649,222 @@
     <string name="recommended_language">تجویز کردہ زبان</string>
     <string name="all_languages">تمام زبانیں</string>
     <string name="save_settings">آگے</string>
+
+    <string name="lreorder_description">آئٹمز کو دوبارہ ترتیب دیں</string>
+    <string name="lsave_order_description">ترتیب محفوظ کریں</string>
+    <string name="lreset_order_description">ڈیفالٹ ترتیب پر ری سیٹ کریں</string>
+    <string name="lmove_up_description">آئٹم کو اوپر لے جائیں</string>
+    <string name="lmove_down_description">آئٹم کو نیچے لے جائیں</string>
+
+    <!-- Add this string for the history language mismatch -->
+    <string name="history_language_mismatch">یہ سوال دیکھنے کے لیے براہ کرم %s زبان منتخب کریں۔</string>
+    <string name="history_your_answer_label">آپ کا جواب: %s</string>
+    <string name="history_correct_answer_label">صحیح جواب: %s</string>
+    <string name="history_result_label">نتیجہ: %s</string>
+
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">ترتیبی اعداد</string>
+    <string name="ordinals_screen_title">ترتیبی اعداد</string>
+    <string name="header_number">عدد</string>
+    <string name="header_word">لفظ</string>
+    <string name="header_symbol">علامت</string>
+
+    <!-- Urdu Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>۱</item><item>۲</item><item>۳</item><item>۴</item><item>۵</item><item>۶</item><item>۷</item><item>۸</item><item>۹</item><item>۱۰</item><item>۱۱</item><item>۱۲</item><item>۱۳</item><item>۱۴</item><item>۱۵</item><item>۱۶</item><item>۱۷</item><item>۱۸</item><item>۱۹</item><item>۲۰</item><item>۲۱</item><item>۲۲</item><item>۲۳</item><item>۲۴</item><item>۲۵</item><item>۲۶</item><item>۲۷</item><item>۲۸</item><item>۲۹</item><item>۳۰</item><item>۳۱</item><item>۳۲</item><item>۳۳</item><item>۳۴</item><item>۳۵</item><item>۳۶</item><item>۳۷</item><item>۳۸</item><item>۳۹</item><item>۴۰</item><item>۴۱</item><item>۴۲</item><item>۴۳</item><item>۴۴</item><item>۴۵</item><item>۴۶</item><item>۴۷</item><item>۴۸</item><item>۴۹</item><item>۵۰</item><item>۵۱</item><item>۵۲</item><item>۵۳</item><item>۵۴</item><item>۵۵</item><item>۵۶</item><item>۵۷</item><item>۵۸</item><item>۵۹</item><item>۶۰</item><item>۶۱</item><item>۶۲</item><item>۶۳</item><item>۶۴</item><item>۶۵</item><item>۶۶</item><item>۶۷</item><item>۶۸</item><item>۶۹</item><item>۷۰</item><item>۷۱</item><item>۷۲</item><item>۷۳</item><item>۷۴</item><item>۷۵</item><item>۷۶</item><item>۷۷</item><item>۷۸</item><item>۷۹</item><item>۸۰</item><item>۸۱</item><item>۸۲</item><item>۸۳</item><item>۸۴</item><item>۸۵</item><item>۸۶</item><item>۸۷</item><item>۸۸</item><item>۸۹</item><item>۹۰</item><item>۹۱</item><item>۹۲</item><item>۹۳</item><item>۹۴</item><item>۹۵</item><item>۹۶</item><item>۹۷</item><item>۹۸</item><item>۹۹</item><item>۱۰۰</item><item>۲۰۰</item>
+        <item>۳۰۰</item>
+        <item>۴۰۰</item>
+        <item>۵۰۰</item>
+        <item>۶۰۰</item>
+        <item>۷۰۰</item>
+        <item>۸۰۰</item>
+        <item>۹۰۰</item>
+        <item>۱۰۰۰</item>
+        <item>۱۰۰۰۰۰</item>
+        <item>۱۰۰۰۰۰۰۰</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>پہلا</item><item>دوسرا</item><item>تیسرا</item><item>چوتھا</item><item>پانچواں</item><item>چھٹا</item><item>ساتواں</item><item>آٹھواں</item><item>نواں</item><item>دسواں</item><item>گیارہواں</item><item>بارہواں</item><item>تیرہواں</item><item>چودہواں</item><item>پندرہواں</item><item>سولہواں</item><item>سترہواں</item><item>اٹھارہواں</item><item>انیسواں</item><item>بیسواں</item><item>اکیسواں</item><item>بائیسواں</item><item>تیئیسواں</item><item>چوبیسواں</item><item>پچیسواں</item><item>چھبیسواں</item><item>ستائیسواں</item><item>اٹھائیسواں</item><item>انتیسواں</item><item>تیسواں</item><item>اکتیسواں</item><item>بتیسواں</item><item>تینتیسواں</item><item>چونتیسواں</item><item>پینتیسواں</item><item>چھتیسواں</item><item>سینتیسواں</item><item>اڑتیسواں</item><item>انتالیسواں</item><item>چالیسواں</item><item>اکتالیسواں</item><item>بیالیسواں</item><item>تینتالیسواں</item><item>چوالیسواں</item><item>پینتالیسواں</item><item>چھیالیسواں</item><item>سینتالیسواں</item><item>اڑتالیسواں</item><item>انچاسواں</item><item>پچاسواں</item><item>اکاونواں</item><item>باونواں</item><item>ترپنواں</item><item>چونواں</item><item>پچپنواں</item><item>چھپنواں</item><item>ستاونواں</item><item>اٹھاونواں</item><item>انسٹھواں</item><item>ساٹھواں</item><item>اکسٹھواں</item><item>باسٹھواں</item><item>تریسٹھواں</item><item>چونسٹھواں</item><item>پینسٹھواں</item><item>چھیاسٹھواں</item><item>سڑسٹھواں</item><item>اڑسٹھواں</item><item>انہترواں</item><item>سترواں</item><item>اکہترواں</item><item>بہترواں</item><item>تہترواں</item><item>چوہترواں</item><item>پچہترواں</item><item>چھہترواں</item><item>ستترواں</item><item>اٹھترواں</item><item>اناسواں</item><item>اسیواں</item><item>اکیاسیواں</item><item>بیاسیواں</item><item>تراسیواں</item><item>چوراسیواں</item><item>پچاسیواں</item><item>چھیاسیواں</item><item>ستاسیواں</item><item>اٹھاسیواں</item><item>نواسیواں</item><item>نواّں</item><item>اکانوےواں</item><item>بانوےواں</item><item>ترانوےواں</item><item>چورانوےواں</item><item>پچانوےواں</item><item>چھیانوےواں</item><item>ستانوےواں</item><item>اٹھانوےواں</item><item>ننانوےواں</item><item>سواں</item>
+        <item>دو سواں</item>
+        <item>تین سواں</item>
+        <item>چار سواں</item>
+        <item>پانچ سواں</item>
+        <item>چھ سواں</item>
+        <item>سات سواں</item>
+        <item>آٹھ سواں</item>
+        <item>نو سواں</item>
+        <item>ہزارواں</item>
+        <item>لاکھواں</item>
+        <item>کروڑواں</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>۱لا</item><item>۲را</item><item>۳را</item><item>۴تھا</item><item>۵واں</item><item>۶ٹا</item><item>۷واں</item><item>۸واں</item><item>۹واں</item><item>۱۰واں</item><item>۱۱واں</item><item>۱۲واں</item><item>۱۳واں</item><item>۱۴واں</item><item>۱۵واں</item><item>۱۶واں</item><item>۱۷واں</item><item>۱۸واں</item><item>۱۹واں</item><item>۲۰واں</item><item>۲۱واں</item><item>۲۲واں</item><item>۲۳واں</item><item>۲۴واں</item><item>۲۵واں</item><item>۲۶واں</item><item>۲۷واں</item><item>۲۸واں</item><item>۲۹واں</item><item>۳۰واں</item><item>۳۱واں</item><item>۳۲واں</item><item>۳۳واں</item><item>۳۴واں</item><item>۳۵واں</item><item>۳۶واں</item><item>۳۷واں</item><item>۳۸واں</item><item>۳۹واں</item><item>۴۰واں</item><item>۴۱واں</item><item>۴۲واں</item><item>۴۳واں</item><item>۴۴واں</item><item>۴۵واں</item><item>۴۶واں</item><item>۴۷واں</item><item>۴۸واں</item><item>۴۹واں</item><item>۵۰واں</item><item>۵۱واں</item><item>۵۲واں</item><item>۵۳واں</item><item>۵۴واں</item><item>۵۵واں</item><item>۵۶واں</item><item>۵۷واں</item><item>۵۸واں</item><item>۵۹واں</item><item>۶۰واں</item><item>۶۱واں</item><item>۶۲واں</item><item>۶۳واں</item><item>۶۴واں</item><item>۶۵واں</item><item>۶۶واں</item><item>۶۷واں</item><item>۶۸واں</item><item>۶۹واں</item><item>۷۰واں</item><item>۷۱واں</item><item>۷۲واں</item><item>۷۳واں</item><item>۷۴واں</item><item>۷۵واں</item><item>۷۶واں</item><item>۷۷واں</item><item>۷۸واں</item><item>۷۹واں</item><item>۸۰واں</item><item>۸۱واں</item><item>۸۲واں</item><item>۸۳واں</item><item>۸۴واں</item><item>۸۵واں</item><item>۸۶واں</item><item>۸۷واں</item><item>۸۸واں</item><item>۸۹واں</item><item>۹۰واں</item><item>۹۱واں</item><item>۹۲واں</item><item>۹۳واں</item><item>۹۴واں</item><item>۹۵واں</item><item>۹۶واں</item><item>۹۷واں</item><item>۹۸واں</item><item>۹۹واں</item><item>۱۰۰واں</item>
+        <item>۲۰۰واں</item>
+        <item>۳۰۰واں</item>
+        <item>۴۰۰واں</item>
+        <item>۵۰۰واں</item>
+        <item>۶۰۰واں</item>
+        <item>۷۰۰واں</item>
+        <item>۸۰۰واں</item>
+        <item>۹۰۰واں</item>
+        <item>۱۰۰۰واں</item>
+        <item>۱۰۰۰۰۰واں</item>
+        <item>۱۰۰۰۰۰۰۰واں</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">گنتی کے نظام</string>
+    <string name="ganana_screen_title">گنتی کے نظام</string>
+    <string name="header_name">نام</string>
+
+    <string-array name="ganana_numbers">
+        <item>۱</item>
+        <item>۱۰</item>
+        <item>۱۰۰</item>
+        <item>۱,۰۰۰</item>
+        <item>۱۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+        <item>۱,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰,۰۰۰</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>ایک</item>
+        <item>دس</item>
+        <item>سو</item>
+        <item>ہزار</item>
+        <item>دس ہزار</item>
+        <item>لاکھ</item>
+        <item>دس لاکھ</item>
+        <item>کروڑ</item>
+        <item>دس کروڑ</item>
+        <item>ارب</item>
+        <item>دس ارب</item>
+        <item>کھرب</item>
+        <item>دس کھرب</item>
+        <item>نیل</item>
+        <item>دس نیل</item>
+        <item>پدم</item>
+        <item>دس پدم</item>
+        <item>سنکھ</item>
+    </string-array>
+
+    <string name="welcome_subtitle">اسلام و علیکم</string>
+    <string name="preferred_languages">تجویز کردہ</string>
+    <string name="other_languages">تمام زبانیں</string>
+    <string name="selected">منتخب شدہ</string>
+    <string name="language_restart_dynamic_message">یہ ایپ کی زبان کو %1$s سے %2$s میں تبدیل کر دے گا</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">یونٹ کنورٹر</string>
+    <string name="unit_converter_select_category">شروع کرنے کے لیے زمرہ منتخب کریں</string>
+    <string name="unit_converter_from">سے</string>
+    <string name="unit_converter_to">میں</string>
+    <string name="unit_converter_enter_value">مقدار درج کریں</string>
+    <string name="unit_converter_swap_description">یونٹس کا تبادلہ کریں</string>
+
+    <!-- Categories -->
+    <string name="category_length">لمبائی</string>
+    <string name="category_weight">وزن</string>
+    <string name="category_capacity">گنجائش</string>
+    <string name="category_temperature">درجہ حرارت</string>
+    <string name="category_time">وقت</string>
+    <string name="category_storage">اسٹوریج</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">ملی میٹر</string>
+    <string name="unit_centimetre">سینٹی میٹر</string>
+    <string name="unit_metre">میٹر</string>
+    <string name="unit_kilometre">کلو میٹر</string>
+    <string name="unit_inch">انچ</string>
+    <string name="unit_foot">فٹ</string>
+    <string name="unit_yard">گز</string>
+    <string name="unit_mile">میل</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">ملی گرام</string>
+    <string name="unit_gram">گرام</string>
+    <string name="unit_kilogram">کلو گرام</string>
+    <string name="unit_quintal">کوئنٹل</string>
+    <string name="unit_tonne">ٹن</string>
+    <string name="unit_pound">پاؤنڈ</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">ملی لیٹر</string>
+    <string name="unit_litre">لیٹر</string>
+    <string name="unit_kilolitre">کلو لیٹر</string>
+    <string name="unit_cubic_centimetre">کیوبک سینٹی میٹر</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">سیلسیس</string>
+    <string name="unit_fahrenheit">فارن ہائیٹ</string>
+    <string name="unit_kelvin">کیلون</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">سیکنڈ</string>
+    <string name="unit_minute">منٹ</string>
+    <string name="unit_hour">گھنٹہ</string>
+    <string name="unit_day">دن</string>
+    <string name="unit_week">ہفتہ</string>
+    <string name="unit_month">مہینہ</string>
+    <string name="unit_year">سال</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">بِٹ</string>
+    <string name="unit_kilobit">کلو بِٹ</string>
+    <string name="unit_megabit">میگا بِٹ</string>
+    <string name="unit_gigabit">گیگا بِٹ</string>
+    <string name="unit_terabit">ٹیرا بِٹ</string>
+    <string name="unit_petabit">پیٹا بِٹ</string>
+    <string name="unit_exabit">ایکسہ بِٹ</string>
+    <string name="unit_byte">بائٹ</string>
+    <string name="unit_kilobyte">کلو بائٹ</string>
+    <string name="unit_megabyte">میگا بائٹ</string>
+    <string name="unit_gigabyte">گیگا بائٹ</string>
+    <string name="unit_terabyte">ٹیرا بائٹ</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">ایک سو پچاس</string>
+    <string name="word_250_special">دو سو پچاس</string>
+    <string name="word_1500_special">ایک ہزار پانچ سو</string>
+    <string name="word_thousand">ہزار</string>
+    <string name="word_lakh">لاکھ</string>
+    <string name="word_crore">کروڑ</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">نمبر سے الفاظ</string>
+    <string name="ntt_enter_number">نمبر درج کریں</string>
+    <string name="ntt_convert_button">تبدیل کریں</string>
+    <string name="ntt_result_english">انگریزی:</string>
+    <string name="ntt_result_odia">اوڑیا:</string>
+
+    <string name="word_rupees">روپے</string>
+    <string name="word_only">صرف</string>
+    <string name="btn_copy">کاپی کریں</string>
+    <string name="msg_copied">ٹیکسٹ کلپ بورڈ پر کاپی ہو گیا</string>
+    <string name="lbl_bank_format">چیک / بینک فارمیٹ</string>
+    <string name="btn_screenshot_mode">اسکرین شاٹ موڈ</string>
+    <string name="msg_exit_screenshot">باہر نکلنے کے لیے کہیں بھی ٹیپ کریں</string>
+    <string name="menu_roman_numbers">رومن ہندسے</string>
+    <string name="roman_screen_title">رومن ہندسے</string>
+    <string name="col_number">نمبر</string>
+    <string name="col_roman">رومن</string>
+    <string name="btn_load_more">اگلے 100 نمبر لوڈ کریں</string>
+    <string name="msg_list_complete">آپ 1000 تک پہنچ گئے ہیں!</string>
+    <string name="action_search">تلاش کریں</string>
+    <string name="search_hint">نمبر درج کریں (مثلاً 50)</string>
+    <string name="search_no_result">نمبر درست نہیں یا بہت بڑا ہے</string>
+    <string name="action_close_search">تلاش بند کریں</string>
+    <string name="search_result_label">نتیجہ:</string>
+    <string name="view_all_contributors">تمام تعاون کنندگان دیکھیں</string>
+    <string name="contributors_msg">ان تمام لوگوں کا شکریہ جنہوں نے اس ایپ کو بنانے میں مدد کی</string>
 </resources>

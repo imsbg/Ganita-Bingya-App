@@ -9,6 +9,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -37,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -52,7 +54,7 @@ private data class PopularItem(val titleResId: Int, val imageResId: Int, val col
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, homeViewModel: HomeViewModel = viewModel()) {
     var isSearching by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
     val allSearchableItems = remember {
@@ -70,11 +72,12 @@ fun HomeScreen(navController: NavController) {
     val context = LocalContext.current
     val enrichedSearchableList = remember { allSearchableItems.map { item -> EnrichedSearchableItem(originalItem = item, englishTitle = getStringForLocale(context, item.titleResId, Locale.ENGLISH), odiaTitle = getStringForLocale(context, item.titleResId, Locale("or"))) } }
     val filteredItems = remember(searchQuery, enrichedSearchableList) { if (searchQuery.isBlank()) { enrichedSearchableList } else { enrichedSearchableList.filter { enrichedItem -> enrichedItem.englishTitle.contains(searchQuery, ignoreCase = true) || enrichedItem.odiaTitle.contains(searchQuery, ignoreCase = true) } } }
+
     AnimatedContent(targetState = isSearching, transitionSpec = { fadeIn() togetherWith fadeOut() }, label = "SearchModeAnimation") { searching ->
         if (searching) {
             SearchScreen(searchQuery = searchQuery, onQueryChange = { searchQuery = it }, onCloseSearch = { isSearching = false; searchQuery = "" }, items = filteredItems, onItemClick = { route -> navController.navigate(route); isSearching = false; searchQuery = "" })
         } else {
-            MainHomeScreen(navController = navController, onSearchClick = { isSearching = true })
+            MainHomeScreen(navController = navController, onSearchClick = { isSearching = true }, homeViewModel = homeViewModel)
         }
     }
 }
@@ -105,15 +108,37 @@ private fun SearchItemCard(item: SearchableItem, onClick: () -> Unit) {
     ListItem(headlineContent = { Text(stringResource(id = item.titleResId), fontWeight = FontWeight.SemiBold) }, supportingContent = { item.subtitleResId?.let { Text(stringResource(id = it)) } }, leadingContent = { Icon(imageVector = item.icon, contentDescription = null) }, modifier = Modifier.clip(RoundedCornerShape(16.dp)).clickable(onClick = onClick))
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MainHomeScreen(navController: NavController, onSearchClick: () -> Unit) {
+private fun MainHomeScreen(
+    navController: NavController,
+    onSearchClick: () -> Unit,
+    homeViewModel: HomeViewModel = viewModel()
+) {
+    val hasAnimationPlayed by homeViewModel.hasAnimationPlayed.collectAsState()
+    var isVisible by remember { mutableStateOf(hasAnimationPlayed) }
+
+    LaunchedEffect(Unit) {
+        if (!hasAnimationPlayed) {
+            isVisible = true
+            homeViewModel.onAnimationCompleted()
+        }
+    }
+
     val greeting = remember {
         when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
             in 0..11 -> R.string.home_greeting_morning; in 12..16 -> R.string.home_greeting_afternoon; in 17..20 -> R.string.home_greeting_evening; else -> R.string.home_greeting_night
         }
     }
-    val categories = listOf(CategoryItem(R.string.home_category_games, Icons.Default.VideogameAsset, Color(0xFFFFA726), AppDestinations.GAMES_CATEGORY_ROUTE), CategoryItem(R.string.home_category_learning, Icons.Default.School, Color(0xFF3F51B5), AppDestinations.LEARNING_CATEGORY_ROUTE), CategoryItem(R.string.home_category_score, Icons.Default.Insights, Color(0xFF2196F3), AppDestinations.SCORE_HISTORY_ROUTE), CategoryItem(R.string.home_category_utility, Icons.Default.Construction, Color(0xFF009688), AppDestinations.CALCULATOR_ROUTE))
+    val categories = listOf(
+        CategoryItem(R.string.home_category_games, Icons.Default.VideogameAsset, Color(0xFFFFA726), AppDestinations.GAMES_CATEGORY_ROUTE),
+        CategoryItem(R.string.home_category_learning, Icons.Default.School, Color(0xFF3F51B5), AppDestinations.LEARNING_CATEGORY_ROUTE),
+        CategoryItem(R.string.home_category_score, Icons.Default.Insights, Color(0xFF2196F3), AppDestinations.SCORE_HISTORY_ROUTE),
+        // --- THIS IS THE ONLY LINE THAT HAS CHANGED ---
+        // It now points to our new Utility Category screen instead of the calculator directly.
+        CategoryItem(R.string.home_category_utility, Icons.Default.Construction, Color(0xFF009688), AppDestinations.UTILITY_CATEGORY_ROUTE)
+    )
     val popularItemsBase = listOf(PopularItem(R.string.menu_multiplication_tables, R.drawable.popular_tables, Color(0xFF9C27B0), AppDestinations.PANIKIA_LIST_ROUTE), PopularItem(R.string.menu_start_game, R.drawable.popular_math, Color(0xFF4CAF50), AppDestinations.GAME_ROUTE), PopularItem(R.string.menu_logic_game, R.drawable.popular_logic, Color(0xFF673AB7), AppDestinations.LOGIC_GAME_ROUTE), PopularItem(R.string.menu_visual_game, R.drawable.popular_fruits, Color(0xFFF44336), AppDestinations.VISUAL_GAME_ROUTE))
     val popularItemsState = rememberLazyListState()
     var targetSpeedFraction by remember { mutableFloatStateOf(0f) }
@@ -132,56 +157,78 @@ private fun MainHomeScreen(navController: NavController, onSearchClick: () -> Un
     val animatedVisibleLines = animatedSpeedFraction * totalLines
 
     Scaffold(topBar = {
-        TopAppBar(title = { }, actions = { IconButton(onClick = onSearchClick) { Icon(Icons.Default.Search, contentDescription = stringResource(R.string.home_search_button_desc)) }; IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) { Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_button_description)) } }, colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent))
+        AnimatedVisibility(
+            visible = isVisible,
+            enter = slideInVertically(tween(500)) { -it } + fadeIn(tween(500))
+        ) {
+            TopAppBar(
+                title = { },
+                actions = {
+                    IconButton(onClick = onSearchClick) { Icon(Icons.Default.Search, contentDescription = stringResource(R.string.home_search_button_desc)) }
+                    IconButton(onClick = { navController.navigate(AppDestinations.SETTINGS_ROUTE) }) { Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_button_description)) }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+            )
+        }
     }) { paddingValues ->
         LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues), contentPadding = PaddingValues(horizontal = 24.dp)) {
             item {
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(stringResource(id = R.string.home_greeting_hello), style = MaterialTheme.typography.headlineLarge)
-                Text(stringResource(id = greeting), style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold), modifier = Modifier.padding(bottom = 24.dp))
-            }
-            item {
-                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) { CategoryCard(item = categories[0], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[0].route) }); CategoryCard(item = categories[1], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[1].route) }) }
-                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) { CategoryCard(item = categories[2], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[2].route) }); CategoryCard(item = categories[3], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[3].route) }) }
-                }
-            }
-            item { Text(text = stringResource(R.string.home_popular_title), style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold), modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)) }
-            item {
-                LazyRow(state = popularItemsState, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    items(count = Int.MAX_VALUE, key = { index -> index }) { index ->
-                        val item = popularItemsBase[index % popularItemsBase.size]; PopularCard(item = item, onClick = { navController.navigate(item.route) })
-                    }
-                }
-            }
-            item {
-                Row(modifier = Modifier.padding(top = 16.dp, bottom = 32.dp).fillMaxWidth().height(animatedContainerHeight), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    repeat(totalLines) { index ->
-                        val opacity = when { index < animatedVisibleLines.toInt() -> 1f; index == animatedVisibleLines.toInt() -> animatedVisibleLines - index; else -> 0f }
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight().alpha(opacity).clip(RoundedCornerShape(2.dp)).background(speedColors[index]))
-                    }
-                }
-            }
-
-            // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            // vvv THIS IS THE MODIFIED ITEM FOR THE FOOTER TEXT vvv
-            // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 48.dp),
-                    contentAlignment = Alignment.CenterStart
+                AnimatedVisibility(
+                    visible = isVisible,
+                    enter = slideInVertically(tween(500, 150)) { -it / 2 } + fadeIn(tween(500, 150))
                 ) {
-                    Text(
-                        text = stringResource(id = R.string.home_footer_text),
-                        // <<< THIS IS THE FIX: A custom font size is now set >>>
-                        style = MaterialTheme.typography.displayLarge.copy(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 40.sp // You can change this number
-                        ),
-                        color = Color(0xFFC0C0C0),                        textAlign = TextAlign.Start
-                    )
+                    Column {
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(stringResource(id = R.string.home_greeting_hello), style = MaterialTheme.typography.headlineLarge)
+                        Text(stringResource(id = greeting), style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold), modifier = Modifier.padding(bottom = 24.dp))
+                    }
+                }
+            }
+            item {
+                AnimatedVisibility(
+                    visible = isVisible,
+                    enter = fadeIn(tween(500, 300)) + scaleIn(tween(500, 300), initialScale = 0.8f)
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) { CategoryCard(item = categories[0], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[0].route) }); CategoryCard(item = categories[1], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[1].route) }) }
+                        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) { CategoryCard(item = categories[2], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[2].route) }); CategoryCard(item = categories[3], modifier = Modifier.weight(1f), onClick = { navController.navigate(categories[3].route) }) }
+                    }
+                }
+            }
+            item {
+                AnimatedVisibility(
+                    visible = isVisible,
+                    enter = slideInVertically(tween(500, 450)) { it / 2 } + fadeIn(tween(500, 450))
+                ) {
+                    Column {
+                        Text(text = stringResource(R.string.home_popular_title), style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold), modifier = Modifier.padding(top = 32.dp, bottom = 16.dp))
+                        LazyRow(state = popularItemsState, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                            items(count = Int.MAX_VALUE, key = { index -> index }) { index ->
+                                val item = popularItemsBase[index % popularItemsBase.size]; PopularCard(item = item, onClick = { navController.navigate(item.route) })
+                            }
+                        }
+                        Row(modifier = Modifier.padding(top = 16.dp, bottom = 32.dp).fillMaxWidth().height(animatedContainerHeight), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            repeat(totalLines) { index ->
+                                val opacity = when { index < animatedVisibleLines.toInt() -> 1f; index == animatedVisibleLines.toInt() -> animatedVisibleLines - index; else -> 0f }
+                                Box(modifier = Modifier.weight(1f).fillMaxHeight().alpha(opacity).clip(RoundedCornerShape(2.dp)).background(speedColors[index]))
+                            }
+                        }
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 48.dp),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.home_footer_text),
+                                style = MaterialTheme.typography.displayLarge.copy(
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 40.sp
+                                ),
+                                color = Color(0xFFC0C0C0), textAlign = TextAlign.Start
+                            )
+                        }
+                    }
                 }
             }
         }

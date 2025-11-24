@@ -667,6 +667,221 @@
     <string name="recommended_language">ശുപാർശ ചെയ്യുന്ന ഭാഷ</string>
     <string name="all_languages">എല്ലാ ഭാഷകളും</string>
     <string name="save_settings">അടുത്തത്</string>
+    <string name="history_language_mismatch">ഈ ചോദ്യം കാണുന്നതിന് ദയവായി %s ഭാഷയിലേക്ക് മാറുക.</string>
+    <string name="history_your_answer_label">നിങ്ങളുടെ ഉത്തരം: %s</string>
+    <string name="history_correct_answer_label">ശരിയായ ഉത്തരം: %s</string>
+    <string name="history_result_label">ഫലം: %s</string>
+
+    <string name="lreorder_description">ഇനങ്ങൾ പുനഃക്രമീകരിക്കുക</string>
+    <string name="lsave_order_description">ക്രമം സംരക്ഷിക്കുക</string>
+    <string name="lreset_order_description">ഡിഫോൾട്ട് ക്രമത്തിലേക്ക് പുനഃസ്ഥാപിക്കുക</string>
+    <string name="lmove_up_description">ഇനം മുകളിലേക്ക് നീക്കുക</string>
+    <string name="lmove_down_description">ഇനം താഴേക്ക് നീക്കുക</string>
 
 
+    <!-- Ordinals Screen -->
+    <string name="menu_ordinals">ക്രമസൂചക സംഖ്യകൾ</string>
+    <string name="ordinals_screen_title">ക്രമസൂചക സംഖ്യകൾ</string>
+    <string name="header_number">സംഖ്യ</string>
+    <string name="header_word">വാക്ക്</string>
+    <string name="header_symbol">ചിഹ്നം</string>
+
+    <!-- Malayalam Ordinal Arrays -->
+    <string-array name="ordinal_numbers">
+        <item>൧</item><item>൨</item><item>൩</item><item>൪</item><item>൫</item><item>൬</item><item>൭</item><item>൮</item><item>൯</item><item>൧൦</item><item>൧൧</item><item>൧൨</item><item>൧൩</item><item>൧൪</item><item>൧൫</item><item>൧൬</item><item>൧൭</item><item>൧൮</item><item>൧൯</item><item>൨൦</item><item>൨൧</item><item>൨൨</item><item>൨൩</item><item>൨൪</item><item>൨൫</item><item>൨൬</item><item>൨൭</item><item>൨൮</item><item>൨൯</item><item>൩൦</item><item>൩൧</item><item>൩൨</item><item>൩൩</item><item>൩൪</item><item>൩൫</item><item>൩൬</item><item>൩൭</item><item>൩൮</item><item>൩൯</item><item>൪൦</item><item>൪൧</item><item>൪൨</item><item>൪൩</item><item>൪൪</item><item>൪൫</item><item>൪൬</item><item>൪൭</item><item>൪൮</item><item>൪൯</item><item>൫൦</item><item>൫൧</item><item>൫൨</item><item>൫൩</item><item>൫൪</item><item>൫൫</item><item>൫൬</item><item>൫൭</item><item>൫൮</item><item>൫൯</item><item>൬൦</item><item>൬൧</item><item>൬൨</item><item>൬൩</item><item>൬൪</item><item>൬൫</item><item>൬൬</item><item>൬൭</item><item>൬൮</item><item>൬൯</item><item>൭൦</item><item>൭൧</item><item>൭൨</item><item>൭൩</item><item>൭൪</item><item>൭൫</item><item>൭൬</item><item>൭൭</item><item>൭൮</item><item>൭൯</item><item>൮൦</item><item>൮൧</item><item>൮൨</item><item>൮൩</item><item>൮൪</item><item>൮൫</item><item>൮൬</item><item>൮൭</item><item>൮൮</item><item>൮൯</item><item>൯൦</item><item>൯൧</item><item>൯൨</item><item>൯൩</item><item>൯൪</item><item>൯൫</item><item>൯൬</item><item>൯൭</item><item>൯൮</item><item>൯൯</item><item>൧൦൦</item><item>൨൦൦</item>
+        <item>൩൦൦</item>
+        <item>൪൦൦</item>
+        <item>൫൦൦</item>
+        <item>൬൦൦</item>
+        <item>൭൦൦</item>
+        <item>൮൦൦</item>
+        <item>൯൦൦</item>
+        <item>൧൦൦൦</item>
+        <item>൧൦൦൦൦൦</item>
+        <item>൧൦൦൦൦൦൦൦</item>
+    </string-array>
+    <string-array name="ordinal_words">
+        <item>ഒന്നാമത്തെ</item><item>രണ്ടാമത്തെ</item><item>മൂന്നാമത്തെ</item><item>നാലാമത്തെ</item><item>അഞ്ചാമത്തെ</item><item>ആറാമത്തെ</item><item>ഏഴാമത്തെ</item><item>എട്ടാമത്തെ</item><item>ഒമ്പതാമത്തെ</item><item>പത്താമത്തെ</item><item>പതിനൊന്നാമത്തെ</item><item>പന്ത്രണ്ടാമത്തെ</item><item>പതിമൂന്നാമത്തെ</item><item>പതിനാലാമത്തെ</item><item>പതിനഞ്ചാമത്തെ</item><item>പതിനാറാമത്തെ</item><item>പതിനേഴാമത്തെ</item><item>പതിനെട്ടാമത്തെ</item><item>പത്തൊമ്പതാമത്തെ</item><item>ഇരുപതാമത്തെ</item><item>ഇരുപത്തി ഒന്നാമത്തെ</item><item>ഇരുപത്തി രണ്ടാമത്തെ</item><item>ഇരുപത്തി മൂന്നാമത്തെ</item><item>ഇരുപത്തി നാലാമത്തെ</item><item>ഇരുപത്തി അഞ്ചാമത്തെ</item><item>ഇരുപത്തി ആറാമത്തെ</item><item>ഇരുപത്തി ഏഴാമത്തെ</item><item>ഇരുപത്തി എട്ടാമത്തെ</item><item>ഇരുപത്തി ഒമ്പതാമത്തെ</item><item>മുപ്പതാമത്തെ</item><item>മുപ്പത്തി ഒന്നാമത്തെ</item><item>മുപ്പത്തി രണ്ടാമത്തെ</item><item>മുപ്പത്തി മൂന്നാമത്തെ</item><item>മുപ്പത്തി നാലാമത്തെ</item><item>മുപ്പത്തി അഞ്ചാമത്തെ</item><item>മുപ്പത്തി ആറാമത്തെ</item><item>മുപ്പത്തി ഏഴാമത്തെ</item><item>മുപ്പത്തി എട്ടാമത്തെ</item><item>മുപ്പത്തി ഒമ്പതാമത്തെ</item><item>നാൽപ്പതാമത്തെ</item><item>നാൽപ്പത്തി ഒന്നാമത്തെ</item><item>നാൽപ്പത്തി രണ്ടാമത്തെ</item><item>നാൽപ്പത്തി മൂന്നാമത്തെ</item><item>നാൽപ്പത്തി നാലാമത്തെ</item><item>നാൽപ്പത്തി അഞ്ചാമത്തെ</item><item>നാൽപ്പത്തി ആറാമത്തെ</item><item>നാൽപ്പത്തി ഏഴാമത്തെ</item><item>നാൽപ്പത്തി എട്ടാമത്തെ</item><item>നാൽപ്പത്തി ഒമ്പതാമത്തെ</item><item>അമ്പതാമത്തെ</item><item>അമ്പത്തി ഒന്നാമത്തെ</item><item>അമ്പത്തി രണ്ടാമത്തെ</item><item>അമ്പത്തി മൂന്നാമത്തെ</item><item>അമ്പത്തി നാലാമത്തെ</item><item>അമ്പത്തി അഞ്ചാമത്തെ</item><item>അമ്പത്തി ആറാമത്തെ</item><item>അമ്പത്തി ഏഴാമത്തെ</item><item>അമ്പത്തി എട്ടാമത്തെ</item><item>അമ്പത്തി ഒമ്പതാമത്തെ</item><item>അറുപതാമത്തെ</item><item>അറുപത്തി ഒന്നാമത്തെ</item><item>അറുപത്തി രണ്ടാമത്തെ</item><item>അറുപത്തി മൂന്നാമത്തെ</item><item>അറുപത്തി നാലാമത്തെ</item><item>അറുപത്തി അഞ്ചാമത്തെ</item><item>അറുപത്തി ആറാമത്തെ</item><item>അറുപത്തി ഏഴാമത്തെ</item><item>അറുപത്തി എട്ടാമത്തെ</item><item>അറുപത്തി ഒമ്പതാമത്തെ</item><item>എഴുപതാമത്തെ</item><item>എഴുപത്തി ഒന്നാമത്തെ</item><item>എഴുപത്തി രണ്ടാമത്തെ</item><item>എഴുപത്തി മൂന്നാമത്തെ</item><item>എഴുപത്തി നാലാമത്തെ</item><item>എഴുപത്തി അഞ്ചാമത്തെ</item><item>എഴുപത്തി ആറാമത്തെ</item><item>എഴുപത്തി ഏഴാമത്തെ</item><item>എഴുപത്തി എട്ടാമത്തെ</item><item>എഴുപത്തി ഒമ്പതാമത്തെ</item><item>എൺപതാമത്തെ</item><item>എൺപത്തി ഒന്നാമത്തെ</item><item>എൺപത്തി രണ്ടാമത്തെ</item><item>എൺപത്തി മൂന്നാമത്തെ</item><item>എൺപത്തി നാലാമത്തെ</item><item>എൺപത്തി അഞ്ചാമത്തെ</item><item>എൺപത്തി ആറാമത്തെ</item><item>എൺപത്തി ഏഴാമത്തെ</item><item>എൺപത്തി എട്ടാമത്തെ</item><item>എൺപത്തി ഒമ്പതാമത്തെ</item><item>തൊണ്ണൂറാമത്തെ</item><item>തൊണ്ണൂറ്റി ഒന്നാമത്തെ</item><item>തൊണ്ണൂറ്റി രണ്ടാമത്തെ</item><item>തൊണ്ണൂറ്റി മൂന്നാമത്തെ</item><item>തൊണ്ണൂറ്റി നാലാമത്തെ</item><item>തൊണ്ണൂറ്റി അഞ്ചാമത്തെ</item><item>തൊണ്ണൂറ്റി ആറാമത്തെ</item><item>തൊണ്ണൂറ്റി ഏഴാമത്തെ</item><item>തൊണ്ണൂറ്റി എട്ടാമത്തെ</item><item>തൊണ്ണൂറ്റി ഒമ്പതാമത്തെ</item><item>നൂറാമത്തെ</item>
+        <item>ഇരുനൂറാമത്തെ</item>
+        <item>മുന്നൂറാമത്തെ</item>
+        <item>നാനൂറാമത്തെ</item>
+        <item>അഞ്ഞൂറാമത്തെ</item>
+        <item>അറുനൂറാമത്തെ</item>
+        <item>എഴുനൂറാമത്തെ</item>
+        <item>എണ്ണൂറാമത്തെ</item>
+        <item>തൊള്ളായിരാമത്തെ</item>
+        <item>ആയിരാമത്തെ</item>
+        <item>ലക്ഷാമത്തെ</item>
+        <item>കോടിയാമത്തെ</item>
+    </string-array>
+    <string-array name="ordinal_symbols">
+        <item>൧-ാമത്തെ</item><item>൨-ാമത്തെ</item><item>൩-ാമത്തെ</item><item>൪-ാമത്തെ</item><item>൫-ാമത്തെ</item><item>൬-ാമത്തെ</item><item>൭-ാമത്തെ</item><item>൮-ാമത്തെ</item><item>൯-ാമത്തെ</item><item>൧൦-ാമത്തെ</item><item>൧൧-ാമത്തെ</item><item>൧൨-ാമത്തെ</item><item>൧൩-ാമത്തെ</item><item>൧൪-ാമത്തെ</item><item>൧൫-ാമത്തെ</item><item>൧൬-ാമത്തെ</item><item>൧൭-ാമത്തെ</item><item>൧൮-ാമത്തെ</item><item>൧൯-ാമത്തെ</item><item>൨൦-ാമത്തെ</item><item>൨൧-ാമത്തെ</item><item>൨൨-ാമത്തെ</item><item>൨൩-ാമത്തെ</item><item>൨൪-ാമത്തെ</item><item>൨൫-ാമത്തെ</item><item>൨൬-ാമത്തെ</item><item>൨൭-ാമത്തെ</item><item>൨൮-ാമത്തെ</item><item>൨൯-ാമത്തെ</item><item>൩൦-ാമത്തെ</item><item>൩൧-ാമത്തെ</item><item>൩൨-ാമത്തെ</item><item>൩൩-ാമത്തെ</item><item>൩൪-ാമത്തെ</item><item>൩൫-ാമത്തെ</item><item>൩൬-ാമത്തെ</item><item>൩൭-ാമത്തെ</item><item>൩൮-ാമത്തെ</item><item>൩൯-ാമത്തെ</item><item>൪൦-ാമത്തെ</item><item>൪൧-ാമത്തെ</item><item>൪൨-ാമത്തെ</item><item>൪൩-ാമത്തെ</item><item>൪൪-ാമത്തെ</item><item>൪൫-ാമത്തെ</item><item>൪൬-ാമത്തെ</item><item>൪൭-ാമത്തെ</item><item>൪൮-ാമത്തെ</item><item>൪൯-ാമത്തെ</item><item>൫൦-ാമത്തെ</item><item>൫൧-ാമത്തെ</item><item>൫൨-ാമത്തെ</item><item>൫൩-ാമത്തെ</item><item>൫൪-ാമത്തെ</item><item>൫൫-ാമത്തെ</item><item>൫᱖-ാമത്തെ</item><item>൫൭-ാമത്തെ</item><item>൫൮-ാമത്തെ</item><item>൫൯-ാമത്തെ</item><item>൬൦-ാമത്തെ</item><item>൬൧-ാമത്തെ</item><item>൬൨-ാമത്തെ</item><item>൬൩-ാമത്തെ</item><item>൬൪-ാമത്തെ</item><item>൬൫-ാമത്തെ</item><item>൬൬-ാമത്തെ</item><item>൬൭-ാമത്തെ</item><item>൬൮-ാമത്തെ</item><item>൬൯-ാമത്തെ</item><item>൭൦-ാമത്തെ</item><item>൭൧-ാമത്തെ</item><item>൭൨-ാമത്തെ</item><item>൭൩-ാമത്തെ</item><item>൭൪-ാമത്തെ</item><item>൭൫-ാമത്തെ</item><item>൭൬-ാമത്തെ</item><item>൭൭-ാമത്തെ</item><item>൭൮-ാമത്തെ</item><item>൭൯-ാമത്തെ</item><item>൮൦-ാമത്തെ</item><item>൮൧-ാമത്തെ</item><item>൮൨-ാമത്തെ</item><item>൮൩-ാമത്തെ</item><item>൮൪-ാമത്തെ</item><item>൮൫-ാമത്തെ</item><item>൮൬-ാമത്തെ</item><item>൮൭-ാമത്തെ</item><item>൮൮-ാമത്തെ</item><item>൮൯-ാമത്തെ</item><item>൯൦-ാമത്തെ</item><item>൯൧-ാമത്തെ</item><item>൯൨-ാമത്തെ</item><item>൯൩-ാമത്തെ</item><item>൯൪-ാമത്തെ</item><item>൯൫-ാമത്തെ</item><item>൯൬-ാമത്തെ</item><item>൯൭-ാമത്തെ</item><item>൯൮-ാമത്തെ</item><item>൯൯-ാമത്തെ</item><item>൧൦൦-ാമത്തെ</item>
+        <item>൨൦൦-ാമത്തെ</item>
+        <item>൩൦൦-ാമത്തെ</item>
+        <item>൪൦൦-ാമത്തെ</item>
+        <item>൫൦൦-ാമത്തെ</item>
+        <item>൬൦൦-ാമത്തെ</item>
+        <item>൭൦൦-ാമത്തെ</item>
+        <item>൮൦൦-ാമത്തെ</item>
+        <item>൯൦൦-ാമത്തെ</item>
+        <item>൧൦൦൦-ാമത്തെ</item>
+        <item>൧൦൦൦൦൦-ാമത്തെ</item>
+        <item>൧൦൦൦൦൦൦൦-ാമത്തെ</item>
+    </string-array>
+
+    <!-- Ganana (Counting Systems) Screen -->
+    <string name="menu_ganana">ഗണന സമ്പ്രദായങ്ങൾ</string>
+    <string name="ganana_screen_title">ഗണന സമ്പ്രദായങ്ങൾ</string>
+    <string name="header_name">പേര്</string>
+
+    <string-array name="ganana_numbers">
+        <item>൧</item>
+        <item>൧൦</item>
+        <item>൧൦൦</item>
+        <item>൧,൦൦൦</item>
+        <item>൧൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+        <item>൧,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦,൦൦൦</item>
+    </string-array>
+
+    <string-array name="ganana_names">
+        <item>ഒന്ന്</item>
+        <item>പത്ത്</item>
+        <item>നൂറ്</item>
+        <item>ആയിരം</item>
+        <item>പതിനായിരം</item>
+        <item>ലക്ഷം</item>
+        <item>പത്ത് ലക്ഷം</item>
+        <item>കോടി</item>
+        <item>പത്ത് കോടി</item>
+        <item>നൂറ് കോടി (അർബുദം)</item>
+        <item>ആയിരം കോടി</item>
+        <item>പതിനായിരം കോടി (ഖർവം)</item>
+        <item>ലക്ഷം കോടി</item>
+        <item>പത്ത് ലക്ഷം കോടി (നീലം)</item>
+        <item>കോടി കോടി (പദ്മം)</item>
+        <item>പത്ത് കോടി കോടി (ശംഖ്)</item>
+        <item>നൂറ് കോടി കോടി</item>
+        <item>ആയിരം കോടി കോടി</item>
+    </string-array>
+
+    <string name="welcome_subtitle">നമസ്കാരം</string>
+    <string name="preferred_languages">ശുപാർശ ചെയ്യുന്നവ</string>
+    <string name="other_languages">എല്ലാ ഭാഷകളും</string>
+    <string name="selected">തിരഞ്ഞെടുത്തവ</string>
+    <string name="language_restart_dynamic_message">ഇത് ആപ്പിന്റെ ഭാഷ %1$s-ൽ നിന്ന് %2$s-ലേക്ക് മാറ്റും</string>
+
+    <!-- Unit Converter Screen -->
+    <string name="unit_converter_title">യൂണിറ്റ് കൺവെർട്ടർ</string>
+    <string name="unit_converter_select_category">തുടങ്ങാനായി ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക</string>
+    <string name="unit_converter_from">ഇതിൽ നിന്ന്</string>
+    <string name="unit_converter_to">ഇതിലേക്ക്</string>
+    <string name="unit_converter_enter_value">മൂല്യം നൽകുക</string>
+    <string name="unit_converter_swap_description">യൂണിറ്റുകൾ പരസ്പരം മാറ്റുക</string>
+
+    <!-- Categories -->
+    <string name="category_length">നീളം</string>
+    <string name="category_weight">ഭാരം</string>
+    <string name="category_capacity">കൊള്ളളവ്</string>
+    <string name="category_temperature">താപനില</string>
+    <string name="category_time">സമയം</string>
+    <string name="category_storage">സ്റ്റോറേജ്</string>
+
+    <!-- Length Units -->
+    <string name="unit_millimetre">മില്ലീമീറ്റർ</string>
+    <string name="unit_centimetre">സെന്റീമീറ്റർ</string>
+    <string name="unit_metre">മീറ്റർ</string>
+    <string name="unit_kilometre">കിലോമീറ്റർ</string>
+    <string name="unit_inch">ഇഞ്ച്</string>
+    <string name="unit_foot">അടി</string>
+    <string name="unit_yard">യാർഡ്</string>
+    <string name="unit_mile">മൈൽ</string>
+
+    <!-- Weight Units -->
+    <string name="unit_milligram">മില്ലിഗ്രാം</string>
+    <string name="unit_gram">ഗ്രാം</string>
+    <string name="unit_kilogram">കിലോഗ്രാം</string>
+    <string name="unit_quintal">ക്വിന്റൽ</string>
+    <string name="unit_tonne">ടൺ</string>
+    <string name="unit_pound">പൗണ്ട്</string>
+
+    <!-- Capacity Units -->
+    <string name="unit_millilitre">മില്ലിലിറ്റർ</string>
+    <string name="unit_litre">ലിറ്റർ</string>
+    <string name="unit_kilolitre">കിലോലിറ്റർ</string>
+    <string name="unit_cubic_centimetre">ക്യൂബിക് സെന്റീമീറ്റർ</string>
+
+    <!-- Temperature Units -->
+    <string name="unit_celsius">സെൽഷ്യസ്</string>
+    <string name="unit_fahrenheit">ഫാരൻഹീറ്റ്</string>
+    <string name="unit_kelvin">കെൽവിൻ</string>
+
+    <!-- Time Units -->
+    <string name="unit_second">സെക്കൻഡ്</string>
+    <string name="unit_minute">മിനിറ്റ്</string>
+    <string name="unit_hour">മണിക്കൂർ</string>
+    <string name="unit_day">ദിവസം</string>
+    <string name="unit_week">ആഴ്ച</string>
+    <string name="unit_month">മാസം</string>
+    <string name="unit_year">വർഷം</string>
+
+    <!-- Storage Units -->
+    <string name="unit_bit">ബിറ്റ്</string>
+    <string name="unit_kilobit">കിലോബിറ്റ്</string>
+    <string name="unit_megabit">മെഗാബിറ്റ്</string>
+    <string name="unit_gigabit">ഗിഗാബിറ്റ്</string>
+    <string name="unit_terabit">ടെറാബിറ്റ്</string>
+    <string name="unit_petabit">പെറ്റാബിറ്റ്</string>
+    <string name="unit_exabit">എക്സാബിറ്റ്</string>
+    <string name="unit_byte">ബൈറ്റ്</string>
+    <string name="unit_kilobyte">കിലോബൈറ്റ്</string>
+    <string name="unit_megabyte">മെഗാബൈറ്റ്</string>
+    <string name="unit_gigabyte">ഗിഗാബൈറ്റ്</string>
+    <string name="unit_terabyte">ടെറാബൈറ്റ്</string>
+
+    <!-- Large Numbers -->
+    <string name="word_150_special">നൂറ്റമ്പത്</string>
+    <string name="word_250_special">ഇരുന്നൂറ്റമ്പത്</string>
+    <string name="word_1500_special">ആയിരത്തി അഞ്ഞൂറ്</string>
+    <string name="word_thousand">ആയിരം</string>
+    <string name="word_lakh">ലക്ഷം</string>
+    <string name="word_crore">കോടി</string>
+    <!-- Number to Text Converter -->
+    <string name="menu_number_to_text">സംഖ്യ അക്ഷരത്തിൽ</string>
+    <string name="ntt_enter_number">സംഖ്യ നൽകുക</string>
+    <string name="ntt_convert_button">മാറ്റുക</string>
+    <string name="ntt_result_english">ഇംഗ്ലീഷ്:</string>
+    <string name="ntt_result_odia">ഒഡിയ:</string>
+
+    <string name="word_rupees">രൂപ</string>
+    <string name="word_only">മാത്രം</string>
+    <string name="btn_copy">പകർത്തുക</string>
+    <string name="msg_copied">ടെക്സ്റ്റ് ക്ലിപ്പ്‌ബോർഡിലേക്ക് പകർത്തി</string>
+    <string name="lbl_bank_format">ചെക്ക് / ബാങ്ക് ഫോർമാറ്റ്</string>
+    <string name="btn_screenshot_mode">സ്‌ക്രീൻഷോട്ട് മോഡ്</string>
+    <string name="msg_exit_screenshot">പുറത്തുകടക്കാൻ എവിടെയെങ്കിലും ടാപ്പുചെയ്യുക</string>
+    <string name="menu_roman_numbers">റോമൻ സംഖ്യകൾ</string>
+    <string name="roman_screen_title">റോമൻ സംഖ്യകൾ</string>
+    <string name="col_number">സംഖ്യ</string>
+    <string name="col_roman">റോമൻ</string>
+    <string name="btn_load_more">അടുത്ത 100 സംഖ്യകൾ ലോഡുചെയ്യുക</string>
+    <string name="msg_list_complete">നിങ്ങൾ 1000-ൽ എത്തി!</string>
+    <string name="action_search">തിരയുക</string>
+    <string name="search_hint">സംഖ്യ നൽകുക (ഉദാ. 50)</string>
+    <string name="search_no_result">സംഖ്യ സാധുവായതല്ല അല്ലെങ്കിൽ വളരെ വലുതാണ്</string>
+    <string name="action_close_search">തിരയൽ അവസാനിപ്പിക്കുക</string>
+    <string name="search_result_label">ഫലം:</string>
+    <string name="view_all_contributors">സംഭാവന നൽകിയവരെ കാണുക</string>
+    <string name="contributors_msg">ഈ ആപ്പ് നിർമ്മിക്കാൻ സഹായിച്ചവർക്ക് നന്ദി</string>
 </resources>
