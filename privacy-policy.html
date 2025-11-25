@@ -5,347 +5,614 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="PwQ6-C2NiW61Ed7LdkchITSrVzVEzHCc2At8VvyuO5Y" />
     <title>Ganita Bingya - Privacy Policy</title>
-    <meta name="description" content="Privacy policy for Ganita Bingya — a free, offline, ad-free math learning app in Odia">
+    <meta name="description" content="Privacy policy for Ganita Bingya - a free, offline, ad-free math learning app in Odia">
     <link rel="icon" href="https://raw.githubusercontent.com/imsbg/Ganita-Bingya-App/master/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;700&family=Anek+Odia:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #F8F7F2;
-            --text-color: #333333; /* Slightly softer than pure black */
-            --brand-color: #8C9A7A;
+            /* iOS 26 Theme Variables */
+            --ios-bg: #F2F4F8;
+            --ios-card: #FFFFFF;
+            --ios-glass: rgba(255, 255, 255, 0.75);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --brand-accent: #8C9A7A;
             --brand-dark: #5A664E;
-            --border-color: #EAE8E1;
-            --headline-font: 'Poppins', sans-serif;
-            --section-heading-font: 'Noto Serif', serif;
-            --body-font: 'Poppins', sans-serif;
+            --brand-blue: #0071e3;
+            
+            /* Dimensions */
+            --header-height: 60px;
+            --radius-l: 24px;
+            --radius-m: 16px;
+            
+            /* Fonts */
+            /* Using the same font stack but prioritizing readable sans-serif for English */
+            --font-display: 'Anek Odia', sans-serif;
+            --font-body: 'Noto Sans Oriya', sans-serif;
+            --font-ui: 'Baloo Bhaina 2', sans-serif;
         }
 
-        /* --- Base & Reset --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
         body {
-            font-family: var(--body-font);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7; 
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .container {
-            max-width: 960px; /* Wider for a more professional feel */
-            margin: 0 auto;
-            padding: 0 1.5rem;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background-color: var(--ios-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-top: calc(var(--header-height) + 20px);
         }
 
-        /* --- Header --- */
-        header {
-            position: sticky;
+        /* --- Glass Header --- */
+        .ios-header {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            padding: 1.2rem 0;
-            background: rgba(248, 247, 242, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--ios-glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        nav {
+
+        .header-inner {
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .nav-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            font-family: var(--headline-font);
-            color: var(--brand-dark);
-            text-decoration: none;
-        }
-        .nav-actions {
+
+        .logo-area {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-        }
-        .nav-button {
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
+            gap: 10px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        .nav-button.primary {
-            background-color: var(--brand-dark);
-            color: white;
-        }
-        .nav-button.primary:hover {
-            background-color: #333;
-            transform: translateY(-2px);
-        }
-        .nav-button.secondary {
-            background-color: transparent;
-            color: var(--brand-dark);
-            border: 1px solid var(--brand-dark);
-        }
-        .nav-button.secondary:hover {
-            background-color: var(--brand-dark);
-            color: white;
+            z-index: 1002;
         }
 
-        /* --- Hero Section --- */
+        .app-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        /* --- Desktop Nav --- */
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: var(--font-ui);
+            font-weight: 500;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-link:hover { opacity: 1; }
+
+        /* Language Pill */
+        .lang-pill {
+            display: flex;
+            background: rgba(0,0,0,0.06);
+            padding: 3px;
+            border-radius: 100px;
+        }
+        
+        .lang-btn {
+            padding: 4px 12px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-family: var(--font-ui);
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: black;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* --- Mobile Menu & Controls --- */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 0;
+        }
+
+        .hamburger-btn span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Animation */
+        .hamburger-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* Full Screen Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1001; /* Above Header */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* dedicated close button inside menu */
+        .menu-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--text-primary);
+            transition: background 0.2s;
+        }
+        
+        .menu-close-btn:active {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .mobile-link {
+            font-size: 1.6rem;
+            margin: 15px 0;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu.active .mobile-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger animation delay */
+        .mobile-menu.active .mobile-link:nth-child(2) { transition-delay: 0.1s; }
+        .mobile-menu.active .mobile-link:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu.active .lang-pill { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+
+        .mobile-menu .lang-pill {
+            margin-top: 40px;
+            transform: scale(1.1) translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         .hero {
             text-align: center;
-            padding: 6rem 0 4rem;
-        }
-        .hero-title {
-            font-family: var(--headline-font);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--brand-dark);
-            margin-bottom: 1rem;
-        }
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #666;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease;
         }
 
-        /* --- Professional Content Layout --- */
-        .policy-content {
-            background-color: #FFFFFF;
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
-            margin-bottom: 4rem;
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
-        .policy-content h3 {
-            font-family: var(--section-heading-font);
-            font-size: 1.8rem;
+
+        .hero p {
+            color: var(--text-secondary);
+            font-family: var(--font-ui);
+        }
+
+        /* --- Widget: Table of Contents --- */
+        .toc-widget {
+            background: var(--ios-card);
+            border-radius: var(--radius-m);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            overflow: hidden;
+        }
+
+        .toc-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .toc-title {
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 1.1rem;
             color: var(--brand-dark);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
         }
-        .policy-content h3:first-of-type {
+
+        .toc-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .toc-widget.collapsed .toc-arrow { transform: rotate(-90deg); }
+
+        .toc-body {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .toc-widget.collapsed .toc-body {
+            max-height: 0;
+            opacity: 0;
             margin-top: 0;
+            padding-top: 0;
+            border: none;
         }
-        .policy-content p {
-            margin-bottom: 1.2rem;
+
+        .toc-body ul { list-style: none; padding: 0; margin: 0; }
+        .toc-body li a {
+            display: block;
+            padding: 8px 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s;
+        }
+        .toc-body li a:hover { color: var(--brand-blue); padding-left: 5px; }
+
+        /* --- Content --- */
+        .content-card {
+            background: #fff;
+            border-radius: var(--radius-l);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        section { scroll-margin-top: 100px; margin-bottom: 40px; }
+        p { color: #333; margin-bottom: 1.5rem; }
+
+        .check-list { list-style: none; padding: 0; }
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
             color: #444;
         }
-        .policy-content a {
-            color: var(--brand-dark);
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid var(--brand-color);
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-        .policy-content a:hover {
-            color: #222;
-            border-color: #222;
-        }
-
-        /* --- Custom List Style --- */
-        .policy-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 1rem 0 1.5rem;
-        }
-        .policy-list li {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 0.8rem;
-        }
-        .policy-list li::before {
+        .check-list li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            top: 2px;
-            color: var(--brand-color);
-            font-weight: 700;
-            font-size: 1.2rem;
-            background-color: rgba(140, 154, 122, 0.1);
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            text-align: center;
-            line-height: 26px;
+            color: var(--brand-accent);
+            font-weight: bold;
         }
 
-        .meta-row {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: #777;
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
+        .contact-box {
+            background: var(--ios-bg);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .contact-box:hover { transform: scale(1.03); background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .contact-box span { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
 
-        /* --- Call to Action Section --- */
-        .cta-section {
-            background-color: var(--brand-dark);
-            color: var(--bg-color);
+        /* --- CTA --- */
+        .cta-box {
+            background: linear-gradient(135deg, var(--brand-dark), #2c3e50);
+            border-radius: var(--radius-l);
+            padding: 40px 20px;
             text-align: center;
-            padding: 3rem 1.5rem;
-            border-radius: 16px;
-            margin-bottom: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
-        .cta-section h2 {
-            font-family: var(--headline-font);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .cta-section p {
-            color: rgba(248, 247, 242, 0.8);
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .cta-button {
-            background-color: var(--bg-color);
-            color: var(--brand-dark);
-            padding: 0.8rem 2rem;
+        .cta-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            font-weight: 600;
+            font-family: var(--font-ui);
+            transition: transform 0.2s;
         }
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .cta-button.outline {
-            background: transparent;
-            color: var(--bg-color);
-            border: 2px solid var(--bg-color);
-        }
+        .cta-btn.white { background: white; color: var(--brand-dark); }
+        .cta-btn.glass { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px); }
+        .cta-btn:hover { transform: translateY(-2px); }
 
-        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 3rem 0;
-            background-color: #EFECE6;
-            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-top: 40px;
         }
-        footer p { color: #555; }
-        footer a {
-            color: var(--brand-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        footer a:hover { text-decoration: underline; }
 
-        /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
-            .container { padding: 0 1rem; }
-            .hero { padding: 4rem 0 3rem; }
-            .policy-content { padding: 1.5rem; }
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            .desktop-nav { display: none; }
+            .hamburger-btn { display: flex; }
+            .content-card { padding: 25px 20px; }
+            .hero h1 { font-size: 2rem; }
         }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <header id="header">
-        <nav class="container">
-            <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="nav-logo">Ganita Bingya</a>
-            <div class="nav-actions">
-                <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy-odia" class="nav-button secondary">Odia (ଓଡ଼ିଆ)</a>
-                <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="nav-button primary">Home</a>
-            </div>
-        </nav>
+    <!-- Header -->
+    <header class="ios-header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="logo-area">
+                <img src="https://imsbg.github.io/images/sandeep-biswal-g/ganita-bingya-app-logo.png" alt="App Logo" class="app-icon">
+                <span class="logo-text">Ganita Bingya</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="nav-link">Home</a>
+                <a href="https://imsbg.github.io/Ganita-Bingya-App/contributors" class="nav-link">Contributors</a>
+                
+                <div class="lang-pill">
+                    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy-odia" class="lang-btn">Odia</a>
+                    <a href="#" class="lang-btn active">Eng</a>
+                    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy-hindi" class="lang-btn">Hindi</a>
+                </div>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
-    <main>
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        
+        <!-- NEW: Close Button (X) -->
+        <button class="menu-close-btn" onclick="toggleMenu()" aria-label="Close Menu">
+            &times;
+        </button>
+
+        <a href="https://imsbg.github.io/Ganita-Bingya-App/" class="mobile-link">Home</a>
+        <a href="https://imsbg.github.io/Ganita-Bingya-App/contributors" class="mobile-link">Contributors</a>
+        
+               <div class="lang-pill">
+                    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy-odia" class="lang-btn">Odia</a>
+                    <a href="#" class="lang-btn active">Eng</a>
+                    <a href="https://imsbg.github.io/Ganita-Bingya-App/privacy-policy-hindi" class="lang-btn">Hindi</a>
+                </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        
         <div class="hero">
-            <div class="container">
-                <h1 class="hero-title">Privacy Policy</h1>
-                <p class="hero-subtitle">Effective date: September 19, 2025</p>
+            <h1>Privacy Policy</h1>
+            <p>Effective Date: September 19, 2025</p>
+        </div>
+
+        <!-- Table of Contents Widget -->
+        <div class="toc-widget" id="tocWidget">
+            <div class="toc-head" onclick="toggleToc()">
+                <span class="toc-title">Table of Contents</span>
+                <span class="toc-arrow">▼</span>
+            </div>
+            <div class="toc-body">
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#mission">Our Mission</a></li>
+                    <li><a href="#audience">Who is this for?</a></li>
+                    <li><a href="#philosophy">Our Philosophy</a></li>
+                    <li><a href="#data">What Data Do We Collect?</a></li>
+                    <li><a href="#ads">Ads, Tracking & Permissions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
 
-        <div class="container">
-            <div class="policy-content" role="document">
+        <div class="content-card">
+            <section id="intro">
                 <h3>Introduction</h3>
-                <p>"Ganita Bingya" is not just an app; it's a philosophy. In a world where most of our free time is spent on digital scrolling, we wanted to offer an alternative — a productive one. This is our effort to make learning math simple, beautiful, and accessible to everyone.</p>
+                <p>"Ganita Bingya" is not just an app, it is a philosophy. In a world where most of our free time is spent on digital scrolling, we wanted to offer an alternative - a productive one. It is our attempt to make mathematics education simple, beautiful, and accessible to everyone.</p>
+                <p>Instead of pointlessly scrolling on social media, practice many exercises like addition and subtraction in 'Ganita Bingya'. Turn your free time into a fun and productive habit.</p>
+            </section>
 
+            <section id="mission">
                 <h3>Our Mission</h3>
-                <p>Our primary mission is to remove the fear of mathematics from children's minds and help them build a positive and enjoyable relationship with numbers.</p>
-                
-                <h3>Who Is It For?</h3>
-                <ul class="policy-list">
+                <p>Our core mission is to remove the fear of mathematics from children's minds and help them establish a positive and joyful relationship with numbers.</p>
+            </section>
+            
+            <section id="audience">
+                <h3>Who is this for?</h3>
+                <ul class="check-list">
                     <li>Students who want to strengthen their basic math skills</li>
-                    <li>Parents who want to teach their children math in an engaging way</li>
-                    <li>Anyone who enjoys a simple math puzzle to keep their mind sharp</li>
+                    <li>Parents who want to teach math to their children in a fun way</li>
+                    <li>Anyone who wants to enjoy addition, subtraction, multiplication, division, and multiplication tables, or wants to further improve their calculation skills</li>
                 </ul>
+            </section>
 
+            <section id="philosophy">
                 <h3>Our Philosophy</h3>
-                <ul class="policy-list">
-                    <li><strong>Simplicity:</strong> A clean and straightforward design that lets users focus on learning without distractions</li>
-                    <li><strong>Fun Learning:</strong> The learning process should be as engaging as a game, not a compulsion</li>
-                    <li><strong>Accessibility for All:</strong> The app is completely free, works offline, and will always remain ad-free</li>
+                <ul class="check-list">
+                    <li><strong>Simplicity:</strong> A clean and straightforward design that allows the user to focus on learning without any distractions</li>
+                    <li><strong>Fun Learning:</strong> The learning process should be entertaining like a game, not a compulsion</li>
+                    <li><strong>Accessible to All:</strong> This app is completely free, works offline, and will always remain ad-free</li>
                 </ul>
+            </section>
 
-                <h3>What data do we collect?</h3>
-                <p><strong>Short answer: Almost nothing.</strong></p>
-                <p>We designed Ganita Bingya to work offline and to be privacy-friendly. We do not require users to register, sign in, or provide personal information to use the core app. By default, the app does not collect identifiable personal data, telemetry, or analytics.</p>
+            <section id="data">
+                <h3>What Data Do We Collect?</h3>
+                <p><strong>Short Answer: Almost nothing.</strong></p>
+                <p>We have designed 'Ganita Bingya' to work offline and in a privacy-friendly manner. We do not ask users to register, sign in, or provide personal information to use the core app. The app does not collect any personally identifiable data, telemetry, or analytics.</p>
+                <p>This app only stores lightweight local data on the user's device when necessary (for example, local progress, high scores, settings). This data is stored locally on the device only and is not sent to our servers.</p>
+            </section>
 
-                <h3>Local device data & permissions</h3>
-                <p>The app stores lightweight local data on the user's device only when necessary for the app experience (for example, local progress, high scores, settings). This data is stored locally on the device and is not transmitted to our servers.</p>
-                <p>If you download the Android APK, your device may prompt for the minimal permissions required by Android to install and run the app. We request no unnecessary permissions.</p>
+            <section id="ads">
+                <h3>Ads, Tracking & Permissions</h3>
+                <p>'Ganita Bingya' is ad-free and will always remain so. We do not install any ad SDKs or trackers in the core app. If you download the Android APK, the app may request the minimum permissions required by your Android device to install and run. We do not ask for any unnecessary permissions.</p>
+            </section>
 
-                <h3>Advertising, Tracking & Links</h3>
-                <p>Ganita Bingya is and will remain ad-free. We do not embed advertising SDKs or trackers in the core app. The web version may link to external pages (for example, a project GitHub). External websites are governed by their own privacy policies.</p>
-                
-                <h3>Changes to this policy</h3>
-                <p>If we make material changes to this privacy policy we will update the effective date at the top of this page and will highlight important changes inside the app's release notes or update log.</p>
-
+            <section id="contact">
                 <h3>Contact</h3>
-                <p>If you have questions, concerns, or requests related to privacy, please contact:</p>
-                <p style="line-height: 2;">
-                    <strong>Developer:</strong> Sandeep Biswal G<br>
-                    <strong>Email:</strong> <a href="mailto:message.sbg@gmail.com">message.sbg@gmail.com</a><br>
-                    <strong>Instagram:</strong> <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">@sandeepbiswalg</a><br>
-                    <strong>GitHub:</strong> <a href="https://github.com/imsbg/ganita-bingya-app" target="_blank" rel="noopener noreferrer">Project Repository</a><br>
-                </p>
-
-                <div class="meta-row">
-                    Free & Offline • Ad-free • Designed for children
+                <p>If you have any privacy-related questions, concerns, or requests, please contact:</p>
+                <div class="contact-grid">
+                    <a href="mailto:message.sbg@gmail.com" class="contact-box">
+                        <span>Email</span>
+                        message.sbg@gmail.com
+                    </a>
+                    <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" class="contact-box">
+                        <span>Instagram</span>
+                        @sandeepbiswalg
+                    </a>
+                    <a href="https://github.com/imsbg/ganita-bingya-app" target="_blank" rel="noopener noreferrer" class="contact-box">
+                        <span>GitHub</span>
+                        Project Repository
+                    </a>
+                    <a href="https://x.com/SandeepBiswalG" target="_blank" rel="noopener noreferrer" class="contact-box">
+                        <span>X (Twitter)</span>
+                        SandeepBiswalG
+                    </a>
                 </div>
-            </div>
+            </section>
+        </div>
 
-            <div class="cta-section">
-                <h2>Ready to try?</h2>
-                <p>Play online or download the free APK for Android.</p>
-                <div class="cta-buttons">
-                    <a href="https://odiagames.netlify.app/math-wizard/" target="_blank" rel="noopener noreferrer" class="cta-button outline">Play Online</a>
-                    <a href="https://ganitabingya.netlify.app/open" target="_blank" class="cta-button" rel="noopener noreferrer">Free Download</a>
-                </div>
+        <!-- CTA Bottom -->
+        <div class="cta-box">
+            <h2 style="font-family:var(--font-display); margin-bottom:10px;">Ready to give it a try?</h2>
+            <p style="color:rgba(255,255,255,0.9); margin-bottom:25px;">Play online or download the free APK for Android</p>
+            <div>
+                <a href="https://imsbg.github.io/Ganita-Bingya-App/sikhya/" target="_blank" rel="noopener noreferrer" class="cta-btn glass">Learning Tools</a>
+                <a href="https://imsbg.github.io/Ganita-Bingya-App/" target="_blank" rel="noopener noreferrer" class="cta-btn white">Download</a>
             </div>
         </div>
+
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Ganita Bingya. Developed by <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer">Sandeep Biswal G</a></p>
+            <p>&copy; 2025 Ganita Bingya. Created by <a href="https://www.instagram.com/sandeepbiswalg" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Sandeep Biswal G</a></p>
         </div>
     </footer>
 
+    <script>
+        function toggleToc() {
+            document.getElementById('tocWidget').classList.toggle('collapsed');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger-btn');
+            
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('open');
+            
+            if(menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden'; // Stop scrolling
+            } else {
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }
+        }
+
+        // Close menu when clicking links
+        document.querySelectorAll('.mobile-link, .mobile-menu .lang-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu();
+            });
+        });
+    </script>
 </body>
 </html>
