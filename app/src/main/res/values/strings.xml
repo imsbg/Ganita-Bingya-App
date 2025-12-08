@@ -607,7 +607,7 @@
     <!-- Keys for FTMN history log file -->
     <string name="ftmn_log_sequence_key">କ୍ରମ</string>
     <!-- App Footer Text -->
-    <string name="home_footer_text">With love,\nfrom ସନ୍ଦୀପ୍</string>
+    <string name="home_footer_text">With love,\nfrom Odisha</string>
 
     <string name="reorder_description">ଖେଳଗୁଡ଼ିକୁ ପୁନଃ-କ୍ରମ କରନ୍ତୁ</string>
     <string name="save_order_description">ନୂଆ କ୍ରମ ସେଭ୍ କରନ୍ତୁ</string>

@@ -97,10 +97,20 @@ fun ColumnScope.CalculatorDisplay(viewModel: CalculatorViewModel, modifier: Modi
                             value = viewModel.expression.value,
                             onValueChange = {},
                             readOnly = true,
-                            textStyle = TextStyle(fontFamily = OdiaFontFamily, fontWeight = FontWeight.Normal, fontSize = 48.sp, color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.End),
+                            // <<< MODIFICATION START: Dynamically set text color based on error state >>>
+                            textStyle = TextStyle(
+                                fontFamily = OdiaFontFamily,
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 48.sp,
+                                color = if (viewModel.isError.value) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
+                                textAlign = TextAlign.End
+                            ),
+                            // <<< MODIFICATION END >>>
                             onTextLayout = { result -> textLayoutResult = result },
                             modifier = Modifier.fillMaxWidth().pointerInput(Unit) { detectTapGestures { offset -> textLayoutResult?.let { layoutResult -> val newCursorOffset = layoutResult.getOffsetForPosition(offset); viewModel.moveCursor(newCursorOffset) } } },
-                            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                            // <<< MODIFICATION START: Also change cursor color for consistency >>>
+                            cursorBrush = SolidColor(if (viewModel.isError.value) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary),
+                            // <<< MODIFICATION END >>>
                             visualTransformation = LocaleAwareNumberVisualTransformation(context),
                         )
                         AnimatedVisibility(visible = viewModel.liveResult.value.isNotEmpty()) {

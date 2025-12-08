@@ -45,6 +45,10 @@ class CalculatorViewModel : ViewModel() {
     var isDegMode = mutableStateOf(true)
         private set
 
+    // <<< NEW: State to track if the current expression is an error >>>
+    var isError = mutableStateOf(false)
+        private set
+
     fun moveCursor(offset: Int) {
         expression.value = expression.value.copy(
             selection = TextRange(offset.coerceIn(0, expression.value.text.length))
@@ -55,7 +59,6 @@ class CalculatorViewModel : ViewModel() {
         when (action) {
             is CalculatorAction.Number -> insertText(action.number)
             is CalculatorAction.Operator -> {
-                // FIXED: Route '%' to the correct new function
                 if (action.symbol == "%") {
                     performPercentageCalculation()
                 } else {
@@ -67,6 +70,8 @@ class CalculatorViewModel : ViewModel() {
             is CalculatorAction.Clear -> {
                 expression.value = TextFieldValue("")
                 liveResult.value = ""
+                // <<< MODIFICATION: Reset error state on clear >>>
+                isError.value = false
             }
             is CalculatorAction.Delete -> deleteLastCharacter()
             is CalculatorAction.Calculate -> performCalculation()
@@ -80,15 +85,12 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-    // NEW: A completely new, robust function to handle percentage calculations correctly.
     private fun performPercentageCalculation() {
         val currentText = expression.value.text.trim()
         if (currentText.isEmpty() || !currentText.last().isDigit() && currentText.last() != '.') return
 
-        // Find the last operator (+, -, ×, ÷) to understand the context
         val lastOperatorIndex = currentText.indexOfLast { it in listOf('+', '-', '×', '÷') }
 
-        // Case 1: No operator found. It's just a number like "50". Calculate 50/100.
         if (lastOperatorIndex == -1) {
             val number = currentText.toDoubleOrNull() ?: return
             val result = number / 100.0
@@ -98,7 +100,6 @@ class CalculatorViewModel : ViewModel() {
             return
         }
 
-        // Case 2: An operator was found. Expression is like "100-10".
         val baseExpressionStr = currentText.substring(0, lastOperatorIndex)
         val lastNumberStr = currentText.substring(lastOperatorIndex + 1)
         val operator = currentText[lastOperatorIndex]
@@ -110,20 +111,16 @@ class CalculatorViewModel : ViewModel() {
             val baseValue = baseExpr.calculate()
             if (!baseValue.isNaN()) {
                 val finalResult = when (operator) {
-                    // For + and -, calculate B% of A and add/subtract
                     '+' -> baseValue + (baseValue * lastNum / 100.0)
                     '-' -> baseValue - (baseValue * lastNum / 100.0)
-                    // For × and ÷, just use B/100
                     '×' -> baseValue * (lastNum / 100.0)
                     '÷' -> baseValue / (lastNum / 100.0)
-                    else -> return // Should not happen
+                    else -> return
                 }
                 val resultStr = formatResult(finalResult)
-                // When % is pressed, it's a final action, so we replace the whole expression
-                // with the result, just like pressing the '=' button.
                 _history.add(0, CalculationHistory("$currentText%", resultStr))
                 expression.value = TextFieldValue(resultStr, TextRange(resultStr.length))
-                liveResult.value = "" // Clear the live preview
+                liveResult.value = ""
             }
         }
     }
@@ -131,6 +128,7 @@ class CalculatorViewModel : ViewModel() {
     fun toggleScientificPad() { isScientificPadVisible.value = !isScientificPadVisible.value }
 
     fun loadFromHistory(calc: CalculationHistory) {
+        isError.value = false // Reset error when loading from history
         expression.value = TextFieldValue(
             text = calc.expression,
             selection = TextRange(calc.expression.length)
@@ -139,6 +137,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun insertText(textToInsert: String) {
+        isError.value = false // <<< MODIFICATION: Any new input clears the error >>>
         val currentText = expression.value.text
         val selection = expression.value.selection
         val newText = currentText.replaceRange(selection.start, selection.end, textToInsert)
@@ -175,6 +174,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun enterOperator(symbol: String) {
+        isError.value = false // <<< MODIFICATION: Any new input clears the error >>>
         val currentText = expression.value.text
         val selectionStart = expression.value.selection.start
         if (currentText.isEmpty() && symbol != "-") return
@@ -192,6 +192,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun handleParentheses() {
+        isError.value = false // <<< MODIFICATION: Any new input clears the error >>>
         val currentText = expression.value.text
         val selection = expression.value.selection
         val openParenCount = currentText.count { it == '(' }
@@ -203,6 +204,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun enterDecimal() {
+        isError.value = false // <<< MODIFICATION: Any new input clears the error >>>
         val currentTextBeforeCursor = expression.value.text.substring(0, expression.value.selection.start)
         val lastNumberSegment = currentTextBeforeCursor.split('+', '-', '×', '÷', '(', ')', '^', '!').last()
         if (lastNumberSegment.isEmpty()) {
@@ -213,6 +215,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun deleteLastCharacter() {
+        isError.value = false // <<< MODIFICATION: Deleting a character clears the error >>>
         val selection = expression.value.selection
         val currentText = expression.value.text
         if (selection.collapsed && selection.start > 0) {
@@ -240,7 +243,15 @@ class CalculatorViewModel : ViewModel() {
         val expr = Expression(exprString)
         if (expr.checkSyntax()) {
             val result = expr.calculate()
-            if (!result.isNaN()) { liveResult.value = formatResult(result) }
+            // <<< MODIFICATION START: Set error state instead of showing "Error" text >>>
+            if (result.isNaN() || result.isInfinite()) {
+                isError.value = true
+                liveResult.value = "" // Don't show any live result text on error
+            } else {
+                isError.value = false // Make sure to reset error state on valid calculation
+                liveResult.value = formatResult(result)
+            }
+            // <<< MODIFICATION END >>>
         } else {
             liveResult.value = ""
         }
@@ -248,7 +259,9 @@ class CalculatorViewModel : ViewModel() {
 
     private fun performCalculation() {
         updateLiveResult()
-        if (liveResult.value.isEmpty() || liveResult.value == expression.value.text) return
+        // <<< MODIFICATION START: Check for error state instead of "Error" text >>>
+        if (isError.value || liveResult.value.isEmpty() || liveResult.value == expression.value.text) return
+        // <<< MODIFICATION END >>>
         _history.add(0, CalculationHistory(expression.value.text, liveResult.value))
         val newText = liveResult.value
         expression.value = TextFieldValue(newText, TextRange(newText.length))
