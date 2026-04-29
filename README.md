@@ -149,7 +149,7 @@
 
 [![UPI ଦ୍ବାରା ଦାନ କରନ୍ତୁ](https://img.shields.io/badge/Donate-UPI-green?style=for-the-badge&logo=googlepay)](https://imsbg.github.io/Ganita-Bingya-App/donate)
 
-**UPI ID:** `biswal9@ptyes`  
+**UPI ID:** `odi@ptyes`  
 *(Copy this ID and paste it in your UPI app.)*
 
 ---
@@ -286,7 +286,7 @@ If you like **Ganita Bingya** and want to support its development, you can donat
 
 [![Donate via UPI](https://img.shields.io/badge/Donate-UPI-green?style=for-the-badge&logo=googlepay)](https://imsbg.github.io/Ganita-Bingya-App/donate)
 
-**UPI ID:** `biswal9@ptyes`  
+**UPI ID:** `odi@ptyes`  
 *(Copy this ID and paste it in your UPI app.)*
 
 </div>
